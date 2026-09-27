@@ -64,7 +64,7 @@ Esta unidad conecta con la totalidad de los Resultados de Aprendizaje del módul
 4.3. Proceso de creación: investigación, identificación de fases, mapeo de acciones/pensamientos/emociones, identificación de pain points, brainstorming de oportunidades.
 
 ### 5. User Stories
-5.1. Formato estándar: "Como [tipo de usuario], quiero [funcionalidad], para [beneficio]".
+5.1. Formato estándar: "Como \[tipo de usuario\], quiero \[funcionalidad\], para \[beneficio\]".
 5.2. Criterios de aceptación: Given/When/Then (BDD).
 5.3. Técnica INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable.
 5.4. Las 3 C's: Card, Conversation, Confirmation.
@@ -111,9 +111,10 @@ Esta unidad conecta con la totalidad de los Resultados de Aprendizaje del módul
 
 ### 1. ¿Qué es el Diseño Centrado en Usuario?
 
-El Diseño Centrado en Usuario (DCU), también conocido como UCD (User-Centered Design) o Human-Centered Design (HCD) en su denominación más reciente e inclusiva, es una filosofía y un proceso de diseño que sitúa a los usuarios finales —sus necesidades, capacidades, limitaciones, contextos y objetivos— en el centro de cada decisión de diseño. No es un estilo visual, ni una metodología de testing, ni un conjunto de wireframes; es un enfoque fundamental sobre cómo se aborda la creación de productos digitales.
+!!! info "Definición: Diseño Centrado en Usuario"
+    El **Diseño Centrado en Usuario (DCU)**, también conocido como **UCD** (*User-Centered Design*) o **HCD** (*Human-Centered Design*) en su denominación más reciente e inclusiva, es una **filosofía y un proceso de diseño** que sitúa a los usuarios finales —sus necesidades, capacidades, limitaciones, contextos y objetivos— en el centro de cada decisión de diseño. **No es** un estilo visual, ni una metodología de testing, ni un conjunto de *wireframes*: es un enfoque fundamental sobre cómo se aborda la creación de productos digitales.
 
-La norma ISO 9241-210:2019 "Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems" proporciona la definición canónica y los requisitos para aplicar el DCU de forma sistemática. Según esta norma, el DCU se caracteriza por seis principios fundamentales:
+La norma **ISO 9241-210:2019** *Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems* proporciona la definición canónica y los requisitos para aplicar el DCU de forma sistemática. Según esta norma, el DCU se caracteriza por **seis principios fundamentales**:
 
 1. **El diseño se basa en una comprensión explícita de los usuarios, las tareas y los entornos.** No se diseña basándose en suposiciones, intuiciones del diseñador u opiniones del CEO. Las decisiones de diseño se fundamentan en datos obtenidos mediante investigación rigurosa con usuarios reales en contextos reales. Esto implica observar a los usuarios, entrevistarlos, analizar sus comportamientos y medir su rendimiento antes de diseñar nada.
 
@@ -127,7 +128,15 @@ La norma ISO 9241-210:2019 "Ergonomics of human-system interaction — Part 210:
 
 6. **El equipo de diseño incluye habilidades y perspectivas multidisciplinares.** El DCU no es responsabilidad exclusiva de un "diseñador UX". Requiere la colaboración de diseñadores visuales, diseñadores de interacción, investigadores de usuarios, desarrolladores front-end y back-end, redactores de contenido, expertos en accesibilidad, estrategas de negocio, y representantes de los propios usuarios. La diversidad de perspectivas enriquece la comprensión del problema y la calidad de las soluciones.
 
-Es importante distinguir DCU de conceptos relacionados con los que frecuentemente se confunde. El **DCU** es el proceso (cómo se diseña). La **UX (User Experience)** es el resultado (lo que el usuario experimenta). La **usabilidad** es una métrica de calidad específica dentro de la UX (eficacia, eficiencia, satisfacción). La **accesibilidad** es una dimensión de la usabilidad que garantiza que personas con discapacidad puedan utilizar el producto. El **Design Thinking** es una metodología hermana con fases similares (empatizar, definir, idear, prototipar, testear) que comparte la filosofía centrada en el humano pero con un enfoque más amplio hacia la innovación y la resolución creativa de problemas complejos, no limitada al diseño digital.
+Es importante distinguir DCU de conceptos relacionados con los que frecuentemente se confunde:
+
+| Concepto | Qué es |
+|----------|--------|
+| **DCU** | el **proceso** (cómo se diseña) |
+| **UX** (*User Experience*) | el **resultado** (lo que el usuario experimenta) |
+| **Usabilidad** | una **métrica de calidad específica** dentro de la UX (eficacia, eficiencia, satisfacción) |
+| **Accesibilidad** | una **dimensión de la usabilidad** que garantiza que personas con discapacidad puedan utilizar el producto |
+| **Design Thinking** | una **metodología hermana** con fases similares (empatizar, definir, idear, prototipar, testear) que comparte la filosofía centrada en el humano pero con un enfoque más amplio hacia la **innovación y la resolución creativa de problemas complejos**, no limitada al diseño digital |
 
 ### 2. Fases del proceso de DCU
 
@@ -147,9 +156,10 @@ El DCU no es un proceso lineal de cascada, sino un ciclo iterativo donde las fas
 
 ### 3. User Personas: arquetipos que guían el diseño
 
-Una User Persona es un arquetipo ficticio pero realista que representa a un grupo de usuarios con comportamientos, necesidades, objetivos y motivaciones similares. Las personas fueron introducidas por Alan Cooper en su libro "The Inmates Are Running the Asylum" (1999) como una herramienta para mantener al equipo de diseño enfocado en usuarios reales en lugar de diseñar para un "usuario elástico" abstracto que se adapta convenientemente a cualquier decisión de diseño.
+!!! info "Definición: User Persona"
+    Una **User Persona** es un **arquetipo ficticio pero realista** que representa a un grupo de usuarios con comportamientos, necesidades, objetivos y motivaciones similares. Las personas fueron introducidas por **Alan Cooper** en su libro *The Inmates Are Running the Asylum* (**1999**) como una herramienta para mantener al equipo de diseño enfocado en **usuarios reales** en lugar de diseñar para un «usuario elástico» abstracto que se adapta convenientemente a cualquier decisión de diseño.
 
-Una persona efectiva no es un estereotipo demográfico ("mujer, 35 años, vive en Madrid"), sino un perfil conductual y psicográfico rico. Debe incluir:
+Una persona efectiva **no es un estereotipo demográfico** («mujer, 35 años, vive en Madrid»), sino un perfil **conductual y psicográfico** rico. Debe incluir:
 
 - **Nombre y foto:** Humaniza el arquetipo y facilita que el equipo se refiera a él/ella en conversaciones diarias ("¿Qué haría Carmen en esta pantalla?").
 - **Datos demográficos relevantes:** Solo aquellos que afectan al uso del producto (edad, ubicación, ocupación, nivel educativo, ingresos, situación familiar).
@@ -159,13 +169,21 @@ Una persona efectiva no es un estereotipo demográfico ("mujer, 35 años, vive e
 - **Comportamientos:** ¿Cómo actúa? ¿Investiga mucho antes de comprar o decide por impulso? ¿Prefiere el móvil o el ordenador? ¿Lee instrucciones o prefiere explorar?
 - **Cita textual (quote):** Una frase que capture la esencia de su actitud o necesidad. Las citas reales de entrevistas son las más poderosas.
 
-Es crucial distinguir entre **proto-personas** y **personas basadas en investigación**. Las proto-personas se crean en un workshop rápido con el equipo, basándose en el conocimiento existente y las suposiciones del equipo sobre los usuarios. Son útiles para alinear al equipo en las fases iniciales de un proyecto, crear empatía rápida y generar hipótesis. Sin embargo, NO sustituyen a la investigación real y deben ser validadas (o refutadas) lo antes posible mediante investigación con usuarios. Las personas basadas en investigación se construyen a partir de datos reales obtenidos mediante entrevistas, encuestas, observación y analítica, siguiendo un proceso riguroso de análisis y síntesis. Son más costosas de crear pero mucho más fiables y defendibles ante stakeholders escépticos.
+Es crucial distinguir entre **proto-personas** y **personas basadas en investigación**:
 
-El número óptimo de personas para un proyecto es entre 3 y 5. Menos de 3 no captura la diversidad de usuarios; más de 5 diluye el foco y hace difícil recordarlas y usarlas. Cada persona debe ser significativamente diferente de las demás en al menos un eje relevante (comportamiento, necesidad principal, nivel de experiencia).
+| | **Proto-personas** | **Personas basadas en investigación** |
+|---|--------------------|---------------------------------------|
+| **Cómo se crean** | en un *workshop* rápido con el equipo, basándose en el conocimiento y las suposiciones del equipo sobre los usuarios | a partir de **datos reales** (entrevistas, encuestas, observación y analítica), siguiendo un proceso riguroso de análisis y síntesis |
+| **Utilidad** | alinear al equipo en las fases iniciales, crear empatía rápida y generar **hipótesis** | mucho más **fiables y defendibles** ante *stakeholders* escépticos |
+| **Limitación** | **NO sustituyen** a la investigación real; deben ser validadas (o refutadas) lo antes posible | son **más costosas** de crear |
+
+!!! tip "Número de personas"
+    El número óptimo de personas para un proyecto es **entre 3 y 5**. Menos de **3** no captura la diversidad de usuarios; más de **5** diluye el foco y hace difícil recordarlas y usarlas. Cada persona debe ser **significativamente diferente** de las demás en al menos un eje relevante (comportamiento, necesidad principal, nivel de experiencia).
 
 ### 4. Customer Journey Map: visualizando la experiencia completa
 
-Un Customer Journey Map (CJM) o mapa de experiencia de usuario es una visualización cronológica de todos los puntos de contacto (touchpoints) que un usuario tiene con un producto, servicio u organización a lo largo del tiempo, capturando no solo lo que hace, sino también lo que piensa y siente en cada etapa. Es una herramienta poderosa para identificar puntos de dolor, lagunas en la experiencia y oportunidades de mejora que no son visibles cuando se analizan interacciones aisladas.
+!!! info "Definición: Customer Journey Map"
+    Un **Customer Journey Map (CJM)** o mapa de experiencia de usuario es una **visualización cronológica** de todos los puntos de contacto (*touchpoints*) que un usuario tiene con un producto, servicio u organización a lo largo del tiempo, capturando no solo lo que **hace**, sino también lo que **piensa** y lo que **siente** en cada etapa. Es una herramienta poderosa para identificar puntos de dolor, lagunas en la experiencia y oportunidades de mejora que **no son visibles** cuando se analizan interacciones aisladas.
 
 Los elementos clave de un journey map son:
 
@@ -183,15 +201,32 @@ Los elementos clave de un journey map son:
 
 - **Oportunidades:** Ideas de mejora derivadas de cada pain point. "Ofrecer compra como invitado (guest checkout)", "Mostrar tiempo de entrega estimado en la página de producto, antes del pago".
 
-La creación de un journey map es un proceso colaborativo que idealmente involucra a miembros de diferentes departamentos (marketing, ventas, soporte, desarrollo, diseño) porque cada uno tiene una pieza del puzzle de la experiencia del cliente. Se basa en datos de investigación (entrevistas, observación, analítica, datos de soporte, encuestas) y no en suposiciones. Un journey map efectivo debe ser accionable: cada oportunidad identificada debe poder traducirse en tareas concretas en el backlog.
+!!! tip "Un journey map debe ser accionable"
+    La creación de un journey map es un proceso **colaborativo** que idealmente involucra a miembros de diferentes departamentos (*marketing*, ventas, soporte, desarrollo, diseño) porque cada uno tiene una pieza del *puzzle* de la experiencia del cliente. Se basa en **datos de investigación** (entrevistas, observación, analítica, datos de soporte, encuestas) y **no en suposiciones**. Un journey map efectivo debe ser accionable: **cada oportunidad identificada debe poder traducirse en tareas concretas** en el *backlog*.
 
 ### 5. User Stories: conectando necesidades con funcionalidades
 
 Las User Stories son descripciones breves y centradas en el usuario de una funcionalidad deseada, escritas en lenguaje no técnico. Originadas en Extreme Programming (XP) y popularizadas por Scrum, constituyen el principal mecanismo para traducir necesidades de usuario en trabajo de desarrollo en metodologías ágiles.
 
-El formato canónico es: **"Como [tipo de usuario], quiero [funcionalidad/objetivo], para [beneficio/razón]."** Cada elemento tiene un propósito. "Como [tipo de usuario]" referencia una persona o rol, asegurando que la funcionalidad se diseña para alguien concreto. "Quiero [funcionalidad]" describe la capacidad que se desea añadir. "Para [beneficio]" explica el valor que aporta, forzando al equipo a pensar en el "por qué" y no solo en el "qué". Ejemplo completo: "Como comprador frecuente, quiero guardar múltiples direcciones de envío en mi cuenta, para no tener que introducir la dirección de mi oficina y la de mi casa cada vez que compro."
+!!! tip "Formato canónico de una User Story"
+    **"Como \[tipo de usuario\], quiero \[funcionalidad/objetivo\], para \[beneficio/razón\]."**
 
-Los **criterios de aceptación** definen las condiciones que deben cumplirse para que la historia se considere completada. Deben ser específicos, medibles y comprobables. Un formato recomendado es el estilo Given/When/Then (tomado de Behavior-Driven Development): "(Dado que) Given [contexto inicial], (Cuando) When [acción del usuario], (Entonces) Then [resultado esperado]". Para la historia anterior: "Given que soy un comprador frecuente con sesión iniciada, When accedo a la sección 'Mis direcciones' y añado una nueva dirección, Then la dirección se guarda y aparece en el selector de direcciones del checkout."
+    Cada elemento tiene un propósito:
+
+    - **"Como \[tipo de usuario\]"** referencia una persona o rol, asegurando que la funcionalidad se diseña para **alguien concreto**.
+    - **"Quiero \[funcionalidad\]"** describe la capacidad que se desea añadir.
+    - **"Para \[beneficio\]"** explica el **valor** que aporta, forzando al equipo a pensar en el «por qué» y no solo en el «qué».
+
+    Ejemplo completo: *«Como comprador frecuente, quiero guardar múltiples direcciones de envío en mi cuenta, para no tener que introducir la dirección de mi oficina y la de mi casa cada vez que compro.»*
+
+!!! tip "Criterios de aceptación: Given/When/Then"
+    Los **criterios de aceptación** definen las condiciones que deben cumplirse para que la historia se considere **completada**. Deben ser **específicos, medibles y comprobables**. Un formato recomendado es el estilo *Given/When/Then* (tomado de *Behavior-Driven Development*):
+
+    - **Given** \[contexto inicial\] — *«Dado que...»*
+    - **When** \[acción del usuario\] — *«Cuando...»*
+    - **Then** \[resultado esperado\] — *«Entonces...»*
+
+    Para la historia anterior: *«Given que soy un comprador frecuente con sesión iniciada, When accedo a la sección «Mis direcciones» y añado una nueva dirección, Then la dirección se guarda y aparece en el selector de direcciones del checkout.»*
 
 La técnica **INVEST** (Bill Wake, 2003) proporciona un acrónimo para evaluar la calidad de las user stories:
 
@@ -204,33 +239,82 @@ La técnica **INVEST** (Bill Wake, 2003) proporciona un acrónimo para evaluar l
 
 ### 6. Investigación UX: métodos cuantitativos y cualitativos
 
-La investigación de usuarios es la savia del DCU. Sin datos sobre los usuarios, sus necesidades y sus comportamientos, el "diseño centrado en el usuario" es solo diseño basado en opiniones y suposiciones.
+La investigación de usuarios es la **savia del DCU**. Sin datos sobre los usuarios, sus necesidades y sus comportamientos, el «diseño centrado en el usuario» es solo diseño basado en **opiniones y suposiciones**.
 
-Los **métodos cualitativos** buscan entender el "por qué" y el "cómo". Generan datos ricos, profundos y contextuales, pero con muestras pequeñas no generalizables estadísticamente. Las entrevistas en profundidad son el método cualitativo por excelencia: conversaciones semi-estructuradas de 45-90 minutos donde se explora la experiencia del participante en sus propios términos. La observación contextual (visitar al usuario en su entorno real de uso y observar sin interferir) revela comportamientos que los propios usuarios no verbalizan en entrevistas. Los diarios de usuario (diary studies) piden a los participantes que documenten sus experiencias a lo largo de días o semanas, capturando comportamientos longitudinales. Los focus groups (grupos de discusión de 6-8 participantes moderados por un facilitador) son útiles para explorar percepciones y generar ideas, aunque tienen el riesgo de que las opiniones dominantes silencien a las minoritarias.
+**Métodos cualitativos** — buscan entender el **«por qué»** y el **«cómo»**. Generan datos ricos, profundos y contextuales, pero con muestras pequeñas **no generalizables** estadísticamente:
 
-Los **métodos cuantitativos** buscan medir "cuánto" y "cuántos". Generan datos numéricos generalizables con muestras grandes, pero carecen de la profundidad y el contexto de los métodos cualitativos. Las encuestas online (SurveyMonkey, Typeform, Google Forms) permiten recopilar datos de cientos o miles de usuarios sobre actitudes, preferencias y comportamientos autoinformados. La analítica web (Google Analytics, Adobe Analytics) proporciona datos de comportamiento real a gran escala: qué páginas visitan los usuarios, cuánto tiempo permanecen, dónde abandonan, qué flujos siguen. Los tests A/B miden el impacto causal de cambios de diseño en métricas de comportamiento.
+- **Entrevistas en profundidad** — el método cualitativo por excelencia: conversaciones semi-estructuradas de **45-90 minutos** donde se explora la experiencia del participante en sus propios términos.
+- **Observación contextual** — visitar al usuario en su **entorno real** de uso y observar sin interferir; revela comportamientos que los propios usuarios **no verbalizan** en entrevistas.
+- **Diarios de usuario** (*diary studies*) — los participantes documentan sus experiencias a lo largo de **días o semanas**, capturando comportamientos longitudinales.
+- **Focus groups** — grupos de discusión de **6-8 participantes** moderados por un facilitador; útiles para explorar percepciones y generar ideas, aunque corren el riesgo de que las opiniones dominantes **silencien a las minoritarias**.
 
-La clave es la **triangulación metodológica**: combinar métodos cualitativos y cuantitativos para que las fortalezas de unos compensen las debilidades de otros. Los métodos cualitativos generan hipótesis ("los usuarios abandonan el checkout porque no entienden los gastos de envío"); los métodos cuantitativos las validan a escala (el test A/B de dos versiones del resumen de gastos de envío muestra un aumento del 12% en la tasa de finalización del checkout, p < 0.01).
+**Métodos cuantitativos** — buscan medir el **«cuánto»** y el **«cuántos»**. Generan datos numéricos generalizables con muestras grandes, pero carecen de la profundidad y el contexto de los métodos cualitativos:
+
+- **Encuestas online** (SurveyMonkey, Typeform, Google Forms) — recopilan datos de **cientos o miles** de usuarios sobre actitudes, preferencias y comportamientos autoinformados.
+- **Analítica web** (Google Analytics, Adobe Analytics) — datos de **comportamiento real** a gran escala: qué páginas visitan, cuánto tiempo permanecen, dónde abandonan, qué flujos siguen.
+- **Tests A/B** — miden el **impacto causal** de cambios de diseño en métricas de comportamiento.
+
+!!! tip "Triangulación metodológica"
+    La clave es la **triangulación metodológica**: combinar métodos cualitativos y cuantitativos para que las fortalezas de unos **compensen las debilidades** de otros.
+
+    - Los métodos **cualitativos generan hipótesis** (*«los usuarios abandonan el checkout porque no entienden los gastos de envío»*).
+    - Los métodos **cuantitativos las validan a escala**: el test A/B de dos versiones del resumen de gastos de envío muestra un aumento del **12 %** en la tasa de finalización del *checkout*, **p < 0.01**.
 
 ### 7. Entrevistas de usuario efectivas
 
-La entrevista de usuario es la herramienta más versátil de la investigación UX, pero también una de las más difíciles de ejecutar bien. Una buena entrevista es una conversación estructurada donde el entrevistador aprende del participante, no una encuesta oral ni un interrogatorio.
+La entrevista de usuario es la herramienta **más versátil** de la investigación UX, pero también una de las **más difíciles** de ejecutar bien. Una buena entrevista es una **conversación estructurada** donde el entrevistador aprende del participante, no una encuesta oral ni un interrogatorio.
 
-La preparación es crucial. El **guion de entrevista** es una guía semi-estructurada, no un cuestionario rígido. Debe incluir: introducción (quién eres, objetivo de la investigación, confidencialidad, consentimiento para grabar), preguntas de calentamiento (datos demográficos, contexto general), preguntas centrales organizadas por temas (no más de 5-7 temas), y cierre (agradecimiento, compensación, posibilidad de seguimiento). Las preguntas deben ser abiertas ("Cuéntame sobre la última vez que...", "¿Cómo fue esa experiencia?", "¿Qué harías de manera diferente?") y evitar las preguntas que sugieren respuesta ("¿No crees que sería mejor si...?"), las preguntas binarias ("¿Te gusta esta función? Sí/No"), y las preguntas sobre el futuro ("¿Usarías esta función?" - la gente predice mal su comportamiento futuro).
+!!! tip "Guion de entrevista"
+    La preparación es crucial. El **guion de entrevista** es una guía **semi-estructurada**, no un cuestionario rígido. Debe incluir:
 
-Durante la ejecución, el entrevistador debe practicar la **escucha activa**: parafrasear para confirmar comprensión, hacer preguntas de seguimiento para profundizar ("Cuéntame más sobre eso..."), y usar el **silencio productivo**: tras una respuesta, esperar 3-5 segundos en silencio. A menudo el participante, incómodo con el silencio, añade información más profunda y reveladora.
+    - **Introducción** — quién eres, objetivo de la investigación, confidencialidad, consentimiento para grabar.
+    - **Preguntas de calentamiento** — datos demográficos, contexto general.
+    - **Preguntas centrales** organizadas por temas (**no más de 5-7 temas**).
+    - **Cierre** — agradecimiento, compensación, posibilidad de seguimiento.
 
-El análisis de entrevistas sigue un proceso de **codificación temática**: transcribir las entrevistas, identificar fragmentos de texto relevantes, etiquetarlos con códigos (temas emergentes), agrupar códigos similares en categorías, e identificar patrones y relaciones entre categorías. Técnicas como el **affinity mapping** (post-its en una pared agrupados por afinidad temática) facilitan el análisis colaborativo con el equipo.
+    Las preguntas deben ser **abiertas**: *«Cuéntame sobre la última vez que...», «¿Cómo fue esa experiencia?», «¿Qué harías de manera diferente?»*
+
+!!! warning "Preguntas a evitar"
+    - **Preguntas que sugieren respuesta** — *«¿No crees que sería mejor si...?»*
+    - **Preguntas binarias** — *«¿Te gusta esta función? Sí / No»*
+    - **Preguntas sobre el futuro** — *«¿Usarías esta función?»*; la gente **predice mal** su comportamiento futuro.
+
+!!! tip "Escucha activa y silencio productivo"
+    Durante la ejecución, el entrevistador debe practicar la **escucha activa**: parafrasear para confirmar comprensión, hacer preguntas de seguimiento para profundizar (*«Cuéntame más sobre eso...»*) y usar el **silencio productivo**: tras una respuesta, esperar **3-5 segundos** en silencio. A menudo el participante, incómodo con el silencio, añade información **más profunda y reveladora**.
+
+El análisis de entrevistas sigue un proceso de **codificación temática**:
+
+1. **Transcribir** las entrevistas.
+2. **Identificar** fragmentos de texto relevantes.
+3. **Etiquetarlos** con códigos (temas emergentes).
+4. **Agrupar** códigos similares en categorías.
+5. **Identificar** patrones y relaciones entre categorías.
+
+Técnicas como el **affinity mapping** (post-its en una pared agrupados por afinidad temática) facilitan el análisis colaborativo con el equipo.
 
 ### 8. DCU en metodologías ágiles
 
-La integración del DCU con metodologías ágiles no es trivial y ha sido fuente de debate durante años. El DCU requiere investigación previa y tiempo para iterar sobre diseños; las metodologías ágiles priorizan la entrega rápida de software funcionando. Sin embargo, existen modelos de integración que funcionan en la práctica:
+La integración del DCU con metodologías ágiles **no es trivial** y ha sido fuente de debate durante años. El DCU requiere investigación previa y tiempo para iterar sobre diseños; las metodologías ágiles priorizan la entrega rápida de *software* funcionando. Sin embargo, existen modelos de integración que funcionan en la práctica:
 
-**Dual Track Agile:** Propuesto por Jeff Patton y Marty Cagan, divide el trabajo del equipo en dos tracks paralelos: el track de **descubrimiento** (Discovery), donde diseñadores e investigadores trabajan en comprender el problema, idear soluciones y validarlas con prototipos rápidos, y el track de **entrega** (Delivery), donde los desarrolladores implementan las soluciones ya validadas. El track de descubrimiento va uno o dos sprints por delante del de entrega, asegurando que el backlog de desarrollo siempre contiene historias validadas con usuarios y no suposiciones sin probar.
+!!! info "Dual Track Agile"
+    Propuesto por **Jeff Patton** y **Marty Cagan**, divide el trabajo del equipo en dos *tracks* paralelos:
 
-**Design Sprints:** Popularizados por Google Ventures en el libro "Sprint" (Jake Knapp, 2016), son un proceso de 5 días para responder preguntas críticas de negocio mediante diseño, prototipado y testing con usuarios. Las fases son: Lunes (Understand/Map - comprender el problema y mapear el desafío), Martes (Sketch/Diverge - generar soluciones individualmente mediante sketching), Miércoles (Decide - elegir la mejor solución mediante votación y crítica estructurada), Jueves (Prototype - construir un prototipo realista en un día), Viernes (Test - testear el prototipo con 5 usuarios reales y obtener aprendizajes). El Design Sprint comprime semanas de debate y diseño en una semana intensiva de trabajo enfocado, y es ideal para iniciar proyectos, desatascar decisiones y validar ideas arriesgadas antes de invertir en desarrollo.
+    - **Track de descubrimiento (*Discovery*)** — diseñadores e investigadores trabajan en comprender el problema, idear soluciones y validarlas con prototipos rápidos.
+    - **Track de entrega (*Delivery*)** — los desarrolladores implementan las soluciones **ya validadas**.
 
-**Lean UX Canvas:** Adaptación del Lean Canvas de Ash Maurya al contexto de UX, propuesta por Jeff Gothelf en el libro "Lean UX". Es un lienzo de una página que ayuda a los equipos a declarar sus suposiciones y planificar su validación de forma explícita, alineando los objetivos de negocio con las necesidades de usuario y las hipótesis a testear. Sus secciones incluyen: problema de negocio, resultados de negocio, usuarios y clientes, beneficios para el usuario (user outcomes), hipótesis, qué necesitamos aprender, hipótesis de negocio, y qué necesitamos construir para el experimento mínimo viable.
+    El track de descubrimiento va **uno o dos sprints por delante** del de entrega, asegurando que el *backlog* de desarrollo siempre contiene historias **validadas con usuarios** y no suposiciones sin probar.
+
+**Design Sprints:** Popularizados por Google Ventures en el libro *Sprint* (**Jake Knapp, 2016**), son un proceso de **5 días** para responder preguntas críticas de negocio mediante diseño, prototipado y *testing* con usuarios:
+
+- **Lunes — Understand / Map:** comprender el problema y mapear el desafío.
+- **Martes — Sketch / Diverge:** generar soluciones individualmente mediante *sketching*.
+- **Miércoles — Decide:** elegir la mejor solución mediante votación y crítica estructurada.
+- **Jueves — Prototype:** construir un prototipo realista en **un día**.
+- **Viernes — Test:** testear el prototipo con **5 usuarios reales** y obtener aprendizajes.
+
+El Design Sprint comprime **semanas de debate y diseño** en una semana intensiva de trabajo enfocado, y es ideal para iniciar proyectos, desatascar decisiones y validar ideas arriesgadas antes de invertir en desarrollo.
+
+**Lean UX Canvas:** Adaptación del *Lean Canvas* de **Ash Maurya** al contexto de UX, propuesta por **Jeff Gothelf** en el libro *Lean UX*. Es un lienzo de **una página** que ayuda a los equipos a declarar sus suposiciones y planificar su validación de forma explícita, alineando los objetivos de negocio con las necesidades de usuario y las hipótesis a testear. Sus secciones incluyen: problema de negocio, resultados de negocio, usuarios y clientes, beneficios para el usuario (*user outcomes*), hipótesis, qué necesitamos aprender, hipótesis de negocio, y qué necesitamos construir para el experimento mínimo viable.
 
 
 ## Ejemplos guiados
@@ -442,7 +526,7 @@ Diseña un sistema de Design Operations (Design Ops) para un equipo de producto 
 
 2. **Involucra a todo el equipo en la investigación.** No solo los researchers deben observar entrevistas o tests de usuario. Desarrolladores, PMs y stakeholders deben observar al menos 2 sesiones de usuario por trimestre. La observación directa genera empatía y alineación más rápido que cualquier informe.
 
-3. **Las personas son herramientas de decisión, no pósters.** Si las personas que creaste no se consultan en las decisiones diarias de diseño y desarrollo, no están cumpliendo su función. Cada user story debe referenciar a qué persona sirve. Cada decisión de diseño debe poder justificarse con "esto es bueno para [nombre de la persona] porque...".
+3. **Las personas son herramientas de decisión, no pósters.** Si las personas que creaste no se consultan en las decisiones diarias de diseño y desarrollo, no están cumpliendo su función. Cada user story debe referenciar a qué persona sirve. Cada decisión de diseño debe poder justificarse con "esto es bueno para \[nombre de la persona\] porque...".
 
 4. **Itera en ciclos cortos.** No diseñes la solución completa antes de validar nada. Crea un prototipo mínimo, testéalo con 3-5 usuarios, aprende, rediseña. Repite. Cuantas más iteraciones, mejor el resultado final.
 
@@ -460,11 +544,14 @@ Inventar personas en un workshop sin datos reales y asumir que representan a los
 
 ### Error 2: Diseñar para uno mismo
 
-Asumir que el usuario es como el diseñador. "A mí me gusta el modo oscuro, así que todos los usuarios querrán modo oscuro." El diseñador es, por definición, atípico: tiene conocimientos técnicos, pasa horas al día usando productos digitales, y conoce el producto en profundidad.
+Asumir que el usuario es como el diseñador. *«A mí me gusta el modo oscuro, así que todos los usuarios querrán modo oscuro.»* El diseñador es, por definición, **atípico**: tiene conocimientos técnicos, pasa horas al día usando productos digitales, y conoce el producto en profundidad.
 
 ### Error 3: Preguntar a los usuarios qué quieren, en lugar de observar qué necesitan
 
-"¿Qué funcionalidad te gustaría que tuviera la app?" es una mala pregunta de investigación. Los usuarios son expertos en sus problemas, no en las soluciones. Como dijo Henry Ford: "Si hubiera preguntado a la gente qué quería, me habrían dicho caballos más rápidos."
+*«¿Qué funcionalidad te gustaría que tuviera la app?»* es una mala pregunta de investigación. Los usuarios son **expertos en sus problemas, no en las soluciones**.
+
+!!! quote "Henry Ford"
+    «Si hubiera preguntado a la gente qué quería, me habrían dicho caballos más rápidos.»
 
 ### Error 4: Parálisis por análisis
 

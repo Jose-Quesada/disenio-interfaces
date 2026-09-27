@@ -17,7 +17,8 @@ Esta unidad se vincula directamente con el **Resultado de Aprendizaje 2 (RA2)** 
 
 Se apoya y complementa a la Unidad 8 (*CSS Profesional*), donde se trabajan selectores avanzados, especificidad, variables CSS nativas y animaciones, y a la Unidad 17 (*Tailwind CSS 4*), donde se estudia el enfoque utility-first. Esta unidad cierra el bloque de **estilos** del RA2 mostrando cómo los preprocesadores aportan mantenibilidad, reutilización y abstracción (variables, mixins, funciones, bucles) que el CSS plano no ofrece de forma tan cómoda.
 
-> Nota: la numeración de Resultados de Aprendizaje y Criterios de Evaluación empleada en esta unidad corresponde al currículo oficial del módulo 0615 (RD 405/2023, BOE; currículo andaluz). El RA2 es el único resultado centrado en la **creación de interfaces homogéneas mediante estilos**; los preprocesadores son su herramienta natural.
+!!! note "Nota sobre la numeración"
+    La numeración de Resultados de Aprendizaje y Criterios de Evaluación empleada en esta unidad corresponde al currículo oficial del módulo 0615 (**RD 405/2023, BOE**; currículo andaluz). El **RA2** es el único resultado centrado en la **creación de interfaces homogéneas mediante estilos**; los preprocesadores son su herramienta natural.
 
 ## Conocimientos previos
 
@@ -50,7 +51,10 @@ Para abordar esta unidad con soltura, el alumnado debe:
 
 ### 1. ¿Por qué un preprocesador?
 
-El CSS es un lenguaje de *hojas de estilos en cascada* pensado para describir la presentación, no para programar. Cuando una base de estilos crece (cientos o miles de reglas), surgen limitaciones reales: repetir valores (colores, espaciados, breakpoints) en muchos sitios, duplicar bloques de propiedades similares, o generar patrones repetitivos (escalas, columnas) a mano. Un **preprocesador** añade al CSS las características que todo lenguaje de programación ofrece: variables, funciones, mixins, bucles y condicionales. El resultado es un código más DRY (*Don't Repeat Yourself*), mantenible y escalable.
+El CSS es un lenguaje de *hojas de estilos en cascada* pensado para describir la presentación, **no para programar**. Cuando una base de estilos crece (cientos o miles de reglas), surgen limitaciones reales: repetir valores (colores, espaciados, breakpoints) en muchos sitios, duplicar bloques de propiedades similares, o generar patrones repetitivos (escalas, columnas) a mano.
+
+!!! info "Definición: preprocesador de estilos"
+    Un **preprocesador** añade al CSS las características que todo lenguaje de programación ofrece: **variables, funciones, mixins, bucles y condicionales**. El resultado es un código más **DRY** (*Don't Repeat Yourself*), mantenible y escalable.
 
 Es importante no confundir tres capas distintas que conviven en el frontend moderno:
 
@@ -72,7 +76,7 @@ SASS nació con una sintaxis propia basada en indentación (archivos `.sass`), s
     font-weight: 700
 ```
 
-La extensión **SCSS** (`.scss`) usa la sintaxis clásica de CSS con llaves y `;`, por lo que todo el CSS válido es SCSS válido. Es la más extendida en el ecosistema actual (Vite, Webpack, la mayoría de bibliotecas) y la que usaremos:
+La extensión **SCSS** (`.scss`) usa la sintaxis clásica de CSS con llaves y `;`, por lo que **todo el CSS válido es SCSS válido**. Es la más extendida en el ecosistema actual (Vite, Webpack, la mayoría de bibliotecas) y la que usaremos:
 
 ```scss
 .tarjeta {
@@ -85,7 +89,16 @@ La extensión **SCSS** (`.scss`) usa la sintaxis clásica de CSS con llaves y `;
 }
 ```
 
-La recomendación general es trabajar siempre en SCSS salvo que un proyecto legacy exija `.sass`.
+Resumen de las dos sintaxis:
+
+| | **SASS (`.sass`)** | **SCSS (`.scss`)** |
+|---|--------------------|--------------------|
+| **Sintaxis** | indentación, sin llaves ni `;` | llaves y `;` (clásica de CSS) |
+| **Compatibilidad** | requiere reescribir el CSS existente | **todo CSS válido es SCSS válido** |
+| **Ecosistema** | uso residual | estándar de facto (Vite, Webpack, bibliotecas) |
+
+!!! tip "Convención del ecosistema"
+    La recomendación general es trabajar **siempre en SCSS** salvo que un proyecto *legacy* exija `.sass`.
 
 ### 3. Variables e interpolación
 
@@ -134,7 +147,8 @@ La anidación refleja la jerarquía del DOM y agrupa estilos relacionados. El ca
 }
 ```
 
-Buena práctica: limitar la anidación a **2-3 niveles** para no inflar la especificidad ni acoplar demasiado el CSS al HTML.
+!!! tip "Límite de profundidad en la anidación"
+    Buena práctica: limitar la anidación a **2-3 niveles** para no inflar la especificidad ni acoplar demasiado el CSS al HTML.
 
 ### 5. Partials y sistema de módulos
 
@@ -152,7 +166,10 @@ $color-primario: #667eea;
 }
 ```
 
-`@use` carga variables, mixins y funciones **una sola vez** y sin emitir CSS extra (a diferencia del legado `@import`, que duplicaba reglas). Los namespaces evitan colisiones de nombres. `@forward` permite re-exportar un módulo desde otro (patrones de *facade*).
+!!! warning "Evita el legado `@import`"
+    `@use` carga variables, mixins y funciones **una sola vez** y sin emitir CSS extra; a diferencia del legado `@import`, que **duplicaba reglas**. Prefiere siempre `@use`/`@forward` (módulos) sobre `@import`.
+
+Los **namespaces** evitan colisiones de nombres. `@forward` permite re-exportar un módulo desde otro (patrones de *facade*).
 
 ### 6. Reutilización con `@extend`
 
@@ -170,7 +187,10 @@ a,
 }
 ```
 
-El prefijo `%` crea un **placeholder** que no se emite como clase real. Limitación: `@extend` no hereda pseudoestados ni aumenta la especificidad de forma predecible en todos los casos; para lógica condicional es preferible un mixin.
+El prefijo `%` crea un **placeholder** que no se emite como clase real.
+
+!!! note "Limitaciones de `@extend`"
+    `@extend` **no hereda pseudoestados** ni aumenta la especificidad de forma predecible en todos los casos; para lógica condicional es **preferible un mixin**.
 
 ### 7. Mixins
 
@@ -280,11 +300,13 @@ styles/
 └── utilities/    # clases utilitarias (centrado, espaciado, display)
 ```
 
-El orden de carga importa (de lo genérico a lo específico). Esta arquitectura, combinada con `@use`, hace mantenible una base de estilos grande.
+!!! tip "Orden de carga"
+    **El orden de carga importa**: de lo genérico a lo específico. Esta arquitectura, combinada con `@use`, hace mantenible una base de estilos grande.
 
 ### 12. Compilación e integración con Vite
 
-`dart-sass` es el compilador oficial y recomendado (el antiguo Ruby SASS está en desuso). En un proyecto con Vite:
+!!! info "Compilador recomendado: `dart-sass`"
+    `dart-sass` es el **compilador oficial y recomendado**; el antiguo **Ruby SASS está en desuso**. En un proyecto con Vite:
 
 ```jsonc
 // package.json
@@ -323,7 +345,8 @@ En la práctica profesional es común combinar SASS para *tokens* y lógica con 
 
 ### Ejemplo 1: Sistema de tokens + mixins responsive en SCSS
 
-**Contexto:** partimos de un proyecto vacío con Vite y creamos una base de estilos reutilizable que genera breakpoints y una escala de espaciado automáticamente.
+!!! example "Contexto pedagógico"
+    Partimos de un **proyecto vacío con Vite** y creamos una base de estilos reutilizable que genera breakpoints y una escala de espaciado automáticamente.
 
 ```scss
 // settings/_variables.scss
@@ -375,7 +398,8 @@ body {
 @use "utilities/espaciado";
 ```
 
-**Resultado:** al compilar, Vite genera CSS plano con las media queries ya resueltas y las clases `.p-1`…`.p-6` / `.m-1`…`.m-6` generadas por el bucle. El navegador no conoce SASS: solo recibe CSS estándar (CE 2.j).
+!!! note "Explicación del resultado"
+    Al compilar, Vite genera **CSS plano** con las *media queries* ya resueltas y las clases `.p-1`…`.p-6` / `.m-1`…`.m-6` generadas por el bucle. **El navegador no conoce SASS**: solo recibe CSS estándar (**CE 2.j**).
 
 ### Ejemplo 2: Mixin de tarjeta con variantes condicionales
 

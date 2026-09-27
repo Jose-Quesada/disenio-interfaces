@@ -56,7 +56,7 @@ Adicionalmente, el alumnado debe tener conocimientos fundamentales de diseño we
 
 18. **Modo oscuro**: estrategias de implementación (class vs media), el prefijo dark:, toggle con JavaScript y localStorage, transición suave entre temas.
 
-19. **Valores arbitrarios y personalización**: notación de corchetes (w-[300px], bg-[#1a1a1a]), cuándo usar arbitrary values vs configuración del tema. Configuración con @theme en Tailwind v4.
+19. **Valores arbitrarios y personalización**: notación de corchetes (`w-[300px]`, `bg-[#1a1a1a]`), cuándo usar arbitrary values vs configuración del tema. Configuración con @theme en Tailwind v4.
 
 20. **Herramientas complementarias**: Prettier plugin para ordenación automática de clases, Headless UI para componentes accesibles con React, Tailwind CSS IntelliSense para VS Code.
 
@@ -66,11 +66,34 @@ Adicionalmente, el alumnado debe tener conocimientos fundamentales de diseño we
 
 La historia del desarrollo web frontend ha transitado por diversas etapas en lo que respecta a la gestión de estilos. En los primeros años de la web, el CSS se escribía de forma monolítica en uno o pocos archivos, con selectores anidados que reflejaban la estructura del DOM. Este enfoque, aunque intuitivo al principio, generaba problemas graves de especificidad, acoplamiento entre estructura HTML y estilos CSS, y una creciente dificultad para modificar componentes sin efectos colaterales imprevistos. Para resolver estos problemas surgieron metodologías como BEM (Block Element Modifier), SMACSS (Scalable and Modular Architecture for CSS) y OOCSS (Object Oriented CSS), que propusieron convenciones de nomenclatura y organización basadas en componentes. Estas metodologías mejoraron la mantenibilidad pero introdujeron una nueva carga cognitiva: la necesidad de inventar nombres de clases semánticos para cada elemento, decisión que a menudo derivaba en debates interminables dentro del equipo de desarrollo. Paralelamente, frameworks como Bootstrap, Foundation o Materialize ofrecieron componentes preconstruidos con estilos ya definidos, acelerando el desarrollo pero limitando la personalización y generando sitios web con una apariencia reconocible y poco diferenciada.
 
-Es en este contexto donde Adam Wathan, creador de Tailwind CSS, propone un cambio de paradigma radical: en lugar de escribir CSS semántico con nombres de clases descriptivos, utilizamos clases atómicas de propósito único que se aplican directamente en el HTML. Cada clase de Tailwind corresponde, aproximadamente, a una declaración CSS individual. Por ejemplo, en lugar de crear una clase `.card` con múltiples propiedades, construimos la tarjeta componiendo clases como `bg-white`, `rounded-lg`, `shadow-md`, `p-6`, `flex`, `flex-col`, `gap-4`. Esta aproximación, denominada Utility First, genera inicialmente rechazo en muchos desarrolladores acostumbrados al CSS tradicional, pues el HTML resultante parece más verboso y aparentemente menos semántico. Sin embargo, la experiencia práctica en proyectos reales demuestra que esta verbosidad se compensa con creces mediante la eliminación de la fricción constante que supone tener que alternar entre archivos HTML y CSS, la desaparición de problemas de cascada y especificidad, la garantía de consistencia visual al trabajar con un sistema de diseño predefinido mediante restricciones, y el hecho de que el CSS resultante en producción es mínimo, pues solo contiene las clases realmente utilizadas en el proyecto (purgado de CSS o tree-shaking). Tailwind no es un simple conjunto de utilidades: es un sistema de diseño completo materializado en clases atómicas, que ofrece una paleta de colores, una escala tipográfica, una escala de espaciado, unas sombras, unos bordes y unos breakpoints responsivos que, por restricción, garantizan coherencia visual. Como afirma el propio Adam Wathan: "Tailwind te da el poder de construir cualquier diseño sin tener que luchar contra estilos predefinidos".
+Es en este contexto donde **Adam Wathan**, creador de Tailwind CSS, propone un cambio de paradigma radical:
 
-Las ventajas del enfoque Utility First incluyen: (1) Productividad máxima: no se pierde tiempo cambiando de contexto entre HTML y CSS, ya que todo se define en el mismo archivo. (2) Consistencia garantizada: la escala de valores predefinidos impide que cada desarrollador use medidas arbitrarias, resultando en un diseño más cohesionado. (3) CSS mínimo en producción: Tailwind analiza el proyecto y elimina automáticamente las clases no utilizadas, generando archivos CSS de solo unos pocos kilobytes. (4) No hay que inventar nombres: se elimina la carga cognitiva de nombrar cada contenedor, cada wrapper, cada variante. (5) Refactorización sin miedo: al modificar una clase en el HTML, no hay riesgo de afectar a otros componentes, ya que cada clase es independiente y no hay herencia CSS compleja.
+!!! info "Utility First"
+    En lugar de escribir CSS semántico con nombres de clases descriptivos, se utilizan **clases atómicas de propósito único** que se aplican directamente en el HTML. Cada clase de Tailwind corresponde, aproximadamente, a **una declaración CSS individual**.
 
-Entre las desventajas, se suelen citar: (1) Verbosidad en el HTML, que puede resultar abrumadora al principio, especialmente en componentes complejos que acumulan muchas clases. (2) Curva de aprendizaje inicial para memorizar la nomenclatura de las clases, aunque la documentación y las extensiones IDE resuelven esto rápidamente. (3) Tendencia a repetir combinaciones de clases, que en Tailwind se soluciona extrayendo componentes (en el framework de tu elección) o usando @apply para crear clases personalizadas. (4) Dificultad para desarrolladores acostumbrados a la separación estricta de concerns (HTML semántico + CSS separado), que deben adaptarse a un nuevo modelo mental.
+    Por ejemplo, en lugar de crear una clase `.card` con múltiples propiedades, construimos la tarjeta componiendo clases como `bg-white`, `rounded-lg`, `shadow-md`, `p-6`, `flex`, `flex-col`, `gap-4`.
+
+    Esta aproximación, denominada **Utility First**, genera inicialmente rechazo en muchos desarrolladores acostumbrados al CSS tradicional, pues el HTML resultante parece más verboso y aparentemente menos semántico. Sin embargo, la experiencia práctica en proyectos reales demuestra que esta verbosidad se compensa con creces mediante la **eliminación de la fricción constante** de alternar entre archivos HTML y CSS, la **desaparición de problemas de cascada y especificidad**, la **garantía de consistencia visual** al trabajar con un sistema de diseño predefinido mediante restricciones, y el hecho de que el CSS resultante en producción es **mínimo**, pues solo contiene las clases realmente utilizadas en el proyecto (*purgado de CSS* o *tree-shaking*).
+
+Tailwind no es un simple conjunto de utilidades: es un **sistema de diseño completo** materializado en clases atómicas, que ofrece una paleta de colores, una escala tipográfica, una escala de espaciado, unas sombras, unos bordes y unos breakpoints responsivos que, **por restricción**, garantizan coherencia visual.
+
+!!! quote "Adam Wathan"
+    «Tailwind te da el poder de construir cualquier diseño sin tener que luchar contra estilos predefinidos.»
+
+**Ventajas del enfoque Utility First:**
+
+- **Productividad máxima** — no se pierde tiempo cambiando de contexto entre HTML y CSS, ya que todo se define en el mismo archivo.
+- **Consistencia garantizada** — la escala de valores predefinidos impide que cada desarrollador use medidas arbitrarias, resultando en un diseño más cohesionado.
+- **CSS mínimo en producción** — Tailwind analiza el proyecto y elimina automáticamente las clases no utilizadas, generando archivos CSS de solo unos pocos kilobytes.
+- **No hay que inventar nombres** — se elimina la carga cognitiva de nombrar cada contenedor, cada *wrapper*, cada variante.
+- **Refactorización sin miedo** — al modificar una clase en el HTML, no hay riesgo de afectar a otros componentes, ya que cada clase es independiente y no hay herencia CSS compleja.
+
+**Desventajas más citadas:**
+
+- **Verbosidad en el HTML** — puede resultar abrumadora al principio, especialmente en componentes complejos que acumulan muchas clases.
+- **Curva de aprendizaje inicial** — memorizar la nomenclatura de las clases, aunque la documentación y las extensiones IDE resuelven esto rápidamente.
+- **Tendencia a repetir combinaciones de clases** — en Tailwind se soluciona extrayendo componentes (en el framework de tu elección) o usando `@apply` para crear clases personalizadas.
+- **Dificultad para desarrolladores acostumbrados a la separación estricta de *concerns*** (HTML semántico + CSS separado), que deben adaptarse a un nuevo modelo mental.
 
 ### 2. Tailwind CSS 4: la evolución del framework
 
@@ -82,7 +105,16 @@ La instalación también se simplifica: en lugar de necesitar PostCSS más el pl
 
 Entre las mejoras adicionales destacan: compatibilidad mejorada con CSS nesting nativo (sin necesidad de PostCSS nesting), soporte nativo para capas CSS (@layer), ampliación de la paleta de colores, nuevas utilidades para animaciones y transiciones, y la eliminación de dependencias internas que lastraban el rendimiento. La migración desde v3 a v4 está asistida por una herramienta automática que analiza el proyecto y sugiere los cambios necesarios. Para nuevos proyectos, la recomendación oficial es comenzar directamente con v4.
 
-Las diferencias clave entre v3 y v4 son: (1) v4 no requiere archivo tailwind.config.js por defecto (aunque se puede usar si se prefiere). (2) La configuración del tema se realiza con @theme en CSS en lugar de theme.extend en JS. (3) El motor Oxide en Rust reemplaza al generador JS. (4) La instalación con Vite usa @tailwindcss/vite en lugar de postcss + autoprefixer. (5) Las directivas @tailwind son reemplazadas por @import "tailwindcss". (6) El rendimiento de compilación mejora en un factor de 5-10x.
+Las diferencias clave entre v3 y v4:
+
+| Aspecto | **Tailwind v3** | **Tailwind v4** |
+|---------|-----------------|-----------------|
+| **Archivo de configuración** | `tailwind.config.js` obligatorio por defecto | no lo requiere por defecto (aunque se puede usar si se prefiere) |
+| **Configuración del tema** | `theme.extend` en JS | `@theme` en CSS |
+| **Motor de generación** | generador en JavaScript | motor **Oxide**, escrito en **Rust** |
+| **Instalación con Vite** | `postcss` + `autoprefixer` | `@tailwindcss/vite` |
+| **Directivas CSS** | `@tailwind base/components/utilities` | `@import "tailwindcss"` |
+| **Rendimiento de compilación** | referencia | mejora de un factor de **5-10x** |
 
 ### 3. Instalación paso a paso con Vite
 
@@ -117,7 +149,8 @@ Esta configuración indica a Vite que procese todos los archivos CSS a través d
 @import "tailwindcss";
 ```
 
-Esta única línea es todo lo necesario. El motor de Tailwind v4 interpreta esta directiva y genera todo el CSS base (reset, variables CSS, utilidades) en función de las clases que se utilicen en el proyecto. No se necesitan las antiguas directivas @tailwind base, components y utilities.
+!!! info "Reemplazo de las directivas clásicas"
+    Esta única línea es todo lo necesario. El motor de Tailwind v4 interpreta esta directiva y genera todo el CSS base (*reset*, variables CSS, utilidades) en función de las clases que se utilicen en el proyecto. **No se necesitan** las antiguas directivas `@tailwind base`, `@tailwind components` y `@tailwind utilities`.
 
 **Paso 6: Verificar el funcionamiento.** En el archivo `index.html`, añadimos una línea de prueba que use clases de Tailwind:
 
@@ -131,19 +164,42 @@ Iniciamos el servidor de desarrollo con `npm run dev`. Si el navegador muestra e
 
 Uno de los pilares que explican la productividad y consistencia que proporciona Tailwind CSS es su sistema de diseño numérico, que traduce propiedades CSS a una escala predefinida y razonada de valores. En lugar de escribir valores arbitrarios como `padding: 13px` o `margin: 27px`, Tailwind nos ofrece una escala de números que van desde el 0 hasta el 96, donde cada número representa un múltiplo de 0.25rem (equivalente a 4px con la configuración por defecto de 16px por rem). Esta escala no es arbitraria: ha sido cuidadosamente diseñada para cubrir prácticamente todas las necesidades de espaciado en diseño web, evitando la proliferación de valores inconsistentes que surge cuando cada desarrollador elige sus propias medidas.
 
-La correspondencia es la siguiente: `p-1` aplica `padding: 0.25rem` (4px), `p-2` aplica `padding: 0.5rem` (8px), `p-3` aplica `padding: 0.75rem` (12px), `p-4` aplica `padding: 1rem` (16px), y así sucesivamente. La progresión no es estrictamente lineal: los primeros valores crecen de 1 en 1 (0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96). Esta progresión concentra los incrementos pequeños donde más se necesitan (diseño de detalle, espaciados finos) y amplía los saltos en valores grandes (márgenes de sección).
+La correspondencia es la siguiente (cada número es un múltiplo de **0.25rem**):
 
-Trabajar con una escala restringida tiene un beneficio psicológico y práctico inmediato: elimina la parálisis por análisis. En CSS tradicional, cuando un desarrollador necesita aplicar un margen, tiene a su disposición infinitos valores (11px, 13px, 17px...) y debe tomar una decisión. Con Tailwind, la escala limita las opciones a valores que ya han demostrado funcionar bien juntos. Si el diseño necesita 16px de padding, usamos `p-4`. Si necesita 24px, usamos `p-6`. Esta restricción acelera la toma de decisiones y garantiza que todos los espaciados del proyecto sean múltiplos consistentes de 4px, creando un ritmo visual armónico que los diseñadores denominan "vertical rhythm". La misma filosofía se aplica a tipografía, bordes redondeados, sombras y opacidades.
+| Clase | Valor CSS | En píxeles |
+|-------|-----------|------------|
+| `p-1` | `0.25rem` | **4 px** |
+| `p-2` | `0.5rem` | **8 px** |
+| `p-3` | `0.75rem` | **12 px** |
+| `p-4` | `1rem` | **16 px** |
 
-Es importante que el alumnado entienda que Tailwind utiliza rem como unidad base. Un rem equivale al font-size del elemento raíz (html), que por defecto son 16px en la mayoría de navegadores. Esto significa que los espaciados y tamaños de Tailwind escalan proporcionalmente si el usuario modifica el tamaño de fuente base en su navegador, contribuyendo a la accesibilidad. Si en un proyecto se necesita cambiar la base a 10px (para facilitar cálculos mentales), se puede configurar mediante `font-size: 62.5%` en el html, pero esta práctica no se recomienda ya que rompe la correspondencia natural de la escala de Tailwind.
+La progresión no es estrictamente lineal: los primeros valores crecen de 1 en 1 y después se amplían los saltos (`0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96`). Esta progresión concentra los incrementos pequeños donde más se necesitan (diseño de detalle, espaciados finos) y amplía los saltos en valores grandes (márgenes de sección).
+
+!!! tip "Diseño por restricciones: ritmo vertical"
+    Trabajar con una escala restringida tiene un beneficio psicológico y práctico inmediato: **elimina la parálisis por análisis**. En CSS tradicional, cuando un desarrollador necesita aplicar un margen, tiene a su disposición infinitos valores (**11 px**, **13 px**, **17 px**...) y debe tomar una decisión. Con Tailwind, la escala limita las opciones a valores que ya han demostrado funcionar bien juntos: si el diseño necesita **16 px** de *padding*, usamos `p-4`; si necesita **24 px**, usamos `p-6`.
+
+    Esta restricción acelera la toma de decisiones y garantiza que todos los espaciados del proyecto sean múltiplos consistentes de **4 px**, creando un ritmo visual armónico que los diseñadores denominan **«vertical rhythm»**. La misma filosofía se aplica a tipografía, bordes redondeados, sombras y opacidades.
+
+Es importante que el alumnado entienda que Tailwind utiliza **rem** como unidad base. Un rem equivale al `font-size` del elemento raíz (`html`), que por defecto son **16 px** en la mayoría de navegadores. Esto significa que los espaciados y tamaños de Tailwind **escalan proporcionalmente** si el usuario modifica el tamaño de fuente base en su navegador, contribuyendo a la **accesibilidad**.
+
+!!! warning "Práctica no recomendada"
+    Si en un proyecto se necesita cambiar la base a **10 px** (para facilitar cálculos mentales), se puede configurar mediante `font-size: 62.5%` en el `html`, pero **esta práctica no se recomienda** ya que rompe la correspondencia natural de la escala de Tailwind.
 
 ### 5. La paleta de colores de Tailwind
 
 Tailwind CSS incluye una paleta de colores excepcionalmente completa y cuidadosamente curada por expertos en diseño. Está compuesta por 22 familias de color, cada una de las cuales se despliega en una escala de 11 tonos numerados del 50 al 950. Las familias disponibles son: slate (gris azulado, el neutro por defecto en Tailwind), gray (gris puro), zinc (gris cálido con matiz amarillento), neutral (gris verdaderamente neutro, sin matiz), stone (gris piedra con matiz marrón), red (rojo), orange (naranja), amber (ámbar), yellow (amarillo), lime (lima), green (verde), emerald (esmeralda), teal (verde azulado), cyan (cian), sky (azul cielo), blue (azul), indigo (índigo), violet (violeta), purple (púrpura), fuchsia (fucsia), pink (rosa) y rose (rosa rojizo).
 
-Cada familia sigue una convención de nomenclatura que combina el nombre del color con el tono mediante un guión: `bg-red-500`, `text-blue-700`, `border-emerald-400`. Los tonos más bajos (50, 100, 200) son más claros, útiles para fondos sutiles y superficies de tarjeta; los tonos medios (400, 500, 600) suelen ser los colores base, los que representan la identidad del color; los tonos altos (700, 800, 900, 950) son más oscuros, apropiados para texto sobre fondos claros y para crear contraste. Por ejemplo, un botón primario típico usaría `bg-blue-600 text-white` (fondo azul medio, texto blanco), y al hacer hover `hover:bg-blue-700` (se oscurece ligeramente).
+Cada familia sigue una convención de nomenclatura que combina el nombre del color con el tono mediante un guion: `bg-red-500`, `text-blue-700`, `border-emerald-400`. El uso típico de cada rango de tono es:
 
-Tailwind ofrece soporte para transparencia mediante la notación de barra. La sintaxis `bg-red-500/75` aplica el color red-500 con una opacidad del 75%. Esto es equivalente a `background-color: rgba(239, 68, 68, 0.75)`. La notación usa la sintaxis `<color>-<tono>/<opacidad>`, donde la opacidad es un número de 0 a 100. Esta característica es extremadamente útil para crear overlays semitransparentes, fondos con efecto vidrio esmerilado, o texto con opacidad reducida para crear jerarquía visual. Ejemplos: `bg-black/50` (negro al 50%), `text-white/70` (texto blanco al 70%), `bg-indigo-600/20` (índigo muy suave para fondos).
+| Tonalidad | Uso recomendado |
+|-----------|-----------------|
+| **50, 100, 200** | más claros: fondos sutiles y superficies de tarjeta |
+| **400, 500, 600** | colores base: los que representan la identidad del color |
+| **700, 800, 900, 950** | más oscuros: texto sobre fondos claros y creación de contraste |
+
+Por ejemplo, un botón primario típico usaría `bg-blue-600 text-white` (fondo azul medio, texto blanco), y al hacer *hover* `hover:bg-blue-700` (se oscurece ligeramente).
+
+Tailwind ofrece soporte para transparencia mediante la **notación de barra**. La sintaxis `bg-red-500/75` aplica el color `red-500` con una opacidad del **75 %**. Esto es equivalente a `background-color: rgba(239, 68, 68, 0.75)`. La notación usa la sintaxis `<color>-<tono>/<opacidad>`, donde la opacidad es un número de **0 a 100**. Esta característica es extremadamente útil para crear *overlays* semitransparentes, fondos con efecto vidrio esmerilado, o texto con opacidad reducida para crear jerarquía visual. Ejemplos: `bg-black/50` (negro al **50 %**), `text-white/70` (texto blanco al **70 %**), `bg-indigo-600/20` (índigo muy suave para fondos).
 
 Para proyectos que requieren una paleta corporativa personalizada, Tailwind permite extender o reemplazar la paleta mediante la directiva `@theme` en el archivo CSS principal (en v4). Por ejemplo, para añadir colores de marca corporativa:
 
@@ -197,15 +253,42 @@ El sistema Grid de Tailwind es igualmente completo. Un contenedor se crea con `g
 
 ### 9. Diseño responsivo Mobile First
 
-Tailwind adopta el enfoque Mobile First como filosofía de diseño. Las clases sin prefijo definen el estilo base para el viewport más pequeño (móvil). Los breakpoints se aplican como prefijos que sobrescriben o añaden estilos en viewports progresivamente mayores. Los breakpoints predefinidos son: `sm:` (min-width: 640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px) y `2xl:` (1536px). La sintaxis es simple: se antepone el prefijo del breakpoint seguido de dos puntos a cualquier utilidad: `sm:p-4`, `md:flex`, `lg:grid-cols-3`, `xl:text-5xl`.
+Tailwind adopta el enfoque **Mobile First** como filosofía de diseño. Las clases **sin prefijo** definen el estilo base para el viewport más pequeño (móvil). Los breakpoints se aplican como **prefijos** que sobrescriben o añaden estilos en viewports progresivamente mayores:
 
-Un patrón común es definir un grid que se adapta progresivamente: `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`. En móvil, una columna; a partir de 640px, dos columnas; desde 1024px, tres; y en pantallas grandes de 1280px, cuatro. Similarmente, un menú que se oculta en móvil y se muestra en escritorio: `hidden lg:flex`. Un padding que crece con el viewport: `px-4 sm:px-6 lg:px-8`. Un texto responsivo: `text-lg md:text-xl lg:text-2xl`.
+| Prefijo | `min-width` |
+|---------|-------------|
+| `sm:` | **640 px** |
+| `md:` | **768 px** |
+| `lg:` | **1024 px** |
+| `xl:` | **1280 px** |
+| `2xl:` | **1536 px** |
 
-La estrategia de trabajo recomendada es: (1) Comenzar maquetando para móvil (las clases base sin prefijo). (2) Comprobar que la experiencia es óptima en pantallas pequeñas. (3) Agregar progresivamente los prefijos `sm:`, `md:`, `lg:`, `xl:` para puntos de ruptura donde el diseño necesita adaptarse. (4) No intentar cubrir todos los breakpoints para cada elemento; solo añadir variantes donde sea necesario. Esta metodología evita el error común de diseñar para escritorio y luego intentar "comprimir" el diseño para móvil.
+La sintaxis es simple: se antepone el prefijo del breakpoint seguido de dos puntos a cualquier utilidad: `sm:p-4`, `md:flex`, `lg:grid-cols-3`, `xl:text-5xl`.
+
+Un patrón común es definir un *grid* que se adapta progresivamente: `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`. En móvil, **una columna**; a partir de **640 px**, dos; desde **1024 px**, tres; y en pantallas grandes de **1280 px**, cuatro. Similarmente, un menú que se oculta en móvil y se muestra en escritorio: `hidden lg:flex`. Un *padding* que crece con el *viewport*: `px-4 sm:px-6 lg:px-8`. Un texto responsivo: `text-lg md:text-xl lg:text-2xl`.
+
+La estrategia de trabajo recomendada es:
+
+1. Comenzar maquetando para **móvil** (las clases base sin prefijo).
+2. Comprobar que la experiencia es óptima en **pantallas pequeñas**.
+3. Agregar progresivamente los prefijos `sm:`, `md:`, `lg:`, `xl:` para los puntos de ruptura donde el diseño necesita adaptarse.
+4. **No intentar cubrir todos los breakpoints** para cada elemento; solo añadir variantes donde sea necesario.
+
+Esta metodología evita el error común de diseñar para escritorio y luego intentar «comprimir» el diseño para móvil.
 
 ### 10. Estados interactivos, bordes, sombras, animaciones y modo oscuro
 
-Los estados interactivos se aplican con prefijos similares a los breakpoints. `hover:` aplica estilos al pasar el cursor: `hover:bg-blue-700 hover:text-white`. `focus:` se activa al recibir el foco: `focus:outline-none focus:ring-2 focus:ring-blue-500`. `focus-visible:` solo para navegación por teclado, ideal para accesibilidad. `active:` durante la pulsación: `active:scale-95`. `disabled:` para elementos deshabilitados: `disabled:opacity-50 disabled:cursor-not-allowed`. Los pseudoselectores estructurales: `first:`, `last:`, `odd:`, `even:` (para tablas con filas alternas). `group-hover:` permite que un elemento reaccione al hover sobre su ancestro con clase `group`. `peer-focus:` permite que un elemento reaccione al focus de un hermano con clase `peer`. Ambos son extremadamente potentes para crear interacciones complejas sin JavaScript.
+Los estados interactivos se aplican con prefijos similares a los breakpoints:
+
+| Estado | Ejemplo | Qué hace |
+|--------|---------|----------|
+| `hover:` | `hover:bg-blue-700 hover:text-white` | al **pasar el cursor** |
+| `focus:` | `focus:outline-none focus:ring-2 focus:ring-blue-500` | al **recibir el foco** |
+| `focus-visible:` | — | solo para navegación por **teclado**, ideal para accesibilidad |
+| `active:` | `active:scale-95` | durante la **pulsación** |
+| `disabled:` | `disabled:opacity-50 disabled:cursor-not-allowed` | elementos **deshabilitados** |
+
+Los pseudoselectores estructurales son `first:`, `last:`, `odd:`, `even:` (para tablas con filas alternas). `group-hover:` permite que un elemento reaccione al *hover* sobre su ancestro con clase `group`; `peer-focus:` permite que un elemento reaccione al *focus* de un hermano con clase `peer`. Ambos son extremadamente potentes para crear interacciones complejas **sin JavaScript**.
 
 Los bordes ofrecen `rounded`, `rounded-md`, `rounded-lg`, `rounded-xl`, `rounded-2xl`, `rounded-3xl`, `rounded-full` (círculo/píldora). El grosor: `border`, `border-0`, `border-2`, `border-4`, `border-8`. Direccional: `border-t-*`, `border-b-*`, etc. El color: `border-gray-300`, `border-blue-500`. El estilo: `border-solid`, `border-dashed`, `border-dotted`, `border-double`, `border-none`. El outline: `outline-none`, `outline-*`, `outline-offset-*`. El ring (alternativa moderna al outline): `ring-0`, `ring-1`, `ring-2`, `ring-4`, `ring-8`, `ring-inset`, `ring-blue-500`.
 
@@ -217,7 +300,10 @@ El modo oscuro usa el prefijo `dark:`. Dos estrategias: `@media (prefers-color-s
 
 ### 11. Valores arbitrarios y personalización
 
-Tailwind ofrece un mecanismo de escape: los valores arbitrarios mediante notación de corchetes `[]`. Permiten inyectar cualquier valor CSS directamente: `w-[300px]`, `bg-[#1a1a1a]`, `text-[clamp(1rem,2vw,2rem)]`, `grid-cols-[200px_minmax(900px,_1fr)_100px]`, `shadow-[0_4px_20px_rgba(0,0,0,0.3)]`. Esta característica cubre casos donde la escala predefinida no contempla un valor específico. Solo se genera la regla CSS exacta para el valor especificado, manteniendo el CSS final reducido. La regla práctica: si un valor arbitrario aparece una sola vez, está bien; si se repite, debe extraerse a un token de diseño en @theme.
+!!! tip "Regla práctica: valor arbitrario vs. token de diseño"
+    **Si un valor arbitrario aparece una sola vez**, está bien; **si se repite**, debe extraerse a un *token* de diseño en `@theme`.
+
+Tailwind ofrece un mecanismo de escape: los **valores arbitrarios** mediante notación de corchetes `[]`. Permiten inyectar cualquier valor CSS directamente: `w-[300px]`, `bg-[#1a1a1a]`, `text-[clamp(1rem,2vw,2rem)]`, `grid-cols-[200px_minmax(900px,_1fr)_100px]`, `shadow-[0_4px_20px_rgba(0,0,0,0.3)]`. Esta característica cubre casos donde la escala predefinida no contempla un valor específico. Solo se genera la regla CSS **exacta** para el valor especificado, manteniendo el CSS final reducido.
 
 La configuración con @theme en v4 permite extender o sobrescribir cualquier parte del sistema:
 

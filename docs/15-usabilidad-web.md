@@ -105,19 +105,36 @@ Al finalizar esta unidad, el alumnado será capaz de:
 
 ### 1. ¿Qué es la usabilidad web y por qué es importante?
 
-La usabilidad se define formalmente en la norma ISO 9241-11 como "el grado en que un producto puede ser utilizado por usuarios específicos para alcanzar objetivos específicos con eficacia, eficiencia y satisfacción en un contexto de uso específico." Esta definición establece que la usabilidad no es una propiedad absoluta de un sistema, sino relativa a tres factores: los usuarios concretos que lo utilizan, los objetivos que persiguen, y el contexto (físico, social, organizativo) en el que lo hacen. Un mismo sitio web puede ser altamente usable para un adolescente experto en tecnología e inusable para una persona mayor con poca experiencia digital, aunque ambos quieran realizar la misma tarea. La usabilidad, por tanto, debe evaluarse y diseñarse teniendo en cuenta el perfil de los usuarios reales, no un usuario idealizado.
+!!! info "Definición: usabilidad (ISO 9241-11)"
+    La **usabilidad** se define formalmente en la norma **ISO 9241-11** como «el grado en que un producto puede ser utilizado por usuarios específicos para alcanzar objetivos específicos con **eficacia, eficiencia y satisfacción** en un contexto de uso específico».
 
-La **eficacia** se refiere a si los usuarios pueden alcanzar sus objetivos. Se mide en términos de completitud (¿se completó la tarea?) y precisión (¿se completó correctamente?). Un sistema puede ser altamente eficiente pero ineficaz si los usuarios completan tareas rápidamente pero de forma incorrecta. La **eficiencia** relaciona los recursos gastados (tiempo, esfuerzo mental, pasos) con los resultados obtenidos. Un sistema eficaz puede ser ineficiente si requiere demasiado tiempo o esfuerzo. La **satisfacción** es la respuesta subjetiva del usuario ante el uso del producto: ausencia de incomodidad y actitudes positivas. Un sistema puede ser eficaz y eficiente pero generar frustración (por ejemplo, si cumple su función pero tiene una estética descuidada o interrumpe constantemente con notificaciones).
+Esta definición establece que la usabilidad **no es una propiedad absoluta** de un sistema, sino relativa a tres factores: los **usuarios concretos** que lo utilizan, los **objetivos** que persiguen, y el **contexto** (físico, social, organizativo) en el que lo hacen. Un mismo sitio web puede ser altamente usable para un adolescente experto en tecnología e inusable para una persona mayor con poca experiencia digital, aunque ambos quieran realizar la misma tarea. La usabilidad, por tanto, debe evaluarse y diseñarse teniendo en cuenta el **perfil de los usuarios reales**, no un usuario idealizado.
 
-Los beneficios empresariales de la usabilidad están ampliamente documentados. Jakob Nielsen estimó que el retorno de inversión (ROI) en usabilidad es de 10:1 a 100:1, es decir, cada euro invertido en mejorar la usabilidad retorna entre 10 y 100 euros en beneficios. La reducción de costes de soporte es uno de los impactos más inmediatos: sitios web usables generan menos llamadas al servicio de atención al cliente, menos emails de consulta y menos devoluciones. El aumento de la tasa de conversión es otro beneficio directo: simplificar un checkout puede aumentar las ventas entre un 10% y un 35%. La satisfacción y retención de clientes se traduce en valor a largo plazo: un cliente satisfecho no solo repite, sino que recomienda. La reducción de costes de desarrollo también es significativa: corregir problemas de usabilidad en etapas tempranas del diseño es mucho más barato que rediseñar tras el lanzamiento.
+Los tres componentes de la norma:
 
-Es importante distinguir usabilidad de conceptos relacionados. La **UX** (User Experience) es un concepto más amplio que engloba la usabilidad pero también aspectos como la deseabilidad, el valor emocional, la confianza, la credibilidad y el significado personal. Don Norman, quien acuñó el término UX, lo define como "todos los aspectos de la interacción del usuario final con la empresa, sus servicios y sus productos." La **accesibilidad** es un subconjunto específico de la UX que se centra en garantizar que personas con discapacidad puedan percibir, operar y comprender el producto. Un producto puede ser usable pero inaccesible (fácil de usar con ratón, imposible con teclado), y puede ser accesible pero no usable (técnicamente operable con lector de pantalla pero confuso y mal organizado). La **utilidad** se refiere a si el producto hace lo que el usuario necesita. Un producto puede ser muy usable pero inútil si no resuelve un problema real del usuario.
+- **Eficacia** — si los usuarios pueden alcanzar sus objetivos; se mide en términos de **completitud** (¿se completó la tarea?) y **precisión** (¿se completó correctamente?). Un sistema puede ser altamente eficiente pero ineficaz si los usuarios completan tareas rápidamente pero de forma incorrecta.
+- **Eficiencia** — relaciona los **recursos gastados** (tiempo, esfuerzo mental, pasos) con los resultados obtenidos. Un sistema eficaz puede ser ineficiente si requiere demasiado tiempo o esfuerzo.
+- **Satisfacción** — la respuesta **subjetiva** del usuario ante el uso del producto: ausencia de incomodidad y actitudes positivas. Un sistema puede ser eficaz y eficiente pero generar frustración (por ejemplo, si cumple su función pero tiene una estética descuidada o interrumpe constantemente con notificaciones).
+
+Los beneficios empresariales de la usabilidad están ampliamente documentados:
+
+- **Retorno de inversión (ROI)** — Jakob Nielsen estimó un ROI de **10:1 a 100:1**: cada euro invertido en mejorar la usabilidad retorna entre **10 y 100 euros** en beneficios.
+- **Menos costes de soporte** — sitios web usables generan menos llamadas al servicio de atención al cliente, menos *emails* de consulta y menos devoluciones.
+- **Mayor tasa de conversión** — simplificar un *checkout* puede aumentar las ventas entre un **10%** y un **35%**.
+- **Satisfacción y retención** — un cliente satisfecho no solo repite, sino que recomienda.
+- **Menos costes de desarrollo** — corregir problemas de usabilidad en etapas tempranas del diseño es mucho más barato que rediseñar tras el lanzamiento.
+
+!!! info "Usabilidad frente a UX, accesibilidad y utilidad"
+    - **UX** (*User Experience*) — concepto **más amplio** que engloba la usabilidad pero también la deseabilidad, el valor emocional, la confianza, la credibilidad y el significado personal. **Don Norman**, quien acuñó el término UX, lo define como «todos los aspectos de la interacción del usuario final con la empresa, sus servicios y sus productos».
+    - **Accesibilidad** — **subconjunto** específico de la UX que se centra en garantizar que personas con discapacidad puedan percibir, operar y comprender el producto. Un producto puede ser usable pero inaccesible (fácil de usar con ratón, imposible con teclado), y accesible pero no usable (técnicamente operable con lector de pantalla pero confuso y mal organizado).
+    - **Utilidad** — si el producto **hace lo que el usuario necesita**. Un producto puede ser muy usable pero inútil si no resuelve un problema real del usuario.
 
 ### 2. Las 10 Heurísticas de Nielsen en profundidad
 
-En colaboración con Rolf Molich, Jakob Nielsen desarrolló en 1990 las primeras heurísticas de usabilidad, refinadas y publicadas en su forma canónica de 10 principios en 1994. Estas heurísticas no son directrices específicas de interfaz, sino principios amplios y generalizables que capturan aspectos fundamentales de la interacción humano-ordenador. Han demostrado una notable longevidad porque operan a un nivel de abstracción que las hace independientes de tecnologías concretas: aplican tanto a interfaces de línea de comandos como a aplicaciones móviles táctiles, pasando por sitios web, aplicaciones de escritorio, cajeros automáticos, electrodomésticos inteligentes y dashboards de vehículos.
+!!! info "Origen de las heurísticas de Nielsen"
+    En colaboración con **Rolf Molich**, Jakob Nielsen desarrolló en **1990** las primeras heurísticas de usabilidad, refinadas y publicadas en su forma canónica de **10 principios** en **1994**. No son directrices específicas de interfaz, sino **principios amplios y generalizables** que capturan aspectos fundamentales de la interacción humano-ordenador. Han demostrado una notable longevidad porque operan a un nivel de abstracción que las hace **independientes de tecnologías concretas**: aplican tanto a interfaces de línea de comandos como a aplicaciones móviles táctiles, pasando por sitios web, aplicaciones de escritorio, cajeros automáticos, electrodomésticos inteligentes y *dashboards* de vehículos.
 
-**H1: Visibilidad del estado del sistema.** "El diseño siempre debe mantener informados a los usuarios sobre lo que está sucediendo, mediante retroalimentación apropiada en un tiempo razonable." Esta heurística es probablemente la más fundamental y universalmente aplicable. La retroalimentación puede ser visual (un spinner, una barra de progreso, un cambio de color), auditiva (un sonido de notificación), o táctil (una vibración). El tiempo "razonable" depende del contexto: para una acción simple como marcar un checkbox, la respuesta debe ser instantánea (<100 ms); para una carga de página, una barra de progreso con estimación de tiempo es aceptable; para una operación larga como procesar un vídeo, se necesita información sobre el estado, el progreso y el tiempo restante estimado.
+**H1: Visibilidad del estado del sistema.** "El diseño siempre debe mantener informados a los usuarios sobre lo que está sucediendo, mediante retroalimentación apropiada en un tiempo razonable." Esta heurística es probablemente la más fundamental y universalmente aplicable. La retroalimentación puede ser **visual** (un *spinner*, una barra de progreso, un cambio de color), **auditiva** (un sonido de notificación) o **táctil** (una vibración). El tiempo "razonable" depende del contexto: para una acción simple como marcar un *checkbox*, la respuesta debe ser **instantánea (<100 ms)**; para una carga de página, una barra de progreso con estimación de tiempo es aceptable; para una operación larga como procesar un vídeo, se necesita información sobre el estado, el progreso y el tiempo restante estimado.
 
 **H2: Coincidencia entre el sistema y el mundo real.** "El sistema debe hablar el lenguaje de los usuarios, con palabras, frases y conceptos familiares, en lugar de términos orientados al sistema. Debe seguir las convenciones del mundo real, haciendo que la información aparezca en un orden natural y lógico." Ejemplos de cumplimiento incluyen el uso de metáforas del mundo físico (el carrito de compra, la papelera de reciclaje, el escritorio), iconos basados en objetos reales reconocibles, y lenguaje conversacional en lugar de jerga técnica. Ejemplos de violación incluyen mostrar IDs internos de base de datos al usuario ("Error: FK_Constraint_UserID_3"), usar terminología interna de la empresa que el cliente no conoce, u ordenar información alfabéticamente cuando el orden lógico para el usuario sería por relevancia o cronología.
 
@@ -133,41 +150,108 @@ En colaboración con Rolf Molich, Jakob Nielsen desarrolló en 1990 las primeras
 
 **H8: Diseño estético y minimalista.** "Los diálogos no deben contener información irrelevante o raramente necesaria. Cada unidad extra de información en un diálogo compite con las unidades relevantes de información y disminuye su visibilidad relativa." Esta heurística se basa en el principio de que menos es más en el diseño de interfaces. El desorden visual, la sobrecarga informativa y la multiplicidad de opciones abruman al usuario y dificultan la toma de decisiones. La ley de Hick, que establece que el tiempo de decisión aumenta logarítmicamente con el número de opciones, proporciona la base científica para esta heurística.
 
-**H9: Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores.** "Los mensajes de error deben expresarse en lenguaje claro (no en códigos), indicar con precisión el problema y sugerir una solución de manera constructiva." Un buen mensaje de error tiene tres componentes: (1) qué salió mal, en lenguaje del usuario; (2) por qué salió mal, si es relevante; (3) qué puede hacer el usuario para solucionarlo. "Error 403 Forbidden" es un mal mensaje. "No tienes permiso para acceder a esta página. Si crees que deberías poder acceder, contacta con tu administrador o inicia sesión con una cuenta diferente" es un buen mensaje.
+**H9: Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores.** "Los mensajes de error deben expresarse en lenguaje claro (no en códigos), indicar con precisión el problema y sugerir una solución de manera constructiva." Un buen mensaje de error tiene **tres componentes**:
+
+1. **Qué salió mal**, en lenguaje del usuario.
+2. **Por qué salió mal**, si es relevante.
+3. **Qué puede hacer el usuario** para solucionarlo.
+
+«Error 403 Forbidden» es un **mal mensaje**. «No tienes permiso para acceder a esta página. Si crees que deberías poder acceder, contacta con tu administrador o inicia sesión con una cuenta diferente» es un **buen mensaje**.
 
 **H10: Ayuda y documentación.** "Aunque es mejor que el sistema pueda utilizarse sin documentación, puede ser necesario proporcionar ayuda y documentación. Esta debe ser fácil de buscar, estar enfocada en las tareas del usuario, listar pasos concretos a seguir, y no ser demasiado extensa." La ayuda debe ser contextual (relevante para lo que el usuario está haciendo), accionable (pasos concretos, no teoría), y concisa. La documentación exhaustiva en PDF rara vez se consulta; la ayuda integrada en la interfaz (tooltips, texto de ayuda junto al campo, preguntas frecuentes enlazadas) es mucho más efectiva.
 
 ### 3. Evaluación heurística: metodología
 
-La evaluación heurística es un método de inspección donde un pequeño número de evaluadores examina una interfaz y juzga si cada elemento cumple con una lista de principios de usabilidad (las heurísticas). Su popularidad en la industria se debe a su excelente relación coste-beneficio: es rápida (se puede completar en días, no semanas), económica (no requiere laboratorio, equipamiento especial ni reclutamiento masivo), y efectiva (encuentra un alto porcentaje de problemas de usabilidad, especialmente los más graves).
+!!! info "Definición: evaluación heurística"
+    La **evaluación heurística** es un método de **inspección** donde un pequeño número de evaluadores examina una interfaz y juzga si cada elemento cumple con una lista de principios de usabilidad (las heurísticas). Su popularidad en la industria se debe a su excelente relación coste-beneficio: es **rápida** (se puede completar en días, no semanas), **económica** (no requiere laboratorio, equipamiento especial ni reclutamiento masivo) y **efectiva** (encuentra un alto porcentaje de problemas de usabilidad, especialmente los más graves).
 
-Nielsen y Molich demostraron que el número óptimo de evaluadores para una evaluación heurística es entre 3 y 5. Un único evaluador encuentra aproximadamente el 35% de los problemas de usabilidad de una interfaz. Dos evaluadores encuentran alrededor del 50%. Cinco evaluadores encuentran aproximadamente el 75-80%. La curva tiene un claro rendimiento decreciente: añadir más evaluadores por encima de 5 encuentra proporcionalmente pocos problemas nuevos y aumenta el coste considerablemente. Esto se debe a que diferentes evaluadores tienden a encontrar diferentes tipos de problemas, y tras 5 evaluadores, la mayoría de los problemas significativos ya han sido identificados.
+Nielsen y Molich demostraron que el número óptimo de evaluadores es **entre 3 y 5**:
 
-La escala de severidad permite priorizar los hallazgos para que el equipo de desarrollo sepa qué corregir primero. La escala propuesta por Nielsen tiene 5 niveles: 0 = No es un problema de usabilidad (falso positivo, no necesita acción). 1 = Problema cosmético (solo necesita arreglarse si hay tiempo extra; no afecta significativamente a la experiencia). 2 = Problema menor (baja prioridad; debería arreglarse pero no es urgente). 3 = Problema mayor (alta prioridad; importante arreglarlo; causa dificultades significativas a muchos usuarios). 4 = Problema catastrófico (imperativo arreglarlo antes del lanzamiento; impide a los usuarios completar tareas esenciales). La severidad se determina combinando tres factores: la frecuencia con la que ocurre el problema, el impacto que tiene en el usuario cuando ocurre, y la persistencia del problema (¿es algo que el usuario puede superar una vez que lo conoce, o le afectará cada vez?).
+| Nº de evaluadores | Problemas de usabilidad detectados |
+|-------------------|------------------------------------|
+| **1** | aproximadamente el **35%** |
+| **2** | alrededor del **50%** |
+| **5** | aproximadamente el **75-80%** |
+
+La curva tiene un claro **rendimiento decreciente**: añadir más evaluadores por encima de 5 encuentra proporcionalmente pocos problemas nuevos y aumenta el coste considerablemente. Esto se debe a que diferentes evaluadores tienden a encontrar diferentes tipos de problemas, y tras 5 evaluadores, la mayoría de los problemas significativos ya han sido identificados.
+
+La **escala de severidad** permite priorizar los hallazgos para que el equipo de desarrollo sepa qué corregir primero. La escala propuesta por Nielsen tiene **5 niveles**:
+
+| Nivel | Denominación | Criterio |
+|-------|--------------|----------|
+| **0** | No es un problema de usabilidad | falso positivo; no necesita acción |
+| **1** | Problema cosmético | solo necesita arreglarse si hay tiempo extra; no afecta significativamente a la experiencia |
+| **2** | Problema menor | baja prioridad; debería arreglarse pero no es urgente |
+| **3** | Problema mayor | alta prioridad; importante arreglarlo; causa dificultades significativas a muchos usuarios |
+| **4** | Problema catastrófico | imperativo arreglarlo **antes del lanzamiento**; impide a los usuarios completar tareas esenciales |
+
+La severidad se determina combinando **tres factores**:
+
+- La **frecuencia** con la que ocurre el problema.
+- El **impacto** que tiene en el usuario cuando ocurre.
+- La **persistencia** del problema (¿es algo que el usuario puede superar una vez que lo conoce, o le afectará cada vez?).
 
 ### 4. Test de usuarios: la evidencia empírica
 
-El test de usuarios es la técnica de evaluación más convincente y reveladora porque permite observar directamente cómo personas reales interactúan con el producto. Mientras que la evaluación heurística nos dice qué principios se violan, el test de usuarios nos muestra qué sucede realmente: dónde se atascan los usuarios, qué malinterpretan, qué atajos descubren, y qué emociones experimentan durante el proceso.
+El test de usuarios es la técnica de evaluación **más convincente y reveladora** porque permite observar directamente cómo personas reales interactúan con el producto. Mientras que la evaluación heurística nos dice **qué principios se violan**, el test de usuarios nos muestra **qué sucede realmente**: dónde se atascan los usuarios, qué malinterpretan, qué atajos descubren, y qué emociones experimentan durante el proceso.
 
-La técnica del **think aloud** (pensar en voz alta) es la práctica estándar en tests de usabilidad moderados. Consiste en pedir al participante que verbalice continuamente sus pensamientos, expectativas, confusiones y decisiones mientras realiza las tareas. Esta técnica, desarrollada originalmente en psicología cognitiva, permite al moderador acceder al modelo mental del usuario en tiempo real. No es natural (la mayoría de las personas no verbalizan sus pensamientos al usar un ordenador), por lo que el moderador debe recordar periódicamente al participante que siga hablando si se queda en silencio. Las frases típicas que el moderador usa para reactivar el think aloud incluyen: "¿Qué estás mirando ahora?", "¿Qué esperas que pase si haces clic ahí?", "¿Hay algo que te llame la atención?".
+!!! tip "Técnica think aloud"
+    La técnica del ***think aloud*** (pensar en voz alta) es la práctica estándar en tests de usabilidad moderados. Consiste en pedir al participante que **verbalice continuamente** sus pensamientos, expectativas, confusiones y decisiones mientras realiza las tareas. Desarrollada originalmente en psicología cognitiva, permite al moderador acceder al **modelo mental del usuario en tiempo real**.
 
-El **número de participantes** para tests cualitativos (donde el objetivo es encontrar problemas, no medirlos) ha sido establecido por la investigación de Nielsen en 5 usuarios. Con 5 usuarios se descubren aproximadamente el 85% de los problemas de usabilidad de una interfaz. Testear con más usuarios en un estudio cualitativo tiene rendimiento decreciente y es más eficiente realizar múltiples iteraciones de test con 5 usuarios cada una (testear, rediseñar, volver a testear) que un único test masivo. Sin embargo, para estudios cuantitativos (donde se quiere medir con precisión tiempos, tasas de éxito o comparar diseños), se necesitan muestras más grandes, típicamente entre 20 y 40 participantes, para alcanzar significancia estadística.
+    No es natural (la mayoría de las personas no verbalizan sus pensamientos al usar un ordenador), por lo que el moderador debe recordar periódicamente al participante que siga hablando si se queda en silencio. Frases típicas para reactivarlo:
+
+    - «¿Qué estás mirando ahora?»
+    - «¿Qué esperas que pase si haces clic ahí?»
+    - «¿Hay algo que te llame la atención?»
+
+!!! tip "Número de participantes"
+    El **número de participantes** para tests **cualitativos** (donde el objetivo es encontrar problemas, no medirlos) fue establecido por la investigación de Nielsen en **5 usuarios**. Con 5 usuarios se descubren aproximadamente el **85%** de los problemas de usabilidad de una interfaz.
+
+    Testear con más usuarios en un estudio cualitativo tiene **rendimiento decreciente**: es más eficiente realizar **múltiples iteraciones** de test con 5 usuarios cada una (testear, rediseñar, volver a testear) que un único test masivo.
+
+    Sin embargo, para estudios **cuantitativos** (donde se quiere medir con precisión tiempos, tasas de éxito o comparar diseños), se necesitan muestras más grandes, típicamente entre **20 y 40 participantes**, para alcanzar significancia estadística.
 
 ### 5. Métricas de usabilidad
 
-**SUS (System Usability Scale):** Desarrollado por John Brooke en 1986, es el cuestionario de usabilidad más utilizado en el mundo, con miles de estudios que lo referencian. Consta de 10 preguntas con escala Likert de 1 a 5. Su gran ventaja es que proporciona una puntuación única de 0 a 100 que resume la usabilidad percibida, permitiendo comparar cualquier sistema con cualquier otro. La puntuación media del SUS a lo largo de décadas de estudios es aproximadamente 68. Puntuaciones por encima de 80 se consideran excelentes (percentil A). Por debajo de 50 se consideran inaceptables. El SUS no mide dimensiones separadas (no da una puntuación de "facilidad de aprendizaje" frente a "eficiencia"), sino que proporciona una medida unidimensional de usabilidad percibida que ha demostrado ser robusta y fiable.
+**SUS (System Usability Scale):** Desarrollado por **John Brooke** en **1986**, es el cuestionario de usabilidad más utilizado en el mundo, con miles de estudios que lo referencian. Consta de **10 preguntas** con escala *Likert* de **1 a 5**. Su gran ventaja es que proporciona una puntuación única de **0 a 100** que resume la usabilidad percibida, permitiendo comparar cualquier sistema con cualquier otro.
 
-**SEQ (Single Ease Question):** Es la métrica de satisfacción más simple posible: una única pregunta tras cada tarea: "En general, ¿cómo de fácil o difícil fue completar esta tarea?" en una escala de 1 (muy difícil) a 7 (muy fácil). Su simplicidad es su fortaleza: rápida de administrar, sensible a diferencias entre tareas, y mínimamente intrusiva.
+| Puntuación SUS | Interpretación |
+|----------------|----------------|
+| **≈ 68** | media histórica a lo largo de décadas de estudios |
+| **> 80** | excelentes (percentil **A**) |
+| **< 50** | inaceptables |
 
-**NPS (Net Promoter Score):** Mide la lealtad del cliente y su disposición a recomendar el producto. Una única pregunta: "¿Qué probabilidad hay de que recomiendes este producto a un amigo o colega?" en escala de 0 a 10. Los que responden 9-10 son "promotores", 7-8 son "neutrales", 0-6 son "detractores". NPS = % promotores - % detractores.
+El SUS **no mide dimensiones separadas** (no da una puntuación de "facilidad de aprendizaje" frente a "eficiencia"), sino que proporciona una medida **unidimensional** de usabilidad percibida que ha demostrado ser robusta y fiable.
+
+**SEQ (Single Ease Question):** Es la métrica de satisfacción **más simple posible**: una única pregunta tras cada tarea —«En general, ¿cómo de fácil o difícil fue completar esta tarea?»— en una escala de **1 (muy difícil)** a **7 (muy fácil)**. Su simplicidad es su fortaleza: rápida de administrar, sensible a diferencias entre tareas, y mínimamente intrusiva.
+
+**NPS (Net Promoter Score):** Mide la **lealtad del cliente** y su disposición a recomendar el producto. Una única pregunta —«¿Qué probabilidad hay de que recomiendes este producto a un amigo o colega?»— en escala de **0 a 10**. Los que responden **9-10** son «promotores», **7-8** «neutrales», **0-6** «detractores».
+
+> **NPS = % promotores − % detractores**
 
 ### 6. Eye Tracking, Heat Maps y Analítica Web
 
-El **eye tracking** registra los movimientos oculares mediante hardware especializado (cámaras infrarrojas de alta frecuencia, 60-1200 Hz) para determinar exactamente hacia dónde mira el usuario en cada momento. Los mapas de calor visualizan las zonas más miradas (rojo = mucho, azul = poco) y los gaze plots muestran la secuencia de fijaciones (círculos numerados) conectadas por líneas (sacadas). El eye tracking es muy valioso para estudios académicos y de investigación fundamental (dónde mira la gente en una página de resultados de Google, cómo escanean una landing page), pero tiene limitaciones prácticas: alto coste del hardware, necesidad de calibración individual, entorno de laboratorio artificial, y el hecho de que "mirar" no equivale a "ver" o "comprender". Mirar fijamente un elemento no significa que el usuario lo haya procesado cognitivamente.
+El **eye tracking** registra los movimientos oculares mediante hardware especializado (cámaras infrarrojas de alta frecuencia, **60-1200 Hz**) para determinar exactamente hacia dónde mira el usuario en cada momento:
 
-Los **heat maps de comportamiento** (Hotjar, Clarity) registran datos pasivos de usuarios reales en su entorno natural. Los click maps muestran dónde hacen clic los usuarios, revelando elementos que los usuarios creen que son clickables (aunque no lo sean), y qué elementos importantes están recibiendo pocos clics. Los scroll maps son particularmente útiles para páginas de contenido largo: muestran que la mayoría de los usuarios abandonan antes de llegar al 50% de la página, lo que implica que el contenido más importante debe estar "above the fold". Los move maps registran la trayectoria del cursor, que correlaciona aproximadamente con la mirada.
+- **Mapas de calor de mirada** — visualizan las zonas más miradas (**rojo** = mucho, **azul** = poco).
+- **Gaze plots** — muestran la secuencia de **fijaciones** (círculos numerados) conectadas por líneas (**sacadas**).
 
-El **A/B testing** es un experimento controlado donde se divide aleatoriamente el tráfico entre dos o más versiones de una página para medir cuál funciona mejor en una métrica predefinida. Es especialmente poderoso en comercio electrónico y marketing digital para optimizar conversiones. La significancia estadística (p < 0.05) debe alcanzarse antes de declarar un ganador, y el test debe ejecutarse durante ciclos completos de negocio (mínimo una semana, idealmente dos) para evitar sesgos estacionales o de día de la semana.
+El eye tracking es muy valioso para estudios académicos y de investigación fundamental (dónde mira la gente en una página de resultados de Google, cómo escanea una *landing page*), pero tiene limitaciones prácticas: **alto coste** del hardware, necesidad de **calibración individual**, entorno de **laboratorio artificial**, y el hecho de que «mirar» no equivale a «ver» o «comprender».
+
+!!! warning "Mirar no equivale a ver"
+    Mirar fijamente un elemento **no significa** que el usuario lo haya procesado cognitivamente.
+
+Los **heat maps de comportamiento** (Hotjar, Clarity) registran datos **pasivos** de usuarios reales en su entorno natural:
+
+- **Click maps** — muestran dónde hacen clic los usuarios, revelando elementos que los usuarios **creen** que son *clickables* (aunque no lo sean), y qué elementos importantes están recibiendo **pocos clics**.
+- **Scroll maps** — particulamente útiles para páginas de contenido largo: muestran que la mayoría de los usuarios abandonan antes de llegar al **50%** de la página, lo que implica que el contenido más importante debe estar **«above the fold»**.
+- **Move maps** — registran la trayectoria del cursor, que correlaciona aproximadamente con la mirada.
+
+!!! tip "Rigor en el A/B testing"
+    El **A/B testing** es un experimento controlado donde se divide **aleatoriamente** el tráfico entre dos o más versiones de una página para medir cuál funciona mejor en una **métrica predefinida**. Es especialmente poderoso en comercio electrónico y marketing digital para optimizar conversiones.
+
+    - La **significancia estadística** (**p < 0,05**) debe alcanzarse antes de declarar un ganador.
+    - El test debe ejecutarse durante **ciclos completos de negocio** (mínimo **una semana**, idealmente **dos**) para evitar sesgos estacionales o de día de la semana.
 
 ## Ejemplos guiados
 

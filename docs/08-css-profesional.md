@@ -31,43 +31,107 @@ El alumnado debe conocer los fundamentos de CSS: sintaxis de reglas (selector, p
 
 ### 1. Evolución y estado actual de CSS
 
-CSS ha evolucionado desde su primera especificación en 1996 (CSS1, propiedades básicas de fuente, color y alineación) hasta el ecosistema actual de módulos independientes. CSS3, lanzado a partir de 1999, fragmentó la especificación en módulos temáticos (Selectores, Color, Fondos, Transformaciones, Animaciones, Flexbox, Grid) que evolucionan a ritmos independientes. Actualmente se habla de "CSS4" como término informal para referirse a los módulos más recientes que añaden funcionalidades significativas.
+!!! info "Evolución de CSS"
+    CSS ha evolucionado desde su primera especificación en 1996 (**CSS1**, propiedades básicas de fuente, color y alineación) hasta el ecosistema actual de módulos independientes. **CSS3**, lanzado a partir de 1999, fragmentó la especificación en módulos temáticos (Selectores, Color, Fondos, Transformaciones, Animaciones, Flexbox, Grid) que evolucionan a ritmos independientes. Actualmente se habla de **"CSS4"** como término informal para referirse a los módulos más recientes que añaden funcionalidades significativas.
 
-Entre las novedades más importantes destacan: `@layer` para organizar capas de cascada y controlar la especificidad sin recurrir a `!important`; `@container` (Container Queries) que permite aplicar estilos basados en el tamaño de un contenedor padre, no solo del viewport; CSS Nesting, que permite anidar selectores dentro de otros (similar a Sass/LESS) de forma nativa; y la pseudoclase `:has()`, conocida como "el selector padre", que selecciona elementos basándose en sus descendientes, resolviendo una limitación histórica de CSS.
+Entre las novedades más importantes destacan:
+
+!!! info "Novedades de CSS moderno"
+    - **`@layer`** — organiza capas de cascada y controla la especificidad sin recurrir a `!important`.
+    - **`@container`** (Container Queries) — permite aplicar estilos basados en el tamaño de un contenedor padre, no solo del viewport.
+    - **CSS Nesting** — permite anidar selectores dentro de otros (similar a Sass/LESS) de forma nativa.
+    - **`:has()`** — la pseudoclase conocida como "el selector padre": selecciona elementos basándose en sus descendientes, resolviendo una limitación histórica de CSS.
 
 ### 2. Selectores avanzados
 
-**Combinadores:** El combinador descendiente (`A B`) selecciona B que es descendiente de A a cualquier nivel. El combinador hijo (`A > B`) selecciona B solo si es hijo directo de A. El combinador hermano adyacente (`A + B`) selecciona B inmediatamente después de A. El hermano general (`A ~ B`) selecciona todos los B que son hermanos de A, no necesariamente adyacentes.
+**Combinadores:**
 
-**Pseudoclases funcionales modernas:** `:is()` permite agrupar selectores simplificando código repetitivo: `:is(header, main, footer) p` aplica a párrafos dentro de header, main o footer. Su especificidad es la del argumento más específico. `:where()` funciona igual pero con especificidad 0 (ideal para estilos base fácilmente sobrescribibles). `:not()` excluye elementos que coinciden con el selector: `p:not(.destacado)` selecciona párrafos sin la clase destacado. `:has()` es el "selector padre": `article:has(img)` selecciona articles que contienen imágenes; `form:has(:invalid)` selecciona formularios con campos inválidos.
+- **Descendiente (`A B`)** — selecciona B que es descendiente de A a cualquier nivel.
+- **Hijo (`A > B`)** — selecciona B solo si es hijo directo de A.
+- **Hermano adyacente (`A + B`)** — selecciona B inmediatamente después de A.
+- **Hermano general (`A ~ B`)** — selecciona todos los B que son hermanos de A, no necesariamente adyacentes.
 
-**Pseudoclases de formulario:** `:valid`/`:invalid` aplican estilos según el estado de validación HTML5. `:disabled`/`:enabled` para campos deshabilitados. `:checked` para checkboxes y radios marcados. `:focus-visible` muestra foco solo cuando se navega con teclado (no con ratón). `:focus-within` aplica cuando cualquier descendiente tiene foco.
+**Pseudoclases funcionales modernas:**
 
-**Pseudoelementos:** `::before` y `::after` crean contenido generado antes/después del contenido real del elemento (requieren `content`). `::marker` estiliza los marcadores de listas. `::selection` estiliza el texto seleccionado. `::placeholder` estiliza el texto placeholder de inputs. `::first-letter`/`::first-line` estilizan la primera letra/línea de un bloque de texto.
+- **`:is()`** — permite agrupar selectores simplificando código repetitivo: `:is(header, main, footer) p` aplica a párrafos dentro de header, main o footer. Su especificidad es la del argumento más específico.
+- **`:where()`** — funciona igual pero con especificidad **0** (ideal para estilos base fácilmente sobrescribibles).
+- **`:not()`** — excluye elementos que coinciden con el selector: `p:not(.destacado)` selecciona párrafos sin la clase destacado.
+- **`:has()`** — el "selector padre": `article:has(img)` selecciona articles que contienen imágenes; `form:has(:invalid)` selecciona formularios con campos inválidos.
+
+**Pseudoclases de formulario:**
+
+- **`:valid` / `:invalid`** — aplican estilos según el estado de validación HTML5.
+- **`:disabled` / `:enabled`** — para campos deshabilitados.
+- **`:checked`** — para checkboxes y radios marcados.
+- **`:focus-visible`** — muestra foco solo cuando se navega con teclado (no con ratón).
+- **`:focus-within`** — aplica cuando cualquier descendiente tiene foco.
+
+**Pseudoelementos:**
+
+- **`::before` y `::after`** — crean contenido generado antes/después del contenido real del elemento (requieren `content`).
+- **`::marker`** — estiliza los marcadores de listas.
+- **`::selection`** — estiliza el texto seleccionado.
+- **`::placeholder`** — estiliza el texto placeholder de inputs.
+- **`::first-letter` / `::first-line`** — estilizan la primera letra/línea de un bloque de texto.
 
 ### 3. Especificidad y cascada
 
-La especificidad determina qué regla CSS se aplica cuando múltiples reglas compiten por el mismo elemento. Se calcula como (a,b,c): a = IDs, b = clases/atributos/pseudoclases, c = elementos/pseudoelementos. Los estilos inline tienen máxima especificidad. La cascada resuelve empates por orden de aparición.
+!!! info "Definición"
+    La especificidad determina qué regla CSS se aplica cuando múltiples reglas compiten por el mismo elemento. Se calcula como **(a,b,c)**: **a** = IDs, **b** = clases/atributos/pseudoclases, **c** = elementos/pseudoelementos. Los estilos **inline** tienen máxima especificidad. La cascada resuelve empates por orden de aparición.
 
-`!important` fuerza la aplicación de una declaración saltándose la especificidad. Su uso debe ser excepcional y está considerado una mala práctica cuando se abusa. Para controlar la cascada sin `!important`, CSS introdujo `@layer`, que permite definir capas con orden explícito. Las capas declaradas después tienen prioridad, independientemente de la especificidad de los selectores dentro de cada capa. Esto permite organizar el CSS en capas lógicas: reset, base, componentes, utilidades, donde las utilidades siempre ganan por estar en la última capa.
+!!! warning "Evita abusar de !important"
+    `!important` fuerza la aplicación de una declaración saltándose la especificidad. Su uso debe ser excepcional y está considerado una mala práctica cuando se abusa.
+
+Para controlar la cascada sin `!important`, CSS introdujo `@layer`, que permite definir capas con orden explícito: **las capas declaradas después tienen prioridad**, independientemente de la especificidad de los selectores dentro de cada capa.
+
+!!! tip "Capas lógicas con @layer"
+    Esto permite organizar el CSS en capas lógicas: **reset**, **base**, **componentes**, **utilidades**, donde las utilidades siempre ganan por estar en la última capa.
 
 ### 4. Modelo de caja
 
-El modelo de caja define cómo se calcula el tamaño total de un elemento. Por defecto (`box-sizing: content-box`), `width` y `height` definen solo el área de contenido; padding y border se añaden al total. Con `box-sizing: border-box`, `width` y `height` incluyen content, padding y border, simplificando enormemente los cálculos de layout. Es práctica estándar aplicarlo universalmente: `*, *::before, *::after { box-sizing: border-box; }`.
+!!! info "Modelo de caja"
+    El modelo de caja define cómo se calcula el tamaño total de un elemento. Por defecto (`box-sizing: content-box`), `width` y `height` definen solo el área de contenido; padding y border se añaden al total. Con `box-sizing: border-box`, `width` y `height` incluyen **content**, **padding** y **border**, simplificando enormemente los cálculos de layout.
 
-El colapso de márgenes ocurre cuando márgenes verticales adyacentes se solapan: el mayor prevalece. Solo afecta a márgenes verticales de elementos en flujo normal. Padding, border y contenido no colapsan. Se evita usando `display: flex/grid`, padding en el padre, o `overflow: auto` en el contenedor.
+Es práctica estándar aplicarlo universalmente: `*, *::before, *::after { box-sizing: border-box; }`.
+
+!!! warning "Colapso de márgenes"
+    El colapso de márgenes ocurre cuando márgenes verticales adyacentes se solapan: **el mayor prevalece**. Solo afecta a márgenes verticales de elementos en flujo normal. Padding, border y contenido no colapsan.
+
+    Se evita con alguna de estas técnicas:
+
+    - usar `display: flex` o `display: grid` en el contenedor;
+    - añadir `padding` en el padre;
+    - aplicar `overflow: auto` en el contenedor.
 
 ### 5. Display y Position
 
-**Display:** `block` ocupa todo el ancho y fuerza salto de línea. `inline` fluye en línea sin forzar saltos. `inline-block` combina flujo inline con capacidad de definir dimensiones. `none` oculta el elemento (no ocupa espacio). `flex` y `grid` activan contextos de formato flex y grid. `contents` hace que el elemento desaparezca visualmente pero sus hijos se comporten como hijos directos del ancestro (útil para layouts).
+!!! info "Display"
+    - **`block`** — ocupa todo el ancho y fuerza salto de línea.
+    - **`inline`** — fluye en línea sin forzar saltos.
+    - **`inline-block`** — combina flujo inline con capacidad de definir dimensiones.
+    - **`none`** — oculta el elemento (no ocupa espacio).
+    - **`flex` y `grid`** — activan contextos de formato flex y grid.
+    - **`contents`** — hace que el elemento desaparezca visualmente pero sus hijos se comporten como hijos directos del ancestro (útil para layouts).
 
-**Position:** `static` es el flujo normal. `relative` desplaza desde su posición normal sin afectar a otros. `absolute` posiciona respecto al ancestro posicionado más cercano; sale del flujo. `fixed` posiciona respecto al viewport; sale del flujo. `sticky` combina relative y fixed: se comporta como relative hasta que alcanza un umbral de scroll, luego se fija. Z-index controla el apilamiento en el eje Z; solo funciona en elementos posicionados o flex/grid items. Crea contexto de apilamiento cuando se combina con `position` distinto de `static`.
+**Position:**
+
+| Valor | Comportamiento |
+|-------|----------------|
+| **`static`** | Flujo normal. |
+| **`relative`** | Desplaza desde su posición normal sin afectar a otros. |
+| **`absolute`** | Posiciona respecto al ancestro posicionado más cercano; sale del flujo. |
+| **`fixed`** | Posiciona respecto al viewport; sale del flujo. |
+| **`sticky`** | Combina relative y fixed: se comporta como relative hasta que alcanza un umbral de scroll, luego se fija. |
+
+!!! note "Z-index y contexto de apilamiento"
+    **Z-index** controla el apilamiento en el eje Z; solo funciona en elementos posicionados o flex/grid items. Crea contexto de apilamiento cuando se combina con `position` distinto de `static`.
 
 ### 6. Variables CSS (Custom Properties)
 
-Las variables CSS se definen con `--nombre: valor;` y se usan con `var(--nombre, fallback)`. Se heredan de padres a hijos. Normalmente se definen en `:root` para ámbito global: `:root { --color-primario: #2563eb; }`. El fallback es opcional y se usa si la variable no está definida.
+!!! info "Variables CSS (Custom Properties)"
+    Las variables CSS se definen con `--nombre: valor;` y se usan con `var(--nombre, fallback)`. Se heredan de padres a hijos. Normalmente se definen en `:root` para ámbito global: `:root { --color-primario: #2563eb; }`. El **fallback** es opcional y se usa si la variable no está definida.
 
-La gran ventaja sobre preprocesadores es que las variables CSS son dinámicas: pueden cambiar en tiempo de ejecución mediante JavaScript (`element.style.setProperty('--color', 'red')`), responder a media queries y actualizarse en cascada. Esto permite implementar temas (claro/oscuro) con un simple cambio de variables en `:root` o `html` cuando el usuario pulsa un botón o el sistema cambia de modo.
+    La gran ventaja sobre preprocesadores es que las variables CSS son **dinámicas**: pueden cambiar en tiempo de ejecución mediante JavaScript (`element.style.setProperty('--color', 'red')`), responder a media queries y actualizarse en cascada. Esto permite implementar **temas (claro/oscuro)** con un simple cambio de variables en `:root` o `html` cuando el usuario pulsa un botón o el sistema cambia de modo.
 
 ```css
 :root { --bg: #fff; --text: #1a1a2e; }
@@ -77,23 +141,24 @@ body { background: var(--bg); color: var(--text); }
 
 ### 7. Unidades CSS
 
-- `px`: píxeles. Unidad absoluta. Útil para bordes, sombras y valores pequeños precisos.
-- `%`: porcentaje relativo al padre. Para anchos y altos responsivos.
-- `em`: relativo al `font-size` del elemento actual. Ideal para márgenes y paddings que escalan con el texto.
-- `rem`: relativo al `font-size` del `<html>`. Preferible para tipografía y espaciados globales consistentes.
-- `vw`/`vh`: porcentaje del viewport. `100vw` = ancho completo, `100vh` = alto completo.
-- `dvh`/`svh`/`lvh`: unidades de viewport dinámicas que consideran las barras de navegación móviles.
-- `ch`: ancho del carácter "0". Útil para limitar anchos de línea de texto (60-70ch óptimo).
-- `fr`: fracción en CSS Grid. Distribuye espacio disponible proporcionalmente.
-- `clamp(min, ideal, max)`: función que limita un valor entre un mínimo y un máximo.
+| Unidad | Referencia | Uso típico |
+|--------|------------|------------|
+| **`px`** | Píxeles (unidad absoluta) | Bordes, sombras y valores pequeños precisos. |
+| **`%`** | Porcentaje relativo al padre | Anchos y altos responsivos. |
+| **`em`** | `font-size` del elemento actual | Márgenes y paddings que escalan con el texto. |
+| **`rem`** | `font-size` del `<html>` | Tipografía y espaciados globales consistentes (preferible). |
+| **`vw` / `vh`** | Porcentaje del viewport | `100vw` = ancho completo, `100vh` = alto completo. |
+| **`dvh` / `svh` / `lvh`** | Viewport dinámicas | Consideran las barras de navegación móviles. |
+| **`ch`** | Ancho del carácter "0" | Limitar anchos de línea de texto (60-70ch óptimo). |
+| **`fr`** | Fracción en CSS Grid | Distribuye espacio disponible proporcionalmente. |
+| **`clamp(min, ideal, max)`** | Función CSS | Limita un valor entre un mínimo y un máximo. |
 
 ### 8. Organización del código CSS
 
-**BEM (Block-Element-Modifier):** Metodología de nomenclatura. Bloque: `.card`, Elemento: `.card__title`, Modificador: `.card--featured`. Evita anidamiento excesivo, produce selectores planos de baja especificidad y es auto-documentado.
-
-**ITCSS (Inverted Triangle CSS):** Arquitectura por capas de especificidad creciente: Settings → Tools → Generic → Elements → Objects → Components → Utilities. Las utilidades (`.hidden`, `.text-center`) tienen máxima especificidad por posición.
-
-**Utility-first (Tailwind CSS):** Enfoque donde cada clase aplica una propiedad CSS específica: `class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md"`. Ventajas: sin nombrar cosas, sin especificidad, cambios locales, CSS final más pequeño en producción.
+!!! info "Metodologías de organización"
+    - **BEM (Block-Element-Modifier)** — metodología de nomenclatura. Bloque: `.card`, Elemento: `.card__title`, Modificador: `.card--featured`. Evita anidamiento excesivo, produce selectores planos de baja especificidad y es auto-documentado.
+    - **ITCSS (Inverted Triangle CSS)** — arquitectura por capas de especificidad creciente: Settings → Tools → Generic → Elements → Objects → Components → Utilities. Las utilidades (`.hidden`, `.text-center`) tienen máxima especificidad por posición.
+    - **Utility-first (Tailwind CSS)** — enfoque donde cada clase aplica una propiedad CSS específica: `class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md"`. Ventajas: sin nombrar cosas, sin especificidad, cambios locales, CSS final más pequeño en producción.
 
 ### 9. Funciones CSS
 
@@ -106,9 +171,14 @@ body { background: var(--bg); color: var(--text); }
 
 ### 10. Pseudoelementos decorativos
 
-`::before` y `::after` requieren la propiedad `content` (puede ser texto, url() o vacío para decoración pura). Son hijos del elemento y se comportan como `inline` por defecto. Útiles para iconos, decoraciones, tooltips CSS puro, limpieza de floats y animaciones decorativas sin HTML adicional.
+`::before` y `::after` requieren la propiedad **`content`** (puede ser texto, `url()` o vacío para decoración pura). Son hijos del elemento y se comportan como `inline` por defecto. Útiles para **iconos**, **decoraciones**, **tooltips CSS puro**, **limpieza de floats** y **animaciones decorativas** sin HTML adicional.
 
-Los contadores CSS (`counter-reset`, `counter-increment`, `counter()`) permiten numerar elementos automáticamente, muy útil para listas numeradas personalizadas o numeración de figuras.
+!!! info "Contadores CSS"
+    Los contadores CSS (`counter-reset`, `counter-increment`, `counter()`) permiten numerar elementos automáticamente, muy útil para listas numeradas personalizadas o numeración de figuras:
+
+    - **`counter-reset`** — inicializa un contador.
+    - **`counter-increment`** — incrementa el contador.
+    - **`counter()`** — muestra el valor del contador.
 
 ### 11. Transiciones y animaciones
 
@@ -116,7 +186,9 @@ Los contadores CSS (`counter-reset`, `counter-increment`, `counter()`) permiten 
 
 **Animaciones:** `@keyframes nombre { 0% {...} 100% {...} }` define fotogramas. `animation: nombre duración timing-function retardo iteraciones dirección fill-mode`. Permiten secuencias complejas y repetición.
 
-**`prefers-reduced-motion`:** Media query que respeta la preferencia del sistema operativo del usuario para reducir animaciones. Es obligatorio para accesibilidad:
+!!! warning "Obligatorio: prefers-reduced-motion"
+    **`prefers-reduced-motion`** es una media query que respeta la preferencia del sistema operativo del usuario para reducir animaciones. Es obligatorio para accesibilidad:
+
 ```css
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -125,13 +197,12 @@ Los contadores CSS (`counter-reset`, `counter-increment`, `counter()`) permiten 
 
 ### 12. Técnicas de centrado
 
-**Flexbox:** `display: flex; justify-content: center; align-items: center;` en el contenedor. Centrado bidimensional más simple y moderno.
-
-**Grid:** `display: grid; place-items: center;` (shorthand de `align-items` + `justify-items`). Para un solo elemento: `place-content: center`.
-
-**Absolute + transform:** `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);` sobre el elemento a centrar, con `position: relative` en el padre.
-
-**Text-align + line-height:** Para centrado horizontal de texto inline: `text-align: center`. Para centrado vertical de una línea: `line-height` igual a la altura del contenedor.
+| Técnica | Aplicación |
+|---------|------------|
+| **Flexbox** | `display: flex; justify-content: center; align-items: center;` en el contenedor. Centrado bidimensional más simple y moderno. |
+| **Grid** | `display: grid; place-items: center;` (shorthand de `align-items` + `justify-items`). Para un solo elemento: `place-content: center`. |
+| **Absolute + transform** | `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);` sobre el elemento a centrar, con `position: relative` en el padre. |
+| **Text-align + line-height** | Para centrado horizontal de texto inline: `text-align: center`. Para centrado vertical de una línea: `line-height` igual a la altura del contenedor. |
 
 ## Ejemplos guiados
 
@@ -1270,99 +1341,134 @@ content: counter(item);       /* Muestra el valor actual */</pre>
 
 ### Caso Real 1: Sistema de diseño de Stripe (stripe.com)
 
-Stripe utiliza un enfoque sofisticado de variables CSS para su sistema de diseño. Definen cientos de custom properties en `:root` que controlan colores, espaciados, tipografía, sombras y bordes. Su sistema de temas es particularmente avanzado: utilizan variables para cada token de diseño y cambian entre temas claro/oscuro modificando las variables a nivel de `:root`. Emplean `@layer` para organizar su CSS en capas lógicas (reset, base, componentes, utilidades), y sus componentes siguen una metodología similar a BEM con nombres descriptivos. Hacen uso extensivo de `:focus-visible` para accesibilidad con teclado y `prefers-reduced-motion` para respetar preferencias de animación del usuario. Sus animaciones son sutiles y funcionales, utilizando `transition` para micro-interacciones en botones y formularios.
+!!! example "Caso real: Stripe"
+    Stripe utiliza un enfoque sofisticado de variables CSS para su sistema de diseño.
+
+    - Definen cientos de **custom properties** en `:root` que controlan colores, espaciados, tipografía, sombras y bordes.
+    - Su sistema de temas es particularmente avanzado: utilizan variables para cada token de diseño y cambian entre temas claro/oscuro modificando las variables a nivel de `:root`.
+    - Emplean `@layer` para organizar su CSS en capas lógicas (reset, base, componentes, utilidades), y sus componentes siguen una metodología similar a **BEM** con nombres descriptivos.
+    - Hacen uso extensivo de `:focus-visible` para accesibilidad con teclado y `prefers-reduced-motion` para respetar preferencias de animación del usuario.
+    - Sus animaciones son sutiles y funcionales, utilizando `transition` para micro-interacciones en botones y formularios.
 
 ### Caso Real 2: Tailwind CSS en Vercel (vercel.com)
 
-Vercel utiliza Tailwind CSS, el framework utility-first más popular. Su HTML está lleno de clases utilitarias como `flex`, `items-center`, `gap-4`, `p-6`. Este enfoque elimina completamente los problemas de especificidad y naming, pero requiere disciplina en la organización del HTML. Vercel combina Tailwind con variables CSS para temas y utiliza `dark:` prefix para modo oscuro. Las animaciones y transiciones se manejan con clases de Tailwind (`transition-all`, `duration-200`, `hover:scale-105`). El CSS final en producción es notablemente pequeño gracias al purgado de clases no utilizadas.
+!!! example "Caso real: Vercel con Tailwind CSS"
+    Vercel utiliza **Tailwind CSS**, el framework utility-first más popular.
+
+    - Su HTML está lleno de clases utilitarias como `flex`, `items-center`, `gap-4`, `p-6`.
+    - Este enfoque elimina completamente los problemas de especificidad y naming, pero requiere disciplina en la organización del HTML.
+    - Vercel combina Tailwind con variables CSS para temas y utiliza `dark:` prefix para modo oscuro.
+    - Las animaciones y transiciones se manejan con clases de Tailwind (`transition-all`, `duration-200`, `hover:scale-105`).
+    - El CSS final en producción es notablemente pequeño gracias al purgado de clases no utilizadas.
 
 ### Caso Real 3: GitHub - CSS a escala masiva con Primer Design System
 
-GitHub mantiene Primer, su sistema de diseño open source. Utilizan CSS Modules para encapsular estilos por componente, complementado con variables CSS globales para tokens de diseño. Su arquitectura CSS incluye capas de utilidades, componentes y temas. Hacen uso intensivo de `:focus-visible` y `prefers-reduced-motion`. Las animaciones son mínimas y funcionales. Su sistema de color soporta múltiples temas (light, dark, high contrast, daltonismo) implementados mediante variables CSS intercambiables. Es un ejemplo de CSS a escala empresarial con cientos de componentes mantenidos por equipos distribuidos globalmente.
+!!! example "Caso real: GitHub Primer"
+    GitHub mantiene **Primer**, su sistema de diseño open source.
+
+    - Utilizan **CSS Modules** para encapsular estilos por componente, complementado con variables CSS globales para tokens de diseño.
+    - Su arquitectura CSS incluye capas de utilidades, componentes y temas.
+    - Hacen uso intensivo de `:focus-visible` y `prefers-reduced-motion`.
+    - Las animaciones son mínimas y funcionales.
+    - Su sistema de color soporta múltiples temas (light, dark, high contrast, daltonismo) implementados mediante variables CSS intercambiables.
+    - Es un ejemplo de CSS a escala empresarial con cientos de componentes mantenidos por equipos distribuidos globalmente.
 
 ## Actividades guiadas
 
 ### Actividad Guiada 1: Sistema de temas claro/oscuro con variables CSS
 
-**RA:** RA2. **Objetivo:** Implementar un sistema completo de temas intercambiables usando variables CSS y JavaScript, incluyendo persistencia en localStorage y detección de preferencia del sistema.  
-**Enunciado:** Crea una página web con al menos header, contenido principal (cards) y footer. Define todas las variables de color, fondo, texto, bordes, sombras y radios en `:root` para el tema claro y en `[data-theme="dark"]` para el tema oscuro. Implementa un botón toggle que cambie `data-theme` en `<html>`. Persiste la elección en localStorage. Detecta `prefers-color-scheme` al cargar la página. Todas las transiciones de color deben ser suaves.  
-**Criterios:** Variables completas para ambos temas (3 puntos), toggle funcional con JS (2 puntos), persistencia localStorage (2 puntos), detección preferencia sistema (2 puntos), transiciones suaves (1 punto).
+- **RA:** RA2
+- **Objetivo:** Implementar un sistema completo de temas intercambiables usando variables CSS y JavaScript, incluyendo persistencia en localStorage y detección de preferencia del sistema.
+- **Enunciado:** Crea una página web con al menos header, contenido principal (cards) y footer. Define todas las variables de color, fondo, texto, bordes, sombras y radios en `:root` para el tema claro y en `[data-theme="dark"]` para el tema oscuro. Implementa un botón toggle que cambie `data-theme` en `<html>`. Persiste la elección en localStorage. Detecta `prefers-color-scheme` al cargar la página. Todas las transiciones de color deben ser suaves.
+- **Criterios:** Variables completas para ambos temas (3 puntos), toggle funcional con JS (2 puntos), persistencia localStorage (2 puntos), detección preferencia sistema (2 puntos), transiciones suaves (1 punto).
 
 ### Actividad Guiada 2: Galería de cards con BEM y animaciones
 
-**RA:** RA2. **Objetivo:** Aplicar la metodología BEM para crear una galería de tarjetas con animaciones de entrada y efectos hover.  
-**Enunciado:** Diseña 6 tarjetas de cursos usando BEM (bloque `.course-card`, elementos `__image`, `__title`, `__description`, `__price`, `__badge`, modificadores `--featured`, `--sold-out`). Aplica `@keyframes` para animaciones de entrada escalonadas. Efectos hover con `transition` en sombra y transform. Respeta `prefers-reduced-motion`.  
-**Criterios:** BEM correcto en los 6 componentes (4 puntos), animaciones de entrada escalonadas (2 puntos), efectos hover con transition (2 puntos), prefers-reduced-motion implementado (1 punto), responsive (1 punto).
+- **RA:** RA2
+- **Objetivo:** Aplicar la metodología BEM para crear una galería de tarjetas con animaciones de entrada y efectos hover.
+- **Enunciado:** Diseña 6 tarjetas de cursos usando BEM (bloque `.course-card`, elementos `__image`, `__title`, `__description`, `__price`, `__badge`, modificadores `--featured`, `--sold-out`). Aplica `@keyframes` para animaciones de entrada escalonadas. Efectos hover con `transition` en sombra y transform. Respeta `prefers-reduced-motion`.
+- **Criterios:** BEM correcto en los 6 componentes (4 puntos), animaciones de entrada escalonadas (2 puntos), efectos hover con transition (2 puntos), prefers-reduced-motion implementado (1 punto), responsive (1 punto).
 
 ### Actividad Guiada 3: Tipografía fluida con clamp()
 
-**RA:** RA2. **Objetivo:** Implementar un sistema de tipografía completamente fluida usando clamp() como alternativa a media queries.  
-**Enunciado:** Construye una landing page donde todos los tamaños de fuente, espaciados y dimensiones usen `clamp()`. Aplica tipografía fluida a h1, h2, h3, p, y también a paddings y gaps. Usa `min()` para anchos máximos de contenedor y `max()` para anchos mínimos de elementos. La página debe ser legible desde 320px hasta 2560px sin usar una sola media query.  
-**Criterios:** Tipografía fluida correcta en todos los niveles (3 puntos), espaciados fluidos (2 puntos), min()/max() correctos (2 puntos), legibilidad en todo el rango 320px-2560px sin media queries (3 puntos).
+- **RA:** RA2
+- **Objetivo:** Implementar un sistema de tipografía completamente fluida usando clamp() como alternativa a media queries.
+- **Enunciado:** Construye una landing page donde todos los tamaños de fuente, espaciados y dimensiones usen `clamp()`. Aplica tipografía fluida a h1, h2, h3, p, y también a paddings y gaps. Usa `min()` para anchos máximos de contenedor y `max()` para anchos mínimos de elementos. La página debe ser legible desde 320px hasta 2560px sin usar una sola media query.
+- **Criterios:** Tipografía fluida correcta en todos los niveles (3 puntos), espaciados fluidos (2 puntos), min()/max() correctos (2 puntos), legibilidad en todo el rango 320px-2560px sin media queries (3 puntos).
 
 ### Actividad Guiada 4: Tooltips y decoraciones con pseudoelementos
 
-**RA:** RA2. **Objetivo:** Crear elementos decorativos y funcionales usando exclusivamente ::before y ::after, sin modificar el HTML.  
-**Enunciado:** Crea una página que muestre: (1) tooltips en botones usando `attr(data-tooltip)` en `::after`, (2) iconos decorativos antes de enlaces externos con `::before`, (3) un efecto de subrayado animado en enlaces con `::after`, (4) contadores CSS para numerar figuras automáticamente, (5) badges de notificación usando `::after` con `content: attr(data-count)`. Todo sin JavaScript (excepto los contadores dinámicos).  
-**Criterios:** Tooltips funcionales con ::after (2 puntos), decoraciones de enlaces (2 puntos), subrayado animado (2 puntos), contadores CSS (2 puntos), badges con attr() (2 puntos).
+- **RA:** RA2
+- **Objetivo:** Crear elementos decorativos y funcionales usando exclusivamente ::before y ::after, sin modificar el HTML.
+- **Enunciado:** Crea una página que muestre: (1) tooltips en botones usando `attr(data-tooltip)` en `::after`, (2) iconos decorativos antes de enlaces externos con `::before`, (3) un efecto de subrayado animado en enlaces con `::after`, (4) contadores CSS para numerar figuras automáticamente, (5) badges de notificación usando `::after` con `content: attr(data-count)`. Todo sin JavaScript (excepto los contadores dinámicos).
+- **Criterios:** Tooltips funcionales con ::after (2 puntos), decoraciones de enlaces (2 puntos), subrayado animado (2 puntos), contadores CSS (2 puntos), badges con attr() (2 puntos).
 
 ### Actividad Guiada 5: Dashboard con transiciones y animaciones
 
-**RA:** RA2. **Objetivo:** Crear un panel de control con animaciones de entrada, micro-interacciones y gestión de estados de carga.  
-**Enunciado:** Diseña un dashboard con: header, sidebar, área de contenido con 4 cards de estadísticas. Las cards deben entrar con animación escalonada al cargar. Implementa animación de pulso en indicadores de "en vivo". Usa transiciones en hover de cards (elevación + sombra). Añade un skeleton loader animado para simular carga. Respeta prefers-reduced-motion.  
-**Criterios:** Animaciones de entrada (2 puntos), micro-interacciones hover (2 puntos), skeleton loader (2 puntos), prefers-reduced-motion (2 puntos), diseño responsive (2 puntos).
+- **RA:** RA2
+- **Objetivo:** Crear un panel de control con animaciones de entrada, micro-interacciones y gestión de estados de carga.
+- **Enunciado:** Diseña un dashboard con: header, sidebar, área de contenido con 4 cards de estadísticas. Las cards deben entrar con animación escalonada al cargar. Implementa animación de pulso en indicadores de "en vivo". Usa transiciones en hover de cards (elevación + sombra). Añade un skeleton loader animado para simular carga. Respeta prefers-reduced-motion.
+- **Criterios:** Animaciones de entrada (2 puntos), micro-interacciones hover (2 puntos), skeleton loader (2 puntos), prefers-reduced-motion (2 puntos), diseño responsive (2 puntos).
 
 ## Actividades propuestas
 
 ### Actividad Propuesta 1: Refactorización de CSS legacy a CSS moderno
 
-**RA:** RA2. **Objetivo:** Transformar una hoja de estilos legacy (con !important, selectores anidados profundos, unidades absolutas) en CSS moderno usando variables, @layer, unidades relativas y selectores planos.  
-**Enunciado:** Se proporciona una hoja de estilos de 200 líneas con malas prácticas. Refactorízala aplicando: variables CSS para colores y espaciados, capas @layer para organizar por prioridad, sustitución de px por rem/em, selectores BEM planos, sustitución de !important por capas, y tipografía fluida con clamp(). La apariencia visual final debe ser idéntica.  
-**Criterios:** Variables CSS bien organizadas (3 puntos), @layer correcto (3 puntos), unidades relativas (2 puntos), sin !important (2 puntos).
+- **RA:** RA2
+- **Objetivo:** Transformar una hoja de estilos legacy (con !important, selectores anidados profundos, unidades absolutas) en CSS moderno usando variables, @layer, unidades relativas y selectores planos.
+- **Enunciado:** Se proporciona una hoja de estilos de 200 líneas con malas prácticas. Refactorízala aplicando: variables CSS para colores y espaciados, capas @layer para organizar por prioridad, sustitución de px por rem/em, selectores BEM planos, sustitución de !important por capas, y tipografía fluida con clamp(). La apariencia visual final debe ser idéntica.
+- **Criterios:** Variables CSS bien organizadas (3 puntos), @layer correcto (3 puntos), unidades relativas (2 puntos), sin !important (2 puntos).
 
 ### Actividad Propuesta 2: Componente de acordeón animado CSS puro
 
-**RA:** RA2. **Objetivo:** Crear un componente acordeón completamente funcional y animado usando solo HTML y CSS (sin JavaScript), con details/summary o con el hack del checkbox.  
-**Enunciado:** Crea un componente acordeón que muestre preguntas frecuentes. Al hacer clic en una pregunta, la respuesta debe desplegarse con una animación suave de altura. El diseño debe ser responsive y profesional. Los iconos (+/-) deben animarse con rotate. Implementa apertura exclusiva (solo un item abierto a la vez).  
-**Criterios:** Animaciones de apertura/cierre fluidas (3 puntos), iconos animados (2 puntos), diseño responsive (2 puntos), accesibilidad con teclado (2 puntos), apertura exclusiva (1 punto).
+- **RA:** RA2
+- **Objetivo:** Crear un componente acordeón completamente funcional y animado usando solo HTML y CSS (sin JavaScript), con details/summary o con el hack del checkbox.
+- **Enunciado:** Crea un componente acordeón que muestre preguntas frecuentes. Al hacer clic en una pregunta, la respuesta debe desplegarse con una animación suave de altura. El diseño debe ser responsive y profesional. Los iconos (+/-) deben animarse con rotate. Implementa apertura exclusiva (solo un item abierto a la vez).
+- **Criterios:** Animaciones de apertura/cierre fluidas (3 puntos), iconos animados (2 puntos), diseño responsive (2 puntos), accesibilidad con teclado (2 puntos), apertura exclusiva (1 punto).
 
 ### Actividad Propuesta 3: Landing page con parallax CSS puro
 
-**RA:** RA2. **Objetivo:** Crear una landing page con efecto parallax implementado exclusivamente con CSS (sin JavaScript), usando background-attachment: fixed y capas de fondo.  
-**Enunciado:** Diseña una landing page para un producto digital con 4 secciones de altura completa (100vh). Cada sección debe tener una imagen de fondo diferente con efecto parallax. El contenido debe estar centrado en cada sección. Implementa transiciones suaves al hacer scroll entre secciones. Añade un menú de navegación fijo (sticky) que cambie de estilo al hacer scroll.  
-**Criterios:** Efecto parallax correcto (3 puntos), secciones 100vh (2 puntos), menú sticky funcional (2 puntos), diseño visual profesional (2 puntos), responsive (1 punto).
+- **RA:** RA2
+- **Objetivo:** Crear una landing page con efecto parallax implementado exclusivamente con CSS (sin JavaScript), usando background-attachment: fixed y capas de fondo.
+- **Enunciado:** Diseña una landing page para un producto digital con 4 secciones de altura completa (100vh). Cada sección debe tener una imagen de fondo diferente con efecto parallax. El contenido debe estar centrado en cada sección. Implementa transiciones suaves al hacer scroll entre secciones. Añade un menú de navegación fijo (sticky) que cambie de estilo al hacer scroll.
+- **Criterios:** Efecto parallax correcto (3 puntos), secciones 100vh (2 puntos), menú sticky funcional (2 puntos), diseño visual profesional (2 puntos), responsive (1 punto).
 
 ### Actividad Propuesta 4: Formulario con validación visual CSS-only
 
-**RA:** RA2 y RA5. **Objetivo:** Crear un formulario donde toda la validación visual (colores, iconos, mensajes) se gestione exclusivamente con CSS usando :valid, :invalid y pseudoelementos.  
-**Enunciado:** Diseña un formulario de registro con campos: nombre, email, password, confirmar password. Usa :valid/:invalid para mostrar bordes verdes/rojos. Muestra iconos de check/cross con ::after. Muestra mensajes de error con CSS (sin JS). Añade barra de fortaleza de password visual con CSS. Implementa :focus-within para resaltar el fieldset activo.  
-**Criterios:** Validación visual CSS completa (4 puntos), iconos check/cross (2 puntos), barra fortaleza (2 puntos), :focus-within (1 punto), responsive (1 punto).
+- **RA:** RA2 y RA5
+- **Objetivo:** Crear un formulario donde toda la validación visual (colores, iconos, mensajes) se gestione exclusivamente con CSS usando :valid, :invalid y pseudoelementos.
+- **Enunciado:** Diseña un formulario de registro con campos: nombre, email, password, confirmar password. Usa :valid/:invalid para mostrar bordes verdes/rojos. Muestra iconos de check/cross con ::after. Muestra mensajes de error con CSS (sin JS). Añade barra de fortaleza de password visual con CSS. Implementa :focus-within para resaltar el fieldset activo.
+- **Criterios:** Validación visual CSS completa (4 puntos), iconos check/cross (2 puntos), barra fortaleza (2 puntos), :focus-within (1 punto), responsive (1 punto).
 
 ### Actividad Propuesta 5: Micro-interacciones y animaciones de interfaz
 
-**RA:** RA2. **Objetivo:** Implementar un conjunto de micro-interacciones profesionales que mejoren la experiencia de usuario sin resultar intrusivas.  
-**Enunciado:** Crea una página que muestre: (1) botones con efecto ripple al hacer clic (CSS puro con ::after y animación), (2) skeleton loaders animados, (3) notificación toast que aparece y desaparece con animación, (4) interruptor toggle animado, (5) tarjetas con efecto de tilt 3D sutil en hover. Todo con CSS, mínimo JavaScript.  
-**Criterios:** Botones ripple (2 puntos), skeleton loaders (2 puntos), toast notification (2 puntos), toggle switch (2 puntos), efecto tilt (2 puntos).
+- **RA:** RA2
+- **Objetivo:** Implementar un conjunto de micro-interacciones profesionales que mejoren la experiencia de usuario sin resultar intrusivas.
+- **Enunciado:** Crea una página que muestre: (1) botones con efecto ripple al hacer clic (CSS puro con ::after y animación), (2) skeleton loaders animados, (3) notificación toast que aparece y desaparece con animación, (4) interruptor toggle animado, (5) tarjetas con efecto de tilt 3D sutil en hover. Todo con CSS, mínimo JavaScript.
+- **Criterios:** Botones ripple (2 puntos), skeleton loaders (2 puntos), toast notification (2 puntos), toggle switch (2 puntos), efecto tilt (2 puntos).
 
 ## Actividades de ampliación
 
 ### Actividad de Ampliación 1: Design System completo con CSS moderno
 
-**RA:** RA1 y RA2. **Objetivo:** Crear un mini design system completo con tokens de diseño, componentes reutilizables y documentación, usando exclusivamente CSS moderno.  
-**Enunciado:** Desarrolla un design system para una aplicación de gestión de tareas que incluya: (1) tokens de diseño como variables CSS (colores, tipografía, espaciado, sombras, radios), (2) componentes: botones (primary, secondary, ghost, danger, sizes), cards, inputs, badges, alerts, modals, (3) temas claro y oscuro, (4) página de documentación que muestre todos los componentes, (5) todo organizado con @layer. Entrega un único archivo HTML con todo el CSS embebido.  
-**Criterios:** Tokens completos (3 puntos), 5+ componentes funcionales (3 puntos), temas claro/oscuro (2 puntos), documentación (1 punto), organización @layer (1 punto).
+- **RA:** RA1 y RA2
+- **Objetivo:** Crear un mini design system completo con tokens de diseño, componentes reutilizables y documentación, usando exclusivamente CSS moderno.
+- **Enunciado:** Desarrolla un design system para una aplicación de gestión de tareas que incluya: (1) tokens de diseño como variables CSS (colores, tipografía, espaciado, sombras, radios), (2) componentes: botones (primary, secondary, ghost, danger, sizes), cards, inputs, badges, alerts, modals, (3) temas claro y oscuro, (4) página de documentación que muestre todos los componentes, (5) todo organizado con @layer. Entrega un único archivo HTML con todo el CSS embebido.
+- **Criterios:** Tokens completos (3 puntos), 5+ componentes funcionales (3 puntos), temas claro/oscuro (2 puntos), documentación (1 punto), organización @layer (1 punto).
 
 ### Actividad de Ampliación 2: Juego de memoria CSS-only con animaciones
 
-**RA:** RA2 y RA4. **Objetivo:** Crear un juego de memoria (memory match) funcional usando exclusivamente HTML y CSS, sin JavaScript, aprovechando la pseudoclase :checked y técnicas avanzadas.  
-**Enunciado:** Crea un tablero de 4x4 cartas (16 cartas, 8 parejas). Al hacer clic en una carta (usando label+checkbox oculto), esta debe girar con animación 3D. Si dos cartas coinciden, deben permanecer visibles. Implementa: animación de giro 3D con transform y perspective, indicador de parejas encontradas, botón de reinicio, animación de victoria, diseño responsive.  
-**Criterios:** Mecánica de giro con CSS (3 puntos), animación 3D correcta (2 puntos), tablero 4x4 funcional (2 puntos), reinicio (1 punto), animación de victoria (1 punto), responsive (1 punto).
+- **RA:** RA2 y RA4
+- **Objetivo:** Crear un juego de memoria (memory match) funcional usando exclusivamente HTML y CSS, sin JavaScript, aprovechando la pseudoclase :checked y técnicas avanzadas.
+- **Enunciado:** Crea un tablero de 4x4 cartas (16 cartas, 8 parejas). Al hacer clic en una carta (usando label+checkbox oculto), esta debe girar con animación 3D. Si dos cartas coinciden, deben permanecer visibles. Implementa: animación de giro 3D con transform y perspective, indicador de parejas encontradas, botón de reinicio, animación de victoria, diseño responsive.
+- **Criterios:** Mecánica de giro con CSS (3 puntos), animación 3D correcta (2 puntos), tablero 4x4 funcional (2 puntos), reinicio (1 punto), animación de victoria (1 punto), responsive (1 punto).
 
 ### Actividad de Ampliación 3: Clon responsive de la interfaz de Spotify con CSS Grid y Flexbox
 
-**RA:** RA1, RA2. **Objetivo:** Replicar la interfaz principal de Spotify Web Player usando exclusivamente HTML y CSS (sin frameworks), demostrando dominio de layout moderno.  
-**Enunciado:** Reproduce la interfaz de Spotify con: sidebar izquierda (playlists, navegación), área principal (playlists destacadas, albums en grid), barra de reproducción inferior fija, y header superior con navegación. Implementa diseño responsive que se adapte a: desktop (>1024px), tablet (768-1024px), mobile (<768px). En mobile, la sidebar debe colapsar y la barra inferior debe reorganizarse. Usa CSS Grid para el layout principal y Flexbox para componentes internos.  
-**Criterios:** Layout Grid correcto (3 puntos), Flexbox en componentes (2 puntos), responsive 3 breakpoints (3 puntos), fidelidad visual (1 punto), código organizado y comentado (1 punto).
+- **RA:** RA1, RA2
+- **Objetivo:** Replicar la interfaz principal de Spotify Web Player usando exclusivamente HTML y CSS (sin frameworks), demostrando dominio de layout moderno.
+- **Enunciado:** Reproduce la interfaz de Spotify con: sidebar izquierda (playlists, navegación), área principal (playlists destacadas, albums en grid), barra de reproducción inferior fija, y header superior con navegación. Implementa diseño responsive que se adapte a: desktop (>1024px), tablet (768-1024px), mobile (<768px). En mobile, la sidebar debe colapsar y la barra inferior debe reorganizarse. Usa CSS Grid para el layout principal y Flexbox para componentes internos.
+- **Criterios:** Layout Grid correcto (3 puntos), Flexbox en componentes (2 puntos), responsive 3 breakpoints (3 puntos), fidelidad visual (1 punto), código organizado y comentado (1 punto).
 
 ## Buenas prácticas
 

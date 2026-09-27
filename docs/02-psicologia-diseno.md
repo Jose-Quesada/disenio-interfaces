@@ -93,72 +93,157 @@ Al finalizar esta unidad, el alumnado será capaz de:
 
 ### 1. Jerarquía visual
 
-La jerarquía visual es el principio de diseño que organiza los elementos de una interfaz por orden de importancia, de manera que la persona usuaria pueda identificar instantáneamente qué es lo más relevante, dónde debe mirar primero y qué acciones tiene disponibles. Es la herramienta fundamental para guiar la atención del usuario de forma predecible y eficiente a través de la interfaz, asegurando que la información más crítica sea percibida primero.
+!!! info "Definición"
+    La **jerarquía visual** es el principio de diseño que organiza los elementos de una interfaz **por orden de importancia**, de manera que la persona usuaria pueda identificar instantáneamente qué es lo más relevante, dónde debe mirar primero y qué acciones tiene disponibles. Es la herramienta fundamental para guiar la atención de forma predecible y eficiente, asegurando que la información más crítica sea percibida primero.
 
-Las técnicas para establecer jerarquía visual son múltiples y deben usarse de forma combinada. El tamaño es el indicador más poderoso: los elementos más grandes se perciben como más importantes. El color funciona mediante el contraste cromático: los colores vibrantes y saturados atraen la atención frente a los neutros y desaturados. La posición determina la jerarquía según los patrones culturales de lectura: en culturas occidentales, el contenido en la esquina superior izquierda tiene la máxima jerarquía posicional. El espacio en blanco alrededor de un elemento también contribuye a su jerarquía: un elemento rodeado de abundante espacio negativo adquiere importancia.
+Las técnicas para establecer jerarquía visual son múltiples y deben usarse de forma combinada:
 
-Los patrones de escaneo visual describen la trayectoria típica que sigue la mirada al examinar una página web. El patrón en F, identificado por el Nielsen Norman Group mediante eye-tracking, es el más común para páginas de contenido textual. La persona usuaria lee la primera línea horizontalmente (el titular), luego desciende y lee otra línea horizontal más corta, y finalmente desciende por el margen izquierdo escaneando verticalmente. Las implicaciones son claras: la información más importante debe colocarse en las dos primeras líneas del patrón F. El patrón en Z es característico de landing pages: la mirada recorre la página desde la esquina superior izquierda a la derecha, desciende en diagonal, y termina en la esquina inferior derecha, que es donde debe situarse el botón de llamada a la acción.
+- **Tamaño** — el indicador más poderoso: los elementos más grandes se perciben como más importantes.
+- **Color** — el contraste cromático atrae la atención: los colores vibrantes y saturados destacan frente a los neutros y desaturados.
+- **Posición** — depende de los patrones culturales de lectura; en culturas occidentales, la **esquina superior izquierda** tiene la máxima jerarquía posicional.
+- **Espacio en blanco** — un elemento rodeado de abundante espacio negativo adquiere importancia.
+
+Los **patrones de escaneo visual** describen la trayectoria típica que sigue la mirada al examinar una página web:
+
+- **Patrón en F** — identificado por el Nielsen Norman Group mediante *eye-tracking*; es el más común para páginas de contenido textual. La persona usuaria lee la primera línea horizontalmente (el titular), luego desciende y lee otra línea horizontal más corta, y finalmente desciende por el margen izquierdo escaneando verticalmente.
+- **Patrón en Z** — característico de las *landing pages*: la mirada recorre la página desde la esquina superior izquierda a la derecha, desciende en diagonal y termina en la esquina inferior derecha.
+
+!!! tip "Implicación práctica"
+    - En el patrón **F**: la información más importante debe situarse en las **dos primeras líneas**.
+    - En el patrón **Z**: el botón de llamada a la acción debe colocarse en la **esquina inferior derecha**.
 
 ### 2. Contraste
 
-El contraste es la diferencia perceptible entre dos o más elementos visuales. Sin contraste, una interfaz es visualmente plana, monótona y difícil de navegar. El contraste es, además, un requisito fundamental de accesibilidad: las personas con baja visión, cataratas, daltonismo o simplemente fatiga visual necesitan suficiente contraste para distinguir el texto del fondo y los elementos interactivos de los decorativos.
+!!! info "Definición"
+    El **contraste** es la diferencia perceptible entre dos o más elementos visuales. Sin contraste, una interfaz es visualmente plana, monótona y difícil de navegar. Además, es un **requisito fundamental de accesibilidad**: las personas con baja visión, cataratas, daltonismo o fatiga visual necesitan suficiente contraste para distinguir el texto del fondo y los elementos interactivos de los decorativos.
 
-Los tipos de contraste que podemos manipular en diseño web son múltiples: contraste de color (medido mediante la relación de luminancia entre dos colores), contraste de tamaño (elementos grandes vs pequeños), contraste de forma (elementos orgánicos vs geométricos), y contraste de tipografía (serif vs sans-serif, bold vs light). Según las WCAG 2.1, el ratio de contraste mínimo para texto normal debe ser de 4.5:1 para el nivel AA y 7:1 para el nivel AAA. Para texto grande (más de 18px o más de 14px en negrita), los ratios mínimos son 3:1 (AA) y 4.5:1 (AAA).
+Los tipos de contraste que podemos manipular en diseño web son:
 
-Las herramientas de verificación de contraste son fundamentales en el flujo de trabajo: WebAIM Contrast Checker permite introducir códigos de color y devuelve el ratio; Stark es un plugin para Figma, Sketch y Adobe XD que verifica el contraste en mockups; el panel de Accesibilidad de Chrome DevTools muestra el ratio de cualquier elemento seleccionado.
+- **Color** — medido mediante la relación de luminancia entre dos colores.
+- **Tamaño** — elementos grandes frente a pequeños.
+- **Forma** — elementos orgánicos frente a geométricos.
+- **Tipografía** — *serif* frente a *sans-serif*, **bold** frente a *light*.
+
+Según las **[WCAG 2.1](https://es.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines)**, los ratios mínimos de contraste son:
+
+| Nivel | Texto normal | Texto grande (≥18px o ≥14px en negrita) |
+|-------|--------------|------------------------------------------|
+| **AA** | **4.5:1** | **3:1** |
+| **AAA** | **7:1** | **4.5:1** |
+
+Las herramientas de verificación de contraste son fundamentales en el flujo de trabajo:
+
+- **WebAIM Contrast Checker** — introduce códigos de color y devuelve el ratio.
+- **Stark** — plugin para Figma, Sketch y Adobe XD que verifica el contraste directamente en los mockups.
+- **Panel de Accesibilidad de Chrome DevTools** — muestra el ratio de cualquier elemento seleccionado.
 
 ### 3. Proximidad
 
-El principio de proximidad, heredado de las leyes de la Gestalt, establece que los elementos que están físicamente cerca unos de otros tienden a percibirse como un grupo relacionado. Es una de las herramientas más potentes del diseño de interfaces, ya que permite comunicar relaciones entre elementos sin necesidad de bordes, fondos de color, iconos ni texto explicativo.
+!!! info "Definición"
+    El principio de **proximidad**, heredado de las leyes de la Gestalt, establece que los elementos que están **físicamente cerca** unos de otros tienden a percibirse como un grupo relacionado. Es una de las herramientas más potentes del diseño de interfaces, ya que permite comunicar relaciones entre elementos sin bordes, fondos de color, iconos ni texto explicativo.
 
-La regla fundamental es que el espacio entre elementos de un mismo grupo debe ser menor que el espacio entre grupos diferentes. En un formulario, la etiqueta "Nombre" debe estar más cerca de su campo de texto que del campo de texto "Email" que le precede. Si esta regla se invierte, la persona usuaria puede asociar erróneamente la etiqueta con el campo equivocado.
+!!! tip "Regla fundamental"
+    El espacio **dentro** de un grupo debe ser **menor** que el espacio **entre** grupos distintos. En un formulario, la etiqueta «Nombre» debe estar más cerca de su campo de texto que del campo «Email» que le precede; si se invierte, la persona usuaria puede asociar la etiqueta al campo equivocado.
 
-El espacio en blanco no es un lujo, es una necesidad funcional. Actúa como elemento activo de diseño que agrupa, separa, jerarquiza y da respiro visual. La implementación técnica en CSS se basa en establecer una escala de espaciado consistente con una unidad base (por ejemplo, 8px) y utilizar exclusivamente múltiplos.
+El **espacio en blanco** no es un lujo, es una necesidad funcional: agrupa, separa, jerarquiza y da respiro visual. La implementación técnica en CSS se basa en una **escala de espaciado consistente** con una unidad base (por ejemplo, **8px**) utilizando exclusivamente múltiplos de ella.
 
 ### 4. Repetición
 
-El principio de repetición establece que la consistencia en los elementos visuales (colores, tipografías, formas, espaciados, estilos de iconos) crea una sensación de unidad que facilita la navegación y reduce la carga cognitiva. Cuando una persona usuaria aprende que todos los botones de acción primaria son azules, que todos los enlaces están subrayados, o que todas las tarjetas de contenido tienen la misma estructura, puede aplicar ese conocimiento a cada nueva pantalla sin tener que reaprenderlo.
+!!! info "Definición"
+    El principio de **repetición** establece que la consistencia en los elementos visuales (colores, tipografías, formas, espaciados, estilos de iconos) crea una sensación de **unidad** que facilita la navegación y reduce la carga cognitiva: quien aprende que todos los botones de acción primaria son azules, que todos los enlaces están subrayados o que todas las tarjetas tienen la misma estructura puede aplicar ese conocimiento a cada pantalla nueva sin tener que reaprenderlo.
 
-La repetición es el fundamento de los sistemas de diseño (Design Systems): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. Google (Material Design), IBM (Carbon), Atlassian y Shopify han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas, de formularios, paleta y escala tipográfica.
+La repetición es el fundamento de los **sistemas de diseño** (*design systems*): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. **Google** (Material Design), **IBM** (Carbon), **Atlassian** y **Shopify** han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas y de formularios, paleta y escala tipográfica.
 
-La repetición no implica monotonía. La variación controlada —introducir diferencias sutiles dentro de un patrón— hace que una interfaz sea interesante sin dejar de ser coherente.
+!!! tip "Variación controlada"
+    La repetición **no implica monotonía**. Introducir diferencias sutiles dentro de un patrón hace que una interfaz sea interesante sin dejar de ser coherente.
 
 ### 5. Alineación
 
-La alineación establece que ningún elemento debe colocarse de forma arbitraria. Cada elemento debe tener una conexión visual con al menos otro elemento, creando líneas invisibles que guían la mirada y transmiten orden y profesionalidad.
+!!! info "Definición"
+    La **alineación** establece que ningún elemento debe colocarse de forma arbitraria. Cada elemento debe tener una conexión visual con al menos otro elemento, creando **líneas invisibles** que guían la mirada y transmiten orden y profesionalidad.
 
-Los tipos de alineación son: izquierda (la más natural para textos en lenguas occidentales, crea un borde limpio para anclar la mirada), centro (adecuada para titulares y mensajes cortos, pero dificulta la legibilidad en textos largos), derecha (usada para datos numéricos en tablas y para crear tensión visual asimétrica), y justificada (crea bloques de texto con bordes rectos a ambos lados, pero puede generar espaciados irregulares entre palabras). Las cuadrículas CSS Grid son la herramienta fundamental para implementar alineación en diseño web.
+Tipos de alineación:
+
+- **Izquierda** — la más natural para textos en lenguas occidentales; crea un borde limpio para anclar la mirada.
+- **Centro** — adecuada para titulares y mensajes cortos, pero dificulta la legibilidad en textos largos.
+- **Derecha** — usada para datos numéricos en tablas y para crear tensión visual asimétrica.
+- **Justificada** — crea bloques de texto con bordes rectos a ambos lados, pero puede generar espaciados irregulares entre palabras.
+
+Las cuadrículas **CSS Grid** son la herramienta fundamental para implementar alineación en diseño web.
 
 ### 6. Balance
 
-El balance o equilibrio visual es la distribución del peso visual de los elementos en la composición. Cada elemento tiene un peso visual determinado por su tamaño, color, posición, complejidad y aislamiento. El balance simétrico transmite estabilidad y formalidad. El balance asimétrico transmite dinamismo y creatividad. La elección entre ambos debe alinearse con la personalidad de la marca y las expectativas de la audiencia objetivo.
+!!! info "Definición"
+    El **balance** o equilibrio visual es la distribución del peso visual de los elementos en la composición. Cada elemento tiene un peso visual determinado por su **tamaño, color, posición, complejidad y aislamiento**.
+
+- **Balance simétrico** — transmite estabilidad y formalidad.
+- **Balance asimétrico** — transmite dinamismo y creatividad.
+- **Balance radial** — organiza los elementos en torno a un punto central; en la web se aplica puntualmente en portadas y elementos destacados.
+
+La elección entre ambos debe alinearse con la **personalidad de la marca** y las expectativas de la audiencia objetivo.
 
 ### 7. Consistencia
 
-La consistencia garantiza que elementos similares se comporten y se muestren de manera similar en toda la interfaz. Es el principio más importante desde el punto de vista de la UX, porque permite transferir el aprendizaje entre pantallas. La consistencia interna se refiere a la coherencia dentro del mismo producto; la consistencia externa, a la coherencia con las convenciones del resto de productos que la persona usuaria utiliza.
+!!! info "Definición"
+    La **consistencia** garantiza que elementos similares se comporten y se muestren de manera similar en toda la interfaz. Es el **principio más importante desde el punto de vista de la UX**, porque permite transferir el aprendizaje entre pantallas.
+
+- **Consistencia interna** — coherencia dentro del mismo producto.
+- **Consistencia externa** — coherencia con las convenciones del resto de productos que la persona usuaria utiliza.
 
 ### 8. Ley de Hick
 
-La ley de Hick establece que el tiempo para tomar una decisión aumenta logarítmicamente con el número de opciones: T = b × log2(n + 1). En diseño de interfaces, cada opción adicional en un menú incrementa el tiempo de procesamiento. La solución es la categorización jerárquica: organizar 15 enlaces en 4 categorías de 3-4 enlaces cada una, de modo que la decisión se tome en dos pasos más simples en lugar de uno complejo. La divulgación progresiva —mostrar inicialmente solo las opciones más utilizadas— es otra estrategia eficaz.
+La **ley de Hick** establece que el tiempo para tomar una decisión aumenta logarítmicamente con el número de opciones:
+
+> **T = b × log2(n + 1)**
+
+En diseño de interfaces, cada opción adicional en un menú incrementa el tiempo de procesamiento. La solución es la **categorización jerárquica**: organizar **15 enlaces** en **4 categorías de 3-4 enlaces** cada una, de modo que la decisión se tome en **dos pasos más simples** en lugar de uno complejo. La **divulgación progresiva** —mostrar inicialmente solo las opciones más utilizadas— es otra estrategia eficaz.
 
 ### 9. Ley de Fitts
 
-La ley de Fitts establece que el tiempo para alcanzar un objetivo depende de la distancia y del tamaño: T = a + b × log2(2D / W + 1). Los objetivos de interacción deben ser grandes y estar cerca. Apple recomienda 44×44 puntos mínimos para zonas interactivas en iOS; Google recomienda 48×48 dp en Material Design. En mobile, las acciones frecuentes deben situarse en las zonas de fácil alcance para el pulgar (mitad inferior central).
+La **ley de Fitts** establece que el tiempo para alcanzar un objetivo depende de la distancia y del tamaño:
+
+> **T = a + b × log2(2D / W + 1)**
+
+Los objetivos de interacción deben ser **grandes y cercanos**. Las guías oficiales son explícitas:
+
+- **Apple:** mínimo **44×44 puntos** para zonas interactivas en iOS.
+- **Google:** mínimo **48×48 dp** en Material Design.
+
+En mobile, las acciones frecuentes deben situarse en las **zonas de fácil alcance para el pulgar** (mitad inferior central).
 
 ### 10. Efecto de posición serial
 
-El efecto de posición serial describe cómo la posición en una secuencia afecta a la probabilidad de recuerdo: los primeros elementos se recuerdan mejor (primacía) y los últimos también (recencia), mientras que los intermedios son los peor recordados. En diseño web, esto implica colocar los elementos más importantes al principio de menús y listas, y aprovechar tanto la primacía como la recencia para ubicar estratégicamente llamadas a la acción y contenido promocionado.
+El **efecto de posición serial** describe cómo la posición en una secuencia afecta a la probabilidad de recuerdo:
+
+- **Efecto de primacía** — los primeros elementos se recuerdan mejor.
+- **Efecto de recencia** — los últimos también.
+- **Zona intermedia** — los elementos centrales son los peor recordados.
+
+En diseño web, esto implica colocar los elementos **más importantes al principio** de menús y listas, y aprovechar tanto la primacía como la recencia para ubicar estratégicamente **llamadas a la acción** y contenido promocionado.
 
 ### 11. Carga cognitiva
 
-La teoría de la carga cognitiva establece que la memoria de trabajo humana tiene una capacidad limitada (7 ± 2 elementos). En diseño de interfaces, cada elemento que la persona usuaria debe percibir, recordar o procesar consume recursos de esa memoria limitada. Las estrategias para reducir la carga cognitiva incluyen: agrupar información (chunking), dividir procesos complejos en pasos secuenciales, eliminar información irrelevante, reconocer en lugar de recordar, utilizar convenciones familiares, y proporcionar retroalimentación inmediata. En formularios, cada campo adicional incrementa la carga de forma no lineal, por lo que reducir el número de campos visibles tiene un impacto desproporcionadamente positivo en la tasa de finalización.
+!!! info "Definición"
+    La **teoría de la carga cognitiva** establece que la memoria de trabajo humana tiene una capacidad limitada: **7 ± 2 elementos**. En diseño de interfaces, cada elemento que la persona usuaria debe percibir, recordar o procesar consume recursos de esa memoria limitada.
+
+Estrategias para reducir la carga cognitiva:
+
+- **Agrupar** la información (*chunking*).
+- **Dividir** procesos complejos en pasos secuenciales.
+- **Eliminar** información irrelevante.
+- **Reconocer** en lugar de recordar.
+- **Utilizar** convenciones familiares.
+- **Proporcionar** retroalimentación inmediata.
+
+En formularios, cada campo adicional incrementa la carga de forma **no lineal**, por lo que reducir el número de campos visibles tiene un impacto desproporcionadamente positivo en la tasa de finalización.
 
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Patrón de escaneo en F implementado en una página de blog
 
-**Contexto pedagógico:** Este ejemplo implementa una página de blog diseñada para aprovechar el patrón de escaneo en F, colocando estratégicamente la información clave en las zonas donde el ojo se detiene según los estudios de eye-tracking del Nielsen Norman Group.
+!!! example "Contexto pedagógico"
+    Este ejemplo implementa una página de blog diseñada para aprovechar el patrón de escaneo en **F**, colocando estratégicamente la información clave en las zonas donde el ojo se detiene según los estudios de *eye-tracking* del Nielsen Norman Group.
 
 ```html
 <!DOCTYPE html>
@@ -342,13 +427,15 @@ La teoría de la carga cognitiva establece que la memoria de trabajo humana tien
 </html>
 ```
 
-**Explicación del resultado:** Al visualizar esta página, la mirada sigue naturalmente el patrón en F. Primero recorre el título completo de izquierda a derecha. Luego desciende ligeramente y recorre los metadatos y la entradilla. Finalmente desciende por el margen izquierdo, deteniéndose en las palabras en negrita al inicio de cada párrafo y en los subtítulos. Se recomienda al alumnado leer la página con atención y luego intentar escanearla en 5 segundos, anotando qué información retienen; comprobarán que coincide con los elementos situados en las zonas del patrón F.
+!!! note "Explicación del resultado"
+    Al visualizar esta página, la mirada sigue naturalmente el patrón en **F**. Primero recorre el título completo de izquierda a derecha. Luego desciende ligeramente y recorre los metadatos y la entradilla. Finalmente desciende por el margen izquierdo, deteniéndose en las palabras en negrita al inicio de cada párrafo y en los subtítulos. Se recomienda al alumnado leer la página con atención y luego intentar escanearla en **5 segundos**, anotando qué información retienen; comprobarán que coincide con los elementos situados en las zonas del patrón F.
 
 ---
 
 ### Ejemplo 2: Aplicación de la Ley de Hick en navegación categorizada
 
-**Contexto pedagógico:** Comparativa visual y matemática entre un menú con 12 opciones planas y el mismo contenido organizado jerárquicamente, demostrando que la categorización reduce el tiempo de decisión según la fórmula de Hick.
+!!! example "Contexto pedagógico"
+    Comparativa visual y matemática entre un menú con **12 opciones planas** y el mismo contenido organizado jerárquicamente, demostrando que la categorización reduce el tiempo de decisión según la fórmula de Hick.
 
 ```html
 <!DOCTYPE html>
@@ -518,13 +605,15 @@ La teoría de la carga cognitiva establece que la memoria de trabajo humana tien
 </html>
 ```
 
-**Explicación del resultado:** Aunque la suma de los logaritmos es matemáticamente similar en ambos casos, la experiencia subjetiva es radicalmente diferente. Enfrentarse a 12 opciones simultáneas produce ansiedad y parálisis de decisión (fenómeno conocido como "análisis parálisis"). En cambio, elegir primero entre 4 categorías y luego entre 3 enlaces dentro de la categoría seleccionada se percibe como más manejable, aunque la complejidad matemática subyacente sea comparable. La ley de Hick nos enseña que lo importante no es solo el número de opciones, sino cómo se presentan.
+!!! note "Explicación del resultado"
+    Aunque la suma de los logaritmos es matemáticamente similar en ambos casos, la experiencia subjetiva es radicalmente diferente. Enfrentarse a **12 opciones simultáneas** produce ansiedad y parálisis de decisión («análisis parálisis»). En cambio, elegir primero entre **4 categorías** y luego entre **3 enlaces** dentro de la categoría seleccionada se percibe como más manejable, aunque la complejidad matemática subyacente sea comparable. La ley de Hick nos enseña que lo importante no es solo el número de opciones, sino **cómo se presentan**.
 
 ---
 
 ### Ejemplo 3: Ley de Fitts aplicada a zonas táctiles en diseño mobile
 
-**Contexto pedagógico:** Este ejemplo demuestra la aplicación de la ley de Fitts al diseño de una interfaz móvil para listar tareas. Se comparan dos versiones: una con botones pequeños difíciles de pulsar y otra con zonas táctiles amplias y accesibles al pulgar.
+!!! example "Contexto pedagógico"
+    Este ejemplo demuestra la aplicación de la ley de Fitts al diseño de una interfaz móvil para listar tareas. Se comparan dos versiones: una con **botones pequeños** difíciles de pulsar y otra con **zonas táctiles amplias** accesibles al pulgar.
 
 ```html
 <!DOCTYPE html>
@@ -745,13 +834,15 @@ La teoría de la carga cognitiva establece que la memoria de trabajo humana tien
 </html>
 ```
 
-**Explicación del resultado:** La interfaz simula una pantalla de smartphone real. Las tareas con botones de 30px son objetivamente más difíciles de pulsar: requieren mayor precisión motriz, producen más errores (pulsar el texto en lugar del botón) y generan frustración. Los botones de 44px, en cambio, son fáciles de pulsar incluso caminando o en transporte público. La ley de Fitts no es teoría abstracta: si abres esta página en tu móvil e intentas pulsar alternativamente los botones pequeños y grandes, sentirás físicamente la diferencia predicha por la fórmula.
+!!! note "Explicación del resultado"
+    La interfaz simula una pantalla de smartphone real. Las tareas con botones de **30px** son objetivamente más difíciles de pulsar: requieren mayor precisión motriz, producen más errores (pulsar el texto en lugar del botón) y generan frustración. Los botones de **44px**, en cambio, son fáciles de pulsar incluso caminando o en transporte público. La ley de Fitts no es teoría abstracta: si abres esta página en tu móvil e intentas pulsar alternativamente los botones pequeños y grandes, **sentirás físicamente** la diferencia predicha por la fórmula.
 
 ---
 
 ### Ejemplo 4: Carga cognitiva en formularios — de monolítico a paso a paso
 
-**Contexto pedagógico:** Comparación entre un formulario monolítico de 10 campos (alta carga cognitiva) y el mismo formulario dividido en 3 pasos secuenciales (carga cognitiva reducida). Se demuestra cómo la fragmentación mejora la experiencia.
+!!! example "Contexto pedagógico"
+    Comparación entre un formulario monolítico de **10 campos** (alta carga cognitiva) y el mismo formulario dividido en **3 pasos secuenciales** (carga cognitiva reducida). Se demuestra cómo la fragmentación mejora la experiencia.
 
 ```html
 <!DOCTYPE html>
@@ -955,7 +1046,8 @@ La teoría de la carga cognitiva establece que la memoria de trabajo humana tien
 </html>
 ```
 
-**Explicación del resultado:** El formulario monolítico presenta 10 campos simultáneos, saturando la memoria de trabajo (límite: 7 ± 2 ítems). La persona usuaria ve todo el trabajo que le queda por delante y puede desanimarse antes de empezar. El formulario paso a paso muestra solo 3-4 campos por paso, manteniendo la carga cognitiva dentro de los límites manejables. Además, la barra de progreso proporciona feedback motivacional: la persona usuaria siente que avanza y está más cerca de la meta, lo que incrementa significativamente la tasa de finalización. Diversos estudios de usabilidad confirman que los formularios paso a paso pueden aumentar las conversiones entre un 10% y un 25% respecto a sus equivalentes monolíticos.
+!!! note "Explicación del resultado"
+    El formulario monolítico presenta **10 campos simultáneos**, saturando la memoria de trabajo (límite: **7 ± 2 ítems**). La persona usuaria ve todo el trabajo que le queda por delante y puede desanimarse antes de empezar. El formulario paso a paso muestra solo **3-4 campos por paso**, manteniendo la carga cognitiva dentro de los límites manejables. Además, la barra de progreso proporciona *feedback* motivacional: la persona usuaria siente que avanza y está más cerca de la meta. Diversos estudios de usabilidad confirman que los formularios paso a paso pueden aumentar las conversiones entre un **10% y un 25%** respecto a sus equivalentes monolíticos.
 
 
 ## Casos reales
@@ -976,7 +1068,8 @@ Spotify es un caso de estudio fascinante sobre cómo la jerarquía visual puede 
 
 5. **Carga cognitiva gestionada mediante personalización:** Spotify reduce la carga cognitiva de elegir qué escuchar mediante listas personalizadas (Discover Weekly, Daily Mix) que eliminan la necesidad de decidir. En lugar de enfrentar a la persona usuaria a 80 millones de canciones, le presenta 30 recomendaciones personalizadas. Esta estrategia es una aplicación brillante de la ley de Hick y la teoría de la carga cognitiva: reducir opciones mostrando solo las relevantes.
 
-**Lección para el alumnado:** La interfaz de Spotify demuestra que la complejidad del backend (millones de canciones) no debe transferirse a la interfaz. La persona usuaria no necesita ver toda la complejidad; necesita ver solo lo relevante para su tarea actual. La simplificación no es eliminar funcionalidades, es presentarlas en el momento adecuado.
+!!! tip "Lección para el alumnado"
+    La interfaz de Spotify demuestra que la complejidad del **backend** (millones de canciones) no debe transferirse a la interfaz. La persona usuaria no necesita ver toda la complejidad; necesita ver solo lo relevante para su tarea actual. La simplificación **no es eliminar funcionalidades**, es presentarlas en el momento adecuado.
 
 ---
 
@@ -996,7 +1089,8 @@ Notion es una herramienta de productividad que combina notas, bases de datos, wi
 
 5. **Reducción de carga cognitiva mediante plantillas:** Notion ofrece plantillas predefinidas para casos de uso comunes (notas de reunión, seguimiento de proyectos, base de conocimiento). Las plantillas eliminan la carga cognitiva de "¿cómo estructuro esto?" y permiten a la persona usuaria empezar a trabajar inmediatamente con una estructura probada.
 
-**Lección para el alumnado:** Notion demuestra que la flexibilidad extrema no es incompatible con la baja carga cognitiva si se utilizan las estrategias adecuadas: divulgación progresiva, plantillas, jerarquía tipográfica clara y consistencia interna. El secreto no es limitar lo que el usuario puede hacer, sino presentar las opciones de forma que solo aparezcan cuando son necesarias.
+!!! tip "Lección para el alumnado"
+    Notion demuestra que la **flexibilidad extrema** no es incompatible con la baja carga cognitiva si se utilizan las estrategias adecuadas: divulgación progresiva, plantillas, jerarquía tipográfica clara y consistencia interna. El secreto no es limitar lo que el usuario puede hacer, sino **presentar las opciones de forma que solo aparezcan cuando son necesarias**.
 
 ---
 
@@ -1016,7 +1110,8 @@ GitHub es la plataforma de desarrollo colaborativo más utilizada del mundo. Su 
 
 5. **Carga cognitiva en los Pull Requests:** La página de un Pull Request podría ser abrumadora (conversaciones, commits, checks, files changed, diff). GitHub utiliza pestañas para segmentar esta información, permitiendo a la persona usuaria centrarse en una cosa cada vez. La pestaña "Conversation" muestra los comentarios, la pestaña "Commits" muestra el historial, y la pestaña "Files changed" muestra el diff. Esta segmentación aplica el principio de chunking para mantener cada vista dentro de los límites de la memoria de trabajo.
 
-**Lección para el alumnado:** GitHub demuestra que las interfaces para usuarios expertos deben priorizar la eficiencia sobre la novedad. Los desarrolladores no quieren una interfaz "sorprendente"; quieren una interfaz predecible que puedan navegar con memoria muscular. La consistencia, el contraste funcional (no decorativo) y la segmentación de información son las claves del diseño para usuarios frecuentes.
+!!! tip "Lección para el alumnado"
+    GitHub demuestra que las interfaces para **usuarios expertos** deben priorizar la **eficiencia sobre la novedad**. Los desarrolladores no quieren una interfaz «sorprendente»; quieren una interfaz **predecible** que puedan navegar con memoria muscular. La consistencia, el contraste funcional (no decorativo) y la segmentación de información son las claves del diseño para usuarios frecuentes.
 
 ---
 
@@ -1036,7 +1131,8 @@ Twitter (ahora X) es un caso de estudio sobre cómo el efecto de posición seria
 
 5. **Patrón de escaneo en F en el timeline:** El timeline de Twitter es un ejemplo perfecto del patrón en F. El avatar y el nombre del autor están alineados a la izquierda (barrido vertical del patrón F), el contenido del tweet ocupa la barra horizontal superior de cada ítem, y las interacciones están en la parte inferior. Los estudios de eye-tracking confirman que las personas usuarias de Twitter escanean el timeline siguiendo exactamente este patrón, lo que permite procesar mucha información en poco tiempo.
 
-**Lección para el alumnado:** Twitter demuestra que los principios psicológicos se aplican incluso en las interfaces más informales y dinámicas. El hecho de que el feed sea en tiempo real y el contenido sea generado por usuarios no exime de aplicar jerarquía, contraste y gestión de carga cognitiva. De hecho, en interfaces con mucho contenido dinámico, estos principios son aún más importantes para evitar el caos visual.
+!!! tip "Lección para el alumnado"
+    Twitter demuestra que los principios psicológicos se aplican incluso en las interfaces más informales y dinámicas. El hecho de que el feed sea en tiempo real y el contenido sea generado por usuarios **no exime** de aplicar jerarquía, contraste y gestión de carga cognitiva. De hecho, en interfaces con mucho contenido dinámico, estos principios son **aún más importantes** para evitar el caos visual.
 
 
 ## Actividades guiadas
@@ -1146,7 +1242,7 @@ Cada patrón debe incluir: ejemplo visual, código HTML/CSS, explicación del pr
 
 ### Actividad de ampliación 3: Investigación sobre leyes psicológicas emergentes en UX
 
-**Enunciado:** Investiga más allá de las leyes estudiadas en clase y explora otros principios psicológicos aplicables al diseño de interfaces. Algunas sugerencias: Ley de Jakob (las personas usuarias pasan la mayor parte del tiempo en otros sitios, por lo que prefieren que tu sitio funcione como los demás), Ley de Tesler (la complejidad total de un sistema es constante; solo puedes desplazarla, no eliminarla), Efecto Von Restorff (los elementos que destacan son más recordados), Efecto Zeigarnik (las tareas incompletas se recuerdan mejor que las completas), o Principio de Pareto (el 80% de los efectos proviene del 20% de las causas, aplicado a funcionalidades de软件).
+**Enunciado:** Investiga más allá de las leyes estudiadas en clase y explora otros principios psicológicos aplicables al diseño de interfaces. Algunas sugerencias: Ley de Jakob (las personas usuarias pasan la mayor parte del tiempo en otros sitios, por lo que prefieren que tu sitio funcione como los demás), Ley de Tesler (la complejidad total de un sistema es constante; solo puedes desplazarla, no eliminarla), Efecto Von Restorff (los elementos que destacan son más recordados), Efecto Zeigarnik (las tareas incompletas se recuerdan mejor que las completas), o Principio de Pareto (el 80% de los efectos proviene del 20% de las causas, aplicado a funcionalidades del software).
 
 **Formato:** Prepara una presentación de 10 minutos sobre una de estas leyes que incluya: definición, experimento original que la demostró, aplicaciones al diseño de interfaces con ejemplos concretos, y una crítica sobre sus limitaciones.
 

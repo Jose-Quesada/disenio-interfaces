@@ -36,79 +36,178 @@ Para el adecuado aprovechamiento de esta unidad, el alumnado debe poseer fundame
 
 ### Figma como herramienta colaborativa de diseño de interfaces
 
-Figma representa un cambio de paradigma en el diseño de interfaces al ser la primera herramienta profesional de diseño que funciona completamente en el navegador, sin necesidad de instalación ni de sincronización manual de archivos. Esta decisión arquitectónica, que en 2016 parecía arriesgada frente a competidores consolidados como Sketch (que requería macOS y plugins de sincronización como Abstract) o Adobe XD (con su modelo de aplicación nativa), se ha revelado como su ventaja competitiva más diferencial. La naturaleza basada en navegador permite la colaboración en tiempo real: múltiples diseñadores y desarrolladores pueden trabajar simultáneamente sobre el mismo archivo, viendo los cambios de los demás en directo, de forma análoga a como Google Docs transformó la edición de documentos de texto.
+!!! info "Definición: Figma"
+    **Figma** es la primera herramienta profesional de diseño de interfaces que funciona **completamente en el navegador**, sin necesidad de instalación ni de sincronización manual de archivos. Esta decisión arquitectónica, que en **2016** parecía arriesgada frente a competidores consolidados como **Sketch** (que requería macOS y plugins de sincronización como Abstract) o **Adobe XD** (con su modelo de aplicación nativa), se ha revelado como su ventaja competitiva más diferencial.
 
-Para el desarrollador frontend, esta característica elimina uno de los puntos de fricción más persistentes en los flujos de trabajo tradicionales: la desincronización entre el archivo de diseño y lo que ve el desarrollador. Con Figma, el desarrollador accede siempre a la versión más reciente del diseño simplemente abriendo el enlace del archivo, sin necesidad de descargar archivos, gestionar versiones ni preocuparse por tener la aplicación actualizada. Además, el Modo Desarrollo (Dev Mode), introducido en 2023, proporciona una vista específicamente diseñada para desarrolladores que muestra medidas, especificaciones CSS, assets exportables y anotaciones de diseño en un formato optimizado para la implementación técnica. El desarrollador puede seleccionar cualquier elemento en el canvas y obtener inmediatamente sus dimensiones, distancias a otros elementos, estilos de texto, colores en múltiples formatos y sugerencias de código CSS, Tailwind o SwiftUI.
+La naturaleza basada en navegador permite la **colaboración en tiempo real**: múltiples diseñadores y desarrolladores pueden trabajar simultáneamente sobre el mismo archivo, viendo los cambios de los demás en directo, de forma análoga a como **Google Docs** transformó la edición de documentos de texto.
 
-Figma no es solo una herramienta de diseño de alta fidelidad; cubre el espectro completo del proceso de diseño de interfaces, desde los primeros wireframes de baja fidelidad hasta los prototipos interactivos completamente funcionales. El modelo freemium de Figma permite que cualquier persona pueda crear una cuenta gratuita y empezar a diseñar inmediatamente, con limitaciones razonables en el número de archivos y páginas que no impiden el aprendizaje ni la realización de proyectos de tamaño medio. Esto convierte a Figma en la herramienta ideal para el contexto educativo del módulo de Diseño de Interfaces Web.
+Para el desarrollador frontend, esta característica elimina uno de los puntos de fricción más persistentes en los flujos de trabajo tradicionales: la **desincronización** entre el archivo de diseño y lo que ve el desarrollador. Con Figma, el desarrollador accede siempre a la versión más reciente del diseño simplemente abriendo el enlace del archivo, sin necesidad de descargar archivos, gestionar versiones ni preocuparse por tener la aplicación actualizada.
+
+!!! tip "Modo Desarrollo (Dev Mode)"
+    El **Modo Desarrollo (Dev Mode)**, introducido en **2023**, proporciona una vista específicamente diseñada para desarrolladores que muestra medidas, especificaciones **CSS**, *assets* exportables y anotaciones de diseño en un formato optimizado para la implementación técnica. El desarrollador puede seleccionar cualquier elemento en el canvas y obtener inmediatamente sus dimensiones, distancias a otros elementos, estilos de texto, colores en múltiples formatos y sugerencias de código **CSS**, **Tailwind** o **SwiftUI**.
+
+Figma no es solo una herramienta de diseño de alta fidelidad; cubre el **espectro completo** del proceso de diseño de interfaces, desde los primeros *wireframes* de baja fidelidad hasta los prototipos interactivos completamente funcionales. El **modelo freemium** permite que cualquier persona pueda crear una cuenta gratuita y empezar a diseñar inmediatamente, con limitaciones razonables en el número de archivos y páginas que no impiden el aprendizaje ni la realización de proyectos de tamaño medio. Esto convierte a Figma en la herramienta ideal para el contexto educativo del módulo de Diseño de Interfaces Web.
 
 ### La interfaz de Figma: un recorrido por sus paneles fundamentales
 
 Al abrir Figma, el usuario se encuentra con un lienzo infinito (el canvas) que constituye el espacio de trabajo principal. A diferencia de otras herramientas de diseño que imponen límites de página o mesa de trabajo, el canvas de Figma es ilimitado en todas las direcciones, lo que fomenta la exploración y el trabajo iterativo sin restricciones espaciales. Es común que los diseñadores coloquen exploraciones alternativas, versiones descartadas, moodboards y anotaciones en los márgenes del canvas, creando un espacio de trabajo orgánico donde el proceso de diseño es visible y trazable.
 
-La barra de herramientas principal, situada en la parte superior de la ventana, contiene las herramientas de creación y manipulación organizadas de izquierda a derecha: la herramienta de selección (tecla V), que es la herramienta por defecto y la más utilizada; la herramienta de marco o frame (tecla F), para crear contenedores que representan pantallas, secciones o componentes; la herramienta de formas básicas que incluye rectángulo (R), elipse (O), línea (L), polígono y estrella; la pluma (P) para trazados vectoriales complejos; el lápiz para dibujo libre; y la herramienta de texto (T) para crear capas de texto. También incluye el acceso a la herramienta de mano (H) para navegar por el canvas arrastrando, el selector de comentarios para la revisión colaborativa, y el botón de presentación para previsualizar prototipos a pantalla completa.
+La barra de herramientas principal, situada en la parte superior de la ventana, contiene las herramientas de creación y manipulación organizadas de izquierda a derecha:
+
+- **Selección** (tecla **V**) — herramienta por defecto y la más utilizada.
+- **Marco o frame** (tecla **F**) — crea contenedores que representan pantallas, secciones o componentes.
+- **Formas básicas** (tecla **R** rectángulo, **O** elipse, **L** línea) — además de polígono y estrella.
+- **Pluma** (tecla **P**) — trazados vectoriales complejos; también el lápiz para dibujo libre.
+- **Texto** (tecla **T**) — crea capas de texto.
+- **Mano** (tecla **H**) — navega por el canvas arrastrando.
+- **Comentarios** — revisión colaborativa; y el botón de **presentación** para previsualizar prototipos a pantalla completa.
 
 El panel izquierdo alberga la jerarquía de capas, donde se muestran todas las páginas del documento y, dentro de cada página, todos los objetos organizados jerárquicamente. Una característica importante de Figma es que el orden de las capas en el panel es visual: las capas superiores en el panel aparecen por delante de las inferiores en el canvas. Esto contrasta con herramientas como Photoshop donde "capa superior" significa "más arriba en el panel pero más abajo visualmente". En Figma, lo que está más arriba en la lista de capas está al frente visualmente, lo cual es más intuitivo para quienes provienen del desarrollo web.
 
-El panel derecho es contextual y muestra las propiedades del objeto seleccionado. Se divide en tres pestañas principales: la pestaña Design muestra propiedades visuales como posición (X, Y), tamaño (W, H), rotación, opacidad, rellenos (fills), bordes (strokes), efectos (sombras, blurs) y tipografía; la pestaña Prototype permite configurar conexiones interactivas entre frames; y la pestaña Dev Mode muestra especificaciones técnicas para desarrolladores. Adicionalmente, en la parte inferior del panel izquierdo se encuentra el panel de Assets, que lista los componentes locales del archivo y las bibliotecas de componentes compartidos disponibles en el equipo, permitiendo arrastrarlos directamente al canvas.
+El panel derecho es contextual y muestra las propiedades del objeto seleccionado. Se divide en tres pestañas principales:
+
+- **Design** — propiedades visuales: posición (**X**, **Y**), tamaño (**W**, **H**), rotación, opacidad, rellenos (*fills*), bordes (*strokes*), efectos (sombras, *blurs*) y tipografía.
+- **Prototype** — configuración de conexiones interactivas entre frames.
+- **Dev Mode** — especificaciones técnicas para desarrolladores.
+
+Adicionalmente, en la parte inferior del panel izquierdo se encuentra el panel de **Assets**, que lista los componentes locales del archivo y las bibliotecas de componentes compartidos disponibles en el equipo, permitiendo arrastrarlos directamente al canvas.
 
 ### Frames y Constraints: la base del diseño responsive en Figma
 
-El frame es el concepto fundamental sobre el que se construye cualquier diseño en Figma. Un frame es un contenedor que delimita un área de diseño y puede comportarse como una pantalla completa cuando se le asigna un preset de dispositivo (por ejemplo, iPhone 14: 390x844px, iPad Pro 11: 834x1194px, Desktop 1440: 1440x1024px) o como una sección dentro de una pantalla más grande. A diferencia de un grupo (Group), que simplemente agrupa objetos visualmente sin afectar a su comportamiento, un frame establece un sistema de coordenadas propio, permite recorte de contenido (clip content), sirve como referencia para constraints y auto layout, y puede anidarse formando jerarquías complejas que reflejan la estructura de componentes de una interfaz real.
+!!! info "Definición: frame"
+    El **frame** es el concepto fundamental sobre el que se construye cualquier diseño en Figma. Es un **contenedor que delimita un área de diseño** y puede comportarse como una pantalla completa cuando se le asigna un *preset* de dispositivo (por ejemplo, **iPhone 14: 390×844 px**, **iPad Pro 11: 834×1194 px**, **Desktop 1440: 1440×1024 px**) o como una sección dentro de una pantalla más grande.
 
-Cuando creamos un frame presionando la tecla F y seleccionando un preset de dispositivo, Figma establece automáticamente el tamaño del frame y nos permite añadir elementos hijos en su interior. Una práctica recomendada es comenzar siempre con frames que representen los breakpoints principales de nuestro diseño responsive: un frame de 375px de ancho para móvil, uno de 768px para tablet y uno de 1440px para escritorio. Esto nos obliga a pensar en cómo el diseño se adapta a diferentes tamaños de pantalla desde el inicio del proceso.
+Frente a un **grupo** (*Group*), que simplemente agrupa objetos visualmente sin afectar a su comportamiento, un frame ofrece capacidades reales de layout:
 
-Los constraints (restricciones) son el mecanismo que Figma proporciona para simular el comportamiento responsive de los elementos dentro de un frame. Cuando un objeto hijo se posiciona dentro de un frame, se le pueden asignar constraints que definen cómo debe comportarse cuando el frame padre cambia de tamaño. Las opciones incluyen: fijado a la izquierda (Left), a la derecha (Right), centrado horizontalmente (Center), escalado horizontal (Scale), fijado arriba (Top), abajo (Bottom), centrado verticalmente, o combinaciones. Por ejemplo, un botón de submit en un formulario puede configurarse con constraints Right + Bottom para permanecer siempre en la esquina inferior derecha del formulario independientemente de cómo se redimensione.
+- **Sistema de coordenadas propio** para cada contenedor.
+- **Recorte de contenido** (*clip content*).
+- **Referencia para constraints y Auto Layout.**
+- **Anidación** formando jerarquías complejas que reflejan la estructura de componentes de una interfaz real.
 
-Para un desarrollador frontend, comprender los constraints es esencial porque se traducen directamente a CSS. Un elemento con constraint Left + Right y ancho fijo se corresponde con margin: 0 auto; width: Xpx. Un elemento con constraint Left + Right y ancho escalable (Scale) equivale a width: 100%. Un elemento con constraint Top + Bottom equivale a un height: 100% con posicionamiento relativo. Esta correspondencia directa permite al desarrollador extraer del diseño Figma no solo los valores estáticos sino la intención responsive completa, acelerando la implementación.
+Cuando creamos un frame presionando la tecla **F** y seleccionando un *preset* de dispositivo, Figma establece automáticamente el tamaño del frame y nos permite añadir elementos hijos en su interior. Una práctica recomendada es comenzar siempre con frames que representen los *breakpoints* principales de nuestro diseño responsive: un frame de **375 px** de ancho para móvil, uno de **768 px** para tablet y uno de **1440 px** para escritorio. Esto nos obliga a pensar en cómo el diseño se adapta a diferentes tamaños de pantalla desde el inicio del proceso.
+
+Los **constraints** (restricciones) son el mecanismo que Figma proporciona para simular el comportamiento responsive de los elementos dentro de un frame. Cuando un objeto hijo se posiciona dentro de un frame, se le pueden asignar constraints que definen cómo debe comportarse cuando el frame padre cambia de tamaño. Las opciones incluyen: fijado a la izquierda (**Left**), a la derecha (**Right**), centrado horizontalmente (**Center**), escalado horizontal (**Scale**), fijado arriba (**Top**), abajo (**Bottom**), centrado verticalmente, o combinaciones. Por ejemplo, un botón de *submit* en un formulario puede configurarse con constraints **Right + Bottom** para permanecer siempre en la esquina inferior derecha del formulario independientemente de cómo se redimensione.
+
+Para un desarrollador frontend, comprender los constraints es esencial porque se traducen directamente a **CSS**:
+
+| Constraint en Figma | Equivalente en CSS |
+|---------------------|--------------------|
+| **Left + Right** con ancho fijo | `margin: 0 auto;` + `width: Xpx;` |
+| **Left + Right** con escalado (**Scale**) | `width: 100%;` |
+| **Top + Bottom** | `height: 100%` con posicionamiento relativo |
+
+Esta correspondencia directa permite al desarrollador extraer del diseño Figma no solo los valores estáticos sino la **intención responsive completa**, acelerando la implementación.
 
 ### Auto Layout: el motor de flexibilidad de Figma
 
-Auto Layout es probablemente la funcionalidad de Figma que más impacto tiene en la productividad del diseño de interfaces y en la facilidad de traducción a código. Auto Layout aplica automáticamente reglas de layout similares a CSS Flexbox a los objetos contenidos en un frame, permitiendo que se distribuyan horizontal o verticalmente, con espaciados consistentes, paddings uniformes y comportamientos de redimensionamiento dinámico. La activación de Auto Layout se realiza mediante el atajo Shift+A o desde el botón correspondiente en el panel de propiedades.
+!!! info "Definición: Auto Layout"
+    **Auto Layout** es probablemente la funcionalidad de Figma que más impacto tiene en la productividad del diseño de interfaces y en la facilidad de traducción a código. Aplica automáticamente reglas de layout similares a **CSS Flexbox** a los objetos contenidos en un frame, permitiendo que se distribuyan horizontal o verticalmente, con espaciados consistentes, *paddings* uniformes y comportamientos de redimensionamiento dinámico. La activación se realiza mediante el atajo **Shift+A** o desde el botón correspondiente en el panel de propiedades.
 
-La configuración de Auto Layout comienza con la dirección: horizontal (los elementos se disponen en fila, de izquierda a derecha) o vertical (en columna, de arriba a abajo). A continuación se define el espaciado entre elementos (gap), que en Figma se denomina "spacing between items" y que es el equivalente exacto a la propiedad CSS gap. El padding interior del frame puede configurarse de forma independiente para cada uno de los cuatro lados (arriba, derecha, abajo, izquierda) o de forma uniforme cuando todos los lados comparten el mismo valor. La alineación de los elementos hijos se configura en el eje principal (justify-content en CSS) pudiendo alinearse al inicio, al centro o al final, y en el eje secundario (align-items en CSS) con las mismas opciones.
+La configuración de Auto Layout sigue cuatro parámetros:
 
-El comportamiento de redimensionamiento de cada elemento hijo dentro de un Auto Layout se controla mediante tres modos: Fixed width/height (el elemento mantiene un tamaño fijo definido en píxeles), Hug contents (el elemento se ajusta al tamaño de su contenido, equivalente a width: fit-content) y Fill container (el elemento se expande para ocupar todo el espacio disponible, equivalente a flex: 1). Esta triple configuración permite crear componentes flexibles que se comportan correctamente cuando cambia su contenido o el tamaño de su contenedor, exactamente como ocurre en la web real.
+- **Dirección** — horizontal (los elementos se disponen en fila, de izquierda a derecha) o vertical (en columna, de arriba a abajo).
+- **Gap** (*spacing between items*) — el espaciado entre elementos, el equivalente exacto a la propiedad CSS **gap**.
+- **Padding** — el interior del frame, configurable de forma independiente para cada uno de los cuatro lados o de forma uniforme.
+- **Alineación** — en el eje principal (**justify-content** en CSS) al inicio, al centro o al final, y en el eje secundario (**align-items** en CSS) con las mismas opciones.
 
-La funcionalidad de wrapping (wrap), introducida a finales de 2023, permite que los elementos fluyan a la siguiente línea cuando no caben en el ancho del contenedor, de forma análoga a flex-wrap: wrap. Esto es particularmente útil para diseñar listas de etiquetas (chips), grids de tarjetas adaptativos o colecciones de elementos que deben reorganizarse según el ancho disponible. Configurar wrap en un Auto Layout horizontal con Fill container en los elementos hijos crea automáticamente un layout de columnas flexibles similar a auto-fill en CSS Grid.
+El comportamiento de redimensionamiento de cada elemento hijo dentro de un Auto Layout se controla mediante tres modos:
 
-La correspondencia entre Auto Layout y CSS Flexbox es tan directa que Figma la aprovecha en Dev Mode para generar fragmentos de código CSS. Un frame con Auto Layout horizontal, spacing de 16px, padding uniforme de 24px y alineación centrada se traduce automáticamente a display: flex; flex-direction: row; gap: 16px; padding: 24px; align-items: center. Esta transparencia en la traducción diseño-código es una de las razones por las que los equipos de desarrollo valoran Figma como herramienta puente entre diseño e ingeniería.
+| Modo de resizing | Comportamiento | Equivalente en CSS |
+|------------------|----------------|--------------------|
+| **Fixed width/height** | el elemento mantiene un tamaño fijo definido en píxeles | `width` / `height` fijos |
+| **Hug contents** | el elemento se ajusta al tamaño de su contenido | `width: fit-content` |
+| **Fill container** | el elemento se expande para ocupar todo el espacio disponible | `flex: 1` |
+
+Esta triple configuración permite crear componentes flexibles que se comportan correctamente cuando cambia su contenido o el tamaño de su contenedor, exactamente como ocurre en la web real.
+
+La funcionalidad de ***wrapping*** (`wrap`), introducida a finales de **2023**, permite que los elementos fluyan a la siguiente línea cuando no caben en el ancho del contenedor, de forma análoga a **flex-wrap: wrap**. Esto es particularmente útil para diseñar listas de etiquetas (*chips*), *grids* de tarjetas adaptativos o colecciones de elementos que deben reorganizarse según el ancho disponible. Configurar *wrap* en un Auto Layout horizontal con *Fill container* en los elementos hijos crea automáticamente un layout de columnas flexibles similar a **auto-fill** en CSS Grid.
+
+La correspondencia entre Auto Layout y CSS Flexbox es tan directa que Figma la aprovecha en Dev Mode para generar fragmentos de código CSS. Un frame con Auto Layout horizontal, *spacing* de **16 px**, *padding* uniforme de **24 px** y alineación centrada se traduce automáticamente a **display: flex; flex-direction: row; gap: 16px; padding: 24px; align-items: center**. Esta transparencia en la traducción diseño-código es una de las razones por las que los equipos de desarrollo valoran Figma como herramienta puente entre diseño e ingeniería.
 
 ### Sistema de variables en Figma
 
-El sistema de variables de Figma, introducido en junio de 2023 durante la conferencia Config, representa la incorporación nativa del concepto de tokens de diseño a la herramienta. Las variables permiten almacenar valores reutilizables que pueden aplicarse a propiedades de diseño como colores de relleno, colores de borde, tipografías, dimensiones, radios de borde y espaciados. El panel de variables, accesible desde el menú principal o desde el panel derecho en cualquier propiedad compatible, muestra todas las variables definidas en el archivo organizadas en colecciones.
+!!! info "Definición: variables de diseño"
+    El **sistema de variables** de Figma, introducido en **junio de 2023** durante la conferencia **Config**, representa la incorporación nativa del concepto de **tokens de diseño** a la herramienta. Las variables permiten almacenar valores reutilizables que pueden aplicarse a propiedades de diseño como colores de relleno, colores de borde, tipografías, dimensiones, radios de borde y espaciados. El panel de variables, accesible desde el menú principal o desde el panel derecho en cualquier propiedad compatible, muestra todas las variables definidas en el archivo organizadas en **colecciones**.
 
-Las variables pueden ser locales (definidas y utilizadas exclusivamente en el archivo actual) o publicarse como biblioteca para ser consumidas desde otros archivos del equipo. Esta distinción es fundamental: las variables locales son útiles para exploraciones, prototipos rápidos y trabajo individual, mientras que las variables publicadas constituyen la fuente única de verdad de los tokens de diseño de la organización. Cuando una variable publicada se modifica en el archivo origen, todos los archivos que la consumen reciben una notificación de actualización, exactamente igual que con los componentes compartidos.
+Las variables pueden ser **locales** (definidas y utilizadas exclusivamente en el archivo actual) o **publicarse como biblioteca** para ser consumidas desde otros archivos del equipo. Esta distinción es fundamental: las variables locales son útiles para exploraciones, prototipos rápidos y trabajo individual, mientras que las variables publicadas constituyen la **fuente única de verdad** de los tokens de diseño de la organización. Cuando una variable publicada se modifica en el archivo origen, todos los archivos que la consumen reciben una notificación de actualización, exactamente igual que con los componentes compartidos.
 
-Figma soporta cuatro tipos de variables. Las variables de color almacenan valores en cualquier espacio de color, incluyendo transparencia (alpha), y pueden aplicarse a rellenos, bordes y efectos. Las variables de número almacenan valores numéricos con o sin unidad (px, rem, %, etc.) y se utilizan en dimensiones, espaciados, radios de borde, opacidades y grosores de borde. Las variables de string almacenan cadenas de texto y son útiles para contenidos dinámicos, etiquetas y textos de interfaz que deben ser consistentes y actualizables. Las variables boolean almacenan valores verdadero/falso y se utilizan típicamente para controlar la visibilidad de capas o grupos de elementos, activando o desactivando secciones completas de la interfaz en función de condiciones.
+Figma soporta **cuatro tipos de variables**:
 
-Una de las funcionalidades más potentes del sistema de variables es el soporte para modos (modes). Los modos permiten definir conjuntos alternativos de valores para una misma variable dentro de una colección. El caso de uso canónico es el theming: una colección de variables de color puede tener un modo "Light" donde la variable surface/background vale #FFFFFF y un modo "Dark" donde vale #1A1A1A. Al cambiar el modo aplicado a un frame o a un conjunto de frames, todos los elementos que utilizan variables cambian automáticamente al conjunto de valores correspondiente, permitiendo previsualizar instantáneamente el tema oscuro o cualquier otra variación temática.
+| Tipo | Almacena | Uso típico |
+|------|----------|------------|
+| **Color** | valores en cualquier espacio de color, incluida la transparencia (*alpha*) | rellenos, bordes y efectos |
+| **Número** | valores numéricos con o sin unidad (**px**, **rem**, **%**) | dimensiones, espaciados, radios, opacidades, grosores de borde |
+| **String** | cadenas de texto | contenidos dinámicos, etiquetas y textos de interfaz consistentes |
+| **Boolean** | valores verdadero/falso | visibilidad de capas o grupos: activar o desactivar secciones completas de la interfaz |
 
-Los modos no están limitados a temas de color. Pueden utilizarse para diseñar variantes de densidad de información (modo "Compact" con espaciados reducidos versus "Comfortable" con espaciados generosos), para gestionar múltiples idiomas en los textos de interfaz (modo "ES", "EN", "FR" con variables de string), para diferentes marcas blancas (white-label) donde se cambia la paleta de colores corporativos, o incluso para simular diferentes resoluciones de dispositivo ajustando tamaños de fuente y espaciados. Esta flexibilidad convierte el sistema de variables de Figma en una herramienta no solo de consistencia sino de exploración y validación de escenarios de diseño.
+Una de las funcionalidades más potentes del sistema de variables es el soporte para **modos** (*modes*). Los modos permiten definir conjuntos alternativos de valores para una misma variable dentro de una colección. El caso de uso canónico es el **theming**: una colección de variables de color puede tener un modo **Light** donde la variable *surface/background* vale **#FFFFFF** y un modo **Dark** donde vale **#1A1A1A**. Al cambiar el modo aplicado a un frame o a un conjunto de frames, todos los elementos que utilizan variables cambian automáticamente al conjunto de valores correspondiente, permitiendo previsualizar instantáneamente el tema oscuro o cualquier otra variación temática.
+
+Los modos no están limitados a temas de color. Pueden utilizarse para:
+
+- **Densidad de información** — modo *Compact* con espaciados reducidos frente a *Comfortable* con espaciados generosos.
+- **Múltiples idiomas** en los textos de interfaz (modos **ES**, **EN**, **FR** con variables de *string*).
+- **Marcas blancas** (*white-label*), donde se cambia la paleta de colores corporativos.
+- **Resoluciones de dispositivo**, ajustando tamaños de fuente y espaciados.
+
+Esta flexibilidad convierte el sistema de variables de Figma en una herramienta no solo de consistencia sino de **exploración y validación de escenarios de diseño**.
 
 ### Componentes, variantes y bibliotecas
 
-El sistema de componentes de Figma es el mecanismo que permite crear elementos reutilizables que mantienen coherencia en todo el diseño. Un componente se crea seleccionando uno o varios objetos y ejecutando el comando "Create component" (Ctrl+Alt+K). A partir de ese momento, el elemento original se convierte en el componente maestro (main component), identificado por un icono de cuatro rombos rellenos, y cualquier copia que se haga de él se convierte en una instancia (instance), identificada por un icono de rombo vacío. La relación entre maestro e instancias es unidireccional: los cambios en el maestro se propagan a todas las instancias, pero las instancias pueden tener overrides (sobrescrituras) locales que no afectan al maestro.
+!!! info "Definición: componente maestro e instancia"
+    El **sistema de componentes** de Figma es el mecanismo que permite crear elementos reutilizables que mantienen coherencia en todo el diseño. Un componente se crea seleccionando uno o varios objetos y ejecutando el comando **Create component** (**Ctrl+Alt+K**). A partir de ese momento, el elemento original se convierte en el **componente maestro** (*main component*), identificado por un icono de **cuatro rombos rellenos**, y cualquier copia que se haga de él se convierte en una **instancia** (*instance*), identificada por un icono de **rombo vacío**.
 
-Los overrides permiten personalizar aspectos específicos de una instancia sin romper el vínculo con el componente maestro. Por ejemplo, en un componente de tarjeta de producto, se puede sobrescribir la imagen, el título y el precio en cada instancia, pero el layout, la tipografía y los estilos se mantienen vinculados al maestro. Si posteriormente el equipo de diseño decide cambiar la tipografía de los títulos de tarjeta de 18px a 20px, basta con modificar el maestro para que todas las instancias que no tengan override de texto se actualicen automáticamente.
+La relación entre maestro e instancias es **unidireccional**: los cambios en el maestro se propagan a todas las instancias, pero las instancias pueden tener ***overrides*** (sobrescrituras) locales que no afectan al maestro.
 
-Las propiedades de componente son el mecanismo que permite exponer ciertos atributos del componente para que puedan modificarse desde el panel de propiedades sin necesidad de navegar por las capas internas. Existen cuatro tipos de propiedades: variantes (para seleccionar entre diferentes versiones del componente), texto (para exponer capas de texto editables), boolean (para mostrar u ocultar elementos, como un icono opcional) e instance swap (para permitir reemplazar un subcomponente por otro, por ejemplo cambiar el icono de un botón). Las propiedades se definen en el componente maestro y aparecen como controles en el panel derecho cuando se selecciona cualquier instancia del componente.
+Los *overrides* permiten personalizar aspectos específicos de una instancia sin romper el vínculo con el componente maestro. Por ejemplo, en un componente de tarjeta de producto, se puede sobrescribir la imagen, el título y el precio en cada instancia, pero el *layout*, la tipografía y los estilos se mantienen vinculados al maestro. Si posteriormente el equipo de diseño decide cambiar la tipografía de los títulos de tarjeta de **18 px** a **20 px**, basta con modificar el maestro para que todas las instancias que no tengan *override* de texto se actualicen automáticamente.
 
-Las variantes son un caso especial de propiedad de componente que permite agrupar múltiples componentes relacionados en un único conjunto con propiedades seleccionables. Para crear variantes, se utiliza la nomenclatura slash (barra diagonal): se nombra al componente con el formato "Propiedad=Valor". Por ejemplo, un botón puede tener variantes nombradas como "Button/Size=Small", "Button/Size=Medium", "Button/Size=Large" y también "Button/Variant=Primary", "Button/Variant=Secondary", "Button/Variant=Danger". Cuando se combinan múltiples propiedades (slash anidados), Figma genera automáticamente una matriz de todas las combinaciones posibles.
+Las **propiedades de componente** son el mecanismo que permite exponer ciertos atributos del componente para que puedan modificarse desde el panel de propiedades sin necesidad de navegar por las capas internas. Existen **cuatro tipos**:
 
-La transformación de componentes individuales en un conjunto de variantes se realiza seleccionando todos los componentes que se desea agrupar y ejecutando "Combine as variants". Figma analiza los nombres de los componentes, extrae las propiedades y valores de la nomenclatura slash, y genera automáticamente tanto el conjunto de variantes como los controles de selección en el panel de propiedades. A partir de ese momento, cualquier instancia del conjunto de variantes puede cambiar entre todas las combinaciones disponibles simplemente usando los desplegables del panel de propiedades, sin necesidad de desconectar la instancia del componente maestro.
+- **Variantes** — para seleccionar entre diferentes versiones del componente.
+- **Texto** — para exponer capas de texto editables.
+- **Boolean** — para mostrar u ocultar elementos, como un icono opcional.
+- **Instance swap** — para permitir reemplazar un subcomponente por otro, por ejemplo cambiar el icono de un botón.
+
+Las propiedades se definen en el componente maestro y aparecen como controles en el panel derecho cuando se selecciona cualquier instancia del componente.
+
+Las **variantes** son un caso especial de propiedad de componente que permite agrupar múltiples componentes relacionados en un único conjunto con propiedades seleccionables.
+
+!!! tip "Nomenclatura slash"
+    Para crear variantes se utiliza la **nomenclatura slash** (barra diagonal): se nombra al componente con el formato **Propiedad=Valor**. Por ejemplo, un botón puede tener variantes nombradas como **Button/Size=Small**, **Button/Size=Medium**, **Button/Size=Large** y también **Button/Variant=Primary**, **Button/Variant=Secondary**, **Button/Variant=Danger**. Cuando se combinan múltiples propiedades (*slash* anidados), Figma genera automáticamente una **matriz de todas las combinaciones posibles**.
+
+La transformación de componentes individuales en un conjunto de variantes se realiza seleccionando todos los componentes que se desea agrupar y ejecutando **Combine as variants**. Figma analiza los nombres de los componentes, extrae las propiedades y valores de la nomenclatura *slash*, y genera automáticamente tanto el conjunto de variantes como los controles de selección en el panel de propiedades. A partir de ese momento, cualquier instancia del conjunto de variantes puede cambiar entre todas las combinaciones disponibles simplemente usando los desplegables del panel de propiedades, sin necesidad de desconectar la instancia del componente maestro.
 
 ### Prototipado interactivo en Figma
 
-El prototipado es la funcionalidad que transforma diseños estáticos en experiencias interactivas simuladas, permitiendo validar flujos de usuario, transiciones y microinteracciones antes de escribir código. El prototipado en Figma se configura en la pestaña Prototype del panel derecho y se basa en el establecimiento de conexiones entre frames. Cada conexión define un trigger (el evento que la activa), una acción (lo que ocurre) y una animación (cómo se transiciona visualmente).
+!!! info "Definición: prototipo interactivo"
+    El **prototipado** es la funcionalidad que transforma diseños estáticos en **experiencias interactivas simuladas**, permitiendo validar flujos de usuario, transiciones y microinteracciones antes de escribir código. Se configura en la pestaña **Prototype** del panel derecho y se basa en el establecimiento de **conexiones entre frames**. Cada conexión define un ***trigger*** (el evento que la activa), una **acción** (lo que ocurre) y una **animación** (cómo se transiciona visualmente).
 
-Los triggers disponibles son variados y cubren la mayoría de interacciones web y móviles: On click (clic del ratón), On hover (el cursor se sitúa encima), On press (pulsación mantenida), On drag (arrastre), Mouse enter / Mouse leave, After delay (tras un tiempo configurable) y While hovering y While pressing (comportamientos continuos mientras se mantiene la interacción). Para prototipado móvil, también están disponibles los gestos táctiles como On tap (toque breve) y On touch down / On touch up.
+Los *triggers* disponibles cubren la mayoría de interacciones web y móviles:
 
-Las acciones determinan qué sucede cuando se activa un trigger. La acción más común es Navigate to, que transiciona a otro frame del prototipo. Otras acciones incluyen: Open overlay (abre un frame como capa superpuesta modal), Swap overlay (reemplaza un overlay por otro), Close overlay, Scroll to (desplaza a una posición específica dentro de un frame con scroll), Back (retrocede al frame anterior), Open link (abre una URL externa) y Set variable (modifica el valor de una variable de Figma en tiempo de prototipado, permitiendo crear lógica condicional básica).
+- **On click** — clic del ratón; **On hover** — el cursor se sitúa encima; **On press** — pulsación mantenida.
+- **On drag** — arrastre; **Mouse enter** / **Mouse leave**.
+- **After delay** — tras un tiempo configurable.
+- **While hovering** y **While pressing** — comportamientos continuos mientras se mantiene la interacción.
+- **On tap**, **On touch down** / **On touch up** — gestos táctiles para prototipado móvil.
 
-Las animaciones entre frames pueden configurarse con diferentes comportamientos. Instant es una transición sin animación, el frame de destino aparece inmediatamente. Dissolve aplica un fundido cruzado entre ambos frames. Smart Animate es la animación más potente: Figma analiza los objetos con el mismo nombre en ambos frames y, si detecta cambios en sus propiedades (posición, tamaño, opacidad, color), genera automáticamente una transición animada entre los dos estados. Move in / Move out desliza el frame entrante desde una dirección, y Slide in / Slide out tiene un comportamiento similar. Para cada animación, se puede configurar la curva de aceleración (ease in, ease out, ease in and out, linear) y la duración en milisegundos.
+Las acciones determinan qué sucede cuando se activa un *trigger*. La más común es **Navigate to**, que transiciona a otro frame del prototipo. El resto:
 
-Los interactive components (componentes interactivos) permiten encapsular comportamientos de prototipo dentro de variantes de un componente. Por ejemplo, un componente de botón puede tener variantes Default, Hover, Pressed y Disabled, con conexiones entre ellas que definan cómo transiciona entre estados al interactuar. Cuando este componente se utiliza como instancia en cualquier frame del prototipo, la interactividad ya está integrada sin necesidad de configurar conexiones adicionales frame a frame. Esto reduce drásticamente el trabajo de prototipado para componentes reutilizables y asegura consistencia en el comportamiento interactivo de toda la interfaz.
+- **Open overlay** — abre un frame como capa superpuesta modal; **Swap overlay**, **Close overlay**.
+- **Scroll to** — desplaza a una posición específica dentro de un frame con *scroll*.
+- **Back** — retrocede al frame anterior.
+- **Open link** — abre una URL externa.
+- **Set variable** — modifica el valor de una variable de Figma en tiempo de prototipado, permitiendo crear **lógica condicional básica**.
+
+Las animaciones entre frames pueden configurarse con diferentes comportamientos:
+
+- **Instant** — transición sin animación: el frame de destino aparece inmediatamente.
+- **Dissolve** — fundido cruzado entre ambos frames.
+- **Smart Animate** — la animación más potente: Figma analiza los objetos con el **mismo nombre** en ambos frames y, si detecta cambios en sus propiedades (posición, tamaño, opacidad, color), genera automáticamente una transición animada entre los dos estados.
+- **Move in / Move out** — desliza el frame entrante desde una dirección; **Slide in / Slide out** tiene un comportamiento similar.
+
+Para cada animación se puede configurar la curva de aceleración (**ease in**, **ease out**, **ease in and out**, **linear**) y la duración en **milisegundos**.
+
+!!! tip "Interactive components"
+    Los **interactive components** (componentes interactivos) permiten encapsular comportamientos de prototipo dentro de variantes de un componente. Por ejemplo, un componente de botón puede tener variantes **Default**, **Hover**, **Pressed** y **Disabled**, con conexiones entre ellas que definan cómo transiciona entre estados al interactuar. Cuando este componente se utiliza como instancia en cualquier frame del prototipo, la interactividad ya está integrada **sin necesidad de configurar conexiones adicionales frame a frame**. Esto reduce drásticamente el trabajo de prototipado para componentes reutilizables y asegura consistencia en el comportamiento interactivo de toda la interfaz.
 
 ## Ejemplos guiados
 
@@ -289,6 +388,7 @@ El prototipo se probó con 15 usuarios en sesiones de usabilidad moderadas. Los 
 10. Documenta al menos 5 correspondencias entre decisiones de diseño en Figma y su equivalente en CSS.
 
 **Criterios de evaluación:**
+
 - Los tres breakpoints están correctamente configurados con sus grids (1.5 puntos).
 - Todas las secciones utilizan Auto Layout y se comportan correctamente (2 puntos).
 - Los elementos repetidos están convertidos en componentes reutilizables (1.5 puntos).
@@ -320,6 +420,7 @@ El prototipo se probó con 15 usuarios en sesiones de usabilidad moderadas. Los 
 10. Publica los componentes como biblioteca de equipo (si tienes plan de equipo) o asegúrate de que todos son accesibles desde el panel Assets.
 
 **Criterios de evaluación:**
+
 - La página de tokens es completa y utiliza variables de Figma correctamente (2 puntos).
 - Los modos Light/Dark funcionan en las variables de color (1 punto).
 - Se han creado al menos 6 átomos como componentes con variantes (2 puntos).
@@ -350,6 +451,7 @@ El prototipo se probó con 15 usuarios en sesiones de usabilidad moderadas. Los 
 11. Simula un test de usabilidad: pide a un compañero que realice el flujo y anota al menos 3 observaciones de mejora directamente como comentarios en Figma.
 
 **Criterios de evaluación:**
+
 - Las 5 pantallas de onboarding están diseñadas de forma coherente (2 puntos).
 - Las conexiones de prototipo funcionan correctamente (2 puntos).
 - Smart Animate se ha configurado adecuadamente con elementos con nombre consistente (1.5 puntos).
@@ -380,6 +482,7 @@ El prototipo se probó con 15 usuarios en sesiones de usabilidad moderadas. Los 
 12. Revisa el documento de especificaciones con un compañero o con el profesor para verificar que no falta información relevante.
 
 **Criterios de evaluación:**
+
 - El documento de especificaciones cubre las 7 secciones requeridas (3.5 puntos, 0.5 cada una).
 - Los valores extraídos (colores, tamaños, espaciados) son precisos y coinciden con el diseño (2 puntos).
 - Las correspondencias con tokens y variables están documentadas (1 punto).
@@ -412,6 +515,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Contexto:** En entornos profesionales avanzados, los equipos buscan mantener sincronizados los tokens de diseño entre Figma y el código para que un cambio en cualquiera de los dos entornos se refleje en el otro. Esta actividad explora el ecosistema de herramientas que permiten esta sincronización.
 
 **Objetivos:**
+
 - Instalar y configurar el plugin Tokens Studio for Figma (anteriormente Figma Tokens).
 - Definir un conjunto completo de tokens de diseño (colores, tipografías, espaciados, sombras, border-radius) utilizando el plugin.
 - Sincronizar los tokens con un repositorio GitHub (utilizando el proveedor de almacenamiento del plugin).
@@ -424,6 +528,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Formato de entrega:** Repositorio Git con los archivos de tokens (JSON de Figma, configuración de Style Dictionary, salidas CSS/SCSS), diagrama del flujo de sincronización en formato imagen o Figma, y tutorial en README.md.
 
 **Rúbrica de evaluación:**
+
 - Tokens Studio configurado correctamente y tokens definidos (2 puntos).
 - Sincronización con GitHub funcionando (2 puntos).
 - Style Dictionary generando CSS y SCSS correctamente (2 puntos).
@@ -437,6 +542,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Contexto:** Figma permite la creación de plugins personalizados que automatizan tareas repetitivas. Esta actividad introduce al alumnado en el desarrollo de plugins para Figma utilizando TypeScript y la Figma Plugin API.
 
 **Objetivos:**
+
 - Configurar un entorno de desarrollo para plugins de Figma (Node.js, TypeScript, Figma Plugin API typings).
 - Desarrollar un plugin que automatice una tarea útil. Opciones sugeridas: generador automático de paletas de color a partir de un color semilla, generador de grids responsive (crea automáticamente filas y columnas con constraints configuradas), conversor de textos a componentes tipográficos, validador de naming conventions (verifica que los componentes sigan la convención slash), o generador de variantes de componente (crea automáticamente todas las combinaciones de propiedades a partir de unos parámetros base).
 - El plugin debe tener una UI (interfaz de usuario) que permita configurar los parámetros de la automatización.
@@ -447,6 +553,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Formato de entrega:** Carpeta del plugin con código fuente TypeScript, manifest.json, UI HTML, README con instrucciones de instalación y desarrollo. Documento de investigación sobre Figma Plugin API vs Widget API.
 
 **Rúbrica de evaluación:**
+
 - Entorno de desarrollo configurado correctamente (1 punto).
 - Plugin funcional que realiza la tarea descrita (3 puntos).
 - UI del plugin funcional y usable (2 puntos).
@@ -459,6 +566,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Contexto:** Esta actividad constituye el proyecto final evaluable de la unidad. El alumno debe integrar todos los conocimientos adquiridos para diseñar una aplicación web completa en Figma, desde la investigación inicial hasta un prototipo interactivo de alta fidelidad listo para handoff a desarrollo.
 
 **Objetivos:**
+
 - Seleccionar un proyecto de aplicación web de entre las opciones propuestas por el profesor o proponer uno propio (debe ser aprobado). Ejemplos: una plataforma de cursos online, una app de recetas compartidas, un gestor de finanzas personales, un marketplace de segunda mano, una red social para profesionales de un sector específico.
 - Realizar una fase de investigación y definición: identificar usuarios objetivo, definir funcionalidades principales, crear user personas básicos.
 - Diseñar wireframes de baja fidelidad de al menos 6 pantallas principales, utilizando solo formas básicas (rectángulos grises, líneas, texto placeholder). Validar los flujos principales con un test informal (compañero de clase).
@@ -472,6 +580,7 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 **Formato de entrega:** Enlace al archivo Figma (con permisos de visualización), documento PDF de especificaciones de diseño (exportado desde Figma o redactado aparte), y vídeo de demostración.
 
 **Rúbrica de evaluación:**
+
 - Investigación y definición del proyecto (1 punto).
 - Wireframes de baja fidelidad (1 punto).
 - Design system completo con variables y componentes (3 puntos).
@@ -484,31 +593,33 @@ Diseña y prototipa en Figma el flujo completo de compra de un ecommerce de prod
 
 ## Buenas prácticas
 
-La organización del archivo de Figma es el primer indicador de profesionalidad en el diseño de interfaces. Un archivo bien organizado utiliza páginas (Page 1, Page 2, etc.) renombradas con nombres descriptivos y, preferiblemente, emojis como prefijos visuales para facilitar la navegación: "🎨 Design System", "📱 Mobile Screens", "💻 Desktop Screens", "🔬 Components Lab", "📋 Archive / Explorations". Dentro de cada página, los frames deben estar organizados en filas y columnas con espaciados uniformes (típicamente 80-100px entre frames), y deben estar agrupados por funcionalidad o flujo. Un colaborador que abra el archivo por primera vez debe poder orientarse en menos de 30 segundos.
+**Organización de páginas y frames.** La organización del archivo de Figma es el primer indicador de profesionalidad en el diseño de interfaces. Un archivo bien organizado utiliza páginas (Page 1, Page 2, etc.) renombradas con nombres descriptivos y, preferiblemente, emojis como prefijos visuales para facilitar la navegación: "🎨 Design System", "📱 Mobile Screens", "💻 Desktop Screens", "🔬 Components Lab", "📋 Archive / Explorations". Dentro de cada página, los frames deben estar organizados en filas y columnas con espaciados uniformes (típicamente **80-100 px** entre frames), y deben estar agrupados por funcionalidad o flujo. Un colaborador que abra el archivo por primera vez debe poder orientarse en **menos de 30 segundos**.
 
-La nomenclatura de capas y componentes debe ser descriptiva y seguir una convención consistente. Para componentes, la nomenclatura slash (/) es el estándar de Figma porque genera automáticamente propiedades de variante: "Button/Size=Medium/Variant=Primary/State=Default". Para capas dentro de componentes, se recomienda usar nombres semánticos en inglés (o en el idioma acordado por el equipo): "icon-left", "label", "badge-count", "chevron-right". Evitar nombres genéricos como "Rectangle 47" o "Group 12". Cuando un elemento tenga el mismo nombre en dos frames diferentes, Smart Animate lo detectará automáticamente y aplicará una transición, por lo que los nombres consistentes son cruciales para el prototipado.
+**Nomenclatura de capas y componentes.** Debe ser descriptiva y seguir una convención consistente. Para componentes, la **nomenclatura slash (/)** es el estándar de Figma porque genera automáticamente propiedades de variante: "Button/Size=Medium/Variant=Primary/State=Default". Para capas dentro de componentes, se recomienda usar nombres semánticos en inglés (o en el idioma acordado por el equipo): "icon-left", "label", "badge-count", "chevron-right". **Evitar nombres genéricos** como "Rectangle 47" o "Group 12". Cuando un elemento tenga el mismo nombre en dos frames diferentes, **Smart Animate** lo detectará automáticamente y aplicará una transición, por lo que los nombres consistentes son cruciales para el prototipado.
 
-El sistema de grid de 8 puntos (8pt grid system) es un estándar de la industria que debe aplicarse tanto en diseño como en desarrollo. Todos los espaciados, paddings, tamaños y dimensiones deben ser múltiplos de 8px (o de 4px para ajustes muy finos). Esto garantiza que los diseños se alineen con el sistema de píxeles de las pantallas y facilita la implementación. En Figma, esto se implementa configurando la grilla de layout del frame con columnas de 8px y configurando el "nudge amount" (cantidad de desplazamiento con flechas) a 8px en Preferences > Nudge Amount.
+!!! tip "Sistema de 8 puntos"
+    El **sistema de grid de 8 puntos** (*8pt grid system*) es un estándar de la industria que debe aplicarse tanto en diseño como en desarrollo: todos los espaciados, *paddings*, tamaños y dimensiones deben ser **múltiplos de 8 px** (o de **4 px** para ajustes muy finos). Esto garantiza que los diseños se alineen con el sistema de píxeles de las pantallas y facilita la implementación. En Figma se configura la grilla de *layout* del frame con columnas de 8 px y el **nudge amount** (cantidad de desplazamiento con flechas) a 8 px en **Preferences > Nudge Amount**.
 
-La metodología Atomic Design aplicada a Figma consiste en organizar los componentes en niveles de complejidad creciente. La página de "Átomos" contiene los elementos más básicos e indivisibles (botones, inputs, iconos, etiquetas). La página de "Moléculas" contiene combinaciones simples de átomos (campo de formulario = label + input + error message). La página de "Organismos" contiene secciones completas de interfaz (header, footer, card compleja, formulario completo). Esta organización facilita la localización de componentes, evita la duplicación y permite construir nuevas pantallas por composición de organismos existentes en lugar de diseñar desde cero.
+**Atomic Design en Figma.** La metodología organiza los componentes en niveles de complejidad creciente. La página de "Átomos" contiene los elementos más básicos e indivisibles (botones, inputs, iconos, etiquetas). La página de "Moléculas" contiene combinaciones simples de átomos (campo de formulario = *label* + *input* + *error message*). La página de "Organismos" contiene secciones completas de interfaz (*header*, *footer*, card compleja, formulario completo). Esta organización facilita la localización de componentes, evita la duplicación y permite construir nuevas pantallas por composición de organismos existentes en lugar de diseñar desde cero.
 
-El uso de Auto Layout debe ser la norma, no la excepción. Cualquier grupo de elementos que tenga una relación espacial (horizontal, vertical, grid) debe estar contenido en un frame con Auto Layout. Esto garantiza que el diseño se comporte correctamente cuando cambie el contenido (texto más largo, más elementos en una lista) y facilita la traducción a CSS Flexbox. La resistencia a usar Auto Layout ("es más rápido diseñar con posiciones absolutas") es un error común que genera deuda de diseño y ralentiza el handoff a desarrollo.
+**Auto Layout como norma, no como excepción.** Cualquier grupo de elementos que tenga una relación espacial (horizontal, vertical, *grid*) debe estar contenido en un frame con Auto Layout. Esto garantiza que el diseño se comporte correctamente cuando cambie el contenido (texto más largo, más elementos en una lista) y facilita la traducción a **CSS Flexbox**. La resistencia a usar Auto Layout ("es más rápido diseñar con posiciones absolutas") es un error común que genera **deuda de diseño** y ralentiza el *handoff* a desarrollo.
 
-La documentación dentro de Figma, mediante comentarios y anotaciones, es especialmente valiosa para comunicar decisiones de diseño, casos edge y comportamientos interactivos que no son evidentes en el diseño estático. Los comentarios pueden anotarse directamente sobre elementos específicos del canvas y son visibles para todos los colaboradores. Para documentación más estructurada, se puede utilizar la funcionalidad de "Annotations" en Dev Mode o crear frames específicos de documentación con textos explicativos, flechas y referencias visuales.
+**Documentación dentro de Figma.** Mediante comentarios y anotaciones, es especialmente valiosa para comunicar decisiones de diseño, *casos edge* y comportamientos interactivos que no son evidentes en el diseño estático. Los comentarios pueden anotarse directamente sobre elementos específicos del *canvas* y son visibles para todos los colaboradores. Para documentación más estructurada, se puede utilizar la funcionalidad de **Annotations** en Dev Mode o crear frames específicos de documentación con textos explicativos, flechas y referencias visuales.
 
 ## Errores frecuentes
 
-Uno de los errores más comunes entre principiantes en Figma es utilizar grupos (Groups) en lugar de frames (Frames). Los grupos son meras agrupaciones visuales que no proporcionan constraints, auto layout, clipping ni capacidades de layout responsive. Un diseño construido con grupos se comporta de forma impredecible cuando se redimensiona y no puede traducirse limpiamente a HTML/CSS. La regla de oro es: si un elemento contiene a otros elementos, debe ser un frame, no un grupo. Los grupos solo deben utilizarse para agrupaciones temporales o para organizar capas que no tienen relación de layout.
+!!! warning "Usa frames, no grupos"
+    Uno de los errores más comunes entre principiantes en Figma es utilizar **grupos (Groups)** en lugar de **frames (Frames)**. Los grupos son meras agrupaciones visuales que **no proporcionan constraints, auto layout, clipping ni capacidades de layout responsive**. Un diseño construido con grupos se comporta de forma impredecible cuando se redimensiona y no puede traducirse limpiamente a HTML/CSS. **Regla de oro:** si un elemento contiene a otros elementos, debe ser un frame, no un grupo. Los grupos solo deben utilizarse para agrupaciones temporales o para organizar capas que no tienen relación de *layout*.
 
-No utilizar Auto Layout es otro error generalizado que produce diseños frágiles. Cuando un botón se diseña con posiciones absolutas (texto posicionado manualmente dentro de un rectángulo), cualquier cambio en el texto (por ejemplo, traducir "Submit" a "Enviar formulario") rompe el diseño y requiere ajustes manuales. Con Auto Layout, el botón se ajusta automáticamente al tamaño del texto manteniendo los paddings configurados. La resistencia inicial a Auto Layout (porque requiere una forma diferente de pensar el layout) debe superarse cuanto antes, ya que es la funcionalidad que más productividad y calidad aporta al diseño de interfaces.
+**No utilizar Auto Layout** es otro error generalizado que produce diseños frágiles. Cuando un botón se diseña con posiciones absolutas (texto posicionado manualmente dentro de un rectángulo), cualquier cambio en el texto (por ejemplo, traducir "Submit" a "Enviar formulario") rompe el diseño y requiere ajustes manuales. Con Auto Layout, el botón se ajusta automáticamente al tamaño del texto manteniendo los *paddings* configurados. La resistencia inicial a Auto Layout (porque requiere una forma diferente de pensar el *layout*) debe superarse cuanto antes, ya que es la funcionalidad que más productividad y calidad aporta al diseño de interfaces.
 
-Crear múltiples componentes separados para variantes que deberían estar unificadas es un error organizativo muy frecuente. Por ejemplo, crear "Button Primary", "Button Secondary" y "Button Danger" como componentes independientes en lugar de como variantes de un mismo componente "Button". Esto duplica el mantenimiento (cualquier cambio en la estructura del botón debe hacerse tres veces), impide el intercambio de variantes desde el panel de propiedades y complica la consistencia. Siempre que varios componentes compartan estructura pero difieran en propiedades visuales, deben combinarse como variantes.
+**Crear múltiples componentes separados** para variantes que deberían estar unificadas es un error organizativo muy frecuente. Por ejemplo, crear "Button Primary", "Button Secondary" y "Button Danger" como componentes independientes en lugar de como variantes de un mismo componente "Button". Esto duplica el mantenimiento (cualquier cambio en la estructura del botón debe hacerse tres veces), impide el intercambio de variantes desde el panel de propiedades y complica la consistencia. **Siempre que varios componentes compartan estructura pero difieran en propiedades visuales, deben combinarse como variantes.**
 
-Ignorar el comportamiento responsive durante el diseño es un error con consecuencias costosas. Diseñar exclusivamente para escritorio (1440px) y asumir que "ya se adaptará en desarrollo" transfiere al desarrollador decisiones de diseño que deberían haberse tomado en la fase de diseño. Cada pantalla debe diseñarse en al menos dos breakpoints (móvil y escritorio), y los constraints deben configurarse para que los elementos se comporten correctamente en tamaños intermedios. Dedicar tiempo a configurar constraints durante el diseño ahorra horas de idas y venidas entre diseño y desarrollo.
+**Ignorar el comportamiento responsive** durante el diseño es un error con consecuencias costosas. Diseñar exclusivamente para escritorio (**1440 px**) y asumir que "ya se adaptará en desarrollo" transfiere al desarrollador decisiones de diseño que deberían haberse tomado en la fase de diseño. Cada pantalla debe diseñarse en al menos **dos breakpoints** (móvil y escritorio), y los constraints deben configurarse para que los elementos se comporten correctamente en tamaños intermedios. Dedicar tiempo a configurar constraints durante el diseño ahorra horas de idas y venidas entre diseño y desarrollo.
 
-No utilizar variables de Figma y hardcodear valores es un error que dificulta el mantenimiento y la consistencia. Si el color primario de la marca está definido manualmente como #2563EB en 40 componentes diferentes, cambiarlo a #1D4ED8 requerirá modificar manualmente esos 40 componentes. Con variables, basta con cambiar el valor de la variable una vez y todos los componentes se actualizan automáticamente. Las variables deben definirse al inicio del proyecto, antes de empezar a diseñar componentes.
+**No utilizar variables de Figma** y *hardcodear* valores es un error que dificulta el mantenimiento y la consistencia. Si el color primario de la marca está definido manualmente como **#2563EB** en **40 componentes** diferentes, cambiarlo a **#1D4ED8** requerirá modificar manualmente esos 40 componentes. Con variables, basta con cambiar el valor de la variable una vez y todos los componentes se actualizan automáticamente. Las variables deben definirse **al inicio del proyecto**, antes de empezar a diseñar componentes.
 
-Finalmente, diseñar prototipos excesivamente complejos que no pueden implementarse es un error frecuente cuando el diseñador desconoce las capacidades y limitaciones de la plataforma de destino. Animaciones imposibles en CSS, transiciones entre pantallas que no tienen correspondencia en el framework utilizado (React, Vue, etc.), o microinteracciones que requerirían bibliotecas de animación pesadas son ejemplos de diseños que generan frustración en el equipo de desarrollo. La comunicación constante entre diseño y desarrollo y el conocimiento técnico del medio (web, iOS, Android) son esenciales para mantener los prototipos dentro del ámbito de lo realizable.
+Finalmente, **diseñar prototipos excesivamente complejos que no pueden implementarse** es un error frecuente cuando el diseñador desconoce las capacidades y limitaciones de la plataforma de destino. Animaciones imposibles en CSS, transiciones entre pantallas que no tienen correspondencia en el framework utilizado (React, Vue, etc.), o microinteracciones que requerirían bibliotecas de animación pesadas son ejemplos de diseños que generan frustración en el equipo de desarrollo. La comunicación constante entre diseño y desarrollo y el conocimiento técnico del medio (web, iOS, Android) son esenciales para mantener los prototipos dentro del ámbito de lo realizable.
 
 ## Resumen
 

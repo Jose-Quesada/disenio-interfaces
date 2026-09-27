@@ -44,83 +44,158 @@ El alumnado debe dominar HTML semántico (elementos estructurales, formularios, 
 
 ### 1. Introducción al diseño responsive
 
-El diseño web responsive fue conceptualizado por Ethan Marcotte en su artículo seminal de 2010 en A List Apart. Marcotte identificó que la creciente diversidad de dispositivos con acceso a internet exigía un nuevo paradigma de diseño, uno que no creara versiones separadas del sitio para cada dispositivo, sino que el mismo contenido se adaptara fluidamente al contexto de visualización. Sus tres pilares fundamentales fueron: grillas fluidas (usando porcentajes en lugar de píxeles fijos), imágenes flexibles (que no desbordaran su contenedor), y media queries (reglas CSS condicionales basadas en características del dispositivo).
+!!! info "Origen y pilares del diseño responsive"
+    El diseño web responsive fue conceptualizado por **Ethan Marcotte** en su artículo seminal de **2010** en *A List Apart*. Marcotte identificó que la creciente diversidad de dispositivos con acceso a internet exigía un nuevo paradigma de diseño, uno que no creara versiones separadas del sitio para cada dispositivo, sino que el mismo contenido se adaptara fluidamente al contexto de visualización. Sus tres pilares fundamentales fueron:
 
-Antes del responsive design, la práctica común era el diseño adaptativo (adaptive design), que consistía en crear múltiples versiones fijas del sitio para diferentes anchos predefinidos (típicamente 320px, 768px, 1024px). El servidor detectaba el dispositivo y servía la versión correspondiente. Este enfoque tenía problemas graves: mantenimiento costoso (cada cambio debía replicarse en todas las versiones), imposibilidad de cubrir todos los tamaños de pantalla existentes, y duplicación de contenido que perjudicaba al SEO. El responsive design resuelve esto con un único código base que se adapta continuamente a cualquier ancho.
+    - **Grillas fluidas** — usando porcentajes en lugar de píxeles fijos.
+    - **Imágenes flexibles** — que no desbordan su contenedor.
+    - **Media queries** — reglas CSS condicionales basadas en características del dispositivo.
 
-La situación actual ha superado incluso la visión original de Marcotte. El ecosistema de dispositivos incluye smartphones (desde 320px hasta pantallas plegables de 400px+), tablets (600px a 1200px), portátiles (1024px a 1920px), monitores de escritorio (1920px a 5120px), televisores inteligentes, relojes, y próximamente dispositivos de realidad extendida. En 2025, los datos de StatCounter muestran que el tráfico móvil representa aproximadamente el 58% del total global, con picos superiores al 70% en regiones como Asia y África. Esto hace que el diseño responsive no sea una opción, sino un requisito fundamental.
+Antes del responsive design, la práctica común era el **diseño adaptativo** (*adaptive design*), que consistía en crear múltiples versiones fijas del sitio para diferentes anchos predefinidos (típicamente **320px**, **768px**, **1024px**). El servidor detectaba el dispositivo y servía la versión correspondiente. Este enfoque tenía problemas graves:
+
+- **Mantenimiento costoso** — cada cambio debía replicarse en todas las versiones.
+- **Imposibilidad de cubrir** todos los tamaños de pantalla existentes.
+- **Duplicación de contenido** que perjudicaba al SEO.
+
+El responsive design resuelve esto con un **único código base** que se adapta continuamente a cualquier ancho.
+
+La situación actual ha superado incluso la visión original de Marcotte. El ecosistema de dispositivos incluye smartphones (desde **320px** hasta pantallas plegables de **400px+**), tablets (**600px** a **1200px**), portátiles (**1024px** a **1920px**), monitores de escritorio (**1920px** a **5120px**), televisores inteligentes, relojes, y próximamente dispositivos de realidad extendida. En **2025**, los datos de StatCounter muestran que el tráfico móvil representa aproximadamente el **58%** del total global, con picos superiores al **70%** en regiones como Asia y África. Esto hace que el diseño responsive no sea una opción, sino un requisito fundamental.
 
 ### 2. Viewport y la metaetiqueta viewport
 
-El viewport es el área visible de una página web dentro del navegador. En dispositivos móviles, existe una distinción crucial entre el layout viewport (el área sobre la que se renderiza la página, típicamente 980px por defecto) y el visual viewport (el área realmente visible en la pantalla). Sin la metaetiqueta viewport correcta, los navegadores móviles asumen que la página está diseñada para escritorio y la renderizan a 980px de ancho, reduciéndola después para que quepa en la pantalla. El resultado es texto minúsculo e ilegible que obliga al usuario a hacer zoom.
+!!! info "Definición"
+    El **viewport** es el área visible de una página web dentro del navegador. En dispositivos móviles, existe una distinción crucial entre el **layout viewport** (el área sobre la que se renderiza la página, típicamente **980px** por defecto) y el **visual viewport** (el área realmente visible en la pantalla). Sin la metaetiqueta viewport correcta, los navegadores móviles asumen que la página está diseñada para escritorio y la renderizan a **980px** de ancho, reduciéndola después para que quepa en la pantalla. El resultado es texto minúsculo e ilegible que obliga al usuario a hacer zoom.
 
-La metaetiqueta viewport se coloca en el head del HTML y corrige este comportamiento: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`. El atributo `width=device-width` establece el ancho del layout viewport igual al ancho de la pantalla del dispositivo en píxeles CSS (no en píxeles físicos). Por ejemplo, un iPhone 14 tiene un ancho físico de 1170px pero reporta `device-width` como 390px en modo portrait (por su devicePixelRatio de 3x). `initial-scale=1.0` establece el nivel de zoom inicial al 100%, evitando que el navegador haga zoom out automático.
+La metaetiqueta viewport se coloca en el `head` del HTML y corrige este comportamiento: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`.
 
-Otros atributos del viewport incluyen: `user-scalable=no` (deshabilita el zoom del usuario, generalmente desaconsejado por razones de accesibilidad), `minimum-scale` y `maximum-scale` (establecen límites al zoom), y `viewport-fit=cover` (para dispositivos con notch o "isla dinámica" en iPhones modernos, permitiendo que el contenido se extienda a áreas seguras). La recomendación para sitios responsive es la configuración mínima con `width=device-width, initial-scale=1.0` y permitir siempre el zoom del usuario.
+- **`width=device-width`** — establece el ancho del layout viewport igual al ancho de la pantalla del dispositivo en píxeles CSS (no en píxeles físicos). Por ejemplo, un iPhone 14 tiene un ancho físico de **1170px** pero reporta `device-width` como **390px** en modo portrait (por su `devicePixelRatio` de **3x**).
+- **`initial-scale=1.0`** — establece el nivel de zoom inicial al **100%**, evitando que el navegador haga zoom out automático.
+
+!!! warning "No deshabilites el zoom"
+    El atributo `user-scalable=no` deshabilita el zoom del usuario y está **generalmente desaconsejado por razones de accesibilidad**.
+
+Otros atributos del viewport son `minimum-scale` y `maximum-scale` (establecen límites al zoom) y `viewport-fit=cover` (para dispositivos con notch o "isla dinámica" en iPhones modernos, permitiendo que el contenido se extienda a áreas seguras).
+
+!!! tip "Configuración recomendada"
+    Para sitios responsive, la configuración mínima es `width=device-width, initial-scale=1.0`, **permitiendo siempre el zoom del usuario**.
 
 ### 3. Metodología Mobile First
 
-Mobile First es una filosofía de diseño y desarrollo que propone comenzar el proceso creativo desde la versión móvil (la más restrictiva) y progresivamente añadir complejidad para pantallas más grandes. Este enfoque, popularizado por Luke Wroblewski, invierte la práctica tradicional de diseñar primero para escritorio y luego adaptar a móvil.
+!!! info "Definición"
+    **Mobile First** es una filosofía de diseño y desarrollo que propone comenzar el proceso creativo desde la versión móvil (la más restrictiva) y progresivamente añadir complejidad para pantallas más grandes. Este enfoque, popularizado por **Luke Wroblewski**, invierte la práctica tradicional de diseñar primero para escritorio y luego adaptar a móvil.
 
-Las ventajas del Mobile First son múltiples. En primer lugar, obliga a priorizar el contenido: el limitado espacio móvil fuerza a identificar qué es verdaderamente esencial y eliminar lo superfluo. En segundo lugar, mejora el rendimiento: al cargar primero los estilos base (móvil) y luego añadir estilos adicionales mediante media queries, los dispositivos móviles solo descargan y procesan el CSS que necesitan. En tercer lugar, alinea el desarrollo con la realidad estadística del tráfico web actual, donde la mayoría de usuarios acceden desde móvil.
+Las ventajas del Mobile First son múltiples:
 
-En CSS, Mobile First se implementa usando exclusivamente `min-width` en las media queries (nunca `max-width`). Los estilos base (fuera de cualquier media query) corresponden a la versión móvil. Luego se añaden media queries con `min-width` para ir añadiendo o sobrescribiendo estilos a medida que la pantalla crece. Este enfoque se alinea con el principio de mejora progresiva (progressive enhancement): la versión base funciona en cualquier dispositivo, y los navegadores más capaces reciben mejoras adicionales. Lo opuesto sería la degradación elegante (graceful degradation): diseñar para el máximo y luego ir quitando funcionalidades para dispositivos menos capaces, práctica desaconsejada en la actualidad.
+- **Prioriza el contenido** — el limitado espacio móvil fuerza a identificar qué es verdaderamente esencial y eliminar lo superfluo.
+- **Mejora el rendimiento** — al cargar primero los estilos base (móvil) y luego añadir estilos adicionales mediante media queries, los dispositivos móviles solo descargan y procesan el CSS que necesitan.
+- **Se alinea con la realidad estadística** del tráfico web actual, donde la mayoría de usuarios acceden desde móvil.
+
+!!! tip "Regla de implementación"
+    En CSS, Mobile First se implementa usando **exclusivamente `min-width`** en las media queries (nunca `max-width`). Los estilos base (fuera de cualquier media query) corresponden a la versión móvil; después se añaden media queries con `min-width` para ir añadiendo o sobrescribiendo estilos a medida que la pantalla crece.
+
+Este enfoque se alinea con el principio de **mejora progresiva** (*progressive enhancement*): la versión base funciona en cualquier dispositivo, y los navegadores más capaces reciben mejoras adicionales. Lo opuesto sería la **degradación elegante** (*graceful degradation*): diseñar para el máximo y luego ir quitando funcionalidades para dispositivos menos capaces, práctica desaconsejada en la actualidad.
 
 ### 4. Breakpoints
 
-Los breakpoints son los puntos de ruptura donde el diseño cambia para adaptarse a un tamaño de pantalla diferente. La decisión más importante sobre breakpoints es cómo elegirlos. La recomendación de los expertos (y del W3C) es seleccionar breakpoints basados en el contenido, no en dispositivos específicos. Esto significa que los breakpoints deben determinarse observando el diseño: se añade un breakpoint cuando el contenido "se rompe" visualmente (líneas de texto demasiado largas o cortas, columnas que colapsan, imágenes que se desalinean).
+!!! info "Definición"
+    Los **breakpoints** son los puntos de ruptura donde el diseño cambia para adaptarse a un tamaño de pantalla diferente.
 
-A pesar de esta recomendación, en la práctica docente es útil conocer los rangos de breakpoints comunes: 480px (móvil pequeño a móvil grande), 768px (móvil/tablet pequeña a tablet), 1024px (tablet a escritorio pequeño), 1280px (escritorio estándar). Para proyectos propios, la estrategia recomendada es: comienza con cero breakpoints y usa técnicas fluidas (Grid con auto-fit/minmax, Flexbox con wrap, clamp() para tamaños). Solo cuando el diseño lo exija, añade breakpoints en los puntos exactos donde el contenido deja de verse bien.
+La decisión más importante sobre breakpoints es cómo elegirlos. La recomendación de los expertos (y del **W3C**) es seleccionar breakpoints basados en el **contenido**, no en **dispositivos** específicos. Esto significa que los breakpoints deben determinarse observando el diseño: se añade un breakpoint cuando el contenido «se rompe» visualmente (líneas de texto demasiado largas o cortas, columnas que colapsan, imágenes que se desalinean).
 
-En un enfoque Mobile First, todos los breakpoints usan `min-width`. Por ejemplo: `@media (min-width: 768px) { ... }` se lee como "cuando la pantalla tenga al menos 768px de ancho, aplica estos estilos". Esto contrasta con el enfoque Desktop First, que usa `max-width`: `@media (max-width: 768px) { ... }` ("cuando la pantalla tenga como máximo 768px, sobrescribe estos estilos"). Mobile First produce código más limpio y con mejor rendimiento.
+A pesar de esta recomendación, en la práctica docente es útil conocer los rangos de breakpoints comunes:
+
+| Breakpoint | Transición habitual |
+|------------|---------------------|
+| **480px** | Móvil pequeño a móvil grande |
+| **768px** | Móvil/tablet pequeña a tablet |
+| **1024px** | Tablet a escritorio pequeño |
+| **1280px** | Escritorio estándar |
+
+Para proyectos propios, la estrategia recomendada es: comienza con **cero breakpoints** y usa técnicas fluidas (Grid con `auto-fit`/`minmax`, Flexbox con `wrap`, `clamp()` para tamaños). Solo cuando el diseño lo exija, añade breakpoints en los puntos exactos donde el contenido deja de verse bien.
+
+En un enfoque Mobile First, todos los breakpoints usan `min-width`. Por ejemplo: `@media (min-width: 768px) { ... }` se lee como «cuando la pantalla tenga al menos **768px** de ancho, aplica estos estilos». Esto contrasta con el enfoque Desktop First, que usa `max-width`: `@media (max-width: 768px) { ... }` («cuando la pantalla tenga como máximo **768px**, sobrescribe estos estilos»). Mobile First produce código más limpio y con mejor rendimiento.
 
 ### 5. Media Queries avanzadas
 
-Las media queries son el mecanismo de CSS para aplicar estilos condicionalmente según las características del dispositivo o del agente de usuario. La sintaxis básica es `@media [tipo] [operador] (característica) { reglas }`. Los tipos de medio principales son `screen` (pantallas), `print` (impresión) y `all` (todos, por defecto). Los operadores lógicos son `and` (intersección), `not` (negación), `only` (para navegadores antiguos que no soportan media queries), y la coma `,` (que actúa como OR lógico).
+!!! info "Definición"
+    Las **media queries** son el mecanismo de CSS para aplicar estilos condicionalmente según las características del dispositivo o del agente de usuario. La sintaxis básica es `@media [tipo] [operador] (característica) { reglas }`.
 
-Las características de medio han evolucionado significativamente. Las clásicas incluyen: `width`, `min-width`, `max-width` (ancho del viewport), `height` (alto del viewport), `orientation: portrait | landscape` (orientación del dispositivo), `aspect-ratio` (relación de aspecto), `resolution` (densidad de píxeles en dpi/dppx). Las características modernas de preferencias de usuario son especialmente importantes para accesibilidad: `prefers-reduced-motion: reduce` (el usuario prefiere reducir animaciones), `prefers-color-scheme: dark | light` (esquema de color preferido), `prefers-contrast: more | less` (preferencia de contraste), `prefers-reduced-data: reduce` (ahorro de datos). Las características de interacción son cruciales para detectar capacidades táctiles: `hover: hover | none` (si el dispositivo soporta hover), `pointer: coarse | fine` (tipo de puntero, dedo vs ratón), `any-hover` y `any-pointer` (consideran todos los dispositivos de entrada).
+- **Tipos de medio** — `screen` (pantallas), `print` (impresión) y `all` (todos, por defecto).
+- **Operadores lógicos** — `and` (intersección), `not` (negación), `only` (para navegadores antiguos que no soportan media queries) y la coma `,` (que actúa como **OR** lógico).
 
-Un ejemplo de consulta compleja: `@media screen and (min-width: 768px) and (hover: hover) and (prefers-color-scheme: dark) { ... }` aplica estilos solo en pantallas de al menos 768px, con capacidad de hover, cuando el usuario prefiere modo oscuro.
+Las características de medio han evolucionado significativamente:
+
+- **Clásicas** — `width`, `min-width`, `max-width` (ancho del viewport), `height` (alto del viewport), `orientation: portrait | landscape` (orientación del dispositivo), `aspect-ratio` (relación de aspecto) y `resolution` (densidad de píxeles en dpi/dppx).
+- **Preferencias de usuario** (especialmente importantes para accesibilidad) — `prefers-reduced-motion: reduce` (el usuario prefiere reducir animaciones), `prefers-color-scheme: dark | light` (esquema de color preferido), `prefers-contrast: more | less` (preferencia de contraste) y `prefers-reduced-data: reduce` (ahorro de datos).
+- **Interacción** (cruciales para detectar capacidades táctiles) — `hover: hover | none` (si el dispositivo soporta hover), `pointer: coarse | fine` (tipo de puntero, dedo vs ratón), y `any-hover` / `any-pointer` (consideran todos los dispositivos de entrada).
+
+Un ejemplo de consulta compleja: `@media screen and (min-width: 768px) and (hover: hover) and (prefers-color-scheme: dark) { ... }` aplica estilos solo en pantallas de al menos **768px**, con capacidad de hover, cuando el usuario prefiere modo oscuro.
 
 ### 6. Container Queries
 
-Las Container Queries representan la evolución más significativa en diseño responsive desde las media queries originales. Mientras que las media queries consultan el tamaño del viewport (la ventana del navegador), las container queries consultan el tamaño de un elemento contenedor específico. Esto resuelve el problema fundamental de los componentes reutilizables: un componente puede renderizarse en diferentes contextos (una barra lateral estrecha, una zona de contenido ancha, un modal) y necesita adaptarse a su contenedor, no al viewport global.
+!!! info "Definición"
+    Las **Container Queries** representan la evolución más significativa en diseño responsive desde las media queries originales. Mientras que las media queries consultan el tamaño del **viewport** (la ventana del navegador), las container queries consultan el tamaño de un elemento **contenedor** específico. Esto resuelve el problema fundamental de los componentes reutilizables: un componente puede renderizarse en diferentes contextos (una barra lateral estrecha, una zona de contenido ancha, un modal) y necesita adaptarse a su contenedor, no al viewport global.
 
-Para usar container queries, primero se define un contenedor con `container-type` (que puede ser `inline-size` para consultas de ancho, `size` para ancho y alto, o `normal` para consultas de estilo) y opcionalmente `container-name` para nombrarlo. Luego, la regla `@container` aplica estilos condicionales: `@container (min-width: 400px) { .componente { ... } }`. Las unidades de contenedor asociadas son `cqw` (1% del ancho del contenedor), `cqh` (1% del alto), `cqi` y `cqb` (ejes inline y block), `cqmin` y `cqmax`.
+Para usar container queries:
 
-La diferencia práctica es enorme. Con media queries, un componente de tarjeta en una página necesitaba lógica condicional compleja si podía aparecer tanto en un sidebar de 300px como en una zona central de 800px. Con container queries, el componente simplemente consulta el tamaño de su contenedor padre y se adapta en consecuencia, independientemente del contexto de página. Esto hace que los componentes sean verdaderamente reutilizables y autónomos.
+1. Define un contenedor con **`container-type`** (que puede ser `inline-size` para consultas de ancho, `size` para ancho y alto, o `normal` para consultas de estilo) y opcionalmente **`container-name`** para nombrarlo.
+2. Aplica estilos condicionales con la regla **`@container`**: `@container (min-width: 400px) { .componente { ... } }`.
+3. Utiliza las unidades de contenedor asociadas: **`cqw`** (1% del ancho del contenedor), **`cqh`** (1% del alto), **`cqi`** y **`cqb`** (ejes inline y block), **`cqmin`** y **`cqmax`**.
+
+!!! tip "Ventaja práctica"
+    Con media queries, un componente de tarjeta en una página necesitaba lógica condicional compleja si podía aparecer tanto en un sidebar de **300px** como en una zona central de **800px**. Con container queries, el componente simplemente consulta el tamaño de su contenedor padre y se adapta en consecuencia, independientemente del contexto de página. Esto hace que los componentes sean verdaderamente **reutilizables y autónomos**.
 
 ### 7. Imágenes responsive
 
-El problema de las imágenes responsive es doble: por un lado, servir imágenes excesivamente grandes a dispositivos móviles malgasta ancho de banda y ralentiza la carga; por otro, las pantallas de alta densidad (Retina, 2x, 3x) necesitan imágenes con mayor resolución para verse nítidas. La solución implica varios mecanismos HTML trabajando en conjunto.
+El problema de las imágenes responsive es doble: por un lado, servir imágenes excesivamente grandes a dispositivos móviles malgasta ancho de banda y ralentiza la carga; por otro, las pantallas de alta densidad (**Retina**, **2x**, **3x**) necesitan imágenes con mayor resolución para verse nítidas. La solución implica varios mecanismos HTML trabajando en conjunto.
 
-El atributo `srcset` en la etiqueta `<img>` permite al navegador elegir entre múltiples versiones de la misma imagen. Con el descriptor `w` (ancho intrínseco): `srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"`. El navegador, combinando esta información con el atributo `sizes` (que describe el tamaño de renderizado de la imagen en diferentes condiciones de viewport), selecciona la fuente más adecuada. Con el descriptor `x` (densidad): `srcset="imagen.jpg 1x, imagen@2x.jpg 2x, imagen@3x.jpg 3x"`. La etiqueta `<picture>` permite dirección artística (art direction): servir imágenes recortadas o con composición diferente según el tamaño de pantalla, usando múltiples elementos `<source>` con condiciones `media`. También permite servir formatos modernos como WebP o AVIF con fallback a JPEG/PNG para navegadores que no los soporten.
+El atributo `srcset` en la etiqueta `<img>` permite al navegador elegir entre múltiples versiones de la misma imagen:
 
-El atributo `loading="lazy"` en imágenes pospone la carga de imágenes que están fuera del viewport hasta que el usuario se acerca a ellas mediante scroll. Esto reduce drásticamente el tiempo de carga inicial y el consumo de datos. `fetchpriority="high"` permite priorizar imágenes críticas como el héroe.
+- **Descriptor `w`** (ancho intrínseco) — `srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"`.
+- **Descriptor `x`** (densidad) — `srcset="imagen.jpg 1x, imagen@2x.jpg 2x, imagen@3x.jpg 3x"`.
+- **`sizes`** — describe el tamaño de renderizado de la imagen en diferentes condiciones de viewport; combinado con `w`, permite al navegador seleccionar la fuente más adecuada.
+- **`<picture>`** — permite **dirección artística** (*art direction*): servir imágenes recortadas o con composición diferente según el tamaño de pantalla, usando múltiples elementos `<source>` con condiciones `media`. También permite servir formatos modernos como **WebP** o **AVIF** con fallback a JPEG/PNG para navegadores que no los soporten.
+
+Para el rendimiento de carga:
+
+- **`loading="lazy"`** — pospone la carga de imágenes que están fuera del viewport hasta que el usuario se acerca a ellas mediante scroll. Reduce drásticamente el tiempo de carga inicial y el consumo de datos.
+- **`fetchpriority="high"`** — permite priorizar imágenes críticas como el héroe.
 
 ### 8. Tipografía responsive
 
-La tipografía responsive busca mantener la legibilidad óptima en cualquier tamaño de pantalla. La herramienta más potente para esto es la función CSS `clamp()`, que acepta tres valores: mínimo, valor preferido (fluido) y máximo. Por ejemplo: `font-size: clamp(1rem, 2.5vw, 2rem)` establece que el tamaño de fuente será como mínimo 1rem, como máximo 2rem, y entre ambos extremos variará fluidamente al 2.5% del ancho del viewport.
+!!! info "Tipografía fluida con clamp()"
+    La tipografía responsive busca mantener la legibilidad óptima en cualquier tamaño de pantalla. La herramienta más potente para esto es la función CSS **`clamp()`**, que acepta tres valores: **mínimo**, **valor preferido** (fluido) y **máximo**. Por ejemplo: `font-size: clamp(1rem, 2.5vw, 2rem)` establece que el tamaño de fuente será como mínimo **1rem**, como máximo **2rem**, y entre ambos extremos variará fluidamente al **2.5%** del ancho del viewport.
 
-Esta función elimina la necesidad de múltiples media queries para ajustar tamaños de fuente en cada breakpoint. Para los encabezados (`h1` a `h6`), se puede usar una escala tipográfica responsive: `h1 { font-size: clamp(2rem, 5vw, 4rem); }`, `h2 { font-size: clamp(1.5rem, 3.5vw, 3rem); }`, etc. La unidad `ch` (ancho del carácter "0" de la fuente actual) es ideal para controlar la longitud de línea: `max-width: 65ch` limita cada línea a unos 65 caracteres, el ancho óptimo de lectura según estudios de legibilidad. Para la altura de línea (`line-height`), se recomienda un valor sin unidades (p.ej. 1.5-1.6 para texto corrido) que se ajuste automáticamente a cualquier tamaño de fuente.
+Esta función elimina la necesidad de múltiples media queries para ajustar tamaños de fuente en cada breakpoint. Recomendaciones:
+
+- **Escala tipográfica responsive** — para los encabezados (`h1` a `h6`): `h1 { font-size: clamp(2rem, 5vw, 4rem); }`, `h2 { font-size: clamp(1.5rem, 3.5vw, 3rem); }`, etc.
+- **Longitud de línea** — la unidad `ch` (ancho del carácter "0" de la fuente actual) es ideal para controlarla: `max-width: 65ch` limita cada línea a unos **65 caracteres**, el ancho óptimo de lectura según estudios de legibilidad.
+- **Altura de línea** — para `line-height` se recomienda un valor sin unidades (p. ej. **1.5-1.6** para texto corrido) que se ajuste automáticamente a cualquier tamaño de fuente.
 
 ### 9. Espaciado responsive
 
-Al igual que la tipografía, el espaciado (padding, margin, gap) puede hacerse fluido con `clamp()`. Por ejemplo: `padding: clamp(1rem, 5vw, 4rem)` crea un padding que crece proporcionalmente con la pantalla pero nunca es menor de 1rem ni mayor de 4rem. Las unidades de viewport (`vw`, `vh`, `vmin`, `vmax`) son ideales para espaciados que escalan con la pantalla: `gap: 2vw` crea más separación en pantallas grandes y menos en pequeñas.
+!!! tip "Espaciado fluido"
+    Al igual que la tipografía, el espaciado (`padding`, `margin`, `gap`) puede hacerse fluido con **`clamp()`**. Por ejemplo: `padding: clamp(1rem, 5vw, 4rem)` crea un padding que crece proporcionalmente con la pantalla pero nunca es menor de **1rem** ni mayor de **4rem**. Las unidades de viewport (`vw`, `vh`, `vmin`, `vmax`) son ideales para espaciados que escalan con la pantalla: `gap: 2vw` crea más separación en pantallas grandes y menos en pequeñas.
 
-Las funciones `min()` y `max()` complementan a `clamp()`: `width: min(100%, 600px)` asegura que un elemento nunca sea más ancho que 600px ni más ancho que su contenedor; `padding: max(1rem, 2vw)` usa el mayor de los dos valores, garantizando un mínimo de 1rem pero permitiendo más espacio en pantallas grandes.
+    Las funciones **`min()`** y **`max()`** complementan a `clamp()`: `width: min(100%, 600px)` asegura que un elemento nunca sea más ancho que **600px** ni más ancho que su contenedor; `padding: max(1rem, 2vw)` usa el mayor de los dos valores, garantizando un mínimo de **1rem** pero permitiendo más espacio en pantallas grandes.
 
 ### 10. Patrones de layout responsive
 
-Existen varios patrones de layout responsive establecidos: **Column Drop**: las columnas se muestran en fila en desktop y se apilan verticalmente al reducir el ancho, "dejándose caer" una debajo de otra. Es el patrón más simple y se implementa fácilmente con Flexbox (`flex-wrap: wrap`) o Grid (`grid-template-columns` cambiando con media queries). **Mostly Fluid**: similar al Column Drop pero con márgenes fluidos que se ajustan al ancho. Usa `max-width` para limitar el ancho máximo y porcentajes para los márgenes. Es el patrón más común en la web moderna.
+Existen varios patrones de layout responsive establecidos:
 
-**Layout Shifter**: el más complejo, implica una reorganización completa de los elementos en diferentes breakpoints. CSS Grid con `grid-template-areas` es perfecto para este patrón, ya que permite redefinir completamente el mapa de áreas en cada media query sin modificar el HTML. **Off Canvas**: oculta contenido (normalmente un menú de navegación) fuera de la pantalla en móvil y lo muestra al activar un botón (hamburguesa). Se implementa con `position: fixed` y `transform: translateX()` para la animación de deslizamiento, combinado con un overlay semitransparente.
+| Patrón | Descripción | Implementación |
+|--------|-------------|----------------|
+| **Column Drop** | Las columnas se muestran en fila en desktop y se apilan verticalmente al reducir el ancho, «dejándose caer» una debajo de otra. Es el patrón más simple. | Flexbox (`flex-wrap: wrap`) o Grid (`grid-template-columns` cambiando con media queries). |
+| **Mostly Fluid** | Similar al Column Drop pero con márgenes fluidos que se ajustan al ancho. Es el patrón más común en la web moderna. | `max-width` para limitar el ancho máximo y porcentajes para los márgenes. |
+| **Layout Shifter** | El más complejo: implica una reorganización completa de los elementos en diferentes breakpoints. | CSS Grid con `grid-template-areas`, que permite redefinir completamente el mapa de áreas en cada media query sin modificar el HTML. |
+| **Off Canvas** | Oculta contenido (normalmente un menú de navegación) fuera de la pantalla en móvil y lo muestra al activar un botón (hamburguesa). | `position: fixed` y `transform: translateX()` para la animación de deslizamiento, combinado con un overlay semitransparente. |
 
 ## Ejemplos guiados
 
 ### Ejemplo Guiado 1: Meta viewport correcta y Mobile First CSS
 
-Este ejemplo demuestra la configuración esencial del viewport para cualquier proyecto responsive y la estructura CSS Mobile First. Los estilos base (fuera de media queries) definen el diseño móvil. Las media queries con min-width añaden estilos progresivamente para pantallas más grandes.
+!!! example "Contexto pedagógico"
+    Este ejemplo demuestra la configuración esencial del viewport para cualquier proyecto responsive y la estructura CSS Mobile First. Los estilos base (fuera de media queries) definen el diseño móvil. Las media queries con min-width añaden estilos progresivamente para pantallas más grandes.
 
 ```html
 <!DOCTYPE html>
@@ -260,7 +335,8 @@ Este ejemplo demuestra la configuración esencial del viewport para cualquier pr
 
 ### Ejemplo Guiado 2: Menú hamburguesa con CSS puro (checkbox hack)
 
-El menú hamburguesa es el patrón de navegación responsive más extendido. Este ejemplo muestra la implementación con CSS puro, sin JavaScript, usando un checkbox oculto y el selector de hermanos adyacentes (~) para controlar la visibilidad del menú. Es una técnica elegante que funciona en todos los navegadores.
+!!! example "Contexto pedagógico"
+    El menú hamburguesa es el patrón de navegación responsive más extendido. Este ejemplo muestra la implementación con CSS puro, sin JavaScript, usando un checkbox oculto y el selector de hermanos adyacentes (~) para controlar la visibilidad del menú. Es una técnica elegante que funciona en todos los navegadores.
 
 ```html
 <!DOCTYPE html>
@@ -425,7 +501,8 @@ El menú hamburguesa es el patrón de navegación responsive más extendido. Est
 
 ### Ejemplo Guiado 3: Imágenes responsive con srcset y picture
 
-Demostración completa de imágenes responsive usando srcset con descriptores w, el atributo sizes, y el elemento picture para dirección artística y formatos modernos.
+!!! example "Contexto pedagógico"
+    Demostración completa de imágenes responsive usando srcset con descriptores w, el atributo sizes, y el elemento picture para dirección artística y formatos modernos.
 
 ```html
 <!DOCTYPE html>
@@ -557,7 +634,8 @@ Demostración completa de imágenes responsive usando srcset con descriptores w,
 
 ### Ejemplo Guiado 4: Tipografía responsive con clamp()
 
-Implementación de un sistema de tipografía completamente fluido usando CSS clamp(). Sin una sola media query, los tamaños de fuente se adaptan suavemente entre un mínimo y un máximo según el ancho del viewport.
+!!! example "Contexto pedagógico"
+    Implementación de un sistema de tipografía completamente fluido usando CSS clamp(). Sin una sola media query, los tamaños de fuente se adaptan suavemente entre un mínimo y un máximo según el ancho del viewport.
 
 ```html
 <!DOCTYPE html>
@@ -695,7 +773,8 @@ Implementación de un sistema de tipografía completamente fluido usando CSS cla
 
 ### Ejemplo Guiado 5: Container Queries - Componentes que se adaptan a su contenedor
 
-Las Container Queries permiten que un componente se adapte al tamaño de su elemento contenedor, no al viewport. Esto es revolucionario para componentes reutilizables que pueden aparecer en diferentes contextos de una misma página.
+!!! example "Contexto pedagógico"
+    Las Container Queries permiten que un componente se adapte al tamaño de su elemento contenedor, no al viewport. Esto es revolucionario para componentes reutilizables que pueden aparecer en diferentes contextos de una misma página.
 
 ```html
 <!DOCTYPE html>
@@ -883,7 +962,8 @@ Las Container Queries permiten que un componente se adapte al tamaño de su elem
 
 ### Ejemplo Guiado 6: Tabla responsive con 3 estrategias
 
-Las tablas son uno de los elementos más problemáticos en diseño responsive. Este ejemplo demuestra tres estrategias: scroll horizontal, colapso en cards (ideal para móvil), y ocultación de columnas no esenciales.
+!!! example "Contexto pedagógico"
+    Las tablas son uno de los elementos más problemáticos en diseño responsive. Este ejemplo demuestra tres estrategias: scroll horizontal, colapso en cards (ideal para móvil), y ocultación de columnas no esenciales.
 
 ```html
 <!DOCTYPE html>
@@ -1110,7 +1190,8 @@ Las tablas son uno de los elementos más problemáticos en diseño responsive. E
 
 ### Ejemplo Guiado 7: Media Queries modernas - prefers-color-scheme, prefers-reduced-motion
 
-Demostración de las media queries de preferencias de usuario, que permiten adaptar la experiencia a las necesidades y preferencias de cada persona. El modo oscuro y la reducción de movimiento son las dos más importantes para accesibilidad.
+!!! example "Contexto pedagógico"
+    Demostración de las media queries de preferencias de usuario, que permiten adaptar la experiencia a las necesidades y preferencias de cada persona. El modo oscuro y la reducción de movimiento son las dos más importantes para accesibilidad.
 
 ```html
 <!DOCTYPE html>
@@ -1307,7 +1388,8 @@ Demostración de las media queries de preferencias de usuario, que permiten adap
 
 ### Ejemplo Guiado 8: Layout Shifter con Grid Template Areas
 
-El patrón Layout Shifter es el más potente de los patrones responsive. Consiste en reorganizar completamente la disposición de los elementos en diferentes breakpoints. CSS Grid con grid-template-areas lo hace trivial, ya que basta con redefinir el mapa de áreas en cada media query.
+!!! example "Contexto pedagógico"
+    El patrón Layout Shifter es el más potente de los patrones responsive. Consiste en reorganizar completamente la disposición de los elementos en diferentes breakpoints. CSS Grid con grid-template-areas lo hace trivial, ya que basta con redefinir el mapa de áreas en cada media query.
 
 ```html
 <!DOCTYPE html>
@@ -1470,7 +1552,8 @@ El patrón Layout Shifter es el más potente de los patrones responsive. Consist
 
 ### Ejemplo Guiado 9: Menú off-canvas con transición CSS
 
-Un menú off-canvas que se desliza desde la izquierda en dispositivos móviles y permanece visible en desktop. Implementado con CSS transitions y una mínima lógica JavaScript, superior al checkbox hack porque permite animaciones suaves y control del foco.
+!!! example "Contexto pedagógico"
+    Un menú off-canvas que se desliza desde la izquierda en dispositivos móviles y permanece visible en desktop. Implementado con CSS transitions y una mínima lógica JavaScript, superior al checkbox hack porque permite animaciones suaves y control del foco.
 
 ```html
 <!DOCTYPE html>
@@ -1704,7 +1787,8 @@ Un menú off-canvas que se desliza desde la izquierda en dispositivos móviles y
 
 ### Ejemplo Guiado 10: Proyecto completo responsive Mobile First
 
-Proyecto final que integra todas las técnicas aprendidas: Mobile First, Grid con áreas, tipografía y espaciado fluidos con clamp(), imágenes responsive, menú hamburguesa, y media queries estratégicas. Una página web profesional completamente responsive.
+!!! example "Contexto pedagógico"
+    Proyecto final que integra todas las técnicas aprendidas: Mobile First, Grid con áreas, tipografía y espaciado fluidos con clamp(), imágenes responsive, menú hamburguesa, y media queries estratégicas. Una página web profesional completamente responsive.
 
 ```html
 <!DOCTYPE html>
@@ -2025,7 +2109,13 @@ Proyecto final que integra todas las técnicas aprendidas: Mobile First, Grid co
 
 ### Caso 1: El País - Diseño responsive de un diario digital
 
-El diario El País fue uno de los primeros grandes medios españoles en adoptar un diseño completamente responsive. Su implementación es un caso de estudio notable porque resuelve el desafío de presentar gran densidad informativa en cualquier dispositivo. En desktop, el layout usa un grid de 3 columnas con la noticia principal ocupando la columna central y las secundarias en laterales. En tablet, el grid se reduce a 2 columnas y las noticias menos relevantes se mueven debajo del pliegue. En móvil, todas las noticias se apilan en una columna única con tipografía optimizada para lectura en pantalla pequeña. Lo más destacable es su uso de `srcset` y `picture` para las imágenes de portada: en móvil sirven versiones recortadas verticalmente de las mismas fotos, mientras que en desktop usan versiones horizontales, demostrando dirección artística responsive. También implementan `loading="lazy"` en todas las imágenes fuera de la portada para optimizar el rendimiento en conexiones móviles. Su sistema de navegación usa un off-canvas en móvil con animación de deslizamiento y una barra de navegación fija en desktop con submenús desplegables.
+El diario El País fue uno de los primeros grandes medios españoles en adoptar un diseño completamente responsive. Su implementación es un caso de estudio notable porque resuelve el desafío de presentar gran densidad informativa en cualquier dispositivo:
+
+- **En desktop** — el layout usa un grid de **3 columnas** con la noticia principal ocupando la columna central y las secundarias en laterales.
+- **En tablet** — el grid se reduce a **2 columnas** y las noticias menos relevantes se mueven debajo del pliegue.
+- **En móvil** — todas las noticias se apilan en una columna única con tipografía optimizada para lectura en pantalla pequeña.
+
+Lo más destacable es su uso de `srcset` y `picture` para las imágenes de portada: en móvil sirven versiones recortadas verticalmente de las mismas fotos, mientras que en desktop usan versiones horizontales, demostrando **dirección artística responsive**. También implementan `loading="lazy"` en todas las imágenes fuera de la portada para optimizar el rendimiento en conexiones móviles. Su sistema de navegación usa un **off-canvas** en móvil con animación de deslizamiento y una **barra de navegación fija** en desktop con submenús desplegables.
 
 ### Caso 2: Starbucks - Mobile First en ecommerce
 
@@ -2033,7 +2123,14 @@ La web de Starbucks es un excelente ejemplo de Mobile First aplicado al comercio
 
 ### Caso 3: GitHub - Dashboard responsive para desarrolladores
 
-GitHub implementa uno de los diseños responsive más complejos que existen: un dashboard para desarrolladores con tablas de actividad, gráficos de contribución, feeds de eventos, y repositorios. Su estrategia responsive es magistral en varios aspectos. Primero, usan container queries para componentes como las tarjetas de repositorio, que aparecen en diferentes contextos (barra lateral, lista principal, resultados de búsqueda) y se adaptan al ancho del contenedor. Segundo, su implementación del modo oscuro va más allá de invertir colores: ajustan el contraste, la saturación y los colores de sintaxis del código para garantizar legibilidad en ambos esquemas. Tercero, las tablas de issues y pull requests usan la estrategia de ocultación selectiva de columnas y colapso en cards, mostrando la información crítica (título, etiquetas, estado) en todos los tamaños pero ocultando metadatos menos relevantes en móvil. Cuarto, su navegación principal se transforma completamente: en desktop, una barra superior completa con todos los enlaces; en tablet, una barra simplificada; en móvil, un menú hamburguesa off-canvas con agrupación por secciones. Su uso de `prefers-reduced-motion` respeta la configuración del usuario eliminando animaciones superfluas como los efectos hover en tarjetas.
+GitHub implementa uno de los diseños responsive más complejos que existen: un dashboard para desarrolladores con tablas de actividad, gráficos de contribución, feeds de eventos, y repositorios. Su estrategia responsive es magistral en varios aspectos:
+
+- **Container queries** en componentes como las tarjetas de repositorio, que aparecen en diferentes contextos (barra lateral, lista principal, resultados de búsqueda) y se adaptan al ancho del contenedor.
+- **Modo oscuro** que va más allá de invertir colores: ajustan el contraste, la saturación y los colores de sintaxis del código para garantizar legibilidad en ambos esquemas.
+- **Tablas de issues y pull requests** con ocultación selectiva de columnas y colapso en cards, mostrando la información crítica (título, etiquetas, estado) en todos los tamaños pero ocultando metadatos menos relevantes en móvil.
+- **Navegación principal** que se transforma completamente: en desktop, una barra superior completa con todos los enlaces; en tablet, una barra simplificada; en móvil, un menú hamburguesa off-canvas con agrupación por secciones.
+
+Su uso de `prefers-reduced-motion` respeta la configuración del usuario eliminando animaciones superfluas como los efectos hover en tarjetas.
 
 ## Actividades guiadas
 

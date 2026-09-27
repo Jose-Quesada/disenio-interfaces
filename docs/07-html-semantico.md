@@ -40,133 +40,124 @@ El alumnado debe poseer una base sólida en HTML: sintaxis básica, diferencia e
 
 ### 1. HTML semántico: fundamentos y beneficios
 
-El HTML semántico es la práctica de utilizar elementos HTML que transmiten el significado y la función del contenido, tanto para el navegador como para desarrolladores y tecnologías de asistencia. En lugar de envolver todo en `<div>` y `<span>` genéricos, emplea etiquetas como `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>` y `<footer>`, que describen explícitamente el propósito de cada bloque. La transición desde HTML4 —donde la maquetación se basaba en `<div id="header">` o `<div class="nav">`— hacia HTML5 representó un salto cualitativo alineado con la visión de la web semántica de Tim Berners-Lee, donde los datos están estructurados para que las máquinas puedan interpretarlos de manera significativa.
+!!! info "Definición"
+    El **HTML semántico** es la práctica de utilizar elementos HTML que transmiten el significado y la función del contenido, tanto para el navegador como para desarrolladores y tecnologías de asistencia. En lugar de envolver todo en `<div>` y `<span>` genéricos, emplea etiquetas como `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>` y `<footer>`, que describen explícitamente el propósito de cada bloque. La transición desde HTML4 —donde la maquetación se basaba en `<div id="header">` o `<div class="nav">`— hacia HTML5 representó un salto cualitativo alineado con la visión de la **web semántica** de Tim Berners-Lee, donde los datos están estructurados para que las máquinas puedan interpretarlos de manera significativa.
 
-Los beneficios se articulan en tres ejes. En accesibilidad, los elementos semánticos proporcionan roles ARIA implícitos que los lectores de pantalla reconocen automáticamente: `<nav>` se anuncia como "navegación", `<main>` como "contenido principal", `<aside>` como "contenido complementario". Sin esta semántica, los usuarios de lectores de pantalla se enfrentan a una masa indiferenciada de `<div>` sin pistas sobre la función de cada bloque.
+Los beneficios se articulan en tres ejes:
 
-En SEO, Google, Bing y otros buscadores analizan la estructura semántica para comprender la jerarquía y relevancia del contenido. Usar `<article>` para contenidos autónomos, `<section>` con encabezados, y respetar la jerarquía de `<h1>` a `<h6>` ayuda a los algoritmos a indexar correctamente. Los datos estructurados JSON-LD complementan esta semántica habilitando rich snippets.
-
-En mantenibilidad, un código semántico es más legible: `<footer>` comunica inmediatamente "pie de página", mientras que `<div class="site-footer">` requiere descifrar convenciones. La semántica clara reduce comentarios, facilita el CSS y agiliza refactorizaciones. Además, favorece la separación de competencias siguiendo el principio de mejora progresiva.
+- **Accesibilidad** — los elementos semánticos proporcionan roles ARIA implícitos que los lectores de pantalla reconocen automáticamente: `<nav>` se anuncia como "navegación", `<main>` como "contenido principal", `<aside>` como "contenido complementario". Sin esta semántica, los usuarios de lectores de pantalla se enfrentan a una masa indiferenciada de `<div>` sin pistas sobre la función de cada bloque.
+- **SEO** — Google, Bing y otros buscadores analizan la estructura semántica para comprender la jerarquía y relevancia del contenido. Usar `<article>` para contenidos autónomos, `<section>` con encabezados, y respetar la jerarquía de `<h1>` a `<h6>` ayuda a los algoritmos a indexar correctamente. Los datos estructurados JSON-LD complementan esta semántica habilitando *rich snippets*.
+- **Mantenibilidad** — un código semántico es más legible: `<footer>` comunica inmediatamente "pie de página", mientras que `<div class="site-footer">` requiere descifrar convenciones. La semántica clara reduce comentarios, facilita el CSS y agiliza refactorizaciones. Además, favorece la separación de competencias siguiendo el principio de mejora progresiva.
 
 ### 2. Elementos de estructura semántica
 
-**`<header>`**: Grupo de ayudas introductorias o de navegación (logotipo, título, nav, búsqueda). No confundir con `<head>`. Puede ser hijo de `<body>` (cabecera global) o de `<article>`/`<section>` (cabecera de sección). No anidar dentro de otro `<header>`, `<footer>` o `<address>`. Rol ARIA implícito: `banner` (cuando es hijo de `<body>`) o `generic`.
+- **`<header>`** — grupo de ayudas introductorias o de navegación (logotipo, título, nav, búsqueda). No confundir con `<head>`. Puede ser hijo de `<body>` (cabecera global) o de `<article>`/`<section>` (cabecera de sección). No anidar dentro de otro `<header>`, `<footer>` o `<address>`. Rol ARIA implícito: `banner` (cuando es hijo de `<body>`) o `generic`.
+- **`<nav>`** — sección con enlaces de navegación principales. Solo para bloques de navegación relevantes, no para cualquier grupo de enlaces. Una página puede tener múltiples `<nav>` (principal, breadcrumbs, footer). Distinguirlos con `aria-label`. Su contenido se estructura como `<ul>` con `<li>` y `<a>`, ya que la navegación es conceptualmente una lista.
+- **`<main>`** — contenido dominante del `<body>`. Debe ser único (solo uno visible). No puede ser descendiente de `<article>`, `<aside>`, `<footer>`, `<header>` o `<nav>`. Rol implícito: `main`. Es el destino típico del *skip link*.
+- **`<section>`** — agrupación temática con encabezado propio. Divide contenido en partes lógicas. Debe tener encabezado. No usar como contenedor de estilos (para eso está `<div>`). Diferencia con `<article>`: `<section>` forma parte de un todo; `<article>` es autocontenido.
+- **`<article>`** — composición autocontenida, reutilizable de forma independiente (post, comentario, widget). Puede anidarse y tener su propio `<header>` y `<footer>`.
+- **`<aside>`** — contenido complementario indirectamente relacionado (barras laterales, glosarios). Rol implícito: `complementary`.
+- **`<footer>`** — pie de página del ancestro de seccionamiento más cercano. Contiene copyright, enlaces, contacto (`<address>`). Rol implícito: `contentinfo` (hijo de `<body>`).
+- **`<address>`** — información de contacto del autor del documento o artículo más próximo. No para direcciones postales arbitrarias.
+- **`<figure>` / `<figcaption>`** — contenido autónomo (imagen, diagrama, código) con leyenda. Los lectores de pantalla los asocian automáticamente.
+- **`<time>`** — fecha, hora o duración, con `datetime` para versión legible por máquina.
+- **`<mark>`** — texto resaltado por relevancia contextual (términos de búsqueda).
+- **`<details>` / `<summary>`** — contenido desplegable nativo sin JavaScript. Ideal para FAQs y acordeones. Atributo `open` para desplegado por defecto.
+- **`<dialog>`** — ventana modal nativa con `.showModal()` y `.show()`. Gestión automática del foco, cierre con Escape y *backdrop*.
 
-**`<nav>`**: Sección con enlaces de navegación principales. Solo para bloques de navegación relevantes, no para cualquier grupo de enlaces. Una página puede tener múltiples `<nav>` (principal, breadcrumbs, footer). Distinguirlos con `aria-label`. Su contenido se estructura como `<ul>` con `<li>` y `<a>`, ya que la navegación es conceptualmente una lista.
-
-**`<main>`**: Contenido dominante del `<body>`. Debe ser único (solo uno visible). No puede ser descendiente de `<article>`, `<aside>`, `<footer>`, `<header>` o `<nav>`. Rol implícito: `main`. Es el destino típico del skip link.
-
-**`<section>`**: Agrupación temática con encabezado propio. Divide contenido en partes lógicas. Debe tener encabezado. No usar como contenedor de estilos (para eso está `<div>`). Diferencia con `<article>`: `<section>` forma parte de un todo; `<article>` es autocontenido.
-
-**`<article>`**: Composición autocontenida, reusable independientemente (post, comentario, widget). Prueba: ¿tendría sentido en un feed RSS? Si es así, usar `<article>`. Puede anidarse y tener su propio `<header>` y `<footer>`.
-
-**`<aside>`**: Contenido complementario indirectamente relacionado (barras laterales, glosarios). Rol implícito: `complementary`.
-
-**`<footer>`**: Pie de página del ancestro de seccionamiento más cercano. Contiene copyright, enlaces, contacto (`<address>`). Rol implícito: `contentinfo` (hijo de `<body>`).
-
-**`<address>`**: Información de contacto del autor del documento o artículo más próximo. No para direcciones postales arbitrarias.
-
-**`<figure>` / `<figcaption>`**: Contenido autónomo (imagen, diagrama, código) con leyenda. Los lectores de pantalla los asocian automáticamente.
-
-**`<time>`**: Fecha, hora o duración, con `datetime` para versión legible por máquina.
-
-**`<mark>`**: Texto resaltado por relevancia contextual (términos de búsqueda).
-
-**`<details>` / `<summary>`**: Contenido desplegable nativo sin JavaScript. Ideal para FAQs y acordeones. Atributo `open` para desplegado por defecto.
-
-**`<dialog>`**: Ventana modal nativa con `.showModal()` y `.show()`. Gestión automática del foco, cierre con Escape y backdrop.
+!!! tip "¿`<article>` o `<section>`?"
+    Prueba rápida: **¿tendría sentido en un feed RSS?** Si es así, usar `<article>`. Si el bloque solo tiene sentido dentro de un contexto mayor, usar `<section>`.
 
 ### 3. Jerarquía de encabezados
 
-Los encabezados HTML (`<h1>` a `<h6>`) establecen la estructura jerárquica del contenido. La regla principal: **un único `<h1>` por página**, describiendo el tema principal. Respaldado por WCAG 2.4.6 y por recomendaciones de buscadores. El `<h1>` puede diferir del `<title>` (que aparece en la pestaña y SERP).
+!!! tip "Jerarquía estricta de encabezados"
+    Los encabezados HTML (`<h1>` a `<h6>`) establecen la estructura jerárquica del contenido. La regla principal: **un único `<h1>` por página**, describiendo el tema principal. Respaldado por **WCAG 2.4.6** y por recomendaciones de buscadores. El `<h1>` puede diferir del `<title>` (que aparece en la pestaña y SERP).
 
-**No saltar niveles**: después de `<h2>` no puede aparecer `<h4>` sin `<h3>`. Los saltos rompen el esquema lógico y confunden a lectores de pantalla y algoritmos. Estructura anidada: `<h2>` = sección principal, `<h3>` = subsección, etc.
+    **No saltar niveles**: después de `<h2>` no puede aparecer `<h4>` sin un `<h3>`. Los saltos rompen el esquema lógico y confunden a lectores de pantalla y algoritmos. Estructura anidada: `<h2>` = sección principal, `<h3>` = subsección, etc.
 
 El nivel se elige por posición lógica, no por tamaño visual (eso es CSS). Los lectores de pantalla permiten navegar entre encabezados mostrando una lista jerárquica. Los encabezados deben ser descriptivos y no genéricos.
 
 ### 4. Accesibilidad básica en HTML
 
-**`lang`**: Declarado en `<html>` (ej: `<html lang="es">`), permite a lectores de pantalla seleccionar el motor de voz correcto. También en elementos concretos para cambios de idioma.
+- **`lang`** — declarado en `<html>` (ej.: `<html lang="es">`), permite a lectores de pantalla seleccionar el motor de voz correcto. También en elementos concretos para cambios de idioma.
+- **`alt` en imágenes** — descripción textual equivalente. Imágenes decorativas: `alt=""` (vacío, sin espacio). Imágenes complejas: `alt` breve complementado con `aria-describedby`.
+- **`title`** — *tooltip* al pasar el ratón. No usar como único medio de información importante (no accesible por teclado, táctil ni lectores de pantalla).
+- **ARIA básicos** — `aria-label` etiqueta elementos sin texto visible; `aria-labelledby` reutiliza texto de otro elemento; `aria-describedby` enlaza a descripciones adicionales.
 
-**`alt` en imágenes**: Descripción textual equivalente. Imágenes decorativas: `alt=""` (vacío, sin espacio). Imágenes complejas: `alt` breve complementado con `aria-describedby`.
-
-**`title`**: Tooltip al pasar ratón. No usar como único medio de información importante (no accesible por teclado, táctil ni lectores de pantalla).
-
-**ARIA básicos**: `aria-label` etiqueta elementos sin texto visible. `aria-labelledby` reutiliza texto de otro elemento. `aria-describedby` enlaza a descripciones adicionales.
-
-**`tabindex`**: `"0"` incluye en orden natural. `"-1"` permite foco programático. Valores positivos (1, 2, 3...) deben evitarse: crean navegación confusa.
+!!! warning "Evita `tabindex` positivo"
+    `tabindex="0"` incluye el elemento en el orden natural de tabulación; `tabindex="-1"` permite el foco programático (`.focus()`). Los valores positivos (**1, 2, 3...**) deben evitarse: crean un orden de navegación artificial que confunde y es difícil de mantener.
 
 ### 5. Formularios accesibles
 
-Práctica fundamental: asociar `<label>` con su campo mediante `for`/`id`. Amplía área de interacción y permite anuncio correcto por lectores de pantalla.
+!!! tip "Regla de oro: etiqueta asociada"
+    Práctica fundamental: asociar `<label>` con su campo mediante `for`/`id`. Amplía el área de interacción y permite el anuncio correcto por parte de los lectores de pantalla.
 
-**Agrupación**: `<fieldset>` crea grupo semántico, `<legend>` proporciona título. Los lectores anuncian la leyenda antes de cada control.
-
-**Tipos HTML5**: `email` (teclado con @), `tel` (numérico), `number` (incremento), `date` (selector nativo), `search`, `range` (deslizante), `color` (selector nativo), `file`.
-
-**Validación nativa**: `required`, `pattern` (regex), `min`/`max`, `minlength`/`maxlength`. Complementar con mensajes personalizados vía `aria-describedby`.
-
-**Elementos avanzados**: `<datalist>` (autocompletado), `<output>` (resultado), `<progress>` (tarea en curso), `<meter>` (medida escalar).
-
-**Atributos UX**: `autocomplete` (sugerencias con tokens estándar: `"name"`, `"email"`, `"tel"`, `"postal-code"`). `inputmode` para teclado virtual: `"numeric"`, `"tel"`, `"email"`, `"url"`, `"decimal"`.
+- **Agrupación** — `<fieldset>` crea grupo semántico, `<legend>` proporciona título. Los lectores anuncian la leyenda antes de cada control.
+- **Tipos HTML5** — `email` (teclado con @), `tel` (numérico), `number` (incremento), `date` (selector nativo), `search`, `range` (deslizante), `color` (selector nativo), `file`.
+- **Validación nativa** — `required`, `pattern` (regex), `min`/`max`, `minlength`/`maxlength`. Complementar con mensajes personalizados vía `aria-describedby`.
+- **Elementos avanzados** — `<datalist>` (autocompletado), `<output>` (resultado), `<progress>` (tarea en curso), `<meter>` (medida escalar).
+- **Atributos UX** — `autocomplete` (sugerencias con tokens estándar: `"name"`, `"email"`, `"tel"`, `"postal-code"`) e `inputmode` para teclado virtual: `"numeric"`, `"tel"`, `"email"`, `"url"`, `"decimal"`.
 
 ### 6. Navegación semántica
 
 Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores de pantalla anuncian: "Lista de 5 elementos: Enlace, Inicio...".
 
-Múltiples `<nav>` se distinguen con `aria-label`: "Navegación principal", "Navegación del pie de página", "Breadcrumb".
+- **Múltiples `<nav>` etiquetados** — se distinguen con `aria-label`: "Navegación principal", "Navegación del pie de página", "Breadcrumb".
+- **`aria-current="page"`** — en el enlace activo, informa al lector de pantalla de la ubicación actual.
 
-**`aria-current="page"`**: En el enlace activo, informa al lector de pantalla de la ubicación actual.
-
-**Skip links**: Enlaces ocultos visualmente (nunca con `display:none` ni `hidden`) que aparecen al recibir foco y saltan al contenido principal (`<main>`). CSS típico: `position:absolute; top:-100px;` y `:focus { top:0; }`. Técnica moderna: `transform: translateY(-100%)` → `translateY(0)`.
+!!! tip "Skip links"
+    Enlaces ocultos visualmente (**nunca** con `display:none` ni `hidden`) que aparecen al recibir foco y saltan al contenido principal (`<main>`). CSS típico: `position:absolute; top:-100px;` y `:focus { top:0; }`. Técnica moderna: `transform: translateY(-100%)` → `translateY(0)`.
 
 ### 7. Tablas accesibles
 
-Solo para datos tabulares, nunca para maquetar. Estructura: `<caption>` (anunciado primero por lectores), `<thead>` (encabezados), `<tbody>` (datos), `<tfoot>` (totales, colocarlo antes de `<tbody>` en el código para procesamiento anticipado por lectores).
+!!! warning "Tablas solo para datos tabulares"
+    Nunca se utilizan para maquetar. Estructura correcta: `<caption>` (anunciado primero por los lectores), `<thead>` (encabezados), `<tbody>` (datos) y `<tfoot>` (totales, colocarlo antes de `<tbody>` en el código para que los lectores lo procesen de forma anticipada).
 
-**`<th>` con `scope`**: `scope="col"` aplica a toda la columna; `scope="row"` a toda la fila. El lector anuncia: "Trimestre 1, Software, 45.200 €".
-
-**Tablas complejas**: Sistema `id`/`headers`: cada `<th>` tiene `id` único; cada `<td>` tiene `headers` con los `id` de sus encabezados.
-
-**Descripción larga**: `aria-describedby` en `<table>` enlaza a un párrafo explicativo.
+- **`<th>` con `scope`** — `scope="col"` aplica a toda la columna; `scope="row"` a toda la fila. El lector anuncia: "Trimestre 1, Software, 45.200 €".
+- **Tablas complejas** — sistema `id`/`headers`: cada `<th>` tiene `id` único; cada `<td>` tiene `headers` con los `id` de sus encabezados.
+- **Descripción larga** — `aria-describedby` en `<table>` enlaza a un párrafo explicativo.
 
 ### 8. SEO técnico
 
-**Meta description**: Resumen de 120-160 caracteres mostrado en SERP. No influye en ranking pero sí en CTR.
+- **Meta description** — resumen de **120-160 caracteres** mostrado en la SERP. No influye en el ranking pero sí en el **CTR**.
+- **Open Graph** — `og:title`, `og:description`, `og:image` (mínimo **1200×630 px**), `og:url`, `og:type`. Para Facebook, LinkedIn y WhatsApp.
+- **Twitter Cards** — `twitter:card` (`summary` o `summary_large_image`), `twitter:title`, `twitter:description`, `twitter:image`. Si no existen, Twitter usa Open Graph como *fallback*.
 
-**Open Graph**: `og:title`, `og:description`, `og:image` (mínimo 1200x630px), `og:url`, `og:type`. Para Facebook, LinkedIn, WhatsApp.
-
-**Twitter Cards**: `twitter:card` (`summary` o `summary_large_image`), `twitter:title`, `twitter:description`, `twitter:image`. Si no existen, Twitter usa Open Graph como fallback.
-
-**JSON-LD**: `<script type="application/ld+json">` en `<head>`. Vocabulario Schema.org para Organization, Person, Article, Product, Recipe, Event, FAQ, BreadcrumbList. Permite rich snippets: estrellas, precios, FAQs desplegables, paneles de conocimiento. Google recomienda JSON-LD sobre microdatos.
+!!! info "JSON-LD"
+    `<script type="application/ld+json">` en `<head>`, con el vocabulario **Schema.org** para Organization, Person, Article, Product, Recipe, Event, FAQ y BreadcrumbList. Permite *rich snippets*: estrellas, precios, FAQs desplegables y paneles de conocimiento. **Google recomienda JSON-LD sobre microdatos.**
 
 ### 9. WAI-ARIA básico
 
-**Primera regla de ARIA**: no usar ARIA si existe equivalente HTML nativo. Preferir `<button>` a `<div role="button" tabindex="0">`. Recrear elementos nativos con ARIA causa la mayoría de problemas de accesibilidad.
+!!! tip "Primera regla de ARIA"
+    **No usar ARIA si existe equivalente HTML nativo.** Preferir `<button>` a `<div role="button" tabindex="0">`. Recrear elementos nativos con ARIA causa la mayoría de problemas de accesibilidad.
 
-**Roles landmark**: `banner`, `navigation`, `main`, `complementary`, `contentinfo`, `search`, `form`. Muchos ya implícitos en HTML5 (no duplicar).
-
-**Estados**: `aria-expanded` (expandido/colapsado), `aria-hidden` (oculto para asistencia), `aria-selected` (seleccionado), `aria-disabled` (deshabilitado).
-
-**Regiones vivas**: `aria-live="polite"` (no intrusivo, espera), `aria-live="assertive"` (urgente, interrumpe). `aria-atomic="true"` para anunciar región completa.
+- **Roles landmark** — `banner`, `navigation`, `main`, `complementary`, `contentinfo`, `search`, `form`. Muchos ya están implícitos en HTML5 (no duplicar).
+- **Estados** — `aria-expanded` (expandido/colapsado), `aria-hidden` (oculto para asistencia), `aria-selected` (seleccionado), `aria-disabled` (deshabilitado).
+- **Regiones vivas** — `aria-live="polite"` (no intrusivo, espera), `aria-live="assertive"` (urgente, interrumpe). `aria-atomic="true"` para anunciar la región completa.
 
 ### 10. HTML5 avanzado
 
-**`<template>`**: HTML inerte no renderizado. Se clona con `.content.cloneNode(true)` y se inserta con JS. Ideal para estructuras repetitivas.
+- **`<template>`** — HTML inerte no renderizado. Se clona con `.content.cloneNode(true)` y se inserta con JS. Ideal para estructuras repetitivas.
+- **Web Components + `<slot>`** — Shadow DOM encapsula estilos. `<slot name="...">` proyecta contenido desde el *light DOM*. Slots nombrados y por defecto.
 
-**Web Components + `<slot>`**: Shadow DOM encapsula estilos. `<slot name="...">` proyecta contenido desde el light DOM. Slots nombrados y por defecto.
-
-**Imágenes responsivas**: `<picture>` con `<source media="..." srcset="...">` para art direction y formatos modernos (WebP/AVIF) con fallback JPEG. `srcset` con descriptores `w` + `sizes` para selección automática. `loading="lazy"` y `decoding="async"` para rendimiento.
+!!! tip "Imágenes responsivas"
+    `<picture>` con `<source media="..." srcset="...">` para *art direction* y formatos modernos (WebP/AVIF) con *fallback* JPEG. `srcset` con descriptores `w` + `sizes` para la selección automática. `loading="lazy"` y `decoding="async"` para rendimiento.
 
 ### 11. Metadatos y configuración global
 
-`<!DOCTYPE html>` activa modo estándar. `<html lang="es">` obligatorio para accesibilidad. `<meta charset="UTF-8">` debe ir pronto en `<head>`. `<meta name="viewport" content="width=device-width, initial-scale=1.0">` habilita diseño responsivo. No usar `user-scalable=no`. `<meta name="theme-color">` personaliza barra del navegador. `<link rel="manifest">` habilita PWA.
+- **`<!DOCTYPE html>`** — activa el modo estándar.
+- **`<html lang="es">`** — obligatorio para la accesibilidad.
+- **`<meta charset="UTF-8">`** — debe ir pronto en `<head>`.
+- **Viewport** — `<meta name="viewport" content="width=device-width, initial-scale=1.0">` habilita el diseño responsivo. **No usar** `user-scalable=no`.
+- **`<meta name="theme-color">`** — personaliza la barra del navegador.
+- **`<link rel="manifest">`** — habilita PWA.
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Estructura semántica completa de una página de artículo de blog
 
-Este ejemplo presenta una página de artículo de blog construida con HTML plenamente semántico, incluyendo todos los elementos principales de seccionamiento, navegación correcta, jerarquía de encabezados óptima, metadatos SEO, Open Graph, Twitter Cards y datos estructurados JSON-LD. Se incluye un enlace de salto (skip link) funcional, navegación con `aria-current`, y estructura de contenidos con `<article>`, `<section>`, `<aside>`, `<figure>` y `<footer>`.
+!!! example "Contexto pedagógico"
+    Este ejemplo presenta una página de artículo de blog construida con HTML plenamente semántico, incluyendo todos los elementos principales de seccionamiento, navegación correcta, jerarquía de encabezados óptima, metadatos SEO, Open Graph, Twitter Cards y datos estructurados JSON-LD. Se incluye un enlace de salto (*skip link*) funcional, navegación con `aria-current`, y estructura de contenidos con `<article>`, `<section>`, `<aside>`, `<figure>` y `<footer>`.
 
 ```html
 <!DOCTYPE html>
@@ -443,7 +434,8 @@ Este ejemplo presenta una página de artículo de blog construida con HTML plena
 
 ### Ejemplo 2: Formulario de registro accesible completo
 
-Formulario que demuestra buenas prácticas: etiquetas con `for`/`id`, agrupación con `fieldset`/`legend`, tipos HTML5 especializados, validación nativa, mensajes de error con `aria-describedby` y `role="alert"`, `datalist` para sugerencias, `output` para mostrar valores, `meter` para fortaleza de contraseña y atributos `autocomplete` e `inputmode`.
+!!! example "Contexto pedagógico"
+    Formulario que demuestra buenas prácticas: etiquetas con `for`/`id`, agrupación con `fieldset`/`legend`, tipos HTML5 especializados, validación nativa, mensajes de error con `aria-describedby` y `role="alert"`, `datalist` para sugerencias, `output` para mostrar valores, `meter` para fortaleza de contraseña y atributos `autocomplete` e `inputmode`.
 
 ```html
 <!DOCTYPE html>
@@ -1358,15 +1350,18 @@ Formulario que demuestra buenas prácticas: etiquetas con `for`/`id`, agrupació
 
 ### Caso Real 1: GitHub (github.com) - HTML semántico a escala masiva
 
-GitHub, la plataforma de desarrollo colaborativo más grande del mundo, constituye un excelente caso de estudio de HTML semántico implementado a escala masiva. Al inspeccionar su página principal, observamos que utilizan elementos semánticos de forma extensa y correcta. La estructura principal se articula en torno a un `<header>` global que contiene una navegación con `<nav>` y una lista de enlaces. El logotipo está dentro de un enlace con `aria-label="Homepage"`. La navegación principal emplea `aria-label="Global"` para distinguirla de otras navegaciones. El contenido principal está en un `<main>`, y dentro de él se utilizan múltiples `<section>` con encabezados `<h2>` para cada bloque temático (productividad, seguridad, colaboración, CI/CD). GitHub hace uso extensivo de atributos ARIA: menús desplegables con `aria-expanded`, regiones con `aria-label`/`aria-labelledby`, y botones con `aria-describedby`. Usa `<details>`/`<summary>` para menús desplegables nativos en la navegación móvil. En SEO, utiliza Open Graph completo y datos JSON-LD de tipo `Organization`. Las imágenes incluyen `alt` descriptivos y `loading="lazy"`.
+!!! example "Qué observar"
+    GitHub, la plataforma de desarrollo colaborativo más grande del mundo, constituye un excelente caso de estudio de HTML semántico implementado a escala masiva. Al inspeccionar su página principal, observamos que utilizan elementos semánticos de forma extensa y correcta. La estructura principal se articula en torno a un `<header>` global que contiene una navegación con `<nav>` y una lista de enlaces. El logotipo está dentro de un enlace con `aria-label="Homepage"`. La navegación principal emplea `aria-label="Global"` para distinguirla de otras navegaciones. El contenido principal está en un `<main>`, y dentro de él se utilizan múltiples `<section>` con encabezados `<h2>` para cada bloque temático (productividad, seguridad, colaboración, CI/CD). GitHub hace uso extensivo de atributos ARIA: menús desplegables con `aria-expanded`, regiones con `aria-label`/`aria-labelledby`, y botones con `aria-describedby`. Usa `<details>`/`<summary>` para menús desplegables nativos en la navegación móvil. En SEO, utiliza Open Graph completo y datos JSON-LD de tipo `Organization`. Las imágenes incluyen `alt` descriptivos y `loading="lazy"`.
 
 ### Caso Real 2: MDN Web Docs (developer.mozilla.org) - Referencia de HTML semántico
 
-MDN Web Docs, mantenida por Mozilla, es posiblemente el mejor ejemplo de HTML semántico en la web. En una página de documentación encontramos: `<header>` global con logotipo, formulario de búsqueda con `role="search"` y navegación con `<nav aria-label="Main menu">`. El contenido principal usa `<article>` (cada página es autocontenida) con su propio `<header>` que contiene el `<h1>`. El contenido se organiza con `<section>` jerárquicas y encabezados perfectamente anidados sin saltos. Cada código de ejemplo está en un `<figure>` con `<figcaption>`. La barra lateral es un `<aside>` con `<nav>` interno. Incluye skip link, `aria-label` en iconos, `aria-expanded` en menús, meta description específica, Open Graph completo y JSON-LD de tipo `TechArticle`. También usa `theme-color` y manifiesto PWA.
+!!! example "Qué observar"
+    MDN Web Docs, mantenida por Mozilla, es posiblemente el mejor ejemplo de HTML semántico en la web. En una página de documentación encontramos: `<header>` global con logotipo, formulario de búsqueda con `role="search"` y navegación con `<nav aria-label="Main menu">`. El contenido principal usa `<article>` (cada página es autocontenida) con su propio `<header>` que contiene el `<h1>`. El contenido se organiza con `<section>` jerárquicas y encabezados perfectamente anidados sin saltos. Cada código de ejemplo está en un `<figure>` con `<figcaption>`. La barra lateral es un `<aside>` con `<nav>` interno. Incluye skip link, `aria-label` en iconos, `aria-expanded` en menús, meta description específica, Open Graph completo y JSON-LD de tipo `TechArticle`. También usa `theme-color` y manifiesto PWA.
 
 ### Caso Real 3: Patrón de tienda e-commerce (Shopify) - Formularios y productos
 
-Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de semántica. La página de inicio usa `<header>` con navegación `<nav>` y listas. El carrito usa `aria-label="Cart"` y `aria-describedby` para información dinámica. Los listados de productos son `<ul>` con `<li>`, donde cada producto es un `<article>` (correcto: contenido autocontenido). Cada producto contiene imagen con `alt` descriptivo, nombre como `<h3>`, precio y botón "Añadir al carrito" como `<button>` (acción, no navegación). Las páginas de producto usan `<main>`; la galería de imágenes en `<figure>`. Los formularios de variantes (talla, color) usan `<fieldset>` con `<legend>` y radio buttons. La página de checkout es ejemplar: múltiples `<fieldset>` agrupados lógicamente con `<legend>`, todos los campos con `<label>` asociada, `required` en obligatorios, mensajes de error con `aria-describedby`, tipos HTML5 correctos (`email`, `tel`) y `autocomplete` apropiado para direcciones postales.
+!!! example "Qué observar"
+    Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de semántica. La página de inicio usa `<header>` con navegación `<nav>` y listas. El carrito usa `aria-label="Cart"` y `aria-describedby` para información dinámica. Los listados de productos son `<ul>` con `<li>`, donde cada producto es un `<article>` (correcto: contenido autocontenido). Cada producto contiene imagen con `alt` descriptivo, nombre como `<h3>`, precio y botón "Añadir al carrito" como `<button>` (acción, no navegación). Las páginas de producto usan `<main>`; la galería de imágenes en `<figure>`. Los formularios de variantes (talla, color) usan `<fieldset>` con `<legend>` y radio buttons. La página de checkout es ejemplar: múltiples `<fieldset>` agrupados lógicamente con `<legend>`, todos los campos con `<label>` asociada, `required` en obligatorios, mensajes de error con `aria-describedby`, tipos HTML5 correctos (`email`, `tel`) y `autocomplete` apropiado para direcciones postales.
 
 ## Actividades guiadas
 
@@ -1378,6 +1373,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Partiendo de un documento HTML en blanco, construye la estructura semántica completa de una página de blog personal. La página debe incluir: cabecera global con logotipo y navegación principal, contenido principal con un `<article>` que contenga al menos tres `<section>` con encabezados jerárquicos correctos (h2, h3, sin saltos), una barra lateral con información complementaria usando `<aside>`, y un pie de página global con enlaces legales. Implementa un enlace de salto al contenido principal (skip link), metadatos Open Graph y Twitter Cards completos, y datos estructurados JSON-LD de tipo `Article`. Todas las imágenes deben tener `alt` descriptivo. La navegación principal debe usar `aria-current="page"` y `aria-label` para distinguirla de otras navegaciones.
 
 **Criterios de evaluación:**
+
 - Utiliza correctamente `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>` y `<footer>` (3 puntos).
 - Existe un único `<h1>` y la jerarquía de encabezados no tiene saltos de nivel (2 puntos).
 - Skip link funcional (apunta al `id` correcto y visible al recibir foco) (1 punto).
@@ -1402,6 +1398,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Diseña y codifica un formulario de pedido para una tienda online de productos tecnológicos. Debe contener al menos tres secciones lógicas agrupadas con `<fieldset>` y `<legend>`: (1) datos personales (nombre, email, teléfono), (2) dirección de envío (dirección, ciudad, código postal, país) y (3) método de pago (radio buttons para tarjeta, PayPal, transferencia). Cada sección debe tener campos obligatorios con `required` y asterisco visual. Usa tipos HTML5 adecuados (`email`, `tel`, `text`). Implementa validación con `pattern` para código postal y teléfono. Cada campo debe tener mensaje de error con `aria-describedby`. Añade `<datalist>` para país y `<output>` para mostrar dinámicamente el total. El formulario debe ser navegable con teclado.
 
 **Criterios de evaluación:**
+
 - Cada `<input>` tiene su `<label>` asociada con `for`/`id` (2 puntos).
 - Campos agrupados con `<fieldset>`/`<legend>` (2 puntos).
 - Tipos de input HTML5 especializados donde corresponde (1 punto).
@@ -1426,6 +1423,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Crea una tabla que muestre los resultados académicos de un grupo de estudiantes en tres asignaturas (HTML, CSS, JavaScript) durante dos trimestres. La tabla debe incluir: `<caption>` descriptivo, `<thead>` con encabezados de columna usando `scope="col"`, `<tbody>` con los nombres de los estudiantes usando `scope="row"`, y `<tfoot>` con la nota media de cada asignatura. Aplica estilos CSS para zebra striping, alineación de datos numéricos y diseño responsivo con scroll horizontal en móviles. Añade `aria-describedby` con una descripción larga de la tabla.
 
 **Criterios de evaluación:**
+
 - `<caption>` presente y descriptivo (1 punto).
 - `<thead>`, `<tbody>` y `<tfoot>` correctamente utilizados (2 puntos).
 - `scope="col"` en encabezados de columna y `scope="row"` en encabezados de fila (3 puntos).
@@ -1441,6 +1439,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Construye la navegación de un sitio web de noticias con: (1) skip link que salte al contenido principal, (2) navegación principal con `<nav>` y lista, incluyendo `aria-current="page"` en la sección activa, (3) breadcrumbs semánticos con `<nav aria-label="Breadcrumb">` y lista ordenada, (4) navegación secundaria en el footer con enlaces legales, (5) estilos CSS para todos los estados (hover, focus-visible, active). El skip link debe ser visible solo al recibir foco.
 
 **Criterios de evaluación:**
+
 - Skip link funcional y correctamente estilado (2 puntos).
 - Navegación principal con `<nav>`, `<ul>`/`<li>` y `aria-current` (2 puntos).
 - Breadcrumbs semánticos con `aria-label` (2 puntos).
@@ -1453,9 +1452,10 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Resultado de Aprendizaje:** RA1.  
 **Objetivo:** Implementar datos estructurados JSON-LD completos para la página de un producto de e-commerce, incluyendo nombre, precio, disponibilidad, valoración y breadcrumbs.
 
-**Enunciado:** Crea la página HTML de un producto (auriculares inalámbricos) con todos los metadatos SEO: meta description, Open Graph, Twitter Cards y datos estructurados JSON-LD. Los JSON-LD deben incluir: tipo `Product` con nombre, descripción, imagen, marca, precio, disponibilidad y valoración agregada. También incluye un `BreadcrumbList` con la jerarquía: Inicio > Electrónica > Auriculares > [nombre del producto]. Valida el JSON-LD con la herramienta de prueba de datos estructurados de Google.
+**Enunciado:** Crea la página HTML de un producto (auriculares inalámbricos) con todos los metadatos SEO: meta description, Open Graph, Twitter Cards y datos estructurados JSON-LD. Los JSON-LD deben incluir: tipo `Product` con nombre, descripción, imagen, marca, precio, disponibilidad y valoración agregada. También incluye un `BreadcrumbList` con la jerarquía: Inicio > Electrónica > Auriculares > \[nombre del producto\]. Valida el JSON-LD con la herramienta de prueba de datos estructurados de Google.
 
 **Criterios de evaluación:**
+
 - Meta description, Open Graph y Twitter Cards completos (2 puntos).
 - JSON-LD de tipo Product con todas las propiedades requeridas (4 puntos).
 - JSON-LD BreadcrumbList correcto (2 puntos).
@@ -1504,6 +1504,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Desarrolla un componente `<perfil-usuario>` que muestre una tarjeta con foto, nombre, cargo y biografía breve. El componente debe: (1) usar Shadow DOM para encapsular estilos (sin que afecten al resto de la página ni sean afectados por estilos externos), (2) definir slots nombrados para `foto`, `nombre`, `cargo` y `biografia`, (3) incluir estilos CSS profesionales dentro del Shadow DOM (sombra, bordes redondeados, transiciones hover), (4) permitir personalizar el color de acento mediante una propiedad CSS personalizada (`--color-acento`) que atraviese el Shadow DOM, (5) crear al menos 4 instancias del componente en la misma página con diferentes datos, demostrando su reutilización. Publica el resultado en un único archivo HTML que funcione sin dependencias externas.
 
 **Criterios de evaluación:**
+
 - El componente se registra correctamente con `customElements.define()` y se puede usar en el HTML (2 puntos).
 - Shadow DOM correctamente implementado con estilos encapsulados (2 puntos).
 - Los slots nombrados funcionan correctamente y el contenido se proyecta desde el light DOM (2 puntos).
@@ -1528,6 +1529,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Desarrolla un componente de pestañas que muestre información sobre diferentes frameworks CSS (Bootstrap, Tailwind, Foundation, Bulma). Cada pestaña debe contener una descripción, ventajas y desventajas del framework. El componente debe: (1) usar los roles ARIA `tablist`, `tab` y `tabpanel`, (2) implementar los estados `aria-selected` en las pestañas activas, (3) permitir navegación completa con teclado: Tab para entrar/salir del componente, flechas izquierda/derecha para cambiar de pestaña, (4) ocultar correctamente los paneles inactivos (`hidden` o `display:none`), (5) gestionar el foco para que al seleccionar una pestaña con ratón o teclado, el foco se mantenga en la pestaña seleccionada, (6) ser completamente responsive.
 
 **Criterios de evaluación:**
+
 - Roles ARIA `tablist`, `tab` y `tabpanel` correctamente implementados (3 puntos).
 - Estados `aria-selected` actualizados correctamente al cambiar de pestaña (2 puntos).
 - Navegación por teclado funcional (Tab, flechas, Home/End para primera/última pestaña) (3 puntos).
@@ -1542,6 +1544,7 @@ Las tiendas e-commerce construidas con Shopify presentan desafíos únicos de se
 **Enunciado:** Selecciona un sitio web de un servicio público (ayuntamiento, universidad, biblioteca) y realiza una auditoría completa de accesibilidad. Debes: (1) ejecutar al menos 3 herramientas automáticas (WAVE, axe DevTools y Lighthouse), documentando los resultados con capturas de pantalla, (2) realizar una revisión manual comprobando: navegación con teclado (sin ratón), uso de un lector de pantalla (NVDA en Windows o VoiceOver en Mac), contraste de colores (usando la herramienta de contraste WCAG), zoom al 200%, (3) elaborar un informe en formato PDF que incluya: resumen ejecutivo, metodología empleada, problemas encontrados clasificados por nivel de gravedad (A, AA, AAA según WCAG 2.1), recomendaciones de corrección priorizadas, y conclusión final sobre el nivel de accesibilidad del sitio. Incluye fragmentos de código con las soluciones propuestas para al menos 5 de los problemas encontrados.
 
 **Criterios de evaluación:**
+
 - Uso correcto de al menos 3 herramientas automáticas con resultados documentados (2 puntos).
 - Revisión manual completa documentada (3 puntos).
 - Informe profesional bien estructurado con todos los apartados requeridos (3 puntos).

@@ -31,56 +31,84 @@ El alumnado debe dominar los conceptos básicos de CSS: modelo de caja (`margin`
 
 ### 1. Introducción a Flexbox
 
-Flexbox (Flexible Box Layout) es un modelo de maquetación CSS unidimensional diseñado para distribuir espacio entre ítems y alinearlos dentro de un contenedor, incluso cuando su tamaño es desconocido o dinámico. La palabra "flex" se refiere a la capacidad de los elementos de expandirse (grow) para llenar el espacio disponible o contraerse (shrink) para evitar desbordamientos. Fue introducido como Candidate Recommendation del W3C en 2012 y hoy tiene soporte universal en todos los navegadores modernos, incluyendo versiones móviles.
+!!! info "Definición"
+    **Flexbox** (*Flexible Box Layout*) es un modelo de maquetación CSS **unidimensional** diseñado para distribuir espacio entre ítems y alinearlos dentro de un contenedor, incluso cuando su tamaño es desconocido o dinámico. La palabra "flex" se refiere a la capacidad de los elementos de **expandirse** (*grow*) para llenar el espacio disponible o **contraerse** (*shrink*) para evitar desbordamientos. Fue introducido como *Candidate Recommendation* del W3C en **2012** y hoy tiene soporte universal en todos los navegadores modernos, incluyendo versiones móviles.
 
-Antes de Flexbox, los desarrolladores recurrían a técnicas como `float`, `display: inline-block` o incluso tablas HTML para crear layouts. Cada una tenía limitaciones significativas: los floats requerían clearfix y no permitían alineación vertical, inline-block dejaba espacios no deseados entre elementos, y las tablas mezclaban presentación con contenido. Flexbox resolvió estos problemas proporcionando un modelo de layout nativo y expresivo.
+Antes de Flexbox, los desarrolladores recurrían a otras técnicas para crear *layouts*, cada una con limitaciones significativas:
 
-La naturaleza "unidimensional" de Flexbox significa que trabaja en una sola dirección cada vez: o bien en fila (horizontal) o bien en columna (vertical). Para layouts bidimensionales (filas y columnas simultáneamente), CSS Grid es la herramienta complementaria adecuada. Ambos modelos coexisten y se complementan en el desarrollo web moderno.
+- **`float`** — requería *clearfix* y no permitía la alineación vertical.
+- **`display: inline-block`** — dejaba espacios no deseados entre elementos.
+- **Tablas HTML** — mezclaban presentación con contenido.
+
+Flexbox resolvió estos problemas proporcionando un modelo de *layout* nativo y expresivo.
+
+!!! tip "Una sola dimensión cada vez"
+    La naturaleza **unidimensional** de Flexbox significa que trabaja en una sola dirección: o bien en fila (horizontal) o bien en columna (vertical). Para *layouts* **bidimensionales** (filas y columnas simultáneamente), **CSS Grid** es la herramienta complementaria adecuada. Ambos modelos coexisten y se complementan en el desarrollo web moderno.
 
 ### 2. Ejes del modelo Flexbox
 
 El modelo Flexbox se articula en torno a dos ejes perpendiculares que cambian según la dirección definida por `flex-direction`:
 
-- **Eje principal (main axis):** Es la dirección primaria en la que se disponen los ítems flex. Si `flex-direction` es `row` (valor por defecto), el eje principal es horizontal, de izquierda a derecha. Si es `column`, el eje principal es vertical, de arriba a abajo. Las propiedades `justify-content` y `flex-grow`/`flex-shrink`/`flex-basis` operan sobre este eje.
-
-- **Eje transversal (cross axis):** Es perpendicular al eje principal. Si el eje principal es horizontal (`row`), el transversal es vertical. Si el principal es vertical (`column`), el transversal es horizontal. Las propiedades `align-items` y `align-content` operan sobre este eje.
+| Eje | Definición | Propiedades que operan sobre él |
+|-----|------------|---------------------------------|
+| **Eje principal** (*main axis*) | Dirección primaria en la que se disponen los ítems flex. Con `row` (por defecto) es horizontal, de izquierda a derecha; con `column` es vertical, de arriba a abajo. | `justify-content`, `flex-grow`, `flex-shrink`, `flex-basis` |
+| **Eje transversal** (*cross axis*) | Siempre es **perpendicular** al eje principal: vertical cuando el principal es horizontal, y horizontal cuando el principal es vertical. | `align-items`, `align-content` |
 
 Los valores de `flex-direction` son:
-- `row` (por defecto): eje principal horizontal, de izquierda a derecha. El cross axis es vertical, de arriba a abajo.
-- `row-reverse`: eje principal horizontal, de derecha a izquierda. Útil para layouts RTL o efectos visuales.
-- `column`: eje principal vertical, de arriba a abajo. Cross axis horizontal, de izquierda a derecha.
-- `column-reverse`: eje principal vertical, de abajo a arriba.
 
-Es crucial entender que `row-reverse` y `column-reverse` invierten el orden VISUAL pero NO el orden del DOM. El orden de tabulación y lectura para lectores de pantalla sigue siendo el del DOM, por lo que estos valores deben usarse con precaución en contextos donde el orden semántico es importante.
+| Valor | Eje principal | Eje transversal |
+|-------|---------------|-----------------|
+| **`row`** (por defecto) | Horizontal, de izquierda a derecha | Vertical, de arriba a abajo |
+| **`row-reverse`** | Horizontal, de derecha a izquierda; útil para *layouts* RTL o efectos visuales | Vertical, de arriba a abajo |
+| **`column`** | Vertical, de arriba a abajo | Horizontal, de izquierda a derecha |
+| **`column-reverse`** | Vertical, de abajo a arriba | Horizontal, de izquierda a derecha |
+
+!!! warning "Orden visual ≠ orden del DOM"
+    `row-reverse` y `column-reverse` invierten el orden **VISUAL** pero **NO** el orden del DOM. El orden de tabulación y de lectura para lectores de pantalla sigue siendo el del DOM, por lo que estos valores deben usarse con precaución en contextos donde el orden semántico es importante.
 
 ### 3. Propiedades del contenedor flex
 
-**`display: flex` vs `display: inline-flex`:** Ambos convierten al elemento en un contenedor flex. Con `flex`, el contenedor se comporta como bloque (ocupa todo el ancho disponible). Con `inline-flex`, se comporta como inline (solo ocupa el ancho de su contenido).
+**`display: flex` vs `display: inline-flex`:** ambos convierten al elemento en un contenedor flex. La diferencia es cómo se comporta ese contenedor fuera del flujo de su padre:
 
-**`flex-direction`:** Define la dirección del eje principal. `row` (por defecto, horizontal izquierda a derecha), `row-reverse` (horizontal derecha a izquierda), `column` (vertical arriba a abajo), `column-reverse` (vertical abajo a arriba).
+| Valor | Comportamiento del contenedor |
+|-------|-------------------------------|
+| **`flex`** | Se comporta como **bloque**: ocupa todo el ancho disponible. |
+| **`inline-flex`** | Se comporta como **inline**: solo ocupa el ancho de su contenido. |
 
-**`flex-wrap`:** Controla si los ítems se envuelven a una nueva línea cuando no caben. `nowrap` (por defecto, todos en una línea aunque se desborden), `wrap` (envuelven a la siguiente línea), `wrap-reverse` (envuelven en dirección inversa).
+**`flex-direction`:** define la dirección del eje principal. `row` (por defecto, horizontal izquierda a derecha), `row-reverse` (horizontal derecha a izquierda), `column` (vertical arriba a abajo), `column-reverse` (vertical abajo a arriba).
 
-**`flex-flow`:** Shorthand de `flex-direction` + `flex-wrap`. Ejemplo: `flex-flow: row wrap;`.
+**`flex-wrap`:** controla si los ítems se envuelven a una nueva línea cuando no caben. `nowrap` (por defecto, todos en una línea aunque se desborden), `wrap` (envuelven a la siguiente línea), `wrap-reverse` (envuelven en dirección inversa).
 
-**`justify-content`:** Alinea los ítems a lo largo del EJE PRINCIPAL. Valores:
-- `flex-start`: al inicio del eje principal.
-- `flex-end`: al final del eje principal.
-- `center`: centrados en el eje principal.
-- `space-between`: primer ítem al inicio, último al final, espacio igual entre ellos.
-- `space-around`: espacio igual alrededor de cada ítem (mitad en los extremos).
-- `space-evenly`: espacio exactamente igual entre ítems y extremos.
+**`flex-flow`:** *shorthand* de `flex-direction` + `flex-wrap`. Ejemplo: `flex-flow: row wrap;`.
 
-**`align-items`:** Alinea los ítems a lo largo del EJE TRANSVERSAL. Valores:
-- `stretch` (por defecto): estira los ítems para llenar el contenedor en el cross axis.
-- `flex-start`: al inicio del cross axis.
-- `flex-end`: al final del cross axis.
-- `center`: centrados en el cross axis.
-- `baseline`: alineados por la línea base del texto.
+**`justify-content`:** alinea los ítems a lo largo del **eje principal**. Valores:
 
-**`align-content`:** Solo funciona cuando hay `flex-wrap: wrap` y múltiples líneas. Controla la distribución de las líneas en el cross axis. Mismos valores que `justify-content`.
+| Valor | Comportamiento |
+|-------|----------------|
+| **`flex-start`** | Al inicio del eje principal. |
+| **`flex-end`** | Al final del eje principal. |
+| **`center`** | Centrados en el eje principal. |
+| **`space-between`** | Primer ítem al inicio, último al final, espacio igual entre ellos. |
+| **`space-around`** | Espacio igual alrededor de cada ítem (mitad en los extremos). |
+| **`space-evenly`** | Espacio exactamente igual entre ítems y extremos. |
 
-**`gap`, `row-gap`, `column-gap`:** Definen el espacio entre ítems flex, tanto en filas como en columnas. `gap` es el shorthand. A diferencia de usar `margin`, el gap solo se aplica ENTRE ítems, no en los extremos.
+**`align-items`:** alinea los ítems a lo largo del **eje transversal**. Valores:
+
+| Valor | Comportamiento |
+|-------|----------------|
+| **`stretch`** (por defecto) | Estira los ítems para llenar el contenedor en el *cross axis*. |
+| **`flex-start`** | Al inicio del *cross axis*. |
+| **`flex-end`** | Al final del *cross axis*. |
+| **`center`** | Centrados en el *cross axis*. |
+| **`baseline`** | Alineados por la línea base del texto. |
+
+!!! tip "align-content solo funciona con varias líneas"
+    `align-content` **solo tiene efecto cuando hay `flex-wrap: wrap` y, por tanto, múltiples líneas**. Controla la distribución de las líneas en el eje transversal y admite los mismos valores que `justify-content`. Con una única línea, la propiedad no hace nada.
+
+**`gap`, `row-gap`, `column-gap`:** definen el espacio entre ítems flex, tanto en filas como en columnas. `gap` es el *shorthand*.
+
+!!! tip "gap frente a margin"
+    A diferencia de usar `margin`, el **`gap` solo se aplica ENTRE ítems**, nunca en los extremos del contenedor. Es la forma más limpia y predecible de separar elementos flex.
 
 ### 4. Propiedades de los ítems flex
 
@@ -92,86 +120,115 @@ Es crucial entender que `row-reverse` y `column-reverse` invierten el orden VISU
 
 **`flex-basis`:** Tamaño base del ítem antes de aplicar grow/shrink. Valor por defecto: `auto` (toma el width/height del elemento). Puede especificarse en cualquier unidad CSS. Es la propiedad más incomprendida de Flexbox.
 
-**`flex` (shorthand):** Forma recomendada de usar las tres propiedades anteriores. Sintaxis: `flex: <flex-grow> <flex-shrink> <flex-basis>`. Valores comunes:
-- `flex: 1` → `flex: 1 1 0%` (crece y se encoge, base cero, distribución proporcional)
-- `flex: auto` → `flex: 1 1 auto` (crece y se encoge, base según contenido)
-- `flex: none` → `flex: 0 0 auto` (no crece ni se encoge, tamaño fijo)
-- `flex: 0 1 300px` → no crece, puede encogerse, base 300px
+**`flex` (shorthand):** forma recomendada de usar las tres propiedades anteriores. Sintaxis: `flex: <flex-grow> <flex-shrink> <flex-basis>`. Valores comunes:
 
-**`align-self`:** Sobrescribe `align-items` para un ítem individual. Mismos valores que `align-items`. Útil cuando un ítem necesita una alineación diferente al resto.
+| Valor | Equivalencia y efecto |
+|-------|-----------------------|
+| **`flex: 1`** | `flex: 1 1 0%` — crece y se encoge, base cero: distribución proporcional del espacio. |
+| **`flex: auto`** | `flex: 1 1 auto` — crece y se encoge, base según el contenido. |
+| **`flex: none`** | `flex: 0 0 auto` — no crece ni se encoge: tamaño fijo. |
+| **`flex: 0 1 300px`** | No crece, puede encogerse, base de 300px. |
+
+!!! tip "Prefiere el shorthand flex"
+    Usa `flex` en lugar de escribir `flex-grow`, `flex-shrink` y `flex-basis` por separado: es más conciso y menos propenso a errores. Recuerda las equivalencias: `flex: 1` = `1 1 0%`, `flex: auto` = `1 1 auto` y `flex: none` = `0 0 auto`.
+
+**`align-self`:** sobrescribe `align-items` para un ítem individual. Admite los mismos valores que `align-items`.
+
+!!! tip "align-self para un ítem concreto"
+    Usa `align-self` cuando **un solo ítem** necesita una alineación diferente al resto, por ejemplo una imagen que debe centrarse verticalmente en su celda mientras los demás ítems se estiran.
 
 ### 5. Auto margins en Flexbox
 
-Una de las características más potentes y menos conocidas de Flexbox es el comportamiento de `margin: auto`. En un contenedor flex, un `margin: auto` en un ítem consume TODO el espacio disponible en esa dirección, empujando al ítem hacia el extremo opuesto. Esto permite patrones como:
-- `margin-left: auto` en el último ítem de una barra de navegación para empujarlo a la derecha.
-- `margin: auto` en un único ítem para centrarlo perfectamente (alternativa a `justify-content: center`).
-- `margin-top: auto` en el footer de una card para empujarlo al fondo, manteniendo la alineación independientemente del contenido.
+!!! tip "Auto margins en Flexbox"
+    Una de las características más potentes y menos conocidas de Flexbox es el comportamiento de **`margin: auto`**: en un contenedor flex, un margen automático en un ítem **consume TODO el espacio disponible en esa dirección**, empujando al ítem hacia el extremo opuesto. Esto permite patrones como:
+    - `margin-left: auto` en el último ítem de una barra de navegación para empujarlo a la derecha.
+    - `margin: auto` en un único ítem para centrarlo perfectamente (alternativa a `justify-content: center`).
+    - `margin-top: auto` en el *footer* de una card para empujarlo al fondo, manteniendo la alineación independientemente del contenido.
 
 ### 6. Flex-basis vs width
 
-Cuando ambos están definidos, `flex-basis` tiene prioridad sobre `width` (o `height` en dirección column) para determinar el tamaño base del ítem. Sin embargo, si `flex-basis` es `auto` (valor por defecto), se usa `width`/`height`. La regla de resolución es:
-1. Si `flex-basis` no es `auto`, se usa `flex-basis`.
-2. Si `flex-basis` es `auto` y `width`/`height` están definidos, se usa `width`/`height`.
-3. Si ninguno está definido, el tamaño se calcula a partir del contenido.
+Cuando ambos están definidos, **`flex-basis` tiene prioridad sobre `width`** (o `height` en dirección *column*) para determinar el tamaño base del ítem. Sin embargo, si `flex-basis` es `auto` (valor por defecto), se usa `width`/`height`.
+
+!!! note "Regla de resolución del navegador"
+    1. Si `flex-basis` **no** es `auto`, se usa `flex-basis`.
+    2. Si `flex-basis` es `auto` y `width`/`height` están definidos, se usa `width`/`height`.
+    3. Si ninguno está definido, el tamaño se calcula a partir del contenido.
 
 Por eso, usar `flex: 1` (que establece `flex-basis: 0%`) es diferente a usar `flex: auto` (que establece `flex-basis: auto`). Con `flex: 1`, todos los ítems parten de 0 y se reparten el espacio equitativamente. Con `flex: auto`, parten de su tamaño natural y luego se reparten el espacio restante, resultando en ítems de tamaños diferentes.
 
+!!! warning "flex: 1 no es lo mismo que flex: auto"
+    Con **`flex: 1`** (`flex-basis: 0%`) todos los ítems **parten de cero** y obtienen el mismo tamaño. Con **`flex: auto`** respetan el tamaño de su contenido y luego reparten el espacio extra, lo que puede producir **tamaños desiguales**. Confundirlos es una de las causas más habituales de resultados inesperados en Flexbox.
+
 ### 7. Patrones de diseño con Flexbox
 
-**Lista horizontal:** `display: flex; gap: 16px;` en una `<ul>`. Los `<li>` se alinean horizontalmente con espacio uniforme. Combinado con `flex-wrap: wrap` para responsive.
+- **Lista horizontal** — `display: flex; gap: 16px;` en una `<ul>`. Los `<li>` se alinean horizontalmente con espacio uniforme. Combinado con `flex-wrap: wrap` para *responsive*.
+- **Centrado perfecto** — `display: flex; justify-content: center; align-items: center;` en el contenedor. Centra el contenido tanto horizontal como verticalmente: el método más simple y efectivo de centrado en CSS.
+- **Sticky footer** — `body { display: flex; flex-direction: column; min-height: 100vh; }` y `main { flex: 1; }`. El `<main>` crece para ocupar todo el espacio disponible, empujando el `<footer>` al fondo de la página.
+- **Media object** — patrón clásico con imagen a la izquierda y contenido a la derecha: `<div style="display:flex; gap:16px;"><img ...><div>...</div></div>`. La imagen mantiene su tamaño; el contenido ocupa el resto.
+- **Igual altura de columnas** — por defecto, los ítems flex en una misma fila tienen la misma altura (`align-items: stretch`).
+- **Formulario responsive** — campos en fila con `flex-wrap: wrap`. Etiquetas encima de los *inputs* en móvil (`flex-direction: column`), al lado en escritorio (`flex-direction: row`).
+- **Cards alineadas** — contenedor con `display: flex; flex-wrap: wrap; gap: 24px;`. Cada card con `flex: 1 1 300px;` crece y se encoge, con ancho mínimo de 300px. Los *footers* se alinean con `margin-top: auto` dentro de cada card configurada como `display: flex; flex-direction: column;`.
 
-**Centrado perfecto:** `display: flex; justify-content: center; align-items: center;` en el contenedor. Centra el contenido tanto horizontal como verticalmente. El método más simple y efectivo de centrado en CSS.
-
-**Sticky footer:** `body { display: flex; flex-direction: column; min-height: 100vh; }` y `main { flex: 1; }`. El `<main>` crece para ocupar todo el espacio disponible, empujando el `<footer>` al fondo de la página.
-
-**Media object:** Patrón clásico con imagen a la izquierda y contenido a la derecha. `<div style="display:flex; gap:16px;"><img ...><div>...</div></div>`. La imagen mantiene su tamaño; el contenido ocupa el resto.
-
-**Igual altura de columnas:** Por defecto, los ítems flex en una misma fila tienen la misma altura (`align-items: stretch`), resolviendo un problema histórico de CSS sin necesidad de JavaScript ni hacks.
-
-**Formulario responsive:** Campos en fila con `flex-wrap: wrap`. Etiquetas encima de inputs en móvil (`flex-direction: column`), al lado en escritorio (`flex-direction: row`).
-
-**Cards alineadas:** Contenedor con `display: flex; flex-wrap: wrap; gap: 24px;`. Cada card con `flex: 1 1 300px;` crece y se encoge, con ancho mínimo de 300px. Los footers de las cards se alinean con `margin-top: auto` dentro de cada card configurada como `display: flex; flex-direction: column;`.
+!!! tip "Igual altura sin hacks"
+    La **igual altura de columnas** resuelve un problema histórico de CSS: los ítems flex de una misma fila comparten altura gracias a `align-items: stretch`, que es además el valor por defecto. No hace falta JavaScript, *hacks* ni alturas fijas.
 
 ### 8. Navbar profesional con Flexbox
 
 Una barra de navegación profesional construida con Flexbox contiene:
-- **Contenedor:** `display: flex; align-items: center; justify-content: space-between; padding: 0 24px;` como base.
-- **Logo:** a la izquierda, con `flex-shrink: 0` para que no se comprima.
-- **Menú de navegación:** `<nav>` con `<ul>` flex, `gap` entre enlaces.
-- **Búsqueda e iconos:** agrupados a la derecha, posiblemente con `margin-left: auto` en el grupo de iconos.
-- **Responsive:** en pantallas pequeñas, el menú se oculta y se muestra un icono de hamburguesa. Implementación CSS pura usando un `<input type="checkbox">` oculto + `<label>` para el icono, y mostrando/ocultando el menú con `:checked`.
+
+!!! tip "Navbar profesional con Flexbox"
+    - **Contenedor:** `display: flex; align-items: center; justify-content: space-between; padding: 0 24px;` como base.
+    - **Logo:** a la izquierda, con `flex-shrink: 0` para que no se comprima.
+    - **Menú de navegación:** `<nav>` con `<ul>` flex, `gap` entre enlaces.
+    - **Búsqueda e iconos:** agrupados a la derecha, posiblemente con `margin-left: auto` en el grupo de iconos.
+    - **Responsive:** en pantallas pequeñas, el menú se oculta y se muestra un icono de hamburguesa. Implementación CSS pura usando un `<input type="checkbox">` oculto + `<label>` para el icono, y mostrando/ocultando el menú con `:checked`.
 
 ### 9. Cards con Flexbox
 
 Las cards son uno de los patrones más comunes en la web. Con Flexbox conseguimos:
-- Grid de cards responsive con `flex-wrap: wrap` y cada card con `flex: 1 1 300px`.
-- Cards con contenido de altura variable pero footer siempre alineado al fondo usando `display: flex; flex-direction: column;` en la card y `margin-top: auto;` en el footer.
-- Efectos hover con `transition` en `transform` y `box-shadow`.
-- Distribución uniforme de contenido interno con `justify-content: space-between`.
+
+!!! tip "Cards con Flexbox"
+    - Grid de cards *responsive* con `flex-wrap: wrap` y cada card con `flex: 1 1 300px`.
+    - Cards con contenido de altura variable pero *footer* siempre alineado al fondo usando `display: flex; flex-direction: column;` en la card y `margin-top: auto;` en el *footer*.
+    - Efectos *hover* con `transition` en `transform` y `box-shadow`.
+    - Distribución uniforme del contenido interno con `justify-content: space-between`.
 
 ### 10. Formularios con Flexbox
 
 Flexbox simplifica enormemente la alineación de etiquetas y campos en formularios:
-- Cada fila del formulario es un contenedor flex: `display: flex; align-items: center; gap: 12px;`.
-- La etiqueta ocupa un ancho fijo: `flex: 0 0 120px;` o `width: 120px;`.
-- El input ocupa el resto: `flex: 1;`.
-- En responsive, la dirección cambia a `flex-direction: column` para que la etiqueta quede encima del input.
-- Los botones se agrupan con `display: flex; gap: 12px; justify-content: flex-end;`.
+
+!!! tip "Formularios con Flexbox"
+    - Cada fila del formulario es un contenedor flex: `display: flex; align-items: center; gap: 12px;`.
+    - La etiqueta ocupa un ancho fijo: `flex: 0 0 120px;` o `width: 120px;`.
+    - El *input* ocupa el resto: `flex: 1;`.
+    - En *responsive*, la dirección cambia a `flex-direction: column` para que la etiqueta quede encima del *input*.
+    - Los botones se agrupan con `display: flex; gap: 12px; justify-content: flex-end;`.
 
 ### 11. Dashboard con Flexbox
 
-Un dashboard típico tiene: header superior, sidebar lateral, área de contenido principal con cards. Con Flexbox:
-- Layout global: `body { display: flex; min-height: 100vh; }` o usar un contenedor principal flex.
-- Sidebar: `flex: 0 0 250px;` (ancho fijo) o `flex: 0 0 60px;` (colapsado).
-- Contenido principal: `flex: 1;` ocupa el resto.
-- Área de cards: `display: flex; flex-wrap: wrap; gap: 24px;`.
-- Sidebar colapsable con CSS puro usando `:checked` + `~` sibling selector para cambiar `flex-basis`.
+Un dashboard típico tiene: *header* superior, *sidebar* lateral, área de contenido principal con cards. Con Flexbox:
+
+!!! tip "Dashboard con Flexbox"
+    - **Layout global:** `body { display: flex; min-height: 100vh; }` o un contenedor principal flex.
+    - **Sidebar:** `flex: 0 0 250px;` (ancho fijo) o `flex: 0 0 60px;` (colapsada).
+    - **Contenido principal:** `flex: 1;`, ocupa el resto.
+    - **Área de cards:** `display: flex; flex-wrap: wrap; gap: 24px;`.
+    - **Sidebar colapsable** con CSS puro usando el selector de hermanos `:checked` + `~` para cambiar `flex-basis`.
 
 ### 12. Flexbox vs Grid: cuándo usar cada uno
 
-- **Flexbox:** ideal para layouts unidimensionales (una fila O una columna). Perfecto para barras de navegación, listas de elementos, centrado de contenido, distribución de items en una dirección. Cuando el contenido DICTA el layout (content-first).
-- **Grid:** ideal para layouts bidimensionales (filas Y columnas simultáneamente). Perfecto para layouts de página completos, galerías con estructura de columnas fija, dashboards. Cuando el layout DICTA dónde va el contenido (layout-first).
-- Ambos se complementan: Grid para el layout macro de la página, Flexbox para los componentes dentro de cada área del grid.
+Cuándo conviene cada modelo:
+
+| Criterio | **Flexbox** | **CSS Grid** |
+|----------|-------------|--------------|
+| **Dimensionalidad** | Unidimensional: una fila **O** una columna | Bidimensional: filas **Y** columnas simultáneamente |
+| **Enfoque** | *Content-first*: cuando el **contenido** dicta el *layout* | *Layout-first*: cuando el **layout** dicta dónde va el contenido |
+| **Ideales para** | Barras de navegación, listas de elementos, centrado de contenido, distribución de ítems en una dirección | *Layouts* de página completos, galerías con estructura de columnas fija, dashboards |
+
+Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox para los componentes** dentro de cada área del grid.
+
+!!! tip "Regla práctica: combinar, no enfrentar"
+    Si solo necesitas control en **una dimensión**, usa Flexbox. Si necesitas control en **dos dimensiones**, usa Grid. Grid gestiona la estructura (cabecera, sidebar, contenido, pie) y Flexbox resuelve la alineación interna de cada componente.
 
 ## Ejemplos guiados
 
@@ -1826,15 +1883,18 @@ Un dashboard típico tiene: header superior, sidebar lateral, área de contenido
 
 ### Caso Real 1: GitHub - Navegación y layout con Flexbox
 
-GitHub utiliza Flexbox extensivamente en toda su interfaz. La barra de navegación superior es un contenedor flex con `justify-content: space-between` para separar el logo y la búsqueda (izquierda) de los iconos de notificaciones y perfil (derecha). La sidebar de repositorios usa `display: flex; flex-direction: column;` para alinear los elementos de navegación verticalmente. El área principal de código emplea Flexbox para la cabecera del archivo (nombre, botones de acción) y para alinear elementos en las barras de herramientas. En la vista de Issues y Pull Requests, cada item de la lista es un contenedor flex que alinea el checkbox, título, etiquetas y metadatos en una fila. GitHub demuestra cómo Flexbox es la herramienta ideal para componentes de interfaz y barras de herramientas, mientras que CSS Grid se reserva para el layout global de algunas páginas.
+!!! example "Caso real: GitHub"
+    GitHub utiliza Flexbox extensivamente en toda su interfaz. La barra de navegación superior es un contenedor flex con `justify-content: space-between` para separar el logo y la búsqueda (izquierda) de los iconos de notificaciones y perfil (derecha). La *sidebar* de repositorios usa `display: flex; flex-direction: column;` para alinear los elementos de navegación verticalmente. El área principal de código emplea Flexbox para la cabecera del archivo (nombre, botones de acción) y para alinear elementos en las barras de herramientas. En la vista de *Issues* y *Pull Requests*, cada ítem de la lista es un contenedor flex que alinea el *checkbox*, título, etiquetas y metadatos en una fila. GitHub demuestra cómo Flexbox es la herramienta ideal para componentes de interfaz y barras de herramientas, mientras que CSS Grid se reserva para el *layout* global de algunas páginas.
 
 ### Caso Real 2: Twitter/X - Timeline y composición de tweets
 
-Twitter/X utiliza Flexbox como núcleo de su interfaz. La timeline está construida con un layout flex de dos columnas (sidebar izquierda, contenido central, tendencias derecha). Cada tweet individual es un contenedor flex horizontal (avatar + contenido) que sigue el patrón media object estudiado. El avatar tiene `flex-shrink: 0` para mantener su tamaño, y el cuerpo del tweet tiene `flex: 1` para ocupar el espacio restante. Las acciones del tweet (comentar, retweet, like, compartir) están en un contenedor flex con `justify-content: space-between`. La barra de navegación inferior en móvil usa `justify-content: space-around`. Twitter es un ejemplo perfecto de Flexbox usado para componentes de interfaz de usuario repetitivos y alineados.
+!!! example "Caso real: Twitter/X"
+    Twitter/X utiliza Flexbox como núcleo de su interfaz. La *timeline* está construida con un *layout* flex de dos columnas (*sidebar* izquierda, contenido central, tendencias derecha). Cada tweet individual es un contenedor flex horizontal (avatar + contenido) que sigue el patrón *media object* estudiado. El avatar tiene `flex-shrink: 0` para mantener su tamaño, y el cuerpo del tweet tiene `flex: 1` para ocupar el espacio restante. Las acciones del tweet (comentar, retweet, *like*, compartir) están en un contenedor flex con `justify-content: space-between`. La barra de navegación inferior en móvil usa `justify-content: space-around`. Twitter es un ejemplo perfecto de Flexbox usado para componentes de interfaz de usuario repetitivos y alineados.
 
 ### Caso Real 3: Stripe - Landing page y componentes de pago
 
-Stripe utiliza Flexbox para construir layouts complejos en su landing page y documentación. Las secciones de la landing page son contenedores flex que alternan dirección de fila/columna para imagen + texto. Los componentes de pago (Stripe Elements) usan Flexbox para alinear campos de formulario (número de tarjeta, fecha, CVC) en una sola fila responsive. La documentación de Stripe emplea un layout de dos columnas con Flexbox: navegación lateral y contenido principal. En móvil, la dirección cambia a columna. Los botones y CTAs usan Flexbox para centrar iconos y texto. Stripe demuestra el uso de Flexbox tanto para macro-layouts como para micro-componentes de interfaz.
+!!! example "Caso real: Stripe"
+    Stripe utiliza Flexbox para construir *layouts* complejos en su *landing page* y documentación. Las secciones de la *landing page* son contenedores flex que alternan dirección de fila/columna para imagen + texto. Los componentes de pago (Stripe Elements) usan Flexbox para alinear campos de formulario (número de tarjeta, fecha, CVC) en una sola fila *responsive*. La documentación de Stripe emplea un *layout* de dos columnas con Flexbox: navegación lateral y contenido principal. En móvil, la dirección cambia a columna. Los botones y CTAs usan Flexbox para centrar iconos y texto. Stripe demuestra el uso de Flexbox tanto para macro-*layouts* como para micro-componentes de interfaz.
 
 ## Actividades guiadas
 
@@ -1845,6 +1905,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Construye una navbar para un sitio web corporativo que incluya: (1) logo a la izquierda, (2) menú de navegación central con 5 enlaces, (3) campo de búsqueda y 2 iconos a la derecha, (4) menú hamburguesa funcional en móvil (<768px) usando solo CSS (checkbox + label + :checked), (5) header sticky, (6) transiciones suaves en el despliegue del menú, (7) indicador de página activa en el enlace correspondiente. Todo el HTML debe ser semántico y accesible.
 
 **Criterios de evaluación:**
+
 - Uso correcto de Flexbox para alinear todos los elementos en la navbar (logo, menú, búsqueda, iconos) (3 puntos).
 - Menú hamburguesa funcional con CSS puro (checkbox + label + :checked + ~) (3 puntos).
 - Diseño responsive con al menos 2 breakpoints (2 puntos).
@@ -1867,6 +1928,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Crea una galería de 8 productos tecnológicos con: (1) grid responsive con `flex-wrap: wrap`, (2) cada card debe ser un contenedor flex column para alinear el footer al fondo, (3) imágenes con `object-fit: cover` de altura fija, (4) footer con precio y botón "Comprar" siempre alineado al fondo, (5) efectos hover (elevación y sombra) con transiciones, (6) 2-3 cards por fila en desktop, 1 en móvil. Usa `flex: 1 1 280px` para las cards.
 
 **Criterios de evaluación:**
+
 - Grid responsive con flex-wrap correcto (2 puntos).
 - Cards como flex column con footer alineado al fondo (3 puntos).
 - Efectos hover con transiciones (1 punto).
@@ -1881,6 +1943,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Crea un dashboard que incluya: (1) sidebar izquierda con navegación (250px de ancho), (2) header superior con título y avatar, (3) área de contenido principal con scroll, (4) 4 cards de estadísticas usando flex-wrap, (5) sidebar colapsable a 60px con CSS puro (checkbox), (6) ocultación de textos al colapsar. El layout completo debe usar Flexbox.
 
 **Criterios de evaluación:**
+
 - Layout principal con Flexbox correcto (sidebar + contenido) (3 puntos).
 - Sidebar colapsable con CSS puro (checkbox) (3 puntos).
 - Cards de estadísticas con flex-wrap (2 puntos).
@@ -1893,6 +1956,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Crea un formulario de pago que incluya: campos personales (nombre, email, teléfono), dirección de envío, y datos de tarjeta. Usa Flexbox para: (1) alinear label (130px) e input (flex:1) en cada fila en desktop, (2) cambiar a dirección column en móvil, (3) agrupar campos relacionados horizontalmente (ej: ciudad + CP + país en una fila), (4) alinear botones a la derecha con gap, (5) campos con anchos proporcionales usando flex-grow.
 
 **Criterios de evaluación:**
+
 - Alineación label-input con Flexbox (3 puntos).
 - Agrupación de campos en filas horizontales (2 puntos).
 - Diseño responsive (column en móvil) (2 puntos).
@@ -1906,6 +1970,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Diseña una landing page para una startup que contenga: (1) header con navbar (sticky), (2) sección hero centrada vertical/horizontalmente, (3) sección de 3 características en fila (flex-wrap responsive), (4) sección de precios con 3 planes alineados, (5) sección de testimonios con media objects, (6) footer con múltiples columnas usando flex-wrap. Todo con Flexbox, sin usar CSS Grid.
 
 **Criterios de evaluación:**
+
 - Todos los layouts implementados correctamente con Flexbox (4 puntos).
 - Diseño responsive completo (2 puntos).
 - Media objects en testimonios (2 puntos).
@@ -1963,6 +2028,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Clona la interfaz de Spotify con: (1) sidebar izquierda con playlists (scrollable), (2) área principal con grid de álbumes/playlists destacadas, (3) barra de reproducción inferior fija con controles de playback, progreso y volumen, (4) header superior con navegación y perfil. Cada sección debe usar Flexbox para sus alineamientos. Implementa 3 breakpoints (desktop, tablet, mobile). En mobile, la barra de reproducción se simplifica y la sidebar se oculta.
 
 **Criterios:**
+
 - Layout principal con Flexbox correcto en todas las secciones (3 puntos).
 - Barra de reproducción con controles perfectamente alineados (3 puntos).
 - Diseño responsive con 3 breakpoints funcionales (3 puntos).
@@ -1984,6 +2050,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Desarrolla un juego de tres en raya para dos jugadores con: (1) tablero 3x3 construido con Flexbox (flex-wrap en el contenedor, cada celda con flex: 1 1 33.33%), (2) celdas centradas con Flexbox, (3) animaciones al colocar fichas, (4) detección de victoria con línea ganadora resaltada, (5) marcador de puntuación alineado con Flexbox, (6) botón de reinicio, (7) diseño responsive que funcione en móvil. Usa Flexbox para TODOS los alineamientos.
 
 **Criterios:**
+
 - Tablero 3x3 con Flexbox (3 puntos).
 - Celdas con contenido centrado usando Flexbox (2 puntos).
 - Lógica del juego funcional en JS (3 puntos).
@@ -1997,6 +2064,7 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 **Enunciado:** Desarrolla un design system documentado que incluya: (1) tokens de diseño como variables CSS, (2) al menos 12 componentes diferentes (botones, cards, inputs, modales, tabs, badges, alerts, tooltips, dropdowns, avatares, breadcrumbs, paginación), (3) cada componente debe usar Flexbox para su alineación interna, (4) página de documentación que muestre cada componente con su variante y código, (5) modo claro/oscuro mediante variables CSS, (6) diseño responsive de la propia página de documentación.
 
 **Criterios:**
+
 - 12+ componentes funcionales (4 puntos).
 - Flexbox correcto en la alineación interna de cada componente (3 puntos).
 - Documentación clara y completa (2 puntos).
@@ -2035,21 +2103,24 @@ Stripe utiliza Flexbox para construir layouts complejos en su landing page y doc
 
 ## Errores frecuentes
 
-1. **Olvidar que Flexbox es UNIDIMENSIONAL.** Intentar crear layouts de filas y columnas simultáneas con Flexbox (en lugar de Grid) resulta en código innecesariamente complejo.
+Los errores siguientes aparecen una y otra vez en los primeros proyectos con Flexbox:
 
-2. **Usar `flex: 1` cuando se necesita `flex: auto`.** Con `flex: 1` (`flex-basis: 0%`), todos los ítems parten de cero y obtienen el mismo tamaño. Con `flex: auto`, respetan el tamaño de su contenido y luego reparten el espacio extra, lo que puede dar tamaños desiguales.
+!!! warning "Errores frecuentes de Flexbox"
+    1. **Olvidar que Flexbox es UNIDIMENSIONAL.** Intentar crear *layouts* de filas y columnas simultáneas con Flexbox (en lugar de Grid) resulta en código innecesariamente complejo.
 
-3. **Aplicar propiedades flex al elemento equivocado.** `justify-content`, `align-items` y `flex-wrap` van en el CONTENEDOR. `flex-grow`, `flex-shrink`, `flex-basis` y `align-self` van en los ÍTEMS.
+    2. **Usar `flex: 1` cuando se necesita `flex: auto`.** Con `flex: 1` (`flex-basis: 0%`), todos los ítems parten de cero y obtienen el mismo tamaño. Con `flex: auto`, respetan el tamaño de su contenido y luego reparten el espacio extra, lo que puede dar tamaños desiguales.
 
-4. **No establecer `flex-shrink: 0` en elementos que no deben deformarse.** Logos, iconos, avatares. Si no se especifica, pueden encogerse y deformarse cuando falta espacio.
+    3. **Aplicar propiedades flex al elemento equivocado.** `justify-content`, `align-items` y `flex-wrap` van en el CONTENEDOR. `flex-grow`, `flex-shrink`, `flex-basis` y `align-self` van en los ÍTEMS.
 
-5. **Usar `float` o `inline-block` junto con Flexbox.** Las propiedades float, clear y vertical-align no tienen efecto en ítems flex. Si necesitas posicionamiento específico, usa las propiedades de Flexbox.
+    4. **No establecer `flex-shrink: 0` en elementos que no deben deformarse.** Logos, iconos, avatares. Si no se especifica, pueden encogerse y deformarse cuando falta espacio.
 
-6. **Olvidar que `align-content` solo funciona con `flex-wrap: wrap`.** Sin wrap, `align-content` no tiene efecto (solo hay una línea).
+    5. **Usar `float` o `inline-block` junto con Flexbox.** Las propiedades *float*, *clear* y *vertical-align* no tienen efecto en ítems flex. Si necesitas posicionamiento específico, usa las propiedades de Flexbox.
 
-7. **No probar con contenido de longitud variable.** Un layout flex puede verse perfecto con contenido de prueba breve y romperse con contenido real más largo. Prueba siempre con textos de diferentes longitudes.
+    6. **Olvidar que `align-content` solo funciona con `flex-wrap: wrap`.** Sin *wrap*, `align-content` no tiene efecto (solo hay una línea).
 
-8. **Creer que `order` cambia el orden en el DOM.** Solo cambia la presentación visual. El orden de tabulación y accesibilidad sigue siendo el del DOM.
+    7. **No probar con contenido de longitud variable.** Un *layout* flex puede verse perfecto con contenido de prueba breve y romperse con contenido real más largo. Prueba siempre con textos de diferentes longitudes.
+
+    8. **Creer que `order` cambia el orden en el DOM.** Solo cambia la presentación visual. El orden de tabulación y accesibilidad sigue siendo el del DOM.
 
 ## Resumen
 

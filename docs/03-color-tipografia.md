@@ -101,102 +101,202 @@ Al finalizar esta unidad, el alumnado será capaz de:
 
 ### 1.1 Teoría del color
 
-La teoría del color es el conjunto de principios y directrices que rigen la combinación y el uso del color en cualquier disciplina visual, desde la pintura clásica hasta el diseño de interfaces digitales. Comprender estos principios permite al diseñador tomar decisiones cromáticas fundamentadas, en lugar de basarse en preferencias personales o tendencias pasajeras.
+!!! info "Definición: teoría del color"
+    La **teoría del color** es el conjunto de principios y directrices que rigen la combinación y el uso del color en cualquier disciplina visual, desde la pintura clásica hasta el diseño de interfaces digitales. Comprender estos principios permite al diseñador tomar decisiones cromáticas fundamentadas, en lugar de basarse en preferencias personales o tendencias pasajeras.
 
-El círculo cromático es la herramienta básica para comprender las relaciones entre colores. Se organiza colocando los colores en un círculo en un orden específico, generalmente comenzando con los colores primarios (rojo, amarillo y azul en el modelo tradicional de pintor; rojo, verde y azul en el modelo digital RGB). Los colores secundarios se obtienen mezclando dos primarios en proporciones iguales: verde (azul + amarillo), naranja (rojo + amarillo) y violeta/púrpura (rojo + azul). Los colores terciarios se obtienen mezclando un primario con un secundario adyacente, generando matices como rojo-naranja, amarillo-verde o azul-violeta.
+El **círculo cromático** es la herramienta básica para comprender las relaciones entre colores. Se organiza colocando los colores en un círculo en un orden específico, empezando por los colores primarios:
 
-Las armonías cromáticas son combinaciones de colores que resultan visualmente agradables porque mantienen relaciones matemáticas en el círculo cromático. La armonía de colores complementarios utiliza dos colores opuestos en el círculo (por ejemplo, azul y naranja, o rojo y verde). Es la armonía de mayor contraste visual y resulta muy efectiva para llamar la atención, pero debe usarse con moderación porque puede resultar agresiva si se aplica en grandes superficies. La armonía de colores análogos utiliza colores adyacentes en el círculo (por ejemplo, azul, azul-verdoso y verde). Transmite calma y cohesión, y es la más común en la naturaleza. La armonía triádica utiliza tres colores equidistantes en el círculo (por ejemplo, rojo, amarillo y azul), creando composiciones vibrantes y equilibradas. La armonía monocromática utiliza variaciones en saturación y luminosidad de un único matiz, transmitiendo elegancia y sofisticación. La armonía de complementarios divididos utiliza un color y los dos colores adyacentes a su complementario, ofreciendo alto contraste pero con menos tensión que la armonía complementaria directa.
+- **Primarios** — rojo, amarillo y azul en el modelo tradicional de pintor; rojo, verde y azul en el modelo digital RGB.
+- **Secundarios** — se obtienen mezclando dos primarios en proporciones iguales: verde (azul + amarillo), naranja (rojo + amarillo) y violeta/púrpura (rojo + azul).
+- **Terciarios** — se obtienen mezclando un primario con un secundario adyacente, generando matices como rojo-naranja, amarillo-verde o azul-violeta.
+
+Las **armonías cromáticas** son combinaciones de colores que resultan visualmente agradables porque mantienen relaciones matemáticas en el círculo cromático:
+
+- **Complementarios** — utilizan dos colores opuestos en el círculo (por ejemplo, azul y naranja, o rojo y verde). Es la armonía de mayor contraste visual y resulta muy efectiva para llamar la atención, pero debe usarse con moderación porque puede resultar agresiva si se aplica en grandes superficies.
+- **Análogos** — utilizan colores adyacentes en el círculo (por ejemplo, azul, azul-verdoso y verde). Transmite calma y cohesión, y es la más común en la naturaleza.
+- **Triádica** — utiliza tres colores equidistantes en el círculo (por ejemplo, rojo, amarillo y azul), creando composiciones vibrantes y equilibradas.
+- **Monocromática** — utiliza variaciones en saturación y luminosidad de un único matiz, transmitiendo elegancia y sofisticación.
+- **Complementarios divididos** — utilizan un color y los dos colores adyacentes a su complementario, ofreciendo alto contraste pero con menos tensión que la armonía complementaria directa.
 
 ### 1.2 Modelos de color
 
 En el diseño web trabajamos con dos modelos de color principales: RGB y HSL. Comprender sus diferencias y cuándo utilizar cada uno es esencial para un uso eficaz del color en CSS.
 
-El modelo RGB (Red, Green, Blue) es un modelo aditivo basado en la luz. Las pantallas emiten luz roja, verde y azul en diferentes intensidades para producir todos los colores visibles. Cuando los tres canales están al máximo (255, 255, 255), obtenemos blanco; cuando están al mínimo (0, 0, 0), obtenemos negro. En CSS, podemos especificar colores RGB mediante notación hexadecimal (#RRGGBB), notación funcional rgb(r, g, b) o rgba(r, g, b, a) para incluir transparencia. La notación hexadecimal es la más compacta: cada par de caracteres representa un canal de color en base 16, desde 00 (0 en decimal) hasta FF (255 en decimal). Por ejemplo, #FF0000 es rojo puro (máximo rojo, sin verde, sin azul).
+El modelo **RGB** (*Red, Green, Blue*) es un modelo **aditivo** basado en la luz. Las pantallas emiten luz roja, verde y azul en diferentes intensidades para producir todos los colores visibles. Cuando los tres canales están al máximo (**255, 255, 255**) obtenemos **blanco**; cuando están al mínimo (**0, 0, 0**) obtenemos **negro**. En CSS, podemos especificar colores RGB mediante notación hexadecimal (`#RRGGBB`), notación funcional `rgb(r, g, b)` o `rgba(r, g, b, a)` para incluir transparencia. La notación hexadecimal es la más compacta: cada par de caracteres representa un canal de color en base 16, desde **00** (0 en decimal) hasta **FF** (255 en decimal). Por ejemplo, `#FF0000` es **rojo puro** (máximo rojo, sin verde, sin azul).
 
-El modelo HSL (Hue, Saturation, Lightness) representa los colores de una forma más intuitiva para los humanos. El matiz (Hue) es el ángulo en el círculo cromático, medido en grados de 0 a 360: 0° (o 360°) es rojo, 120° es verde, 240° es azul. La saturación (Saturation) es la intensidad del color, desde 0% (escala de grises, sin color) hasta 100% (color puro, máxima intensidad). La luminosidad (Lightness) es la cantidad de luz, desde 0% (negro absoluto) hasta 100% (blanco absoluto), con el color puro en el 50%. HSL es más intuitivo para crear variaciones de un color: para oscurecer un color en RGB hay que reducir los tres canales en proporción, mientras que en HSL basta con reducir el valor de Luminosidad. Para crear una paleta de colores, HSL permite mantener el mismo matiz y variar sistemáticamente la saturación y luminosidad para obtener versiones más claras u oscuras del mismo color.
+El modelo **HSL** (*Hue, Saturation, Lightness*) representa los colores de una forma más intuitiva para los humanos:
 
-La elección entre RGB y HSL depende del contexto. RGB es el formato nativo de las pantallas y es más compatible con herramientas de diseño gráfico. HSL es más intuitivo para el diseño web porque permite razonar sobre los colores en términos humanos: "quiero un azul más claro" se traduce en HSL como "reducir la saturación y aumentar la luminosidad", mientras que en RGB requiere ajustar tres canales simultáneamente.
+- **Matiz (*Hue*)** — es el ángulo en el círculo cromático, medido en grados de **0 a 360**: **0°** (o 360°) es rojo, **120°** es verde, **240°** es azul.
+- **Saturación (*Saturation*)** — es la intensidad del color, desde **0%** (escala de grises, sin color) hasta **100%** (color puro, máxima intensidad).
+- **Luminosidad (*Lightness*)** — es la cantidad de luz, desde **0%** (negro absoluto) hasta **100%** (blanco absoluto), con el color puro en el **50%**.
+
+HSL es más intuitivo para crear variaciones de un color: para oscurecer un color en RGB hay que reducir los tres canales en proporción, mientras que en HSL basta con reducir el valor de Luminosidad. Para crear una paleta de colores, HSL permite mantener el mismo matiz y variar sistemáticamente la saturación y luminosidad para obtener versiones más claras u oscuras del mismo color.
+
+La elección entre RGB y HSL depende del contexto:
+
+| Modelo | Fortaleza principal | Cuándo usarlo |
+|--------|---------------------|---------------|
+| **RGB** | Es el formato nativo de las pantallas | Compatible con la mayoría de herramientas de diseño gráfico |
+| **HSL** | Permite razonar sobre los colores en términos humanos | Diseño web: «quiero un azul más claro» se traduce en «reducir la saturación y aumentar la luminosidad», mientras que en RGB requiere ajustar tres canales simultáneamente |
 
 ### 1.3 Contraste de color y accesibilidad
 
-El contraste de color entre texto y fondo es el factor más determinante para la legibilidad de una interfaz. Las Web Content Accessibility Guidelines (WCAG) 2.1 establecen ratios de contraste mínimos basados en investigaciones oftalmológicas con personas con distintas capacidades visuales.
+El contraste de color entre texto y fondo es el factor más determinante para la legibilidad de una interfaz. Las **Web Content Accessibility Guidelines (WCAG) 2.1** establecen ratios de contraste mínimos basados en investigaciones oftalmológicas con personas con distintas capacidades visuales.
 
-El ratio de contraste se calcula como (L1 + 0.05) / (L2 + 0.05), donde L1 es la luminosidad relativa del color más claro y L2 la del más oscuro. El resultado es un número entre 1:1 (sin contraste, texto y fondo idénticos) y 21:1 (máximo contraste, negro sobre blanco). Para el nivel AA, que es el mínimo legalmente exigible en muchos países, se requiere un ratio de 4.5:1 para texto normal y 3:1 para texto grande (más de 18px o más de 14px en negrita). Para el nivel AAA, el más exigente, se requieren ratios de 7:1 y 4.5:1 respectivamente.
+El ratio de contraste se calcula con la siguiente fórmula:
 
-Las herramientas de verificación son fundamentales porque el ojo humano no es un medidor fiable de contraste. WebAIM Contrast Checker permite introducir manualmente códigos de color y devuelve el ratio. Stark se integra en Figma, Sketch y Adobe XD para verificar el contraste directamente en los diseños. Las Chrome DevTools incluyen un inspector de contraste en el panel de estilos que muestra el ratio del elemento seleccionado, indicando con iconos verdes (✓) o rojos (✗) si cumple cada nivel.
+> **(L1 + 0.05) / (L2 + 0.05)**
+
+donde **L1** es la luminosidad relativa del color más claro y **L2** la del más oscuro. El resultado es un número entre **1:1** (sin contraste, texto y fondo idénticos) y **21:1** (máximo contraste, negro sobre blanco). Los ratios mínimos exigidos son:
+
+| Nivel | Texto normal | Texto grande (más de 18px, o más de 14px en negrita) |
+|-------|--------------|--------------------------------------------------------|
+| **AA** — mínimo legalmente exigible en muchos países | **4.5:1** | **3:1** |
+| **AAA** — el más exigente | **7:1** | **4.5:1** |
+
+Las herramientas de verificación son fundamentales porque el ojo humano no es un medidor fiable de contraste:
+
+- **WebAIM Contrast Checker** — permite introducir manualmente códigos de color y devuelve el ratio.
+- **Stark** — se integra en Figma, Sketch y Adobe XD para verificar el contraste directamente en los diseños.
+- **Chrome DevTools** — incluyen un inspector de contraste en el panel de estilos que muestra el ratio del elemento seleccionado, indicando con iconos verdes (✓) o rojos (✗) si cumple cada nivel.
 
 ### 1.4 Daltonismo y accesibilidad del color
 
-Aproximadamente el 8% de los hombres y el 0.5% de las mujeres tienen alguna forma de daltonismo. Diseñar sin tener en cuenta a estas personas significa excluir innecesariamente a una parte significativa de la audiencia. Los tipos más comunes son la protanopia (ausencia de sensibilidad al rojo), la deuteranopia (ausencia de sensibilidad al verde) y la tritanopia (ausencia de sensibilidad al azul, mucho más rara). En la práctica, las personas con protanopia y deuteranopia confunden rojos con verdes y con marrones, lo que significa que cualquier información transmitida exclusivamente mediante la diferencia rojo/verde (como los mensajes de error en rojo y éxito en verde) es invisible para ellas.
+Aproximadamente el **8%** de los hombres y el **0.5%** de las mujeres tienen alguna forma de daltonismo. Diseñar sin tener en cuenta a estas personas significa excluir innecesariamente a una parte significativa de la audiencia. Los tipos más comunes son:
 
-El principio fundamental de accesibilidad cromática es: nunca uses solo el color para transmitir información. Siempre debe existir un complemento visual adicional: un icono (✓ para éxito, ✗ para error), un texto descriptivo, un patrón de relleno o un cambio de forma. Los gráficos de barras o de líneas deben utilizar diferentes patrones de relleno además de diferentes colores. Los estados de validación de formularios deben incluir un icono y un mensaje de texto, no solo un cambio de color del borde.
+- **Protanopia** — ausencia de sensibilidad al rojo.
+- **Deuteranopia** — ausencia de sensibilidad al verde.
+- **Tritanopia** — ausencia de sensibilidad al azul, mucho más rara.
+
+En la práctica, las personas con protanopia y deuteranopia confunden rojos con verdes y con marrones, lo que significa que cualquier información transmitida exclusivamente mediante la diferencia **rojo/verde** (como los mensajes de error en rojo y éxito en verde) es invisible para ellas.
+
+!!! warning "No uses solo el color para transmitir información"
+    El principio fundamental de accesibilidad cromática es: **nunca uses solo el color para transmitir información**. Siempre debe existir un complemento visual adicional: un icono (**✓** para éxito, **✗** para error), un texto descriptivo, un patrón de relleno o un cambio de forma.
+
+    - Los gráficos de barras o de líneas deben utilizar diferentes **patrones de relleno** además de diferentes colores.
+    - Los estados de validación de formularios deben incluir un **icono** y un **mensaje de texto**, no solo un cambio de color del borde.
 
 ### 1.5 Paletas de color profesionales
 
-Una paleta de color profesional para diseño web consta de varias categorías de colores, cada una con una función específica. Los colores primarios son los colores principales de la marca, generalmente 1 o 2. Son los que aparecen en el logotipo y en los elementos más importantes de la interfaz. Los colores secundarios complementan a los primarios y se utilizan para elementos de menor jerarquía. El color de acento es un color vibrante que se utiliza con mucha moderación (5-10% de la interfaz) para llamar la atención sobre los botones de acción principal, las notificaciones importantes o los precios.
+Una paleta de color profesional para diseño web consta de varias categorías de colores, cada una con una función específica:
 
-Los colores neutros forman la base de la interfaz: son los blancos, grises y negros que constituyen los fondos, bordes, textos secundarios y superficies. Una buena paleta de neutros suele tener entre 8 y 12 escalones, desde el blanco puro (#FFFFFF) hasta el negro puro (#000000), permitiendo gradaciones sutiles para fondos claros, oscuros y todo el rango intermedio.
+- **Colores primarios** — son los colores principales de la marca, generalmente **1 o 2**. Son los que aparecen en el logotipo y en los elementos más importantes de la interfaz.
+- **Colores secundarios** — complementan a los primarios y se utilizan para elementos de menor jerarquía.
+- **Color de acento** — es un color vibrante que se utiliza con mucha moderación (**5-10%** de la interfaz) para llamar la atención sobre los botones de acción principal, las notificaciones importantes o los precios.
 
-Los colores semánticos comunican significado de forma universal: verde para éxito (success), rojo para error (error), amarillo o naranja para advertencia (warning), y azul para información (info). Es crucial que cada color semántico tenga al menos dos variantes: una clara para fondos (por ejemplo, fondo verde claro para mensajes de éxito) y otra oscura para texto (texto verde oscuro legible sobre el fondo claro).
+Los **colores neutros** forman la base de la interfaz: son los blancos, grises y negros que constituyen los fondos, bordes, textos secundarios y superficies. Una buena paleta de neutros suele tener entre **8 y 12 escalones**, desde el blanco puro (`#FFFFFF`) hasta el negro puro (`#000000`), permitiendo gradaciones sutiles para fondos claros, oscuros y todo el rango intermedio.
+
+Los **colores semánticos** comunican significado de forma universal:
+
+- **Éxito (*success*)** — verde.
+- **Error (*error*)** — rojo.
+- **Advertencia (*warning*)** — amarillo o naranja.
+- **Información (*info*)** — azul.
+
+Es crucial que cada color semántico tenga al menos **dos variantes**: una **clara para fondos** (por ejemplo, fondo verde claro para mensajes de éxito) y otra **oscura para texto** (texto verde oscuro legible sobre el fondo claro).
 
 ### 1.6 Psicología del color
 
-Los colores evocan emociones y transmiten significados que varían según el contexto cultural, pero existen patrones ampliamente reconocidos en la cultura occidental que el diseño de interfaces aprovecha. El azul transmite confianza, seguridad, profesionalidad y calma. Es el color corporativo más utilizado en tecnología y finanzas (Facebook, Twitter, LinkedIn, PayPal, American Express) precisamente porque evoca estabilidad en sectores donde la confianza del usuario es crítica. El rojo transmite urgencia, pasión, energía y peligro. Se utiliza para llamadas a la acción urgentes, notificaciones críticas y ofertas por tiempo limitado. El verde transmite naturaleza, crecimiento, salud y éxito. Es el color dominante en aplicaciones de bienestar, finanzas verdes y ecología. El naranja transmite entusiasmo, creatividad y calidez. Es menos agresivo que el rojo pero igualmente llamativo, por lo que se utiliza en CTAs que quieren transmitir energía sin urgencia.
+Los colores evocan emociones y transmiten significados que varían según el contexto cultural, pero existen patrones ampliamente reconocidos en la cultura occidental que el diseño de interfaces aprovecha:
 
-Es importante recordar que la psicología del color no es universal: en culturas orientales, el blanco se asocia con el luto, mientras que en Occidente se asocia con la pureza. Si la audiencia del producto es global, hay que investigar los significados culturales de los colores elegidos en los principales mercados objetivo.
+- **Azul** — confianza, seguridad, profesionalidad y calma. Es el color corporativo más utilizado en tecnología y finanzas (Facebook, Twitter, LinkedIn, PayPal, American Express) precisamente porque evoca estabilidad en sectores donde la confianza del usuario es crítica.
+- **Rojo** — urgencia, pasión, energía y peligro. Se utiliza para llamadas a la acción urgentes, notificaciones críticas y ofertas por tiempo limitado.
+- **Verde** — naturaleza, crecimiento, salud y éxito. Es el color dominante en aplicaciones de bienestar, finanzas verdes y ecología.
+- **Naranja** — entusiasmo, creatividad y calidez. Es menos agresivo que el rojo pero igualmente llamativo, por lo que se utiliza en CTAs que quieren transmitir energía sin urgencia.
+
+Es importante recordar que la psicología del color **no es universal**: en culturas orientales, el **blanco** se asocia con el luto, mientras que en Occidente se asocia con la **pureza**. Si la audiencia del producto es global, hay que investigar los significados culturales de los colores elegidos en los principales mercados objetivo.
 
 ### BLOQUE 2: TIPOGRAFÍA
 
 ### 2.1 Anatomía tipográfica
 
-Comprender la anatomía de las letras permite seleccionar y combinar tipografías con criterio, identificando qué características hacen que una fuente sea adecuada para un uso específico. La línea base es la línea invisible sobre la que se asientan todas las letras. La altura x es la altura de las letras minúsculas sin ascendentes (como la "x" o la "a"). Una altura x grande hace que la tipografía parezca más grande y sea más legible en tamaños pequeños, pero puede parecer tosca en tamaños grandes. Una altura x pequeña transmite elegancia y sofisticación pero puede dificultar la legibilidad en cuerpo de texto. Los ascendentes son las partes de las letras que sobresalen por encima de la altura x (como en la "d", "h", "l"). Los descendentes son las partes que cuelgan por debajo de la línea base (como en la "g", "p", "q").
+!!! info "Anatomía tipográfica"
+    Comprender la anatomía de las letras permite seleccionar y combinar tipografías con criterio, identificando qué características hacen que una fuente sea adecuada para un uso específico.
 
-Las serifas son los pequeños remates o terminales en los extremos de los trazos de las letras. Las tipografías con serifa se consideran más tradicionales y formales, y se cree que las serifas guían el ojo horizontalmente facilitando la lectura de textos largos impresos. Las tipografías sin serifa (sans-serif) se consideran más modernas y limpias, y son la elección predominante para interfaces digitales porque se renderizan mejor en pantallas de baja resolución.
+    - **Línea base** — es la línea invisible sobre la que se asientan todas las letras.
+    - **Altura x** — es la altura de las letras minúsculas sin ascendentes (como la "x" o la "a"). Una altura x **grande** hace que la tipografía parezca más grande y sea más legible en tamaños pequeños, pero puede parecer tosca en tamaños grandes; una altura x **pequeña** transmite elegancia y sofisticación pero puede dificultar la legibilidad en cuerpo de texto.
+    - **Ascendentes** — son las partes de las letras que sobresalen por encima de la altura x (como en la "d", "h", "l").
+    - **Descendentes** — son las partes que cuelgan por debajo de la línea base (como en la "g", "p", "q").
+
+Las **serifas** son los pequeños remates o terminales en los extremos de los trazos de las letras. Las tipografías **con serifa** se consideran más tradicionales y formales, y se cree que las serifas guían el ojo horizontalmente facilitando la lectura de textos largos impresos. Las tipografías **sin serifa** (*sans-serif*) se consideran más modernas y limpias, y son la elección predominante para interfaces digitales porque se renderizan mejor en pantallas de baja resolución.
 
 ### 2.2 Clasificación tipográfica
 
-Las tipografías se clasifican en grandes familias según sus características históricas y formales. Las Serif se subdividen en: tradicional (o humanista), con poco contraste entre trazos gruesos y finos y serifas inclinadas (ejemplo: Garamond, inspirada en la caligrafía del siglo XV); transicional, con mayor contraste entre trazos y serifas más afiladas (ejemplo: Times New Roman, Baskerville, típicas del siglo XVIII); moderna (o didona), con contraste extremo entre trazos y serifas muy finas y rectas (ejemplo: Bodoni, siglo XIX); y egipcia (o slab serif), con serifas gruesas y rectangulares del mismo grosor que los trazos principales (ejemplo: Rockwell, muy usada en publicidad por su impacto visual).
+Las tipografías se clasifican en grandes familias según sus características históricas y formales. Las **Serif** se subdividen en:
 
-Las Sans-serif se subdividen en: grotesca, con poco contraste y terminaciones toscas (ejemplo: Akzidenz-Grotesk, la primera sans-serif comercial del siglo XIX); humanista, con formas inspiradas en la caligrafía y mayor calidez (ejemplo: Gill Sans, Frutiger, muy legibles para texto continuo); y geométrica, basada en formas geométricas puras (círculo, cuadrado, triángulo), con gran uniformidad y modernidad (ejemplo: Futura, Century Gothic).
+- **Tradicional** (o humanista) — con poco contraste entre trazos gruesos y finos y serifas inclinadas (ejemplo: Garamond, inspirada en la caligrafía del siglo XV).
+- **Transicional** — con mayor contraste entre trazos y serifas más afiladas (ejemplo: Times New Roman, Baskerville, típicas del siglo XVIII).
+- **Moderna** (o didona) — con contraste extremo entre trazos y serifas muy finas y rectas (ejemplo: Bodoni, siglo XIX).
+- **Egipcia** (o *slab serif*) — con serifas gruesas y rectangulares del mismo grosor que los trazos principales (ejemplo: Rockwell, muy usada en publicidad por su impacto visual).
 
-Las Display son tipografías diseñadas para tamaños grandes (titulares, carteles, logotipos), con personalidad muy marcada que las hace inadecuadas para texto de cuerpo. Las Script imitan la escritura manual o caligráfica, y su uso en la web debe limitarse a elementos decorativos breves, nunca a texto de lectura. Las Monospace son tipografías donde cada carácter ocupa exactamente el mismo ancho horizontal (como en las máquinas de escribir), y son la elección para mostrar código fuente en interfaces de desarrollo.
+Las **Sans-serif** se subdividen en:
+
+- **Grotesca** — con poco contraste y terminaciones toscas (ejemplo: Akzidenz-Grotesk, la primera *sans-serif* comercial del siglo XIX).
+- **Humanista** — con formas inspiradas en la caligrafía y mayor calidez (ejemplo: Gill Sans, Frutiger, muy legibles para texto continuo).
+- **Geométrica** — basada en formas geométricas puras (círculo, cuadrado, triángulo), con gran uniformidad y modernidad (ejemplo: Futura, Century Gothic).
+
+Las **Display** son tipografías diseñadas para tamaños grandes (titulares, carteles, logotipos), con personalidad muy marcada que las hace inadecuadas para texto de cuerpo. Las **Script** imitan la escritura manual o caligráfica, y su uso en la web debe limitarse a elementos decorativos breves, nunca a texto de lectura. Las **Monospace** son tipografías donde cada carácter ocupa exactamente el mismo ancho horizontal (como en las máquinas de escribir), y son la elección para mostrar código fuente en interfaces de desarrollo.
 
 ### 2.3 Escalas tipográficas
 
-Una escala tipográfica es un conjunto predefinido de tamaños de fuente que mantienen una relación matemática constante entre cada nivel. Utilizar una escala tipográfica garantiza que todos los textos de la interfaz estén armónicamente relacionados, evitando la arbitrariedad de elegir tamaños "a ojo".
+Una **escala tipográfica** es un conjunto predefinido de tamaños de fuente que mantienen una **relación matemática constante** entre cada nivel. Utilizar una escala tipográfica garantiza que todos los textos de la interfaz estén armónicamente relacionados, evitando la arbitrariedad de elegir tamaños "a ojo".
 
-La escala de cuarto mayor (1.333, o 4/3) produce incrementos moderados entre niveles y es adecuada para interfaces con mucha información donde el espacio es valioso. La escala de quinta perfecta (1.5, o 3/2) produce incrementos más notables y es adecuada para interfaces con menos densidad de información. La escala áurea (1.618, el número phi) produce incrementos generosos basados en la proporción áurea y es adecuada para interfaces con mucho espacio en blanco, como páginas de inicio y marketing.
+| Escala | Ratio | Incrementos y uso recomendado |
+|--------|-------|-------------------------------|
+| **Cuarto mayor** (4/3) | **1.333** | Moderados entre niveles; adecuada para interfaces con mucha información donde el espacio es valioso. |
+| **Quinta perfecta** (3/2) | **1.5** | Más notables; adecuada para interfaces con menos densidad de información. |
+| **Áurea** (número phi) | **1.618** | Generosos, basados en la proporción áurea; adecuada para interfaces con mucho espacio en blanco, como páginas de inicio y marketing. |
 
-La implementación moderna de escalas tipográficas en CSS utiliza la función clamp() para crear tipografía fluida que se adapta automáticamente al ancho de la pantalla sin necesidad de media queries. La sintaxis clamp(mínimo, preferido, máximo) permite especificar un tamaño mínimo (para pantallas muy pequeñas), un tamaño preferido (basado en el ancho de la ventana, vw) y un tamaño máximo (para pantallas muy grandes). Por ejemplo: `font-size: clamp(1rem, 0.8rem + 1vw, 2rem)` hará que el texto crezca proporcionalmente al ancho de la pantalla entre 1rem y 2rem.
+La implementación moderna de escalas tipográficas en CSS utiliza la función **`clamp()`** para crear tipografía fluida que se adapta automáticamente al ancho de la pantalla sin necesidad de *media queries*. La sintaxis `clamp(mínimo, preferido, máximo)` permite especificar un **tamaño mínimo** (para pantallas muy pequeñas), un **tamaño preferido** (basado en el ancho de la ventana, `vw`) y un **tamaño máximo** (para pantallas muy grandes). Por ejemplo, `font-size: clamp(1rem, 0.8rem + 1vw, 2rem)` hará que el texto crezca proporcionalmente al ancho de la pantalla entre **1rem** y **2rem**.
 
 ### 2.4 Ritmo vertical
 
-El ritmo vertical es la consistencia en el espaciado vertical entre todos los elementos de la interfaz (líneas de texto, párrafos, títulos, imágenes, márgenes entre secciones). Un buen ritmo vertical crea una sensación de orden y profesionalidad, mientras que un ritmo vertical inconsistente produce una sensación de desorganización.
+El **ritmo vertical** es la consistencia en el espaciado vertical entre todos los elementos de la interfaz (líneas de texto, párrafos, títulos, imágenes, márgenes entre secciones). Un buen ritmo vertical crea una sensación de orden y profesionalidad, mientras que un ritmo vertical inconsistente produce una sensación de desorganización.
 
-El line-height (altura de línea o interlineado) es el factor más determinante del ritmo vertical. Para texto de cuerpo en la web, se recomienda un line-height entre 1.4 y 1.6 (sin unidades, para que se herede proporcionalmente al font-size). Valores inferiores a 1.3 hacen que las líneas se toquen visualmente y dificultan el seguimiento horizontal. Valores superiores a 1.8 crean demasiado espacio entre líneas y rompen la cohesión del párrafo. El espaciado entre párrafos (margin-bottom) y entre secciones (margin-bottom de los headings) debe ser consistente y preferiblemente basado en múltiplos del line-height.
+!!! tip "Altura de línea recomendada"
+    El **line-height** (altura de línea o interlineado) es el factor más determinante del ritmo vertical. Para texto de cuerpo en la web se recomienda un line-height entre **1.4 y 1.6** (sin unidades, para que se herede proporcionalmente al `font-size`).
+
+    - **Inferiores a 1.3** — hacen que las líneas se toquen visualmente y dificultan el seguimiento horizontal.
+    - **Superiores a 1.8** — crean demasiado espacio entre líneas y rompen la cohesión del párrafo.
+
+    El espaciado entre párrafos (`margin-bottom`) y entre secciones (`margin-bottom` de los headings) debe ser consistente y preferiblemente basado en **múltiplos del line-height**.
 
 ### 2.5 Google Fonts e integración web
 
-Google Fonts es el repositorio de fuentes tipográficas gratuitas más utilizado en la web, con más de 1400 familias disponibles. La integración básica consiste en añadir una etiqueta `<link>` en el `<head>` del documento HTML, pero esta integración tiene implicaciones de rendimiento que deben gestionarse.
+Google Fonts es el repositorio de fuentes tipográficas gratuitas más utilizado en la web, con más de **1400 familias** disponibles. La integración básica consiste en añadir una etiqueta `<link>` en el `<head>` del documento HTML, pero esta integración tiene implicaciones de rendimiento que deben gestionarse.
 
-El parámetro `font-display: swap` es crucial para la experiencia de usuario. Sin él, el navegador espera a que la fuente web se descargue completamente antes de mostrar cualquier texto (FOIT: Flash of Invisible Text), lo que puede dejar la página en blanco durante varios segundos si la conexión es lenta. Con `display=swap`, el navegador muestra inmediatamente el texto con una fuente del sistema (fallback) y, cuando la fuente web se ha descargado, la reemplaza. Este comportamiento (FOUT: Flash of Unstyled Text) es mucho más usable que el FOIT porque la persona usuaria puede empezar a leer inmediatamente.
+!!! warning "FOIT frente a FOUT: usa font-display: swap"
+    El parámetro **`font-display: swap`** es crucial para la experiencia de usuario. Sin él, el navegador espera a que la fuente web se descargue completamente antes de mostrar cualquier texto (**FOIT**: *Flash of Invisible Text*), lo que puede dejar la página en blanco durante varios segundos si la conexión es lenta.
 
-El pairing tipográfico es el arte de combinar dos o más familias tipográficas que funcionen bien juntas. La combinación clásica y más segura es una serif para titulares y una sans-serif para el cuerpo, o viceversa. También se pueden combinar dos sans-serif diferentes si tienen suficiente contraste (por ejemplo, una geométrica para titulares y una humanista para el cuerpo). La clave del buen pairing es que las tipografías sean suficientemente diferentes para crear contraste pero suficientemente similares en "espíritu" (proporciones, peso visual, contexto histórico) para no chocar.
+    Con `display=swap`, el navegador muestra inmediatamente el texto con una fuente del sistema (*fallback*) y, cuando la fuente web se ha descargado, la reemplaza. Este comportamiento (**FOUT**: *Flash of Unstyled Text*) es mucho más usable que el FOIT porque la persona usuaria puede empezar a leer inmediatamente.
+
+El **pairing tipográfico** es el arte de combinar dos o más familias tipográficas que funcionen bien juntas. La combinación clásica y más segura es una **serif para titulares** y una **sans-serif para el cuerpo**, o viceversa. También se pueden combinar dos *sans-serif* diferentes si tienen suficiente contraste (por ejemplo, una geométrica para titulares y una humanista para el cuerpo). La clave del buen pairing es que las tipografías sean **suficientemente diferentes para crear contraste** pero **suficientemente similares en "espíritu"** (proporciones, peso visual, contexto histórico) para no chocar.
 
 ### 2.6 Tipografía responsive
 
-La tipografía responsive se adapta al dispositivo y al tamaño de pantalla utilizando unidades relativas y funciones CSS modernas. Las unidades relativas esenciales son: `em` (relativa al font-size del elemento padre, útil para espaciados que deben escalar con el texto), `rem` (relativa al font-size del elemento raíz `<html>`, por defecto 16px en la mayoría de navegadores), y `vw` (relativa al ancho de la ventana, 1vw = 1% del ancho).
+La tipografía responsive se adapta al dispositivo y al tamaño de pantalla utilizando unidades relativas y funciones CSS modernas. Las unidades relativas esenciales son:
 
-La función `clamp()` es la herramienta más moderna y elegante para tipografía responsive. Permite definir un tamaño de fuente que crece proporcionalmente al ancho de pantalla pero dentro de unos límites mínimo y máximo, todo en una sola línea de CSS, sin necesidad de media queries. Por ejemplo, `clamp(1.5rem, 4vw, 3rem)` para un título h1 hará que en una pantalla de 320px el título mida 1.5rem, en una de 1200px mida 3rem, y en tamaños intermedios escale proporcionalmente.
+- **`em`** — relativa al `font-size` del elemento padre, útil para espaciados que deben escalar con el texto.
+- **`rem`** — relativa al `font-size` del elemento raíz `<html>`, por defecto **16px** en la mayoría de navegadores.
+- **`vw`** — relativa al ancho de la ventana, **1vw = 1%** del ancho.
 
-La limitación del ancho de línea es un requisito de legibilidad. Diversos estudios tipográficos indican que la longitud óptima de línea para texto continuo está entre 60 y 75 caracteres. Líneas más largas dificultan el seguimiento horizontal (el ojo se pierde al saltar de una línea a la siguiente). Líneas más cortas rompen el flujo de lectura con demasiados saltos. En CSS, la limitación se implementa con `max-width` en el contenedor de texto, típicamente entre 65ch y 75ch (donde ch es la anchura del carácter "0" de la fuente actual).
+La función **`clamp()`** es la herramienta más moderna y elegante para tipografía responsive. Permite definir un tamaño de fuente que crece proporcionalmente al ancho de pantalla pero dentro de unos **límites mínimo y máximo**, todo en una sola línea de CSS, sin necesidad de *media queries*. Por ejemplo, `clamp(1.5rem, 4vw, 3rem)` para un título `h1` hará que en una pantalla de **320px** el título mida **1.5rem**, en una de **1200px** mida **3rem**, y en tamaños intermedios escale proporcionalmente.
+
+!!! tip "Limita el ancho de línea a 60-75 caracteres"
+    La limitación del ancho de línea es un requisito de legibilidad. Diversos estudios tipográficos indican que la longitud óptima de línea para texto continuo está entre **60 y 75 caracteres**.
+
+    - **Líneas más largas** dificultan el seguimiento horizontal (el ojo se pierde al saltar de una línea a la siguiente).
+    - **Líneas más cortas** rompen el flujo de lectura con demasiados saltos.
+
+    En CSS, la limitación se implementa con `max-width` en el contenedor de texto, típicamente entre **65ch** y **75ch** (donde `ch` es la anchura del carácter "0" de la fuente actual).
 
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Paleta de color completa implementada con variables CSS
 
-**Contexto pedagógico:** Este ejemplo muestra cómo estructurar una paleta de color profesional completa utilizando variables CSS (custom properties) en :root. Se definen colores primarios, secundarios, de acento, neutros (escala de 10 pasos) y semánticos (success, error, warning, info), cada uno con sus variantes claras y oscuras.
+!!! example "Contexto pedagógico"
+    Este ejemplo muestra cómo estructurar una paleta de color profesional completa utilizando variables CSS (*custom properties*) en `:root`. Se definen colores primarios, secundarios, de acento, neutros (escala de **10 pasos**) y semánticos (*success*, *error*, *warning*, *info*), cada uno con sus variantes claras y oscuras.
 
 ```html
 <!DOCTYPE html>
@@ -415,13 +515,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Esta página muestra visualmente la paleta de color completa documentada. Las variables CSS permiten referenciar colores semánticamente (`var(--color-success-100)`) en lugar de recordar códigos hexadecimales. Si en el futuro se decide cambiar el color primario de azul a verde, solo hay que modificar las variables en `:root` y toda la interfaz se actualiza automáticamente. Esta es la principal ventaja de las variables CSS frente a los valores literales dispersos por el código.
+!!! note "Explicación del resultado"
+    Esta página muestra visualmente la paleta de color completa documentada. Las variables CSS permiten referenciar colores semánticamente (`var(--color-success-100)`) en lugar de recordar códigos hexadecimales. Si en el futuro se decide cambiar el color primario de azul a verde, solo hay que modificar las variables en `:root` y toda la interfaz se actualiza automáticamente. Esta es la principal ventaja de las variables CSS frente a los valores literales dispersos por el código.
 
 ---
 
 ### Ejemplo 2: Armonías cromáticas en secciones de una landing page
 
-**Contexto pedagógico:** Este ejemplo presenta cuatro secciones de una landing page, cada una diseñada con una armonía cromática diferente (complementaria, análoga, triádica y monocromática), demostrando cómo la elección de la armonía afecta a la percepción y el tono emocional de cada sección.
+!!! example "Contexto pedagógico"
+    Este ejemplo presenta cuatro secciones de una *landing page*, cada una diseñada con una armonía cromática diferente (complementaria, análoga, triádica y monocromática), demostrando cómo la elección de la armonía afecta a la percepción y el tono emocional de cada sección.
 
 ```html
 <!DOCTYPE html>
@@ -581,13 +683,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Al hacer scroll por las cuatro secciones, la persona usuaria experimenta cómo cada armonía cromática transmite una emoción diferente. La sección complementaria (azul + naranja) es enérgica y llamativa. La análoga (verdes) es calmada y natural. La triádica (rojo, azul, amarillo) es vibrante y lúdica. La monocromática (púrpuras) es elegante y sofisticada. Ninguna sección es "mejor" que otra; cada una es adecuada para un tipo de mensaje y audiencia diferente. Se recomienda al alumnado modificar los colores en las DevTools para experimentar cómo cambia la percepción.
+!!! note "Explicación del resultado"
+    Al hacer *scroll* por las cuatro secciones, la persona usuaria experimenta cómo cada armonía cromática transmite una emoción diferente. La sección complementaria (azul + naranja) es enérgica y llamativa. La análoga (verdes) es calmada y natural. La triádica (rojo, azul, amarillo) es vibrante y lúdica. La monocromática (púrpuras) es elegante y sofisticada. Ninguna sección es "mejor" que otra; cada una es adecuada para un tipo de mensaje y audiencia diferente. Se recomienda al alumnado modificar los colores en las DevTools para experimentar cómo cambia la percepción.
 
 ---
 
 ### Ejemplo 3: Contraste WCAG — Verificación y corrección de ratios
 
-**Contexto pedagógico:** Este ejemplo presenta tarjetas con diferentes combinaciones de texto y fondo, mostrando cuáles cumplen y cuáles no los niveles AA y AAA de WCAG. Incluye una sección donde se corrigen los contrastes insuficientes oscureciendo o aclarando los colores.
+!!! example "Contexto pedagógico"
+    Este ejemplo presenta tarjetas con diferentes combinaciones de texto y fondo, mostrando cuáles cumplen y cuáles no los niveles **AA** y **AAA** de WCAG. Incluye una sección donde se corrigen los contrastes insuficientes oscureciendo o aclarando los colores.
 
 ```html
 <!DOCTYPE html>
@@ -736,13 +840,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Las dos primeras tarjetas muestran combinaciones que cumplen los estándares WCAG y son legibles sin esfuerzo. Las dos siguientes muestran combinaciones que no cumplen: en la práctica, estas combinaciones serían ilegibles para personas con baja visión o en condiciones de mucha luz ambiental (como usar el móvil en la calle en un día soleado). Las dos últimas tarjetas muestran cómo, con pequeños ajustes (oscurecer el texto o el fondo), se puede corregir el contraste sin cambiar drásticamente el diseño.
+!!! note "Explicación del resultado"
+    Las dos primeras tarjetas muestran combinaciones que cumplen los estándares WCAG y son legibles sin esfuerzo. Las dos siguientes muestran combinaciones que no cumplen: en la práctica, estas combinaciones serían ilegibles para personas con baja visión o en condiciones de mucha luz ambiental (como usar el móvil en la calle en un día soleado). Las dos últimas tarjetas muestran cómo, con pequeños ajustes (oscurecer el texto o el fondo), se puede corregir el contraste sin cambiar drásticamente el diseño.
 
 ---
 
 ### Ejemplo 4: Daltonismo — No usar solo color para transmitir información
 
-**Contexto pedagógico:** Este ejemplo muestra formularios con mensajes de validación que inicialmente solo usan color (rojo para error, verde para éxito) y luego versiones corregidas que añaden iconos y texto. Se incluye una simulación de cómo vería la interfaz una persona con deuteranopia.
+!!! example "Contexto pedagógico"
+    Este ejemplo muestra formularios con mensajes de validación que inicialmente solo usan color (rojo para error, verde para éxito) y luego versiones corregidas que añaden iconos y texto. Se incluye una simulación de cómo vería la interfaz una persona con deuteranopia.
 
 ```html
 <!DOCTYPE html>
@@ -931,14 +1037,16 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** La versión incorrecta utiliza exclusivamente el color del borde (rojo/verde) para comunicar el estado de validación. Una persona con daltonismo no puede distinguir estos colores y, por tanto, no sabe qué campo está mal. La versión correcta añade dos canales adicionales de información: un icono (✓ o ✗, distinguible por su forma) y un mensaje de texto. Incluso si los tres canales fallaran (lo cual es improbable), la persona usuaria tiene múltiples formas de entender el estado del formulario. Se recomienda al alumnado utilizar las DevTools de Chrome (Rendering > Emulate vision deficiencies) para simular cómo se ve la versión incorrecta con diferentes tipos de daltonismo.
+!!! note "Explicación del resultado"
+    La versión incorrecta utiliza exclusivamente el color del borde (rojo/verde) para comunicar el estado de validación. Una persona con daltonismo no puede distinguir estos colores y, por tanto, no sabe qué campo está mal. La versión correcta añade dos canales adicionales de información: un icono (✓ o ✗, distinguible por su forma) y un mensaje de texto. Incluso si los tres canales fallaran (lo cual es improbable), la persona usuaria tiene múltiples formas de entender el estado del formulario. Se recomienda al alumnado utilizar las DevTools de Chrome (*Rendering > Emulate vision deficiencies*) para simular cómo se ve la versión incorrecta con diferentes tipos de daltonismo.
 
 ---
 
 
 ### Ejemplo 5: Comparativa de familias tipográficas — Serif vs Sans-serif vs Monospace
 
-**Contexto pedagógico:** Este ejemplo presenta el mismo texto (un fragmento de un artículo de blog) renderizado en tres familias tipográficas diferentes: una Serif (Georgia), una Sans-serif (Inter via Google Fonts) y una Monospace (Courier New). Permite comparar la legibilidad y la "personalidad" que transmite cada una.
+!!! example "Contexto pedagógico"
+    Este ejemplo presenta el mismo texto (un fragmento de un artículo de blog) renderizado en tres familias tipográficas diferentes: una **Serif** (Georgia), una **Sans-serif** (Inter vía Google Fonts) y una **Monospace** (Courier New). Permite comparar la legibilidad y la "personalidad" que transmite cada una.
 
 ```html
 <!DOCTYPE html>
@@ -1080,13 +1188,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Al comparar las tres columnas, se aprecia claramente cómo la misma información textual se percibe de forma muy diferente según la tipografía. Georgia evoca seriedad editorial (adecuada para un periódico o una revista académica). Inter evoca modernidad tecnológica (adecuada para una startup o un SaaS). Courier New evoca código y terminal (adecuada para documentación técnica o herramientas de desarrollo). La elección tipográfica no es neutral: comunica la personalidad de la marca incluso antes de que el contenido sea leído.
+!!! note "Explicación del resultado"
+    Al comparar las tres columnas, se aprecia claramente cómo la misma información textual se percibe de forma muy diferente según la tipografía. **Georgia** evoca seriedad editorial (adecuada para un periódico o una revista académica). **Inter** evoca modernidad tecnológica (adecuada para una *startup* o un SaaS). **Courier New** evoca código y terminal (adecuada para documentación técnica o herramientas de desarrollo). La elección tipográfica no es neutral: comunica la personalidad de la marca incluso antes de que el contenido sea leído.
 
 ---
 
 ### Ejemplo 6: Escala tipográfica responsive con clamp()
 
-**Contexto pedagógico:** Implementación de una escala tipográfica completa (desde caption hasta h1 hero) utilizando la función CSS clamp() para crear tamaños fluidos que se adaptan automáticamente al ancho de pantalla sin necesidad de media queries.
+!!! example "Contexto pedagógico"
+    Implementación de una escala tipográfica completa (desde *caption* hasta `h1` *hero*) utilizando la función CSS `clamp()` para crear tamaños fluidos que se adaptan automáticamente al ancho de pantalla sin necesidad de *media queries*.
 
 ```html
 <!DOCTYPE html>
@@ -1338,13 +1448,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Al abrir esta página, todos los textos tienen tamaños fluidos que se adaptan automáticamente al ancho de la ventana. Si se redimensiona el navegador, se observa cómo los tamaños cambian de forma continua, sin saltos. El indicador en la esquina inferior derecha muestra el ancho actual de la pantalla. Se recomienda al alumnado probar la página en diferentes dispositivos (móvil, tableta, escritorio) o usar el modo responsive de las DevTools (Ctrl+Shift+M) y cambiar entre diferentes tamaños de dispositivo para comprobar la fluidez.
+!!! note "Explicación del resultado"
+    Al abrir esta página, todos los textos tienen tamaños fluidos que se adaptan automáticamente al ancho de la ventana. Si se redimensiona el navegador, se observa cómo los tamaños cambian de forma continua, sin saltos. El indicador en la esquina inferior derecha muestra el ancho actual de la pantalla. Se recomienda al alumnado probar la página en diferentes dispositivos (móvil, tableta, escritorio) o usar el modo *responsive* de las DevTools (**Ctrl+Shift+M**) y cambiar entre diferentes tamaños de dispositivo para comprobar la fluidez.
 
 ---
 
 ### Ejemplo 7: Ritmo vertical con line-height y grid baseline
 
-**Contexto pedagógico:** Implementación de un ritmo vertical consistente utilizando line-height calculado y espaciado basado en una rejilla de 8px. El ejemplo muestra cómo todos los elementos (párrafos, títulos, listas) se alinean a una cuadrícula vertical invisible pero perceptible.
+!!! example "Contexto pedagógico"
+    Implementación de un ritmo vertical consistente utilizando *line-height* calculado y espaciado basado en una rejilla de **8px**. El ejemplo muestra cómo todos los elementos (párrafos, títulos, listas) se alinean a una cuadrícula vertical invisible pero perceptible.
 
 ```html
 <!DOCTYPE html>
@@ -1550,13 +1662,15 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** Al abrir la página, se muestra un artículo con una rejilla de 8px superpuesta (líneas azules tenues). Todos los elementos —líneas de texto, párrafos, títulos, listas— se alinean a esta rejilla, creando un ritmo visual consistente. El botón "Mostrar / Ocultar Rejilla" permite alternar la visualización de la cuadrícula para comprobar la alineación. Sin la rejilla, el artículo se ve profesional y bien organizado; con la rejilla, se revela la estructura matemática subyacente.
+!!! note "Explicación del resultado"
+    Al abrir la página, se muestra un artículo con una rejilla de **8px** superpuesta (líneas azules tenues). Todos los elementos —líneas de texto, párrafos, títulos, listas— se alinean a esta rejilla, creando un ritmo visual consistente. El botón "Mostrar / Ocultar Rejilla" permite alternar la visualización de la cuadrícula para comprobar la alineación. Sin la rejilla, el artículo se ve profesional y bien organizado; con la rejilla, se revela la estructura matemática subyacente.
 
 ---
 
 ### Ejemplo 8: Google Fonts con optimización de carga y pairing tipográfico
 
-**Contexto pedagógico:** Este ejemplo demuestra la integración de Google Fonts con optimización de rendimiento (preconnect, font-display: swap) y presenta un pairing tipográfico profesional: Playfair Display (serif) para titulares + Source Sans 3 (sans-serif) para el cuerpo.
+!!! example "Contexto pedagógico"
+    Este ejemplo demuestra la integración de Google Fonts con optimización de rendimiento (*preconnect*, `font-display: swap`) y presenta un pairing tipográfico profesional: **Playfair Display** (serif) para titulares + **Source Sans 3** (sans-serif) para el cuerpo.
 
 ```html
 <!DOCTYPE html>
@@ -1814,7 +1928,8 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 </html>
 ```
 
-**Explicación del resultado:** La página muestra un artículo con un pairing tipográfico profesional: Playfair Display (serif) para titulares y Source Sans 3 (sans-serif) para el cuerpo. El contraste entre ambas tipografías es evidente pero armonioso: la serif aporta elegancia y distinción a los titulares, mientras que la sans-serif garantiza una lectura cómoda y prolongada en el cuerpo de texto. Las técnicas de optimización (preconnect, font-display: swap, carga selectiva de pesos) garantizan que el texto sea visible casi instantáneamente incluso en conexiones lentas.
+!!! note "Explicación del resultado"
+    La página muestra un artículo con un pairing tipográfico profesional: **Playfair Display** (serif) para titulares y **Source Sans 3** (sans-serif) para el cuerpo. El contraste entre ambas tipografías es evidente pero armonioso: la serif aporta elegancia y distinción a los titulares, mientras que la sans-serif garantiza una lectura cómoda y prolongada en el cuerpo de texto. Las técnicas de optimización (*preconnect*, `font-display: swap`, carga selectiva de pesos) garantizan que el texto sea visible casi instantáneamente incluso en conexiones lentas.
 
 ---
 
@@ -1825,11 +1940,12 @@ La limitación del ancho de línea es un requisito de legibilidad. Diversos estu
 
 Stripe es una plataforma de pagos en línea para empresas. Su interfaz es un caso de estudio sobre cómo el color y la tipografía pueden transformar un producto técnico y potencialmente árido (pagos, APIs, facturación) en una experiencia visualmente sofisticada y confiable.
 
-**Análisis cromático:** La paleta de Stripe se basa en un azul índigo profundo (#635BFF en su tonalidad principal, recientemente actualizada a un degradado más vibrante) que transmite profesionalidad y confianza —valores críticos para una empresa que maneja dinero. El fondo del sitio web es predominantemente blanco con sutiles degradados (#f6f9fc), creando un lienzo limpio y ordenado. Lo más notable es que Stripe utiliza un único color de acento principal (el azul/púrpura), limitando el resto de la interfaz a una escala de neutros muy controlada (blancos, grises claros, grises medios para texto secundario). Esta restricción cromática produce una interfaz visualmente serena que transmite control y precisión.
+**Análisis cromático:** La paleta de Stripe se basa en un azul índigo profundo (`#635BFF` en su tonalidad principal, recientemente actualizada a un degradado más vibrante) que transmite profesionalidad y confianza —valores críticos para una empresa que maneja dinero. El fondo del sitio web es predominantemente blanco con sutiles degradados (`#f6f9fc`), creando un lienzo limpio y ordenado. Lo más notable es que Stripe utiliza un único color de acento principal (el azul/púrpura), limitando el resto de la interfaz a una escala de neutros muy controlada (blancos, grises claros, grises medios para texto secundario). Esta restricción cromática produce una interfaz visualmente serena que transmite control y precisión.
 
-**Análisis tipográfico:** Históricamente Stripe ha utilizado tipografías sans-serif geométricas (anteriormente Camphor, una fuente propietaria), y en su documentación técnica emplea combinaciones de sans-serif humanistas para el cuerpo. La elección de sans-serif es coherente con su posicionamiento como empresa tecnológica moderna. La jerarquía tipográfica es muy marcada: los titulares son significativamente mayores que el cuerpo de texto, y la escala tipográfica parece seguir aproximadamente la proporción áurea (1.618).
+**Análisis tipográfico:** Históricamente Stripe ha utilizado tipografías sans-serif geométricas (anteriormente Camphor, una fuente propietaria), y en su documentación técnica emplea combinaciones de sans-serif humanistas para el cuerpo. La elección de sans-serif es coherente con su posicionamiento como empresa tecnológica moderna. La jerarquía tipográfica es muy marcada: los titulares son significativamente mayores que el cuerpo de texto, y la escala tipográfica parece seguir aproximadamente la proporción áurea (**1.618**).
 
-**Lección para el alumnado:** La interfaz de Stripe demuestra que menos es más en el uso del color. Limitar la paleta a un color de marca potente + neutros controlados + un único acento crea interfaces más profesionales que usar muchos colores. La coherencia cromática y tipográfica de Stripe es tan consistente que reconocerías un producto de Stripe incluso sin ver su logotipo, solo por el tratamiento del color y la tipografía.
+!!! tip "Lección para el alumnado"
+    La interfaz de Stripe demuestra que **menos es más** en el uso del color. Limitar la paleta a un color de marca potente + neutros controlados + un único acento crea interfaces más profesionales que usar muchos colores. La coherencia cromática y tipográfica de Stripe es tan consistente que reconocerías un producto de Stripe incluso sin ver su logotipo, solo por el tratamiento del color y la tipografía.
 
 ---
 
@@ -1837,11 +1953,12 @@ Stripe es una plataforma de pagos en línea para empresas. Su interfaz es un cas
 
 Apple es universalmente reconocida por su diseño minimalista, donde color y tipografía juegan un papel protagonista en comunicar los valores de la marca: simplicidad, elegancia, innovación y premium.
 
-**Análisis cromático:** La interfaz web de Apple utiliza una paleta cromática extremadamente restringida. El fondo es casi siempre blanco puro (#FFFFFF) o negro puro (#000000) en las páginas de producto. Los textos son negros o blancos según el fondo. Los colores de acento (azul para enlaces, los colores del arcoíris en el logotipo) se utilizan con una moderación casi quirúrgica. En las páginas de producto, el color proviene de las fotografías del propio producto (los colores del iPhone, los tonos metálicos del MacBook), no de la interfaz en sí. Esta estrategia hace que el producto sea el héroe visual y la interfaz desaparezca.
+**Análisis cromático:** La interfaz web de Apple utiliza una paleta cromática extremadamente restringida. El fondo es casi siempre blanco puro (`#FFFFFF`) o negro puro (`#000000`) en las páginas de producto. Los textos son negros o blancos según el fondo. Los colores de acento (azul para enlaces, los colores del arcoíris en el logotipo) se utilizan con una moderación casi quirúrgica. En las páginas de producto, el color proviene de las fotografías del propio producto (los colores del iPhone, los tonos metálicos del MacBook), no de la interfaz en sí. Esta estrategia hace que el producto sea el héroe visual y la interfaz desaparezca.
 
-**Análisis tipográfico:** Apple utiliza San Francisco (SF Pro), una tipografía sans-serif diseñada internamente y optimizada meticulosamente para legibilidad en pantalla a todos los tamaños. SF Pro es una sans-serif humanista-geométrica con una altura x generosa, terminales ligeramente redondeados y un espaciado entre letras calibrado al píxel. Apple la utiliza en una escala tipográfica muy marcada: los titulares de las páginas de producto pueden superar los 64px (4rem) en negrita, mientras que el cuerpo de texto se mantiene alrededor de 17-19px. El contraste entre estos extremos crea un ritmo visual poderoso.
+**Análisis tipográfico:** Apple utiliza San Francisco (SF Pro), una tipografía sans-serif diseñada internamente y optimizada meticulosamente para legibilidad en pantalla a todos los tamaños. SF Pro es una sans-serif humanista-geométrica con una altura x generosa, terminales ligeramente redondeados y un espaciado entre letras calibrado al píxel. Apple la utiliza en una escala tipográfica muy marcada: los titulares de las páginas de producto pueden superar los **64px** (**4rem**) en negrita, mientras que el cuerpo de texto se mantiene alrededor de **17-19px**. El contraste entre estos extremos crea un ritmo visual poderoso.
 
-**Lección para el alumnado:** El caso de Apple demuestra que el diseño cromático más efectivo no es el que usa más colores, sino el que usa los colores correctos en el lugar correcto. La interfaz de Apple casi desaparece para dejar que el producto brille. En cuanto a tipografía, demuestra el valor de diseñar (o seleccionar) una tipografía específicamente para el medio digital, con atención a la altura x, el espaciado y la legibilidad a todos los tamaños.
+!!! tip "Lección para el alumnado"
+    El caso de Apple demuestra que el diseño cromático más efectivo **no es el que usa más colores**, sino el que usa los colores correctos en el lugar correcto. La interfaz de Apple casi desaparece para dejar que el producto brille. En cuanto a tipografía, demuestra el valor de diseñar (o seleccionar) una tipografía específicamente para el medio digital, con atención a la altura x, el espaciado y la legibilidad a todos los tamaños.
 
 ---
 
@@ -1851,9 +1968,10 @@ Notion, la herramienta de productividad todo-en-uno, utiliza el color y la tipog
 
 **Análisis cromático:** Notion utiliza una paleta de colores pastel muy característica para sus elementos semánticos. Los bloques de llamada (callouts) pueden tener fondos en rosa pastel, azul pastel, verde pastel o amarillo pastel. Los textos dentro de estos bloques mantienen un contraste cuidadosamente calibrado (texto oscuro sobre fondo pastel claro). Lo más innovador del uso del color en Notion es que permite a las personas usuarias personalizar el color de cada elemento: una página puede ser roja, otra azul, otra verde. Esta personalización cromática, que en otras herramientas sería caótica, funciona en Notion porque todos los colores comparten la misma saturación y luminosidad bajas (escala pastel), manteniendo la coherencia visual a pesar de la variedad cromática.
 
-**Análisis tipográfico:** Notion utiliza una tipografía sans-serif limpia (Inter en la web, SF Pro en macOS) con una escala tipográfica muy funcional. A diferencia de Apple o Stripe, Notion no usa la tipografía como elemento de marca, sino como herramienta de jerarquía de la información. Los tres tamaños de encabezado (H1, H2, H3) tienen diferencias claras y predecibles. El cuerpo de texto utiliza un line-height generoso (1.5) para facilitar la lectura de notas largas. La opción de usar tres estilos de fuente diferentes (Default, Serif, Mono) permite a la persona usuaria elegir el tono visual que prefiera para su espacio de trabajo.
+**Análisis tipográfico:** Notion utiliza una tipografía sans-serif limpia (Inter en la web, SF Pro en macOS) con una escala tipográfica muy funcional. A diferencia de Apple o Stripe, Notion no usa la tipografía como elemento de marca, sino como herramienta de jerarquía de la información. Los tres tamaños de encabezado (H1, H2, H3) tienen diferencias claras y predecibles. El cuerpo de texto utiliza un *line-height* generoso (**1.5**) para facilitar la lectura de notas largas. La opción de usar tres estilos de fuente diferentes (Default, Serif, Mono) permite a la persona usuaria elegir el tono visual que prefiera para su espacio de trabajo.
 
-**Lección para el alumnado:** Notion demuestra que el color y la tipografía pueden ser herramientas funcionales, no solo elementos decorativos. La paleta pastel de Notion no busca ser "bonita" (aunque lo es); busca permitir a las personas usuarias codificar información visualmente sin generar fatiga visual ni caos cromático. La lección principal es que la coherencia cromática no requiere usar siempre los mismos colores, sino limitar las variables (en este caso, todos los colores comparten la misma saturación y luminosidad, variando solo el matiz).
+!!! tip "Lección para el alumnado"
+    Notion demuestra que el color y la tipografía pueden ser **herramientas funcionales, no solo elementos decorativos**. La paleta pastel de Notion no busca ser "bonita" (aunque lo es); busca permitir a las personas usuarias codificar información visualmente sin generar fatiga visual ni caos cromático. La lección principal es que la coherencia cromática no requiere usar siempre los mismos colores, sino **limitar las variables** (en este caso, todos los colores comparten la misma saturación y luminosidad, variando solo el matiz).
 
 ---
 
@@ -2178,7 +2296,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 
 1. **Define tu paleta de color con variables CSS desde el primer día del proyecto.** No esperes a tener "el diseño final" para definir las variables. Empezar con variables CSS (aunque los colores cambien después) te obliga a pensar en sistema en lugar de en elementos individuales. La nomenclatura semántica (`--color-primary-500`, `--color-success-100`) documenta las decisiones de diseño en el propio código y facilita la colaboración entre diseñadores y desarrolladores.
 
-2. **Verifica el contraste antes de aprobar cualquier decisión cromática.** El ojo humano es un pésimo medidor de contraste por tres razones: se adapta a las condiciones de luz (lo que parece suficiente contraste en una habitación oscura puede ser insuficiente a pleno sol), es subjetivo (cada persona percibe el contraste de forma ligeramente diferente), y no puede cuantificar (no puedes "ver" si el ratio es 4.3:1 o 5.1:1). Utiliza siempre una herramienta de verificación: WebAIM Contrast Checker, Stark o el panel de Accesibilidad de Chrome DevTools.
+2. **Verifica el contraste antes de aprobar cualquier decisión cromática.** El ojo humano es un pésimo medidor de contraste por tres razones: se adapta a las condiciones de luz (lo que parece suficiente contraste en una habitación oscura puede ser insuficiente a pleno sol), es subjetivo (cada persona percibe el contraste de forma ligeramente diferente), y no puede cuantificar (no puedes "ver" si el ratio es **4.3:1** o **5.1:1**). Utiliza siempre una herramienta de verificación: WebAIM Contrast Checker, Stark o el panel de Accesibilidad de Chrome DevTools.
 
 3. **Limita las familias tipográficas a un máximo de 2 por proyecto.** Cada familia tipográfica adicional añade peso de descarga, complejidad de mantenimiento y ruido visual. Si necesitas más de 2 familias, probablemente tienes un problema de diseño, no de tipografía. La combinación más segura y profesional es una tipografía para titulares y otra para cuerpo. Si tu diseño requiere más variedad, explora los pesos y estilos dentro de una misma familia (light, regular, medium, bold, black) antes de añadir una segunda familia.
 
@@ -2190,13 +2308,13 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 
 ## Errores frecuentes
 
-1. **Usar colores puros (rojo #FF0000, verde #00FF00, azul #0000FF) en diseño de interfaces.** Los colores puros (100% de saturación y 100% de luminosidad en uno o dos canales) vibran en pantalla, fatigan la vista y producen halos cromáticos (chromatic aberration) en los bordes. En diseño profesional, ningún color debe usar valores extremos (0 o 255) a menos que sea blanco puro o negro puro. Los colores deben tener siempre un ligero matiz: en lugar de #FF0000, usar #E53E3E; en lugar de #00FF00, usar #38A169; en lugar de #0000FF, usar #3182CE.
+1. **Usar colores puros (rojo #FF0000, verde #00FF00, azul #0000FF) en diseño de interfaces.** Los colores puros (100% de saturación y 100% de luminosidad en uno o dos canales) vibran en pantalla, fatigan la vista y producen halos cromáticos (chromatic aberration) en los bordes. En diseño profesional, ningún color debe usar valores extremos (**0** o **255**) a menos que sea blanco puro o negro puro. Los colores deben tener siempre un ligero matiz: en lugar de `#FF0000`, usar `#E53E3E`; en lugar de `#00FF00`, usar `#38A169`; en lugar de `#0000FF`, usar `#3182CE`.
 
 2. **Mezclar más de 2 familias tipográficas en un mismo proyecto o usar tipografías con poca altura x para texto de cuerpo.** Cuantas más familias tipográficas, más ruido visual y más peso de descarga. Antes de añadir una tercera familia, pregúntate si puedes conseguir el mismo efecto con variaciones de peso, estilo o tamaño dentro de las dos familias existentes. En cuanto a la altura x, las tipografías con altura x pequeña (como muchas serif clásicas) son elegantes pero difíciles de leer en tamaños de cuerpo en pantalla, especialmente en dispositivos móviles.
 
-3. **Usar line-height con unidades (px, em) en lugar de valores sin unidad.** Escribir `line-height: 24px` o `line-height: 1.5em` fija la altura de línea a un valor concreto que no escala si el font-size cambia. Escribir `line-height: 1.5` (sin unidad) hace que la altura de línea sea siempre 1.5 veces el font-size actual del elemento. Esto es especialmente importante en diseño responsive, donde los tamaños de fuente pueden cambiar con clamp() y las alturas de línea deben adaptarse proporcionalmente.
+3. **Usar line-height con unidades (px, em) en lugar de valores sin unidad.** Escribir `line-height: 24px` o `line-height: 1.5em` fija la altura de línea a un valor concreto que no escala si el font-size cambia. Escribir `line-height: 1.5` (sin unidad) hace que la altura de línea sea siempre **1.5 veces** el `font-size` actual del elemento. Esto es especialmente importante en diseño responsive, donde los tamaños de fuente pueden cambiar con `clamp()` y las alturas de línea deben adaptarse proporcionalmente.
 
-4. **Ignorar el ancho de línea y permitir que el texto ocupe todo el ancho de la pantalla.** En un monitor de 27 pulgadas (2560px de ancho), una línea de texto que ocupe todo el ancho puede tener más de 200 caracteres. Leer líneas tan largas es agotador porque el ojo debe recorrer una gran distancia horizontal y luego encontrar el inicio de la siguiente línea sin perderse. La solución es limitar el ancho del contenedor de texto con `max-width: 65ch` o similar, y centrar el contenedor con `margin: 0 auto`.
+4. **Ignorar el ancho de línea y permitir que el texto ocupe todo el ancho de la pantalla.** En un monitor de 27 pulgadas (**2560px** de ancho), una línea de texto que ocupe todo el ancho puede tener **más de 200 caracteres**. Leer líneas tan largas es agotador porque el ojo debe recorrer una gran distancia horizontal y luego encontrar el inicio de la siguiente línea sin perderse. La solución es limitar el ancho del contenedor de texto con `max-width: 65ch` o similar, y centrar el contenedor con `margin: 0 auto`.
 
 5. **Definir paletas de color "a ojo" sin verificar el daltonismo ni el contraste, y no documentar los colores con variables CSS.** Diseñar colores basándose únicamente en la percepción personal es una mala práctica porque ignora a aproximadamente el 8% de los hombres y el 0.5% de las mujeres que tienen daltonismo. Simular siempre la paleta con herramientas de simulación de daltonismo antes de aprobarla. Y si los colores no están documentados como variables CSS, cualquier cambio futuro requerirá buscar y reemplazar manualmente cada aparición del código de color en todo el proyecto.
 

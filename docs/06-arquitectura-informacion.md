@@ -39,81 +39,237 @@ Para el correcto aprovechamiento de esta unidad, el alumnado debe poseer conocim
 
 ### Fundamentos de la Arquitectura de la Información
 
-La Arquitectura de la Información (AI) es la disciplina encargada de organizar, estructurar y etiquetar los contenidos de un entorno digital de manera que los usuarios puedan encontrar información y completar tareas de forma efectiva. El término fue acuñado por Richard Saul Wurman en 1975, quien la definió como "el estudio de la organización de la información para permitir que otros la encuentren". Sin embargo, fue la publicación en 1998 del libro "Information Architecture for the World Wide Web" por Louis Rosenfeld y Peter Morville —conocido cariñosamente como "el libro del oso polar" por la ilustración de su portada— lo que estableció la AI como una disciplina fundamental del diseño web.
+!!! info "Definición: Arquitectura de la Información"
+    La **Arquitectura de la Información (AI)** es la disciplina encargada de **organizar, estructurar y etiquetar** los contenidos de un entorno digital de manera que los usuarios puedan encontrar información y completar tareas de forma efectiva.
 
-La AI se articula en torno a un modelo mental simple que todo usuario experimenta al llegar a un sitio web por primera vez. El usuario se formula, generalmente de forma inconsciente, tres preguntas fundamentales: ¿dónde estoy? (necesita comprender en qué parte del sitio se encuentra), ¿qué hay aquí? (necesita entender qué contenido o funcionalidad ofrece la página actual), y ¿a dónde puedo ir desde aquí? (necesita identificar las opciones de navegación disponibles). Una buena arquitectura de la información responde a estas tres preguntas de forma inmediata e intuitiva, sin que el usuario tenga que pensar activamente en ellas. Cuando estas preguntas no encuentran respuesta, el usuario experimenta desorientación, frustración y, en muchos casos, abandona el sitio.
+El término fue acuñado por **Richard Saul Wurman** en **1975**:
 
-La AI guarda una relación simbiótica con la Experiencia de Usuario (UX). Mientras que la UX abarca la totalidad de la experiencia del usuario (incluyendo aspectos emocionales, estéticos y de interacción), la AI se centra específicamente en la dimensión estructural: cómo se organiza, nombra y conecta la información. Podemos establecer una analogía arquitectónica: si una interfaz web fuera un edificio, la AI sería los planos de planta (dónde está cada habitación, cómo se conectan los pasillos, dónde están las escaleras), mientras que el diseño de interacción sería la fontanería y la electricidad (cómo funcionan los grifos y los interruptores), y el diseño visual sería la decoración interior (colores, muebles, iluminación). Sin unos buenos planos, el edificio será inhabitable por muy bonita que sea la decoración o por muy moderna que sea la instalación eléctrica.
+!!! quote "Richard Saul Wurman, 1975"
+    «El estudio de la organización de la información para permitir que otros la encuentren.»
+
+Sin embargo, fue la publicación en **1998** del libro *Information Architecture for the World Wide Web* de **Louis Rosenfeld** y **Peter Morville** —conocido cariñosamente como «el libro del oso polar» por la ilustración de su portada— lo que estableció la AI como una disciplina fundamental del diseño web.
+
+!!! tip "Las tres preguntas de la AI"
+    La AI se articula en torno a un modelo mental simple que todo usuario experimenta al llegar a un sitio web por primera vez. El usuario se formula, generalmente de forma inconsciente, tres preguntas fundamentales:
+
+    - **¿Dónde estoy?** — necesita comprender en qué parte del sitio se encuentra.
+    - **¿Qué hay aquí?** — necesita entender qué contenido o funcionalidad ofrece la página actual.
+    - **¿A dónde puedo ir desde aquí?** — necesita identificar las opciones de navegación disponibles.
+
+    Una buena arquitectura de la información responde a estas tres preguntas de forma **inmediata e intuitiva**, sin que el usuario tenga que pensar activamente en ellas. Cuando no encuentran respuesta, el usuario experimenta desorientación, frustración y, en muchos casos, **abandona el sitio**.
+
+La AI guarda una relación **simbiótica** con la Experiencia de Usuario (UX). Mientras que la UX abarca la totalidad de la experiencia del usuario (incluyendo aspectos emocionales, estéticos y de interacción), la AI se centra específicamente en la **dimensión estructural**: cómo se organiza, nombra y conecta la información.
+
+**Analogía arquitectónica.** Si una interfaz web fuera un edificio:
+
+- La **AI** serían los **planos de planta** (dónde está cada habitación, cómo se conectan los pasillos, dónde están las escaleras).
+- El **diseño de interacción** sería la **fontanería y la electricidad** (cómo funcionan los grifos y los interruptores).
+- El **diseño visual** sería la **decoración interior** (colores, muebles, iluminación).
+
+Sin unos buenos planos, el edificio será inhabitable por muy bonita que sea la decoración o por muy moderna que sea la instalación eléctrica.
 
 ### Los cuatro componentes fundamentales de la AI
 
-Rosenfeld y Morville identificaron cuatro sistemas interconectados que componen la arquitectura de la información de cualquier entorno digital. Estos cuatro pilares proporcionan un marco de análisis que permite evaluar y diseñar la AI de forma sistemática.
+Rosenfeld y Morville identificaron **cuatro sistemas interconectados** que componen la arquitectura de la información de cualquier entorno digital. Estos cuatro pilares proporcionan un marco de análisis que permite evaluar y diseñar la AI de forma sistemática:
 
-El sistema de organización define cómo se categoriza y estructura la información. Responde a la pregunta "¿cómo agrupamos los contenidos?" y es, probablemente, la decisión de AI con mayor impacto en la experiencia del usuario. La organización puede basarse en esquemas exactos (alfabético, cronológico, geográfico) cuando los usuarios conocen el nombre o la fecha de lo que buscan, o en esquemas subjetivos (por tópico, por audiencia, por tarea) cuando exploran sin un objetivo concreto. La estructura de organización puede ser jerárquica (árbol de categorías y subcategorías, la más común en la web), secuencial (paso a paso, típica en procesos de checkout o configuración), matricial (rejilla que permite cruzar dos dimensiones, como filtros en un ecommerce) o de hipertexto (red de enlaces contextuales entre contenidos relacionados).
+| Pilar | Qué define |
+|-------|------------|
+| **Sistema de organización** | cómo se categoriza y estructura la información; responde a la pregunta «¿cómo agrupamos los contenidos?» |
+| **Sistema de etiquetado** | cómo se nombran los contenidos y las opciones de navegación |
+| **Sistema de navegación** | cómo los usuarios se desplazan entre los diferentes contenidos |
+| **Sistema de búsqueda** | cómo los usuarios localizan información mediante consultas textuales |
 
-El sistema de etiquetado define cómo se nombran los contenidos y las opciones de navegación. Cada etiqueta es una promesa: el usuario hace clic en "Contacto" esperando encontrar información de contacto, no un formulario de suscripción a la newsletter. Las etiquetas deben ser claras (el usuario entiende su significado sin ambigüedad), consistentes (la misma etiqueta siempre lleva al mismo tipo de contenido), predictibles (el usuario puede anticipar qué encontrará) y breves (idealmente, una o dos palabras). El etiquetado es especialmente crítico porque constituye la interfaz lingüística entre el modelo mental del diseñador y el modelo mental del usuario; un desajuste entre ambos resulta en etiquetas que el diseñador considera obvias pero que el usuario no comprende.
+**Sistema de organización.** Es, probablemente, la decisión de AI con mayor impacto en la experiencia del usuario. La organización puede basarse en dos familias de esquemas:
 
-El sistema de navegación define cómo los usuarios se desplazan entre los diferentes contenidos. Incluye la navegación global (presente en todas las páginas y que da acceso a las secciones principales), la navegación local (específica de una sección y que muestra sus subpáginas), la navegación contextual (enlaces insertados en el contenido que relacionan la página actual con otras relevantes), los breadcrumbs (ruta de migas que muestra la posición jerárquica de la página actual), la navegación facetada (filtros que permiten refinar resultados combinando múltiples criterios) y la navegación de utilidad (enlaces a páginas funcionales como login, carrito, ayuda, normalmente en el footer o la cabecera secundaria).
+| Tipo de esquema | Ejemplos | Cuándo se usa |
+|-----------------|----------|---------------|
+| **Exacto** | alfabético, cronológico, geográfico | cuando los usuarios conocen el **nombre** o la **fecha** de lo que buscan |
+| **Subjetivo** | por tópico, por audiencia, por tarea | cuando **exploran sin un objetivo concreto** |
 
-El sistema de búsqueda define cómo los usuarios pueden localizar información mediante consultas textuales. Aunque no todas las interfaces requieren un sistema de búsqueda (sitios pequeños o aplicaciones muy guiadas pueden funcionar exclusivamente con navegación), cuando el volumen de contenido supera cierto umbral la búsqueda se convierte en una necesidad. Un buen sistema de búsqueda incluye: un motor de indexación completo, soporte para consultas con errores tipográficos (fuzzy search), búsqueda predictiva con autocompletado, filtros post-búsqueda (faceted search), ordenación de resultados por relevancia y fecha, y una página de resultados bien diseñada que muestre la información suficiente para que el usuario pueda decidir qué resultado satisface su necesidad.
+La estructura de organización puede ser:
+
+- **Jerárquica** — árbol de categorías y subcategorías, la más común en la web.
+- **Secuencial** — paso a paso, típica en procesos de *checkout* o configuración.
+- **Matricial** — rejilla que permite cruzar dos dimensiones, como filtros en un ecommerce.
+- **De hipertexto** — red de enlaces contextuales entre contenidos relacionados.
+
+**Sistema de etiquetado.** Define cómo se nombran los contenidos y las opciones de navegación. Cada etiqueta es una **promesa**: el usuario hace clic en «Contacto» esperando encontrar información de contacto, no un formulario de suscripción a la *newsletter*. Las etiquetas deben ser:
+
+- **Claras** — el usuario entiende su significado sin ambigüedad.
+- **Consistentes** — la misma etiqueta siempre lleva al mismo tipo de contenido.
+- **Predictibles** — el usuario puede anticipar qué encontrará.
+- **Breves** — idealmente, una o dos palabras.
+
+El etiquetado es especialmente crítico porque constituye la **interfaz lingüística** entre el modelo mental del diseñador y el modelo mental del usuario; un desajuste entre ambos resulta en etiquetas que el diseñador considera obvias pero que el usuario no comprende.
+
+**Sistema de navegación.** Incluye:
+
+- **Navegación global** — presente en todas las páginas; da acceso a las secciones principales.
+- **Navegación local** — específica de una sección; muestra sus subpáginas.
+- **Navegación contextual** — enlaces insertados en el contenido que relacionan la página actual con otras relevantes.
+- **Breadcrumbs** — ruta de migas que muestra la posición jerárquica de la página actual.
+- **Navegación facetada** — filtros que permiten refinar resultados combinando múltiples criterios.
+- **Navegación de utilidad** — enlaces a páginas funcionales como *login*, carrito o ayuda, normalmente en el *footer* o la cabecera secundaria.
+
+**Sistema de búsqueda.** Aunque no todas las interfaces lo requieren (sitios pequeños o aplicaciones muy guiadas pueden funcionar exclusivamente con navegación), cuando el volumen de contenido supera cierto umbral la búsqueda se convierte en una necesidad. Un buen sistema de búsqueda incluye:
+
+- Un **motor de indexación** completo.
+- Soporte para consultas con **errores tipográficos** (*fuzzy search*).
+- **Búsqueda predictiva** con autocompletado.
+- **Filtros post-búsqueda** (*faceted search*).
+- **Ordenación** de resultados por relevancia y fecha.
+- Una **página de resultados** bien diseñada que muestre la información suficiente para decidir qué resultado satisface la necesidad.
 
 ### Wireframes: el esqueleto de la interfaz
 
-Un wireframe es una representación visual esquemática de una página o pantalla que muestra la disposición espacial de los elementos de interfaz (contenido, navegación, funcionalidades) sin incluir el diseño visual final. Si la interfaz fuera un cuerpo humano, el wireframe sería el esqueleto: define la estructura, las proporciones y las relaciones entre las partes, pero no muestra la piel, el color del pelo o la ropa. Esta abstracción es deliberada y valiosa, porque permite centrar la discusión en la estructura y la funcionalidad sin que los aspectos estéticos (colores, tipografías definitivas, imágenes finales) desvíen la atención.
+!!! info "Definición: wireframe"
+    Un **wireframe** es una representación visual esquemática de una página o pantalla que muestra la **disposición espacial de los elementos de interfaz** (contenido, navegación, funcionalidades) **sin incluir el diseño visual final**. Si la interfaz fuera un cuerpo humano, el wireframe sería el **esqueleto**: define la estructura, las proporciones y las relaciones entre las partes, pero no muestra la piel, el color del pelo o la ropa. Esta abstracción es deliberada y valiosa, porque permite centrar la discusión en la **estructura y la funcionalidad** sin que los aspectos estéticos (colores, tipografías definitivas, imágenes finales) desvíen la atención.
 
-Los wireframes pueden clasificarse según su nivel de fidelidad. Los wireframes de baja fidelidad (low-fi) son esquemas muy básicos, a menudo dibujados a mano sobre papel o pizarra, que utilizan rectángulos, líneas y texto placeholder para representar los bloques de contenido. Su principal ventaja es la velocidad: se pueden crear, descartar y modificar en minutos, lo que los hace ideales para las primeras fases de exploración y brainstorming. Los wireframes de media fidelidad (mid-fi) se crean con herramientas digitales (Figma, Balsamiq, Sketch), utilizan escalas de grises y tipografías genéricas, y empiezan a mostrar proporciones y espaciados más precisos. Son el formato estándar para la comunicación con stakeholders y para las pruebas tempranas de usabilidad. Los wireframes de alta fidelidad (high-fi) incorporan contenidos reales, imágenes placeholder realistas y una simulación más precisa del layout final, difuminando la frontera con los mockups visuales.
+Los wireframes se clasifican según su **nivel de fidelidad**:
 
-Un wireframe efectivo incluye, como mínimo: la estructura de la página (cabecera, contenido principal, barra lateral, footer), los bloques de contenido con su jerarquía visual indicada (el tamaño relativo de cada bloque sugiere su importancia), los elementos de navegación (menús, breadcrumbs, enlaces), los elementos funcionales (botones, formularios, campos de búsqueda), y anotaciones que explican comportamientos interactivos o decisiones de diseño que no son evidentes en el dibujo estático. Por el contrario, un buen wireframe excluye deliberadamente los colores definitivos (se utilizan escalas de grises), las imágenes finales (se usan rectángulos con una X o placeholders), las tipografías decorativas (se usan genéricas como Arial o Inter) y los detalles ornamentales.
+| Nivel | Características | Uso principal |
+|-------|-----------------|---------------|
+| **Baja fidelidad (low-fi)** | esquemas muy básicos, a menudo dibujados a mano sobre papel o pizarra; rectángulos, líneas y texto *placeholder* | primeras fases de exploración y *brainstorming*: se crean, descartan y modifican en **minutos** |
+| **Media fidelidad (mid-fi)** | herramientas digitales (Figma, Balsamiq, Sketch), escalas de grises, tipografías genéricas, proporciones y espaciados precisos | formato estándar para comunicar con *stakeholders* y pruebas tempranas de usabilidad |
+| **Alta fidelidad (high-fi)** | contenidos reales, imágenes *placeholder* realistas y simulación precisa del *layout* final | difumina la frontera con los **mockups** visuales |
 
-El proceso de wireframing es iterativo por naturaleza. Comienza con la creación de múltiples alternativas de baja fidelidad para cada pantalla principal, explorando diferentes disposiciones de los mismos elementos. Estas alternativas se discuten con el equipo y, en proyectos con presupuesto para investigación, se someten a pruebas con usuarios mediante prototipos de papel. A partir del feedback, se seleccionan y refinan las opciones más prometedoras, aumentando progresivamente la fidelidad. Cuando se trabaja con diseño responsive, es necesario crear wireframes para cada breakpoint principal (móvil, tablet, escritorio), mostrando cómo los bloques de contenido se reorganizan, se apilan o se ocultan en función del espacio disponible.
+!!! tip "Qué incluye y qué excluye un wireframe"
+    Un wireframe efectivo incluye, como mínimo:
+
+    - La **estructura de la página** (cabecera, contenido principal, barra lateral, *footer*).
+    - Los **bloques de contenido** con su jerarquía visual indicada (el tamaño relativo de cada bloque sugiere su importancia).
+    - Los **elementos de navegación** (menús, *breadcrumbs*, enlaces).
+    - Los **elementos funcionales** (botones, formularios, campos de búsqueda).
+    - **Anotaciones** que expliquen comportamientos interactivos o decisiones de diseño que no son evidentes en el dibujo estático.
+
+    Por el contrario, un buen wireframe **excluye deliberadamente**: los colores definitivos (se utilizan escalas de grises), las imágenes finales (se usan rectángulos con una X o *placeholders*), las tipografías decorativas (se usan genéricas como Arial o Inter) y los detalles ornamentales.
+
+El proceso de *wireframing* es **iterativo** por naturaleza:
+
+1. Creación de múltiples alternativas de baja fidelidad para cada pantalla principal, explorando diferentes disposiciones de los mismos elementos.
+2. Discusión de las alternativas con el equipo y, en proyectos con presupuesto para investigación, **pruebas con usuarios** mediante prototipos de papel.
+3. A partir del *feedback*, selección y refinado de las opciones más prometedoras, aumentando progresivamente la fidelidad.
+
+Cuando se trabaja con diseño responsive, es necesario crear wireframes para cada *breakpoint* principal (**móvil**, **tablet**, **escritorio**), mostrando cómo los bloques de contenido se reorganizan, se apilan o se ocultan en función del espacio disponible.
 
 ### User Flows: modelando los recorridos del usuario
 
-Un User Flow (flujo de usuario) es un diagrama que representa el recorrido completo que un usuario realiza a través de una interfaz para completar una tarea u objetivo específico. Si el sitemap es el mapa de carreteras (todas las rutas posibles), el user flow es la ruta concreta que sigue un conductor para ir desde su casa hasta el trabajo. Los user flows son herramientas fundamentales porque obligan al equipo de diseño a pensar en la experiencia como una secuencia de pasos interconectados, no como pantallas aisladas.
+!!! info "Definición: user flow"
+    Un **User Flow** (flujo de usuario) es un diagrama que representa el **recorrido completo** que un usuario realiza a través de una interfaz para completar una tarea u objetivo específico. Si el sitemap es el mapa de carreteras (todas las rutas posibles), el user flow es la **ruta concreta** que sigue un conductor para ir desde su casa hasta el trabajo. Son herramientas fundamentales porque obligan al equipo de diseño a pensar en la experiencia como una **secuencia de pasos interconectados**, no como pantallas aisladas.
 
-Los elementos que componen un user flow son: las pantallas o estados de la interfaz (representados típicamente como rectángulos), las acciones del usuario (representadas como líneas o flechas etiquetadas con el verbo de la acción: "hace clic en...", "rellena el formulario...", "desliza hacia la izquierda..."), los puntos de decisión (representados como rombos, donde el flujo se bifurca según la elección del usuario o el resultado de una validación), y los conectores (flechas que indican la dirección del flujo entre pantallas). Los user flows también pueden incluir anotaciones sobre el estado del sistema ("email enviado", "error de conexión", "sesión expirada") que contextualizan cada paso.
+Los elementos que componen un user flow:
 
-Existen diferentes tipos de user flows según el nivel de abstracción y el propósito. El task flow describe el proceso a alto nivel, centrándose en las acciones del usuario sin especificar pantallas concretas: es útil para comprender la lógica del proceso antes de diseñar la interfaz. El wire flow superpone el flujo sobre versiones simplificadas (wireframes en miniatura) de las pantallas reales, combinando la representación del proceso con la representación visual de cada paso. El screen flow, o flowchart de pantallas, es el más detallado y muestra cada pantalla como un nodo del diagrama con todas las posibles conexiones entre ellas; es particularmente útil para documentar la navegación completa de una aplicación.
+- **Pantallas o estados de la interfaz** — representados típicamente como rectángulos.
+- **Acciones del usuario** — líneas o flechas etiquetadas con el verbo de la acción («hace clic en…», «rellena el formulario…», «desliza hacia la izquierda…»).
+- **Puntos de decisión** — rombos, donde el flujo se bifurca según la elección del usuario o el resultado de una validación.
+- **Conectores** — flechas que indican la dirección del flujo entre pantallas.
 
-La creación de user flows debe comenzar con la identificación de los objetivos principales del usuario (redactados como historias de usuario: "Como cliente, quiero comprar un producto para recibirlo en mi domicilio"). Para cada objetivo, se enumeran los pasos necesarios y se dibuja el flujo ideal (happy path) que representa el recorrido sin errores ni excepciones. A continuación, se añaden los flujos alternativos y de error que contemplan lo que ocurre cuando algo no sale según lo esperado: ¿qué pasa si el producto está agotado, si la tarjeta de crédito es rechazada, si el usuario quiere modificar la dirección de envío a mitad del proceso? Estos escenarios alternativos suelen representar la mayor parte de la complejidad de la interfaz y son los que diferencian un diseño robusto de uno frágil.
+También pueden incluir **anotaciones sobre el estado del sistema** («email enviado», «error de conexión», «sesión expirada») que contextualizan cada paso.
+
+Existen diferentes tipos de user flows según el nivel de abstracción y el propósito:
+
+- **Task flow** — describe el proceso a alto nivel, centrándose en las acciones del usuario **sin especificar pantallas concretas**; es útil para comprender la lógica del proceso antes de diseñar la interfaz.
+- **Wire flow** — superpone el flujo sobre versiones simplificadas (*wireframes* en miniatura) de las pantallas reales, combinando la representación del proceso con la representación visual de cada paso.
+- **Screen flow** (*flowchart* de pantallas) — el más detallado; muestra **cada pantalla como un nodo** del diagrama con todas las posibles conexiones entre ellas; es particularmente útil para documentar la navegación completa de una aplicación.
+
+La creación de user flows debe seguir este recorrido:
+
+1. **Identificar los objetivos principales** del usuario, redactados como historias de usuario («Como cliente, quiero comprar un producto para recibirlo en mi domicilio»).
+2. Enumerar los pasos necesarios y dibujar el **flujo ideal** (*happy path*): el recorrido sin errores ni excepciones.
+3. Añadir los **flujos alternativos y de error** que contemplan lo que ocurre cuando algo no sale según lo esperado: ¿qué pasa si el producto está agotado, si la tarjeta de crédito es rechazada, si el usuario quiere modificar la dirección de envío a mitad del proceso?
+
+Estos escenarios alternativos suelen representar la **mayor parte de la complejidad** de la interfaz y son los que diferencian un diseño robusto de uno frágil.
 
 ### Sitemaps: la representación de la estructura del sitio
 
-Un sitemap es un diagrama que representa la estructura jerárquica de un sitio web o aplicación, mostrando todas las páginas o pantallas y las relaciones de contención entre ellas. El sitemap responde a la pregunta "¿qué páginas tiene este sitio y cómo se organizan?" y constituye el entregable fundamental para documentar la arquitectura de la información de un proyecto web.
+!!! info "Definición: sitemap"
+    Un **sitemap** es un diagrama que representa la **estructura jerárquica** de un sitio web o aplicación, mostrando todas las páginas o pantallas y las **relaciones de contención** entre ellas. Responde a la pregunta «¿qué páginas tiene este sitio y cómo se organizan?» y constituye el entregable fundamental para documentar la arquitectura de la información de un proyecto web.
 
-El formato más común es el sitemap jerárquico, que representa la estructura como un árbol donde el nodo raíz es la página de inicio (Home) y cada nivel sucesivo representa un nivel de profundidad en la navegación. Las páginas se representan como cajas etiquetadas con su nombre, y las líneas que las conectan indican la relación de pertenencia (la página inferior está contenida dentro de la sección representada por la página superior). El sitemap debe mostrar toda la estructura de navegación principal del sitio, pero no necesariamente cada una de las páginas de detalle (sería inviable representar las 50.000 páginas de producto de un ecommerce); para contenidos masivos, se suele indicar una página tipo (template) y una anotación que explique que se genera dinámicamente para cada elemento.
+El formato más común es el **sitemap jerárquico**, que representa la estructura como un árbol donde el nodo raíz es la página de inicio (**Home**) y cada nivel sucesivo representa un nivel de profundidad en la navegación. Las páginas se representan como cajas etiquetadas con su nombre, y las líneas que las conectan indican la relación de pertenencia (la página inferior está contenida dentro de la sección representada por la página superior).
 
-Los principios de construcción de sitemaps están gobernados por dos reglas empíricas derivadas de la psicología cognitiva. La regla de los 7±2 (número mágico de Miller) sugiere que las personas pueden mantener aproximadamente siete elementos (más o menos dos) en su memoria de trabajo simultáneamente. Aplicada al diseño de navegación, esta regla recomienda que cada nivel de navegación no contenga más de 7±2 opciones, ya que superar este límite dificulta que el usuario procese y recuerde todas las alternativas. La regla de los 3 clics postula que cualquier contenido del sitio debería ser accesible en un máximo de 3 clics desde la página de inicio. Aunque es una regla controvertida (la investigación posterior ha demostrado que los usuarios no abandonan por número de clics sino por desorientación), sigue siendo una buena heurística para evaluar si la estructura es excesivamente profunda.
+El sitemap debe mostrar toda la estructura de navegación principal del sitio, pero **no necesariamente cada una de las páginas de detalle** (sería inviable representar las **50.000 páginas** de producto de un ecommerce); para contenidos masivos, se suele indicar una **página tipo** (*template*) y una anotación que explique que se genera dinámicamente para cada elemento.
 
-Es importante distinguir entre el sitemap visual (el diagrama que creamos como herramienta de diseño) y el XML sitemap (un archivo en formato XML que se entrega a los motores de búsqueda para facilitar la indexación del sitio). Aunque comparten nombre y ambos representan la estructura del sitio, sus propósitos y formatos son completamente diferentes. El sitemap visual es una herramienta de diseño para humanos; el XML sitemap es una herramienta técnica para crawlers de buscadores. En el contexto de esta unidad, trabajaremos exclusivamente con sitemaps visuales.
+Los principios de construcción de sitemaps están gobernados por dos reglas empíricas derivadas de la psicología cognitiva:
+
+| Regla | Origen | Aplicación al diseño de navegación |
+|-------|--------|------------------------------------|
+| **Regla de los 7±2** | número mágico de **Miller**: las personas mantienen aproximadamente siete elementos (más o menos dos) en su memoria de trabajo | cada nivel de navegación no debe superar **7±2 opciones** |
+| **Regla de los 3 clics** | heurística de profundidad | cualquier contenido debería ser accesible en un máximo de **3 clics** desde la página de inicio |
+
+!!! note "La regla de los 3 clics es controvertida"
+    La investigación posterior ha demostrado que los usuarios **no abandonan por número de clics sino por desorientación**; aun así, sigue siendo una buena heurística para evaluar si la estructura es excesivamente profunda.
+
+Es importante distinguir entre el sitemap visual y el XML sitemap:
+
+| | **Sitemap visual** | **XML sitemap** |
+|---|--------------------|-----------------|
+| **Naturaleza** | el diagrama que creamos como herramienta de diseño | un archivo en formato **XML** |
+| **Destinatario** | **humanos** (equipo de diseño) | **motores de búsqueda** (crawlers) |
+| **Propósito** | herramienta de diseño | facilitar la **indexación** del sitio |
+
+Aunque comparten nombre y ambos representan la estructura del sitio, sus propósitos y formatos son completamente diferentes. En el contexto de esta unidad, trabajaremos **exclusivamente con sitemaps visuales**.
 
 ### Card Sorting: investigación de la organización de contenidos con usuarios
 
-El Card Sorting es una técnica de investigación de UX que permite descubrir cómo los usuarios agrupan y categorizan mentalmente los contenidos de un sitio web. Consiste en entregar a los participantes un conjunto de tarjetas (físicas o digitales), cada una con el nombre de un contenido o funcionalidad del sitio, y pedirles que las agrupen en categorías que tengan sentido para ellos y que pongan un nombre a cada categoría. El resultado es un mapa del modelo mental colectivo de los usuarios, que puede compararse con la estructura propuesta por el equipo de diseño para identificar desajustes.
+!!! info "Definición: Card Sorting"
+    El **Card Sorting** es una técnica de investigación de UX que permite descubrir **cómo los usuarios agrupan y categorizan mentalmente** los contenidos de un sitio web. Consiste en entregar a los participantes un conjunto de tarjetas (físicas o digitales), cada una con el nombre de un contenido o funcionalidad del sitio, y pedirles que las agrupen en categorías que tengan sentido para ellos y que pongan un nombre a cada categoría. El resultado es un **mapa del modelo mental colectivo** de los usuarios, que puede compararse con la estructura propuesta por el equipo de diseño para identificar desajustes.
 
-Existen tres variantes principales de Card Sorting. En el Card Sorting abierto, los participantes crean libremente tanto los grupos como los nombres de las categorías, sin ninguna restricción previa. Esta modalidad es ideal para las fases iniciales de un proyecto, cuando se quiere descubrir cómo los usuarios conceptualizan un dominio sin influirles con categorías predefinidas. En el Card Sorting cerrado, se proporcionan las categorías predefinidas y los participantes solo deben asignar cada tarjeta a una de ellas. Esta modalidad es útil para validar una estructura de categorías ya propuesta. En el Card Sorting híbrido, se proporcionan algunas categorías predefinidas pero se permite a los participantes crear otras nuevas si lo consideran necesario.
+Existen tres variantes principales:
 
-La preparación de una sesión de Card Sorting requiere seleccionar cuidadosamente los contenidos a incluir en las tarjetas. Deben ser representativos del contenido real del sitio, cubrir todos los tipos de información y funcionalidades, y estar redactados de forma clara y concisa. Se recomienda utilizar entre 30 y 60 tarjetas; menos de 30 puede no proporcionar suficiente riqueza de datos, y más de 60 puede fatigar al participante. Las sesiones pueden realizarse de forma presencial (con tarjetas físicas de papel, lo que permite observar el proceso y el razonamiento en voz alta) o de forma remota mediante herramientas digitales como OptimalSort, Miro, FigJam o UserZoom, que permiten reclutar más participantes y recopilar datos cuantitativos de forma eficiente.
+- **Card Sorting abierto** — los participantes crean libremente tanto los grupos como los nombres de las categorías, sin ninguna restricción previa. Ideal para las **fases iniciales** de un proyecto, cuando se quiere descubrir cómo los usuarios conceptualizan un dominio sin influirles con categorías predefinidas.
+- **Card Sorting cerrado** — se proporcionan las categorías predefinidas y los participantes solo deben asignar cada tarjeta a una de ellas. Útil para **validar una estructura de categorías ya propuesta**.
+- **Card Sorting híbrido** — se proporcionan algunas categorías predefinidas pero se permite a los participantes crear otras nuevas si lo consideran necesario.
 
-El análisis de resultados de un Card Sorting se apoya en dos herramientas principales. La matriz de similaridad muestra, para cada par de tarjetas, el porcentaje de participantes que las colocaron en el mismo grupo. Un valor alto (por ejemplo, el 90% de los participantes agruparon "Facturación" con "Historial de pagos") indica un consenso fuerte sobre la pertenencia de esos contenidos a una misma categoría. El dendrograma es una representación visual en forma de árbol que agrupa jerárquicamente las tarjetas según su similaridad, revelando la estructura de categorías que emerge naturalmente de los datos de los participantes. Analizando el dendrograma, el equipo de diseño puede decidir cuántas categorías principales crear (cortando el árbol a diferentes alturas) y qué contenidos incluir en cada una.
+La preparación de una sesión requiere seleccionar cuidadosamente los contenidos a incluir en las tarjetas: deben ser **representativos del contenido real** del sitio, cubrir todos los tipos de información y funcionalidades, y estar redactados de forma clara y concisa.
+
+!!! tip "Cuántas tarjetas preparar"
+    Se recomienda utilizar entre **30 y 60 tarjetas**: menos de **30** puede no proporcionar suficiente riqueza de datos, y más de **60** puede fatigar al participante.
+
+Las sesiones pueden realizarse de forma **presencial** (con tarjetas físicas de papel, lo que permite observar el proceso y el razonamiento en voz alta) o de forma **remota** mediante herramientas digitales como **OptimalSort**, **Miro**, **FigJam** o **UserZoom**, que permiten reclutar más participantes y recopilar datos cuantitativos de forma eficiente.
+
+El análisis de resultados se apoya en dos herramientas principales:
+
+- **Matriz de similaridad** — muestra, para cada par de tarjetas, el porcentaje de participantes que las colocaron en el mismo grupo. Un valor alto (por ejemplo, el **90%** de los participantes agruparon «Facturación» con «Historial de pagos») indica un **consenso fuerte** sobre la pertenencia de esos contenidos a una misma categoría.
+- **Dendrograma** — representación visual en forma de árbol que agrupa jerárquicamente las tarjetas según su similaridad, revelando la estructura de categorías que emerge naturalmente de los datos. Analizándolo, el equipo de diseño puede decidir **cuántas categorías principales crear** (cortando el árbol a diferentes alturas) y qué contenidos incluir en cada una.
 
 ### Tree Testing: validación de la estructura de navegación
 
-El Tree Testing es la técnica complementaria al Card Sorting. Mientras que el Card Sorting pregunta "¿cómo agruparías estos contenidos?", el Tree Testing pregunta "¿dónde buscarías este contenido?" y mide la efectividad de una estructura de categorías ya definida. Se presenta al participante únicamente la estructura de categorías en forma de árbol de texto (sin diseño visual, sin navegación, sin pistas contextuales) y se le pide que indique en qué categoría esperaría encontrar un contenido específico.
+!!! info "Definición: Tree Testing"
+    El **Tree Testing** es la técnica complementaria al Card Sorting. Mientras que el Card Sorting pregunta «¿cómo agruparías estos contenidos?», el Tree Testing pregunta «**¿dónde buscarías este contenido?**» y mide la efectividad de una estructura de categorías **ya definida**. Se presenta al participante únicamente la estructura de categorías en forma de árbol de texto (sin diseño visual, sin navegación, sin pistas contextuales) y se le pide que indique en qué categoría esperaría encontrar un contenido específico.
 
-La prueba es sorprendentemente reveladora porque elimina todas las muletas visuales y de navegación que en una interfaz real pueden ayudar al usuario a encontrar información incluso cuando la estructura subyacente es deficiente. Si un participante no puede localizar un contenido en el árbol de texto, probablemente tampoco podrá hacerlo en la interfaz real, aunque en esta última pueda llegar a él por casualidad o mediante búsqueda. El Tree Testing, por tanto, evalúa la calidad intrínseca de la arquitectura de la información, aislándola de otros factores.
+La prueba es sorprendentemente reveladora porque **elimina todas las muletas visuales y de navegación** que en una interfaz real pueden ayudar al usuario a encontrar información incluso cuando la estructura subyacente es deficiente. Si un participante no puede localizar un contenido en el árbol de texto, probablemente tampoco podrá hacerlo en la interfaz real, aunque en esta última pueda llegar a él por casualidad o mediante búsqueda. El Tree Testing, por tanto, evalúa la **calidad intrínseca** de la arquitectura de la información, aislándola de otros factores.
 
-Las métricas principales del Tree Testing son: la tasa de éxito (porcentaje de tareas en las que el participante encontró el contenido en la categoría correcta), la direccionalidad (porcentaje de tareas en las que el participante fue directamente a la categoría correcta sin pasar por categorías incorrectas, lo que indica claridad de las etiquetas), y el tiempo empleado por tarea (que correlaciona con la facilidad de la decisión). Tasas de éxito por debajo del 80% indican problemas serios en la estructura de categorías que deben abordarse antes de implementar la navegación. Las herramientas más utilizadas para Tree Testing son Treejack (de Optimal Workshop) y UserZoom.
+Las métricas principales son:
+
+- **Tasa de éxito** — porcentaje de tareas en las que el participante encontró el contenido en la categoría correcta.
+- **Direccionalidad** — porcentaje de tareas en las que el participante fue **directamente** a la categoría correcta sin pasar por categorías incorrectas, lo que indica claridad de las etiquetas.
+- **Tiempo empleado por tarea** — correlaciona con la facilidad de la decisión.
+
+!!! warning "Tasa de éxito por debajo del 80%"
+    Tasas de éxito **por debajo del 80%** indican **problemas serios** en la estructura de categorías que deben abordarse antes de implementar la navegación.
+
+Las herramientas más utilizadas para Tree Testing son **Treejack** (de Optimal Workshop) y **UserZoom**.
 
 ### Sistemas de navegación: patrones y componentes
 
-Los sistemas de navegación son los mecanismos que permiten al usuario desplazarse entre los diferentes contenidos de un sitio web. La navegación global o principal es el menú que aparece en todas las páginas (típicamente en la cabecera) y que da acceso a las secciones de primer nivel del sitio. Debe ser visible, consistente y predecible, y suele incluir entre 5 y 7 opciones. La navegación local aparece dentro de una sección y muestra las subpáginas de esa sección; se ubica habitualmente en una barra lateral izquierda o como un submenú desplegable. La navegación contextual consiste en enlaces incrustados en el contenido que relacionan la página actual con otras relevantes, como "Artículos relacionados" al final de un blog post.
+Los sistemas de navegación son los mecanismos que permiten al usuario desplazarse entre los diferentes contenidos de un sitio web:
 
-Los breadcrumbs o migas de pan muestran la ruta jerárquica desde la página de inicio hasta la página actual, permitiendo al usuario comprender dónde está y navegar hacia niveles superiores. Siguen el formato "Home > Categoría > Subcategoría > Página actual" y son especialmente útiles en sitios con estructuras profundas. Las migas deben reflejar la ubicación jerárquica real (la ruta lógica), no el historial de navegación del usuario (la ruta física).
+- **Navegación global o principal** — el menú que aparece en todas las páginas (típicamente en la cabecera) y que da acceso a las secciones de primer nivel del sitio. Debe ser **visible, consistente y predecible**, y suele incluir entre **5 y 7 opciones**.
+- **Navegación local** — aparece dentro de una sección y muestra las subpáginas de esa sección; se ubica habitualmente en una **barra lateral izquierda** o como un **submenú desplegable**.
+- **Navegación contextual** — enlaces incrustados en el contenido que relacionan la página actual con otras relevantes, como «Artículos relacionados» al final de un *blog post*.
 
-La navegación facetada es un patrón característico de los ecommerce y los buscadores que permite filtrar un conjunto de resultados aplicando simultáneamente múltiples criterios (facetas). Cada faceta representa una dimensión de filtrado (precio, marca, talla, color, valoración) y los valores de cada faceta se generan dinámicamente a partir de los resultados actuales. La navegación facetada es potente pero compleja de diseñar: debe ser evidente qué facetas están activas, permitir desactivar facetas individuales sin perder las demás, y gestionar el caso de que una combinación de facetas no produzca ningún resultado.
+Los **breadcrumbs** o migas de pan muestran la ruta jerárquica desde la página de inicio hasta la página actual, permitiendo al usuario comprender dónde está y navegar hacia niveles superiores. Siguen el formato **Home > Categoría > Subcategoría > Página actual** y son especialmente útiles en sitios con estructuras profundas.
 
-Para dispositivos móviles, el espacio limitado obliga a utilizar patrones de navegación específicos. El menú hamburguesa (tres líneas horizontales) oculta la navegación detrás de un icono, liberando espacio para el contenido, pero tiene el inconveniente de reducir la visibilidad de las opciones de navegación. La navegación por pestañas (tab bar) en la parte inferior de la pantalla, popularizada por iOS, ofrece acceso directo a 3-5 secciones principales con un solo toque. La navegación off-canvas desliza un panel lateral desde fuera de la pantalla, combinando la economía de espacio del menú hamburguesa con una experiencia de interacción más natural mediante gestos de swipe.
+!!! warning "Ruta lógica, no historial"
+    Las migas deben reflejar la ubicación jerárquica real (**la ruta lógica**), no el historial de navegación del usuario (**la ruta física**).
+
+La **navegación facetada** es un patrón característico de los *ecommerce* y los buscadores que permite filtrar un conjunto de resultados aplicando simultáneamente múltiples criterios (*facetas*). Cada faceta representa una dimensión de filtrado (**precio, marca, talla, color, valoración**) y los valores de cada faceta se generan dinámicamente a partir de los resultados actuales. Es potente pero compleja de diseñar: debe ser evidente qué facetas están activas, permitir desactivar facetas individuales sin perder las demás, y gestionar el caso de que una combinación de facetas no produzca ningún resultado.
+
+Para dispositivos móviles, el espacio limitado obliga a utilizar patrones específicos:
+
+- **Menú hamburguesa** (tres líneas horizontales) — oculta la navegación detrás de un icono, liberando espacio para el contenido, pero **reduce la visibilidad** de las opciones de navegación.
+- **Navegación por pestañas** (*tab bar*) — en la parte inferior de la pantalla, popularizada por iOS; ofrece acceso directo a **3-5 secciones** principales con un solo toque.
+- **Navegación off-canvas** — desliza un panel lateral desde fuera de la pantalla, combinando la economía de espacio del menú hamburguesa con una experiencia de interacción más natural mediante gestos de *swipe*.
 
 ## Ejemplos guiados
 
@@ -182,7 +338,11 @@ Cada una de las secciones del nivel 1 se despliega en subcategorías de nivel 2.
 
 La rama "Mujer" replica una estructura similar adaptada a las categorías de producto femenino. La rama "Niños" se organiza por rangos de edad (0-2 años, 3-7 años, 8-14 años) y dentro de cada rango por tipo de producto. La rama "Equipos" se divide en Deportes de equipo, Deportes individuales, Fitness en casa y Tecnología deportiva (pulsómetros, relojes GPS). La rama "Outlet" se organiza por las mismas categorías que el catálogo principal pero con precios reducidos. La rama "Marcas" lista las marcas disponibles: Nike, Adidas, Puma, Under Armour, New Balance, Reebok, The North Face. La rama "Ayuda" contiene las páginas funcionales: Contacto, Envíos y devoluciones, Guía de tallas, Preguntas frecuentes, Seguimiento de pedido.
 
-Observaciones sobre el diseño del sitemap: la profundidad máxima es de 3 niveles (Home > Hombre > Camisetas > Manga corta), lo que cumple con la regla de los 3 clics. La amplitud en el nivel 1 es de 7 opciones, justo en el límite del número mágico de Miller. Las categorías del nivel 2 tienen entre 3 y 6 subcategorías cada una, manteniendo la carga cognitiva manejable. Las etiquetas son descriptivas y autoexplicativas, evitando términos ambiguos o jerga interna.
+!!! note "Observaciones sobre el diseño del sitemap"
+    - La **profundidad máxima es de 3 niveles** (Home > Hombre > Camisetas > Manga corta), lo que cumple con la regla de los 3 clics.
+    - La **amplitud en el nivel 1 es de 7 opciones**, justo en el límite del número mágico de Miller.
+    - Las categorías del nivel 2 tienen entre **3 y 6 subcategorías** cada una, manteniendo la carga cognitiva manejable.
+    - Las etiquetas son **descriptivas y autoexplicativas**, evitando términos ambiguos o jerga interna.
 
 ### Ejemplo guiado 2: User flow para el proceso de checkout de un ecommerce
 
@@ -295,7 +455,11 @@ Diseñaremos los wireframes para una aplicación móvil de recetas de cocina, mo
 └──────────────────────────────┘
 ```
 
-Notas sobre el wireframe de baja fidelidad: se utilizan rectángulos para los bloques de contenido, líneas para los separadores, y texto descriptivo (no final) para identificar cada elemento. Los corchetes indican elementos interactivos. Las proporciones no son exactas; el objetivo es comunicar la estructura general.
+!!! note "Notas sobre el wireframe de baja fidelidad"
+    - Se utilizan **rectángulos** para los bloques de contenido y **líneas** para los separadores.
+    - El texto es descriptivo (no final) para identificar cada elemento.
+    - Los **corchetes** indican elementos interactivos.
+    - Las proporciones no son exactas: el objetivo es comunicar la **estructura general**.
 
 **Evolución a wireframe de media fidelidad - Misma pantalla:**
 
@@ -349,7 +513,8 @@ Frame: 390 x 844px (iPhone 14)
 └───────────────────────────────────┘
 ```
 
-Observaciones sobre la evolución: hemos añadido medidas precisas (en píxeles), definido alturas de elementos, espaciados exactos siguiendo una escala de 4px, y refinado la representación de cada componente para que sea más cercana a su aspecto final. Sin embargo, seguimos sin utilizar colores reales (escala de grises), imágenes reales (rectángulos con etiquetas) ni tipografías definitivas.
+!!! note "Observaciones sobre la evolución"
+    Hemos añadido **medidas precisas** (en píxeles), definido alturas de elementos, espaciados exactos siguiendo una escala de **4 px**, y refinado la representación de cada componente para que sea más cercana a su aspecto final. Sin embargo, seguimos **sin utilizar colores reales** (escala de grises), imágenes reales (rectángulos con etiquetas) ni tipografías definitivas.
 
 ### Ejemplo guiado 4: Mapa de navegación para un sitio web institucional
 
@@ -357,11 +522,13 @@ Crearemos el mapa de navegación de la sede electrónica de un organismo públic
 
 **Descripción textual del mapa de navegación:**
 
-El mapa de navegación no debe confundirse con el sitemap. Mientras el sitemap representa la estructura jerárquica de los contenidos (¿qué páginas hay?), el mapa de navegación representa los diferentes sistemas de navegación que permiten al usuario moverse entre esos contenidos (¿cómo se navega entre las páginas?).
+!!! warning "No confundas sitemap y mapa de navegación"
+    Mientras el **sitemap** representa la estructura jerárquica de los contenidos (¿qué páginas hay?), el **mapa de navegación** representa los diferentes sistemas de navegación que permiten al usuario moverse entre esos contenidos (¿cómo se navega entre las páginas?).
 
 Para la sede electrónica analizada, identificamos los siguientes sistemas de navegación:
 
 **1. Navegación global (cabecera principal):**
+
 Presente en todas las páginas del sitio. Las opciones de navegación global representan las grandes áreas funcionales de la sede electrónica.
 
 ```
@@ -375,6 +542,7 @@ Presente en todas las páginas del sitio. Las opciones de navegación global rep
 Opciones de navegación global: Inicio, Trámites, Servicios, Sede electrónica, Ayuda. Esta navegación es persistente y visible desde cualquier página, proporcionando el marco de referencia constante que responde a la pregunta "¿dónde estoy?".
 
 **2. Navegación local (barra lateral izquierda):**
+
 Visible solo dentro de la sección activa. Cuando el usuario está en "Trámites", la barra lateral muestra las subcategorías de trámites.
 
 ```
@@ -401,6 +569,7 @@ Visible solo dentro de la sección activa. Cuando el usuario está en "Trámites
 ```
 
 **3. Breadcrumbs (migas de pan):**
+
 Presentes debajo de la cabecera en todas las páginas excepto la de inicio. Muestran la ruta jerárquica completa.
 
 ```
@@ -410,6 +579,7 @@ Inicio > Trámites > Ciudadanía > DNI > Renovación del DNI
 Cada elemento de la ruta es un enlace (excepto el último, que es la página actual y se muestra en texto sin enlace), permitiendo al usuario retroceder a cualquier nivel superior con un solo clic.
 
 **4. Navegación contextual (enlaces en el contenido):**
+
 Dentro de la página de cada trámite, el contenido incluye enlaces a trámites relacionados, normativa aplicable, preguntas frecuentes específicas y documentos descargables.
 
 ```
@@ -437,6 +607,7 @@ Dentro de la página de cada trámite, el contenido incluye enlaces a trámites 
 ```
 
 **5. Navegación de footer (pie de página):**
+
 Presente en todas las páginas, contiene enlaces a información corporativa, legal y de contacto.
 
 ```
@@ -448,6 +619,7 @@ Presente en todas las páginas, contiene enlaces a información corporativa, leg
 ```
 
 **6. Navegación de utilidad (cabecera secundaria):**
+
 En la esquina superior derecha, fuera de la navegación principal, se encuentran los enlaces de utilidad.
 
 ```
@@ -465,6 +637,7 @@ Simularemos una sesión de Card Sorting abierto para un portal educativo que ofr
 Se seleccionan 35 contenidos representativos del portal educativo, redactados como tarjetas concisas:
 
 Tarjetas sobre cursos y contenido formativo:
+
 1. Curso de Programación Web con HTML y CSS
 2. Curso de JavaScript Avanzado
 3. Curso de Python para Ciencia de Datos
@@ -477,6 +650,7 @@ Tarjetas sobre cursos y contenido formativo:
 10. Curso de Ciberseguridad
 
 Tarjetas sobre funcionalidades de la plataforma:
+
 11. Mi perfil de estudiante
 12. Certificados obtenidos
 13. Historial de cursos
@@ -488,6 +662,7 @@ Tarjetas sobre funcionalidades de la plataforma:
 19. Cerrar sesión
 
 Tarjetas sobre soporte y comunidad:
+
 20. Preguntas frecuentes
 21. Contactar con soporte técnico
 22. Chat en vivo con tutor
@@ -496,6 +671,7 @@ Tarjetas sobre soporte y comunidad:
 25. Mentorías personalizadas
 
 Tarjetas sobre información institucional:
+
 26. Sobre nosotros
 27. Nuestros profesores
 28. Metodología de enseñanza
@@ -526,6 +702,7 @@ Agrupación con mayor consenso (más del 80% de participantes):
 Nivel 1 (navegación global): Cursos, Comunidad, Mi Cuenta, Ayuda, Sobre Nosotros
 
 Nivel 2 (subcategorías):
+
 - Cursos > Tecnología, Negocios, Creatividad, Idiomas
 - Comunidad > Foros, Grupos de estudio, Mentorías, Blog
 - Mi Cuenta > Perfil, Historial, Certificados, Pagos
@@ -536,7 +713,7 @@ Nivel 2 (subcategorías):
 
 Diseñaremos la adaptación de la navegación de un portal de noticias a tres breakpoints diferentes (móvil, tablet y escritorio), mostrando cómo los patrones de navegación cambian en función del espacio disponible.
 
-**Breakpoint escritorio (≥1024px):**
+**Breakpoint escritorio (≥1024 px):**
 
 En escritorio, disponemos de espacio suficiente para mostrar la navegación completa. La cabecera incluye el logo, la fecha, el tiempo, la navegación global completa, acceso al área de usuario y un botón de suscripción.
 
@@ -562,7 +739,7 @@ En escritorio, disponemos de espacio suficiente para mostrar la navegación comp
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-**Breakpoint tablet (768px - 1023px):**
+**Breakpoint tablet (768 px - 1023 px):**
 
 En tablet, el espacio se reduce. La navegación global se compacta mostrando solo las secciones principales. Las secciones secundarias se trasladan a un menú "Más" desplegable. El buscador se reduce a un icono.
 
@@ -580,7 +757,7 @@ En tablet, el espacio se reduce. La navegación global se compacta mostrando sol
 └────────────────────────────────────────────────┘
 ```
 
-**Breakpoint móvil (<768px):**
+**Breakpoint móvil (<768 px):**
 
 En móvil, el espacio es crítico. La navegación se oculta tras un menú hamburguesa. Aparece una barra de navegación inferior fija con accesos rápidos a las secciones más utilizadas (bottom navigation, inspirada en patrones de apps móviles). El breadcrumb desaparece o se simplifica a un botón de retroceso.
 
@@ -664,7 +841,13 @@ La navegación global de la Sede Electrónica es deliberadamente reducida: solo 
 
 Un aspecto destacable de la Sede Electrónica es su sistema de búsqueda, que incorpora búsqueda predictiva con sugerencias de trámites frecuentes y un buscador avanzado facetado que permite filtrar por tipo de trámite, organismo responsable, nivel de administración (estatal, autonómico, local), perfil del solicitante (ciudadano, empresa, administración) y modo de tramitación (online, presencial, telefónico). La página de resultados de búsqueda muestra para cada trámite: nombre, organismo emisor, descripción breve, plazo de resolución, modo de tramitación, y etiquetas de clasificación, proporcionando la información necesaria para que el usuario decida cuál es el trámite correcto sin tener que hacer clic en cada resultado.
 
-La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio debe cumplir con el Real Decreto 1112/2018 sobre accesibilidad de los sitios web y aplicaciones del sector público, que exige el cumplimiento de la norma UNE-EN 301549 (equivalente a WCAG 2.1 nivel AA). La AI del sitio refleja este compromiso: las etiquetas son claras y literales (evitando metáforas o jerga), la profundidad de navegación se mantiene controlada, existen múltiples formas de llegar al mismo contenido (búsqueda, navegación por categorías, navegación por audiencia), y los elementos interactivos como menús desplegables y acordeones están diseñados para ser operables tanto con ratón como con teclado y lectores de pantalla.
+La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio debe cumplir la normativa vigente:
+
+!!! info "Normativa de accesibilidad del sector público"
+    - **Real Decreto 1112/2018** — accesibilidad de los sitios web y aplicaciones del sector público.
+    - **UNE-EN 301549** — norma técnica equiparable a **WCAG 2.1 nivel AA**.
+
+La AI del sitio refleja este compromiso: las etiquetas son **claras y literales** (evitando metáforas o jerga), la profundidad de navegación se mantiene controlada, existen **múltiples formas de llegar al mismo contenido** (búsqueda, navegación por categorías, navegación por audiencia), y los elementos interactivos como menús desplegables y acordeones están diseñados para ser operables tanto con **ratón** como con **teclado y lectores de pantalla**.
 
 ## Actividades guiadas
 
@@ -686,6 +869,7 @@ La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio 
 8. Redacta un pequeño informe (500 palabras) justificando las decisiones principales de estructuración y comparando tu sitemap con al menos una alternativa que consideraste y descartaste.
 
 **Criterios de evaluación:**
+
 - El inventario de contenidos es exhaustivo y cubre todos los elementos relevantes (1.5 puntos).
 - Las categorías de primer nivel son lógicas y respetan la regla de 7±2 (1.5 puntos).
 - La profundidad máxima es de 4 niveles o menos (1 punto).
@@ -712,6 +896,7 @@ La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio 
 8. Incluye al menos 5 anotaciones que relacionen decisiones de wireframe con su equivalente técnico en HTML/CSS (por ejemplo: "Esta sidebar será un elemento <aside> con position: fixed y transform: translateX para la animación off-canvas en móvil").
 
 **Criterios de evaluación:**
+
 - Los tres breakpoints están correctamente dimensionados y los wireframes son coherentes entre sí (1.5 puntos).
 - La reorganización responsive está justificada con anotaciones para cada breakpoint (2 puntos).
 - El panel de detalle de tarea se adapta correctamente en los tres breakpoints (1.5 puntos).
@@ -739,6 +924,7 @@ La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio 
 9. Redacta un informe de análisis y recomendaciones (mínimo 1500 palabras) estructurado en: resumen ejecutivo, metodología de análisis, hallazgos detallados (problemas encontrados), recomendaciones (mejoras propuestas), sitemap actual vs. sitemap propuesto, y conclusiones.
 
 **Criterios de evaluación:**
+
 - El inventario de páginas es exhaustivo y preciso (1.5 puntos).
 - El sitemap reconstruido refleja fielmente la estructura actual del sitio (1.5 puntos).
 - La evaluación de sistemas de navegación es detallada y crítica (1 punto).
@@ -766,6 +952,7 @@ La accesibilidad en la Sede Electrónica es particularmente relevante. El sitio 
 8. Reflexiona sobre el proceso: ¿qué aprendiste sobre los modelos mentales de los estudiantes universitarios? ¿Qué harías diferente en un estudio real? ¿Qué limitaciones tiene un Card Sorting simulado frente a uno con participantes reales?
 
 **Criterios de evaluación:**
+
 - Las 40 tarjetas son representativas, claras y cubren el dominio adecuadamente (2 puntos).
 - La elección del tipo de Card Sorting está justificada (0.5 puntos).
 - El auto-card-sort está correctamente ejecutado y documentado (1 punto).
@@ -800,6 +987,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Contexto:** La Arquitectura de la Información y el SEO (Search Engine Optimization) están profundamente interrelacionados. La estructura del sitio, las URLs, el enlazado interno y los sitemaps XML son factores que los motores de búsqueda utilizan para entender y rankear un sitio web. Esta actividad explora la intersección entre AI y SEO.
 
 **Objetivos:**
+
 - Investigar cómo la arquitectura de la información impacta en el SEO: estructura de URLs amigables, importancia de la jerarquía plana (flat architecture), enlazado interno estratégico (internal linking), breadcrumbs con datos estructurados (schema.org), y sitemaps XML.
 - Seleccionar un sitio web existente con una AI deficiente (o utilizar el analizado en la Actividad Propuesta 1).
 - Realizar una auditoría SEO de la AI actual del sitio: analizar la estructura de URLs (¿son jerárquicas y descriptivas?), el enlazado interno (¿están las páginas importantes a pocos clics de la home?), la presencia de breadcrumbs, y la existencia y calidad del sitemap XML.
@@ -811,6 +999,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Formato de entrega:** Informe de investigación (2000-3000 palabras), sitemap visual rediseñado, diagrama de enlazado interno, archivo sitemap.xml de ejemplo, ejemplos de datos estructurados JSON-LD, y presentación resumen en formato PDF.
 
 **Rúbrica de evaluación:**
+
 - La investigación sobre AI y SEO es rigurosa y cita fuentes relevantes (1.5 puntos).
 - La auditoría SEO de la AI actual identifica problemas concretos (1.5 puntos).
 - El rediseño aplica correctamente principios de AI y SEO (2 puntos).
@@ -824,6 +1013,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Contexto:** Los portales de contenidos masivos (grandes publishers de noticias, plataformas de streaming de vídeo, agregadores de contenido) enfrentan el desafío de organizar decenas de miles de piezas de contenido en estructuras navegables. Esta actividad aborda el diseño de sistemas de navegación avanzados para grandes volúmenes de información.
 
 **Objetivos:**
+
 - Investigar los patrones de navegación diseñados para grandes volúmenes de contenido: mega menús (tipos: dropdown simple, mega dropdown con columnas, mega dropdown con contenido destacado), navegación facetada avanzada (facetas dinámicas, facetas dependientes, rangos con histogramas), tag clouds y sistemas de etiquetado colaborativo (folksonomías), búsqueda predictiva con categorización de sugerencias, y sistemas de recomendación que actúan como navegación (recomendaciones basadas en historial, en similitud, en tendencias).
 - Proponer un caso de estudio: un portal de streaming de cursos online con 10.000+ cursos organizados en 50+ categorías, con múltiples instructores, niveles de dificultad, idiomas, duraciones, valoraciones, y precios.
 - Diseñar la AI del portal incluyendo: estructura jerárquica de categorías (con al menos 3 niveles de profundidad, 6-8 categorías de nivel 1), sistema de mega menú (dibujar su estructura: columnas, contenido destacado, acceso rápido), sistema de navegación facetada para la búsqueda/exploración de cursos (definir facetas, sus valores, y cómo se generan dinámicamente), y sistema de recomendaciones que aparecen en diferentes puntos del sitio (home, página de curso, carrito).
@@ -834,6 +1024,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Formato de entrega:** Documento de especificación de AI del portal (estructura de categorías, especificación del mega menú, especificación de facetas, diagrama del sistema de recomendaciones), wireframes de las pantallas clave, y ensayo reflexivo (1000-1500 palabras).
 
 **Rúbrica de evaluación:**
+
 - La investigación sobre patrones de navegación para grandes volúmenes es completa (1.5 puntos).
 - La estructura de categorías es lógica, respeta la regla de 7±2 en cada nivel y tiene profundidad controlada (1.5 puntos).
 - El mega menú está bien especificado y es navegable (1.5 puntos).
@@ -847,6 +1038,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Contexto:** La accesibilidad web es un requisito legal en la Unión Europea (Directiva 2016/2102 y Real Decreto 1112/2018 en España) para todos los sitios web del sector público y para muchos del sector privado. Los sistemas de navegación son componentes críticos para la accesibilidad, ya que si un usuario no puede navegar por el sitio, no puede acceder a ningún contenido, por muy accesible que este sea individualmente.
 
 **Objetivos:**
+
 - Investigar los requisitos de accesibilidad específicos para sistemas de navegación según WCAG 2.1 nivel AA: criterios relacionados con la navegación (2.4.1 Saltar bloques, 2.4.2 Titulado de páginas, 2.4.3 Orden del foco, 2.4.4 Propósito de los enlaces, 2.4.5 Múltiples vías, 2.4.6 Encabezados y etiquetas, 2.4.7 Foco visible, 2.4.8 Ubicación, 3.2.3 Navegación consistente, 3.2.4 Identificación consistente).
 - Seleccionar 3 sitios web de diferentes categorías (uno institucional, uno ecommerce, uno de noticias) y realizar una auditoría de accesibilidad de sus sistemas de navegación centrada exclusivamente en los criterios de navegación de WCAG 2.1.
 - Para cada sitio, evaluar sistemáticamente: ¿tiene un enlace para saltar al contenido principal (skip to content)? ¿los menús son operables con teclado (Tab, Enter, Escape para cerrar submenús)? ¿el orden de tabulación es lógico y sigue el orden visual? ¿las etiquetas de enlace describen claramente su destino? ¿existen múltiples formas de llegar al mismo contenido (búsqueda, navegación, sitemap, breadcrumbs)? ¿la navegación es consistente en todas las páginas? ¿los elementos con foco tienen un indicador visual claramente visible?
@@ -858,6 +1050,7 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 **Formato de entrega:** Informe de auditoría de accesibilidad de navegación (los 3 sitios analizados con hallazgos WCAG y soluciones propuestas), wireframes o mockups de las soluciones de rediseño, implementación funcional de un componente de navegación accesible (HTML/CSS/JS), y ensayo reflexivo sobre la relación entre AI y accesibilidad.
 
 **Rúbrica de evaluación:**
+
 - La investigación sobre WCAG para navegación es correcta y completa (1.5 puntos).
 - La auditoría de los 3 sitios es sistemática y documenta hallazgos específicos con referencias WCAG (2 puntos).
 - Los problemas identificados son reales y relevantes (1.5 puntos).
@@ -868,31 +1061,35 @@ Selecciona una PYME real de tu entorno (puede ser el negocio de un familiar, una
 
 ## Buenas prácticas
 
-La arquitectura de la información debe diseñarse a partir de las necesidades y modelos mentales de los usuarios, no de la estructura interna de la organización. Un error clásico es organizar la web de una universidad según su organigrama (Vicerrectorado de Ordenación Académica, Vicerrectorado de Estudiantes, Vicerrectorado de Investigación) en lugar de según las tareas que los usuarios quieren realizar (Matricularse, Consultar notas, Solicitar beca, Buscar máster). La técnica de Card Sorting es la herramienta principal para descubrir los modelos mentales de los usuarios y evitar imponer estructuras organizativas internas que solo tienen sentido para quienes trabajan dentro de la institución.
+**Diseña a partir del usuario, no del organigrama.** La arquitectura de la información debe diseñarse a partir de las necesidades y modelos mentales de los usuarios, no de la estructura interna de la organización. Un error clásico es organizar la web de una universidad según su organigrama (Vicerrectorado de Ordenación Académica, Vicerrectorado de Estudiantes, Vicerrectorado de Investigación) en lugar de según las tareas que los usuarios quieren realizar (Matricularse, Consultar notas, Solicitar beca, Buscar máster). La técnica de **Card Sorting** es la herramienta principal para descubrir los modelos mentales de los usuarios y evitar imponer estructuras organizativas internas que solo tienen sentido para quienes trabajan dentro de la institución.
 
-La consistencia en la navegación es un principio no negociable. La navegación global debe aparecer en el mismo lugar, con el mismo orden y con las mismas etiquetas en todas las páginas del sitio. Cualquier variación (un menú que cambia de posición, una etiqueta que se modifica al cambiar de sección, un orden de opciones que se altera) desorienta al usuario y le obliga a reaprender la interfaz en cada página. La navegación local debe ser consistente dentro de cada sección, aunque puede variar entre secciones diferentes (la navegación local de "Productos" es diferente de la de "Soporte", y eso es esperable y correcto).
+**La consistencia en la navegación es un principio no negociable.** La navegación global debe aparecer en el **mismo lugar, con el mismo orden y con las mismas etiquetas** en todas las páginas del sitio. Cualquier variación (un menú que cambia de posición, una etiqueta que se modifica al cambiar de sección, un orden de opciones que se altera) desorienta al usuario y le obliga a reaprender la interfaz en cada página. La navegación local debe ser consistente dentro de cada sección, aunque puede variar entre secciones diferentes (la navegación local de "Productos" es diferente de la de "Soporte", y eso es esperable y correcto).
 
-El etiquetado debe ser probado con usuarios. Lo que para el equipo de diseño es obvio puede no serlo para los usuarios. Etiquetas como "Soluciones", "Recursos", "Área personal" o "Dashboard" son ambiguas y significan cosas diferentes para diferentes personas. Las pruebas de etiquetado (presentar una etiqueta y preguntar "¿qué esperarías encontrar si haces clic aquí?") son rápidas, baratas y revelan discrepancias entre el lenguaje del emisor y el del receptor. El etiquetado también debe considerar el SEO: las etiquetas de navegación son señales potentes para los motores de búsqueda sobre el contenido del sitio.
+**El etiquetado debe probarse con usuarios.** Lo que para el equipo de diseño es obvio puede no serlo para los usuarios. Etiquetas como "Soluciones", "Recursos", "Área personal" o "Dashboard" son ambiguas y significan cosas diferentes para diferentes personas. Las pruebas de etiquetado (presentar una etiqueta y preguntar «¿qué esperarías encontrar si haces clic aquí?») son **rápidas, baratas y revelan discrepancias** entre el lenguaje del emisor y el del receptor. El etiquetado también debe considerar el **SEO**: las etiquetas de navegación son señales potentes para los motores de búsqueda sobre el contenido del sitio.
 
-La profundidad y la amplitud de la estructura deben equilibrarse. Estructuras muy profundas (muchos niveles con pocas opciones en cada uno) obligan al usuario a hacer muchos clics para llegar al contenido, aumentando la probabilidad de abandono. Estructuras muy anchas (muchas opciones en el primer nivel) abruman al usuario con demasiadas alternativas simultáneas, dificultando la decisión. La regla de los 7±2 para la amplitud y la regla de los 3 clics para la profundidad no son leyes físicas sino heurísticas que deben aplicarse con criterio, considerando el contexto específico del sitio y las capacidades de sus usuarios.
+!!! tip "Equilibra profundidad y amplitud"
+    - **Estructuras muy profundas** (muchos niveles con pocas opciones en cada uno) obligan al usuario a hacer muchos clics, aumentando la probabilidad de abandono.
+    - **Estructuras muy anchas** (muchas opciones en el primer nivel) abruman al usuario con demasiadas alternativas simultáneas, dificultando la decisión.
+    - La **regla de los 7±2** gobierna la amplitud y la **regla de los 3 clics** la profundidad: no son leyes físicas sino **heurísticas** que deben aplicarse con criterio, considerando el contexto específico del sitio y las capacidades de sus usuarios.
 
-La navegación debe diseñarse para la peor condición de uso, no para la mejor. Hay que asumir que algunos usuarios tendrán conexiones lentas, pantallas pequeñas, poca experiencia digital, o discapacidades que afecten a su interacción con la interfaz. La navegación debe funcionar sin JavaScript (o con un fallback razonable), sin CSS (el orden del contenido en el HTML debe ser lógico), sin ratón (solo con teclado), y con lectores de pantalla (atributos ARIA correctos). Diseñar para los casos extremos produce una navegación más robusta que funciona para todos.
+**Diseña para la peor condición de uso, no para la mejor.** Hay que asumir que algunos usuarios tendrán conexiones lentas, pantallas pequeñas, poca experiencia digital, o discapacidades que afecten a su interacción con la interfaz. La navegación debe funcionar **sin JavaScript** (o con un *fallback* razonable), **sin CSS** (el orden del contenido en el HTML debe ser lógico), **sin ratón** (solo con teclado), y con **lectores de pantalla** (atributos ARIA correctos). Diseñar para los casos extremos produce una navegación más robusta que funciona para todos.
 
-Por último, la AI debe documentarse y mantenerse como un entregable vivo del proyecto. El sitemap, los wireframes y los user flows no son documentos que se crean al inicio del proyecto y se archivan; deben actualizarse a medida que el proyecto evoluciona, reflejando los cambios en la estructura de contenidos y en la navegación. Un sitemap desactualizado es peor que no tener sitemap, porque induce a error a los nuevos miembros del equipo que lo consulten confiando en su vigencia.
+**Documenta y mantén la AI como entregable vivo.** El sitemap, los *wireframes* y los *user flows* no son documentos que se crean al inicio del proyecto y se archivan; deben actualizarse a medida que el proyecto evoluciona, reflejando los cambios en la estructura de contenidos y en la navegación. **Un sitemap desactualizado es peor que no tener sitemap**, porque induce a error a los nuevos miembros del equipo que lo consulten confiando en su vigencia.
 
 ## Errores frecuentes
 
-El error más común y fundamental en arquitectura de la información es diseñar la estructura del sitio basándose en la organización interna de la empresa o institución en lugar de en las tareas y modelos mentales de los usuarios. Este error, conocido como "espejo de la organización" (org-chart mirroring), produce categorías como "Departamento Comercial", "División de Operaciones" y "Recursos Corporativos" que tienen sentido para los empleados pero no para los clientes. El resultado es que los usuarios no encuentran lo que buscan porque no saben qué departamento gestiona cada cosa. La solución es invertir tiempo en investigación de usuarios (Card Sorting, entrevistas, análisis de logs de búsqueda) para construir la estructura desde la perspectiva del usuario.
+!!! warning "El error más común: el «espejo de la organización»"
+    Diseñar la estructura del sitio basándose en la **organización interna** de la empresa o institución en lugar de en las tareas y modelos mentales de los usuarios. Este error, conocido como ***org-chart mirroring***, produce categorías como «Departamento Comercial», «División de Operaciones» y «Recursos Corporativos» que tienen sentido para los empleados pero no para los clientes. El resultado es que **los usuarios no encuentran lo que buscan** porque no saben qué departamento gestiona cada cosa. **Solución:** invertir tiempo en investigación de usuarios (Card Sorting, entrevistas, análisis de *logs* de búsqueda) para construir la estructura desde la perspectiva del usuario.
 
-Utilizar etiquetas de navegación ambiguas, creativas o excesivamente marketinianas en lugar de etiquetas claras y literales es otro error frecuente. Etiquetas como "Descubre", "Inspírate", "Vive la experiencia" o "Soluciones innovadoras" no comunican qué contenido se encontrará al hacer clic. Las etiquetas deben ser informativas y descriptivas, priorizando la claridad sobre la creatividad. Si existe una palabra que el 95% de los usuarios entiende (por ejemplo, "Ayuda"), no debe reemplazarse por una alternativa más creativa pero menos clara (por ejemplo, "Centro de conocimiento").
+**Etiquetas ambiguas, creativas o excesivamente marketinianas.** Etiquetas como «Descubre», «Inspírate», «Vive la experiencia» o «Soluciones innovadoras» no comunican qué contenido se encontrará al hacer clic. Las etiquetas deben ser **informativas y descriptivas**, priorizando la claridad sobre la creatividad. Si existe una palabra que el **95%** de los usuarios entiende (por ejemplo, «Ayuda»), no debe reemplazarse por una alternativa más creativa pero menos clara (por ejemplo, «Centro de conocimiento»).
 
-Crear estructuras de navegación excesivamente profundas es un error que penaliza tanto la usabilidad como el SEO. Cuando un contenido está a 5, 6 o 7 clics de la página de inicio, es prácticamente invisible tanto para los usuarios (que no llegarán a él navegando) como para los motores de búsqueda (que interpretan la profundidad como una señal de baja importancia). La solución suele pasar por aplanar la jerarquía: reducir el número de niveles reorganizando los contenidos, utilizando mega menús que expongan la estructura hasta el nivel 3 desde cualquier página, y complementando con navegación contextual y búsqueda.
+**Estructuras de navegación excesivamente profundas.** Es un error que penaliza tanto la usabilidad como el **SEO**. Cuando un contenido está a **5, 6 o 7 clics** de la página de inicio, es prácticamente invisible tanto para los usuarios como para los motores de búsqueda (que interpretan la profundidad como una señal de baja importancia). La solución suele pasar por **aplanar la jerarquía**: reducir el número de niveles reorganizando los contenidos, utilizando *mega menús* que expongan la estructura hasta el nivel 3 desde cualquier página, y complementando con navegación contextual y búsqueda.
 
-Ignorar la navegación en dispositivos móviles es un error con consecuencias graves en la actualidad, cuando más del 50% del tráfico web proviene de dispositivos móviles. Diseñar una navegación compleja pensando solo en el escritorio (donde hay espacio de sobra) y luego intentar "adaptarla" al móvil suele resultar en menús inutilizables. El enfoque correcto es mobile-first: diseñar primero la navegación para la pantalla más restrictiva, asegurándose de que es usable en ese contexto, y luego expandirla para pantallas más grandes aprovechando el espacio adicional.
+**Ignorar la navegación en dispositivos móviles.** Es un error con consecuencias graves en la actualidad, cuando **más del 50% del tráfico web** proviene de dispositivos móviles. Diseñar una navegación compleja pensando solo en el escritorio (donde hay espacio de sobra) y luego intentar «adaptarla» al móvil suele resultar en menús inutilizables. El enfoque correcto es **mobile-first**: diseñar primero la navegación para la pantalla más restrictiva, asegurándose de que es usable en ese contexto, y luego expandirla para pantallas más grandes aprovechando el espacio adicional.
 
-No proporcionar múltiples vías de acceso al mismo contenido es un error que penaliza a usuarios con diferentes estrategias de navegación. Algunos usuarios prefieren explorar mediante menús jerárquicos; otros van directamente a la barra de búsqueda y escriben lo que necesitan; otros utilizan los breadcrumbs para navegar hacia arriba; otros siguen enlaces contextuales dentro del contenido. Limitar el acceso a una única vía (por ejemplo, solo mediante el menú) excluye a los usuarios que operan con estrategias diferentes. Una buena AI proporciona redundancia funcional: el mismo contenido debe ser accesible mediante navegación, búsqueda y enlaces contextuales.
+**No proporcionar múltiples vías de acceso al mismo contenido.** Penaliza a usuarios con diferentes estrategias de navegación: unos prefieren explorar mediante menús jerárquicos; otros van directamente a la barra de búsqueda; otros utilizan los *breadcrumbs*; otros siguen enlaces contextuales. Limitar el acceso a una única vía (por ejemplo, solo mediante el menú) excluye a los usuarios que operan con estrategias diferentes. Una buena AI proporciona **redundancia funcional**: el mismo contenido debe ser accesible mediante **navegación, búsqueda y enlaces contextuales**.
 
-Por último, diseñar wireframes sin anotaciones que expliquen las decisiones, los comportamientos interactivos y los estados alternativos es un error que genera malentendidos entre diseño y desarrollo. Un wireframe que muestra un formulario con todos los campos correctamente rellenados no comunica cómo debe verse ese formulario cuando hay errores de validación, cuando está cargando, o cuando se ha enviado correctamente. Las anotaciones son el canal de comunicación entre quien diseña la estructura y quien la implementa, y su ausencia es fuente de iteraciones innecesarias y resultados inconsistentes.
+**Diseñar *wireframes* sin anotaciones.** Genera malentendidos entre diseño y desarrollo. Un *wireframe* que muestra un formulario con todos los campos correctamente rellenados no comunica cómo debe verse ese formulario cuando hay errores de validación, cuando está cargando, o cuando se ha enviado correctamente. Las anotaciones son el **canal de comunicación** entre quien diseña la estructura y quien la implementa, y su ausencia es fuente de iteraciones innecesarias y resultados inconsistentes.
 
 ## Resumen
 

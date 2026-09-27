@@ -44,105 +44,175 @@ El alumnado debe dominar HTML semántico y las etiquetas básicas de medios (`<i
 
 ### 1. Formatos de imagen para la web
 
-La elección del formato de imagen es una decisión de diseño que impacta directamente en el rendimiento, la calidad visual y la experiencia del usuario. Los formatos se dividen en dos grandes familias: raster (mapas de bits, formados por píxeles) y vectoriales (formas geométricas definidas matemáticamente).
+La elección del formato de imagen es una decisión de diseño que impacta directamente en el rendimiento, la calidad visual y la experiencia del usuario. Los formatos se dividen en dos grandes familias:
 
-**JPEG (Joint Photographic Experts Group)** es el formato con pérdida (lossy) más extendido para fotografías. Alcanza ratios de compresión de 10:1 a 20:1 con pérdida de calidad apenas perceptible, lo que lo hace ideal para imágenes con muchos colores y gradientes (fotos de paisajes, retratos, productos). No soporta transparencia ni animación. El formato progresivo (progressive JPEG) permite una carga incremental: primero se muestra una versión borrosa que se va refinando, mejorando la percepción de velocidad.
+- **Raster** — mapas de bits, formados por píxeles.
+- **Vectoriales** — formas geométricas definidas matemáticamente.
+
+**JPEG (Joint Photographic Experts Group)** es el formato con pérdida (lossy) más extendido para fotografías. Alcanza ratios de compresión de **10:1 a 20:1** con pérdida de calidad apenas perceptible, lo que lo hace ideal para imágenes con muchos colores y gradientes (fotos de paisajes, retratos, productos). No soporta transparencia ni animación. El formato progresivo (progressive JPEG) permite una carga incremental: primero se muestra una versión borrosa que se va refinando, mejorando la percepción de velocidad.
 
 **PNG (Portable Network Graphics)** es sin pérdida (lossless), lo que garantiza fidelidad absoluta al original a costa de archivos más pesados. Soporta transparencia total (canal alpha) con 256 niveles de opacidad (PNG-24) o transparencia binaria (PNG-8). Es el formato ideal para capturas de pantalla, logotipos, iconos, ilustraciones con áreas planas de color y cualquier imagen que requiera texto nítido. No está pensado para fotografías (el tamaño sería excesivo).
 
 **SVG (Scalable Vector Graphics)** es un formato vectorial basado en XML. Al ser vectorial, escala infinitamente sin pérdida de calidad, lo que lo hace perfecto para iconos, logotipos, ilustraciones y gráficos. Los archivos SVG son texto y por tanto pueden editarse con cualquier editor de código, comprimirse con gzip, e indexarse por buscadores. Soportan animación y pueden incluir interactividad mediante CSS y JavaScript. Su tamaño es independiente de las dimensiones de visualización.
 
-**WebP** es un formato moderno desarrollado por Google que ofrece compresión superior tanto en modo lossy (vs JPEG) como en modo lossless (vs PNG). Reduce el tamaño de archivo entre un 25% y un 35% respecto a JPEG con calidad equivalente. Soporta transparencia (canal alpha) y animación, lo que lo convierte en un reemplazo universal. Está soportado por el 97% de los navegadores actuales. Su principal inconveniente es que herramientas como Photoshop no lo soportan nativamente sin plugins.
+**WebP** es un formato moderno desarrollado por Google que ofrece compresión superior tanto en modo lossy (vs JPEG) como en modo lossless (vs PNG). Reduce el tamaño de archivo entre un **25%** y un **35%** respecto a JPEG con calidad equivalente. Soporta transparencia (canal alpha) y animación, lo que lo convierte en un reemplazo universal. Está soportado por el **97%** de los navegadores actuales. Su principal inconveniente es que herramientas como Photoshop no lo soportan nativamente sin plugins.
 
-**AVIF (AV1 Image File Format)** es el formato más moderno, basado en el códec de vídeo AV1. Ofrece compresión aún mejor que WebP (20-30% adicional) con calidad sobresaliente. Soporta HDR, profundidad de color de 12 bits, transparencia y animación. El soporte en navegadores es bueno (>93%) pero inferior al de WebP. Es el formato recomendado para proyectos que prioricen el rendimiento sobre la compatibilidad absoluta.
+**AVIF (AV1 Image File Format)** es el formato más moderno, basado en el códec de vídeo AV1. Ofrece compresión aún mejor que WebP (**20-30%** adicional) con calidad sobresaliente. Soporta HDR, profundidad de color de **12 bits**, transparencia y animación. El soporte en navegadores es bueno (**>93%**) pero inferior al de WebP. Es el formato recomendado para proyectos que prioricen el rendimiento sobre la compatibilidad absoluta.
 
-La estrategia recomendada es servir AVIF a navegadores que lo soporten, WebP como fallback, y JPEG/PNG como último recurso, usando el elemento `<picture>`.
+| Formato | Compresión | Transparencia | Animación | Uso ideal |
+|---------|------------|---------------|-----------|-----------|
+| **JPEG** | Con pérdida (**10:1** a **20:1**) | No | No | Fotografías con muchos colores y gradientes |
+| **PNG** | Sin pérdida | Sí (canal alpha) | No | Capturas, logotipos, iconos e ilustraciones con áreas planas |
+| **SVG** | Vectorial (escala sin pérdida) | Sí | Sí | Iconos, logotipos, ilustraciones y gráficos |
+| **WebP** | Con pérdida y sin pérdida (**25-35%** menos que JPEG) | Sí (canal alpha) | Sí | Reemplazo universal (soporte del **97%** de los navegadores) |
+| **AVIF** | Con pérdida (mejor que WebP, **20-30%** adicional) | Sí | Sí | Prioridad al rendimiento (soporte **>93%**) |
+
+!!! tip "Estrategia de formatos"
+    La estrategia recomendada es servir **AVIF** a navegadores que lo soporten, **WebP** como fallback, y **JPEG/PNG** como último recurso, usando el elemento `<picture>`.
 
 ### 2. Optimización de imágenes web
 
-Las imágenes suelen representar entre el 50% y el 70% del peso total de una página web, por lo que su optimización tiene un impacto directo y significativo en el rendimiento. La optimización abarca varias dimensiones:
+Las imágenes suelen representar entre el **50%** y el **70%** del peso total de una página web, por lo que su optimización tiene un impacto directo y significativo en el rendimiento. La optimización abarca varias dimensiones:
 
-**Dimensiones correctas**: El error más común es servir imágenes con dimensiones mayores que el espacio que ocupan en pantalla. Si una imagen se muestra a 400px de ancho, no debe cargarse a 2000px. Las herramientas de desarrollo permiten ver el tamaño "intrínseco" vs "renderizado" de cada imagen. La solución es generar variantes de cada imagen a diferentes resoluciones y servirlas mediante `srcset`.
-
-**Compresión**: La compresión lossy (JPEG, WebP lossy) descarta información visual que el ojo humano apenas percibe, logrando reducciones drásticas de tamaño. Herramientas como Squoosh permiten ajustar interactivamente el nivel de compresión y comparar visualmente el resultado con el original. La compresión lossless (PNG, WebP lossless) reduce el tamaño reorganizando los datos sin perder un solo píxel, mediante técnicas como la eliminación de metadatos EXIF, la reducción de la paleta de colores (en PNG-8) y la optimización de los algoritmos de compresión.
-
-**Lazy loading**: El atributo nativo `loading="lazy"` en etiquetas `<img>` y `<iframe>` indica al navegador que posponga la carga de ese recurso hasta que esté próximo a entrar en el viewport. Esto reduce el tiempo de carga inicial y ahorra ancho de banda (especialmente importante en conexiones móviles). Para casos más avanzados (como carga bajo demanda controlada por JavaScript), se usa la API Intersection Observer.
-
-**Decodificación asíncrona**: `decoding="async"` permite que el navegador decodifique la imagen en segundo plano sin bloquear el renderizado del resto de la página. Es útil para imágenes grandes fuera del viewport inicial.
-
-**Priorización**: `fetchpriority="high"` en la imagen del héroe (LCP - Largest Contentful Paint) le dice al navegador que la cargue con máxima prioridad, mejorando la métrica LCP de Core Web Vitals. `fetchpriority="low"` en imágenes no críticas evita que compitan por ancho de banda con recursos más importantes.
-
-**Automatización**: Para proyectos profesionales, la optimización debe automatizarse. Sharp (Node.js) permite redimensionar, comprimir y convertir formatos por lotes. Herramientas de build como Vite o Webpack pueden integrar plugins que optimizan imágenes durante la construcción del proyecto.
+!!! tip "Técnicas de optimización"
+    - **Dimensiones correctas** — el error más común es servir imágenes con dimensiones mayores que el espacio que ocupan en pantalla. Si una imagen se muestra a **400px** de ancho, no debe cargarse a **2000px**. Las herramientas de desarrollo permiten ver el tamaño «intrínseco» vs «renderizado» de cada imagen. La solución es generar variantes de cada imagen a diferentes resoluciones y servirlas mediante `srcset`.
+    - **Compresión** — la compresión lossy (JPEG, WebP lossy) descarta información visual que el ojo humano apenas percibe, logrando reducciones drásticas de tamaño. Herramientas como Squoosh permiten ajustar interactivamente el nivel de compresión y comparar visualmente el resultado con el original. La compresión lossless (PNG, WebP lossless) reduce el tamaño reorganizando los datos sin perder un solo píxel, mediante técnicas como la eliminación de metadatos EXIF, la reducción de la paleta de colores (en PNG-8) y la optimización de los algoritmos de compresión.
+    - **Lazy loading** — el atributo nativo `loading="lazy"` en etiquetas `<img>` e `<iframe>` indica al navegador que posponga la carga de ese recurso hasta que esté próximo a entrar en el viewport. Esto reduce el tiempo de carga inicial y ahorra ancho de banda (especialmente importante en conexiones móviles). Para casos más avanzados (como carga bajo demanda controlada por JavaScript), se usa la API Intersection Observer.
+    - **Decodificación asíncrona** — `decoding="async"` permite que el navegador decodifique la imagen en segundo plano sin bloquear el renderizado del resto de la página. Es útil para imágenes grandes fuera del viewport inicial.
+    - **Priorización** — `fetchpriority="high"` en la imagen del héroe (LCP - Largest Contentful Paint) le dice al navegador que la cargue con máxima prioridad, mejorando la métrica LCP de Core Web Vitals. `fetchpriority="low"` en imágenes no críticas evita que compitan por ancho de banda con recursos más importantes.
+    - **Automatización** — para proyectos profesionales, la optimización debe automatizarse. Sharp (Node.js) permite redimensionar, comprimir y convertir formatos por lotes. Herramientas de build como Vite o Webpack pueden integrar plugins que optimizan imágenes durante la construcción del proyecto.
 
 ### 3. SVG en profundidad
 
-SVG merece un tratamiento extenso por sus capacidades únicas como formato vectorial para la web. A diferencia de los formatos raster, SVG describe gráficos mediante primitivas geométricas: rectángulos, círculos, elipses, líneas, polígonos, trazados (paths), y texto. Como está basado en XML, un archivo SVG es legible y editable, lo que abre posibilidades que los formatos raster no tienen.
+!!! info "SVG: formato vectorial para la web"
+    SVG merece un tratamiento extenso por sus capacidades únicas como formato vectorial para la web. A diferencia de los formatos raster, SVG describe gráficos mediante primitivas geométricas: rectángulos, círculos, elipses, líneas, polígonos, trazados (paths), y texto. Como está basado en **XML**, un archivo SVG es legible y editable, lo que abre posibilidades que los formatos raster no tienen.
 
-La **creación de SVG** puede realizarse con editores vectoriales (Inkscape - gratuito, Illustrator - profesional, Figma - colaborativo) o directamente escribiendo el código XML. La optimización con SVGO elimina información innecesaria (metadatos de editor, comentarios, precisión decimal excesiva, espacios en blanco) reduciendo típicamente el tamaño entre un 20% y un 50%.
+La **creación de SVG** puede realizarse con editores vectoriales (**Inkscape** - gratuito, **Illustrator** - profesional, **Figma** - colaborativo) o directamente escribiendo el código XML. La optimización con **SVGO** elimina información innecesaria (metadatos de editor, comentarios, precisión decimal excesiva, espacios en blanco) reduciendo típicamente el tamaño entre un **20%** y un **50%**.
 
-Los **métodos de inserción** de SVG en HTML determinan qué se puede hacer con él: inline (pegando el código SVG directamente en el HTML) permite acceder a cada elemento interno con CSS y JavaScript para animar colores, formas y transformaciones, siendo el método más potente; `<img src="icono.svg">` es el más simple pero no permite manipular elementos internos, aunque sí se beneficia del almacenamiento en caché del navegador; `background-image: url(icono.svg)` funciona igual que `<img>`; `<object>` permite incluir SVG externos con cierto nivel de interacción pero su comportamiento es inconsistente entre navegadores.
+Los **métodos de inserción** de SVG en HTML determinan qué se puede hacer con él:
 
-Los **sprites SVG** son una técnica para combinar múltiples iconos en un solo archivo, similar a los sprites de imágenes tradicionales. Mediante `<symbol>` y `<use>`, se definen los iconos una vez y se referencian múltiples veces en la página, ahorrando peticiones HTTP y permitiendo cambiar colores mediante la propiedad `fill` heredada con `currentColor`.
+- **Inline** — pegando el código SVG directamente en el HTML permite acceder a cada elemento interno con CSS y JavaScript para animar colores, formas y transformaciones, siendo el método más potente.
+- **`<img src="icono.svg">`** — es el más simple pero no permite manipular elementos internos, aunque sí se beneficia del almacenamiento en caché del navegador.
+- **`background-image: url(icono.svg)`** — funciona igual que `<img>`.
+- **`<object>`** — permite incluir SVG externos con cierto nivel de interacción pero su comportamiento es inconsistente entre navegadores.
+
+!!! tip "Sprites SVG"
+    Los **sprites SVG** son una técnica para combinar múltiples iconos en un solo archivo, similar a los sprites de imágenes tradicionales. Mediante `<symbol>` y `<use>`, se definen los iconos una vez y se referencian múltiples veces en la página, ahorrando peticiones HTTP y permitiendo cambiar colores mediante la propiedad `fill` heredada con `currentColor`.
 
 ### 4. Audio en la web
 
 El audio en la web ha evolucionado desde los molestos reproductores automáticos de los años 90 hasta experiencias controladas y accesibles. El elemento `<audio>` de HTML5 proporciona una forma nativa y semántica de incluir audio sin necesidad de plugins.
 
-Los **formatos de audio** principales son: MP3 (MPEG-1 Audio Layer 3), el más universal, con buena compresión y soporte en absolutamente todos los navegadores; AAC (Advanced Audio Coding), el formato preferido por Apple, con mejor calidad que MP3 a la misma tasa de bits; OGG Vorbis, formato de código abierto sin patentes, soportado por Firefox y Chrome pero no por Safari; WAV, formato sin compresión, fiel al original pero con archivos enormes, solo para casos donde la calidad sin pérdida sea imprescindible.
+Los **formatos de audio** principales son:
 
-La etiqueta `<audio>` acepta los atributos: `controls` (muestra los controles nativos del navegador: play/pause, volumen, progreso), `autoplay` (reproducción automática, bloqueado por la mayoría de navegadores si no va acompañado de `muted`), `loop` (repetición continua), `muted` (silenciado), `preload` (none/metadata/auto - controla cuánto contenido se precarga). Para máxima compatibilidad, se proporcionan múltiples fuentes dentro de `<audio>` con elementos `<source>` en diferentes formatos: primero OGG (menor tamaño), luego MP3 (compatibilidad universal).
+| Formato | Características | Soporte |
+|---------|-----------------|---------|
+| **MP3** (MPEG-1 Audio Layer 3) | El más universal, con buena compresión | Absolutamente todos los navegadores |
+| **AAC** (Advanced Audio Coding) | Mejor calidad que MP3 a la misma tasa de bits | Formato preferido por Apple |
+| **OGG Vorbis** | Código abierto sin patentes | Firefox y Chrome, pero no Safari |
+| **WAV** | Sin compresión, fiel al original, archivos enormes | Solo para casos donde la calidad sin pérdida sea imprescindible |
 
-La **accesibilidad** del audio requiere transcripciones textuales completas del contenido hablado, que deben colocarse cerca del reproductor. Para contenidos de audio complejos (podcasts con múltiples interlocutores), la transcripción debe identificar quién habla. Los controles nativos del navegador son generalmente accesibles por teclado, pero los reproductores personalizados deben implementar cuidadosamente la navegación por teclado, etiquetas ARIA y gestión del foco.
+La etiqueta `<audio>` acepta los atributos:
+
+- **`controls`** — muestra los controles nativos del navegador (play/pause, volumen, progreso).
+- **`autoplay`** — reproducción automática, bloqueado por la mayoría de navegadores si no va acompañado de `muted`.
+- **`loop`** — repetición continua.
+- **`muted`** — silenciado.
+- **`preload`** — `none`/`metadata`/`auto`: controla cuánto contenido se precarga.
+
+Para máxima compatibilidad, se proporcionan múltiples fuentes dentro de `<audio>` con elementos `<source>` en diferentes formatos: primero **OGG** (menor tamaño), luego **MP3** (compatibilidad universal).
+
+!!! tip "Accesibilidad del audio"
+    La **accesibilidad** del audio requiere transcripciones textuales completas del contenido hablado, que deben colocarse cerca del reproductor. Para contenidos de audio complejos (podcasts con múltiples interlocutores), la transcripción debe identificar quién habla. Los controles nativos del navegador son generalmente accesibles por teclado, pero los reproductores personalizados deben implementar cuidadosamente la navegación por teclado, etiquetas ARIA y gestión del foco.
 
 ### 5. Vídeo en la web
 
 El vídeo es el contenido más complejo y pesado de servir en la web, pero también uno de los más efectivos para comunicación y marketing. El elemento `<video>` de HTML5, al igual que `<audio>`, proporciona reproducción nativa.
 
-Los **códecs y contenedores** son conceptos que a menudo se confunden. El contenedor (MP4, WebM, OGG) es el formato del archivo que agrupa las pistas de vídeo, audio, subtítulos y metadatos. El códec (H.264, VP8, VP9, AV1, Theora) es el algoritmo que comprime y descomprime cada pista. Un archivo MP4 típicamente contiene vídeo codificado con H.264 y audio con AAC. Un archivo WebM contiene vídeo VP8/VP9 y audio OGG Vorbis/Opus.
+!!! info "Códec vs contenedor"
+    Los **códecs y contenedores** son conceptos que a menudo se confunden. El **contenedor** (MP4, WebM, OGG) es el formato del archivo que agrupa las pistas de vídeo, audio, subtítulos y metadatos. El **códec** (H.264, VP8, VP9, AV1, Theora) es el algoritmo que comprime y descomprime cada pista. Un archivo **MP4** típicamente contiene vídeo codificado con **H.264** y audio con **AAC**. Un archivo **WebM** contiene vídeo **VP8/VP9** y audio **OGG Vorbis/Opus**.
 
-La combinación más compatible es MP4 con H.264 + AAC, soportada por todos los navegadores. WebM con VP8/VP9 ofrece mejor compresión y es de código abierto, pero Safari no lo soporta (aunque sí soporta WebM desde 2021). La recomendación es proporcionar ambos formatos: `<source src="video.webm" type="video/webm">` seguido de `<source src="video.mp4" type="video/mp4">`.
+La combinación más compatible es **MP4 con H.264 + AAC**, soportada por todos los navegadores. **WebM con VP8/VP9** ofrece mejor compresión y es de código abierto, pero Safari no lo soporta (aunque sí soporta WebM desde 2021). La recomendación es proporcionar ambos formatos: `<source src="video.webm" type="video/webm">` seguido de `<source src="video.mp4" type="video/mp4">`.
 
-La **optimización de vídeo** con FFmpeg permite controlar la resolución (escalar a 1080p, 720p o 480p según necesidad), el bitrate (menor bitrate = menor tamaño pero menor calidad), el códec, los fotogramas por segundo, y extraer fotogramas clave para el poster. El streaming adaptativo (HLS de Apple o DASH estándar) divide el vídeo en segmentos y ofrece múltiples calidades, permitiendo al reproductor cambiar dinámicamente según la conexión del usuario. Servir vídeo desde una CDN reduce la latencia y mejora la experiencia global.
+La **optimización de vídeo** con FFmpeg permite controlar:
 
-Para **vídeo responsive**, el truco del padding-bottom 56.25% (9/16 = 56.25%) crea un contenedor con relación de aspecto fija que se adapta a cualquier ancho: el contenedor padre tiene `position: relative; padding-bottom: 56.25%`, y el `<iframe>` o `<video>` interno tiene `position: absolute; width: 100%; height: 100%`.
+- **Resolución** — escalar a **1080p**, **720p** o **480p** según necesidad.
+- **Bitrate** — menor bitrate = menor tamaño pero menor calidad.
+- **Códec** y **fotogramas por segundo**.
+- **Fotogramas clave** — para extraer el poster.
+
+El **streaming adaptativo** (HLS de Apple o DASH estándar) divide el vídeo en segmentos y ofrece múltiples calidades, permitiendo al reproductor cambiar dinámicamente según la conexión del usuario. Servir vídeo desde una **CDN** reduce la latencia y mejora la experiencia global.
+
+!!! tip "Vídeo responsive"
+    Para **vídeo responsive**, el truco del `padding-bottom` **56.25%** (9/16 = 56.25%) crea un contenedor con relación de aspecto fija que se adapta a cualquier ancho: el contenedor padre tiene `position: relative; padding-bottom: 56.25%`, y el `<iframe>` o `<video>` interno tiene `position: absolute; width: 100%; height: 100%`.
 
 ### 6. Accesibilidad en contenido multimedia
 
-La accesibilidad del contenido multimedia es un requisito legal (Real Decreto 1112/2018 en España, que transpone la Directiva Europea 2016/2102) y ético. Para vídeos, el elemento `<track>` permite asociar archivos de subtítulos en formato WebVTT: `<track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>`. WebVTT es un formato de texto plano que asocia cada línea de subtítulo con un rango de tiempo. Los subtítulos no solo ayudan a personas sordas o con dificultades auditivas, sino también a quienes ven el vídeo en entornos ruidosos o sin auriculares.
+!!! warning "Requisito legal y ético"
+    La accesibilidad del contenido multimedia es un **requisito legal** (**Real Decreto 1112/2018** en España, que transpone la Directiva Europea **2016/2102**) y ético. Para vídeos, el elemento `<track>` permite asociar archivos de subtítulos en formato WebVTT: `<track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>`. **WebVTT** es un formato de texto plano que asocia cada línea de subtítulo con un rango de tiempo. Los subtítulos no solo ayudan a personas sordas o con dificultades auditivas, sino también a quienes ven el vídeo en entornos ruidosos o sin auriculares.
 
-Además de subtítulos, existen las descripciones de audio (`kind="descriptions"`), narraciones que describen lo que sucede visualmente para personas ciegas, y los capítulos (`kind="chapters"`), que permiten navegar por secciones del vídeo. Las transcripciones textuales completas (texto íntegro del contenido hablado más descripciones de las acciones visuales) deben proporcionarse como contenido HTML junto al vídeo, beneficiando también al SEO.
+Además de subtítulos, existen:
 
-Para audio, la accesibilidad se centra en las transcripciones y en garantizar que los controles del reproductor sean operables por teclado y lectores de pantalla. Para imágenes, el atributo `alt` proporciona texto alternativo que los lectores de pantalla leen en lugar de la imagen. Las imágenes decorativas deben usar `alt=""` (vacío, no ausente) para que los lectores las ignoren.
+- **Descripciones de audio** (`kind="descriptions"`) — narraciones que describen lo que sucede visualmente para personas ciegas.
+- **Capítulos** (`kind="chapters"`) — permiten navegar por secciones del vídeo.
+- **Transcripciones textuales completas** — texto íntegro del contenido hablado más descripciones de las acciones visuales; deben proporcionarse como contenido HTML junto al vídeo, beneficiando también al SEO.
+
+Para audio, la accesibilidad se centra en las transcripciones y en garantizar que los controles del reproductor sean operables por teclado y lectores de pantalla. Para imágenes, el atributo `alt` proporciona texto alternativo que los lectores de pantalla leen en lugar de la imagen. Las imágenes decorativas deben usar **`alt=""`** (vacío, no ausente) para que los lectores las ignoren.
 
 ### 7. CSS Animations y Transitions
 
 Las animaciones CSS permiten crear movimiento y dinamismo en las interfaces web sin necesidad de JavaScript, aprovechando la aceleración por hardware del navegador para un rendimiento óptimo.
 
-Las **transiciones** (`transition`) suavizan el cambio entre dos estados de un elemento. Se disparan cuando una propiedad CSS cambia de valor (típicamente por eventos como `:hover`, `:focus`, o al añadir/quitar una clase con JavaScript). La sintaxis es: `transition: propiedad duración timing-function retraso`. Se puede animar la mayoría de propiedades CSS, pero `transform` y `opacity` son las más eficientes porque solo requieren composición por GPU, sin necesidad de recalcular el layout o repintar.
+!!! info "Transiciones vs animaciones"
+    Las **transiciones** (`transition`) suavizan el cambio entre dos estados de un elemento. Se disparan cuando una propiedad CSS cambia de valor (típicamente por eventos como `:hover`, `:focus`, o al añadir/quitar una clase con JavaScript). La sintaxis es: `transition: propiedad duración timing-function retraso`. Se puede animar la mayoría de propiedades CSS, pero **`transform`** y **`opacity`** son las más eficientes porque solo requieren composición por GPU, sin necesidad de recalcular el layout o repintar.
 
-Las **animaciones** (`animation` + `@keyframes`) permiten secuencias complejas independientes de eventos. La regla `@keyframes` define los estados intermedios de la animación mediante porcentajes de progreso (0% = inicio, 100% = final). Las propiedades de `animation` controlan la duración, el retraso, la función de aceleración, el número de iteraciones, la dirección, el modo de relleno (cómo se ve el elemento antes/después de la animación) y el estado de reproducción.
+    Las **animaciones** (`animation` + `@keyframes`) permiten secuencias complejas independientes de eventos. La regla `@keyframes` define los estados intermedios de la animación mediante porcentajes de progreso (**0%** = inicio, **100%** = final). Las propiedades de `animation` controlan la duración, el retraso, la función de aceleración, el número de iteraciones, la dirección, el modo de relleno (cómo se ve el elemento antes/después de la animación) y el estado de reproducción.
 
-Las **curvas de easing** definen cómo progresa la animación en el tiempo. `linear` es velocidad constante; `ease` (por defecto) acelera al principio y decelera al final; `ease-in` acelera progresivamente; `ease-out` decelera progresivamente; `ease-in-out` combina ambas. La función `cubic-bezier()` permite crear curvas personalizadas. La función `steps()` divide la animación en saltos discretos, útil para animaciones sprite (como un personaje caminando).
+Las **curvas de easing** definen cómo progresa la animación en el tiempo:
+
+- **`linear`** — velocidad constante.
+- **`ease`** (por defecto) — acelera al principio y decelera al final.
+- **`ease-in`** — acelera progresivamente.
+- **`ease-out`** — decelera progresivamente.
+- **`ease-in-out`** — combina ambas.
+- **`cubic-bezier()`** — permite crear curvas personalizadas.
+- **`steps()`** — divide la animación en saltos discretos, útil para animaciones sprite (como un personaje caminando).
 
 ### 8. Rendimiento en animaciones
 
-No todas las propiedades CSS son iguales en términos de rendimiento de animación. El navegador pasa por tres etapas al renderizar cambios: Layout (recalcular posiciones y tamaños), Paint (rellenar píxeles), y Composite (ensamblar capas en pantalla). Las propiedades como `width`, `height`, `margin`, `padding` fuerzan las tres etapas, siendo las más costosas. `color`, `background-color`, `box-shadow` fuerzan Paint y Composite. `transform` (translate, scale, rotate) y `opacity` solo requieren Composite porque el navegador las maneja en una capa separada de la GPU.
+No todas las propiedades CSS son iguales en términos de rendimiento de animación. El navegador pasa por tres etapas al renderizar cambios: **Layout** (recalcular posiciones y tamaños), **Paint** (rellenar píxeles), y **Composite** (ensamblar capas en pantalla).
 
-La propiedad `will-change` avisa al navegador de que un elemento va a cambiar, permitiéndole crear una capa de GPU anticipadamente: `will-change: transform, opacity`. Debe usarse con moderación (no aplicar a todos los elementos) y solo cuando la animación es inminente, ya que cada capa GPU consume memoria.
+| Propiedades | Etapas del renderizado | Coste |
+|-------------|------------------------|-------|
+| `width`, `height`, `margin`, `padding` | Layout + Paint + Composite | El más alto: fuerzan las tres etapas |
+| `color`, `background-color`, `box-shadow` | Paint + Composite | Medio |
+| `transform` (translate, scale, rotate), `opacity` | Composite | El más bajo: el navegador las maneja en una capa separada de la GPU |
 
-La media query `prefers-reduced-motion: reduce` es fundamental para accesibilidad. Los usuarios pueden configurar su sistema operativo para reducir animaciones (por trastornos vestibulares, migrañas o simple preferencia). Respetar esta preferencia es tan importante como respetar el modo oscuro. La implementación típica desactiva o reduce drásticamente las animaciones.
+La propiedad **`will-change`** avisa al navegador de que un elemento va a cambiar, permitiéndole crear una capa de GPU anticipadamente: `will-change: transform, opacity`. Debe usarse con **moderación** (no aplicar a todos los elementos) y solo cuando la animación es inminente, ya que cada capa GPU consume memoria.
+
+!!! warning "prefers-reduced-motion"
+    La media query `prefers-reduced-motion: reduce` es fundamental para accesibilidad. Los usuarios pueden configurar su sistema operativo para reducir animaciones (por trastornos vestibulares, migrañas o simple preferencia). Respetar esta preferencia es **tan importante como respetar el modo oscuro**. La implementación típica desactiva o reduce drásticamente las animaciones.
 
 ### 9. Lottie y animaciones vectoriales
 
-Lottie es una librería de código abierto creada por Airbnb que renderiza animaciones exportadas desde Adobe After Effects en tiempo real. El flujo de trabajo es: un diseñador crea una animación en After Effects, la exporta como JSON usando la extensión gratuita Bodymovin, y el desarrollador la reproduce en la web usando lottie-web (para vanilla JS) o lottie-react (para React).
+!!! info "Lottie"
+    **Lottie** es una librería de código abierto creada por **Airbnb** que renderiza animaciones exportadas desde Adobe After Effects en tiempo real. El flujo de trabajo es: un diseñador crea una animación en After Effects, la exporta como **JSON** usando la extensión gratuita **Bodymovin**, y el desarrollador la reproduce en la web usando **lottie-web** (para vanilla JS) o **lottie-react** (para React).
 
-Las ventajas sobre otros formatos de animación son significativas: los archivos JSON de Lottie son extremadamente ligeros (unos pocos KB frente a los cientos de KB o MB de un GIF o vídeo equivalente); la animación es vectorial y por tanto escala infinitamente; es interactiva (se puede controlar la reproducción, velocidad, dirección programáticamente); y la calidad es profesional (las mismas animaciones que verías en una app nativa). Lottie se usa extensivamente en apps como Uber, Google Pay, Duolingo y muchas más para iconos animados, pantallas de carga, onboarding, y microinteracciones complejas.
+Las ventajas sobre otros formatos de animación son significativas:
+
+- **Extremadamente ligeros** — los archivos JSON de Lottie pesan unos pocos KB frente a los cientos de KB o MB de un GIF o vídeo equivalente.
+- **Vectoriales** — la animación escala infinitamente.
+- **Interactivas** — se puede controlar la reproducción, velocidad y dirección programáticamente.
+- **Calidad profesional** — las mismas animaciones que verías en una app nativa.
+
+Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo** y muchas más para iconos animados, pantallas de carga, onboarding, y microinteracciones complejas.
 
 ## Ejemplos guiados
 
 ### Ejemplo Guiado 1: Galería de imágenes con lazy loading y formatos modernos
 
-Implementación de una galería que optimiza la carga mediante lazy loading nativo, usa WebP/AVIF con fallback, y aplica dimensiones correctas con srcset. Incluye placeholders que ocupan espacio para evitar layout shift.
+!!! example "Contexto pedagógico"
+    Implementación de una galería que optimiza la carga mediante lazy loading nativo, usa WebP/AVIF con fallback, y aplica dimensiones correctas con srcset. Incluye placeholders que ocupan espacio para evitar layout shift.
 
 ```html
 <!DOCTYPE html>
@@ -361,7 +431,8 @@ Implementación de una galería que optimiza la carga mediante lazy loading nati
 
 ### Ejemplo Guiado 2: Reproducción de audio y vídeo HTML5 con accesibilidad
 
-Ejemplo completo que demuestra la integración de audio y vídeo usando las etiquetas nativas de HTML5, con múltiples formatos para compatibilidad, subtítulos WebVTT accesibles, y el truco del padding-bottom para hacer el vídeo responsive.
+!!! example "Contexto pedagógico"
+    Ejemplo completo que demuestra la integración de audio y vídeo usando las etiquetas nativas de HTML5, con múltiples formatos para compatibilidad, subtítulos WebVTT accesibles, y el truco del padding-bottom para hacer el vídeo responsive.
 
 ```html
 <!DOCTYPE html>
@@ -584,7 +655,8 @@ Ejemplo completo que demuestra la integración de audio y vídeo usando las etiq
 
 ### Ejemplo Guiado 3: Animaciones CSS - Loader spinner, fade in, slide in, botón like
 
-Conjunto de animaciones CSS prácticas y reutilizables. Incluye un spinner de carga (loader) usando solo CSS, animaciones de entrada (fade-in, slide-in) para revelar contenido al hacer scroll, y una microinteracción de botón like.
+!!! example "Contexto pedagógico"
+    Conjunto de animaciones CSS prácticas y reutilizables. Incluye un spinner de carga (loader) usando solo CSS, animaciones de entrada (fade-in, slide-in) para revelar contenido al hacer scroll, y una microinteracción de botón like.
 
 ```html
 <!DOCTYPE html>
@@ -934,7 +1006,8 @@ Conjunto de animaciones CSS prácticas y reutilizables. Incluye un spinner de ca
 
 ### Ejemplo Guiado 4: Animación SVG - Dibujar trazado con stroke-dasharray
 
-Una técnica espectacular de animación SVG: hacer que un trazado se "dibuje a sí mismo" manipulando las propiedades stroke-dasharray y stroke-dashoffset. El efecto es ideal para logotipos animados, gráficos de progreso, o revelar ilustraciones.
+!!! example "Contexto pedagógico"
+    Una técnica espectacular de animación SVG: hacer que un trazado se "dibuje a sí mismo" manipulando las propiedades stroke-dasharray y stroke-dashoffset. El efecto es ideal para logotipos animados, gráficos de progreso, o revelar ilustraciones.
 
 ```html
 <!DOCTYPE html>
@@ -1213,7 +1286,8 @@ Una técnica espectacular de animación SVG: hacer que un trazado se "dibuje a s
 
 ### Ejemplo Guiado 5: Reproductor de vídeo personalizado con API de HTML5
 
-Aunque los controles nativos del navegador son funcionales, en proyectos profesionales a menudo necesitamos un reproductor personalizado. Este ejemplo muestra cómo controlar la reproducción de vídeo mediante la API JavaScript de HTML5, creando controles personalizados con HTML/CSS.
+!!! example "Contexto pedagógico"
+    Aunque los controles nativos del navegador son funcionales, en proyectos profesionales a menudo necesitamos un reproductor personalizado. Este ejemplo muestra cómo controlar la reproducción de vídeo mediante la API JavaScript de HTML5, creando controles personalizados con HTML/CSS.
 
 ```html
 <!DOCTYPE html>
@@ -1515,7 +1589,8 @@ Aunque los controles nativos del navegador son funcionales, en proyectos profesi
 
 ### Ejemplo Guiado 6: Transiciones CSS para menús y modales
 
-Las transiciones CSS suavizan los cambios de estado mejorando la experiencia de usuario. Este ejemplo muestra cómo aplicar transiciones a menús desplegables, tooltips y modales, usando transform y opacity para máximo rendimiento.
+!!! example "Contexto pedagógico"
+    Las transiciones CSS suavizan los cambios de estado mejorando la experiencia de usuario. Este ejemplo muestra cómo aplicar transiciones a menús desplegables, tooltips y modales, usando transform y opacity para máximo rendimiento.
 
 ```html
 <!DOCTYPE html>
@@ -1842,7 +1917,8 @@ Las transiciones CSS suavizan los cambios de estado mejorando la experiencia de 
 
 ### Ejemplo Guiado 7: Microinteracciones avanzadas
 
-Colección de microinteracciones profesionales: botón de añadir al carrito con feedback visual, switch/toggle animado, notificación toast que aparece y desaparece, y pull-to-refresh simulado.
+!!! example "Contexto pedagógico"
+    Colección de microinteracciones profesionales: botón de añadir al carrito con feedback visual, switch/toggle animado, notificación toast que aparece y desaparece, y pull-to-refresh simulado.
 
 ```html
 <!DOCTYPE html>
@@ -2162,7 +2238,8 @@ Colección de microinteracciones profesionales: botón de añadir al carrito con
 
 ### Ejemplo Guiado 8: Optimización con FFmpeg y configuración de vídeo
 
-Guía práctica (con comandos) para optimizar vídeos para la web usando FFmpeg. Incluye compresión, cambio de resolución, extracción de poster, y generación de versiones para streaming adaptativo.
+!!! example "Contexto pedagógico"
+    Guía práctica (con comandos) para optimizar vídeos para la web usando FFmpeg. Incluye compresión, cambio de resolución, extracción de poster, y generación de versiones para streaming adaptativo.
 
 ```html
 <!DOCTYPE html>
@@ -2318,7 +2395,8 @@ echo "Optimización completada"</code></pre>
 
 ### Ejemplo Guiado 9: SVG inline con animación CSS y sprite
 
-Demostración del poder del SVG inline: iconos animados que cambian de color con la herencia de currentColor, sprites SVG con symbol/use, y animación de propiedades SVG con CSS.
+!!! example "Contexto pedagógico"
+    Demostración del poder del SVG inline: iconos animados que cambian de color con la herencia de currentColor, sprites SVG con symbol/use, y animación de propiedades SVG con CSS.
 
 ```html
 <!DOCTYPE html>
@@ -2531,7 +2609,8 @@ Demostración del poder del SVG inline: iconos animados que cambian de color con
 
 ### Ejemplo Guiado 10: Efecto parallax y animaciones al hacer scroll
 
-Combinación de animaciones CSS con detección de scroll usando Intersection Observer. Los elementos aparecen con fade-in y slide-in cuando entran en el viewport, y un efecto parallax sutil en la sección hero. Todo con respeto a prefers-reduced-motion.
+!!! example "Contexto pedagógico"
+    Combinación de animaciones CSS con detección de scroll usando Intersection Observer. Los elementos aparecen con fade-in y slide-in cuando entran en el viewport, y un efecto parallax sutil en la sección hero. Todo con respeto a prefers-reduced-motion.
 
 ```html
 <!DOCTYPE html>
@@ -2748,15 +2827,27 @@ Combinación de animaciones CSS con detección de scroll usando Intersection Obs
 
 ### Caso 1: Apple - Excelencia en multimedia web
 
-Apple es el referente mundial en integración multimedia web. Su página de producto (por ejemplo, del iPhone o MacBook) utiliza imágenes de producto de altísima calidad servidas mediante `<picture>` con múltiples resoluciones y formatos (AVIF para navegadores modernos, JPEG como fallback). Las imágenes de producto se cargan progresivamente: primero una versión de baja resolución que se muestra como placeholder, y cuando el usuario hace scroll, se cargan las versiones de alta resolución usando Intersection Observer. Apple fue pionero en el uso de vídeos de fondo en héroe (autoplay, muted, loop, sin controles) para demostrar productos en movimiento, siempre con el atributo `playsinline` para dispositivos móviles. Sus animaciones de scroll (elementos que aparecen, imágenes que se transforman) están implementadas con JavaScript de alto rendimiento que respeta `prefers-reduced-motion`. El detalle más impresionante es su uso de secuencias de imágenes (sprite sheets) animadas con JavaScript al hacer scroll para crear la ilusión de que el producto gira en 3D mientras el usuario se desplaza por la página, una técnica que logra un impacto visual extraordinario con un peso de archivo mínimo (un solo PNG de sprites en lugar de un vídeo de varios megas). También son ejemplares en accesibilidad: todas las imágenes tienen atributos `alt` descriptivos redactados por especialistas, y los vídeos incluyen subtítulos y descripciones de audio.
+Apple es el referente mundial en integración multimedia web. Su página de producto (por ejemplo, del iPhone o MacBook) utiliza imágenes de producto de altísima calidad servidas mediante `<picture>` con múltiples resoluciones y formatos (**AVIF** para navegadores modernos, **JPEG** como fallback). Las imágenes de producto se cargan progresivamente: primero una versión de baja resolución que se muestra como placeholder, y cuando el usuario hace scroll, se cargan las versiones de alta resolución usando **Intersection Observer**. Apple fue pionero en el uso de vídeos de fondo en héroe (`autoplay`, `muted`, `loop`, sin controles) para demostrar productos en movimiento, siempre con el atributo `playsinline` para dispositivos móviles. Sus animaciones de scroll (elementos que aparecen, imágenes que se transforman) están implementadas con JavaScript de alto rendimiento que respeta `prefers-reduced-motion`. El detalle más impresionante es su uso de secuencias de imágenes (**sprite sheets**) animadas con JavaScript al hacer scroll para crear la ilusión de que el producto gira en 3D mientras el usuario se desplaza por la página, una técnica que logra un impacto visual extraordinario con un peso de archivo mínimo (un solo PNG de sprites en lugar de un vídeo de varios megas). También son ejemplares en accesibilidad: todas las imágenes tienen atributos `alt` descriptivos redactados por especialistas, y los vídeos incluyen subtítulos y descripciones de audio.
 
 ### Caso 2: Netflix - Streaming y optimización de vídeo
 
-Netflix es el caso de estudio definitivo en optimización de vídeo a gran escala. Aunque su reproductor es una aplicación compleja, los principios que aplica son directamente relevantes para la web. Netflix codifica cada título en más de 20 versiones diferentes: múltiples resoluciones (desde 240p hasta 4K HDR), múltiples códecs (AV1 para dispositivos modernos, H.264/HEVC para compatibilidad), y múltiples bitrates. El reproductor selecciona dinámicamente la versión óptima según la conexión del usuario usando streaming adaptativo (DASH). Para la web, su página de inicio utiliza imágenes de carátulas en formato AVIF/WebP con `loading="lazy"` y `decoding="async"` para optimizar la carga. Los avances (trailers) en la ficha de cada título usan vídeos cortos con `autoplay muted playsinline` y se detienen automáticamente al salir del viewport (usando Intersection Observer para pausar la reproducción), ahorrando ancho de banda. Su interfaz de usuario emplea microinteracciones sutiles: las carátulas se agrandan ligeramente al pasar el ratón o al hacer foco con teclado, con una transición de `transform: scale(1.1)` que no afecta al layout (la escala en transform no modifica el flujo del documento). También implementan skeleton screens (placeholders animados) mientras se cargan las imágenes, mejorando la percepción de velocidad.
+Netflix es el caso de estudio definitivo en optimización de vídeo a gran escala. Aunque su reproductor es una aplicación compleja, los principios que aplica son directamente relevantes para la web. Netflix codifica cada título en **más de 20 versiones diferentes**:
+
+- **Múltiples resoluciones** — desde **240p** hasta **4K HDR**.
+- **Múltiples códecs** — **AV1** para dispositivos modernos, **H.264/HEVC** para compatibilidad.
+- **Múltiples bitrates**.
+
+El reproductor selecciona dinámicamente la versión óptima según la conexión del usuario usando **streaming adaptativo (DASH)**. Para la web, su página de inicio utiliza imágenes de carátulas en formato **AVIF/WebP** con `loading="lazy"` y `decoding="async"` para optimizar la carga. Los avances (trailers) en la ficha de cada título usan vídeos cortos con `autoplay muted playsinline` y se detienen automáticamente al salir del viewport (usando Intersection Observer para pausar la reproducción), ahorrando ancho de banda. Su interfaz de usuario emplea microinteracciones sutiles: las carátulas se agrandan ligeramente al pasar el ratón o al hacer foco con teclado, con una transición de `transform: scale(1.1)` que no afecta al layout (la escala en transform no modifica el flujo del documento). También implementan skeleton screens (placeholders animados) mientras se cargan las imágenes, mejorando la percepción de velocidad.
 
 ### Caso 3: Medium - Imágenes, rendimiento y experiencia de lectura
 
-Medium es la plataforma de publicación que mejor equilibra contenido textual y multimedia. Su enfoque en la experiencia de lectura les ha llevado a implementar una estrategia de carga de imágenes ejemplar. Utilizan placeholders de baja calidad (LQIP - Low Quality Image Placeholders): una versión extremadamente comprimida y borrosa de la imagen (típicamente un JPEG de ~200 bytes en base64) que se muestra inmediatamente mientras la imagen real se carga de forma diferida. La transición entre el placeholder borroso y la imagen nítida (efecto "blur-up") crea una experiencia de carga muy pulida. Las imágenes dentro de los artículos usan `loading="lazy"` y el ancho máximo está limitado con CSS para no exceder el ancho de lectura óptimo. Los GIFs animados se convierten automáticamente a vídeos MP4 (mucho más eficientes: un GIF de 5MB puede convertirse en un MP4 de 500KB con la misma calidad visual), una práctica que debería ser estándar en la industria. Medium también destaca por sus animaciones sutiles: los botones de aplauso tienen una microinteracción de confeti, el menú de navegación aparece/desaparece con transición al hacer scroll, y las imágenes dentro de los artículos se amplían en un lightbox con animación de zoom. Todas estas animaciones respetan `prefers-reduced-motion`. Su modo oscuro está implementado con `prefers-color-scheme` y ajusta no solo los colores de fondo y texto, sino también el brillo y contraste de las imágenes.
+Medium es la plataforma de publicación que mejor equilibra contenido textual y multimedia. Su enfoque en la experiencia de lectura les ha llevado a implementar una estrategia de carga de imágenes ejemplar. Utilizan placeholders de baja calidad (**LQIP** - Low Quality Image Placeholders): una versión extremadamente comprimida y borrosa de la imagen (típicamente un JPEG de **~200 bytes** en base64) que se muestra inmediatamente mientras la imagen real se carga de forma diferida. La transición entre el placeholder borroso y la imagen nítida (efecto «blur-up») crea una experiencia de carga muy pulida. Las imágenes dentro de los artículos usan `loading="lazy"` y el ancho máximo está limitado con CSS para no exceder el ancho de lectura óptimo. Los GIFs animados se convierten automáticamente a vídeos MP4 (mucho más eficientes: un GIF de **5MB** puede convertirse en un MP4 de **500KB** con la misma calidad visual), una práctica que debería ser estándar en la industria. Medium también destaca por sus animaciones sutiles:
+
+- **Botones de aplauso** — microinteracción de confeti.
+- **Menú de navegación** — aparece/desaparece con transición al hacer scroll.
+- **Imágenes de los artículos** — se amplían en un lightbox con animación de zoom.
+
+Todas estas animaciones respetan `prefers-reduced-motion`. Su modo oscuro está implementado con `prefers-color-scheme` y ajusta no solo los colores de fondo y texto, sino también el brillo y contraste de las imágenes.
 
 ## Actividades guiadas
 

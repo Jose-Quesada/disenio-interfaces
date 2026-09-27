@@ -9,12 +9,12 @@ Al finalizar esta unidad, el alumnado será capaz de:
 3. Aplicar los principios de la comunicación visual y la teoría de la percepción (Gestalt) al diseño de páginas web sencillas.
 4. Analizar críticamente interfaces web reales identificando los principios de diseño visual empleados y su impacto en la experiencia de usuario.
 5. Construir prototipos visuales básicos en HTML y CSS que reflejen la aplicación de los principios de diseño estudiados.
-6. Evaluar la accesibilidad y usabilidad de una interfaz web aplicando las pautas de diseño centrado en el usuario (DCU) conforme a la norma ISO 9241-210.
+6. Evaluar la accesibilidad y usabilidad de una interfaz web aplicando las pautas de diseño centrado en el usuario (DCU) conforme a la norma **ISO 9241-210**.
 7. Justificar las decisiones de diseño adoptadas en un proyecto web argumentando con criterios técnicos, perceptivos y funcionales.
 
 ## Relación con los Resultados de Aprendizaje
 
-Esta unidad se vincula con los Resultados de Aprendizaje oficiales del módulo profesional 0615 *Diseño de interfaces web* (RD 405/2023, BOE; currículo andaluz):
+Esta unidad se vincula con los Resultados de Aprendizaje oficiales del módulo profesional **0615** *Diseño de interfaces web* (**RD 405/2023**, BOE; currículo andaluz):
 
 - **RA1. Planifica la creación de una interfaz web valorando y aplicando especificaciones de diseño.** Se aborda mediante el estudio de la evolución histórica de las interfaces (Web 1.0 a 3.0, diseño responsive, PWAs), la definición de componentes y tipos de interfaces, y la selección de enfoques de diseño adecuados según el contexto del proyecto. El alumnado aprende a identificar requisitos de interfaz antes de comenzar a diseñar.
 
@@ -22,7 +22,7 @@ Esta unidad se vincula con los Resultados de Aprendizaje oficiales del módulo p
 
 - **RA4. Integra contenido multimedia en documentos web valorando su aportación y seleccionando adecuadamente los elementos interactivos.** Aunque el foco principal de esta unidad es la teoría del diseño, los conceptos de comunicación visual y color sientan las bases para la correcta integración de elementos multimedia, respetando principios de equilibrio, jerarquía y contraste.
 
-- **RA5. Desarrolla interfaces web accesibles, analizando las pautas establecidas y aplicando técnicas de verificación.** Se introduce mediante el estudio del diseño centrado en el usuario (DCU), las pautas WCAG y la norma ISO 9241-210, así como el análisis de casos reales con criterios de accesibilidad.
+- **RA5. Desarrolla interfaces web accesibles, analizando las pautas establecidas y aplicando técnicas de verificación.** Se introduce mediante el estudio del diseño centrado en el usuario (DCU), las pautas **WCAG** y la norma **ISO 9241-210**, así como el análisis de casos reales con criterios de accesibilidad.
 
 - **RA6. Desarrolla interfaces web amigables analizando y aplicando las pautas de usabilidad establecidas.** El DCU estudiado en esta unidad (comprensión del usuario, flujos y evaluación) sienta las bases de la usabilidad que se desarrolla a fondo en las unidades posteriores.
 
@@ -50,14 +50,14 @@ Antes de abordar esta unidad, el alumnado debe poseer los siguientes conocimient
 - Diferencias entre interfaz física, interfaz lógica e interfaz web
 
 ### 2. Evolución histórica del diseño web
-- Web 1.0 (1991-2004): páginas estáticas, HTML plano, diseño tabular, poca interactividad
-- Web 2.0 (2004-2010): AJAX, contenido generado por usuarios, redes sociales, diseño centrado en contenido
-- Web 3.0 (2010-actualidad): web semántica, aplicaciones de página única (SPA), inteligencia artificial
-- Diseño responsive: media queries, mobile-first, frameworks adaptativos
-- Progressive Web Apps (PWA): service workers, manifiesto web, instalabilidad, experiencia offline
+- **Web 1.0** (1991-2004): páginas estáticas, HTML plano, diseño tabular, poca interactividad
+- **Web 2.0** (2004-2010): AJAX, contenido generado por usuarios, redes sociales, diseño centrado en contenido
+- **Web 3.0** (2010-actualidad): web semántica, aplicaciones de página única (SPA), inteligencia artificial
+- **Diseño responsive**: media queries, mobile-first, frameworks adaptativos
+- **Progressive Web Apps (PWA)**: service workers, manifiesto web, instalabilidad, experiencia offline
 
 ### 3. Diseño Centrado en el Usuario (DCU)
-- Definición y principios según ISO 9241-210
+- Definición y principios según **ISO 9241-210**
 - Fases del proceso DCU: investigación, conceptualización, prototipado, evaluación, iteración
 - Beneficios: reducción de errores, aumento de satisfacción, fidelización, ahorro de costes
 - Diferencias con el diseño centrado en el sistema
@@ -92,9 +92,15 @@ Antes de abordar esta unidad, el alumnado debe poseer los siguientes conocimient
 
 ### 1. ¿Qué es una interfaz web?
 
-Una interfaz web es el conjunto de elementos visuales, interactivos y estructurales que permiten a una persona usuaria comunicarse con una aplicación o servicio alojado en la web. Actúa como capa mediadora entre el sistema informático backend (servidores, bases de datos, lógica de negocio) y la persona que utiliza el navegador. La interfaz traduce las complejas operaciones del sistema en elementos comprensibles y manipulables, como botones, formularios, menús, iconos, tipografías y colores.
+!!! info "Definición — interfaz web"
+    Una interfaz web es el conjunto de elementos visuales, interactivos y estructurales que permiten a una persona usuaria comunicarse con una aplicación o servicio alojado en la web. Actúa como capa mediadora entre el sistema informático backend (servidores, bases de datos, lógica de negocio) y la persona que utiliza el navegador. La interfaz traduce las complejas operaciones del sistema en elementos comprensibles y manipulables, como botones, formularios, menús, iconos, tipografías y colores.
 
-Los componentes fundamentales de toda interfaz web son cuatro. En primer lugar, los elementos de navegación, que permiten a la persona usuaria desplazarse por las distintas secciones del sitio: barras de navegación superior, menús laterales, breadcrumbs, enlaces internos, barras de búsqueda y sistemas de paginación. En segundo lugar, los elementos de contenido, que constituyen la información que la persona usuaria consume: texto, imágenes, vídeos, tablas de datos, gráficos, infografías, código incrustado, mapas y cualquier otro recurso multimedia. En tercer lugar, los elementos de interacción, que permiten a la persona usuaria ejecutar acciones: botones, enlaces, formularios, selectores, interruptores (toggles), arrastradores (sliders), modales, tooltips y cualquier control que espere una acción del usuario para modificar el estado de la interfaz. En cuarto lugar, los elementos de retroalimentación, que informan a la persona usuaria del resultado de sus acciones: mensajes de confirmación, indicadores de carga, barras de progreso, notificaciones, cambios de color en botones al hacer hover, animaciones de transición y alertas de error.
+Los **componentes fundamentales** de toda interfaz web son cuatro:
+
+- **Elementos de navegación** — permiten a la persona usuaria desplazarse por las distintas secciones del sitio: barras de navegación superior, menús laterales, breadcrumbs, enlaces internos, barras de búsqueda y sistemas de paginación.
+- **Elementos de contenido** — constituyen la información que la persona usuaria consume: texto, imágenes, vídeos, tablas de datos, gráficos, infografías, código incrustado, mapas y cualquier otro recurso multimedia.
+- **Elementos de interacción** — permiten a la persona usuaria ejecutar acciones: botones, enlaces, formularios, selectores, interruptores (toggles), arrastradores (sliders), modales, tooltips y cualquier control que espere una acción del usuario para modificar el estado de la interfaz.
+- **Elementos de retroalimentación** — informan a la persona usuaria del resultado de sus acciones: mensajes de confirmación, indicadores de carga, barras de progreso, notificaciones, cambios de color en botones al hacer hover, animaciones de transición y alertas de error.
 
 Existen diversos tipos de interfaces de usuario, cada una con sus características, tecnologías asociadas y contextos de aplicación:
 
@@ -124,85 +130,162 @@ En el contexto de este módulo, nos centraremos fundamentalmente en las interfac
 
 ### 2. Evolución histórica del diseño web
 
-2. Evolución histórica del diseño web
+La evolución del diseño web puede dividirse en **cuatro grandes etapas**, cada una marcada por cambios tecnológicos y conceptuales que han transformado radicalmente la forma en que diseñamos y consumimos la web.
 
-La evolución del diseño web puede dividirse en cuatro grandes etapas, cada una marcada por cambios tecnológicos y conceptuales que han transformado radicalmente la forma en que diseñamos y consumimos la web.
+La **Web 1.0** (aproximadamente 1991-2004) se caracterizó por páginas estáticas construidas con HTML plano, sin apenas separación entre contenido y presentación. El diseño se realizaba mediante tablas anidadas (table-based layout), lo que producía un código enrevesado y difícil de mantener. Las páginas eran de sólo lectura, sin interacción con la persona usuaria más allá de hacer clic en enlaces. Los colores eran planos, las tipografías limitadas a las fuentes del sistema (Arial, Times New Roman, Courier) y las imágenes estaban optimizadas para conexiones de **56 kbps**. Ejemplos paradigmáticos de esta época son la primera página de Google (1998), con un diseño minimalista radical para la época, y el directorio de Yahoo!, una inmensa colección de enlaces organizados jerárquicamente.
 
-La Web 1.0 (aproximadamente 1991-2004) se caracterizó por páginas estáticas construidas con HTML plano, sin apenas separación entre contenido y presentación. El diseño se realizaba mediante tablas anidadas (table-based layout), lo que producía un código enrevesado y difícil de mantener. Las páginas eran de sólo lectura, sin interacción con la persona usuaria más allá de hacer clic en enlaces. Los colores eran planos, las tipografías limitadas a las fuentes del sistema (Arial, Times New Roman, Courier) y las imágenes estaban optimizadas para conexiones de 56 kbps. Ejemplos paradigmáticos de esta época son la primera página de Google (1998), con un diseño minimalista radical para la época, y el directorio de Yahoo!, una inmensa colección de enlaces organizados jerárquicamente.
+![Web 1.0](./img/00/web1.0.jpg)
 
-La Web 2.0 (2004-2010) supuso una revolución conceptual: la web dejó de ser un escaparate de contenidos para convertirse en una plataforma de participación. Surgieron los blogs (WordPress, Blogger), las redes sociales (Facebook, Twitter, YouTube) y el contenido generado por las personas usuarias. Técnicamente, AJAX (Asynchronous JavaScript and XML) permitió actualizar partes de la página sin recargarla completamente, mejorando drásticamente la fluidez de la experiencia. CSS alcanzó la madurez con la especificación CSS 2.1, permitiendo separar completamente la presentación del contenido. El diseño web se profesionalizó y nacieron conceptos como la usabilidad (Jakob Nielsen) y la experiencia de usuario (Donald Norman). Visualmente, esta época se caracterizó por los degradados, los reflejos, las sombras paralelas, los botones brillantes, los iconos vectoriales, las esquinas redondeadas y el uso abundante del color azul y naranja en logotipos.
+La **Web 2.0** (2004-2010) supuso una revolución conceptual: la web dejó de ser un escaparate de contenidos para convertirse en una plataforma de participación. Surgieron los blogs (WordPress, Blogger), las redes sociales (Facebook, Twitter, YouTube) y el contenido generado por las personas usuarias. Técnicamente, AJAX (Asynchronous JavaScript and XML) permitió actualizar partes de la página sin recargarla completamente, mejorando drásticamente la fluidez de la experiencia. CSS alcanzó la madurez con la especificación CSS 2.1, permitiendo separar completamente la presentación del contenido. El diseño web se profesionalizó y nacieron conceptos como la usabilidad (Jakob Nielsen) y la experiencia de usuario (Donald Norman). Visualmente, esta época se caracterizó por los degradados, los reflejos, las sombras paralelas, los botones brillantes, los iconos vectoriales, las esquinas redondeadas y el uso abundante del color azul y naranja en logotipos.
 
-La Web 3.0 (2010-2020) está marcada por la web semántica, las aplicaciones de página única (SPA) y la profesionalización del frontend. Los frameworks de JavaScript como React, Vue y Angular han transformado el desarrollo, permitiendo construir interfaces complejas con componentes reutilizables y reactividad. CSS ha evolucionado enormemente con Flexbox, Grid, animaciones, variables CSS, consultas de contenedor y funciones como clamp() y min(). La web es móvil: en 2024, más del 60% del tráfico web mundial proviene de dispositivos móviles, lo que ha consolidado el enfoque mobile-first. El diseño responsive, acuñado por Ethan Marcotte en 2010, se basa en tres pilares: rejillas flexibles (porcentajes en lugar de píxeles fijos), medios flexibles (imágenes y vídeos que se adaptan al contenedor) y media queries (reglas CSS condicionales según las características del dispositivo). El enfoque mobile-first, popularizado por Luke Wroblewski, propone diseñar primero para la pantalla más pequeña y luego ir añadiendo complejidad progresivamente para pantallas mayores, forzando a priorizar el contenido esencial y simplificar la navegación. Las Progressive Web Apps (PWA), impulsadas por Google desde 2015, representan la convergencia entre web y aplicaciones nativas: gracias a los service workers, el manifiesto web y HTTPS, pueden instalarse en el dispositivo, funcionar offline, recibir notificaciones push y acceder a ciertas funcionalidades del hardware. Ejemplos notables son Twitter Lite, Pinterest, Uber y Spotify Web Player.
+![Web 2.0](./img/00/web2.0.png)
 
-La Web 4.0 (2022-actualidad) se define por la web simbiótica: la integración de la inteligencia artificial, el Internet de las cosas (IoT) y la computación ubicua en la experiencia web. Asistentes y chatbots integrados en las interfaces, personalización generativa, búsqueda conversacional y agentes autónomos que completan tareas por la persona usuaria están redefiniendo la navegación tradicional. Por otro lado, la descentralización mediante blockchain y los protocolos federales (ActivityPub, Mastodon, Bluesky) plantean una web menos dependiente de grandes plataformas. En el plano del diseño, la interfaz ya no es solo una pantalla: existe en voz, wearables, coches conectados y dispositivos domésticos (ambient intelligence), lo que obliga a diseñar experiencias multi-canal y accesibles por naturaleza. Visualmente predominan los diseños limpios y oscuros, los modos oscuros adaptativos, las microinteracciones, la animación sutil y los sistemas de diseño escalables.
+La **Web 3.0** (2010-2020) está marcada por la web semántica, las aplicaciones de página única (SPA) y la profesionalización del frontend. Los frameworks de JavaScript como React, Vue y Angular han transformado el desarrollo, permitiendo construir interfaces complejas con componentes reutilizables y reactividad. CSS ha evolucionado enormemente con Flexbox, Grid, animaciones, variables CSS, consultas de contenedor y funciones como clamp() y min(). La web es móvil: en **2024**, más del **60%** del tráfico web mundial proviene de dispositivos móviles, lo que ha consolidado el enfoque mobile-first. El diseño responsive, acuñado por Ethan Marcotte en **2010**, se basa en **tres pilares**:
+
+- **Rejillas flexibles** — porcentajes en lugar de píxeles fijos.
+- **Medios flexibles** — imágenes y vídeos que se adaptan al contenedor.
+- **Media queries** — reglas CSS condicionales según las características del dispositivo.
+
+El enfoque mobile-first, popularizado por Luke Wroblewski, propone diseñar primero para la pantalla más pequeña y luego ir añadiendo complejidad progresivamente para pantallas mayores, forzando a priorizar el contenido esencial y simplificar la navegación. Las Progressive Web Apps (PWA), impulsadas por Google desde 2015, representan la convergencia entre web y aplicaciones nativas: gracias a los service workers, el manifiesto web y HTTPS, pueden instalarse en el dispositivo, funcionar offline, recibir notificaciones push y acceder a ciertas funcionalidades del hardware. Ejemplos notables son Twitter Lite, Pinterest, Uber y Spotify Web Player.
+
+![Web 3.0](./img/00/web3.0.webp)
+
+La **Web 4.0** (2022-actualidad) se define por la web simbiótica: la integración de la inteligencia artificial, el Internet de las cosas (IoT) y la computación ubicua en la experiencia web. Asistentes y chatbots integrados en las interfaces, personalización generativa, búsqueda conversacional y agentes autónomos que completan tareas por la persona usuaria están redefiniendo la navegación tradicional. Por otro lado, la descentralización mediante blockchain y los protocolos federales (ActivityPub, Mastodon, Bluesky) plantean una web menos dependiente de grandes plataformas. En el plano del diseño, la interfaz ya no es solo una pantalla: existe en voz, wearables, coches conectados y dispositivos domésticos (ambient intelligence), lo que obliga a diseñar experiencias multi-canal y accesibles por naturaleza. Visualmente predominan los diseños limpios y oscuros, los modos oscuros adaptativos, las microinteracciones, la animación sutil y los sistemas de diseño escalables.
+
+![Web 4.0](./img/00/web4.0.jpeg)
 
 ### 3. Diseño Centrado en el Usuario (DCU)
 
-El Diseño Centrado en el Usuario (DCU) es una filosofía y metodología de diseño que sitúa a la persona usuaria en el centro de todas las decisiones de diseño, desde la concepción inicial hasta la evaluación final. La norma ISO 9241-210 (Ergonomics of human-system interaction — Human-centred design for interactive systems) define el DCU como un enfoque iterativo que involucra activamente a las personas usuarias en todas las etapas del proceso de diseño, asegurando que el producto final satisfaga sus necesidades, expectativas y limitaciones.
+!!! info "Definición — Diseño Centrado en el Usuario (DCU)"
+    El Diseño Centrado en el Usuario (DCU) es una filosofía y metodología de diseño que sitúa a la persona usuaria en el centro de todas las decisiones de diseño, desde la concepción inicial hasta la evaluación final. La norma **ISO 9241-210** (*Ergonomics of human-system interaction — Human-centred design for interactive systems*) define el DCU como un enfoque iterativo que involucra activamente a las personas usuarias en todas las etapas del proceso de diseño, asegurando que el producto final satisfaga sus necesidades, expectativas y limitaciones.
 
-La norma ISO 9241-210 establece seis principios fundamentales para el DCU. El primero es que el diseño debe basarse en una comprensión explícita de las personas usuarias, las tareas que realizan y los entornos en los que las realizan. Esto se consigue mediante técnicas de investigación cualitativa como entrevistas en profundidad, observación contextual, diarios de uso o focus groups, y técnicas cuantitativas como encuestas, analíticas web o tests A/B. El segundo principio es que las personas usuarias deben participar activamente durante todo el proceso de diseño y desarrollo, no solo al principio o al final. El tercer principio es que las decisiones de diseño deben ser impulsadas y refinadas mediante evaluaciones centradas en personas usuarias, no en opiniones subjetivas del equipo de diseño. El cuarto principio es que el proceso de diseño debe ser iterativo: cada ciclo de diseño, prototipado y evaluación genera aprendizajes que mejoran la siguiente iteración. El quinto principio es que el diseño debe abordar la experiencia de usuario completa, incluyendo aspectos emocionales, estéticos y hedónicos más allá de la mera eficiencia y eficacia. El sexto principio es que el equipo de diseño debe incluir competencias y perspectivas multidisciplinares: diseño visual, psicología cognitiva, ingeniería de software, antropología, marketing, etc.
+La norma **ISO 9241-210** establece **seis principios** fundamentales para el DCU. 
 
-Las fases del proceso DCU son cuatro. La fase de investigación (Discover) busca comprender quiénes son las personas usuarias, qué necesitan, en qué contexto actúan y qué problemas enfrentan. Se emplean técnicas como la creación de personas (arquetipos de usuario), mapas de empatía, customer journey maps y análisis de la competencia. La fase de conceptualización (Define) sintetiza los hallazgos de la investigación para definir el problema, los requisitos funcionales y no funcionales, la arquitectura de información (cómo se organiza el contenido) y los flujos de navegación. Se producen diagramas de flujo, mapas del sitio web y especificaciones funcionales. La fase de prototipado (Design) materializa las ideas en prototipos de baja fidelidad (bocetos en papel, wireframes) y alta fidelidad (mockups visuales, prototipos interactivos con Figma, Sketch o Adobe XD). La fase de evaluación (Validate) somete los prototipos al juicio de personas usuarias reales mediante tests de usabilidad moderados o no moderados, evaluaciones heurísticas (basadas en los 10 principios de Nielsen), test de los 5 segundos, eye tracking o análisis de embudo de conversión.
+ - El primero es que el diseño debe basarse en una **comprensión explícita de las personas usuarias, las tareas que realizan y los entornos** en los que las realizan. Esto se consigue mediante técnicas de investigación cualitativa como entrevistas en profundidad, observación contextual, diarios de uso o focus groups, y técnicas cuantitativas como encuestas, analíticas web o tests A/B. 
+ - El segundo principio es que las **personas usuarias deben participar activamente** durante todo el proceso de diseño y desarrollo, no solo al principio o al final. 
+ - El tercer principio es que las **decisiones de diseño deben ser impulsadas y refinadas mediante evaluaciones centradas en personas usuarias**, no en opiniones subjetivas del equipo de diseño. 
+ - El cuarto principio es que el **proceso de diseño debe ser iterativo**: cada ciclo de diseño, prototipado y evaluación genera aprendizajes que mejoran la siguiente iteración. 
+ - El quinto principio es que el diseño **debe abordar la experiencia de usuario completa**, incluyendo aspectos emocionales, estéticos y hedónicos más allá de la mera eficiencia y eficacia. 
+ - El sexto principio es que el equipo de diseño debe incluir **competencias y perspectivas multidisciplinares**: diseño visual, psicología cognitiva, ingeniería de software, antropología, marketing, etc.
 
-Los beneficios del DCU están ampliamente documentados: reducción del tiempo de desarrollo al evitar rediseños tardíos, disminución de los costes de soporte al reducir la confusión de las personas usuarias, aumento de las tasas de conversión y retención, mejora de la satisfacción y fidelización, reducción de errores y riesgos de seguridad, y cumplimiento de normativas de accesibilidad que evitan sanciones legales.
+![Principos DCU](./img/00/DCU-principios.jpeg)
+
+Las **fases** del proceso DCU son **cuatro**. 
+
+  - La fase de **investigación** (Discover) busca comprender quiénes son las personas usuarias, qué necesitan, en qué contexto actúan y qué problemas enfrentan. Se emplean técnicas como la creación de personas (arquetipos de usuario), mapas de empatía, customer journey maps y análisis de la competencia. 
+  - La fase de **conceptualización** (Define) sintetiza los hallazgos de la investigación para definir el problema, los requisitos funcionales y no funcionales, la arquitectura de información (cómo se organiza el contenido) y los flujos de navegación. Se producen diagramas de flujo, mapas del sitio web y especificaciones funcionales. 
+  - La fase de **prototipado** (Design) materializa las ideas en prototipos de baja fidelidad (bocetos en papel, wireframes) y alta fidelidad (mockups visuales, prototipos interactivos con Figma, Sketch o Adobe XD). 
+  - La fase de **evaluación** (Validate) somete los prototipos al juicio de personas usuarias reales mediante tests de usabilidad moderados o no moderados, evaluaciones heurísticas (basadas en los 10 principios de Nielsen), test de los 5 segundos, eye tracking o análisis de embudo de conversión.
+
+![Fases DCU](./img/00/DCU-fases.jpeg)
+
+!!! tip "Beneficios del DCU"
+    Los beneficios del DCU están ampliamente documentados:
+
+    - **Reducción del tiempo de desarrollo** al evitar rediseños tardíos.
+    - **Disminución de los costes de soporte** al reducir la confusión de las personas usuarias.
+    - **Aumento de las tasas de conversión y retención.**
+    - **Mejora de la satisfacción y fidelización.**
+    - **Reducción de errores y riesgos de seguridad.**
+    - **Cumplimiento de normativas de accesibilidad** que evitan sanciones legales.
 
 ### 4. UI vs UX: dos caras de una misma moneda
 
-Los términos UI (User Interface) y UX (User Experience) se confunden con frecuencia, incluso en el ámbito profesional. UI se refiere al diseño de la interfaz de usuario: es la capa visual del producto, lo que la persona usuaria ve y con lo que interactúa directamente. Incluye la paleta de colores, la tipografía, la iconografía, el espaciado entre elementos, las animaciones, los estados de los botones (normal, hover, active, disabled, focus), los bordes, las sombras, la disposición de los elementos en la rejilla y todos los aspectos estéticos y formales del producto. Por otro lado, UX se refiere a la experiencia de usuario: es la vivencia global que la persona usuaria experimenta al interactuar con el producto, incluyendo sus emociones, percepciones, satisfacción, frustraciones y la utilidad que obtiene. La UX engloba la UI, pero va mucho más allá: incluye la arquitectura de información, los flujos de navegación, la velocidad de carga, la claridad del contenido, la accesibilidad, la confianza que transmite la marca y el servicio postventa.
+Los términos **UI** (User Interface) y **UX** (User Experience) se confunden con frecuencia, incluso en el ámbito profesional:
 
-La relación entre UI y UX es simbiótica e inseparable. Una interfaz visualmente deslumbrante que no permite completar las tareas básicas es un fracaso de UX, por muy bonita que sea. Inversamente, un producto perfectamente funcional con una interfaz descuidada y desagradable genera desconfianza y rechazo en las personas usuarias, aunque resuelva su problema. El famoso arquitecto y diseñador Massimo Vignelli lo resumió magistralmente: "Si puedes diseñar una cosa, puedes diseñar todo". Esta visión holística implica que el diseño de interfaces web no puede abordarse como una mera decoración superficial, sino como una disciplina que integra psicología cognitiva, principios estéticos, restricciones tecnológicas y necesidades de negocio.
+!!! info "🎨 UI · User Interface — interfaz de usuario"
 
-Las responsabilidades del diseñador UI incluyen: crear y mantener guías de estilo y librerías de componentes (design systems), definir las reglas de espaciado y alineación, seleccionar familias tipográficas y establecer escalas tipográficas, elegir paletas de color y asegurar ratios de contraste WCAG, diseñar iconografía coherente, definir microinteracciones (animaciones sutiles que comunican estado), preparar mockups de alta fidelidad en herramientas como Figma, y entregar los recursos finales (assets) al equipo de desarrollo en los formatos adecuados (SVG para iconos, WebP para imágenes, fuentes en formato woff2).
+    Es la **capa visual del producto**: lo que la persona usuaria ve y con lo que interactúa directamente. Incluye la paleta de colores, la tipografía, la iconografía, el espaciado entre elementos, las animaciones, los estados de los botones (*normal, hover, active, disabled, focus*), los bordes, las sombras, la disposición de los elementos en la rejilla y todos los aspectos **estéticos y formales** del producto.
 
-Las responsabilidades del diseñador UX incluyen: realizar investigación de personas usuarias (entrevistas, encuestas, observación), elaborar personas y escenarios de uso, diseñar la arquitectura de información (card sorting, tree testing), crear flujos de usuario y mapas de navegación, elaborar wireframes de baja fidelidad, planificar y moderar tests de usabilidad, analizar resultados de los tests y proponer mejoras, colaborar con desarrollo para asegurar que la implementación respeta las decisiones de UX, y defender los intereses de las personas usuarias frente a presiones de negocio o técnicas.
+!!! tip "🧠 UX · User Experience — experiencia de usuario"
+
+    Es la **vivencia global** que la persona usuaria experimenta al interactuar con el producto, incluyendo sus emociones, percepciones, satisfacción, frustraciones y la utilidad que obtiene. **La UX engloba a la UI, pero va mucho más allá**: incluye la arquitectura de información, los flujos de navegación, la velocidad de carga, la claridad del contenido, la accesibilidad, la confianza que transmite la marca y el servicio postventa.
+
+La relación entre UI y UX es **simbiótica e inseparable**. Una interfaz visualmente deslumbrante que no permite completar las tareas básicas es un fracaso de UX, por muy bonita que sea. Inversamente, un producto perfectamente funcional con una interfaz descuidada y desagradable genera desconfianza y rechazo en las personas usuarias, aunque resuelva su problema.
+
+!!! quote "Massimo Vignelli, arquitecto y diseñador"
+
+    Si puedes diseñar una cosa, puedes diseñar todo.
+
+Esta visión holística implica que el diseño de interfaces web no puede abordarse como una mera decoración superficial, sino como una disciplina que integra **psicología cognitiva**, **principios estéticos**, **restricciones tecnológicas** y **necesidades de negocio**.
+
+**Responsabilidades del diseñador UI:**
+
+- Crear y mantener guías de estilo y librerías de componentes (*design systems*)
+- Definir las reglas de espaciado y alineación; seleccionar familias tipográficas y establecer escalas tipográficas
+- Elegir paletas de color y asegurar ratios de contraste WCAG
+- Diseñar iconografía coherente y definir microinteracciones (animaciones sutiles que comunican estado)
+- Preparar mockups de alta fidelidad en herramientas como Figma y entregar los recursos finales al equipo de desarrollo (SVG para iconos, WebP para imágenes, fuentes en formato woff2)
+
+**Responsabilidades del diseñador UX:**
+
+- Realizar investigación de personas usuarias (entrevistas, encuestas, observación) y elaborar personas y escenarios de uso
+- Diseñar la arquitectura de información (card sorting, tree testing) y crear flujos de usuario y mapas de navegación
+- Elaborar wireframes de baja fidelidad; planificar y moderar tests de usabilidad
+- Analizar resultados de los tests y proponer mejoras; colaborar con desarrollo para asegurar que la implementación respeta las decisiones de UX
+- Defender los intereses de las personas usuarias frente a presiones de negocio o técnicas
 
 ### 5. Comunicación visual
 
-La comunicación visual es el proceso mediante el cual se transmite información a través de elementos perceptibles por el sentido de la vista. En el contexto del diseño de interfaces web, la comunicación visual es el lenguaje con el que hablamos a las personas usuarias sin necesidad de palabras: cada color, cada espacio en blanco, cada línea, cada icono transmite un mensaje, evoca una emoción y guía una acción.
+La **comunicación visual** es el proceso mediante el cual se transmite información a través de elementos perceptibles por el sentido de la vista. En el contexto del diseño de interfaces web es **el lenguaje con el que hablamos a las personas usuarias sin necesidad de palabras**: cada color, cada espacio en blanco, cada línea, cada icono transmite un mensaje, evoca una emoción y guía una acción.
 
-Los elementos básicos del lenguaje visual son seis. El punto es la unidad mínima de comunicación visual: un punto de luz en una pantalla (píxel), un marcador en un mapa, un indicador de notificación (el clásico puntito rojo) o un punto de una lista desordenada. Aunque pequeño, el punto puede tener un enorme poder de atracción visual cuando contrasta con su entorno. La línea es la trayectoria de un punto en movimiento. En diseño web, las líneas se materializan como bordes de cajas (border), separadores entre secciones, subrayados de enlaces, líneas guía en rejillas o líneas estructurales en wireframes. Las líneas horizontales transmiten calma y estabilidad; las verticales, fuerza y crecimiento; las diagonales, dinamismo y movimiento. La forma o plano es una superficie delimitada por líneas. En la web, cada elemento ocupa una forma rectangular (el modelo de caja de CSS), aunque mediante border-radius, clip-path y SVG podemos crear círculos, óvalos, triángulos y formas orgánicas. Las formas geométricas básicas transmiten diferentes sensaciones: el círculo sugiere unidad, protección y eternidad; el cuadrado, estabilidad y orden; el triángulo, dirección y tensión. La textura es la cualidad superficial de un elemento que apela al sentido del tacto, aunque en una pantalla solo la percibimos visualmente. En diseño web, las texturas se simulan mediante fondos con patrones repetitivos (CSS background con repeat), degradados que crean sensación de profundidad, sombras que sugieren relieve (box-shadow, text-shadow) y fotografías de superficies reales (madera, tela, metal). El espacio es el vacío entre elementos o alrededor de ellos. En diseño web, el espacio se controla mediante las propiedades margin (espacio externo) y padding (espacio interno) de CSS. Lejos de ser un desperdicio, el espacio es un elemento activo de diseño que agrupa, separa, jerarquiza y da respiro visual a la interfaz. El color es el elemento con mayor impacto emocional y el primer atributo que percibe el ojo humano. Se estudiará en profundidad en la unidad 3, dedicada íntegramente a color y tipografía.
+Los **elementos básicos del lenguaje visual son seis**:
 
-Los principios compositivos que rigen la organización de los elementos visuales son: la unidad, que busca que todos los elementos de la interfaz se perciban como parte de un todo coherente, utilizando paletas cromáticas limitadas (3-5 colores principales), una o dos familias tipográficas, iconografía homogénea y espaciado consistente basado en una escala predefinida (4px, 8px, 16px, 32px, 64px). La variedad, que introduce diferencias controladas para evitar la monotonía visual: un color de acento frente a una paleta neutra, una tipografía display para los titulares frente a una sans-serif para el cuerpo, o una fotografía a plena anchura para romper una sección de texto denso. La jerarquía, que organiza los elementos por orden de importancia, utilizando el tamaño (los elementos más grandes se perciben como más importantes), el color (los colores vibrantes atraen la atención frente a los neutros), la posición (en culturas occidentales, la atención se concentra en la parte superior izquierda) y el contraste (un botón de llamada a la acción con alto contraste destaca sobre un fondo neutro). El equilibrio, que distribuye el peso visual de los elementos en la composición. El equilibrio simétrico se produce cuando los elementos a ambos lados de un eje son iguales o muy similares, transmitiendo estabilidad, formalidad y orden. El equilibrio asimétrico se produce cuando elementos diferentes pero con igual peso visual (por ejemplo, un elemento grande y claro frente a uno pequeño y oscuro) se equilibran mutuamente, transmitiendo dinamismo y modernidad. La proporción, que establece las relaciones de tamaño entre los elementos. La proporción áurea (aproximadamente 1:1.618), utilizada desde la antigua Grecia, genera composiciones naturalmente armoniosas. En diseño web, se aplica en las escalas tipográficas, la relación entre el ancho del contenido y de la barra lateral, o el tamaño de las imágenes destacadas. El ritmo es la repetición de elementos visuales a intervalos regulares, creando una sensación de movimiento y fluidez que guía la mirada de la persona usuaria a través de la página. Se consigue mediante la repetición de columnas de texto del mismo ancho, tarjetas de producto con la misma estructura, o la alternancia de imagen y texto en secciones sucesivas.
+- **El punto** — unidad mínima de comunicación visual: un punto de luz en una pantalla (píxel), un marcador en un mapa, un indicador de notificación (el clásico puntito rojo) o un punto de una lista desordenada. Aunque pequeño, puede tener un enorme poder de atracción visual cuando contrasta con su entorno.
+- **La línea** — trayectoria de un punto en movimiento. En diseño web se materializa como bordes de cajas (`border`), separadores entre secciones, subrayados de enlaces, líneas guía en rejillas o líneas estructurales en wireframes. Las líneas **horizontales** transmiten calma y estabilidad; las **verticales**, fuerza y crecimiento; las **diagonales**, dinamismo y movimiento.
+- **La forma o plano** — superficie delimitada por líneas. En la web cada elemento ocupa una forma rectangular (el modelo de caja de CSS), aunque mediante `border-radius`, `clip-path` y SVG podemos crear círculos, óvalos, triángulos y formas orgánicas. Las formas geométricas básicas transmiten diferentes sensaciones: el **círculo** sugiere unidad, protección y eternidad; el **cuadrado**, estabilidad y orden; el **triángulo**, dirección y tensión.
+- **La textura** — cualidad superficial de un elemento que apela al sentido del tacto, aunque en una pantalla solo la percibimos visualmente. En diseño web se simula mediante fondos con patrones repetitivos (`background` con `repeat`), degradados que crean sensación de profundidad, sombras que sugieren relieve (`box-shadow`, `text-shadow`) y fotografías de superficies reales (madera, tela, metal).
+- **El espacio** — el vacío entre elementos o alrededor de ellos. Se controla mediante `margin` (espacio externo) y `padding` (espacio interno). Lejos de ser un desperdicio, es un **elemento activo de diseño** que agrupa, separa, jerarquiza y da respiro visual a la interfaz.
+- **El color** — el elemento con mayor impacto emocional y el primer atributo que percibe el ojo humano. Se estudiará en profundidad en la **unidad 3**, dedicada íntegramente a color y tipografía.
+
+Los **principios compositivos** que rigen la organización de los elementos visuales son:
+
+- **La unidad** — busca que todos los elementos de la interfaz se perciban como parte de un todo coherente: paletas cromáticas limitadas (3-5 colores principales), una o dos familias tipográficas, iconografía homogénea y espaciado consistente basado en una escala predefinida (4px, 8px, 16px, 32px, 64px).
+- **La variedad** — introduce diferencias controladas para evitar la monotonía visual: un color de acento frente a una paleta neutra, una tipografía *display* para los titulares frente a una sans-serif para el cuerpo, o una fotografía a plena anchura para romper una sección de texto denso.
+- **La jerarquía** — organiza los elementos por orden de importancia utilizando el **tamaño** (los elementos más grandes se perciben como más importantes), el **color** (los colores vibrantes atraen la atención frente a los neutros), la **posición** (en culturas occidentales, la atención se concentra en la parte superior izquierda) y el **contraste** (un botón de llamada a la acción con alto contraste destaca sobre un fondo neutro).
+- **El equilibrio** — distribuye el peso visual de los elementos en la composición. El equilibrio **simétrico** (elementos iguales o muy similares a ambos lados de un eje) transmite estabilidad, formalidad y orden; el **asimétrico** (elementos diferentes pero con igual peso visual, por ejemplo un elemento grande y claro frente a uno pequeño y oscuro) transmite dinamismo y modernidad.
+- **La proporción** — establece las relaciones de tamaño entre los elementos. La **proporción áurea** (aproximadamente 1:1.618), utilizada desde la antigua Grecia, genera composiciones naturalmente armoniosas. En diseño web se aplica en las escalas tipográficas, la relación entre el ancho del contenido y la barra lateral, o el tamaño de las imágenes destacadas.
+- **El ritmo** — la repetición de elementos visuales a intervalos regulares, creando una sensación de movimiento y fluidez que guía la mirada de la persona usuaria a través de la página. Se consigue mediante la repetición de columnas de texto del mismo ancho, tarjetas de producto con la misma estructura, o la alternancia de imagen y texto en secciones sucesivas.
 
 ### 6. Principios de percepción visual: la Gestalt
 
-La psicología de la Gestalt (del alemán "forma" o "configuración") nació en Alemania a principios del siglo XX de la mano de Max Wertheimer, Wolfgang Köhler y Kurt Koffka. Su premisa fundamental es que el cerebro humano percibe los objetos como totalidades organizadas, no como una mera suma de partes individuales. Esta idea, condensada en la máxima "el todo es más que la suma de las partes", tiene implicaciones profundas para el diseño de interfaces web, ya que significa que las personas usuarias no perciben botones, textos e imágenes por separado, sino que construyen mentalmente agrupaciones, jerarquías y patrones a partir de lo que ven.
+La psicología de la **Gestalt** (del alemán "forma" o "configuración") nació en Alemania a principios del siglo XX de la mano de **Max Wertheimer**, **Wolfgang Köhler** y **Kurt Koffka**. Su premisa fundamental es que el cerebro humano percibe los objetos como **totalidades organizadas, no como una mera suma de partes**.
 
-La ley de proximidad establece que los elementos que están cerca unos de otros tienden a percibirse como un grupo. En diseño web, esta ley se aplica al agrupar etiquetas (labels) junto a sus correspondientes campos de formulario, al separar visualmente secciones distintas mediante márgenes generosos, o al agrupar iconos y sus etiquetas de texto en menús de navegación. Cuando el espaciado entre grupos es mayor que el espaciado dentro de cada grupo, la persona usuaria comprende instantáneamente la organización de la información sin necesidad de bordes visibles.
+!!! quote "Premisa de la Gestalt"
 
-La ley de semejanza establece que los elementos que comparten características visuales (color, forma, tamaño, textura) tienden a percibirse como relacionados. En diseño web, esta ley justifica el uso de estilos consistentes para todos los botones de acción primaria (mismo color de fondo, mismo padding, misma tipografía), para todas las tarjetas de contenido (misma estructura, mismo sombreado, mismo radio de borde), o para todos los enlaces de navegación (misma familia tipográfica, mismo color, mismo subrayado). La ruptura de la semejanza (por ejemplo, un botón con un color diferente al resto) indica a la persona usuaria que ese elemento tiene un significado especial, generalmente una llamada a la acción principal.
+    El todo es más que la suma de las partes.
 
-La ley de continuidad establece que el ojo humano tiende a seguir trayectorias suaves y continuas, percibiendo los elementos alineados como una línea o curva. En diseño web, esta ley se aplica en los menús horizontales, donde los ítems alineados en fila se perciben como una secuencia continua; en los sliders de imágenes, donde los puntos indicadores en la parte inferior se perciben como una trayectoria de navegación; o en las líneas de tiempo o procesos paso a paso representados visualmente con una línea conectora entre hitos.
+Esto tiene implicaciones profundas para el diseño de interfaces web: las personas usuarias no perciben botones, textos e imágenes por separado, sino que construyen mentalmente **agrupaciones, jerarquías y patrones** a partir de lo que ven.
 
-La ley de cierre establece que cuando una figura está incompleta, el cerebro tiende a completar mentalmente las partes que faltan para percibir una forma cerrada y reconocible. En diseño web, esta ley se utiliza en iconos (muchos iconos son formas simplificadas que el cerebro completa), en los sliders de carga (una barra parcialmente llena se percibe como una barra completa cuyo interior está por rellenar), y en logotipos que juegan con el espacio negativo (como el famoso logotipo de FedEx, que forma una flecha en el espacio entre la E y la x). El sistema de pestañas (tabs) en interfaces de usuario es otro ejemplo: la pestaña activa parece estar conectada al contenido que muestra, mientras que las pestañas inactivas están visualmente separadas.
+Las **leyes de la Gestalt** y su aplicación al diseño de interfaces:
 
-La ley de figura-fondo establece que la mente separa automáticamente la escena visual en una figura (el objeto de atención) y un fondo (todo lo demás). En diseño web, esta ley es crucial para garantizar la legibilidad del texto (la figura) sobre el fondo (imagen o color), lo que se traduce en la exigencia de ratios de contraste adecuados según WCAG. Los modales se benefician de esta ley: al oscurecer el fondo de la página (overlay semitransparente), el modal se convierte en la figura clara y nítida. La relación figura-fondo no siempre es estable: la célebre ilusión del jarrón de Rubin demuestra que podemos alternar entre percibir un jarrón y dos rostros de perfil, lo que en diseño web nos advierte de que ciertos patrones de fondo pueden interferir con la percepción del contenido si no se aplican con moderación.
+- **Ley de proximidad** — los elementos que están cerca unos de otros tienden a percibirse como un grupo. En web se aplica al agrupar etiquetas (labels) junto a sus campos de formulario, al separar secciones distintas mediante márgenes generosos o al agrupar iconos y etiquetas en menús. Cuando el espaciado entre grupos es mayor que dentro de cada grupo, la organización de la información se comprende **instantáneamente, sin necesidad de bordes visibles**.
+- **Ley de semejanza** — los elementos que comparten características visuales (color, forma, tamaño, textura) tienden a percibirse como relacionados. En web se justifica el uso de estilos consistentes para todos los botones de acción primaria, todas las tarjetas de contenido y todos los enlaces. La **ruptura de la semejanza** (por ejemplo un botón con un color diferente al resto) indica que ese elemento tiene un significado especial, generalmente una llamada a la acción principal.
+- **Ley de continuidad** — el ojo humano tiende a seguir trayectorias suaves y continuas, percibiendo los elementos alineados como una línea o curva. En web se aplica en los menús horizontales (los ítems en fila se perciben como una secuencia continua), en los sliders (los puntos indicadores se perciben como una trayectoria de navegación) y en líneas de tiempo o procesos paso a paso representados con una línea conectora entre hitos.
+- **Ley de cierre** — cuando una figura está incompleta, el cerebro tiende a completar mentalmente las partes que faltan para percibir una forma cerrada y reconocible. En web se utiliza en iconos (formas simplificadas que el cerebro completa), en sliders de carga (una barra parcialmente llena se percibe como completa), en logotipos que juegan con el espacio negativo (el famoso logotipo de FedEx forma una flecha entre la E y la x) y en el sistema de pestañas (la pestaña activa parece conectada al contenido que muestra).
+- **Ley de figura-fondo** — la mente separa automáticamente la escena visual en una figura (el objeto de atención) y un fondo (todo lo demás). En web es crucial para la **legibilidad del texto** sobre el fondo, lo que se traduce en la exigencia de ratios de contraste adecuados según WCAG. Los modales la aprovechan: al oscurecer el fondo (overlay semitransparente), el modal se convierte en la figura clara y nítida. La relación no siempre es estable: la célebre **ilusión del jarrón de Rubin** (jarrón o dos rostros de perfil) nos advierte de que ciertos patrones de fondo pueden interferir con la percepción del contenido si no se aplican con moderación.
+- **Ley de destino común** — los elementos que se mueven en la misma dirección o siguen la misma trayectoria se perciben como un grupo. En web se aplica en animaciones y transiciones: menús desplegables cuyos ítems aparecen deslizándose, galerías de imágenes con flechas de navegación o iconos que giran o cambian de color al unísono. Los sliders y carruseles son aplicaciones directas de esta ley.
+- **Ley de experiencia** (o ley de la buena forma) — la percepción está influida por nuestras experiencias previas y nuestro contexto cultural. En web debemos apoyarnos en **convenciones ampliamente asentadas**: el logotipo en la esquina superior izquierda que enlaza al inicio, la lupa para la búsqueda, la hamburguesa para el menú en móvil, el subrayado azul para los enlaces, el carrito en la esquina superior derecha o el corazón para favoritos. Violar estas convenciones sin una razón muy justificada genera confusión y fricción, ya que la persona usuaria debe "desaprender" lo que ya sabe y aprender una nueva convención.
 
-La ley de destino común establece que los elementos que se mueven en la misma dirección o siguen la misma trayectoria se perciben como un grupo. En diseño web, esta ley se aplica en las animaciones y transiciones: un menú desplegable cuyos ítems aparecen deslizándose desde arriba, una galería de imágenes que se desplaza horizontalmente al hacer clic en flechas de navegación, o iconos que giran o cambian de color al unísono al pasar el cursor sobre una tarjeta. Los sliders y carruseles son aplicaciones directas de esta ley, ya que los ítems se mueven conjuntamente en la misma dirección, reforzando la percepción de que pertenecen al mismo conjunto.
-
-La ley de experiencia, también llamada ley de la buena forma, establece que la percepción está influida por nuestras experiencias previas y nuestro contexto cultural. En diseño web, esto significa que debemos apoyarnos en convenciones ampliamente asentadas: el logotipo en la esquina superior izquierda que enlaza a la página de inicio, el icono de lupa para la búsqueda, el icono de tres rayas horizontales (hamburguesa) para el menú en dispositivos móviles, el subrayado azul para los enlaces, el icono del carrito de compra en la esquina superior derecha, o el corazón para favoritos y me gusta. Violar estas convenciones sin una razón muy justificada genera confusión y fricción en la experiencia de usuario, ya que la persona usuaria debe "desaprender" lo que ya sabe y aprender una nueva convención.
+![Leyes Gestalt](./img/00/gestalt.webp)
 
 ### 7. Principios de diseño visual aplicados a la web
 
-Los principios de diseño visual son directrices que nos ayudan a organizar los elementos de una interfaz de manera que el resultado sea estéticamente agradable y funcionalmente eficaz. Aunque muchos de ellos tienen raíces en el diseño gráfico tradicional, su aplicación a la web presenta matices específicos.
+Los principios de diseño visual son directrices que nos ayudan a organizar los elementos de una interfaz de manera que el resultado sea **estéticamente agradable y funcionalmente eficaz**. Aunque muchos de ellos tienen raíces en el diseño gráfico tradicional, su aplicación a la web presenta matices específicos.
 
-La unidad es el principio que busca que todos los elementos de la interfaz se perciban como partes de un mismo sistema. Se consigue limitando la paleta de colores a 3-5 colores principales y una gama de neutros, empleando una o dos familias tipográficas como máximo, manteniendo una iconografía consistente en estilo (grosor de trazo, esquinas redondeadas o cuadradas, relleno o contorno), y aplicando un sistema de espaciado basado en una escala predefinida donde cada valor es múltiplo de una unidad base (por ejemplo, 4px). Muchos sistemas de diseño profesionales, como Material Design de Google, IBM Carbon o Atlassian Design System, se basan intensamente en el principio de unidad para garantizar que cientos de diseñadores y desarrolladores distribuidos globalmente produzcan interfaces coherentes.
-
-La jerarquía visual es el principio de organizar los elementos de la interfaz por orden de importancia, de manera que la persona usuaria pueda identificar instantáneamente qué es lo más relevante, dónde debe mirar primero y qué acciones puede realizar. Para establecer jerarquía disponemos de varias técnicas: el tamaño (los titulares grandes dominan sobre el cuerpo de texto pequeño), el color (un botón de color vibrante sobre un fondo neutro atrae la mirada), la posición (el contenido situado en la parte superior de la página tiene más visibilidad que el del pie, y el contenido a la izquierda más que el de la derecha en culturas de lectura izquierda-derecha), el espacio en blanco (los elementos rodeados de abundante espacio negativo adquieren importancia), la tipografía (una negrita destaca sobre una regular, una mayúscula sobre una minúscula), y la profundidad (elementos con sombra o superpuestos parecen estar más cerca y, por tanto, son más importantes).
-
-El equilibrio es la distribución del peso visual en la composición. Cada elemento de la interfaz tiene un peso visual determinado por su tamaño (los elementos grandes pesan más que los pequeños), su color (los colores oscuros y saturados pesan más que los claros y desaturados), su posición (los elementos alejados del centro pesan más que los cercanos), su complejidad (las imágenes detalladas pesan más que las superficies planas) y su aislamiento (un elemento solitario atrae más la atención). El equilibrio simétrico es aquel en que la composición es un reflejo especular a ambos lados de un eje vertical, transmitiendo formalidad, serenidad y orden. Es adecuado para sitios web corporativos, tiendas de lujo y portales institucionales. El equilibrio asimétrico es aquel en que elementos diferentes pero con pesos visuales equivalentes se equilibran mutuamente, transmitiendo dinamismo, creatividad y energía. Es más difícil de conseguir pero suele resultar más interesante visualmente. El equilibrio radial es aquel en que los elementos se distribuyen alrededor de un punto central, como los rayos de una rueda, transmitiendo dinamismo y movimiento circular.
-
-El contraste es la diferencia entre dos o más elementos visuales. Sin contraste, la interfaz es plana, monótona y difícil de navegar. El contraste puede ser de color (complementarios en el círculo cromático), de tamaño (grande vs pequeño), de forma (orgánica vs geométrica), de textura (rugoso vs liso), de tipografía (serif vs sans-serif, bold vs light), de posición (arriba vs abajo, izquierda vs derecha) o de densidad (lleno vs vacío). El contraste de color es crítico para la legibilidad: las WCAG 2.1 exigen un ratio de contraste mínimo de 4.5:1 para texto normal y 3:1 para texto grande (más de 18px o 14px en negrita) en el nivel AA, y 7:1 y 4.5:1 respectivamente para el nivel AAA.
-
-La proporción es la relación de tamaño entre los elementos y entre las partes y el todo. La proporción áurea (aproximadamente 1:1.618), también conocida como número phi o divina proporción, ha sido utilizada por artistas, arquitectos y diseñadores durante siglos por su capacidad de generar composiciones visualmente armoniosas. En diseño web, la proporción áurea puede aplicarse al ancho del contenedor principal en relación con la barra lateral, a la altura de la cabecera en relación con el área de contenido, al tamaño de las imágenes destacadas, o a la escala tipográfica donde cada nivel de encabezado es aproximadamente 1.618 veces mayor que el anterior.
-
-El ritmo es la repetición de elementos a intervalos regulares o variables, creando una sensación de movimiento que guía la mirada de la persona usuaria a lo largo de la página. El ritmo regular se produce cuando los mismos elementos se repiten a intervalos idénticos, como una cuadrícula de tarjetas de producto. El ritmo alterno se produce cuando dos o más elementos diferentes se alternan siguiendo un patrón, como una página de inicio donde se alternan secciones de texto a la izquierda e imagen a la derecha. El ritmo progresivo se produce cuando los elementos cambian gradualmente de tamaño, color o espaciado, creando una sensación de progresión o crescendo visual.
+- **La unidad** — busca que todos los elementos de la interfaz se perciban como partes de un mismo sistema. Se consigue limitando la paleta a 3-5 colores principales y una gama de neutros, empleando una o dos familias tipográficas como máximo, manteniendo una iconografía consistente en estilo (grosor de trazo, esquinas redondeadas o cuadradas, relleno o contorno) y aplicando un sistema de espaciado sobre una escala predefinida (cada valor múltiplo de una unidad base, por ejemplo 4px). Sistemas profesionales como **[Material Design](https://m3.material.io/)** (Google), **IBM Carbon** o **Atlassian Design System** se basan intensamente en este principio para garantizar que cientos de diseñadores y desarrolladores distribuidos globalmente produzcan interfaces coherentes.
+- **La jerarquía visual** — organiza los elementos por orden de importancia para que la persona usuaria identifique instantáneamente qué es lo más relevante, dónde debe mirar primero y qué acciones puede realizar. Técnicas: el **tamaño** (los titulares grandes dominan sobre el cuerpo de texto pequeño), el **color** (un botón vibrante sobre fondo neutro atrae la mirada), la **posición** (arriba tiene más visibilidad que el pie; la izquierda más que la derecha en culturas de lectura izquierda-derecha), el **espacio en blanco** (los elementos rodeados de abundante negativo adquieren importancia), la **tipografía** (una negrita destaca sobre una regular, una mayúscula sobre una minúscula) y la **profundidad** (los elementos con sombra o superpuestos parecen estar más cerca y, por tanto, son más importantes).
+- **El equilibrio** — es la distribución del peso visual en la composición. Cada elemento tiene un peso determinado por su **tamaño** (los grandes pesan más que los pequeños), su **color** (los oscuros y saturados pesan más que los claros y desaturados), su **posición** (los alejados del centro pesan más que los cercanos), su **complejidad** (las imágenes detalladas pesan más que las superficies planas) y su **aislamiento** (un elemento solitario atrae más la atención). Tipos: **simétrico** (reflejo especular a ambos lados de un eje vertical → formalidad, serenidad y orden; adecuado para sitios corporativos, tiendas de lujo y portales institucionales), **asimétrico** (elementos diferentes con pesos visuales equivalentes → dinamismo, creatividad y energía; más difícil de conseguir pero suele resultar más interesante) y **radial** (elementos distribuidos alrededor de un punto central, como los rayos de una rueda → dinamismo y movimiento circular).
+- **El contraste** — es la diferencia entre dos o más elementos visuales. Sin contraste, la interfaz es plana, monótona y difícil de navegar. Puede ser de **color** (complementarios en el círculo cromático), de **tamaño** (grande vs pequeño), de **forma** (orgánica vs geométrica), de **textura** (rugoso vs liso), de **tipografía** (serif vs sans-serif, bold vs light), de **posición** (arriba vs abajo, izquierda vs derecha) o de **densidad** (lleno vs vacío). El contraste de color es crítico para la legibilidad: las **WCAG 2.1** exigen un ratio mínimo de **4.5:1** para texto normal y **3:1** para texto grande (más de 18px o 14px en negrita) en el nivel **AA**, y **7:1** y **4.5:1** respectivamente en el nivel **AAA**.
+- **La proporción** — es la relación de tamaño entre los elementos y entre las partes y el todo. La **proporción áurea** (aproximadamente 1:1.618, también conocida como número phi o divina proporción) ha sido utilizada por artistas, arquitectos y diseñadores durante siglos por su capacidad de generar composiciones visualmente armoniosas. En diseño web puede aplicarse al ancho del contenedor principal en relación con la barra lateral, a la altura de la cabecera en relación con el área de contenido, al tamaño de las imágenes destacadas, o a la escala tipográfica donde cada nivel de encabezado es aproximadamente 1.618 veces mayor que el anterior.
+- **El ritmo** — es la repetición de elementos a intervalos regulares o variables, creando una sensación de movimiento que guía la mirada de la persona usuaria a lo largo de la página. El ritmo **regular** repite los mismos elementos a intervalos idénticos (una cuadrícula de tarjetas de producto); el **alterno** alterna dos o más elementos diferentes siguiendo un patrón (secciones de texto a la izquierda e imagen a la derecha); el **progresivo** cambia gradualmente tamaño, color o espaciado, creando una sensación de progresión o crescendo visual.
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Aplicación de la ley de proximidad en un formulario de registro
 
-**Contexto pedagógico:** La persona estudiante debe comprender cómo el espaciado entre grupos de campos de un formulario comunica la estructura del mismo sin necesidad de separadores explícitos. Este ejemplo muestra la diferencia entre un formulario con espaciado uniforme (donde no se distinguen los grupos) y otro con espaciado intencionado que aplica la ley de proximidad.
+!!! example "Contexto pedagógico"
+    La persona estudiante debe comprender cómo el espaciado entre grupos de campos de un formulario comunica la estructura del mismo sin necesidad de separadores explícitos. Este ejemplo muestra la diferencia entre un formulario con espaciado uniforme (donde no se distinguen los grupos) y otro con espaciado intencionado que aplica la ley de proximidad.
 
 ```html
 <!DOCTYPE html>
@@ -384,12 +467,14 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Al abrir este formulario en el navegador, la persona usuaria percibe inmediatamente dos bloques de información diferenciados: los datos personales y los datos de acceso. Esta percepción no requiere leer las etiquetas ni comprender el contenido; es el espaciado el que comunica la agrupación. La ley de proximidad opera de manera preconsciente: el margen de 1.5rem entre grupos frente a los 0.75rem dentro de cada grupo crea una diferencia de espaciado que el sistema visual interpreta como pertenencia. Se recomienda al alumnado inspeccionar el elemento con las DevTools del navegador y modificar temporalmente los márgenes para comprobar cómo afecta a la percepción de la estructura.
+!!! note "Explicación del resultado"
+    Al abrir este formulario en el navegador, la persona usuaria percibe inmediatamente dos bloques de información diferenciados: los datos personales y los datos de acceso. Esta percepción no requiere leer las etiquetas ni comprender el contenido; es el espaciado el que comunica la agrupación. La ley de proximidad opera de manera preconsciente: el margen de **1.5rem** entre grupos frente a los **0.75rem** dentro de cada grupo crea una diferencia de espaciado que el sistema visual interpreta como pertenencia. Se recomienda al alumnado inspeccionar el elemento con las DevTools del navegador y modificar temporalmente los márgenes para comprobar cómo afecta a la percepción de la estructura.
 
 
 ### Ejemplo 2: Ley de semejanza aplicada a tarjetas de contenido
 
-**Contexto pedagógico:** Este ejemplo demuestra cómo la repetición de características visuales (misma estructura de tarjeta, misma tipografía, mismo sombreado) permite a la persona usuaria identificar rápidamente que varios elementos pertenecen a la misma categoría, aunque su contenido sea completamente diferente. Se incluye un botón "destacado" que rompe deliberadamente la semejanza para demostrar cómo esta ruptura comunica un significado especial.
+!!! example "Contexto pedagógico"
+    Este ejemplo demuestra cómo la repetición de características visuales (misma estructura de tarjeta, misma tipografía, mismo sombreado) permite a la persona usuaria identificar rápidamente que varios elementos pertenecen a la misma categoría, aunque su contenido sea completamente diferente. Se incluye un botón "destacado" que rompe deliberadamente la semejanza para demostrar cómo esta ruptura comunica un significado especial.
 
 ```html
 <!DOCTYPE html>
@@ -643,13 +728,15 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Al visualizar esta página, la persona usuaria reconoce al instante que los tres bloques son "planes de precios" porque comparten la misma estructura visual. No necesita leer ningún texto para saber que pertenecen a la misma categoría. El plan "Profesional" destaca inmediatamente sobre los otros dos porque rompe el patrón de semejanza: tiene un borde morado, está ligeramente escalado, y su botón tiene un color diferente. Esta ruptura es efectiva precisamente porque el resto de tarjetas son extremadamente semejantes entre sí. Se recomienda al alumnado comentar la clase `.destacado` en las DevTools para comprobar cómo las tres tarjetas se vuelven visualmente idénticas y desaparece la jerarquía de recomendación.
+!!! note "Explicación del resultado"
+    Al visualizar esta página, la persona usuaria reconoce al instante que los tres bloques son "planes de precios" porque comparten la misma estructura visual. No necesita leer ningún texto para saber que pertenecen a la misma categoría. El plan "Profesional" destaca inmediatamente sobre los otros dos porque rompe el patrón de semejanza: tiene un borde morado, está ligeramente escalado, y su botón tiene un color diferente. Esta ruptura es efectiva precisamente porque el resto de tarjetas son extremadamente semejantes entre sí. Se recomienda al alumnado comentar la clase `.destacado` en las DevTools para comprobar cómo las tres tarjetas se vuelven visualmente idénticas y desaparece la jerarquía de recomendación.
 
 ---
 
 ### Ejemplo 3: Principios Gestalt combinados en una sección hero
 
-**Contexto pedagógico:** Este ejemplo integra varias leyes de Gestalt en un mismo componente: la sección hero de una landing page. Se aplican simultáneamente la ley de figura-fondo (texto sobre imagen con overlay), la ley de proximidad (agrupación del texto y el botón), la ley de semejanza (estilo consistente de los botones) y la ley de cierre (uso del espacio negativo para sugerir formas).
+!!! example "Contexto pedagógico"
+    Este ejemplo integra varias leyes de Gestalt en un mismo componente: la sección hero de una landing page. Se aplican simultáneamente la ley de figura-fondo (texto sobre imagen con overlay), la ley de proximidad (agrupación del texto y el botón), la ley de semejanza (estilo consistente de los botones) y la ley de cierre (uso del espacio negativo para sugerir formas).
 
 ```html
 <!DOCTYPE html>
@@ -835,13 +922,15 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Esta sección hero demuestra cómo los principios de la Gestalt operan simultáneamente y de forma sinérgica en una interfaz real. La ley de figura-fondo garantiza la legibilidad del texto sobre la imagen, la ley de proximidad agrupa el contenido textual y los botones como una unidad informativa, la ley de semejanza permite identificar ambos botones como elementos de acción del mismo tipo, y la ley de cierre (combinada con destino común) crea un indicador de scroll que invita a continuar navegando. Se recomienda al alumnado modificar en las DevTools el valor de opacidad del overlay para comprobar cómo afecta la ley de figura-fondo a la legibilidad.
+!!! note "Explicación del resultado"
+    Esta sección hero demuestra cómo los principios de la Gestalt operan simultáneamente y de forma sinérgica en una interfaz real. La ley de figura-fondo garantiza la legibilidad del texto sobre la imagen, la ley de proximidad agrupa el contenido textual y los botones como una unidad informativa, la ley de semejanza permite identificar ambos botones como elementos de acción del mismo tipo, y la ley de cierre (combinada con destino común) crea un indicador de scroll que invita a continuar navegando. Se recomienda al alumnado modificar en las DevTools el valor de opacidad del overlay para comprobar cómo afecta la ley de figura-fondo a la legibilidad.
 
 ---
 
 ### Ejemplo 4: Jerarquía visual mediante tamaño, color y espacio
 
-**Contexto pedagógico:** Una página de artículo de blog donde se demuestra cómo establecer jerarquía visual utilizando exclusivamente propiedades CSS: el título destaca por su gran tamaño y color oscuro, el subtítulo tiene un tamaño intermedio y color gris medio, los metadatos tienen un tamaño pequeño y color gris claro, y el cuerpo del texto ocupa el nivel base.
+!!! example "Contexto pedagógico"
+    Una página de artículo de blog donde se demuestra cómo establecer jerarquía visual utilizando exclusivamente propiedades CSS: el título destaca por su gran tamaño y color oscuro, el subtítulo tiene un tamaño intermedio y color gris medio, los metadatos tienen un tamaño pequeño y color gris claro, y el cuerpo del texto ocupa el nivel base.
 
 ```html
 <!DOCTYPE html>
@@ -1055,13 +1144,15 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Al abrir esta página, la mirada sigue un recorrido natural: primero se posa en el título (elemento de mayor tamaño y contraste), luego desciende a los metadatos (información contextual), posteriormente a la entradilla y finalmente al cuerpo del texto. La cita destacada interrumpe este flujo con un bloque de color diferente y un borde lateral, reclamando atención en un momento estratégico. Se recomienda modificar el `font-size` del título a 1rem en las DevTools para comprobar cómo colapsa la jerarquía visual.
+!!! note "Explicación del resultado"
+    Al abrir esta página, la mirada sigue un recorrido natural: primero se posa en el título (elemento de mayor tamaño y contraste), luego desciende a los metadatos (información contextual), posteriormente a la entradilla y finalmente al cuerpo del texto. La cita destacada interrumpe este flujo con un bloque de color diferente y un borde lateral, reclamando atención en un momento estratégico. Se recomienda modificar el `font-size` del título a **1rem** en las DevTools para comprobar cómo colapsa la jerarquía visual.
 
 ---
 
 ### Ejemplo 5: Equilibrio simétrico vs asimétrico en una sección de características
 
-**Contexto pedagógico:** Este ejemplo presenta dos versiones de la misma sección de características de un producto software, una con equilibrio simétrico y otra con equilibrio asimétrico. El alumnado puede comparar visualmente ambas versiones y analizar las sensaciones que transmite cada una.
+!!! example "Contexto pedagógico"
+    Este ejemplo presenta dos versiones de la misma sección de características de un producto software, una con equilibrio simétrico y otra con equilibrio asimétrico. El alumnado puede comparar visualmente ambas versiones y analizar las sensaciones que transmite cada una.
 
 ```html
 <!DOCTYPE html>
@@ -1280,13 +1371,15 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Al comparar ambas versiones, la simétrica transmite orden, previsibilidad y seriedad. Todas las tarjetas tienen el mismo peso visual. La asimétrica dirige la atención hacia la primera tarjeta (que ocupa dos columnas y tiene un fondo degradado), estableciendo una jerarquía: hay una característica principal y tres secundarias. Se recomienda reflexionar sobre qué tipo de producto se beneficiaría de cada enfoque.
+!!! note "Explicación del resultado"
+    Al comparar ambas versiones, la simétrica transmite orden, previsibilidad y seriedad. Todas las tarjetas tienen el mismo peso visual. La asimétrica dirige la atención hacia la primera tarjeta (que ocupa dos columnas y tiene un fondo degradado), estableciendo una jerarquía: hay una característica principal y tres secundarias. Se recomienda reflexionar sobre qué tipo de producto se beneficiaría de cada enfoque.
 
 ---
 
 ### Ejemplo 6: Ritmo visual en una galería de proyectos
 
-**Contexto pedagógico:** Este ejemplo demuestra cómo el ritmo visual (regular, alterno y progresivo) guía la mirada de la persona usuaria a través de una serie de elementos. Se implementan tres patrones rítmicos diferentes en una galería de proyectos, mostrando cómo pequeñas variaciones en la repetición producen efectos perceptivos muy distintos.
+!!! example "Contexto pedagógico"
+    Este ejemplo demuestra cómo el ritmo visual (regular, alterno y progresivo) guía la mirada de la persona usuaria a través de una serie de elementos. Se implementan tres patrones rítmicos diferentes en una galería de proyectos, mostrando cómo pequeñas variaciones en la repetición producen efectos perceptivos muy distintos.
 
 ```html
 <!DOCTYPE html>
@@ -1582,7 +1675,8 @@ El ritmo es la repetición de elementos a intervalos regulares o variables, crea
 </html>
 ```
 
-**Explicación del resultado:** Los tres patrones rítmicos producen experiencias de navegación muy diferentes. El ritmo regular transmite orden y predictibilidad, ideal para catálogos de producto. El ritmo alterno crea un recorrido visual en zigzag que mantiene el interés, adecuado para portfolios. El ritmo progresivo establece una jerarquía implícita guiando la atención desde lo más pequeño hacia lo más grande, ideal para planes de precios o niveles de servicio.
+!!! note "Explicación del resultado"
+    Los tres patrones rítmicos producen experiencias de navegación muy diferentes. El ritmo regular transmite orden y predictibilidad, ideal para catálogos de producto. El ritmo alterno crea un recorrido visual en zigzag que mantiene el interés, adecuado para portfolios. El ritmo progresivo establece una jerarquía implícita guiando la atención desde lo más pequeño hacia lo más grande, ideal para planes de precios o niveles de servicio.
 
 ---
 
@@ -1606,7 +1700,8 @@ La página de inicio del buscador de Google es probablemente el ejemplo más est
 
 - **Ley de experiencia:** El icono de lupa en el campo de búsqueda y el icono del micrófono para búsqueda por voz son convenciones universalmente reconocidas que Google ha ayudado a establecer.
 
-**Lección para el alumnado:** El minimalismo extremo de Google no es una decisión estética, sino funcional. Cada elemento que se elimina reduce la carga cognitiva y acelera la tarea principal: buscar información. Antes de añadir cualquier elemento a una interfaz, hay que preguntarse si ayuda realmente a la persona usuaria o solo añade ruido visual.
+!!! tip "Lección para el alumnado"
+    El minimalismo extremo de Google no es una decisión estética, sino funcional. Cada elemento que se elimina reduce la carga cognitiva y acelera la tarea principal: buscar información. Antes de añadir cualquier elemento a una interfaz, hay que preguntarse si ayuda realmente a la persona usuaria o solo añade ruido visual.
 
 ---
 
@@ -1628,7 +1723,8 @@ La página de inicio y las fichas de producto de Amazon representan el extremo o
 
 - **Carga cognitiva controlada:** Aunque la página contiene muchísima información, Amazon utiliza "chunking" o fragmentación: cada producto es un chunk visual que puede procesarse de forma independiente. El usuario nunca se enfrenta a un muro de texto, sino a unidades discretas de información reconocibles y comparables.
 
-**Lección para el alumnado:** La densidad informativa no es necesariamente mala. Lo que hace usable o inusable una interfaz no es la cantidad de información, sino cómo está organizada. Los principios de la Gestalt (especialmente proximidad y semejanza) permiten gestionar grandes volúmenes de información sin abrumar al usuario.
+!!! tip "Lección para el alumnado"
+    La densidad informativa no es necesariamente mala. Lo que hace usable o inusable una interfaz no es la cantidad de información, sino cómo está organizada. Los principios de la Gestalt (especialmente proximidad y semejanza) permiten gestionar grandes volúmenes de información sin abrumar al usuario.
 
 ---
 
@@ -1650,7 +1746,8 @@ Airbnb revolucionó el sector de los alojamientos turísticos no solo por su mod
 
 - **Proceso DCU documentado:** Airbnb ha compartido públicamente su metodología de diseño. Realizan investigación etnográfica visitando a anfitriones y huéspedes en sus casas, crean journey maps detallados del proceso de reserva, prototipan en papel antes de tocar código, y evalúan constantemente con usuarios reales. Cada decisión de diseño está respaldada por datos y observación directa, no por suposiciones del equipo de diseño.
 
-**Lección para el alumnado:** El diseño emocional no es opuesto al diseño funcional. Airbnb demuestra que una interfaz puede ser simultáneamente bella, emocionalmente resonante y altamente funcional. La clave está en diseñar para las emociones y necesidades reales de las personas, no para las tendencias del momento. El caso también ilustra que el DCU no es una fase del proyecto, sino una cultura organizativa que impregna todas las decisiones de la empresa.
+!!! tip "Lección para el alumnado"
+    El diseño emocional no es opuesto al diseño funcional. Airbnb demuestra que una interfaz puede ser simultáneamente bella, emocionalmente resonante y altamente funcional. La clave está en diseñar para las emociones y necesidades reales de las personas, no para las tendencias del momento. El caso también ilustra que el DCU no es una fase del proyecto, sino una cultura organizativa que impregna todas las decisiones de la empresa.
 
 
 ## Actividades guiadas
@@ -1661,11 +1758,11 @@ Airbnb revolucionó el sector de los alojamientos turísticos no solo por su mod
 
 **Metodología:** El docente proyectará en el aula la página de inicio de tres sitios web conocidos (por ejemplo, Netflix, Wikipedia y GitHub) y guiará al alumnado en el análisis sistemático de cada uno, cumplimentando una ficha de análisis que incluya:
 
-1. Ley de proximidad: ¿Qué elementos están agrupados y por qué? ¿El espaciado entre grupos es mayor que el espaciado dentro de cada grupo? ¿Se utilizan bordes o fondos para reforzar las agrupaciones?
-2. Ley de semejanza: ¿Qué elementos comparten características visuales? ¿Hay alguna ruptura deliberada de la semejanza para destacar un elemento especial?
-3. Ley de figura-fondo: ¿Está claramente definida la figura principal de cada pantalla? ¿El contraste entre texto y fondo cumple con los criterios WCAG?
-4. Ley de continuidad: ¿Existen líneas visuales que guíen la mirada a través de la página? ¿Qué recorrido visual se sugiere?
-5. Ley de cierre: ¿Se utilizan formas incompletas que el cerebro debe completar (logotipos, iconos, indicadores de carga)?
+1. **Ley de proximidad:** ¿Qué elementos están agrupados y por qué? ¿El espaciado entre grupos es mayor que el espaciado dentro de cada grupo? ¿Se utilizan bordes o fondos para reforzar las agrupaciones?
+2. **Ley de semejanza:** ¿Qué elementos comparten características visuales? ¿Hay alguna ruptura deliberada de la semejanza para destacar un elemento especial?
+3. **Ley de figura-fondo:** ¿Está claramente definida la figura principal de cada pantalla? ¿El contraste entre texto y fondo cumple con los criterios **WCAG**?
+4. **Ley de continuidad:** ¿Existen líneas visuales que guíen la mirada a través de la página? ¿Qué recorrido visual se sugiere?
+5. **Ley de cierre:** ¿Se utilizan formas incompletas que el cerebro debe completar (logotipos, iconos, indicadores de carga)?
 
 **Entregable:** Una ficha de análisis por cada sitio web analizado, con capturas de pantalla anotadas donde se señalen gráficamente las leyes identificadas.
 
@@ -1732,18 +1829,22 @@ El alumnado, organizado en parejas, evaluará una interfaz web proporcionada por
 **Enunciado:** Construye una página web que represente visualmente la evolución del diseño web desde 1991 hasta la actualidad, organizada como una línea del tiempo interactiva. La página debe reflejar, en su propio diseño, las características estéticas de cada era que describe.
 
 **Requisitos técnicos:**
-- La página debe tener al menos 6 hitos temporales: Web 1.0 (1991-2000), Web 2.0 (2004-2010), Aparición del diseño responsive (2010), Mobile-first (2015), PWAs (2018), y Web 3.0 / IA (2023-presente).
+
+- La página debe tener al menos 6 hitos temporales: **Web 1.0 (1991-2000)**, **Web 2.0 (2004-2010)**, **Aparición del diseño responsive (2010)**, **Mobile-first (2015)**, **PWAs (2018)**, y **Web 3.0 / IA (2023-presente)**.
 - Cada hito debe incluir: año, nombre de la era, descripción de 100-150 palabras, tecnologías clave, y una imagen representativa o captura de pantalla de un sitio emblemático de la época.
 - La línea del tiempo debe ser responsive y utilizar un diseño distinto en móvil (vertical) y en escritorio (horizontal o en zigzag).
 - La paleta de colores y la tipografía deben evolucionar a lo largo de la línea del tiempo para reflejar visualmente los cambios estéticos de cada era (colores planos y fuentes de sistema para la Web 1.0, degradados y sombras para la Web 2.0, diseño limpio con espacios generosos para la era actual).
 - Incluye comentarios en el HTML y CSS que justifiquen las decisiones de diseño adoptadas, vinculándolas con los principios estudiados.
 
 **Criterios de evaluación:**
-- Corrección histórica y técnica de los contenidos (25%).
-- Calidad del diseño responsive y la adaptación mobile (20%).
-- Coherencia entre el contenido descrito y el estilo visual de cada era (25%).
-- Calidad del código HTML/CSS y pertinencia de los comentarios (20%).
-- Creatividad en la presentación visual (10%).
+
+| Criterio | Peso |
+|----------|------|
+| Corrección histórica y técnica de los contenidos | **25%** |
+| Calidad del diseño responsive y la adaptación mobile | **20%** |
+| Coherencia entre el contenido descrito y el estilo visual de cada era | **25%** |
+| Calidad del código HTML/CSS y pertinencia de los comentarios | **20%** |
+| Creatividad en la presentación visual | **10%** |
 
 ---
 
@@ -1772,16 +1873,20 @@ El alumnado, organizado en parejas, evaluará una interfaz web proporcionada por
 **Enunciado:** Crea una página web que funcione como "galería interactiva" de los principios de diseño visual estudiados (unidad, jerarquía, equilibrio, contraste, proporción, ritmo). La página debe ser, en sí misma, una demostración de cada principio.
 
 **Requisitos técnicos:**
+
 - La página se compone de 6 secciones, una por cada principio de diseño visual.
 - Cada sección debe contener: título descriptivo, breve explicación teórica (50-75 palabras), demostración visual interactiva construida con HTML y CSS, y controles para que la persona visitante pueda modificar parámetros.
 - Los controles interactivos pueden implementarse con checkboxes, sliders (range) o botones de radio que modifiquen clases CSS mediante JavaScript básico.
 - Ejemplos de demostraciones: para Unidad, un grid de tarjetas que alterne entre "coherente" y "caótico"; para Jerarquía, un artículo con slider de tamaño de título; para Contraste, texto sobre fondo con sliders que muestren el ratio WCAG en tiempo real; para Ritmo, galería con alternancia entre regular, alterno y progresivo.
 
 **Criterios de evaluación:**
-- Corrección conceptual de las explicaciones teóricas (20%).
-- Funcionalidad y creatividad de las demostraciones interactivas (35%).
-- Calidad del código HTML, CSS y JavaScript (25%).
-- Diseño visual de la propia página como demostración de los principios que explica (20%).
+
+| Criterio | Peso |
+|----------|------|
+| Corrección conceptual de las explicaciones teóricas | **20%** |
+| Funcionalidad y creatividad de las demostraciones interactivas | **35%** |
+| Calidad del código HTML, CSS y JavaScript | **25%** |
+| Diseño visual de la propia página como demostración de los principios que explica | **20%** |
 
 ---
 
@@ -1811,10 +1916,13 @@ El alumnado, organizado en parejas, evaluará una interfaz web proporcionada por
 **Formato:** Prepara una presentación de 12-15 diapositivas y exponla ante la clase durante 10-12 minutos. La presentación debe incluir: definición del concepto, estado actual de la tecnología, ejemplos reales o prototipos funcionales, implicaciones para el diseño de interfaces web, desafíos éticos y de accesibilidad, y tu opinión personal argumentada sobre el potencial y los riesgos de esa tecnología.
 
 **Criterios de evaluación:**
-- Profundidad de la investigación y calidad de las fuentes (30%).
-- Claridad expositiva y capacidad de síntesis (25%).
-- Reflexión crítica sobre implicaciones éticas y de accesibilidad (25%).
-- Calidad visual de la presentación (20%).
+
+| Criterio | Peso |
+|----------|------|
+| Profundidad de la investigación y calidad de las fuentes | **30%** |
+| Claridad expositiva y capacidad de síntesis | **25%** |
+| Reflexión crítica sobre implicaciones éticas y de accesibilidad | **25%** |
+| Calidad visual de la presentación | **20%** |
 
 ---
 
@@ -1822,7 +1930,8 @@ El alumnado, organizado en parejas, evaluará una interfaz web proporcionada por
 
 **Enunciado:** Organiza y ejecuta un Design Sprint siguiendo la metodología de Google Ventures (Jake Knapp) para diseñar una solución digital a un problema propuesto por el docente (por ejemplo: una app para reducir el desperdicio de alimentos en hogares, una plataforma para conectar personas mayores con voluntarios que les ayuden con trámites digitales, o un sistema de gamificación para fomentar el reciclaje en institutos).
 
-El Design Sprint se estructura en 5 días (pueden simularse en 5 sesiones de clase):
+El Design Sprint se estructura en **5 días** (pueden simularse en 5 sesiones de clase):
+
 - **Día 1 (Map):** Definir el problema a largo plazo, mapear el recorrido del usuario, seleccionar un punto concreto del mapa donde centrar el sprint.
 - **Día 2 (Sketch):** Cada integrante del equipo dibuja soluciones individualmente, siguiendo el método de los 4 pasos: tomar notas, generar ideas, garabatear soluciones locas (crazy 8s), dibujar la solución final en detalle.
 - **Día 3 (Decide):** Exponer los bocetos (sin presentación oral), voto silencioso con pegatinas, discusión grupal, y selección de la solución ganadora. Creación de un storyboard que defina paso a paso el prototipo.
@@ -1852,10 +1961,13 @@ El Design Sprint se estructura en 5 días (pueden simularse en 5 sesiones de cla
 **Formato:** El Design System puede presentarse como una página web funcional construida en HTML y CSS o como un documento PDF con todos los elementos especificados.
 
 **Criterios de evaluación:**
-- Completitud y coherencia del Design System (30%).
-- Calidad de las decisiones de diseño y su justificación teórica (25%).
-- Implementación en HTML/CSS correcta y accesible (25%).
-- Claridad y utilidad de la documentación (20%).
+
+| Criterio | Peso |
+|----------|------|
+| Completitud y coherencia del Design System | **30%** |
+| Calidad de las decisiones de diseño y su justificación teórica | **25%** |
+| Implementación en HTML/CSS correcta y accesible | **25%** |
+| Claridad y utilidad de la documentación | **20%** |
 
 ---
 
@@ -1863,13 +1975,13 @@ El Design Sprint se estructura en 5 días (pueden simularse en 5 sesiones de cla
 
 1. **Aplica la ley de proximidad antes de añadir bordes o fondos:** Antes de dibujar líneas, bordes o fondos de color para separar grupos de contenido, prueba a usar únicamente el espaciado. Un `margin-bottom: 2rem` entre secciones y un `margin-bottom: 0.5rem` dentro de cada sección suele ser suficiente para que el cerebro perciba la agrupación sin añadir ruido visual. Los bordes y los fondos deben ser el último recurso, no la primera opción. Una interfaz con menos elementos decorativos es más rápida de procesar, más fácil de mantener y más elegante visualmente. La simplicidad estructural es un valor en sí misma.
 
-2. **Establece una escala de espaciado y respétala rigurosamente:** Define una unidad base (recomendación: 4px u 8px) y utiliza exclusivamente múltiplos de esa unidad para todos los márgenes, rellenos, alturas y anchos. Por ejemplo, con una unidad base de 8px, los espaciados disponibles serían 8px, 16px, 24px, 32px, 48px, 64px. Prohíbe valores como 7px, 13px o 23px. Esta restricción autoimpuesta produce interfaces mucho más coherentes y armónicas, ya que todos los espacios están matemáticamente relacionados. Los sistemas de diseño profesionales (Material Design con su grid de 8dp, IBM Carbon, Tailwind CSS) aplican este principio.
+2. **Establece una escala de espaciado y respétala rigurosamente:** Define una unidad base (recomendación: **4px u 8px**) y utiliza exclusivamente múltiplos de esa unidad para todos los márgenes, rellenos, alturas y anchos. Por ejemplo, con una unidad base de 8px, los espaciados disponibles serían 8px, 16px, 24px, 32px, 48px, 64px. Prohíbe valores como **7px, 13px o 23px**. Esta restricción autoimpuesta produce interfaces mucho más coherentes y armónicas, ya que todos los espacios están matemáticamente relacionados. Los sistemas de diseño profesionales (Material Design con su grid de 8dp, IBM Carbon, Tailwind CSS) aplican este principio.
 
 3. **Usa el contraste de forma intencionada, no arbitraria:** Cada diferencia visual (de color, tamaño, forma, tipografía) debe tener una razón de ser y comunicar algo a la persona usuaria. Un botón rojo solo debe utilizarse para acciones destructivas (eliminar cuenta, cancelar suscripción), nunca por razones estéticas. Un texto en negrita solo debe usarse para destacar información importante, no para decorar. Si no puedes justificar por qué dos elementos son visualmente diferentes, hazlos idénticos. La coherencia visual (principio de semejanza) es más importante que la variedad.
 
-4. **Adopta el enfoque mobile-first como filosofía de simplificación:** Diseñar primero para la pantalla más pequeña no es solo una estrategia técnica para escribir media queries en orden ascendente (`min-width`). Es una filosofía de diseño que te obliga a priorizar el contenido esencial, a simplificar la navegación, a reducir el número de opciones y a preguntarte constantemente: "¿realmente necesito este elemento?". Si un diseño funciona en una pantalla de 320px de ancho, funcionará en cualquier pantalla.
+4. **Adopta el enfoque mobile-first como filosofía de simplificación:** Diseñar primero para la pantalla más pequeña no es solo una estrategia técnica para escribir media queries en orden ascendente (`min-width`). Es una filosofía de diseño que te obliga a priorizar el contenido esencial, a simplificar la navegación, a reducir el número de opciones y a preguntarte constantemente: "¿realmente necesito este elemento?". Si un diseño funciona en una pantalla de **320px** de ancho, funcionará en cualquier pantalla.
 
-5. **Realiza tests de usabilidad con 5 personas, no con 50:** Jakob Nielsen demostró matemáticamente que con 5 personas usuarias se descubren aproximadamente el 85% de los problemas de usabilidad de una interfaz. Añadir más personas tiene un retorno decreciente: la sexta persona descubre pocos problemas nuevos. Es mucho más efectivo realizar tres rondas de tests con 5 personas cada una (diseñar, testear, corregir, volver a testear) que un único test con 15 personas.
+5. **Realiza tests de usabilidad con 5 personas, no con 50:** Jakob Nielsen demostró matemáticamente que con **5 personas** usuarias se descubren aproximadamente el **85%** de los problemas de usabilidad de una interfaz. Añadir más personas tiene un retorno decreciente: la sexta persona descubre pocos problemas nuevos. Es mucho más efectivo realizar **tres rondas de tests con 5 personas cada una** (diseñar, testear, corregir, volver a testear) que un único test con 15 personas.
 
 ---
 
@@ -1879,7 +1991,7 @@ El Design Sprint se estructura en 5 días (pueden simularse en 5 sesiones de cla
 
 2. **Ignorar el orden de lectura y asumir que la persona usuaria mira todo:** Las personas no leen las páginas web: las escanean. La mirada salta de un elemento a otro buscando información relevante y descartando todo lo demás en fracciones de segundo. Si un mensaje importante o una instrucción crucial se presenta en un bloque de texto denso y sin diferenciación visual, la persona usuaria no lo verá. Utiliza la jerarquía visual (tamaño, color, contraste, espacio) para guiar la mirada hacia lo importante.
 
-3. **Usar demasiados colores y fuentes tipográficas (síndrome del árbol de Navidad):** Cuando alguien descubre las posibilidades de CSS, la tentación de usar todos los colores y las 1400 familias tipográficas de Google Fonts es casi irresistible. El resultado es una interfaz caótica donde nada destaca porque todo compite por la atención. La regla de oro profesional es: máximo 3-5 colores principales + neutros, y máximo 2 familias tipográficas (una para titulares, otra para cuerpo).
+3. **Usar demasiados colores y fuentes tipográficas (síndrome del árbol de Navidad):** Cuando alguien descubre las posibilidades de CSS, la tentación de usar todos los colores y las 1400 familias tipográficas de Google Fonts es casi irresistible. El resultado es una interfaz caótica donde nada destaca porque todo compite por la atención. La regla de oro profesional es: máximo **3-5 colores principales** + neutros, y máximo **2 familias tipográficas** (una para titulares, otra para cuerpo).
 
 4. **Descuidar el espacio en blanco y rellenar cada píxel disponible:** El horror vacui (miedo al vacío) es un sesgo muy extendido: la sensación de que el espacio en blanco es un desperdicio y hay que llenarlo con contenido, banners, widgets y llamadas a la acción. El espacio en blanco no es ausencia de contenido, es un elemento activo de diseño que agrupa, separa, jerarquiza y da respiro. Interfaces como las de Apple demuestran que el espacio generoso comunica calidad y lujo, mientras que la saturación comunica bajo coste y desorganización.
 

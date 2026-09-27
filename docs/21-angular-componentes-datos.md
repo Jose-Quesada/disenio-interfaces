@@ -14,7 +14,8 @@ Esta unidad se vincula directamente con el **Resultado de Aprendizaje 4 (RA4)** 
 
 Asimismo, se relaciona con el **RA2** (CE 2.i: "Se han analizado y utilizado tecnologías y frameworks para la creación de interfaces web") y con el **RA6** —"Desarrolla interfaces web amigables analizando y aplicando las pautas de usabilidad"— a través del diseño de estados visuales claros (skeleton loaders, mensajes de vacío, feedback de error) que mejoran la experiencia de usuario.
 
-> Nota: esta unidad es el núcleo práctico del RA4 en Angular. Mientras la Unidad 20 enseñó a "montar las piezas" (componentes, templates, estilos), esta unidad enseña a "darles vida" (datos que fluyen, condiciones que cambian, eventos que reaccionan).
+!!! note "Núcleo práctico del RA4"
+    Esta unidad es el núcleo práctico del **RA4** en Angular. Mientras la Unidad 20 enseñó a "montar las piezas" (componentes, templates, estilos), esta unidad enseña a "darles vida" (datos que fluyen, condiciones que cambian, eventos que reaccionan).
 
 ## Conocimientos previos
 
@@ -52,23 +53,28 @@ Para abordar esta unidad con soltura, el alumnado debe:
 
 ### 1. Data binding: el motor de la reactividad
 
-El concepto central de Angular es que **la interfaz es una función de los datos**. No se manipula el DOM directamente ("cambia el texto del párrafo a X"); se declaran las relaciones entre datos y elementos, y Angular se encarga de actualizar el DOM cuando los datos cambian.
+!!! info "Definición"
+    El concepto central de Angular es que **la interfaz es una función de los datos**. No se manipula el DOM directamente ("cambia el texto del párrafo a X"); se declaran las relaciones entre datos y elementos, y Angular se encarga de actualizar el DOM cuando los datos cambian.
 
 Existen tres formas de establecer esa relación:
 
-**Interpolación ({{ }}):** la más simple. Se usa para insertar texto en el template. `{{ nombre }}` renderiza el valor de la propiedad `nombre`. También acepta expresiones simples: `{{ precio * iva + precio }}`, `{{ estaActivo ? 'Sí' : 'No' }}`. La restricción clave es que no se puede "declarar" nada dentro: no `let x = 5`, no `for`, no `if`. Solo se "lee" y se "calcula".
+- **Interpolación (`{{ }}`):** la más simple. Se usa para insertar texto en el template. `{{ nombre }}` renderiza el valor de la propiedad `nombre`. También acepta expresiones simples: `{{ precio * iva + precio }}`, `{{ estaActivo ? 'Sí' : 'No' }}`.
+- **Property binding (`\[prop\]`):** cuando la propiedad a bindar no es texto. El atributo `src` de una imagen, la clase CSS de un elemento, el estilo inline, el estado `disabled` de un botón. La sintaxis con corchetes `[src]="url"` es equivalente a `src="{{ url }}"` pero más explícita y permite valores booleanos (`[disabled]="!estaHabilitado"`).
+- **Event binding (`(evento)`):** la forma inversa: el usuario hace algo en el DOM y se ejecuta código TypeScript. `(click)="incrementar()"`, `(input)="onCambio($event)"`. La variable `$event` contiene el objeto de evento nativo del navegador, de donde se extrae lo necesario (`$event.target.value` para inputs).
+- **Two-way binding (`\[(prop)\]`):** combina los dos anteriores en una sintaxis compacta. `[(ngModel)]="nombre"` es equivalente a `[ngModel]="nombre" (ngModelChange)="nombre = $event"`. Es el mecanismo por el que un input de formulario "se mantiene en sincronía" con la variable del componente: el usuario escribe → Angular actualiza la variable → si algún otro elemento depende de esa variable, también se actualiza.
 
-**Property binding ([prop]):** cuando la propiedad a bindar no es texto. El atributo `src` de una imagen, la clase CSS de un elemento, el estilo inline, el estado `disabled` de un botón. La sintaxis con corchetes `[src]="url"` es equivalente a `src="{{ url }}"` pero más explícita y permite valores booleanos (`[disabled]="!estaHabilitado"`).
-
-**Event binding ((evento)):** la forma inversa: el usuario hace algo en el DOM y se ejecuta código TypeScript. `(click)="incrementar()"`, `(input)="onCambio($event)"`. La variable `$event` contiene el objeto de evento nativo del navegador, de donde se extrae lo necesario (`$event.target.value` para inputs).
-
-**Two-way binding ([(prop)]):** combina los dos anteriores en una sintaxis compacta. `[(ngModel)]="nombre"` es equivalente a `[ngModel]="nombre" (ngModelChange)="nombre = $event"`. Es el mecanismo por el que un input de formulario "se mantiene en sincronía" con la variable del componente: el usuario escribe → Angular actualiza la variable → si algún otro elemento depende de esa variable, también se actualiza.
+!!! warning "Limitaciones de la interpolación"
+    La restricción clave es que no se puede "declarar" nada dentro: no `let x = 5`, no `for`, no `if`. Solo se "lee" y se "calcula".
 
 ### 2. Directivas estructurales: condicionar y repetir
 
-Las directivas estructurales modifican el **DOM** (añaden o eliminan elementos), a diferencia de las directivas de propiedad que solo cambian atributos.
+!!! info "Definición"
+    Las directivas estructurales modifican el **DOM** (añaden o eliminan elementos), a diferencia de las directivas de propiedad que solo cambian atributos.
 
-**@if:** elimina del DOM todo el bloque cuando la condición es falsa. Esto tiene implicaciones importantes para accesibilidad: un elemento eliminado no existe para lectores de pantalla, mientras que uno con `display: none` sigue en el árbol (aunque también se ignora). Para elementos que se muestran/ocultan frecuentemente y deben mantener su estado (un formulario parcialmente completado), puede preferirse `[hidden]` o `@if` con cuidado.
+**`@if`:** elimina del DOM todo el bloque cuando la condición es falsa.
+
+!!! warning "Accesibilidad: @if frente a display: none"
+    Esto tiene implicaciones importantes para accesibilidad: un elemento eliminado no existe para lectores de pantalla, mientras que uno con `display: none` sigue en el árbol (aunque también se ignora). Para elementos que se muestran/ocultan frecuentemente y deben mantener su estado (un formulario parcialmente completado), puede preferirse `[hidden]` o `@if` con cuidado.
 
 ```html
 @if (cargaEnCurso) {
@@ -88,7 +94,10 @@ Las directivas estructurales modifican el **DOM** (añaden o eliminan elementos)
 }
 ```
 
-**@for:** repite un bloque para cada elemento de una colección. La cláusula `track` es crítica: le dice a Angular "cómo identificar cada elemento" para optimizar el diffing. Si se itera sobre un array de objetos, `track item.id` evita re-crear los componentes cuando el array se reordena. Sin `track`, Angular usa la identidad por referencia y puede regenerar todo el DOM en cada cambio.
+**`@for`:** repite un bloque para cada elemento de una colección.
+
+!!! tip "Usa siempre la cláusula track"
+    La cláusula `track` es **crítica**: le dice a Angular "cómo identificar cada elemento" para optimizar el diffing. Si se itera sobre un array de objetos, `track item.id` evita re-crear los componentes cuando el array se reordena. Sin `track`, Angular usa la identidad por referencia y puede regenerar todo el DOM en cada cambio.
 
 ```html
 @for (producto of productos; track producto.id; let i = index; let first = first; let last = last) {
@@ -104,15 +113,18 @@ Las directivas estructurales modifican el **DOM** (añaden o eliminan elementos)
 
 ### 3. Pipes: transformar sin mutar
 
-Un pipe es una función pura que recibe un valor y devuelve otro, transformándolo para su presentación. Se aplica directamente en el template sin tocar el componente TypeScript. Esto mantiene la lógica de presentación separada de la lógica de datos.
+!!! info "Qué es un pipe"
+    Un pipe es una función pura que recibe un valor y devuelve otro, transformándolo para su presentación. Se aplica directamente en el template sin tocar el componente TypeScript. Esto mantiene la lógica de presentación separada de la lógica de datos.
 
 Los pipes integrados más usados en diseño de interfaces:
 
-- `date`: `{{ fecha | date:'EEEE d MMMM yyyy' }}` → "lunes 15 septiembre 2026". Formato `'medium'` → "15/9/26, 14:30:00".
-- `currency`: `{{ precio | currency:'EUR':'1.2-2' }}` → "89,95 €". El segundo argumento es el formato de decimales (mín-máx).
-- `number`: `{{ visitas | number:'1.0-0' }}` → "1.234" (con agrupación de miles).
-- `uppercase` / `lowercase` / `titlecase`: transformaciones de texto para etiquetas, badges y encabezados.
-- `slice`: `{{ descripcion | slice:0:80:'...' }}` → trunca a 80 caracteres con elipsis.
+| Pipe | Uso en template | Resultado |
+| ---- | --------------- | --------- |
+| `date` | `{{ fecha }}` con `date:'EEEE d MMMM yyyy'` | "lunes 15 septiembre 2026". Formato `'medium'` → "15/9/26, 14:30:00" |
+| `currency` | `{{ precio }}` con `currency:'EUR':'1.2-2'` | "89,95 €". El segundo argumento es el formato de decimales (mín-máx) |
+| `number` | `{{ visitas }}` con `number:'1.0-0'` | "1.234" (con agrupación de miles) |
+| `uppercase` / `lowercase` / `titlecase` | transformaciones directas de texto | para etiquetas, badges y encabezados |
+| `slice` | `{{ descripcion }}` con `slice:0:80:'...'` | trunca a 80 caracteres con elipsis |
 
 Para crear un pipe personalizado:
 
@@ -133,7 +145,8 @@ Uso en template: `{{ items.length | pluralizar:'producto' }}` → "3 productos" 
 
 ### 4. Estados visuales: la interfaz siempre comunica
 
-Una de las competencias más importantes del diseño de interfaces es que **la persona usuaria siempre sepa qué está pasando**. Angular facilita esto mediante patrones claros:
+!!! tip "La interfaz siempre comunica"
+    Una de las competencias más importantes del diseño de interfaces es que **la persona usuaria siempre sepa qué está pasando**. Angular facilita esto mediante patrones claros.
 
 **Estado vacío:** cuando una lista no tiene elementos, no se muestra un espacio en blanco. Se muestra un mensaje descriptivo y una acción sugerida (CTA).
 
@@ -208,13 +221,15 @@ export class BuscadorComponent {
 <app-buscador (onBuscar)="filtrarProductos($event)" />
 ```
 
-Este patrón "datos abajo, eventos arriba" mantiene la arquitectura predecible: el padre controla el estado, los hijos son presentacionales y reactivos.
+!!! tip "Datos abajo, eventos arriba"
+    Este patrón "datos abajo, eventos arriba" mantiene la arquitectura predecible: el padre controla el estado, los hijos son presentacionales y reactivos.
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Lista de tareas interactiva con todos los mecanismos de binding
 
-**Contexto pedagógico:** Se construye una lista de tareas (todo list) que integra interpolación, property binding, event binding, two-way binding, @if, @for y un pipe personalizado. Es el ejercicio "hola mundo" del desarrollo frontend interactivo, pero elevado a nivel de diseño de interfaces con estados visuales completos.
+!!! example "Contexto pedagógico"
+    Se construye una lista de tareas (todo list) que integra interpolación, property binding, event binding, two-way binding, @if, @for y un pipe personalizado. Es el ejercicio "hola mundo" del desarrollo frontend interactivo, pero elevado a nivel de diseño de interfaces con estados visuales completos.
 
 ```typescript
 // src/app/tareas/tareas.component.ts
@@ -545,11 +560,13 @@ export class TareasComponent {
 }
 ```
 
-**Explicación del resultado:** Al ejecutar `ng serve`, se observa un panel con una lista de tareas funcional. El alumnado puede: añadir tareas (el input usa two-way binding con `nuevaTarea`), marcar/desmarcar (checkbox con event binding `(change)`), eliminar (botón que aparece al hacer hover), filtrar por estado (tabs con property binding `[class.activo]`). Los estados vacíos se muestran contextualmente según el filtro activo. La fecha se formatea con el pipe `date`. En móvil, el panel se adapta con menos padding y tipografía reducida.
+!!! note "Explicación del resultado"
+    Al ejecutar `ng serve`, se observa un panel con una lista de tareas funcional. El alumnado puede: añadir tareas (el input usa two-way binding con `nuevaTarea`), marcar/desmarcar (checkbox con event binding `(change)`), eliminar (botón que aparece al hacer hover), filtrar por estado (tabs con property binding `[class.activo]`). Los estados vacíos se muestran contextualmente según el filtro activo. La fecha se formatea con el pipe `date`. En móvil, el panel se adapta con menos padding y tipografía reducida.
 
 ### Ejemplo 2: Tarjeta de producto con estados y pipes
 
-**Contexto pedagógico:** Se muestra cómo combinar múltiples pipes y directivas en un componente de presentación típico de e-commerce, aplicando los principios de jerarquía visual y feedback del usuario.
+!!! example "Contexto pedagógico"
+    Se muestra cómo combinar múltiples pipes y directivas en un componente de presentación típico de e-commerce, aplicando los principios de jerarquía visual y feedback del usuario.
 
 ```typescript
 // src/app/productos/detalle-producto.component.ts
@@ -783,7 +800,8 @@ export class DetalleProductoComponent {
 }
 ```
 
-**Explicación del resultado:** Este componente demuestra la combinación de múltiples pipes (`titlecase`, `currency`, `number`, `slice`, `date`) y directivas (`@if` anidados, `@for` para estrellas) en un solo template. El estado visual cambia según el stock: si hay más de 5 unidades, se muestra el botón normal; si quedan pocas, aparece el aviso urgente; si está agotado, se cambia a "Avísame". La jerarquía visual sigue los principios de la Unidad 1: el precio es el elemento más grande y pesado, el nombre del producto es el segundo nivel, y la descripción y metadatos son información secundaria.
+!!! note "Explicación del resultado"
+    Este componente demuestra la combinación de múltiples pipes (`titlecase`, `currency`, `number`, `slice`, `date`) y directivas (`@if` anidados, `@for` para estrellas) en un solo template. El estado visual cambia según el stock: si hay más de 5 unidades, se muestra el botón normal; si quedan pocas, aparece el aviso urgente; si está agotado, se cambia a "Avísame". La jerarquía visual sigue los principios de la Unidad 1: el precio es el elemento más grande y pesado, el nombre del producto es el segundo nivel, y la descripción y metadatos son información secundaria.
 
 ## Actividades de práctica
 

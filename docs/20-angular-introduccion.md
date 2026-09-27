@@ -10,7 +10,8 @@ Esta unidad se vincula directamente con el **Resultado de Aprendizaje 2 (RA2)** 
 
 La unidad contribuye también al **RA4** —"Integra contenido multimedia en documentos web valorando su aportación y seleccionando adecuadamente los elementos interactivos"— a través del **CE 4.a**: *"Se han reconocido y analizado las tecnologías relacionadas con la inclusión de contenido multimedia e interactivo"*, ya que Angular proporciona el ecosistema (componentes, directivas, data binding) sobre el que se implementa la interactividad de las interfaces. El alumnado comprende que Angular no es una alternativa a HTML/CSS sino una capa superior que los organiza en unidades reutilizables y reactivas.
 
-> Nota: esta unidad cierra el bloque de "tecnologías y frameworks" del RA2 (CE 2.i), complementando la Unidad 17 (Tailwind CSS) y la Unidad 18 (Preprocesadores). Mientras Tailwind resuelve la pregunta "¿cómo escribo estilos?", Angular resuelve "¿cómo organizo mi interfaz en piezas reutilizables que reaccionan a los datos?".
+!!! note "Nota de encuadre"
+    Esta unidad cierra el bloque de «tecnologías y frameworks» del **RA2** (**CE 2.i**), complementando la Unidad 17 (*Tailwind CSS*) y la Unidad 18 (*Preprocesadores*). Mientras Tailwind resuelve la pregunta «¿cómo escribo estilos?», Angular resuelve «¿cómo organizo mi interfaz en piezas reutilizables que reaccionan a los datos?».
 
 ## Conocimientos previos
 
@@ -51,9 +52,14 @@ Para abordar esta unidad con soltura, el alumnado debe:
 
 Hasta la Unidad 19, el alumnado ha trabajado con una progresión natural: HTML para estructura, CSS para presentación, Tailwind para productividad en estilos, y preprocesadores para abstracción. Este enfoque funciona perfectamente para sitios web estáticos o de contenido (portafolios, blogs, landing pages simples). Sin embargo, cuando la interfaz se convierte en una **aplicación** —con estado que cambia, datos que se actualizan desde un servidor, navegación sin recargar páginas, formularios con validación compleja y decenas de vistas interconectadas— el modelo de "un archivo HTML + un archivo CSS" se vuelve insostenible.
 
-Un framework de JavaScript como Angular resuelve este problema introduciendo tres conceptos clave: (1) **Componentes**: la interfaz se descompone en piezas reutilizables (una tarjeta, un botón, un formulario, un menú) que se componen jerárquicamente como bloques de construcción. (2) **Reactividad**: cuando los datos cambian, la interfaz se actualiza automáticamente sin manipular el DOM a mano. El desarrollador declara "cuando X cambia, muestra Y" y el framework se encarga de ejecutarlo. (3) **Estructura impuesta**: el framework define cómo organizar el código (dónde van los componentes, cómo se comunican, cómo se gestiona la navegación), eliminando las decisiones arbitrarias que en proyectos grandes generan caos.
+!!! info "Tres conceptos que introduce un framework"
+    Un framework de JavaScript como Angular resuelve este problema introduciendo tres conceptos clave:
 
-Angular es el framework más "opinionado" del ecosistema: toma decisiones por ti (arquitectura, patrones de comunicación, gestión de estado, inyección de dependencias). Esto lo hace ideal para equipos grandes y aplicaciones complejas, pero impone una curva de aprendizaje inicial mayor que React o Vue. En el contexto del módulo de Diseño de Interfaces, Angular es valioso porque enseña al alumnado a pensar en la interfaz como un sistema de componentes reutilizables, no como una página plana.
+    - **Componentes** — la interfaz se descompone en **piezas reutilizables** (una tarjeta, un botón, un formulario, un menú) que se componen jerárquicamente como bloques de construcción.
+    - **Reactividad** — cuando los datos cambian, la interfaz **se actualiza automáticamente** sin manipular el DOM a mano. El desarrollador declara «cuando X cambia, muestra Y» y el framework se encarga de ejecutarlo.
+    - **Estructura impuesta** — el framework define **cómo organizar el código** (dónde van los componentes, cómo se comunican, cómo se gestiona la navegación), eliminando las decisiones arbitrarias que en proyectos grandes generan caos.
+
+Angular es el framework más **«opinionado»** del ecosistema: toma decisiones por ti (arquitectura, patrones de comunicación, gestión de estado, inyección de dependencias). Esto lo hace ideal para **equipos grandes y aplicaciones complejas**, pero impone una **curva de aprendizaje inicial mayor** que React o Vue. En el contexto del módulo de Diseño de Interfaces, Angular es valioso porque enseña al alumnado a pensar en la interfaz como un **sistema de componentes reutilizables**, no como una página plana.
 
 ### 2. Instalación y creación del proyecto
 
@@ -76,7 +82,11 @@ Una vez instalado, la verificación es `ng version`. La creación del proyecto s
 ng new mi-app --style=scss --routing --skip-git
 ```
 
-Las opciones más relevantes: `--style=scss` activa SCSS como preprocesador de estilos (relacionado con la Unidad 18), `--routing` añade el sistema de enrutamiento desde el inicio, y `--skip-git` evita inicializar un repositorio Git si ya se trabaja dentro de uno.
+Las opciones más relevantes:
+
+- **`--style=scss`** — activa SCSS como preprocesador de estilos (relacionado con la Unidad 18).
+- **`--routing`** — añade el sistema de enrutamiento desde el inicio.
+- **`--skip-git`** — evita inicializar un repositorio Git si ya se trabaja dentro de uno.
 
 La estructura generada es:
 
@@ -101,7 +111,8 @@ El punto de entrada es `src/main.ts`, que importa el componente raíz y lo "arra
 
 ### 3. El componente: tres archivos, una unidad
 
-Cada componente Angular está formado por tres archivos que trabajan juntos:
+!!! info "Definición: componente Angular"
+    Un **componente** es la unidad fundamental de construcción de interfaces en Angular: una **clase TypeScript + un template HTML + estilos CSS encapsulados**. Cada componente Angular está formado por tres archivos que trabajan juntos:
 
 **El archivo TypeScript (`*.component.ts`)** define la lógica y los datos:
 
@@ -171,13 +182,24 @@ export class TarjetaProductoComponent {
 }
 ```
 
-El decorador `@Component` es lo que "registra" el componente en Angular. La propiedad `selector` define la etiqueta HTML con la que se usará en otros templates (`<app-tarjeta-producto>`). La propiedad `standalone: true` (desde Angular 15) indica que el componente no necesita pertenecer a un módulo clásico; puede importarse directamente donde se necesite.
+El decorador `@Component` es lo que **registra** el componente en Angular. Sus propiedades principales:
+
+| Propiedad | Qué define |
+|-----------|------------|
+| `selector` | la etiqueta HTML con la que se usará en otros templates (`<app-tarjeta-producto>`) |
+| `templateUrl` | la ruta del archivo de template (`*.component.html`) |
+| `styleUrls` | la ruta de los estilos encapsulados (`*.component.scss`) |
+| `standalone` | si el componente puede importarse **directamente** donde se necesite |
+
+La propiedad `standalone: true` (desde **Angular 15**) indica que el componente **no necesita pertenecer a un módulo clásico**.
 
 ### 4. ViewEncapsulation: aislamiento visual por diseño
 
-Una de las características más relevantes de Angular para el diseño de interfaces es el **encapsulamiento de vistas**. Cuando defines estilos en `tarjeta-producto.component.scss`, esos estilos solo afectan al interior de ese componente. La clase `.tarjeta` no "fuga" a otros componentes ni se ve afectada por estilos globales (salvo los definidos en `styles.scss`).
+!!! info "Definición: encapsulamiento de vistas"
+    Una de las características más relevantes de Angular para el diseño de interfaces es el **encapsulamiento de vistas** (*ViewEncapsulation*). Cuando defines estilos en `tarjeta-producto.component.scss`, esos estilos **solo afectan al interior de ese componente**. La clase `.tarjeta` **no «fuga»** a otros componentes ni se ve afectada por estilos globales (salvo los definidos en `styles.scss`).
 
-Esto tiene implicaciones directas para la coherencia visual: cada componente es una "caja negra" visualmente predecible. Si el diseñador define que todas las tarjetas tienen `border-radius: 12px` y `box-shadow` específico, ese estilo está garantizado sin importar dónde se use la tarjeta en la aplicación. Se elimina el problema clásico del CSS donde una regla global puede romper un componente específico por especificidad.
+!!! tip "Implicación para el diseño: caja negra predecible"
+    Cada componente es una «caja negra» **visualmente predecible**. Si el diseñador define que todas las tarjetas tienen `border-radius: 12px` y un `box-shadow` específico, ese estilo está **garantizado** sin importar dónde se use la tarjeta en la aplicación. Se elimina el problema clásico del CSS donde una regla global puede romper un componente específico por especificidad.
 
 El encapsulamiento se logra mediante atributos únicos generados automáticamente (algo como `_ngcontent-abc123`) que se añaden a las etiquetas HTML y a los selectores CSS, haciendo que cada regla solo coincida con los elementos de su propio componente.
 
@@ -198,7 +220,10 @@ AppComponent (contenedor raíz)
 └── FooterComponent (enlaces, redes sociales, legal)
 ```
 
-Cada componente es responsable de su propio HTML, CSS y lógica. La comunicación entre ellos se realiza mediante `@Input()` (el padre pasa datos al hijo) y `@Output()` (el hijo emite eventos al padre). Este patrón de "datos fluyen hacia abajo, eventos fluyen hacia arriba" mantiene la arquitectura predecible y facilita el mantenimiento.
+Cada componente es responsable de su propio HTML, CSS y lógica. La comunicación entre ellos se realiza mediante `@Input()` (el padre pasa datos al hijo) y `@Output()` (el hijo emite eventos al padre).
+
+!!! tip "Patrón de comunicación padre-hijo"
+    **Los datos fluyen hacia abajo, los eventos fluyen hacia arriba.** Este patrón mantiene la arquitectura **predecible** y facilita el mantenimiento.
 
 ### 6. Diseño responsive dentro del componente
 
@@ -234,13 +259,15 @@ En el template, se puede condicionar la estructura visual según el viewport usa
 <button class="btn-hamburguesa" (click)="toggleMenu()">☰</button>
 ```
 
-La estrategia mobile-first se mantiene: los estilos base son para móvil, y las media queries `min-width` añaden complejidad progresivamente.
+!!! tip "Estrategia mobile-first en Angular"
+    La estrategia **mobile-first** se mantiene: los estilos base son para **móvil**, y las *media queries* `min-width` añaden complejidad progresivamente.
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: Crear un proyecto y su primer componente
 
-**Contexto pedagógico:** El alumnado ejecuta por primera vez el flujo completo de creación de un proyecto Angular, generando un componente y observando cómo se renderiza en el navegador. Se enfatiza la estructura generada y el rol de cada archivo.
+!!! example "Contexto pedagógico"
+    El alumnado ejecuta por primera vez el **flujo completo de creación de un proyecto Angular**, generando un componente y observando cómo se renderiza en el navegador. Se enfatiza la **estructura generada** y el rol de cada archivo.
 
 **Paso 1 — Crear el proyecto:**
 
@@ -413,11 +440,13 @@ export class AppComponent {}
 ng serve
 ```
 
-Navegar a `http://localhost:4200`. Se observa la cabecera con logo, navegación y botón de carrito. Reducir el viewport por debajo de 768px y verificar que la navegación se oculta (responsive). Inspeccionar el DOM con DevTools para ver los atributos `_ngcontent-*` que garantizan el encapsulamiento.
+!!! tip "Verificación en el navegador"
+    Navegar a `http://localhost:4200`. Se observa la cabecera con logo, navegación y botón de carrito. **Reducir el viewport por debajo de 768 px** y verificar que la navegación se oculta (*responsive*). Inspeccionar el DOM con DevTools para ver los atributos `_ngcontent-*` que garantizan el encapsulamiento.
 
 ### Ejemplo 2: Componente reutilizable de tarjeta con data binding básico
 
-**Contexto pedagógico:** Se demuestra cómo un mismo componente se repite con datos diferentes usando `*ngFor`, y cómo las propiedades del componente se muestran mediante interpolación. Se aplica la ley de semejanza (Unidad 1): todas las tarjetas comparten estructura visual, pero el contenido varía.
+!!! example "Contexto pedagógico"
+    Se demuestra cómo un mismo componente se **repite con datos diferentes** usando `@for`, y cómo las propiedades del componente se muestran mediante **interpolación**. Se aplica la **ley de semejanza** (Unidad 1): todas las tarjetas comparten estructura visual, pero el contenido varía.
 
 ```typescript
 // src/app/productos/producto-card.component.ts
@@ -602,7 +631,8 @@ export class ProductosComponent {
 }
 ```
 
-**Explicación del resultado:** Al ejecutar `ng serve`, se observa una cuadrícula de tarjetas de producto que se adapta al viewport (1 columna en móvil, 2 en tablet, 4 en escritorio). Cada tarjeta es el mismo componente reutilizado con datos diferentes. La etiqueta "Oferta" solo aparece en los productos cuya categoría es 'oferta' (directiva `@if`). El pipe `number` formatea el precio con dos decimales. Al pasar el cursor sobre una tarjeta, se eleva y la imagen hace zoom sutil.
+!!! note "Explicación del resultado"
+    Al ejecutar `ng serve`, se observa una **cuadrícula de tarjetas de producto** que se adapta al *viewport* (**1 columna** en móvil, **2** en tablet, **4** en escritorio). Cada tarjeta es el **mismo componente** reutilizado con datos diferentes. La etiqueta *«Oferta»* solo aparece en los productos cuya categoría es `oferta` (directiva `@if`). El *pipe* `number` formatea el precio con **dos decimales**. Al pasar el cursor sobre una tarjeta, se eleva y la imagen hace *zoom* sutil.
 
 ## Actividades de práctica
 

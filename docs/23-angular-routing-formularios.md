@@ -15,7 +15,8 @@ Asimismo, contribuye al **RA6** —"Desarrolla interfaces web amigables analizan
 
 Y al **RA1** (CE 1.e: "Se han utilizado y valorado distintas tecnologías para el diseño de documentos web") en cuanto que la arquitectura SPA con enrutamiento es una decisión tecnológica que el alumnado debe comprender y justificar frente al enfoque multi-página tradicional.
 
-> Nota: esta unidad cierra el bloque de Angular del módulo, proporcionando las dos piezas que faltaban para tener una aplicación web completa: navegación entre vistas (routing) y captura de datos del usuario (formularios). Con las cuatro unidades de Angular (20-23), el alumnado tiene las herramientas para construir interfaces web dinámicas, interactivas y profesionales.
+!!! note "Cierre del bloque de Angular"
+    Esta unidad cierra el bloque de Angular del módulo, proporcionando las dos piezas que faltaban para tener una aplicación web completa: navegación entre vistas (routing) y captura de datos del usuario (formularios). Con las cuatro unidades de Angular (20-23), el alumnado tiene las herramientas para construir interfaces web dinámicas, interactivas y profesionales.
 
 ## Conocimientos previos
 
@@ -53,9 +54,10 @@ Para abordar esta unidad con soltura, el alumnado debe:
 
 ### 1. SPA: la URL como estado de la aplicación
 
-En una aplicación web tradicional (multi-página), cada navegación implica: petición HTTP al servidor → el servidor renderiza HTML completo → el navegador descarta el DOM actual y construye uno nuevo → la página "parpadea". El usuario pierde el estado (scroll, formularios parcialmente completados, animaciones en curso).
+!!! info "SPA con Angular"
+    En una aplicación web tradicional (multi-página), cada navegación implica: petición HTTP al servidor → el servidor renderiza HTML completo → el navegador descarta el DOM actual y construye uno nuevo → la página "parpadea". El usuario pierde el estado (scroll, formularios parcialmente completados, animaciones en curso).
 
-En una SPA con Angular, todo ocurre en el cliente: se carga un único `index.html` con el bundle JavaScript, y desde ahí el **Router** de Angular gestiona las "páginas" como componentes que se montan y desmontan dinámicamente en un `<router-outlet />`. La URL cambia (mediante la History API del navegador: `pushState`, `replaceState`) pero no hay recarga. El botón "atrás" del navegador funciona porque el Router registra cada navegación en el historial.
+    En una SPA con Angular, todo ocurre en el cliente: se carga un único `index.html` con el bundle JavaScript, y desde ahí el **Router** de Angular gestiona las "páginas" como componentes que se montan y desmontan dinámicamente en un `<router-outlet />`. La URL cambia (mediante la History API del navegador: `pushState`, `replaceState`) pero no hay recarga. El botón "atrás" del navegador funciona porque el Router registra cada navegación en el historial.
 
 Esto tiene implicaciones de diseño:
 - **Profundidad de enlace:** la persona usuaria puede compartir una URL (`/producto/42`) y quien la abra verá directamente ese producto, no la página de inicio. El Router debe poder "hidratar" cualquier estado desde la URL.
@@ -105,6 +107,16 @@ export const APP_ROUTES: Routes = [
 ];
 ```
 
+| Propiedad | Descripción |
+| --------- | ----------- |
+| `path` | Fragmento de URL que identifica la ruta |
+| `component` | Componente a montar en la ruta |
+| `title` | Título de la vista |
+| `loadComponent` | Lazy loading del componente |
+| `children` | Rutas anidadas bajo esta ruta |
+| `redirectTo` | Redirección a otra ruta |
+| `**` | Ruta comodín (404) |
+
 El componente raíz (`app.component.html`) solo contiene:
 
 ```html
@@ -115,11 +127,13 @@ El componente raíz (`app.component.html`) solo contiene:
 <app-footer />
 ```
 
-Cada navegación reemplaza el contenido dentro de `<router-outlet />` sin tocar la cabecera ni el pie.
+!!! note "Qué cambia en cada navegación"
+    Cada navegación reemplaza el contenido dentro de `<router-outlet />` sin tocar la cabecera ni el pie.
 
 ### 3. Formularios reactivos: control total sobre el estado
 
-En un formulario template-driven (`ngModel`), el estado vive "esparcido" en el template y el componente no tiene una visión global de qué es válido y qué no. En un formulario reactivo, **todo el estado del formulario es un objeto TypeScript** (`FormGroup`) que puedes inspeccionar, modificar, serializar y testear desde el código:
+!!! info "Formularios reactivos"
+    En un formulario template-driven (`ngModel`), el estado vive "esparcido" en el template y el componente no tiene una visión global de qué es válido y qué no. En un formulario reactivo, **todo el estado del formulario es un objeto TypeScript** (`FormGroup`) que puedes inspeccionar, modificar, serializar y testear desde el código:
 
 ```typescript
 import { Component } from '@angular/core';
@@ -157,17 +171,22 @@ export class RegistroComponent {
 }
 ```
 
-La clave es `nonNullable`: evita el boilerplate de `!` y garantiza que cada campo siempre tiene un valor (string, number, boolean), nunca `null`. Esto simplifica enormemente el código del template.
+!!! tip "La clave es nonNullable"
+    La clave es `nonNullable`: evita el boilerplate de `!` y garantiza que cada campo siempre tiene un valor (string, number, boolean), nunca `null`. Esto simplifica enormemente el código del template.
 
 ### 4. Validación y UX: el error en el momento justo
 
-El peor patrón de formulario es mostrar todos los errores en rojo cuando la persona usuaria pulsa "Enviar" por primera vez, después de haber llenado cinco campos. El mejor patrón (basado en las heurísticas de Nielsen) es:
+!!! warning "El peor patrón de formulario"
+    El peor patrón de formulario es mostrar todos los errores en rojo cuando la persona usuaria pulsa "Enviar" por primera vez, después de haber llenado cinco campos.
 
-1. **No mostrar errores en campos que no se han tocado.** Un campo vacío y sin tocar no es "inválido" visualmente; es "sin completar".
-2. **Validar al perder el foco (`blur`).** Cuando la persona usuaria sale del campo, se valida y se muestra el error si lo hay. No mientras escribe (es frustrante ver el error desaparecer y reaparecer letra a letra).
-3. **Mensajes específicos y accionables.** No "Campo inválido" sino "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número".
-4. **El botón de envío se deshabilita** solo cuando el formulario es objetivamente incompleto (campos requeridos vacíos). No se deshabilita por errores de formato (la persona usuaria debe poder pulsar para ver qué falta).
-5. **Al pulsar enviar con errores:** marcar todos los campos como `touched` (para mostrar los mensajes) y hacer scroll al primer campo inválido.
+El mejor patrón (basado en las heurísticas de Nielsen) es:
+
+!!! tip "Reglas de UX para validar"
+    1. **No mostrar errores en campos que no se han tocado.** Un campo vacío y sin tocar no es "inválido" visualmente; es "sin completar".
+    2. **Validar al perder el foco (`blur`).** Cuando la persona usuaria sale del campo, se valida y se muestra el error si lo hay. No mientras escribe (es frustrante ver el error desaparecer y reaparecer letra a letra).
+    3. **Mensajes específicos y accionables.** No "Campo inválido" sino "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número".
+    4. **El botón de envío se deshabilita** solo cuando el formulario es objetivamente incompleto (campos requeridos vacíos). No se deshabilita por errores de formato (la persona usuaria debe poder pulsar para ver qué falta).
+    5. **Al pulsar enviar con errores:** marcar todos los campos como `touched` (para mostrar los mensajes) y hacer scroll al primer campo inválido.
 
 ```html
 <div class="campo" [class.invalid]="password.invalid && password.touched">
@@ -198,7 +217,10 @@ El peor patrón de formulario es mostrar todos los errores en rojo cuando la per
 
 ### 5. Guardas de ruta: proteger lo que debe estar protegido
 
-El patrón típico es: las rutas públicas (inicio, productos, login, registro) son accesibles sin autenticación. Las rutas privadas (dashboard, perfil, pedidos) requieren sesión. El guard se implementa como una función (Angular 15+):
+!!! info "Rutas públicas y rutas privadas"
+    El patrón típico es: las rutas públicas (inicio, productos, login, registro) son accesibles sin autenticación. Las rutas privadas (dashboard, perfil, pedidos) requieren sesión.
+
+El guard se implementa como una función (Angular 15+):
 
 ```typescript
 // src/app/core/auth.guard.ts
@@ -229,7 +251,8 @@ En la configuración de rutas:
 }
 ```
 
-Tras el login exitoso, el servicio guarda el `returnUrl` y redirige:
+!!! tip "Volver a la página solicitada"
+    Tras el login exitoso, el servicio guarda el `returnUrl` y redirige.
 
 ```typescript
 // En el componente de login, tras envío exitoso:
@@ -241,7 +264,8 @@ this.router.navigate([returnUrl]);
 
 ### Ejemplo 1: SPA con enrutamiento completo (catálogo + detalle + 404)
 
-**Contexto pedagógico:** Se configura una aplicación con tres vistas principales y una ruta comodín, demostrando el flujo de navegación SPA, parámetros dinámicos y lazy loading.
+!!! example "Contexto pedagógico"
+    Se configura una aplicación con tres vistas principales y una ruta comodín, demostrando el flujo de navegación SPA, parámetros dinámicos y lazy loading.
 
 ```typescript
 // src/app/app.routes.ts
@@ -378,11 +402,13 @@ export class ProductoDetalleComponent implements OnInit {
 </section>
 ```
 
-**Explicación del resultado:** Al navegar a `http://localhost:4200/productos/42`, se carga el componente de detalle con el parámetro `id=42`. Si se navega a `http://localhost:4200/ruta-inexistente`, se muestra la página 404. El botón "atrás" del navegador funciona correctamente (History API). En DevTools → Network, se observa que tras la carga inicial, las navegaciones no hacen peticiones HTTP al servidor (solo el lazy chunk se descarga la primera vez que se visita una ruta).
+!!! note "Explicación del resultado"
+    Al navegar a `http://localhost:4200/productos/42`, se carga el componente de detalle con el parámetro `id=42`. Si se navega a `http://localhost:4200/ruta-inexistente`, se muestra la página 404. El botón "atrás" del navegador funciona correctamente (History API). En DevTools → Network, se observa que tras la carga inicial, las navegaciones no hacen peticiones HTTP al servidor (solo el lazy chunk se descarga la primera vez que se visita una ruta).
 
 ### Ejemplo 2: Formulario de registro reactivo con validación completa
 
-**Contexto pedagógico:** Se construye un formulario de registro con todos los patrones de UX estudiados: validación en blur, mensajes específicos, botón deshabilitado, estados visuales y accesibilidad ARIA. Es el ejemplo "de referencia" para evaluar formularios en el módulo.
+!!! example "Contexto pedagógico"
+    Se construye un formulario de registro con todos los patrones de UX estudiados: validación en blur, mensajes específicos, botón deshabilitado, estados visuales y accesibilidad ARIA. Es el ejemplo "de referencia" para evaluar formularios en el módulo.
 
 ```typescript
 // src/app/registro/registro.component.ts
@@ -764,7 +790,8 @@ function contraseñasCoinciden(grupo: AbstractControl): ValidationErrors | null 
 }
 ```
 
-**Explicación del resultado:** El formulario valida en tiempo real al perder el foco de cada campo. Los mensajes de error son específicos (no "inválido" sino "Mínimo 8 caracteres"). El indicador de fuerza de contraseña muestra una barra que crece y cambia de color (rojo → verde) según la complejidad. Si las contraseñas no coinciden, el error se muestra en el campo de confirmación. El botón "Crear cuenta" solo está deshabilitado durante el envío (`form.pending`). Tras el envío exitoso, se muestra una pantalla de confirmación con un checkmark verde. Todos los campos tienen `aria-invalid` y `aria-describedby` para lectores de pantalla. En móvil, el panel ocupa casi todo el ancho con padding reducido.
+!!! note "Explicación del resultado"
+    El formulario valida en tiempo real al perder el foco de cada campo. Los mensajes de error son específicos (no "inválido" sino "Mínimo 8 caracteres"). El indicador de fuerza de contraseña muestra una barra que crece y cambia de color (rojo → verde) según la complejidad. Si las contraseñas no coinciden, el error se muestra en el campo de confirmación. El botón "Crear cuenta" solo está deshabilitado durante el envío (`form.pending`). Tras el envío exitoso, se muestra una pantalla de confirmación con un checkmark verde. Todos los campos tienen `aria-invalid` y `aria-describedby` para lectores de pantalla. En móvil, el panel ocupa casi todo el ancho con padding reducido.
 
 ## Actividades de práctica
 

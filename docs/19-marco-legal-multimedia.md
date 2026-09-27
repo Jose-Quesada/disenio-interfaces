@@ -16,7 +16,8 @@ Esta unidad se vincula directamente con el **Resultado de Aprendizaje 3 (RA3)** 
 
 Complementa a la Unidad 12 (*Integración de Contenido Multimedia en la Web*), centrada en el aspecto técnico de **formatos, optimización e integración** (RA4), aportando aquí la dimensión **legal y de preparación** que el RA3 exige. Juntas, ambas unidades cubren íntegramente los RA3 y RA4 del módulo.
 
-> Nota: la numeración de Resultados de Aprendizaje y Criterios de Evaluación corresponde al currículo oficial del módulo 0615 (RD 405/2023, BOE; currículo andaluz). El RA3 es el resultado dedicado a la **preparación** de archivos multimedia; esta unidad cierra su criterio legal (3.a), habitualmente omitido.
+!!! note "Nota sobre la numeración"
+    La numeración de Resultados de Aprendizaje y Criterios de Evaluación corresponde al currículo oficial del módulo 0615 (**RD 405/2023, BOE**; currículo andaluz). El **RA3** es el resultado dedicado a la **preparación** de archivos multimedia; esta unidad cierra su criterio legal (**3.a**), habitualmente omitido.
 
 ## Conocimientos previos
 
@@ -49,11 +50,17 @@ El **derecho de autor** protege las obras literarias, artísticas y científicas
 - **Derechos morales:** inalienables e irrenunciables en gran parte del ordenamiento (p. ej., el derecho a la paternidad de la obra).
 - **Derechos patrimoniales:** explotación económica (reproducción, distribución, comunicación pública, transformación) que pueden cederse o licenciarse; en España y la UE suelen durar **toda la vida del autor más 70 años** tras su fallecimiento.
 
-En el diseño web esto es crítico: **por defecto, todo contenido multimedia que no hayas creado tú está protegido**. Copiar una imagen de Google Images, un vídeo de YouTube o una canción de Spotify para tu proyecto constituye, en general, una infracción, aunque la web sea educativa o sin ánimo de lucro. La excepción no es "no cobro", sino **contar con el permiso del titular** (compra, licencia o que la obra esté en dominio público / tenga una licencia que lo permita).
+En el diseño web esto es crítico:
+
+!!! warning "Regla por defecto"
+    **Por defecto, todo contenido multimedia que no hayas creado tú está protegido.** Copiar una imagen de Google Images, un vídeo de YouTube o una canción de Spotify para tu proyecto constituye, en general, una **infracción**, aunque la web sea educativa o sin ánimo de lucro. La excepción **no es** «no cobro», sino **contar con el permiso del titular** (compra, licencia o que la obra esté en dominio público / tenga una licencia que lo permita).
 
 ### 2. El dominio público
 
-Una obra entra en **dominio público** cuando deja de estar protegida (típicamente por caducar el plazo) o cuando su titular renuncia a los derechos. Entonces cualquiera puede usarla libremente, incluso comercialmente y sin atribución (aunque esta es cortés). Fuentes habituales: obras con más de 70 años de la muerte del autor (pintura clásica, literatura), algunas obras del sector público según la legislación aplicable, y recursos publicados bajo **CC0**. Precaución: "parece antiguo" no equivale a dominio público, y algunos países protegen ediciones o fotografías de obras en dominio público.
+Una obra entra en **dominio público** cuando deja de estar protegida (típicamente por caducar el plazo) o cuando su titular renuncia a los derechos. Entonces cualquiera puede usarla libremente, incluso comercialmente y sin atribución (aunque esta es cortés). Fuentes habituales: obras con más de **70 años** de la muerte del autor (pintura clásica, literatura), algunas obras del sector público según la legislación aplicable, y recursos publicados bajo **CC0**.
+
+!!! warning "Precaución: «parece antiguo» no es dominio público"
+    Algunos países protegen **ediciones o fotografías** de obras en dominio público; el aspecto antiguo de un recurso **no equivale** a que sea libre de derechos.
 
 ### 3. Licencias y condiciones de uso
 
@@ -75,7 +82,21 @@ Una **licencia** es el permiso que el titular concede para usar la obra bajo con
 | **ND** | Sin obras derivadas (no modificar). |
 | **SA** | Compartir por igual (las modificaciones se licencian con los mismos términos). |
 
-Combinaciones más usadas: **CC BY** (la más libre, solo atribución), **CC BY-SA** (copyleft cultural), **CC BY-NC**, **CC BY-ND**. Además, **CC0** es una renuncia a derechos (dedica la obra al dominio público). Regla práctica: para un proyecto que puedas modificar y usar comercialmente, busca **CC0 o CC BY**; evita **NC/ND** salvo que encajen.
+Las seis combinaciones posibles:
+
+| Licencia | Combinación de condiciones |
+|---|---|
+| **CC BY** | solo **BY** (la más libre: solo atribución) |
+| **CC BY-SA** | **BY + SA** (copyleft cultural) |
+| **CC BY-NC** | **BY + NC** (sin uso comercial) |
+| **CC BY-ND** | **BY + ND** (sin obras derivadas) |
+| **CC BY-NC-SA** | **BY + NC + SA** (no comercial y compartir por igual) |
+| **CC BY-NC-ND** | **BY + NC + ND** (la más restrictiva) |
+
+Además, **CC0** es una **renuncia a derechos** (dedica la obra al dominio público).
+
+!!! tip "Regla práctica: elegir licencia CC"
+    Para un proyecto que **puedas modificar** y usar **comercialmente**, busca **CC0 o CC BY**; **evita NC/ND** salvo que encajen con el uso previsto.
 
 ### 5. Fuentes legales de contenido multimedia
 
@@ -102,11 +123,22 @@ El flujo profesional de **preparación** (CE 3.c–3.g) es:
 4. **Animación a partir de imágenes fijas:** secuencias, sprites o Lottie para microinteracciones (CE 3.f).
 5. **Exportación según finalidad:** generar variantes por breakpoint (`srcset`/`sizes`) y por contexto (logo en claro/oscuro, vídeo con subtítulos).
 
-Cada activo debe dejar constancia de su **cadena de custodia**: origen, licencia, autor, fecha y transformaciones aplicadas.
+!!! tip "Cadena de custodia"
+    Cada activo debe dejar constancia de su **cadena de custodia**: **origen, licencia, autor, fecha y transformaciones aplicadas**.
 
 ### 8. Atribución y registro de fuentes
 
-Para obras con **CC BY**, la atribución sigue el patrón **TATL**: **T**ítulo, **A**utor, **T**ítulo de la licencia (con enlace) y **L**ínea de "si modificaste, indícalo". Ejemplo: *"«Fotografía de ciudad» por Ana García, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"*. La buena práctica es mantener un **registro/inventario de activos** del proyecto (tabla con: activo, origen, autor, licencia, atribución, uso) que además alimenta la guía de estilo (CE 3.h).
+!!! info "Patrón TATL de atribución"
+    Para obras con **CC BY**, la atribución sigue el patrón **TATL**:
+
+    - **T** — Título de la obra
+    - **A** — Autor
+    - **T** — Título de la licencia (con enlace)
+    - **L** — Línea de «si modificaste, indícalo»
+
+    Ejemplo: *«Fotografía de ciudad» por Ana García, CC BY 4.0 (<https://creativecommons.org/licenses/by/4.0/>)*
+
+La buena práctica es mantener un **registro/inventario de activos** del proyecto (tabla con: activo, origen, autor, licencia, atribución, uso) que además alimenta la guía de estilo (**CE 3.h**).
 
 ### 9. Riesgos legales y buenas prácticas
 
@@ -123,7 +155,8 @@ La guía de estilo del proyecto (Unidad 4) debe fijar la **política de activos 
 
 ### Ejemplo 1: Elegir la licencia correcta para un proyecto comercial
 
-**Contexto:** una tienda online necesita fondo de portada, música de ambiente para vídeo promocional e iconos de categoría.
+!!! example "Contexto pedagógico"
+    Una **tienda online** necesita fondo de portada, música de ambiente para vídeo promocional e iconos de categoría.
 
 | Necesidad | Fuente elegida | Licencia | ¿Encaja? |
 |---|---|---|---|
@@ -131,7 +164,8 @@ La guía de estilo del proyecto (Unidad 4) debe fijar la **política de activos 
 | Música ambiente | Incompetech (Kevin MacLeod) | CC BY 3.0 | Sí, **atribución obligatoria** en el vídeo/credits |
 | Iconos | Heroicons | MIT | Sí, uso libre |
 
-**Conclusión:** el único activo con condición es la música (CC BY), por lo que se añade una línea de crédito al final del vídeo. Si el proyecto no pudiera mostrar créditos, se buscaría una alternativa **CC0**.
+!!! note "Explicación del resultado"
+    El **único activo con condición** es la música (**CC BY**), por lo que se añade una línea de crédito al final del vídeo. Si el proyecto **no pudiera mostrar créditos**, se buscaría una alternativa **CC0**.
 
 ### Ejemplo 2: Inventario de activos con atribución
 

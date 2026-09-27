@@ -14,7 +14,8 @@ Esta unidad se vincula directamente con el **Resultado de Aprendizaje 4 (RA4)** 
 
 Asimismo, contribuye al **RA2** (CE 2.i: "Se han analizado y utilizado tecnologías y frameworks para la creación de interfaces web") en cuanto que el patrón de servicios inyectables es una característica distintiva de Angular como framework para la creación de interfaces escalables. Y al **RA6** (usabilidad) mediante el diseño de estados de carga, error y vacío que comunican claramente el estado de la aplicación a la persona usuaria durante las operaciones asíncronas.
 
-> Nota: esta unidad cierra el bloque de "interactividad" del RA4 mostrando cómo una interfaz no solo reacciona a eventos locales (Unidad 21) sino que se conecta con fuentes de datos externas, completando el ciclo de una aplicación web moderna: obtener datos → procesarlos → mostrarlos → permitir acciones sobre ellos.
+!!! note "Cierre del bloque de interactividad (RA4)"
+    Esta unidad cierra el bloque de "interactividad" del RA4 mostrando cómo una interfaz no solo reacciona a eventos locales (Unidad 21) sino que se conecta con fuentes de datos externas, completando el ciclo de una aplicación web moderna: obtener datos → procesarlos → mostrarlos → permitir acciones sobre ellos.
 
 ## Conocimientos previos
 
@@ -52,17 +53,17 @@ Para abordar esta unidad con soltura, el alumnado debe:
 
 ### 1. ¿Por qué servicios? Separar "qué se muestra" de "de dónde vienen los datos"
 
-Hasta ahora, los datos en nuestros componentes eran arrays literales definidos en el propio componente (`this.productos = [...]`). Esto funciona para prototipos, pero en una aplicación real los datos provienen de un servidor: una base de datos, una API externa, un servicio de clima, un sistema de usuarios. Centralizar esa lógica en un **servicio** aporta tres ventajas fundamentales:
+!!! info "Tres ventajas de un servicio"
+    Hasta ahora, los datos en nuestros componentes eran arrays literales definidos en el propio componente (`this.productos = [...]`). Esto funciona para prototipos, pero en una aplicación real los datos provienen de un servidor: una base de datos, una API externa, un servicio de clima, un sistema de usuarios. Centralizar esa lógica en un **servicio** aporta tres ventajas fundamentales:
 
-**Reutilización:** el mismo servicio puede ser inyectado en múltiples componentes sin duplicar código. El `ProductoService` puede usarse en la página de catálogo, en el carrito y en las recomendaciones.
-
-**Testabilidad:** al aislar la lógica de datos en un servicio, se puede testear independientemente de la UI. Se puede "mockear" (sustituir por una versión falsa) en tests de componentes para verificar que la interfaz reacciona correctamente sin depender de un servidor real.
-
-**Mantenibilidad:** si cambia la URL de la API o el formato de la respuesta, solo se modifica el servicio, no los diez componentes que la consumen. El componente solo sabe que "el servicio me da productos", no cómo se obtienen.
+    - **Reutilización:** el mismo servicio puede ser inyectado en múltiples componentes sin duplicar código. El `ProductoService` puede usarse en la página de catálogo, en el carrito y en las recomendaciones.
+    - **Testabilidad:** al aislar la lógica de datos en un servicio, se puede testear independientemente de la UI. Se puede "mockear" (sustituir por una versión falsa) en tests de componentes para verificar que la interfaz reacciona correctamente sin depender de un servidor real.
+    - **Mantenibilidad:** si cambia la URL de la API o el formato de la respuesta, solo se modifica el servicio, no los diez componentes que la consumen. El componente solo sabe que "el servicio me da productos", no cómo se obtienen.
 
 ### 2. Inyección de dependencias: Angular te lo entrega
 
-En lugar de crear instancias del servicio manualmente (`const svc = new ProductoService()`), Angular usa **inyección de dependencias**: declaras en el constructor qué necesitas y Angular lo "inyecta" automáticamente.
+!!! info "Inyección de dependencias"
+    En lugar de crear instancias del servicio manualmente (`const svc = new ProductoService()`), Angular usa **inyección de dependencias**: declaras en el constructor qué necesitas y Angular lo "inyecta" automáticamente.
 
 ```typescript
 @Injectable({ providedIn: 'root' })
@@ -109,11 +110,13 @@ export class ClimaComponent {
 }
 ```
 
-El patrón `cargando` / `error` / `datos` es el trío fundamental del manejo asíncrono en la UI: en cualquier momento, el componente está en uno de estos tres estados y la interfaz se renderiza en consecuencia.
+!!! tip "El trío: cargando, error y datos"
+    El patrón `cargando` / `error` / `datos` es el trío fundamental del manejo asíncrono en la UI: en cualquier momento, el componente está en uno de estos tres estados y la interfaz se renderiza en consecuencia.
 
 ### 3. HttpClient: el cliente HTTP de Angular
 
-El `HttpClient` es un wrapper sobre `fetch`/`XMLHttpRequest` que devuelve **observables** en lugar de promesas. Esto permite componer peticiones, cancelarlas, combinarlas y manejar errores de forma elegante con operadores RxJS.
+!!! info "HttpClient"
+    El `HttpClient` es un wrapper sobre `fetch`/`XMLHttpRequest` que devuelve **observables** en lugar de promesas. Esto permite componer peticiones, cancelarlas, combinarlas y manejar errores de forma elegante con operadores RxJS.
 
 Los métodos básicos:
 
@@ -134,7 +137,16 @@ this.http.patch(`${API_URL}/productos/1`, { nombre: 'Nuevo nombre' });
 this.http.delete(`${API_URL}/productos/1`);
 ```
 
-Cada método devuelve un `Observable<T>` que hay que suscribir. Sin `.subscribe()`, la petición **no se ejecuta** (los observables son fríos por defecto).
+| Método | Uso | Ejemplo |
+| ------ | --- | ------- |
+| `GET` | Obtener recursos | `` this.http.get<Producto[]>(`${API_URL}/productos`); `` |
+| `POST` | Crear un recurso | `` this.http.post<Producto>(`${API_URL}/productos`, nuevoProducto); `` |
+| `PUT` | Reemplazar un recurso completo | `` this.http.put<Producto>(`${API_URL}/productos/1`, datosActualizados); `` |
+| `PATCH` | Actualizar parcialmente | `` this.http.patch(`${API_URL}/productos/1`, { nombre: 'Nuevo nombre' }); `` |
+| `DELETE` | Eliminar | `` this.http.delete(`${API_URL}/productos/1`); `` |
+
+!!! warning "Sin .subscribe() no hay petición"
+    Cada método devuelve un `Observable<T>` que hay que suscribir. Sin `.subscribe()`, la petición **no se ejecuta** (los observables son fríos por defecto).
 
 ### 4. Operadores RxJS esenciales para la UI
 
@@ -177,7 +189,8 @@ this.http.get(url).pipe(
 ).subscribe(items => this.items = items);
 ```
 
-**`switchMap`:** cuando se hace una nueva petición, cancela la anterior. Esencial en buscadores con autocompletado donde el usuario escribe rápido y no quieres que una respuesta vieja sobrescriba a una nueva.
+!!! tip "Buscadores: cambia a switchMap"
+    **`switchMap`:** cuando se hace una nueva petición, cancela la anterior. Esencial en buscadores con autocompletado donde el usuario escribe rápido y no quieres que una respuesta vieja sobrescriba a una nueva.
 
 ```typescript
 import { switchMap } from 'rxjs';
@@ -200,7 +213,8 @@ onInput(cambio: Event) {
 
 ### 5. Manejo de errores: la interfaz siempre responde
 
-Un error de red o de servidor **nunca** debe dejar la interfaz en blanco o congelada. Los patrones recomendados:
+!!! tip "La interfaz siempre responde"
+    Un error de red o de servidor **nunca** debe dejar la interfaz en blanco o congelada. Los patrones recomendados son los siguientes:
 
 **Error inline (banner):** para operaciones dentro de una sección de la página. Un banner rojo con el mensaje y un botón "Reintentar" que vuelve a ejecutar la petición.
 
@@ -217,11 +231,13 @@ Un error de red o de servidor **nunca** debe dejar la interfaz en blanco o conge
 
 **Toast temporal:** para errores menores (un elemento no se pudo añadir al carrito pero el resto funciona). Aparece en la esquina, se autodestruye a los 4 segundos.
 
-La regla de oro: el mensaje debe ser **comprensible para la persona usuaria**, no para un desarrollador. "No pudimos conectar con el servidor" es mejor que "Error 502: Bad Gateway". El detalle técnico va a la consola (`console.error(err)`), no a la UI.
+!!! tip "Regla de oro: mensajes comprensibles"
+    El mensaje debe ser **comprensible para la persona usuaria**, no para un desarrollador. "No pudimos conectar con el servidor" es mejor que "Error 502: Bad Gateway". El detalle técnico va a la consola (`console.error(err)`), no a la UI.
 
 ### 6. CORS: el problema y su solución en desarrollo
 
-Cuando el navegador hace una petición desde `http://localhost:4200` a `https://api.ejemplo.com`, el servidor de destino debe incluir la cabecera `Access-Control-Allow-Origin` para permitirlo. Si no la incluye, el navegador bloquea la respuesta (aunque la petición sí se envía).
+!!! info "¿Qué es CORS?"
+    Cuando el navegador hace una petición desde `http://localhost:4200` a `https://api.ejemplo.com`, el servidor de destino debe incluir la cabecera `Access-Control-Allow-Origin` para permitirlo. Si no la incluye, el navegador bloquea la respuesta (aunque la petición sí se envía).
 
 En desarrollo, Angular CLI permite configurar un **proxy** que reenvía las peticiones desde el mismo origen, evitando CORS:
 
@@ -240,13 +256,15 @@ En desarrollo, Angular CLI permite configurar un **proxy** que reenvía las peti
 ng serve --proxy-config proxy.conf.json
 ```
 
-En el código, se usa la URL relativa: `this.http.get('/api/products')` en lugar de la URL completa. En producción, el CORS debe resolverse en el servidor (cabeceras) o mediante un backend propio que actúe como intermediario.
+!!! tip "Proxy en desarrollo"
+    En el código, se usa la URL relativa: `this.http.get('/api/products')` en lugar de la URL completa. En producción, el CORS debe resolverse en el servidor (cabeceras) o mediante un backend propio que actúe como intermediario.
 
 ## Ejemplos guiados
 
 ### Ejemplo 1: App de clima con Open-Meteo (API sin clave)
 
-**Contexto pedagógico:** Se construye una interfaz completa que obtiene datos del clima en tiempo real desde una API pública, mostrando el patrón completo: servicio → componente → template con estados. Se aplican los principios de jerarquía visual y feedback del usuario.
+!!! example "Contexto pedagógico"
+    Se construye una interfaz completa que obtiene datos del clima en tiempo real desde una API pública, mostrando el patrón completo: servicio → componente → template con estados. Se aplican los principios de jerarquía visual y feedback del usuario.
 
 ```typescript
 // src/app/clima/clima.service.ts
@@ -584,11 +602,13 @@ export class ClimaComponent implements OnInit {
 }
 ```
 
-**Explicación del resultado:** Al ejecutar `ng serve`, se observa un panel con degradado morado-azul. Inicialmente muestra el skeleton (barras que pulsan). A los pocos segundos, se reemplaza por los datos reales del clima en Córdoba: icono grande, temperatura en números enormes, condición textual y dos tarjetas de detalle (sensación térmica y viento). Si se corta la conexión a internet, aparece el estado de error con el botón "Reintentar". En móvil, las tarjetas de detalle se apilan verticalmente.
+!!! note "Explicación del resultado"
+    Al ejecutar `ng serve`, se observa un panel con degradado morado-azul. Inicialmente muestra el skeleton (barras que pulsan). A los pocos segundos, se reemplaza por los datos reales del clima en Córdoba: icono grande, temperatura en números enormes, condición textual y dos tarjetas de detalle (sensación térmica y viento). Si se corta la conexión a internet, aparece el estado de error con el botón "Reintentar". En móvil, las tarjetas de detalle se apilan verticalmente.
 
 ### Ejemplo 2: Catálogo de productos con JSONPlaceholder (CRUD simulado)
 
-**Contexto pedagógico:** Se demuestra el ciclo completo CRUD contra una API REST simulada. El alumnado ve cómo los métodos HTTP se mapean a acciones de la interfaz y cómo el estado visual cambia tras cada operación.
+!!! example "Contexto pedagógico"
+    Se demuestra el ciclo completo CRUD contra una API REST simulada. El alumnado ve cómo los métodos HTTP se mapean a acciones de la interfaz y cómo el estado visual cambia tras cada operación.
 
 ```typescript
 // src/app/productos/productos.service.ts
@@ -755,7 +775,8 @@ export class GestionProductosComponent implements OnInit {
 </section>
 ```
 
-**Explicación del resultado:** Se observa una interfaz de gestión con un formulario en la parte superior y una lista de productos debajo. Al cargar, aparecen los 20 productos de JSONPlaceholder (simulados). Al crear uno nuevo, aparece al inicio de la lista con un toast de confirmación que desaparece a los 3 segundos. Al eliminar, la fila se remove y aparece el toast. Los estados de carga (skeleton) y error (banner con retry) están implementados. La pestaña Network de DevTools permite verificar cada petición HTTP y su respuesta.
+!!! note "Explicación del resultado"
+    Se observa una interfaz de gestión con un formulario en la parte superior y una lista de productos debajo. Al cargar, aparecen los 20 productos de JSONPlaceholder (simulados). Al crear uno nuevo, aparece al inicio de la lista con un toast de confirmación que desaparece a los 3 segundos. Al eliminar, la fila se remove y aparece el toast. Los estados de carga (skeleton) y error (banner con retry) están implementados. La pestaña Network de DevTools permite verificar cada petición HTTP y su respuesta.
 
 ## Actividades de práctica
 

@@ -14,99 +14,170 @@ Esta unidad se vincula directamente con los Resultados de Aprendizaje oficiales 
 
 ## Conocimientos previos
 
-Para abordar con éxito esta unidad, el alumnado debe dominar los fundamentos de HTML5 y CSS3, incluyendo el modelo de cajas, el posicionamiento mediante Flexbox y Grid, las media queries para diseño responsive y el uso de selectores avanzados. Es esencial que el estudiante conozca el concepto de especificidad en CSS y comprenda cómo funciona la cascada de estilos, ya que estos mecanismos son la base sobre la que se construye cualquier sistema de diseño. Se requiere también familiaridad con algún preprocesador CSS, preferiblemente SASS/SCSS, incluyendo el uso de variables, mixins, funciones y la directiva @extend. El alumno debe haber trabajado previamente con metodologías de organización de CSS como BEM, SMACSS u OOCSS, ya que los sistemas de diseño heredan y amplían estos principios de modularidad y reutilización. Es conveniente que el estudiante tenga nociones básicas de diseño gráfico aplicado a web: teoría del color, principios de tipografía digital, jerarquía visual, espaciado y proporción. También resulta beneficioso que conozca el funcionamiento de herramientas de diseño como Figma, aunque no es un requisito excluyente. Por último, se presupone una comprensión básica de los principios de usabilidad y accesibilidad web, incluyendo el conocimiento de las WCAG 2.1 en su nivel AA.
+Para abordar con éxito esta unidad, el alumnado debe dominar los fundamentos de HTML5 y CSS3, incluyendo el modelo de cajas, el posicionamiento mediante **Flexbox** y **Grid**, las *media queries* para diseño *responsive* y el uso de selectores avanzados. Es esencial que el estudiante conozca el concepto de **especificidad** en CSS y comprenda cómo funciona la **cascada de estilos**, ya que estos mecanismos son la base sobre la que se construye cualquier sistema de diseño. Se requiere también familiaridad con algún preprocesador CSS, preferiblemente **SASS/SCSS**, incluyendo el uso de variables, *mixins*, funciones y la directiva `@extend`. El alumno debe haber trabajado previamente con metodologías de organización de CSS como **BEM**, **SMACSS** u **OOCSS**, ya que los sistemas de diseño heredan y amplían estos principios de modularidad y reutilización. Es conveniente que el estudiante tenga nociones básicas de diseño gráfico aplicado a web: teoría del color, principios de tipografía digital, jerarquía visual, espaciado y proporción. También resulta beneficioso que conozca el funcionamiento de herramientas de diseño como **Figma**, aunque no es un requisito excluyente. Por último, se presupone una comprensión básica de los principios de usabilidad y accesibilidad web, incluyendo el conocimiento de las **WCAG 2.1** en su nivel **AA**.
 
 ## Contenidos
 
-1. Definición y objetivos de las guías de estilo: elementos que las componen y su función dentro del ecosistema de diseño de un producto digital.
-2. Componentes de una guía de estilo: desde el logotipo y la marca hasta el tono de voz, pasando por paletas cromáticas, tipografía, iconografía, botones, formularios, espaciado, sistemas de rejilla y tratamiento de imágenes.
-3. Tokens de diseño: concepto, clasificación en tokens globales, de alias y específicos de componente, convenciones de nomenclatura estructurada e implementación práctica mediante CSS Custom Properties.
-4. Sistemas de diseño: definición formal, diferencias fundamentales con las guías de estilo tradicionales, beneficios cuantificables en términos de consistencia, velocidad de desarrollo, escalabilidad y accesibilidad.
-5. Análisis de sistemas de diseño consolidados: Material Design de Google y sus tres principios fundamentales, Human Interface Guidelines de Apple con su enfoque en claridad, deferencia y profundidad, y Ant Design como paradigma de sistema de diseño orientado al ámbito empresarial.
-6. Proceso de creación de un sistema de diseño propio: desde el inventario de interfaz y la auditoría inicial hasta la documentación final, pasando por la definición de principios, la creación de tokens y la construcción de componentes.
-7. Implementación técnica de sistemas de diseño: estrategias con variables CSS nativas, preprocesadores SASS/SCSS, CSS-in-JS mediante Styled Components y CSS Modules.
-8. Ejemplo práctico de construcción de un mini design system completamente documentado y funcional.
-9. Herramientas profesionales: Storybook para desarrollo aislado de componentes, Figma Tokens para sincronización diseño-código, Style Dictionary como gestor de tokens multiplataforma y Zeroheight para documentación colaborativa de sistemas de diseño.
+1. **Definición y objetivos de las guías de estilo:** elementos que las componen y su función dentro del ecosistema de diseño de un producto digital.
+2. **Componentes de una guía de estilo:** desde el logotipo y la marca hasta el tono de voz, pasando por paletas cromáticas, tipografía, iconografía, botones, formularios, espaciado, sistemas de rejilla y tratamiento de imágenes.
+3. **Tokens de diseño:** concepto, clasificación en tokens globales, de alias y específicos de componente, convenciones de nomenclatura estructurada e implementación práctica mediante CSS Custom Properties.
+4. **Sistemas de diseño:** definición formal, diferencias fundamentales con las guías de estilo tradicionales, beneficios cuantificables en términos de consistencia, velocidad de desarrollo, escalabilidad y accesibilidad.
+5. **Análisis de sistemas de diseño consolidados:** Material Design de Google y sus tres principios fundamentales, Human Interface Guidelines de Apple con su enfoque en claridad, deferencia y profundidad, y Ant Design como paradigma de sistema de diseño orientado al ámbito empresarial.
+6. **Proceso de creación de un sistema de diseño propio:** desde el inventario de interfaz y la auditoría inicial hasta la documentación final, pasando por la definición de principios, la creación de tokens y la construcción de componentes.
+7. **Implementación técnica de sistemas de diseño:** estrategias con variables CSS nativas, preprocesadores SASS/SCSS, CSS-in-JS mediante Styled Components y CSS Modules.
+8. **Ejemplo práctico** de construcción de un mini design system completamente documentado y funcional.
+9. **Herramientas profesionales:** Storybook para desarrollo aislado de componentes, Figma Tokens para sincronización diseño-código, Style Dictionary como gestor de tokens multiplataforma y Zeroheight para documentación colaborativa de sistemas de diseño.
 
 ## Desarrollo teórico
 
 ### Las guías de estilo como fundamento del diseño consistente
 
-Una guía de estilo es un documento vivo que establece las reglas, estándares y convenciones que rigen la identidad visual y la experiencia de usuario de un producto digital. Su objetivo primordial es garantizar la coherencia visual y funcional a lo largo de todas las pantallas, componentes e interacciones que conforman una aplicación o sitio web. La guía de estilo actúa como la fuente única de verdad a la que deben remitirse tanto diseñadores como desarrolladores cuando necesitan tomar decisiones sobre la apariencia o el comportamiento de cualquier elemento de la interfaz.
+!!! info "Definición"
+    Una **guía de estilo** es un documento vivo que establece las reglas, estándares y convenciones que rigen la identidad visual y la experiencia de usuario de un producto digital. Su objetivo primordial es garantizar la **coherencia visual y funcional** a lo largo de todas las pantallas, componentes e interacciones que conforman una aplicación o sitio web. La guía de estilo actúa como la **fuente única de verdad** a la que deben remitirse tanto diseñadores como desarrolladores cuando necesitan tomar decisiones sobre la apariencia o el comportamiento de cualquier elemento de la interfaz.
 
-La guía de estilo contiene múltiples elementos interrelacionados. En primer lugar, define la paleta de colores del producto, estableciendo colores primarios, secundarios, de acento, semánticos (éxito, advertencia, error, información) y neutros, especificando para cada uno sus valores en diferentes espacios de color (HEX, RGB, HSL) y sus niveles de accesibilidad en cuanto a contraste. En segundo lugar, establece la tipografía del sistema, seleccionando las familias tipográficas, definiendo la escala tipográfica con tamaños, pesos e interlineados para cada nivel jerárquico, y especificando las reglas de uso para titulares, cuerpo de texto, etiquetas y texto auxiliar. La iconografía constituye el tercer pilar, determinando el estilo visual de los iconos (lineales, sólidos, dual tone), sus tamaños estandarizados, las áreas de seguridad y las reglas de alineación.
+La guía de estilo contiene múltiples elementos interrelacionados:
 
-El sistema de espaciado define una escala matemática, generalmente basada en una unidad base (4px u 8px), que se aplica de forma sistemática a márgenes, paddings y separaciones entre elementos. La cuadrícula o grid establece la estructura de columnas, calles y márgenes que organiza el contenido en los diferentes breakpoints responsive. Por último, las guías de estilo también recogen elementos menos tangibles pero igualmente relevantes como el tono de voz de los textos de interfaz, el estilo fotográfico y de ilustración, los principios de animación y microinteracciones, y las reglas de uso del logotipo y los elementos de marca. Todos estos componentes conforman un ecosistema coherente que, correctamente implementado, garantiza que cualquier persona que interactúe con el producto perciba una experiencia unificada y profesional.
+- **Paleta de colores** - colores primarios, secundarios, de acento, semánticos (éxito, advertencia, error, información) y neutros, especificando para cada uno sus valores en diferentes espacios de color (**HEX**, **RGB**, **HSL**) y sus niveles de accesibilidad en cuanto a contraste.
+- **Tipografía** - familias tipográficas, escala tipográfica con tamaños, pesos e interlineados para cada nivel jerárquico y reglas de uso para titulares, cuerpo de texto, etiquetas y texto auxiliar.
+- **Iconografía** - estilo visual de los iconos (lineales, sólidos, *dual tone*), tamaños estandarizados, áreas de seguridad y reglas de alineación.
+- **Sistema de espaciado** - escala matemática generalmente basada en una unidad base (**4px** u **8px**), aplicada de forma sistemática a márgenes, *paddings* y separaciones entre elementos.
+- **Cuadrícula o *grid*** - estructura de columnas, calles y márgenes que organiza el contenido en los diferentes *breakpoints* responsive.
+- **Elementos menos tangibles** - tono de voz de los textos de interfaz, estilo fotográfico y de ilustración, principios de animación y microinteracciones, y reglas de uso del logotipo y los elementos de marca.
+
+Todos estos componentes conforman un ecosistema coherente que, correctamente implementado, garantiza que cualquier persona que interactúe con el producto perciba una experiencia unificada y profesional.
 
 ### Tokens de diseño: la unidad atómica de los sistemas de diseño
 
-Los tokens de diseño representan la evolución natural de las variables de estilo tradicionales hacia un sistema semántico, portable y mantenible. Un token de diseño es la abstracción más pequeña y atómica de una decisión de diseño, expresada como un par nombre-valor que puede ser consumida por cualquier plataforma o tecnología. A diferencia de las variables CSS o SASS tradicionales, que suelen estar ligadas a una implementación concreta, los tokens de diseño se definen en un formato agnóstico (generalmente JSON o YAML) y se transforman posteriormente para cada plataforma de destino: CSS para web, XML para Android, Swift para iOS, etc.
+!!! info "Definición"
+    Los **tokens de diseño** representan la evolución natural de las variables de estilo tradicionales hacia un sistema semántico, portable y mantenible. Un token de diseño es la **abstracción más pequeña y atómica** de una decisión de diseño, expresada como un par **nombre-valor** que puede ser consumida por cualquier plataforma o tecnología. A diferencia de las variables CSS o SASS tradicionales, que suelen estar ligadas a una implementación concreta, los tokens de diseño se definen en un formato **agnóstico** (generalmente JSON o YAML) y se transforman posteriormente para cada plataforma de destino: **CSS** para web, **XML** para Android, **Swift** para iOS, etc.
 
-Los tokens de diseño se clasifican en tres niveles jerárquicos. Los tokens globales o primitivos constituyen el nivel más básico: definen valores crudos como `blue-500: #1976D2` o `spacing-4: 16px` sin ningún significado semántico asociado. Los tokens de alias o semánticos añaden una capa de significado: `color-primary-500: {blue-500}` vincula el valor cromático con su función en el sistema. Por último, los tokens específicos de componente aplican los tokens semánticos a contextos concretos: `button-primary-background: {color-primary-500}`, `button-primary-text: {color-white}`. Esta arquitectura en tres capas permite que un cambio en un token global se propague automáticamente a todos los componentes que lo referencian, facilitando el mantenimiento y la evolución del sistema.
+Los tokens de diseño se clasifican en **tres niveles jerárquicos**:
 
-La nomenclatura de los tokens sigue una convención estructurada que facilita su localización y comprensión. Se recomienda utilizar el formato `categoría-propiedad-variante-estado`, como en `color-background-button-primary-hover` o `font-size-heading-h1-desktop`. Esta estructura jerárquica, combinada con el anidamiento que proporcionan formatos como JSON, permite organizar cientos o miles de tokens de forma navegable. En el contexto del desarrollo web, los tokens de diseño se implementan típicamente mediante CSS Custom Properties, aprovechando su naturaleza dinámica y su capacidad de ser redefinidas en diferentes contextos. La especificación CSS Houdini y la API de Properties and Values prometen llevar esta integración aún más lejos, permitiendo registrar propiedades personalizadas con tipos, valores iniciales y comportamientos de herencia definidos explícitamente.
+| Capa de tokens | Qué define | Ejemplo |
+|----------------|------------|---------|
+| **Global o primitivo** | Valores crudos sin ningún significado semántico asociado. | `blue-500: #1976D2`, `spacing-4: 16px` |
+| **Alias o semántico** | Añade una capa de significado y vincula el valor con su función en el sistema. | `color-primary-500: {blue-500}` |
+| **Específico de componente** | Aplica los tokens semánticos a contextos concretos. | `button-primary-background: {color-primary-500}`, `button-primary-text: {color-white}` |
+
+Esta arquitectura en tres capas permite que un cambio en un token global se propague automáticamente a todos los componentes que lo referencian, facilitando el mantenimiento y la evolución del sistema.
+
+La nomenclatura de los tokens sigue una convención estructurada que facilita su localización y comprensión.
+
+!!! tip "Nomenclatura de tokens"
+    Se recomienda utilizar el formato `categoría-propiedad-variante-estado`, como en `color-background-button-primary-hover` o `font-size-heading-h1-desktop`. Esta estructura jerárquica, combinada con el anidamiento que proporcionan formatos como JSON, permite organizar cientos o miles de tokens de forma navegable.
+
+En el contexto del desarrollo web, los tokens de diseño se implementan típicamente mediante **CSS Custom Properties**, aprovechando su naturaleza dinámica y su capacidad de ser redefinidas en diferentes contextos. La especificación **CSS Houdini** y la API de **Properties and Values** prometen llevar esta integración aún más lejos, permitiendo registrar propiedades personalizadas con tipos, valores iniciales y comportamientos de herencia definidos explícitamente.
 
 ### Diferencias entre guía de estilo y sistema de diseño
 
-Aunque frecuentemente se utilizan como sinónimos, las guías de estilo y los sistemas de diseño representan conceptos diferentes tanto en su alcance como en su propósito. Una guía de estilo es fundamentalmente un documento de referencia estático que describe cómo deben verse y comportarse los elementos visuales de un producto. Recoge principios, reglas y ejemplos, pero no proporciona los componentes implementados ni el código necesario para materializar esas reglas. En contraposición, un sistema de diseño es un ecosistema vivo que incluye tanto la documentación como los componentes funcionales, las librerías de código, los tokens de diseño, las herramientas de desarrollo y los procesos de gobernanza que garantizan su evolución controlada.
+!!! info "Definición"
+    Aunque frecuentemente se utilizan como sinónimos, las guías de estilo y los sistemas de diseño representan conceptos diferentes tanto en su alcance como en su propósito. Una **guía de estilo** es fundamentalmente un documento de referencia estático que describe cómo deben verse y comportarse los elementos visuales de un producto: recoge principios, reglas y ejemplos, pero no proporciona los componentes implementados ni el código necesario para materializar esas reglas. En contraposición, un **sistema de diseño** es un ecosistema vivo que incluye tanto la documentación como los componentes funcionales, las librerías de código, los tokens de diseño, las herramientas de desarrollo y los procesos de gobernanza que garantizan su evolución controlada.
 
-El sistema de diseño incorpora la guía de estilo como uno de sus componentes, pero va mucho más allá al proporcionar los bloques de construcción reales con los que se fabrican las interfaces. Mientras que una guía de estilo dice "los botones primarios deben ser azules con bordes redondeados de 4px", un sistema de diseño proporciona el componente `<Button variant="primary" />` listo para usar en desarrollo, acompañado de su documentación en Storybook, sus tests unitarios, sus variantes de accesibilidad y sus directrices de uso. Esta diferencia fundamental tiene implicaciones profundas en la eficiencia del equipo: un sistema de diseño bien implementado y mantenido puede reducir el tiempo de desarrollo de nuevas funcionalidades entre un 25% y un 50%, eliminar inconsistencias visuales entre productos de una misma organización y facilitar la incorporación de nuevos miembros al equipo.
+El sistema de diseño incorpora la guía de estilo como uno de sus componentes, pero va mucho más allá al proporcionar los bloques de construcción reales con los que se fabrican las interfaces:
 
-Los beneficios de adoptar un sistema de diseño son cuantificables. En términos de consistencia, garantiza que todos los equipos y productos de una organización compartan el mismo lenguaje visual, reduciendo drásticamente la deuda de diseño. En velocidad, permite a los desarrolladores ensamblar interfaces componiendo piezas preexistentes en lugar de crearlas desde cero. La escalabilidad se ve favorecida porque el sistema crece de forma orgánica y controlada mediante un proceso de contribución y revisión. La accesibilidad se integra desde la base, ya que cada componente del sistema incorpora por defecto los atributos ARIA, los contrastes de color adecuados y el soporte para navegación por teclado, garantizando que todas las interfaces construidas con el sistema hereden estas propiedades sin esfuerzo adicional.
+| Aspecto | Guía de estilo | Sistema de diseño |
+|---------|----------------|-------------------|
+| **Qué prescribe** | Que «los botones primarios deben ser azules con bordes redondeados de **4px**». | El componente `<Button variant="primary" />` listo para usar en desarrollo. |
+| **Qué lo acompaña** | Principios, reglas y ejemplos descritos en un documento. | Documentación en Storybook, tests unitarios, variantes de accesibilidad y directrices de uso. |
+
+Esta diferencia fundamental tiene implicaciones profundas en la eficiencia del equipo.
+
+!!! tip "Impacto en la eficiencia"
+    Un sistema de diseño bien implementado y mantenido puede reducir el tiempo de desarrollo de nuevas funcionalidades entre un **25%** y un **50%**, eliminar inconsistencias visuales entre productos de una misma organización y facilitar la incorporación de nuevos miembros al equipo.
+
+Los beneficios de adoptar un sistema de diseño son cuantificables:
+
+- **Consistencia** - todos los equipos y productos de una organización comparten el mismo lenguaje visual, reduciendo drásticamente la deuda de diseño.
+- **Velocidad** - los desarrolladores ensamblan interfaces componiendo piezas preexistentes en lugar de crearlas desde cero.
+- **Escalabilidad** - el sistema crece de forma orgánica y controlada mediante un proceso de contribución y revisión.
+- **Accesibilidad** - se integra desde la base: cada componente incorpora por defecto los atributos **ARIA**, los contrastes de color adecuados y el soporte para navegación por teclado, de modo que todas las interfaces construidas con el sistema heredan estas propiedades sin esfuerzo adicional.
 
 ### Material Design: el lenguaje visual de Google
 
-Material Design nació en 2014 como la respuesta de Google a la fragmentación visual que sufrían sus productos. Su nombre proviene del concepto central que lo articula: la metáfora del material. Según este principio fundacional, la interfaz se comporta como si estuviera compuesta por capas de papel y tinta digitales que existen en un espacio tridimensional. Estas superficies proyectan sombras, se deslizan unas sobre otras y responden al tacto del usuario, pero nunca se atraviesan ni ocupan el mismo espacio simultáneamente. Esta metáfora proporciona un modelo mental intuitivo que los usuarios comprenden de forma casi instantánea, ya que se basa en su experiencia con los objetos físicos del mundo real.
+Material Design nació en **2014** como la respuesta de Google a la fragmentación visual que sufrían sus productos. Su nombre proviene del concepto central que lo articula: la **metáfora del material**. Según este principio fundacional, la interfaz se comporta como si estuviera compuesta por capas de papel y tinta digitales que existen en un espacio tridimensional. Estas superficies proyectan sombras, se deslizan unas sobre otras y responden al tacto del usuario, pero nunca se atraviesan ni ocupan el mismo espacio simultáneamente. Esta metáfora proporciona un **modelo mental intuitivo** que los usuarios comprenden de forma casi instantánea, ya que se basa en su experiencia con los objetos físicos del mundo real.
 
-El segundo principio de Material Design establece que el diseño debe ser audaz, gráfico e intencional. Esto se traduce en el uso deliberado de jerarquías tipográficas marcadas, espacios generosos, grids deliberadamente construidos y un uso del color con intención comunicativa clara. Material Design introdujo conceptos como la superficie primaria y la superficie secundaria, estableciendo elevaciones estandarizadas mediante sombras sutiles y capas de scrim que permiten al usuario comprender instantáneamente la jerarquía espacial de la interfaz. La paleta cromática de Material se organiza en una escala numérica que va desde el 50 (el tono más claro) hasta el 900 (el más oscuro), con variantes de acento etiquetadas como A100, A200, A400 y A700.
+El segundo principio de Material Design establece que el diseño debe ser **audaz, gráfico e intencional**. Esto se traduce en el uso deliberado de jerarquías tipográficas marcadas, espacios generosos, *grids* deliberadamente construidos y un uso del color con intención comunicativa clara. Material Design introdujo conceptos como la **superficie primaria** y la **superficie secundaria**, estableciendo elevaciones estandarizadas mediante sombras sutiles y capas de *scrim* que permiten al usuario comprender instantáneamente la jerarquía espacial de la interfaz. La paleta cromática de Material se organiza en una escala numérica que va desde el **50** (el tono más claro) hasta el **900** (el más oscuro), con variantes de acento etiquetadas como **A100**, **A200**, **A400** y **A700**.
 
-El tercer principio afirma que el movimiento proporciona significado. En Material Design, las animaciones y transiciones no son meros adornos visuales sino herramientas comunicativas que revelan relaciones jerárquicas, guían la atención del usuario, proporcionan feedback sobre las acciones realizadas y dotan de personalidad a la experiencia. Material introdujo patrones como el ripple effect (una onda expansiva que se origina en el punto de contacto del dedo), las shared element transitions y las transformaciones de contenedor que comunican la relación entre dos estados de la interfaz de forma orgánica y comprensible. Con el tiempo, Material Design ha evolucionado hacia Material You (Material 3), que incorpora la generación dinámica de paletas de color a partir del wallpaper del usuario y una nueva filosofía de personalización extrema.
+El tercer principio afirma que el **movimiento proporciona significado**. En Material Design, las animaciones y transiciones no son meros adornos visuales sino herramientas comunicativas que revelan relaciones jerárquicas, guían la atención del usuario, proporcionan *feedback* sobre las acciones realizadas y dotan de personalidad a la experiencia. Material introdujo patrones como el ***ripple effect*** (una onda expansiva que se origina en el punto de contacto del dedo), las ***shared element transitions*** y las transformaciones de contenedor que comunican la relación entre dos estados de la interfaz de forma orgánica y comprensible. Con el tiempo, Material Design ha evolucionado hacia **Material You (Material 3)**, que incorpora la generación dinámica de paletas de color a partir del *wallpaper* del usuario y una nueva filosofía de personalización extrema.
 
 ### Human Interface Guidelines de Apple
 
-Las Human Interface Guidelines (HIG) de Apple representan un enfoque radicalmente diferente al de Material Design, profundamente enraizado en la tradición del diseño industrial de la compañía y en sus valores fundamentales. Las HIG se articulan en torno a tres principios rectores que todo diseñador y desarrollador de plataformas Apple debe interiorizar. El primer principio, la claridad, establece que el texto debe ser legible a cualquier tamaño, los iconos deben ser precisos y sin ambigüedades, los adornos visuales deben ser sutiles y funcionales, y la interfaz debe comunicar su propósito de forma inmediata sin requerir interpretación por parte del usuario.
+Las Human Interface Guidelines (HIG) de Apple representan un enfoque radicalmente diferente al de Material Design, profundamente enraizado en la tradición del diseño industrial de la compañía y en sus valores fundamentales. Las HIG se articulan en torno a **tres principios rectores** que todo diseñador y desarrollador de plataformas Apple debe interiorizar. El primer principio, la **claridad**, establece que el texto debe ser legible a cualquier tamaño, los iconos deben ser precisos y sin ambigüedades, los adornos visuales deben ser sutiles y funcionales, y la interfaz debe comunicar su propósito de forma inmediata sin requerir interpretación por parte del usuario.
 
-El segundo principio, la deferencia, es quizás el más característico de la filosofía de diseño de Apple. La deferencia significa que la interfaz debe ceder el protagonismo al contenido. La UI no compite con lo que el usuario quiere ver o hacer: se desvanece, se vuelve translúcida, se oculta cuando no es necesaria. Los elementos cromados se reducen al mínimo, los bordes y los contenedores se difuminan, y los espacios negativos se amplían para que el contenido respire. Esta filosofía se materializa en patrones como las barras de navegación translúcidas que permiten ver el contenido al desplazarse, o el blur gaussiano que difumina el fondo cuando aparece un modal, manteniendo el contexto visual del usuario.
+El segundo principio, la **deferencia**, es quizás el más característico de la filosofía de diseño de Apple. La deferencia significa que la interfaz debe **ceder el protagonismo al contenido**.
 
-El tercer principio, la profundidad, se consigue mediante capas visuales sutiles y movimiento realista. A diferencia de Material Design, que utiliza sombras proyectadas para simular elevación, las HIG emplean translucidez, parallax y efectos de desenfoque para crear una sensación de profundidad más etérea y menos explícita. Las transiciones en iOS se basan en curvas de aceleración naturales que emulan la física del mundo real, y los gestos táctiles como el swipe back o el pull to refresh se integran de forma orgánica. Las HIG cubren exhaustivamente patrones de navegación como la Tab Bar, el Navigation Controller, las Modales, los Action Sheets y los Menús Contextuales, proporcionando directrices precisas sobre cuándo y cómo utilizar cada uno.
+!!! info "Deferencia"
+    La UI no compite con lo que el usuario quiere ver o hacer: **se desvanece, se vuelve translúcida, se oculta cuando no es necesaria**. Los elementos cromados se reducen al mínimo, los bordes y los contenedores se difuminan, y los espacios negativos se amplían para que el contenido respire.
+
+Esta filosofía se materializa en patrones como las **barras de navegación translúcidas** que permiten ver el contenido al desplazarse, o el ***blur gaussiano*** que difumina el fondo cuando aparece un modal, manteniendo el contexto visual del usuario.
+
+El tercer principio, la **profundidad**, se consigue mediante capas visuales sutiles y movimiento realista. A diferencia de Material Design, que utiliza sombras proyectadas para simular elevación, las HIG emplean translucidez, *parallax* y efectos de desenfoque para crear una sensación de profundidad más etérea y menos explícita. Las transiciones en iOS se basan en curvas de aceleración naturales que emulan la física del mundo real, y los gestos táctiles como el ***swipe back*** o el ***pull to refresh*** se integran de forma orgánica. Las HIG cubren exhaustivamente patrones de navegación como la **Tab Bar**, el **Navigation Controller**, las **Modales**, los **Action Sheets** y los **Menús Contextuales**, proporcionando directrices precisas sobre cuándo y cómo utilizar cada uno.
 
 ### Ant Design: un sistema de diseño orientado a producto empresarial
 
-Ant Design surgió de la necesidad interna de Alibaba de unificar la experiencia de sus decenas de productos empresariales. A diferencia de Material Design (orientado al consumo) y las HIG (centradas en la excelencia estética), Ant Design se construyó desde cero pensando en las necesidades específicas de las aplicaciones empresariales: tablas de datos complejas, formularios extensos, flujos de trabajo con múltiples pasos, dashboards analíticos, sistemas de permisos y roles, y componentes para visualización de datos masivos.
+Ant Design surgió de la necesidad interna de Alibaba de unificar la experiencia de sus decenas de productos empresariales. A diferencia de Material Design (orientado al consumo) y las HIG (centradas en la excelencia estética), Ant Design se construyó desde cero pensando en las necesidades específicas de las aplicaciones empresariales:
 
-La filosofía de Ant Design se articula en torno a cuatro valores de diseño. El primero es "Natural", que persigue que la interacción del usuario con la interfaz sea tan fluida como su interacción con el mundo físico, minimizando la carga cognitiva y eliminando fricciones innecesarias. El segundo es "Certain", que busca proporcionar certidumbre al usuario en todo momento: cada acción produce un resultado predecible, cada estado se comunica claramente y no existen ambigüedades en la interfaz. El tercero es "Meaningful", que sostiene que cada elemento de la interfaz debe tener un propósito justificado y contribuir a los objetivos del usuario, eliminando lo superfluo. El cuarto es "Growing", que refleja la naturaleza viva del sistema de diseño: debe ser capaz de evolucionar, incorporar nuevos patrones y adaptarse a necesidades emergentes sin romper la consistencia.
+- **Tablas de datos** complejas.
+- **Formularios** extensos.
+- **Flujos de trabajo** con múltiples pasos.
+- ***Dashboards*** analíticos.
+- **Sistemas de permisos** y roles.
+- **Componentes para visualización** de datos masivos.
 
-Ant Design proporciona más de 60 componentes React listos para producción, incluyendo elementos tan especializados como ProTable (una tabla avanzada con búsqueda, filtrado, ordenación y paginación integradas), ProForm (formularios complejos con validación, layouts adaptativos y flujos multietapa) y ProLayout (un sistema de layout completo con menú lateral colapsable, breadcrumbs automáticos y soporte multiidioma). La personalización se realiza mediante un sistema de tokens de diseño que utiliza CSS-in-JS (anteriormente Less, ahora basado en la biblioteca @ant-design/cssinjs) y que permite modificar cualquier aspecto visual del sistema sin perder la capacidad de recibir actualizaciones.
+La filosofía de Ant Design se articula en torno a **cuatro valores de diseño**:
+
+- **Natural** - persigue que la interacción del usuario con la interfaz sea tan fluida como su interacción con el mundo físico, minimizando la carga cognitiva y eliminando fricciones innecesarias.
+- **Certain** - busca proporcionar certidumbre al usuario en todo momento: cada acción produce un resultado predecible, cada estado se comunica claramente y no existen ambigüedades en la interfaz.
+- **Meaningful** - sostiene que cada elemento de la interfaz debe tener un propósito justificado y contribuir a los objetivos del usuario, eliminando lo superfluo.
+- **Growing** - refleja la naturaleza viva del sistema de diseño: debe ser capaz de evolucionar, incorporar nuevos patrones y adaptarse a necesidades emergentes sin romper la consistencia.
+
+Ant Design proporciona **más de 60 componentes React** listos para producción, incluyendo elementos tan especializados como:
+
+- **ProTable** - tabla avanzada con búsqueda, filtrado, ordenación y paginación integradas.
+- **ProForm** - formularios complejos con validación, *layouts* adaptativos y flujos multietapa.
+- **ProLayout** - sistema de *layout* completo con menú lateral colapsable, *breadcrumbs* automáticos y soporte multiidioma.
+
+La personalización se realiza mediante un sistema de **tokens de diseño** que utiliza **CSS-in-JS** (anteriormente Less, ahora basado en la biblioteca `@ant-design/cssinjs`) y que permite modificar cualquier aspecto visual del sistema sin perder la capacidad de recibir actualizaciones.
 
 ### Cómo crear un sistema de diseño propio
 
-La creación de un sistema de diseño propio es un proceso metódico que comienza mucho antes de escribir una sola línea de código. El primer paso consiste en realizar un inventario exhaustivo de la interfaz existente, capturando pantallas de cada vista y estado de la aplicación. Este inventario visual se imprime o se dispone en un lienzo digital colaborativo, y el equipo procede a identificar y etiquetar todos los elementos recurrentes: botones, campos de formulario, tarjetas, modales, pestañas, tablas, listas y cualquier otro patrón que se repita.
+La creación de un sistema de diseño propio es un proceso metódico que comienza mucho antes de escribir una sola línea de código.
 
-El segundo paso es la auditoría de consistencia. Sobre el inventario visual se identifican las divergencias: botones que miden 36px en una pantalla y 40px en otra, mismos colores con diferentes valores hexadecimales, tipografías inconsistentes entre secciones, espaciados que no siguen ninguna escala reconocible. Esta auditoría suele revelar un nivel de deuda de diseño mucho mayor del que el equipo percibía, y constituye el argumento más poderoso para justificar la inversión en un sistema de diseño.
+1. **Inventario de interfaz.** El primer paso consiste en realizar un inventario exhaustivo de la interfaz existente, capturando pantallas de cada vista y estado de la aplicación. Este inventario visual se imprime o se dispone en un lienzo digital colaborativo, y el equipo procede a identificar y etiquetar todos los elementos recurrentes: botones, campos de formulario, tarjetas, modales, pestañas, tablas, listas y cualquier otro patrón que se repita.
 
-El tercer paso es la definición de principios de diseño. Estos principios, que deben ser específicos, accionables y memorables, guiarán todas las decisiones futuras sobre el sistema. Ejemplos de buenos principios son: "Primero móvil, luego escritorio", "Accesible por defecto, no como idea tardía", "Cada componente debe funcionar en modo oscuro", o "El rendimiento no es negociable: ningún componente debe añadir más de 2KB al bundle".
+2. **Auditoría de consistencia.** Sobre el inventario visual se identifican las divergencias: botones que miden **36px** en una pantalla y **40px** en otra, mismos colores con diferentes valores hexadecimales, tipografías inconsistentes entre secciones, espaciados que no siguen ninguna escala reconocible. Esta auditoría suele revelar un nivel de deuda de diseño mucho mayor del que el equipo percibía, y constituye el argumento más poderoso para justificar la inversión en un sistema de diseño.
 
-El cuarto paso es la creación de los tokens de diseño. Comenzando por los tokens globales (la paleta de colores completa, la escala tipográfica, la escala de espaciado), se construye progresivamente la capa semántica que asigna significado a cada token, y finalmente los tokens de componente que aplican los valores a contextos concretos. Este proceso se documenta en una tabla de decisiones donde se registra el razonamiento detrás de cada elección.
+3. **Principios de diseño.** Estos principios, que deben ser **específicos, accionables y memorables**, guiarán todas las decisiones futuras sobre el sistema. Ejemplos de buenos principios son: «Primero móvil, luego escritorio», «Accesible por defecto, no como idea tardía», «Cada componente debe funcionar en modo oscuro», o «El rendimiento no es negociable: ningún componente debe añadir más de **2KB** al *bundle*».
 
-El quinto paso es la construcción de los componentes. Se recomienda comenzar por los átomos (botones, inputs, etiquetas, iconos), continuar con las moléculas (campos de formulario con etiqueta y error, barras de búsqueda) y avanzar hacia los organismos (tablas, formularios completos, cabeceras). Cada componente se desarrolla de forma aislada, se documenta con sus variantes y estados, y se somete a revisión antes de ser incorporado al sistema.
+4. **Tokens de diseño.** Comenzando por los tokens globales (la paleta de colores completa, la escala tipográfica, la escala de espaciado), se construye progresivamente la capa semántica que asigna significado a cada token, y finalmente los tokens de componente que aplican los valores a contextos concretos. Este proceso se documenta en una **tabla de decisiones** donde se registra el razonamiento detrás de cada elección.
 
-El sexto y último paso es la documentación. Un sistema de diseño no documentado es un sistema de diseño muerto. La documentación debe incluir para cada componente: su propósito y casos de uso, ejemplos visuales de todas sus variantes y estados, el código necesario para implementarlo, directrices de accesibilidad, consideraciones de rendimiento y notas sobre cuándo no usar ese componente. Herramientas como Storybook facilitan este proceso al generar documentación interactiva directamente desde el código.
+5. **Componentes.** Se recomienda comenzar por los **átomos** (botones, *inputs*, etiquetas, iconos), continuar con las **moléculas** (campos de formulario con etiqueta y error, barras de búsqueda) y avanzar hacia los **organismos** (tablas, formularios completos, cabeceras). Cada componente se desarrolla de forma aislada, se documenta con sus variantes y estados, y se somete a revisión antes de ser incorporado al sistema.
+
+6. **Documentación.** Un sistema de diseño no documentado es un sistema de diseño muerto. La documentación debe incluir para cada componente: su propósito y casos de uso, ejemplos visuales de todas sus variantes y estados, el código necesario para implementarlo, directrices de accesibilidad, consideraciones de rendimiento y notas sobre cuándo no usar ese componente. Herramientas como **Storybook** facilitan este proceso al generar documentación interactiva directamente desde el código.
 
 ### Implementación técnica de sistemas de diseño
 
-La implementación técnica de un sistema de diseño en el frontend web puede abordarse mediante diferentes estrategias, cada una con sus ventajas e inconvenientes. El enfoque más sencillo y con menos dependencias externas es el uso de CSS Custom Properties (variables CSS nativas). Este enfoque permite definir los tokens de diseño en el selector `:root` y consumirlos desde cualquier hoja de estilo. Las Custom Properties ofrecen ventajas significativas sobre las variables de preprocesador: son dinámicas (pueden modificarse en tiempo de ejecución con JavaScript), heredan en cascada y pueden redefinirse dentro de contextos específicos o media queries. Esto las hace ideales para implementar temas (claro/oscuro), modos de alto contraste o adaptaciones responsive directamente desde los tokens.
+La implementación técnica de un sistema de diseño en el frontend web puede abordarse mediante diferentes estrategias, cada una con sus ventajas e inconvenientes.
 
-El uso de SASS/SCSS como preprocesador añade capacidades que las CSS Custom Properties por sí solas no proporcionan, como funciones, mixins, bucles y condicionales. Un sistema de diseño implementado con SASS suele organizarse en una arquitectura de carpetas que separa los tokens (variables), las funciones y mixins, los estilos base (reset y tipografía) y los componentes. Los mixins permiten encapsular patrones repetitivos como la creación de variantes de botones o la generación de la escala tipográfica a partir de una función matemática. No obstante, SASS compila a CSS estático, por lo que pierde la capacidad dinámica de las Custom Properties; una estrategia híbrida que utilice variables SASS para la configuración en tiempo de compilación y Custom Properties para los valores que necesitan cambiar en runtime suele ser la más efectiva.
+**CSS Custom Properties (variables CSS nativas).** El enfoque más sencillo y con menos dependencias externas. Permite definir los tokens de diseño en el selector `:root` y consumirlos desde cualquier hoja de estilo. Las Custom Properties ofrecen ventajas significativas sobre las variables de preprocesador: son **dinámicas** (pueden modificarse en tiempo de ejecución con JavaScript), **heredan en cascada** y pueden redefinirse dentro de contextos específicos o *media queries*. Esto las hace ideales para implementar temas (claro/oscuro), modos de alto contraste o adaptaciones *responsive* directamente desde los tokens.
 
-Styled Components, dentro del paradigma CSS-in-JS, ofrece un enfoque radicalmente diferente donde los estilos se escriben en JavaScript y se asocian directamente a componentes React. Esta aproximación permite utilizar todo el potencial del lenguaje (lógica condicional, props, contextos, theming) para construir componentes estilizados dinámicamente. Un sistema de diseño implementado con Styled Components define un ThemeProvider que inyecta los tokens de diseño a través del contexto de React, y cada componente estilizado accede a ellos mediante una función que recibe el theme como parámetro. Esta arquitectura facilita enormemente la implementación de temas dinámicos y la personalización por contexto, aunque introduce una dependencia de runtime y puede tener implicaciones de rendimiento si no se gestiona cuidadosamente la generación de clases CSS.
+**SASS/SCSS.** Como preprocesador añade capacidades que las CSS Custom Properties por sí solas no proporcionan, como **funciones**, **mixins**, **bucles** y **condicionales**. Un sistema de diseño implementado con SASS suele organizarse en una arquitectura de carpetas que separa los tokens (variables), las funciones y mixins, los estilos base (*reset* y tipografía) y los componentes. Los mixins permiten encapsular patrones repetitivos como la creación de variantes de botones o la generación de la escala tipográfica a partir de una función matemática.
 
-CSS Modules representa un punto intermedio que ofrece encapsulación de estilos sin renunciar a la semántica de CSS. Cada archivo de módulo define estilos con ámbito local mediante nombres de clase generados automáticamente con hash, eliminando las colisiones y los problemas de especificidad. Un sistema de diseño con CSS Modules puede combinar variables CSS para los tokens globales con la importación de módulos para los estilos específicos de cada componente, proporcionando un equilibrio entre aislamiento, rendimiento y mantenibilidad que muchos equipos encuentran óptimo.
+No obstante, SASS compila a CSS estático, por lo que pierde la capacidad dinámica de las Custom Properties.
+
+!!! tip "Estrategia híbrida"
+    La combinación más efectiva utiliza **variables SASS** para la configuración en tiempo de compilación y **CSS Custom Properties** para los valores que necesitan cambiar en tiempo de ejecución (*runtime*).
+
+**Styled Components (CSS-in-JS).** Ofrece un enfoque radicalmente diferente donde los estilos se escriben en JavaScript y se asocian directamente a componentes React. Esta aproximación permite utilizar todo el potencial del lenguaje (lógica condicional, *props*, contextos, *theming*) para construir componentes estilizados dinámicamente. Un sistema de diseño implementado con Styled Components define un **ThemeProvider** que inyecta los tokens de diseño a través del contexto de React, y cada componente estilizado accede a ellos mediante una función que recibe el *theme* como parámetro. Esta arquitectura facilita enormemente la implementación de temas dinámicos y la personalización por contexto, aunque introduce una dependencia de *runtime* y puede tener implicaciones de rendimiento si no se gestiona cuidadosamente la generación de clases CSS.
+
+**CSS Modules.** Representa un punto intermedio que ofrece **encapsulación de estilos** sin renunciar a la semántica de CSS. Cada archivo de módulo define estilos con ámbito local mediante nombres de clase generados automáticamente con *hash*, eliminando las colisiones y los problemas de especificidad. Un sistema de diseño con CSS Modules puede combinar variables CSS para los tokens globales con la importación de módulos para los estilos específicos de cada componente, proporcionando un equilibrio entre aislamiento, rendimiento y mantenibilidad que muchos equipos encuentran óptimo.
 
 ## Ejemplos guiados
 
 ### Ejemplo guiado 1: Creación de una paleta de colores como tokens de diseño
 
-En este primer ejemplo guiado, construiremos la capa fundamental de cualquier sistema de diseño: la paleta de colores estructurada como tokens de diseño. Partiremos de una selección de colores base y la transformaremos en un sistema completo de tokens anidados utilizando CSS Custom Properties.
+!!! example "Contexto pedagógico"
+    En este primer ejemplo guiado, construiremos la capa fundamental de cualquier sistema de diseño: la **paleta de colores estructurada como tokens de diseño**. Partiremos de una selección de colores base y la transformaremos en un sistema completo de tokens anidados utilizando CSS Custom Properties.
 
 Comenzamos definiendo los colores primitivos o globales. Estos colores no tienen significado semántico aún, simplemente representan los valores cromáticos puros de nuestra paleta:
 
@@ -239,11 +310,13 @@ Finalmente, creamos la capa de tokens específicos de componente. Estos tokens a
 }
 ```
 
-Esta arquitectura en tres capas permite cambiar el color primario de toda la aplicación modificando una única línea en los tokens de alias, sin necesidad de tocar ningún componente individual. Por ejemplo, para cambiar el color primario de azul a verde, bastaría con modificar `--color-primary-500: var(--color-green-500)` en la capa semántica, y todos los botones, enlaces, badges y cualquier otro elemento que utilice el color primario se actualizarían automáticamente.
+!!! note "Explicación del resultado"
+    Esta arquitectura en tres capas permite cambiar el color primario de toda la aplicación **modificando una única línea** en los tokens de alias, sin necesidad de tocar ningún componente individual. Por ejemplo, para cambiar el color primario de azul a verde, bastaría con modificar `--color-primary-500: var(--color-green-500)` en la capa semántica, y todos los botones, enlaces, *badges* y cualquier otro elemento que utilice el color primario se actualizarían automáticamente.
 
 ### Ejemplo guiado 2: Sistema tipográfico completo con escala modular
 
-En este ejemplo diseñaremos un sistema tipográfico completo basado en una escala modular (perfect fourth, factor 1.333) que se adapta responsive mediante tokens de diseño y clamp() para fluidez:
+!!! example "Contexto pedagógico"
+    En este ejemplo diseñaremos un sistema tipográfico completo basado en una **escala modular** (*perfect fourth*, factor **1.333**) que se adapta *responsive* mediante tokens de diseño y `clamp()` para fluidez:
 
 ```css
 :root {
@@ -443,11 +516,13 @@ body {
 }
 ```
 
-Este sistema tipográfico se beneficia de la arquitectura de tokens porque podemos ajustar cualquier aspecto de la tipografía desde un único lugar. Si el equipo de diseño decide cambiar la familia tipográfica o la escala, basta con modificar los tokens en `:root`. Además, al utilizar rem como unidad base, respetamos las preferencias de tamaño de fuente del usuario, cumpliendo con el criterio de accesibilidad WCAG 1.4.4 sobre redimensionamiento de texto.
+!!! note "Explicación del resultado"
+    Este sistema tipográfico se beneficia de la arquitectura de tokens porque podemos ajustar cualquier aspecto de la tipografía **desde un único lugar**. Si el equipo de diseño decide cambiar la familia tipográfica o la escala, basta con modificar los tokens en `:root`. Además, al utilizar *rem* como unidad base, respetamos las preferencias de tamaño de fuente del usuario, cumpliendo con el criterio de accesibilidad **WCAG 1.4.4** sobre redimensionamiento de texto.
 
 ### Ejemplo guiado 3: Construcción de un sistema de botones completo
 
-En este tercer ejemplo guiado, construiremos un componente de botón completo con múltiples variantes, tamaños y estados que consume los tokens de diseño definidos anteriormente. Este componente ejemplifica cómo un sistema de diseño traslada las decisiones de diseño a código reutilizable:
+!!! example "Contexto pedagógico"
+    En este tercer ejemplo guiado, construiremos un componente de botón completo con múltiples **variantes**, **tamaños** y **estados** que consume los tokens de diseño definidos anteriormente. Este componente ejemplifica cómo un sistema de diseño traslada las decisiones de diseño a código reutilizable:
 
 ```css
 /* ===== SISTEMA DE BOTONES ===== */
@@ -697,7 +772,8 @@ El HTML correspondiente para utilizar este sistema de botones es sencillo y sem�
 
 ### Ejemplo guiado 4: Sistema de espaciado y grid con tokens
 
-Construimos ahora el sistema de espaciado basado en una cuadrícula de 4px y el sistema de grid responsive de 12 columnas, ambos integrados mediante tokens de diseño:
+!!! example "Contexto pedagógico"
+    Construimos ahora el sistema de espaciado basado en una cuadrícula de **4px** y el sistema de *grid* *responsive* de **12 columnas**, ambos integrados mediante tokens de diseño:
 
 ```css
 :root {
@@ -848,7 +924,8 @@ Construimos ahora el sistema de espaciado basado en una cuadrícula de 4px y el 
 
 ### Ejemplo guiado 5: Componente de tarjeta (Card) con todas las variantes
 
-Desarrollamos a continuación un componente Card que demuestra cómo los tokens de diseño se aplican a componentes compuestos, con soporte para diferentes variantes de layout y contenido:
+!!! example "Contexto pedagógico"
+    Desarrollamos a continuación un componente **Card** que demuestra cómo los tokens de diseño se aplican a componentes compuestos, con soporte para diferentes variantes de *layout* y contenido:
 
 ```css
 /* ===== SISTEMA DE TARJETAS (CARDS) ===== */
@@ -1053,7 +1130,8 @@ El HTML correspondiente para el componente Card:
 
 ### Ejemplo guiado 6: Formularios con tokens de diseño
 
-Cerramos los ejemplos guiados con un sistema completo de formularios que integra todos los tokens definidos hasta ahora, incluyendo validación visual, mensajes de ayuda y estados de error:
+!!! example "Contexto pedagógico"
+    Cerramos los ejemplos guiados con un sistema completo de formularios que integra todos los tokens definidos hasta ahora, incluyendo **validación visual**, **mensajes de ayuda** y **estados de error**:
 
 ```css
 /* ===== SISTEMA DE FORMULARIOS ===== */
@@ -1418,31 +1496,40 @@ Ejemplo de formulario completo que integra todos los componentes:
 
 Google representa el caso de estudio más ambicioso de implementación de un sistema de diseño a escala planetaria. Antes de Material Design, cada producto de Google poseía su propia identidad visual: Gmail utilizaba una paleta de rojos y grises con una tipografía serif en sus inicios, Google Calendar mostraba colores vibrantes sin una jerarquía clara, Google Drive empleaba un diseño minimalista de líneas finas y Google Maps priorizaba la información cartográfica sobre cualquier consideración estética. Esta fragmentación generaba una experiencia de usuario inconsistente que diluía la identidad de marca de Google como ecosistema integrado.
 
-El lanzamiento de Material Design en 2014, coincidiendo con Android 5.0 Lollipop, marcó un punto de inflexión. La implementación de Material Design en Gmail supuso una transformación radical: el buzón de entrada adoptó las superficies elevadas características del material, las sombras sutiles comenzaron a comunicar jerarquía entre los mensajes, el FAB (Floating Action Button) rojo de composición se convirtió en el elemento de acento principal, y las animaciones de swipe para archivar o eliminar correos incorporaron los principios de movimiento significativo que predica Material. La consistencia visual entre la versión web y las aplicaciones móviles de Gmail se multiplicó exponencialmente.
+El lanzamiento de Material Design en **2014**, coincidiendo con **Android 5.0 Lollipop**, marcó un punto de inflexión. La implementación de Material Design en Gmail supuso una transformación radical: el buzón de entrada adoptó las superficies elevadas características del material, las sombras sutiles comenzaron a comunicar jerarquía entre los mensajes, el **FAB** (*Floating Action Button*) rojo de composición se convirtió en el elemento de acento principal, y las animaciones de *swipe* para archivar o eliminar correos incorporaron los principios de **movimiento significativo** que predica Material. La consistencia visual entre la versión web y las aplicaciones móviles de Gmail se multiplicó exponencialmente.
 
-Google Drive experimentó una transformación similar pero adaptada a su naturaleza de gestor de archivos. Material Design se aplicó respetando la necesidad de mostrar grandes cantidades de información densa: las fichas de archivo adoptaron la elevación del material, los menús contextuales incorporaron las animaciones de ripple y reveal, y el cambio entre las vistas de lista y cuadrícula se animó con transiciones compartidas. Google Calendar, por su parte, integró las paletas de color adaptativas de Material You, permitiendo que los eventos del calendario heredaran colores extraídos del wallpaper del dispositivo del usuario en Android 12 y posteriores, creando una experiencia personalizada sin precedentes.
+Google Drive experimentó una transformación similar pero adaptada a su naturaleza de gestor de archivos. Material Design se aplicó respetando la necesidad de mostrar grandes cantidades de información densa: las fichas de archivo adoptaron la elevación del material, los menús contextuales incorporaron las animaciones de ripple y reveal, y el cambio entre las vistas de lista y cuadrícula se animó con transiciones compartidas. Google Calendar, por su parte, integró las paletas de color adaptativas de **Material You**, permitiendo que los eventos del calendario heredaran colores extraídos del *wallpaper* del dispositivo del usuario en **Android 12** y posteriores, creando una experiencia personalizada sin precedentes.
 
-El caso de Google Maps es particularmente instructivo porque demuestra cómo un sistema de diseño debe ser lo suficientemente flexible para adaptarse a productos con necesidades muy específicas. Google Maps no podía simplemente adoptar las superficies blancas y las sombras de Material Design porque su interfaz se superpone a un mapa que ya contiene su propia jerarquía visual. La solución fue una implementación selectiva: la barra de búsqueda y las fichas de lugar adoptaron la estética Material, pero la capa del mapa mantuvo su diseño cartográfico propio. Esta tensión entre consistencia del sistema y especificidad del producto es una de las lecciones más valiosas que ofrece el caso de Google.
+El caso de Google Maps es particularmente instructivo porque demuestra cómo un sistema de diseño debe ser lo suficientemente flexible para adaptarse a productos con necesidades muy específicas. Google Maps no podía simplemente adoptar las superficies blancas y las sombras de Material Design porque su interfaz se superpone a un mapa que ya contiene su propia jerarquía visual. La solución fue una implementación selectiva: la barra de búsqueda y las fichas de lugar adoptaron la estética Material, pero la capa del mapa mantuvo su diseño cartográfico propio.
+
+!!! tip "Lección del caso"
+    Esta tensión entre **consistencia del sistema** y **especificidad del producto** es una de las lecciones más valiosas que ofrece el caso de Google.
 
 ### Caso real 2: Human Interface Guidelines en el ecosistema Apple
 
 El ecosistema de aplicaciones de Apple constituye el ejemplo más coherente y longevo de aplicación de un sistema de diseño. A diferencia de Google, que tuvo que imponer Material Design sobre productos que ya tenían identidades visuales consolidadas, las HIG han guiado el diseño de las aplicaciones de Apple desde las primeras versiones de iOS y macOS, lo que ha resultado en un nivel de consistencia difícil de igualar.
 
-La aplicación Notas de Apple es un caso paradigmático de aplicación de los principios de las HIG. Analizando su evolución desde iOS 7 hasta iOS 17, podemos observar cómo la aplicación ha ido ganando funcionalidad (listas de verificación, escaneo de documentos, dibujo con Apple Pencil, etiquetas, carpetas inteligentes) sin que la interfaz haya perdido su esencia minimalista. La barra de herramientas se mantiene translúcida para no competir con el contenido, los iconos utilizan el lenguaje SF Symbols introducido en iOS 13, la tipografía San Francisco se aplica con la jerarquía precisa que dictan las HIG (Title 1 para el nombre de la nota, Body para el contenido, Caption para las fechas), y las animaciones de transición entre la lista de notas y el editor utilizan la navegación push estándar de iOS.
+La aplicación Notas de Apple es un caso paradigmático de aplicación de los principios de las HIG. Analizando su evolución desde **iOS 7** hasta **iOS 17**, podemos observar cómo la aplicación ha ido ganando funcionalidad (listas de verificación, escaneo de documentos, dibujo con Apple Pencil, etiquetas, carpetas inteligentes) sin que la interfaz haya perdido su esencia minimalista. La barra de herramientas se mantiene translúcida para no competir con el contenido, los iconos utilizan el lenguaje **SF Symbols** introducido en **iOS 13**, la tipografía **San Francisco** se aplica con la jerarquía precisa que dictan las HIG (**Title 1** para el nombre de la nota, **Body** para el contenido, **Caption** para las fechas), y las animaciones de transición entre la lista de notas y el editor utilizan la navegación *push* estándar de iOS.
 
 La aplicación Salud demuestra cómo las HIG guían la visualización de datos complejos. Los anillos de actividad, las gráficas de tendencias y las tarjetas de métricas siguen estrictamente las directrices de color, tipografía y espaciado de Apple, pero lo más relevante es cómo la aplicación aplica el principio de deferencia: los datos de salud del usuario son los protagonistas absolutos, y la interfaz se reduce a contenedores translúcidos con bordes redondeados (el característico "glass effect" de Apple), tipografía limpia y espacios generosos que permiten que cada métrica respire visualmente.
 
-El navegador Safari en iOS ofrece otra lección valiosa. La decisión de Apple en iOS 15 de mover la barra de direcciones a la parte inferior de la pantalla fue una aplicación directa del principio de diseño centrado en el ser humano que subyace en las HIG: los estudios de usabilidad de Apple habían demostrado que, con pantallas cada vez más grandes, alcanzar la barra de direcciones en la parte superior resultaba incómodo. Esta decisión, inicialmente polémica, demuestra que las HIG no son un documento dogmático sino un marco que evoluciona en respuesta a la investigación de usabilidad y a las necesidades cambiantes de los usuarios.
+El navegador Safari en iOS ofrece otra lección valiosa. La decisión de Apple en **iOS 15** de mover la barra de direcciones a la parte inferior de la pantalla fue una aplicación directa del principio de diseño centrado en el ser humano que subyace en las HIG: los estudios de usabilidad de Apple habían demostrado que, con pantallas cada vez más grandes, alcanzar la barra de direcciones en la parte superior resultaba incómodo.
+
+!!! tip "Lección del caso"
+    Esta decisión, inicialmente polémica, demuestra que las HIG **no son un documento dogmático** sino un marco que evoluciona en respuesta a la investigación de usabilidad y a las necesidades cambiantes de los usuarios.
 
 ### Caso real 3: Ant Design en aplicaciones empresariales de Alibaba
 
 Ant Design ofrece el caso de estudio más relevante para el ámbito de las aplicaciones empresariales, un sector tradicionalmente descuidado por los grandes sistemas de diseño. Alibaba Group, el conglomerado de comercio electrónico más grande de China, se enfrentaba a un problema de escala sin precedentes: cientos de equipos de desarrollo mantenían decenas de aplicaciones empresariales internas para gestionar inventarios, logística, finanzas, atención al cliente y análisis de datos. Cada equipo había desarrollado sus propios componentes de interfaz, resultando en un ecosistema fragmentado donde un simple componente de tabla de datos podía tener quince implementaciones diferentes con comportamientos inconsistentes.
 
-La decisión de crear Ant Design como sistema de diseño interno y posteriormente liberarlo como proyecto open source (en 2015, y su versión React en 2017) transformó radicalmente el panorama. Para los equipos de Alibaba, la adopción de Ant Design significó pasar de semanas de desarrollo para implementar una tabla de datos compleja a minutos de integración de un componente que ya incluía ordenación, filtrado, paginación, selección múltiple, columnas fijas, exportación de datos y modo oscuro. La consistencia visual entre aplicaciones eliminó la fricción que experimentaban los empleados al cambiar entre diferentes herramientas internas, reduciendo los tiempos de formación y los errores operativos.
+La decisión de crear Ant Design como sistema de diseño interno y posteriormente liberarlo como proyecto *open source* (en **2015**, y su versión React en **2017**) transformó radicalmente el panorama. Para los equipos de Alibaba, la adopción de Ant Design significó pasar de semanas de desarrollo para implementar una tabla de datos compleja a minutos de integración de un componente que ya incluía ordenación, filtrado, paginación, selección múltiple, columnas fijas, exportación de datos y modo oscuro. La consistencia visual entre aplicaciones eliminó la fricción que experimentaban los empleados al cambiar entre diferentes herramientas internas, reduciendo los tiempos de formación y los errores operativos.
 
 El caso de Ant Design Pro es particularmente revelador. Se trata de un scaffold completo para aplicaciones empresariales que proporciona, además de los componentes de Ant Design, un sistema de layout con menú lateral y breadcrumbs automáticos, un sistema de enrutamiento, gestión de permisos y roles, internacionalización, temas claros y oscuros, y dashboards de ejemplo. Para una empresa que necesita lanzar rápidamente una aplicación de gestión interna, Ant Design Pro reduce el tiempo desde la decisión hasta el primer prototipo funcional de meses a días. Este enfoque de "solución completa" más allá de los componentes individuales es lo que diferencia a Ant Design de otros sistemas de diseño que se limitan a proporcionar una biblioteca de UI.
 
-La evolución de Ant Design hacia la versión 5 también ofrece lecciones sobre gobernanza de sistemas de diseño. La migración de Less a CSS-in-JS (con la biblioteca @ant-design/cssinjs) fue una decisión técnica controvertida pero necesaria para soportar temas dinámicos sin duplicación de estilos, una necesidad creciente en aplicaciones que debían permitir personalización por cliente (white-labeling). El proceso de migración se gestionó con una estrategia de compatibilidad hacia atrás que permitió a los equipos adoptar la nueva versión gradualmente, y la documentación detallada del proceso de migración minimizó la fricción. Esta experiencia ilustra que un sistema de diseño exitoso requiere no solo buenos componentes sino también procesos de gobernanza que gestionen su evolución sin alienar a los equipos que dependen de él.
+La evolución de Ant Design hacia la versión **5** también ofrece lecciones sobre gobernanza de sistemas de diseño. La migración de Less a **CSS-in-JS** (con la biblioteca `@ant-design/cssinjs`) fue una decisión técnica controvertida pero necesaria para soportar temas dinámicos sin duplicación de estilos, una necesidad creciente en aplicaciones que debían permitir personalización por cliente (*white-labeling*). El proceso de migración se gestionó con una estrategia de **compatibilidad hacia atrás** que permitió a los equipos adoptar la nueva versión gradualmente, y la documentación detallada del proceso de migración minimizó la fricción.
+
+!!! tip "Lección del caso"
+    Un sistema de diseño exitoso requiere **no solo buenos componentes sino también procesos de gobernanza** que gestionen su evolución sin alienar a los equipos que dependen de él.
 
 ## Actividades guiadas
 
@@ -1466,7 +1553,8 @@ La evolución de Ant Design hacia la versión 5 también ofrece lecciones sobre 
 10. Crear un archivo `tokens.css` con las variables CSS correspondientes a todos los tokens identificados.
 
 **Criterios de evaluación:**
-- Se han identificado correctamente al menos el 80% de los tokens de diseño presentes en la interfaz (2 puntos).
+
+- Se han identificado correctamente al menos el **80%** de los tokens de diseño presentes en la interfaz (2 puntos).
 - La nomenclatura de los tokens sigue la convención estructurada `categoría-propiedad-variante-estado` (2 puntos).
 - Se han organizado los tokens en las tres capas jerárquicas (global, alias, componente) correctamente (2 puntos).
 - El archivo `tokens.css` es funcional y las variables están correctamente referenciadas (2 puntos).
@@ -1486,9 +1574,10 @@ La evolución de Ant Design hacia la versión 5 también ofrece lecciones sobre 
 4. Implementar un botón de toggle en HTML y el JavaScript necesario para: detectar el tema actual, alternarlo al hacer clic, añadir/quitar la clase correspondiente en `<html>`, y persistir la preferencia en `localStorage`.
 5. Al cargar la página, el script debe verificar el localStorage: si existe una preferencia guardada, aplicarla; si no, respetar la configuración del sistema operativo.
 6. Verificar que todos los componentes implementados anteriormente (botones, tarjetas, formularios) se visualizan correctamente en ambos temas.
-7. Probar los niveles de contraste de texto en el tema oscuro utilizando la herramienta de desarrollador del navegador (Lighthouse o el inspector de accesibilidad) para garantizar que cumplen el ratio mínimo 4.5:1 para texto normal y 3:1 para texto grande (WCAG AA).
+7. Probar los niveles de contraste de texto en el tema oscuro utilizando la herramienta de desarrollador del navegador (Lighthouse o el inspector de accesibilidad) para garantizar que cumplen el ratio mínimo **4.5:1** para texto normal y **3:1** para texto grande (**WCAG AA**).
 
 **Criterios de evaluación:**
+
 - El tema oscuro se aplica correctamente en todos los componentes (3 puntos).
 - La detección automática de `prefers-color-scheme` funciona correctamente (2 puntos).
 - El toggle manual anula la preferencia del sistema y persiste en localStorage (2 puntos).
@@ -1516,6 +1605,7 @@ La evolución de Ant Design hacia la versión 5 también ofrece lecciones sobre 
 11. Ejecutar `npm run storybook` y verificar que todas las historias se renderizan correctamente y los controles funcionan.
 
 **Criterios de evaluación:**
+
 - Storybook se ha instalado y configurado correctamente (1 punto).
 - El componente Button está correctamente implementado con todas las variantes y tamaños (2 puntos).
 - Se han creado al menos 8 historias que cubren variantes, tamaños y estados (2 puntos).
@@ -1548,6 +1638,7 @@ La evolución de Ant Design hacia la versión 5 también ofrece lecciones sobre 
 15. Probar el sistema en al menos dos navegadores diferentes y en vista móvil (responsive).
 
 **Criterios de evaluación:**
+
 - La estructura de carpetas es lógica y los archivos están correctamente organizados (1 punto).
 - Los tokens de diseño están completos en las tres capas (global, semántico, componente) (2 puntos).
 - Los estilos base (reset y tipografía) son adecuados y no destructivos (1 punto).
@@ -1582,6 +1673,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Contexto:** Esta actividad está dirigida al alumnado que desea profundizar en la integración de sistemas de diseño con frameworks modernos de frontend. Se trabajará con React y Styled Components para recrear el sistema de diseño "Minimal DS" construido en la Actividad Guiada 4, pero esta vez como una biblioteca de componentes React completamente funcional y publicable en npm.
 
 **Objetivos:**
+
 - Configurar un proyecto React con soporte para Styled Components y ThemeProvider.
 - Migrar los tokens CSS Custom Properties a un objeto de tema JavaScript consumible por ThemeProvider.
 - Implementar cada componente (Button, Card, Form, Badge, Input, Select, Modal, Tabs) como un componente React estilizado con Styled Components.
@@ -1596,6 +1688,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Formato de entrega:** Repositorio Git con el código fuente completo de la biblioteca, la configuración de Storybook, los tests y la aplicación de demostración. Incluir README.md con instrucciones de instalación, uso y contribución.
 
 **Rúbrica de evaluación:**
+
 - Configuración correcta del proyecto con ThemeProvider (1 punto).
 - Migración completa de tokens a objeto JavaScript (1 punto).
 - Implementación correcta de 8 componentes React (4 puntos, 0.5 cada uno).
@@ -1611,6 +1704,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Contexto:** En equipos que desarrollan para múltiples plataformas (web, iOS, Android), mantener la consistencia de los tokens de diseño es un desafío. Style Dictionary es una herramienta de Amazon que permite definir tokens en un formato agnóstico (JSON) y transformarlos automáticamente a los formatos nativos de cada plataforma.
 
 **Objetivos:**
+
 - Configurar un proyecto con Style Dictionary desde cero.
 - Definir un conjunto completo de tokens de diseño (colores, tipografía, espaciado, border-radius, sombras, tiempos de animación) en formato JSON siguiendo la especificación DTCG (Design Tokens Community Group).
 - Configurar las transformaciones y plataformas de salida: CSS Custom Properties para web, variables SASS para web, XML para Android, y un objeto JavaScript/JSON para consumo en React Native.
@@ -1622,6 +1716,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Formato de entrega:** Proyecto Style Dictionary completo con los archivos de configuración, los tokens en JSON, las salidas generadas para las 4 plataformas, la documentación HTML y un informe que explique el flujo de trabajo de tokens multiplataforma.
 
 **Rúbrica de evaluación:**
+
 - Configuración correcta de Style Dictionary (1 punto).
 - Tokens definidos siguiendo la especificación DTCG (2 puntos).
 - Salidas generadas para 4 plataformas diferentes (2 puntos, 0.5 cada una).
@@ -1636,6 +1731,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Contexto:** Los Web Components representan un estándar de la plataforma web que permite crear componentes reutilizables sin depender de ningún framework. Esta actividad explora la implementación de un sistema de diseño utilizando exclusivamente tecnologías nativas del navegador: Custom Elements, Shadow DOM y HTML Templates.
 
 **Objetivos:**
+
 - Investigar la especificación de Web Components: Custom Elements v1, Shadow DOM v1, templates y slots.
 - Diseñar e implementar un sistema de tokens de diseño como CSS Custom Properties que se inyecten en el Shadow DOM de cada componente mediante `adoptedStyleSheets` o etiquetas `<style>`.
 - Implementar al menos 6 componentes como Custom Elements: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-modal>`, `<ds-tabs>`.
@@ -1649,6 +1745,7 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 **Formato de entrega:** Código fuente de los Web Components, página de demostración, informe comparativo Web Components vs. Frameworks. Todo en un repositorio Git.
 
 **Rúbrica de evaluación:**
+
 - 6 componentes implementados correctamente como Custom Elements (3 puntos, 0.5 cada uno).
 - Tokens de diseño correctamente aplicados mediante Shadow DOM (1.5 puntos).
 - Comunicación entre componentes mediante eventos (1 punto).
@@ -1659,35 +1756,44 @@ Tomando como base el proyecto que estás desarrollando para el módulo de Proyec
 
 ## Buenas prácticas
 
-La adopción de un sistema de diseño en un proyecto profesional requiere disciplina y adhesión a un conjunto de buenas prácticas que maximicen sus beneficios y minimicen los riesgos de fragmentación. La primera y más fundamental es el principio de fuente única de verdad (single source of truth): los tokens de diseño deben existir en un único lugar canónico desde el cual se propaguen a todas las plataformas y tecnologías. Esto significa que un color como el primario de la marca no debe estar definido simultáneamente en una hoja de estilos CSS, en un archivo de configuración de React, en una paleta de Figma y en un documento de especificación. Debe residir en un archivo de tokens (JSON, YAML) del cual se generen automáticamente todas las representaciones necesarias.
+La adopción de un sistema de diseño en un proyecto profesional requiere disciplina y adhesión a un conjunto de buenas prácticas que maximicen sus beneficios y minimicen los riesgos de fragmentación. La primera y más fundamental es el principio de **fuente única de verdad** (*single source of truth*).
 
-En cuanto a la nomenclatura, los tokens deben nombrarse siguiendo una convención semántica y no presentacional. Un token llamado `--color-blue-500` es menos mantenible que `--color-primary-500` porque si la marca cambia de azul a verde, el nombre `blue` se convierte en engañoso. La nomenclatura debe responder a la pregunta "¿para qué sirve este valor?" en lugar de "¿qué valor tiene?". Esta práctica, conocida como semantic naming, es la que permite que un sistema de diseño sobreviva a cambios de identidad corporativa sin requerir una reescritura completa del código.
+!!! tip "Fuente única de verdad"
+    Los tokens de diseño deben existir en un **único lugar canónico** desde el cual se propaguen a todas las plataformas y tecnologías. Un color como el primario de la marca **no debe estar definido simultáneamente** en una hoja de estilos CSS, en un archivo de configuración de React, en una paleta de Figma y en un documento de especificación: debe residir en un archivo de tokens (JSON, YAML) del cual se generen automáticamente todas las representaciones necesarias.
 
-La documentación es tan importante como el código. Un componente sin documentación es un componente que no será utilizado por otros equipos, que será malinterpretado en su propósito, o que será duplicado innecesariamente. Cada componente del sistema debe documentar su propósito, sus variantes visuales con ejemplos, su API de props o atributos, sus consideraciones de accesibilidad, ejemplos de código copiables y notas sobre cuándo no usar ese componente. La documentación debe ser viva y mantenerse sincronizada con el código, preferiblemente mediante herramientas como Storybook que generan la documentación directamente desde el código fuente.
+En cuanto a la nomenclatura, los tokens deben nombrarse siguiendo una convención **semántica** y no presentacional. Un token llamado `--color-blue-500` es menos mantenible que `--color-primary-500` porque si la marca cambia de azul a verde, el nombre `blue` se convierte en engañoso. La nomenclatura debe responder a la pregunta «¿para qué sirve este valor?» en lugar de «¿qué valor tiene?». Esta práctica, conocida como ***semantic naming***, es la que permite que un sistema de diseño sobreviva a cambios de identidad corporativa sin requerir una reescritura completa del código.
 
-La accesibilidad no debe ser una ocurrencia tardía sino un requisito desde la fase de diseño de cada componente. Todos los componentes del sistema deben cumplir con WCAG 2.1 nivel AA como mínimo, lo que implica verificar contrastes de color (ratio 4.5:1 para texto normal, 3:1 para texto grande), garantizar navegabilidad completa por teclado con estilos de foco visibles, proporcionar atributos ARIA adecuados, y asegurar que el contenido sigue siendo comprensible cuando se amplía al 200%. Incorporar tests automatizados de accesibilidad (con axe-core o similar) en el pipeline de CI/CD garantiza que las regresiones de accesibilidad se detecten antes de llegar a producción.
+La documentación es tan importante como el código. Un componente sin documentación es un componente que no será utilizado por otros equipos, que será malinterpretado en su propósito, o que será duplicado innecesariamente. Cada componente del sistema debe documentar **su propósito, sus variantes visuales con ejemplos, su API de props o atributos, sus consideraciones de accesibilidad, ejemplos de código copiables y notas sobre cuándo no usar ese componente**. La documentación debe ser viva y mantenerse sincronizada con el código, preferiblemente mediante herramientas como **Storybook** que generan la documentación directamente desde el código fuente.
 
-El versionado semántico (SemVer) debe aplicarse rigurosamente al sistema de diseño. Los cambios que rompen la API de un componente (MAJOR), las adiciones de nuevas funcionalidades compatibles hacia atrás (MINOR) y las correcciones de errores (PATCH) deben gestionarse con la misma disciplina que cualquier otra dependencia de software. Esto permite a los equipos consumidores actualizar con confianza sabiendo exactamente qué tipo de cambios incluye cada nueva versión.
+!!! warning "Accesibilidad desde el diseño"
+    La accesibilidad no debe ser una ocurrencia tardía sino un requisito **desde la fase de diseño** de cada componente. Todos los componentes del sistema deben cumplir **WCAG 2.1 nivel AA** como mínimo: ratio de contraste de **4.5:1** para texto normal y **3:1** para texto grande, navegabilidad completa por teclado con estilos de foco visibles, atributos **ARIA** adecuados y contenido comprensible cuando se amplía al **200%**.
 
-Finalmente, establecer un proceso de gobernanza y contribución es esencial para la supervivencia a largo plazo del sistema de diseño. Debe existir un equipo responsable (design system team) que revise las contribuciones, mantenga la coherencia del sistema y tome las decisiones de diseño. El proceso de contribución debe estar documentado y ser accesible: cualquier desarrollador debe saber cómo proponer un nuevo componente, qué criterios se utilizarán para evaluarlo, y cuánto tiempo aproximadamente tomará el proceso de revisión e incorporación.
+Incorporar tests automatizados de accesibilidad (con **axe-core** o similar) en el *pipeline* de **CI/CD** garantiza que las regresiones de accesibilidad se detecten antes de llegar a producción.
+
+El **versionado semántico** (*SemVer*) debe aplicarse rigurosamente al sistema de diseño. Los cambios que rompen la API de un componente (**MAJOR**), las adiciones de nuevas funcionalidades compatibles hacia atrás (**MINOR**) y las correcciones de errores (**PATCH**) deben gestionarse con la misma disciplina que cualquier otra dependencia de software. Esto permite a los equipos consumidores actualizar con confianza sabiendo exactamente qué tipo de cambios incluye cada nueva versión.
+
+Finalmente, establecer un proceso de **gobernanza y contribución** es esencial para la supervivencia a largo plazo del sistema de diseño. Debe existir un equipo responsable (*design system team*) que revise las contribuciones, mantenga la coherencia del sistema y tome las decisiones de diseño. El proceso de contribución debe estar documentado y ser accesible: cualquier desarrollador debe saber cómo proponer un nuevo componente, qué criterios se utilizarán para evaluarlo, y cuánto tiempo aproximadamente tomará el proceso de revisión e incorporación.
 
 ## Errores frecuentes
 
-Uno de los errores más comunes y devastadores en la implementación de sistemas de diseño es comenzar por el código antes de tener claros los principios y la arquitectura. Equipos entusiastas saltan directamente a crear componentes React o Vue sin haber definido previamente los tokens de diseño, la escala tipográfica o el sistema de espaciado. El resultado es un conjunto de componentes que parecen coherentes individualmente pero que no encajan entre sí: una Card tiene un padding de 20px, un Modal usa 24px, y un Form usa 16px. Esta inconsistencia subyacente se manifiesta en interfaces que se sienten visualmente descoordinadas y son difíciles de mantener. La solución es definir primero los cimientos (tokens, escalas, principios) y construir los componentes sobre ellos.
+!!! warning "Cimientos antes que componentes"
+    Uno de los errores más comunes y devastadores en la implementación de sistemas de diseño es **comenzar por el código antes de tener claros los principios y la arquitectura**. Equipos entusiastas saltan directamente a crear componentes React o Vue sin haber definido previamente los tokens de diseño, la escala tipográfica o el sistema de espaciado. El resultado es un conjunto de componentes que parecen coherentes individualmente pero que **no encajan entre sí**: una Card tiene un padding de **20px**, un Modal usa **24px**, y un Form usa **16px**. Esta inconsistencia subyacente se manifiesta en interfaces que se sienten visualmente descoordinadas y son difíciles de mantener.
 
-Otro error frecuente es crear componentes excesivamente específicos que no pueden reutilizarse en contextos diferentes. Un `DashboardCard` que incluye por defecto un gráfico de barras y un selector de fecha será inutilizable en cualquier otro contexto que no sea exactamente ese dashboard. Los componentes del sistema de diseño deben ser genéricos y componibles, siguiendo principios como "haz una cosa y hazla bien". En lugar de `DashboardCard`, el sistema debería proporcionar `Card`, `Chart` y `DatePicker` como componentes independientes que puedan combinarse de múltiples formas.
+La solución es definir primero los cimientos (tokens, escalas, principios) y construir los componentes sobre ellos.
 
-La falta de flexibilidad en los componentes es el error simétrico al anterior. Un componente Button que solo existe en color azul y tamaño mediano es igualmente inútil. Los componentes del sistema deben exponer una API de personalización razonable mediante props, slots o tokens, permitiendo adaptarlos a diferentes contextos sin perder la coherencia del sistema. El arte del diseño de sistemas está en encontrar el equilibrio entre estandarización (que garantiza consistencia) y flexibilidad (que permite cubrir casos de uso diversos).
+Otro error frecuente es crear **componentes excesivamente específicos que no pueden reutilizarse** en contextos diferentes. Un `DashboardCard` que incluye por defecto un gráfico de barras y un selector de fecha será inutilizable en cualquier otro contexto que no sea exactamente ese *dashboard*. Los componentes del sistema de diseño deben ser **genéricos y componibles**, siguiendo principios como «haz una cosa y hazla bien». En lugar de `DashboardCard`, el sistema debería proporcionar `Card`, `Chart` y `DatePicker` como componentes independientes que puedan combinarse de múltiples formas.
 
-Ignorar la accesibilidad durante el desarrollo de los componentes y pretender añadirla después es uno de los errores más costosos. Un sistema de componentes construido sin pensar en la accesibilidad requerirá refactorizaciones profundas para incorporar atributos ARIA, gestión de foco, roles semánticos y soporte de teclado. Estos cambios tardíos suelen introducir regresiones visuales y de comportamiento que consumen tiempo y generan frustración. La accesibilidad debe ser un criterio de aceptación en la definición de cada componente.
+La **falta de flexibilidad en los componentes** es el error simétrico al anterior. Un componente Button que solo existe en color azul y tamaño mediano es igualmente inútil. Los componentes del sistema deben exponer una API de personalización razonable mediante *props*, *slots* o tokens, permitiendo adaptarlos a diferentes contextos sin perder la coherencia del sistema. El arte del diseño de sistemas está en encontrar el equilibrio entre **estandarización** (que garantiza consistencia) y **flexibilidad** (que permite cubrir casos de uso diversos).
 
-No documentar adecuadamente el sistema es un error que lo condena al fracaso por abandono. Los desarrolladores no utilizarán componentes que no entienden, no sabrán qué props acepta un componente sin una referencia clara, y acabarán creando sus propias versiones alternativas que fragmentan la interfaz. La documentación debe ser exhaustiva pero navegable, con ejemplos visuales y de código, y debe mantenerse sincronizada automáticamente con el código mediante herramientas como Storybook.
+**Ignorar la accesibilidad durante el desarrollo de los componentes y pretender añadirla después** es uno de los errores más costosos. Un sistema de componentes construido sin pensar en la accesibilidad requerirá refactorizaciones profundas para incorporar atributos ARIA, gestión de foco, roles semánticos y soporte de teclado. Estos cambios tardíos suelen introducir regresiones visuales y de comportamiento que consumen tiempo y generan frustración. La accesibilidad debe ser un **criterio de aceptación** en la definición de cada componente.
 
-Finalmente, tratar el sistema de diseño como un proyecto con fecha de finalización en lugar de como un producto vivo y en evolución continua es un error estratégico. Un sistema de diseño nunca está "terminado"; siempre habrá nuevos componentes que añadir, patrones que refinar, tokens que ajustar y tecnologías a las que adaptarse. Los equipos que asignan recursos para construir el sistema pero no para mantenerlo se encuentran, seis meses después, con un sistema obsoleto que los equipos han abandonado en favor de sus propias soluciones puntuales.
+**No documentar adecuadamente el sistema** es un error que lo condena al fracaso por abandono. Los desarrolladores no utilizarán componentes que no entienden, no sabrán qué *props* acepta un componente sin una referencia clara, y acabarán creando sus propias versiones alternativas que fragmentan la interfaz. La documentación debe ser exhaustiva pero navegable, con ejemplos visuales y de código, y debe mantenerse sincronizada automáticamente con el código mediante herramientas como Storybook.
+
+Finalmente, **tratar el sistema de diseño como un proyecto con fecha de finalización en lugar de como un producto vivo y en evolución continua** es un error estratégico. Un sistema de diseño nunca está «terminado»; siempre habrá nuevos componentes que añadir, patrones que refinar, tokens que ajustar y tecnologías a las que adaptarse. Los equipos que asignan recursos para construir el sistema pero no para mantenerlo se encuentran, **seis meses después**, con un sistema obsoleto que los equipos han abandonado en favor de sus propias soluciones puntuales.
 
 ## Resumen
 
-Las guías de estilo y los sistemas de diseño constituyen la columna vertebral metodológica del desarrollo de interfaces web moderno, estableciendo el puente entre las decisiones de diseño visual y su implementación técnica. Una guía de estilo documenta los elementos visuales y las reglas que rigen la apariencia de un producto, mientras que un sistema de diseño va más allá al proporcionar los componentes implementados, los tokens de diseño portables y los procesos de gobernanza que garantizan la consistencia a escala. Los tokens de diseño, organizados en capas global, semántica y de componente, representan la unidad atómica que permite que un cambio en la paleta de colores o la escala tipográfica se propague automáticamente a toda la interfaz sin necesidad de modificar manualmente cada componente.
+Las guías de estilo y los sistemas de diseño constituyen la columna vertebral metodológica del desarrollo de interfaces web moderno, estableciendo el puente entre las decisiones de diseño visual y su implementación técnica. Una guía de estilo documenta los elementos visuales y las reglas que rigen la apariencia de un producto, mientras que un sistema de diseño va más allá al proporcionar los componentes implementados, los tokens de diseño portables y los procesos de gobernanza que garantizan la consistencia a escala. Los **tokens de diseño**, organizados en capas **global**, **semántica** y de **componente**, representan la unidad atómica que permite que un cambio en la paleta de colores o la escala tipográfica se propague automáticamente a toda la interfaz sin necesidad de modificar manualmente cada componente.
 
 Los grandes sistemas de diseño públicos —Material Design con su metáfora del material, Human Interface Guidelines con su deferencia al contenido, y Ant Design con su orientación al ámbito empresarial— ofrecen lecciones valiosas y patrones reutilizables, pero cada producto y cada equipo deben desarrollar su propio sistema adaptado a sus necesidades específicas. La implementación técnica puede abordarse mediante variables CSS nativas, preprocesadores SASS, CSS-in-JS con Styled Components o CSS Modules, y herramientas como Storybook, Figma Tokens y Style Dictionary facilitan la documentación y la sincronización entre diseño y código. El éxito a largo plazo de un sistema de diseño depende tanto de la calidad técnica de sus componentes como de los procesos de gobernanza, documentación y contribución que permitan su evolución controlada.
 
