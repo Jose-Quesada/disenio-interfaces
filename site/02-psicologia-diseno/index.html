@@ -2047,6 +2047,7 @@
 <li><strong>Stark</strong> — plugin para Figma, Sketch y Adobe XD que verifica el contraste directamente en los mockups.</li>
 <li><strong>Panel de Accesibilidad de Chrome DevTools</strong> — muestra el ratio de cualquier elemento seleccionado.</li>
 </ul>
+<p><a href="https://coloratrix.com/es/blog/wcag-contraste-color-accesible/">Ejemplos</a> </p>
 <h3 id="3-proximidad_1">3. Proximidad</h3>
 <div class="admonition info">
 <p class="admonition-title">Definición</p>
@@ -2062,7 +2063,7 @@
 <p class="admonition-title">Definición</p>
 <p>El principio de <strong>repetición</strong> establece que la consistencia en los elementos visuales (colores, tipografías, formas, espaciados, estilos de iconos) crea una sensación de <strong>unidad</strong> que facilita la navegación y reduce la carga cognitiva: quien aprende que todos los botones de acción primaria son azules, que todos los enlaces están subrayados o que todas las tarjetas tienen la misma estructura puede aplicar ese conocimiento a cada pantalla nueva sin tener que reaprenderlo.</p>
 </div>
-<p>La repetición es el fundamento de los <strong>sistemas de diseño</strong> (<em>design systems</em>): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. <strong>Google</strong> (Material Design), <strong>IBM</strong> (Carbon), <strong>Atlassian</strong> y <strong>Shopify</strong> han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas y de formularios, paleta y escala tipográfica.</p>
+<p>La repetición es el fundamento de los <strong>sistemas de diseño</strong> (<em>design systems</em>): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. <strong>Google</strong> (<a href="https://m3.material.io/">Material Design</a>), <strong>IBM</strong> (Carbon), <strong>Atlassian</strong> y <strong>Shopify</strong> han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas y de formularios, paleta y escala tipográfica.</p>
 <div class="admonition tip">
 <p class="admonition-title">Variación controlada</p>
 <p>La repetición <strong>no implica monotonía</strong>. Introducir diferencias sutiles dentro de un patrón hace que una interfaz sea interesante sin dejar de ser coherente.</p>
@@ -2106,6 +2107,7 @@
 <p><strong>T = b × log2(n + 1)</strong></p>
 </blockquote>
 <p>En diseño de interfaces, cada opción adicional en un menú incrementa el tiempo de procesamiento. La solución es la <strong>categorización jerárquica</strong>: organizar <strong>15 enlaces</strong> en <strong>4 categorías de 3-4 enlaces</strong> cada una, de modo que la decisión se tome en <strong>dos pasos más simples</strong> en lugar de uno complejo. La <strong>divulgación progresiva</strong> —mostrar inicialmente solo las opciones más utilizadas— es otra estrategia eficaz.</p>
+<p><a href="https://design-toolkit.recursos.uoc.edu/es/ley-de-hick/">Principios Ley de Hick</a></p>
 <h3 id="9-ley-de-fitts_1">9. Ley de Fitts</h3>
 <p>La <strong>ley de Fitts</strong> establece que el tiempo para alcanzar un objetivo depende de la distancia y del tamaño:</p>
 <blockquote>
@@ -2117,6 +2119,7 @@
 <li><strong>Google:</strong> mínimo <strong>48×48 dp</strong> en Material Design.</li>
 </ul>
 <p>En mobile, las acciones frecuentes deben situarse en las <strong>zonas de fácil alcance para el pulgar</strong> (mitad inferior central).</p>
+<p><a href="https://design-toolkit.recursos.uoc.edu/es/ley-de-fitts/">Principios Ley de Fitts</a></p>
 <h3 id="10-efecto-de-posicion-serial_1">10. Efecto de posición serial</h3>
 <p>El <strong>efecto de posición serial</strong> describe cómo la posición en una secuencia afecta a la probabilidad de recuerdo:</p>
 <ul>
@@ -3066,20 +3069,24 @@
 <h3 id="actividad-propuesta-1-calculadora-visual-de-la-ley-de-fitts">Actividad propuesta 1: Calculadora visual de la Ley de Fitts</h3>
 <p><strong>Enunciado:</strong> Construye una página web interactiva que funcione como "calculadora visual de la Ley de Fitts". La página debe permitir a la persona usuaria ajustar el tamaño de un botón (W) y su distancia desde el cursor (D) mediante sliders, y mostrar en tiempo real: (a) el Índice de Dificultad (ID = log2(2D/W + 1)), (b) una representación visual del botón con el tamaño y la posición seleccionados, (c) una simulación de un cursor moviéndose hacia el botón (animación CSS o canvas), y (d) una sección con recomendaciones de diseño basadas en los valores actuales (por ejemplo: "Este botón es demasiado pequeño para interacción táctil. Aumenta W a al menos 44px").</p>
 <p><strong>Requisitos técnicos:</strong> HTML, CSS y JavaScript vanilla. Sin frameworks. La interfaz debe ser responsive y funcionar tanto en escritorio como en móvil. La fórmula de Fitts debe estar implementada en JavaScript y los cálculos deben actualizarse en tiempo real al mover los sliders.</p>
-<p><strong>Criterios de evaluación:</strong>
-- Corrección matemática de la implementación de la fórmula de Fitts (25%).
-- Calidad de la interfaz visual y la representación gráfica del botón y cursor (25%).
-- Utilidad pedagógica de las recomendaciones de diseño automáticas (25%).
-- Calidad del código y comentarios (25%).</p>
+<p><strong>Criterios de evaluación:</strong></p>
+<ul>
+<li>Corrección matemática de la implementación de la fórmula de Fitts (25%).</li>
+<li>Calidad de la interfaz visual y la representación gráfica del botón y cursor (25%).</li>
+<li>Utilidad pedagógica de las recomendaciones de diseño automáticas (25%).</li>
+<li>Calidad del código y comentarios (25%).</li>
+</ul>
 <hr />
 <h3 id="actividad-propuesta-2-auditoria-de-consistencia-de-una-app-movil">Actividad propuesta 2: Auditoría de consistencia de una app móvil</h3>
 <p><strong>Enunciado:</strong> Selecciona una aplicación móvil que utilices a diario y realiza una auditoría exhaustiva de su consistencia interna y externa. Documenta cada infracción de consistencia que encuentres con capturas de pantalla.</p>
-<p><strong>Apartados de la auditoría:</strong>
-1. <strong>Consistencia de color:</strong> ¿Se utiliza el mismo color para la misma acción en todas las pantallas? ¿Los colores semánticos (éxito, error, advertencia) son consistentes?
-2. <strong>Consistencia tipográfica:</strong> ¿Se respeta la misma escala tipográfica en todas las pantallas? ¿Hay textos con tamaños inconsistentes?
-3. <strong>Consistencia de espaciado:</strong> ¿Los márgenes y rellenos siguen una escala predecible? ¿Hay pantallas con espaciados visiblemente diferentes?
-4. <strong>Consistencia de interacción:</strong> ¿Los mismos gestos producen los mismos resultados? ¿Los botones similares se comportan de manera similar?
-5. <strong>Consistencia externa:</strong> ¿La app respeta las convenciones del sistema operativo (iOS/Android)? ¿Utiliza los mismos iconos y gestos que otras apps similares?</p>
+<p><strong>Apartados de la auditoría:</strong></p>
+<ol>
+<li><strong>Consistencia de color:</strong> ¿Se utiliza el mismo color para la misma acción en todas las pantallas? ¿Los colores semánticos (éxito, error, advertencia) son consistentes?</li>
+<li><strong>Consistencia tipográfica:</strong> ¿Se respeta la misma escala tipográfica en todas las pantallas? ¿Hay textos con tamaños inconsistentes?</li>
+<li><strong>Consistencia de espaciado:</strong> ¿Los márgenes y rellenos siguen una escala predecible? ¿Hay pantallas con espaciados visiblemente diferentes?</li>
+<li><strong>Consistencia de interacción:</strong> ¿Los mismos gestos producen los mismos resultados? ¿Los botones similares se comportan de manera similar?</li>
+<li><strong>Consistencia externa:</strong> ¿La app respeta las convenciones del sistema operativo (iOS/Android)? ¿Utiliza los mismos iconos y gestos que otras apps similares?</li>
+</ol>
 <p><strong>Entregable:</strong> Informe de auditoría (mínimo 1500 palabras) con capturas de pantalla anotadas, tabla de infracciones priorizadas por gravedad, y recomendaciones de mejora.</p>
 <hr />
 <h3 id="actividad-propuesta-3-test-ab-de-formularios-con-diferente-carga-cognitiva">Actividad propuesta 3: Test A/B de formularios con diferente carga cognitiva</h3>

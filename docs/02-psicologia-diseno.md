@@ -137,6 +137,9 @@ Las herramientas de verificación de contraste son fundamentales en el flujo de 
 - **Stark** — plugin para Figma, Sketch y Adobe XD que verifica el contraste directamente en los mockups.
 - **Panel de Accesibilidad de Chrome DevTools** — muestra el ratio de cualquier elemento seleccionado.
 
+[Ejemplos](https://coloratrix.com/es/blog/wcag-contraste-color-accesible/) 
+ 
+
 ### 3. Proximidad
 
 !!! info "Definición"
@@ -152,7 +155,7 @@ El **espacio en blanco** no es un lujo, es una necesidad funcional: agrupa, sepa
 !!! info "Definición"
     El principio de **repetición** establece que la consistencia en los elementos visuales (colores, tipografías, formas, espaciados, estilos de iconos) crea una sensación de **unidad** que facilita la navegación y reduce la carga cognitiva: quien aprende que todos los botones de acción primaria son azules, que todos los enlaces están subrayados o que todas las tarjetas tienen la misma estructura puede aplicar ese conocimiento a cada pantalla nueva sin tener que reaprenderlo.
 
-La repetición es el fundamento de los **sistemas de diseño** (*design systems*): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. **Google** (Material Design), **IBM** (Carbon), **Atlassian** y **Shopify** han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas y de formularios, paleta y escala tipográfica.
+La repetición es el fundamento de los **sistemas de diseño** (*design systems*): catálogos de patrones visuales repetibles que garantizan la consistencia de la interfaz. **Google** ([Material Design](https://m3.material.io/)), **IBM** (Carbon), **Atlassian** y **Shopify** han desarrollado sistemas de diseño exhaustivos. A escala más modesta, cualquier proyecto debería disponer de un conjunto básico de patrones repetibles: estilos de botones, de tarjetas y de formularios, paleta y escala tipográfica.
 
 !!! tip "Variación controlada"
     La repetición **no implica monotonía**. Introducir diferencias sutiles dentro de un patrón hace que una interfaz sea interesante sin dejar de ser coherente.
@@ -198,6 +201,8 @@ La **ley de Hick** establece que el tiempo para tomar una decisión aumenta loga
 
 En diseño de interfaces, cada opción adicional en un menú incrementa el tiempo de procesamiento. La solución es la **categorización jerárquica**: organizar **15 enlaces** en **4 categorías de 3-4 enlaces** cada una, de modo que la decisión se tome en **dos pasos más simples** en lugar de uno complejo. La **divulgación progresiva** —mostrar inicialmente solo las opciones más utilizadas— es otra estrategia eficaz.
 
+[Principios Ley de Hick](https://design-toolkit.recursos.uoc.edu/es/ley-de-hick/)
+
 ### 9. Ley de Fitts
 
 La **ley de Fitts** establece que el tiempo para alcanzar un objetivo depende de la distancia y del tamaño:
@@ -210,6 +215,8 @@ Los objetivos de interacción deben ser **grandes y cercanos**. Las guías ofici
 - **Google:** mínimo **48×48 dp** en Material Design.
 
 En mobile, las acciones frecuentes deben situarse en las **zonas de fácil alcance para el pulgar** (mitad inferior central).
+
+[Principios Ley de Fitts](https://design-toolkit.recursos.uoc.edu/es/ley-de-fitts/)
 
 ### 10. Efecto de posición serial
 
@@ -1182,6 +1189,7 @@ Twitter (ahora X) es un caso de estudio sobre cómo el efecto de posición seria
 **Requisitos técnicos:** HTML, CSS y JavaScript vanilla. Sin frameworks. La interfaz debe ser responsive y funcionar tanto en escritorio como en móvil. La fórmula de Fitts debe estar implementada en JavaScript y los cálculos deben actualizarse en tiempo real al mover los sliders.
 
 **Criterios de evaluación:**
+
 - Corrección matemática de la implementación de la fórmula de Fitts (25%).
 - Calidad de la interfaz visual y la representación gráfica del botón y cursor (25%).
 - Utilidad pedagógica de las recomendaciones de diseño automáticas (25%).
@@ -1194,6 +1202,7 @@ Twitter (ahora X) es un caso de estudio sobre cómo el efecto de posición seria
 **Enunciado:** Selecciona una aplicación móvil que utilices a diario y realiza una auditoría exhaustiva de su consistencia interna y externa. Documenta cada infracción de consistencia que encuentres con capturas de pantalla.
 
 **Apartados de la auditoría:**
+
 1. **Consistencia de color:** ¿Se utiliza el mismo color para la misma acción en todas las pantallas? ¿Los colores semánticos (éxito, error, advertencia) son consistentes?
 2. **Consistencia tipográfica:** ¿Se respeta la misma escala tipográfica en todas las pantallas? ¿Hay textos con tamaños inconsistentes?
 3. **Consistencia de espaciado:** ¿Los márgenes y rellenos siguen una escala predecible? ¿Hay pantallas con espaciados visiblemente diferentes?
