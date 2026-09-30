@@ -1,3 +1,7 @@
+---
+icon: lucide/grid-3x3
+---
+
 # Unidad 10: CSS Grid Layout
 
 ## Objetivos de aprendizaje

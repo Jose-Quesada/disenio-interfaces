@@ -1,3 +1,7 @@
+---
+icon: lucide/monitor-smartphone
+---
+
 # Unidad 11: Diseño Web Responsive
 
 ## Objetivos de aprendizaje

@@ -1,3 +1,7 @@
+---
+icon: lucide/mouse-pointer-click
+---
+
 # Unidad 13: Interactividad Web
 
 ## Objetivos de aprendizaje

@@ -1,3 +1,7 @@
+---
+icon: lucide/swatch-book
+---
+
 # Unidad 4: Guías de Estilo y Sistemas de Diseño
 
 ## Objetivos de aprendizaje

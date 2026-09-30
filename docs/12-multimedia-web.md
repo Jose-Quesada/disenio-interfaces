@@ -1,3 +1,7 @@
+---
+icon: lucide/film
+---
+
 # Unidad 12: Integración de Contenido Multimedia en la Web
 
 ## Objetivos de aprendizaje

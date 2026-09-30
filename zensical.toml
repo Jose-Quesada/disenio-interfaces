@@ -11,7 +11,7 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Curso de Angular"
+site_name = "Diseño de Interfaces - DAW"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
@@ -56,7 +56,7 @@ nav = [
 #  { "09. Flexbox" = "09-flexbox.md" },
 #  { "10. CSS Grid" = "10-css-grid-layout.md" },
 #  { "11. Diseño responsive" = "11-responsive-design.md" },
-  { "12. Multimedia web" = "12-multimedia-web.md" },
+#  { "12. Multimedia web" = "12-multimedia-web.md" },
   { "13. Interactividad web" = "13-interactividad-web.md" },
   { "14. Accesibilidad web" = "14-accesibilidad-web.md" },
   { "15. Usabilidad web" = "15-usabilidad-web.md" },

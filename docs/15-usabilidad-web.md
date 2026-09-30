@@ -1,3 +1,7 @@
+---
+icon: lucide/user-check
+---
+
 # Unidad 15: Usabilidad Web
 
 ## Objetivos de aprendizaje

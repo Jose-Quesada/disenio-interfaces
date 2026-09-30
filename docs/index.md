@@ -1,3 +1,7 @@
+---
+icon: lucide/book-open
+---
+
 # Unidad 1: Introducción al Diseño de Interfaces Web
 
 ## Objetivos de aprendizaje

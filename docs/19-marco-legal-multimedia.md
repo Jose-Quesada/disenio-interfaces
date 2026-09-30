@@ -1,3 +1,7 @@
+---
+icon: lucide/scale
+---
+
 # Unidad 19: Marco Legal del Contenido Multimedia y Preparación de Archivos para la Web
 
 ## Objetivos de aprendizaje

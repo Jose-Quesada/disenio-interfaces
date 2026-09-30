@@ -1,3 +1,7 @@
+---
+icon: lucide/wind
+---
+
 # Unidad 17: Tailwind CSS 4 — Fundamentos y Aplicación Práctica
 
 ## Objetivos de aprendizaje

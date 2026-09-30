@@ -1,3 +1,7 @@
+---
+icon: lucide/folder-tree
+---
+
 # Unidad 6: Arquitectura de la Información para Interfaces Web
 
 ## Objetivos de aprendizaje

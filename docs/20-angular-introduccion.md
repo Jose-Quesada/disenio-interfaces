@@ -1,3 +1,7 @@
+---
+icon: lucide/rocket
+---
+
 # Unidad 20: Angular — Introducción y Primeros Componentes
 
 ## Objetivos de aprendizaje

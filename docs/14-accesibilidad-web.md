@@ -1,3 +1,7 @@
+---
+icon: lucide/accessibility
+---
+
 # Unidad 14: Accesibilidad Web
 
 ## Objetivos de aprendizaje

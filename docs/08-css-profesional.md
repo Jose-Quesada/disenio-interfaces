@@ -1,3 +1,7 @@
+---
+icon: lucide/paintbrush
+---
+
 # Unidad 8: CSS Profesional y Técnicas Avanzadas
 
 ## Objetivos de aprendizaje

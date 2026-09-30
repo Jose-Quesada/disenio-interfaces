@@ -1,3 +1,7 @@
+---
+icon: lucide/route
+---
+
 # Unidad 23: Angular — Enrutamiento y Formularios Reactivos
 
 ## Objetivos de aprendizaje

@@ -1,3 +1,7 @@
+---
+icon: lucide/blocks
+---
+
 # Unidad 21: Angular — Data Binding, Directivas y Pipes
 
 ## Objetivos de aprendizaje

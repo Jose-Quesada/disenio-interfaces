@@ -1,3 +1,7 @@
+---
+icon: lucide/pen-tool
+---
+
 # Unidad 5: Figma Profesional para Desarrolladores Frontend
 
 ## Objetivos de aprendizaje

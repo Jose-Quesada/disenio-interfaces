@@ -1,3 +1,7 @@
+---
+icon: lucide/server
+---
+
 # Unidad 22: Angular — Servicios, HttpClient y Consumo de APIs
 
 ## Objetivos de aprendizaje

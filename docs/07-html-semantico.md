@@ -1,3 +1,7 @@
+---
+icon: lucide/file-code
+---
+
 # Unidad 7: HTML Semántico, Accesibilidad y SEO
 
 ## Objetivos de aprendizaje

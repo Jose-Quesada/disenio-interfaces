@@ -1,3 +1,7 @@
+---
+icon: lucide/palette
+---
+
 # Unidad 3: Color y Tipografía en el Diseño de Interfaces Web
 
 ## Objetivos de aprendizaje
@@ -117,6 +121,8 @@ Las **armonías cromáticas** son combinaciones de colores que resultan visualme
 - **Triádica** — utiliza tres colores equidistantes en el círculo (por ejemplo, rojo, amarillo y azul), creando composiciones vibrantes y equilibradas.
 - **Monocromática** — utiliza variaciones en saturación y luminosidad de un único matiz, transmitiendo elegancia y sofisticación.
 - **Complementarios divididos** — utilizan un color y los dos colores adyacentes a su complementario, ofreciendo alto contraste pero con menos tensión que la armonía complementaria directa.
+ 
+![Círculo cromático](./img/03/circulo-cromatico.png)
 
 ### 1.2 Modelos de color
 
@@ -138,6 +144,8 @@ La elección entre RGB y HSL depende del contexto:
 |--------|---------------------|---------------|
 | **RGB** | Es el formato nativo de las pantallas | Compatible con la mayoría de herramientas de diseño gráfico |
 | **HSL** | Permite razonar sobre los colores en términos humanos | Diseño web: «quiero un azul más claro» se traduce en «reducir la saturación y aumentar la luminosidad», mientras que en RGB requiere ajustar tres canales simultáneamente |
+
+![RGB vs HSL](./img/03/rgb_vs_hsl.png)
 
 ### 1.3 Contraste de color y accesibilidad
 

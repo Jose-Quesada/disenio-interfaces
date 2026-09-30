@@ -1,3 +1,7 @@
+---
+icon: lucide/brain
+---
+
 # Unidad 2: Psicología Cognitiva Aplicada al Diseño de Interfaces
 
 ## Objetivos de aprendizaje

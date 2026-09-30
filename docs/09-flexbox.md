@@ -1,3 +1,7 @@
+---
+icon: lucide/rows-3
+---
+
 # Unidad 9: Flexbox - Maquetación Unidimensional Profesional
 
 ## Objetivos de aprendizaje

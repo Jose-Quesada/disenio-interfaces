@@ -1,3 +1,7 @@
+---
+icon: lucide/users
+---
+
 # Unidad 16: Diseño Centrado en Usuario (DCU)
 
 ## Objetivos de aprendizaje
