@@ -218,14 +218,130 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
 !!! example "Contexto pedagógico"
     Implementación de una galería que optimiza la carga mediante lazy loading nativo, usa WebP/AVIF con fallback, y aplica dimensiones correctas con srcset. Incluye placeholders que ocupan espacio para evitar layout shift.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 1 - Galería Optimizada</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 1 - Galería Optimizada</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Galería de imágenes optimizada</h1>
+      <div class="gallery">
+        <!--
+          ===== TARJETA 1: IMAGEN RESPONSIVE CON WEBP =====
+          - picture: permite múltiples sources con condiciones
+          - El source WebP se sirve si el navegador lo soporta
+          - El img con JPEG es el fallback universal
+          - srcset con descriptores w: el navegador elige la resolución
+          - sizes: informa del tamaño de renderizado según el viewport
+          - loading="lazy": carga diferida, solo cuando está cerca del viewport
+          - decoding="async": decodificación en segundo plano
+        -->
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <!-- Formato WebP para navegadores que lo soportan -->
+            <source
+              srcset="foto-1-400.webp 400w, foto-1-800.webp 800w, foto-1-1200.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG universal -->
+            <img
+              src="foto-1-400.jpg"
+              srcset="foto-1-400.jpg 400w, foto-1-800.jpg 800w, foto-1-1200.jpg 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt="Paisaje montañoso al atardecer con reflejos en el lago"
+              class="gallery__img"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="300"
+              onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"
+              style="opacity: 0;"
+            >
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Atardecer en los Alpes</h3>
+            <p>Naturaleza · Suiza · 2024</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2 (misma estructura, diferentes imágenes) -->
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <source srcset="foto-2-400.webp 400w, foto-2-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="foto-2-400.jpg" srcset="foto-2-400.jpg 400w, foto-2-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Arquitectura moderna con líneas geométricas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Arquitectura contemporánea</h3>
+            <p>Arquitectura · Japón · 2024</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <source srcset="foto-3-400.webp 400w, foto-3-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="foto-3-400.jpg" srcset="foto-3-400.jpg 400w, foto-3-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Retrato en blanco y negro de persona mayor" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Sabiduría ancestral</h3>
+            <p>Retratos · Perú · 2024</p>
+          </div>
+        </div>
+
+        <!-- Tarjetas 4-6 con el mismo patrón -->
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <source srcset="foto-4-400.webp 400w, foto-4-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="foto-4-400.jpg" srcset="foto-4-400.jpg 400w, foto-4-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Mercado callejero con puestos de especias" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Mercado de especias</h3>
+            <p>Viajes · Marruecos · 2024</p>
+          </div>
+        </div>
+
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <source srcset="foto-5-400.webp 400w, foto-5-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="foto-5-400.jpg" srcset="foto-5-400.jpg 400w, foto-5-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Olas del océano rompiendo contra las rocas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Furia del océano</h3>
+            <p>Naturaleza · Portugal · 2024</p>
+          </div>
+        </div>
+
+        <div class="gallery__item">
+          <span class="gallery__loader">Cargando...</span>
+          <picture>
+            <source srcset="foto-6-400.webp 400w, foto-6-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="foto-6-400.jpg" srcset="foto-6-400.jpg 400w, foto-6-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Bosque de bambú con rayos de sol filtrándose" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+          </picture>
+          <div class="gallery__overlay">
+            <h3>Bosque de bambú</h3>
+            <p>Naturaleza · Japón · 2023</p>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -320,117 +436,7 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       color: #999;
       font-size: 0.9rem;
     }
-  </style>
-</head>
-<body>
-  <h1>Galería de imágenes optimizada</h1>
-  <div class="gallery">
-    <!--
-      ===== TARJETA 1: IMAGEN RESPONSIVE CON WEBP =====
-      - picture: permite múltiples sources con condiciones
-      - El source WebP se sirve si el navegador lo soporta
-      - El img con JPEG es el fallback universal
-      - srcset con descriptores w: el navegador elige la resolución
-      - sizes: informa del tamaño de renderizado según el viewport
-      - loading="lazy": carga diferida, solo cuando está cerca del viewport
-      - decoding="async": decodificación en segundo plano
-    -->
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <!-- Formato WebP para navegadores que lo soportan -->
-        <source
-          srcset="foto-1-400.webp 400w, foto-1-800.webp 800w, foto-1-1200.webp 1200w"
-          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-          type="image/webp"
-        >
-        <!-- Fallback JPEG universal -->
-        <img
-          src="foto-1-400.jpg"
-          srcset="foto-1-400.jpg 400w, foto-1-800.jpg 800w, foto-1-1200.jpg 1200w"
-          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-          alt="Paisaje montañoso al atardecer con reflejos en el lago"
-          class="gallery__img"
-          loading="lazy"
-          decoding="async"
-          width="400"
-          height="300"
-          onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"
-          style="opacity: 0;"
-        >
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Atardecer en los Alpes</h3>
-        <p>Naturaleza · Suiza · 2024</p>
-      </div>
-    </div>
-
-    <!-- Tarjeta 2 (misma estructura, diferentes imágenes) -->
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <source srcset="foto-2-400.webp 400w, foto-2-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-        <img src="foto-2-400.jpg" srcset="foto-2-400.jpg 400w, foto-2-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Arquitectura moderna con líneas geométricas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Arquitectura contemporánea</h3>
-        <p>Arquitectura · Japón · 2024</p>
-      </div>
-    </div>
-
-    <!-- Tarjeta 3 -->
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <source srcset="foto-3-400.webp 400w, foto-3-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-        <img src="foto-3-400.jpg" srcset="foto-3-400.jpg 400w, foto-3-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Retrato en blanco y negro de persona mayor" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Sabiduría ancestral</h3>
-        <p>Retratos · Perú · 2024</p>
-      </div>
-    </div>
-
-    <!-- Tarjetas 4-6 con el mismo patrón -->
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <source srcset="foto-4-400.webp 400w, foto-4-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-        <img src="foto-4-400.jpg" srcset="foto-4-400.jpg 400w, foto-4-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Mercado callejero con puestos de especias" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Mercado de especias</h3>
-        <p>Viajes · Marruecos · 2024</p>
-      </div>
-    </div>
-
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <source srcset="foto-5-400.webp 400w, foto-5-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-        <img src="foto-5-400.jpg" srcset="foto-5-400.jpg 400w, foto-5-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Olas del océano rompiendo contra las rocas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Furia del océano</h3>
-        <p>Naturaleza · Portugal · 2024</p>
-      </div>
-    </div>
-
-    <div class="gallery__item">
-      <span class="gallery__loader">Cargando...</span>
-      <picture>
-        <source srcset="foto-6-400.webp 400w, foto-6-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-        <img src="foto-6-400.jpg" srcset="foto-6-400.jpg 400w, foto-6-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Bosque de bambú con rayos de sol filtrándose" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
-      </picture>
-      <div class="gallery__overlay">
-        <h3>Bosque de bambú</h3>
-        <p>Naturaleza · Japón · 2023</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 2: Reproducción de audio y vídeo HTML5 con accesibilidad
@@ -438,14 +444,163 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
 !!! example "Contexto pedagógico"
     Ejemplo completo que demuestra la integración de audio y vídeo usando las etiquetas nativas de HTML5, con múltiples formatos para compatibilidad, subtítulos WebVTT accesibles, y el truco del padding-bottom para hacer el vídeo responsive.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 2 - Audio y Vídeo HTML5</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 2 - Audio y Vídeo HTML5</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Audio y Vídeo en HTML5</h1>
+
+      <!-- ===== SECCIÓN DE VÍDEO ===== -->
+      <section>
+        <h2>Reproductor de Vídeo con subtítulos</h2>
+
+        <!--
+          Contenedor responsive 16:9.
+          El vídeo se adapta a cualquier ancho manteniendo la proporción.
+        -->
+        <div class="video-container">
+          <!--
+            ===== ETIQUETA VIDEO =====
+            controls: muestra los controles nativos del navegador.
+            poster: imagen mostrada antes de la reproducción.
+            preload="metadata": solo carga metadatos (duración, dimensiones),
+              no el vídeo completo. Opciones: none, metadata, auto.
+            crossorigin="anonymous": necesario para que funcionen los subtítulos
+              en algunos servidores.
+          -->
+          <video controls poster="video-poster.jpg" preload="metadata" crossorigin="anonymous">
+            <!--
+              Primero WebM (código abierto, mejor compresión).
+              El navegador prueba cada source en orden y usa el primero que soporte.
+            -->
+            <source src="video.webm" type="video/webm">
+            <!-- Fallback MP4/H.264 (compatibilidad universal) -->
+            <source src="video.mp4" type="video/mp4">
+
+            <!--
+              ===== SUBTÍTULOS CON WEBVTT =====
+              kind="subtitles": subtítulos que traducen el audio.
+              srclang="es": idioma de los subtítulos.
+              label: nombre mostrado en el selector de subtítulos.
+              default: activa estos subtítulos por defecto.
+            -->
+            <track kind="subtitles" src="subtitulos-es.vtt" srclang="es" label="Español" default>
+            <track kind="subtitles" src="subtitulos-en.vtt" srclang="en" label="English">
+
+            <!-- Descripción de audio para personas ciegas -->
+            <track kind="descriptions" src="descripciones-es.vtt" srclang="es" label="Descripción de audio">
+
+            <!-- Mensaje si el navegador no soporta la etiqueta video -->
+            <p>Tu navegador no soporta la etiqueta de vídeo HTML5.</p>
+          </video>
+        </div>
+
+        <!--
+          Ejemplo de archivo WebVTT (subtitulos-es.vtt):
+          WEBVTT
+
+          00:00:01.000 --> 00:00:04.000
+          Bienvenidos a este tutorial sobre HTML5.
+
+          00:00:04.500 --> 00:00:08.000
+          Hoy aprenderemos a integrar vídeo en la web.
+        -->
+
+        <p class="format-info">
+          Formatos proporcionados: <code>WebM (VP9)</code> para navegadores modernos,
+          <code>MP4 (H.264)</code> como fallback universal.
+          Subtítulos en español e inglés disponibles.
+        </p>
+
+        <!-- Transcripción textual completa (accesibilidad + SEO) -->
+        <div class="transcript">
+          <strong>Transcripción:</strong>
+          <p>Bienvenidos a este tutorial sobre HTML5. Hoy aprenderemos a integrar
+          vídeo en la web de forma nativa, sin necesidad de plugins externos.
+          Veremos cómo usar la etiqueta video, cómo proporcionar múltiples formatos
+          para compatibilidad, y cómo añadir subtítulos accesibles.</p>
+        </div>
+      </section>
+
+      <!-- ===== SECCIÓN DE AUDIO ===== -->
+      <section>
+        <h2>Reproductor de Audio</h2>
+
+        <!--
+          ===== ETIQUETA AUDIO =====
+          Estructura similar a video pero más simple.
+          controls: muestra play/pause, volumen, progreso.
+        -->
+        <audio controls preload="metadata">
+          <!-- Primero OGG Vorbis (código abierto) -->
+          <source src="audio.ogg" type="audio/ogg">
+          <!-- Fallback MP3 (compatibilidad universal) -->
+          <source src="audio.mp3" type="audio/mpeg">
+          <p>Tu navegador no soporta audio HTML5.</p>
+        </audio>
+
+        <p class="format-info">
+          Formatos: <code>OGG Vorbis</code> (menor tamaño) +
+          <code>MP3</code> (compatibilidad total).
+          Atributo <code>preload="metadata"</code>: solo carga la duración, no el audio completo.
+        </p>
+
+        <div class="transcript">
+          <strong>Transcripción del audio:</strong>
+          <p>Este es un ejemplo de contenido de audio con su correspondiente
+          transcripción textual. Proporcionar transcripciones no solo es un
+          requisito de accesibilidad, sino que también mejora el SEO y
+          permite a los usuarios consumir el contenido en entornos donde
+          no pueden escuchar audio.</p>
+        </div>
+      </section>
+
+      <!-- ===== SECCIÓN DE VÍDEO EMBEBIDO (YouTube/Vimeo) ===== -->
+      <section>
+        <h2>Vídeo embebido de YouTube (responsive)</h2>
+
+        <!--
+          Mismo truco de padding-bottom para iframe responsive.
+          Funciona exactamente igual que con la etiqueta video.
+        -->
+        <div class="video-container">
+          <!--
+            El src de YouTube incluye parámetros:
+            - rel=0: no mostrar vídeos relacionados al final
+            - modestbranding=1: branding reducido
+            - start=30: comenzar en el segundo 30
+          -->
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+            title="Vídeo tutorial de ejemplo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="format-info">
+          Usamos <code>youtube-nocookie.com</code> (modo de privacidad mejorada)
+          que no instala cookies de seguimiento hasta que el usuario reproduce el vídeo.
+          Atributo <code>loading="lazy"</code> en el iframe: no carga el vídeo hasta
+          que está cerca del viewport.
+        </p>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -512,164 +667,96 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       font-size: 0.9rem;
       line-height: 1.6;
     }
-  </style>
-</head>
-<body>
-  <h1>Audio y Vídeo en HTML5</h1>
-
-  <!-- ===== SECCIÓN DE VÍDEO ===== -->
-  <section>
-    <h2>Reproductor de Vídeo con subtítulos</h2>
-
-    <!--
-      Contenedor responsive 16:9.
-      El vídeo se adapta a cualquier ancho manteniendo la proporción.
-    -->
-    <div class="video-container">
-      <!--
-        ===== ETIQUETA VIDEO =====
-        controls: muestra los controles nativos del navegador.
-        poster: imagen mostrada antes de la reproducción.
-        preload="metadata": solo carga metadatos (duración, dimensiones),
-          no el vídeo completo. Opciones: none, metadata, auto.
-        crossorigin="anonymous": necesario para que funcionen los subtítulos
-          en algunos servidores.
-      -->
-      <video controls poster="video-poster.jpg" preload="metadata" crossorigin="anonymous">
-        <!--
-          Primero WebM (código abierto, mejor compresión).
-          El navegador prueba cada source en orden y usa el primero que soporte.
-        -->
-        <source src="video.webm" type="video/webm">
-        <!-- Fallback MP4/H.264 (compatibilidad universal) -->
-        <source src="video.mp4" type="video/mp4">
-
-        <!--
-          ===== SUBTÍTULOS CON WEBVTT =====
-          kind="subtitles": subtítulos que traducen el audio.
-          srclang="es": idioma de los subtítulos.
-          label: nombre mostrado en el selector de subtítulos.
-          default: activa estos subtítulos por defecto.
-        -->
-        <track kind="subtitles" src="subtitulos-es.vtt" srclang="es" label="Español" default>
-        <track kind="subtitles" src="subtitulos-en.vtt" srclang="en" label="English">
-
-        <!-- Descripción de audio para personas ciegas -->
-        <track kind="descriptions" src="descripciones-es.vtt" srclang="es" label="Descripción de audio">
-
-        <!-- Mensaje si el navegador no soporta la etiqueta video -->
-        <p>Tu navegador no soporta la etiqueta de vídeo HTML5.</p>
-      </video>
-    </div>
-
-    <!--
-      Ejemplo de archivo WebVTT (subtitulos-es.vtt):
-      WEBVTT
-
-      00:00:01.000 --> 00:00:04.000
-      Bienvenidos a este tutorial sobre HTML5.
-
-      00:00:04.500 --> 00:00:08.000
-      Hoy aprenderemos a integrar vídeo en la web.
-    -->
-
-    <p class="format-info">
-      Formatos proporcionados: <code>WebM (VP9)</code> para navegadores modernos,
-      <code>MP4 (H.264)</code> como fallback universal.
-      Subtítulos en español e inglés disponibles.
-    </p>
-
-    <!-- Transcripción textual completa (accesibilidad + SEO) -->
-    <div class="transcript">
-      <strong>Transcripción:</strong>
-      <p>Bienvenidos a este tutorial sobre HTML5. Hoy aprenderemos a integrar
-      vídeo en la web de forma nativa, sin necesidad de plugins externos.
-      Veremos cómo usar la etiqueta video, cómo proporcionar múltiples formatos
-      para compatibilidad, y cómo añadir subtítulos accesibles.</p>
-    </div>
-  </section>
-
-  <!-- ===== SECCIÓN DE AUDIO ===== -->
-  <section>
-    <h2>Reproductor de Audio</h2>
-
-    <!--
-      ===== ETIQUETA AUDIO =====
-      Estructura similar a video pero más simple.
-      controls: muestra play/pause, volumen, progreso.
-    -->
-    <audio controls preload="metadata">
-      <!-- Primero OGG Vorbis (código abierto) -->
-      <source src="audio.ogg" type="audio/ogg">
-      <!-- Fallback MP3 (compatibilidad universal) -->
-      <source src="audio.mp3" type="audio/mpeg">
-      <p>Tu navegador no soporta audio HTML5.</p>
-    </audio>
-
-    <p class="format-info">
-      Formatos: <code>OGG Vorbis</code> (menor tamaño) +
-      <code>MP3</code> (compatibilidad total).
-      Atributo <code>preload="metadata"</code>: solo carga la duración, no el audio completo.
-    </p>
-
-    <div class="transcript">
-      <strong>Transcripción del audio:</strong>
-      <p>Este es un ejemplo de contenido de audio con su correspondiente
-      transcripción textual. Proporcionar transcripciones no solo es un
-      requisito de accesibilidad, sino que también mejora el SEO y
-      permite a los usuarios consumir el contenido en entornos donde
-      no pueden escuchar audio.</p>
-    </div>
-  </section>
-
-  <!-- ===== SECCIÓN DE VÍDEO EMBEBIDO (YouTube/Vimeo) ===== -->
-  <section>
-    <h2>Vídeo embebido de YouTube (responsive)</h2>
-
-    <!--
-      Mismo truco de padding-bottom para iframe responsive.
-      Funciona exactamente igual que con la etiqueta video.
-    -->
-    <div class="video-container">
-      <!--
-        El src de YouTube incluye parámetros:
-        - rel=0: no mostrar vídeos relacionados al final
-        - modestbranding=1: branding reducido
-        - start=30: comenzar en el segundo 30
-      -->
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-        title="Vídeo tutorial de ejemplo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
-    </div>
-
-    <p class="format-info">
-      Usamos <code>youtube-nocookie.com</code> (modo de privacidad mejorada)
-      que no instala cookies de seguimiento hasta que el usuario reproduce el vídeo.
-      Atributo <code>loading="lazy"</code> en el iframe: no carga el vídeo hasta
-      que está cerca del viewport.
-    </p>
-  </section>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 3: Animaciones CSS - Loader spinner, fade in, slide in, botón like
 
 !!! example "Contexto pedagógico"
     Conjunto de animaciones CSS prácticas y reutilizables. Incluye un spinner de carga (loader) usando solo CSS, animaciones de entrada (fade-in, slide-in) para revelar contenido al hacer scroll, y una microinteracción de botón like.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 3 - Animaciones CSS Prácticas</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 3 - Animaciones CSS Prácticas</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Animaciones CSS Prácticas</h1>
+
+      <!-- SPINNERS -->
+      <h2>1. Loader Spinner circular</h2>
+      <div class="demo-area">
+        <div class="spinner"></div>
+        <span style="margin-left:1rem; color:#666;">Cargando...</span>
+      </div>
+
+      <h2>2. Loader de 3 puntos</h2>
+      <div class="demo-area">
+        <div class="dots-loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- ANIMACIONES DE ENTRADA -->
+      <h2>3. Fade In, Slide In</h2>
+      <div class="demo-area">
+        <div class="card fade-in">
+          <h3>Fade In</h3>
+          <p>Aparezco suavemente</p>
+        </div>
+        <div class="card card--green slide-in-left" style="animation-delay: 0.3s;">
+          <h3>Slide In Left</h3>
+          <p>Entro desde la izquierda</p>
+        </div>
+        <div class="card card--orange slide-in-up" style="animation-delay: 0.6s;">
+          <h3>Slide In Up</h3>
+          <p>Subo desde abajo</p>
+        </div>
+      </div>
+
+      <!-- PULSE Y SHAKE -->
+      <h2>4. Botón Pulse (CTA animado)</h2>
+      <div class="demo-area">
+        <span class="pulse">¡Oferta limitada!</span>
+      </div>
+
+      <!-- BOTÓN LIKE -->
+      <h2>5. Microinteracción: Botón Like</h2>
+      <div class="demo-area">
+        <button class="like-btn" onclick="toggleLike(this)">🤍</button>
+        <span style="margin-left:0.5rem; color:#666;">Haz clic en el corazón</span>
+      </div>
+
+      <!-- SKELETON -->
+      <h2>6. Skeleton Loader (contenido fantasma)</h2>
+      <div class="demo-area" style="flex-direction: column; align-items: flex-start; width: 100%;">
+        <div style="display:flex; gap:1rem; margin-bottom:1rem; align-items:center;">
+          <div class="skeleton skeleton--avatar"></div>
+          <div style="flex:1;">
+            <div class="skeleton skeleton--title"></div>
+            <div class="skeleton skeleton--text-short"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text-short"></div>
+      </div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -927,73 +1014,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         transition-duration: 0.01ms !important;
       }
     }
-  </style>
-</head>
-<body>
-  <h1>Animaciones CSS Prácticas</h1>
+    ```
 
-  <!-- SPINNERS -->
-  <h2>1. Loader Spinner circular</h2>
-  <div class="demo-area">
-    <div class="spinner"></div>
-    <span style="margin-left:1rem; color:#666;">Cargando...</span>
-  </div>
+=== "JS"
 
-  <h2>2. Loader de 3 puntos</h2>
-  <div class="demo-area">
-    <div class="dots-loader">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
-  </div>
-
-  <!-- ANIMACIONES DE ENTRADA -->
-  <h2>3. Fade In, Slide In</h2>
-  <div class="demo-area">
-    <div class="card fade-in">
-      <h3>Fade In</h3>
-      <p>Aparezco suavemente</p>
-    </div>
-    <div class="card card--green slide-in-left" style="animation-delay: 0.3s;">
-      <h3>Slide In Left</h3>
-      <p>Entro desde la izquierda</p>
-    </div>
-    <div class="card card--orange slide-in-up" style="animation-delay: 0.6s;">
-      <h3>Slide In Up</h3>
-      <p>Subo desde abajo</p>
-    </div>
-  </div>
-
-  <!-- PULSE Y SHAKE -->
-  <h2>4. Botón Pulse (CTA animado)</h2>
-  <div class="demo-area">
-    <span class="pulse">¡Oferta limitada!</span>
-  </div>
-
-  <!-- BOTÓN LIKE -->
-  <h2>5. Microinteracción: Botón Like</h2>
-  <div class="demo-area">
-    <button class="like-btn" onclick="toggleLike(this)">🤍</button>
-    <span style="margin-left:0.5rem; color:#666;">Haz clic en el corazón</span>
-  </div>
-
-  <!-- SKELETON -->
-  <h2>6. Skeleton Loader (contenido fantasma)</h2>
-  <div class="demo-area" style="flex-direction: column; align-items: flex-start; width: 100%;">
-    <div style="display:flex; gap:1rem; margin-bottom:1rem; align-items:center;">
-      <div class="skeleton skeleton--avatar"></div>
-      <div style="flex:1;">
-        <div class="skeleton skeleton--title"></div>
-        <div class="skeleton skeleton--text-short"></div>
-      </div>
-    </div>
-    <div class="skeleton skeleton--text"></div>
-    <div class="skeleton skeleton--text"></div>
-    <div class="skeleton skeleton--text-short"></div>
-  </div>
-
-  <script>
+    ``` js
     // Función para el botón like: alterna el estado y la animación
     function toggleLike(btn) {
       const isLiked = btn.textContent.trim() === '❤️';
@@ -1003,24 +1028,131 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       void btn.offsetWidth; // Forzamos reflow para reiniciar animación
       btn.classList.add('liked');
     }
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 4: Animación SVG - Dibujar trazado con stroke-dasharray
 
 !!! example "Contexto pedagógico"
     Una técnica espectacular de animación SVG: hacer que un trazado se "dibuje a sí mismo" manipulando las propiedades stroke-dasharray y stroke-dashoffset. El efecto es ideal para logotipos animados, gráficos de progreso, o revelar ilustraciones.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 4 - Animación SVG</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 4 - Animación SVG</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Animaciones SVG: Dibujar trazados</h1>
+      <p>La técnica stroke-dasharray + stroke-dashoffset permite que los trazados
+      se "dibujen solos" revelándose progresivamente. Ideal para logotipos animados,
+      ilustraciones y gráficos de progreso.</p>
+
+      <div class="demo-grid">
+        <!-- DEMO 1: Dibujar un rectángulo -->
+        <div class="demo-card">
+          <h3>1. Rectángulo (se dibuja)</h3>
+          <svg viewBox="0 0 200 150" width="200" height="150">
+            <rect
+              x="20" y="20" width="160" height="110" rx="8"
+              class="draw-path draw-animation"
+              style="--path-length: 540;"
+            />
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            Perímetro = 2*(160+110) = 540
+          </p>
+        </div>
+
+        <!-- DEMO 2: Dibujar un círculo -->
+        <div class="demo-card">
+          <h3>2. Círculo</h3>
+          <svg viewBox="0 0 200 200" width="200" height="200">
+            <circle
+              cx="100" cy="100" r="70"
+              class="draw-path draw-animation"
+              style="--path-length: 440; animation-delay: 0.5s;"
+            />
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            Circunferencia = 2*PI*70 ≈ 440
+          </p>
+        </div>
+
+        <!-- DEMO 3: Corazón que se dibuja y se rellena -->
+        <div class="demo-card">
+          <h3>3. Corazón (dibujar + rellenar)</h3>
+          <svg viewBox="0 0 100 100" width="200" height="200">
+            <path
+              d="M50,85 L20,50 Q10,35 25,20 Q35,12 50,30 Q65,12 75,20 Q90,35 80,50 Z"
+              class="heart-path"
+              style="--path-length: 200;"
+            />
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            Primero se dibuja el trazo, luego se rellena
+          </p>
+        </div>
+
+        <!-- DEMO 4: Gráfico de progreso circular -->
+        <div class="demo-card">
+          <h3>4. Gráfico de progreso (75%)</h3>
+          <svg viewBox="0 0 120 120" width="200" height="200">
+            <!-- Círculo de fondo (gris) -->
+            <circle cx="60" cy="60" r="45" stroke="#30363d" stroke-width="8" fill="none" />
+            <!-- Círculo de progreso (verde) -->
+            <circle cx="60" cy="60" r="45" class="progress-circle" />
+            <!-- Texto central -->
+            <text x="60" y="65" text-anchor="middle" fill="#e6edf3" font-size="20" font-weight="bold">75%</text>
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            stroke-dashoffset controla el porcentaje visible
+          </p>
+        </div>
+
+        <!-- DEMO 5: Logo que se dibuja en bucle -->
+        <div class="demo-card">
+          <h3>5. Loop infinito</h3>
+          <svg viewBox="0 0 200 100" width="200" height="100">
+            <path
+              d="M30,50 Q60,20 100,50 Q140,80 170,50"
+              class="draw-path draw-loop"
+              style="--path-length: 180;"
+            />
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            Se dibuja y se borra continuamente
+          </p>
+        </div>
+
+        <!-- DEMO 6: Estrella -->
+        <div class="demo-card">
+          <h3>6. Polígono (estrella)</h3>
+          <svg viewBox="0 0 200 200" width="200" height="200">
+            <polygon
+              points="100,10 120,70 185,70 135,110 150,175 100,135 50,175 65,110 15,70 80,70"
+              class="draw-path draw-animation"
+              style="--path-length: 520; animation-delay: 0.8s;"
+            />
+          </svg>
+          <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
+            Funciona con cualquier forma SVG
+          </p>
+        </div>
+      </div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1170,108 +1302,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       }
       .heart-path { fill: #f85149; }
     }
-  </style>
-</head>
-<body>
-  <h1>Animaciones SVG: Dibujar trazados</h1>
-  <p>La técnica stroke-dasharray + stroke-dashoffset permite que los trazados
-  se "dibujen solos" revelándose progresivamente. Ideal para logotipos animados,
-  ilustraciones y gráficos de progreso.</p>
+    ```
 
-  <div class="demo-grid">
-    <!-- DEMO 1: Dibujar un rectángulo -->
-    <div class="demo-card">
-      <h3>1. Rectángulo (se dibuja)</h3>
-      <svg viewBox="0 0 200 150" width="200" height="150">
-        <rect
-          x="20" y="20" width="160" height="110" rx="8"
-          class="draw-path draw-animation"
-          style="--path-length: 540;"
-        />
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        Perímetro = 2*(160+110) = 540
-      </p>
-    </div>
+=== "JS"
 
-    <!-- DEMO 2: Dibujar un círculo -->
-    <div class="demo-card">
-      <h3>2. Círculo</h3>
-      <svg viewBox="0 0 200 200" width="200" height="200">
-        <circle
-          cx="100" cy="100" r="70"
-          class="draw-path draw-animation"
-          style="--path-length: 440; animation-delay: 0.5s;"
-        />
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        Circunferencia = 2*PI*70 ≈ 440
-      </p>
-    </div>
-
-    <!-- DEMO 3: Corazón que se dibuja y se rellena -->
-    <div class="demo-card">
-      <h3>3. Corazón (dibujar + rellenar)</h3>
-      <svg viewBox="0 0 100 100" width="200" height="200">
-        <path
-          d="M50,85 L20,50 Q10,35 25,20 Q35,12 50,30 Q65,12 75,20 Q90,35 80,50 Z"
-          class="heart-path"
-          style="--path-length: 200;"
-        />
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        Primero se dibuja el trazo, luego se rellena
-      </p>
-    </div>
-
-    <!-- DEMO 4: Gráfico de progreso circular -->
-    <div class="demo-card">
-      <h3>4. Gráfico de progreso (75%)</h3>
-      <svg viewBox="0 0 120 120" width="200" height="200">
-        <!-- Círculo de fondo (gris) -->
-        <circle cx="60" cy="60" r="45" stroke="#30363d" stroke-width="8" fill="none" />
-        <!-- Círculo de progreso (verde) -->
-        <circle cx="60" cy="60" r="45" class="progress-circle" />
-        <!-- Texto central -->
-        <text x="60" y="65" text-anchor="middle" fill="#e6edf3" font-size="20" font-weight="bold">75%</text>
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        stroke-dashoffset controla el porcentaje visible
-      </p>
-    </div>
-
-    <!-- DEMO 5: Logo que se dibuja en bucle -->
-    <div class="demo-card">
-      <h3>5. Loop infinito</h3>
-      <svg viewBox="0 0 200 100" width="200" height="100">
-        <path
-          d="M30,50 Q60,20 100,50 Q140,80 170,50"
-          class="draw-path draw-loop"
-          style="--path-length: 180;"
-        />
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        Se dibuja y se borra continuamente
-      </p>
-    </div>
-
-    <!-- DEMO 6: Estrella -->
-    <div class="demo-card">
-      <h3>6. Polígono (estrella)</h3>
-      <svg viewBox="0 0 200 200" width="200" height="200">
-        <polygon
-          points="100,10 120,70 185,70 135,110 150,175 100,135 50,175 65,110 15,70 80,70"
-          class="draw-path draw-animation"
-          style="--path-length: 520; animation-delay: 0.8s;"
-        />
-      </svg>
-      <p style="font-size:0.8rem;color:#8b949e;margin-top:0.5rem;">
-        Funciona con cualquier forma SVG
-      </p>
-    </div>
-  </div>
-
-  <script>
+    ``` js
     /*
      * Script para calcular automáticamente la longitud de cada path
      * y establecerla como variable CSS (--path-length).
@@ -1283,24 +1318,64 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       path.style.setProperty('--path-length', length);
       path.style.strokeDasharray = length;
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 5: Reproductor de vídeo personalizado con API de HTML5
 
 !!! example "Contexto pedagógico"
     Aunque los controles nativos del navegador son funcionales, en proyectos profesionales a menudo necesitamos un reproductor personalizado. Este ejemplo muestra cómo controlar la reproducción de vídeo mediante la API JavaScript de HTML5, creando controles personalizados con HTML/CSS.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 5 - Reproductor de Vídeo Personalizado</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 5 - Reproductor de Vídeo Personalizado</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="player">
+        <!--
+          Vídeo sin controls nativos.
+          La interacción se gestiona mediante JavaScript y nuestra barra personalizada.
+        -->
+        <video id="miVideo" poster="poster.jpg" preload="metadata">
+          <source src="video.mp4" type="video/mp4">
+          <source src="video.webm" type="video/webm">
+          <track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>
+        </video>
+
+        <!-- Controles personalizados -->
+        <div class="player__controls">
+          <!-- Botón Play/Pause -->
+          <button id="btnPlay" class="player__btn" title="Reproducir">▶️</button>
+
+          <!-- Barra de progreso -->
+          <input type="range" id="barraProgreso" class="player__progress" value="0" min="0" max="100" step="0.1">
+
+          <!-- Tiempo actual / total -->
+          <span class="player__time" id="tiempo">0:00 / 0:00</span>
+
+          <!-- Controles de volumen y pantalla completa -->
+          <div class="player__right">
+            <button id="btnMute" class="player__btn" title="Silenciar">🔊</button>
+            <input type="range" id="controlVolumen" class="player__volume" value="100" min="0" max="100">
+            <button id="btnFullscreen" class="player__btn" title="Pantalla completa">⛶</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1440,41 +1515,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       border: none;
       cursor: pointer;
     }
-  </style>
-</head>
-<body>
-  <div class="player">
-    <!--
-      Vídeo sin controls nativos.
-      La interacción se gestiona mediante JavaScript y nuestra barra personalizada.
-    -->
-    <video id="miVideo" poster="poster.jpg" preload="metadata">
-      <source src="video.mp4" type="video/mp4">
-      <source src="video.webm" type="video/webm">
-      <track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>
-    </video>
+    ```
 
-    <!-- Controles personalizados -->
-    <div class="player__controls">
-      <!-- Botón Play/Pause -->
-      <button id="btnPlay" class="player__btn" title="Reproducir">▶️</button>
+=== "JS"
 
-      <!-- Barra de progreso -->
-      <input type="range" id="barraProgreso" class="player__progress" value="0" min="0" max="100" step="0.1">
-
-      <!-- Tiempo actual / total -->
-      <span class="player__time" id="tiempo">0:00 / 0:00</span>
-
-      <!-- Controles de volumen y pantalla completa -->
-      <div class="player__right">
-        <button id="btnMute" class="player__btn" title="Silenciar">🔊</button>
-        <input type="range" id="controlVolumen" class="player__volume" value="100" min="0" max="100">
-        <button id="btnFullscreen" class="player__btn" title="Pantalla completa">⛶</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
+    ``` js
     // ===== REFERENCIAS A LOS ELEMENTOS DEL DOM =====
     const video = document.getElementById('miVideo');
     const btnPlay = document.getElementById('btnPlay');
@@ -1585,10 +1630,7 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         btnFullscreen.click();
       }
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 6: Transiciones CSS para menús y modales
@@ -1596,14 +1638,97 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
 !!! example "Contexto pedagógico"
     Las transiciones CSS suavizan los cambios de estado mejorando la experiencia de usuario. Este ejemplo muestra cómo aplicar transiciones a menús desplegables, tooltips y modales, usando transform y opacity para máximo rendimiento.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 6 - Transiciones CSS</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 6 - Transiciones CSS</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Transiciones CSS: Menús, Tooltips y Modales</h1>
+
+      <!-- 1. MENÚ DESPLEGABLE -->
+      <section>
+        <h2>1. Menú desplegable con transición</h2>
+        <div class="dropdown">
+          <button class="dropdown__trigger">Mi Cuenta ▼</button>
+          <div class="dropdown__menu">
+            <a href="#">Mi Perfil</a>
+            <a href="#">Configuración</a>
+            <a href="#">Mis Pedidos</a>
+            <hr style="border-color:#f0f0f0;">
+            <a href="#">Cerrar Sesión</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. TOOLTIP -->
+      <section>
+        <h2>2. Tooltip informativo</h2>
+        <p>Pasa el ratón sobre
+          <span class="tooltip" data-tooltip="Search Engine Optimization: optimización para motores de búsqueda">SEO</span>
+          para ver la definición. También prueba con
+          <span class="tooltip" data-tooltip="Cumulative Layout Shift: métrica de estabilidad visual">CLS</span>.
+        </p>
+      </section>
+
+      <!-- 3. MODAL -->
+      <section>
+        <h2>3. Modal con transición</h2>
+        <button onclick="abrirModal()" style="padding:0.5rem 1.5rem; background:#6c5ce7; color:#fff; border:none; border-radius:8px; cursor:pointer;">
+          Abrir Modal
+        </button>
+      </section>
+
+      <!-- Modal (oculto por defecto) -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <h2>Título del Modal</h2>
+          <p>Este modal usa transiciones CSS para una aparición y desaparición suave. El overlay hace fade, el contenido hace zoom. Sin necesidad de librerías externas.</p>
+          <button class="modal__close" onclick="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+
+      <!-- 4. ACORDEÓN -->
+      <section>
+        <h2>4. Acordeón con altura animada</h2>
+        <div class="accordion" onclick="toggleAcordeon(this)">
+          <div class="accordion__header">
+            <span>¿Qué es CSS Grid?</span>
+            <span class="accordion__icon">▼</span>
+          </div>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              CSS Grid es un sistema de maquetación bidimensional que permite controlar filas y columnas simultáneamente.
+            </div>
+          </div>
+        </div>
+        <div class="accordion" onclick="toggleAcordeon(this)">
+          <div class="accordion__header">
+            <span>¿Qué son las transiciones CSS?</span>
+            <span class="accordion__icon">▼</span>
+          </div>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              Las transiciones CSS permiten suavizar el cambio entre dos estados de una propiedad, creando animaciones fluidas sin JavaScript.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1815,81 +1940,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         transition: none !important;
       }
     }
-  </style>
-</head>
-<body>
-  <h1>Transiciones CSS: Menús, Tooltips y Modales</h1>
+    ```
 
-  <!-- 1. MENÚ DESPLEGABLE -->
-  <section>
-    <h2>1. Menú desplegable con transición</h2>
-    <div class="dropdown">
-      <button class="dropdown__trigger">Mi Cuenta ▼</button>
-      <div class="dropdown__menu">
-        <a href="#">Mi Perfil</a>
-        <a href="#">Configuración</a>
-        <a href="#">Mis Pedidos</a>
-        <hr style="border-color:#f0f0f0;">
-        <a href="#">Cerrar Sesión</a>
-      </div>
-    </div>
-  </section>
+=== "JS"
 
-  <!-- 2. TOOLTIP -->
-  <section>
-    <h2>2. Tooltip informativo</h2>
-    <p>Pasa el ratón sobre
-      <span class="tooltip" data-tooltip="Search Engine Optimization: optimización para motores de búsqueda">SEO</span>
-      para ver la definición. También prueba con
-      <span class="tooltip" data-tooltip="Cumulative Layout Shift: métrica de estabilidad visual">CLS</span>.
-    </p>
-  </section>
-
-  <!-- 3. MODAL -->
-  <section>
-    <h2>3. Modal con transición</h2>
-    <button onclick="abrirModal()" style="padding:0.5rem 1.5rem; background:#6c5ce7; color:#fff; border:none; border-radius:8px; cursor:pointer;">
-      Abrir Modal
-    </button>
-  </section>
-
-  <!-- Modal (oculto por defecto) -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <h2>Título del Modal</h2>
-      <p>Este modal usa transiciones CSS para una aparición y desaparición suave. El overlay hace fade, el contenido hace zoom. Sin necesidad de librerías externas.</p>
-      <button class="modal__close" onclick="cerrarModal()">Cerrar</button>
-    </div>
-  </div>
-
-  <!-- 4. ACORDEÓN -->
-  <section>
-    <h2>4. Acordeón con altura animada</h2>
-    <div class="accordion" onclick="toggleAcordeon(this)">
-      <div class="accordion__header">
-        <span>¿Qué es CSS Grid?</span>
-        <span class="accordion__icon">▼</span>
-      </div>
-      <div class="accordion__body">
-        <div class="accordion__content">
-          CSS Grid es un sistema de maquetación bidimensional que permite controlar filas y columnas simultáneamente.
-        </div>
-      </div>
-    </div>
-    <div class="accordion" onclick="toggleAcordeon(this)">
-      <div class="accordion__header">
-        <span>¿Qué son las transiciones CSS?</span>
-        <span class="accordion__icon">▼</span>
-      </div>
-      <div class="accordion__body">
-        <div class="accordion__content">
-          Las transiciones CSS permiten suavizar el cambio entre dos estados de una propiedad, creando animaciones fluidas sin JavaScript.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
+    ``` js
     // Abrir modal
     function abrirModal() {
       document.getElementById('modalOverlay').classList.add('modal-overlay--visible');
@@ -1914,24 +1969,89 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') cerrarModal();
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 7: Microinteracciones avanzadas
 
 !!! example "Contexto pedagógico"
     Colección de microinteracciones profesionales: botón de añadir al carrito con feedback visual, switch/toggle animado, notificación toast que aparece y desaparece, y pull-to-refresh simulado.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 7 - Microinteracciones</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 7 - Microinteracciones</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Microinteracciones</h1>
+
+      <!-- 1. BOTÓN CARRITO -->
+      <section>
+        <h2>1. Botón añadir al carrito</h2>
+        <button class="cart-btn" onclick="addToCart()">
+          🛒 Añadir al carrito
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </section>
+
+      <!-- 2. SWITCH / TOGGLE -->
+      <section>
+        <h2>2. Toggle Switch</h2>
+        <label class="toggle">
+          <span>Notificaciones</span>
+          <input type="checkbox" checked>
+          <div class="toggle__track">
+            <div class="toggle__thumb"></div>
+          </div>
+        </label>
+        <label class="toggle" style="margin-left:2rem;">
+          <span>Modo oscuro</span>
+          <input type="checkbox">
+          <div class="toggle__track">
+            <div class="toggle__thumb"></div>
+          </div>
+        </label>
+      </section>
+
+      <!-- 3. TOAST -->
+      <section>
+        <h2>3. Notificaciones Toast</h2>
+        <button onclick="mostrarToast('success', 'Operación completada con éxito')" style="padding:0.5rem 1rem; background:#10b981; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-right:0.5rem;">Éxito</button>
+        <button onclick="mostrarToast('error', 'Ha ocurrido un error inesperado')" style="padding:0.5rem 1rem; background:#ef4444; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-right:0.5rem;">Error</button>
+        <button onclick="mostrarToast('warning', 'Revisa los datos introducidos')" style="padding:0.5rem 1rem; background:#f59e0b; color:#fff; border:none; border-radius:6px; cursor:pointer;">Aviso</button>
+      </section>
+
+      <!-- 4. PULL TO REFRESH -->
+      <section>
+        <h2>4. Indicador de recarga</h2>
+        <div class="refresh-demo">
+          <span class="refresh-icon" onclick="simularRefresh(this)">🔄</span>
+          <p style="color:#666; margin-top:0.5rem;">Haz clic para simular recarga</p>
+        </div>
+      </section>
+
+      <!-- 5. CONFIRMACIÓN -->
+      <section>
+        <h2>5. Botón de confirmación con feedback</h2>
+        <button class="confirm-btn" onclick="confirmarAccion(this)">Guardar cambios</button>
+      </section>
+
+      <!-- Contenedor de toasts -->
+      <div class="toast-container" id="toastContainer"></div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; padding: 2rem; background: #f5f6fa; }
     h1 { margin-bottom: 2rem; }
@@ -2131,66 +2251,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-  </style>
-</head>
-<body>
-  <h1>Microinteracciones</h1>
+    ```
 
-  <!-- 1. BOTÓN CARRITO -->
-  <section>
-    <h2>1. Botón añadir al carrito</h2>
-    <button class="cart-btn" onclick="addToCart()">
-      🛒 Añadir al carrito
-      <span class="cart-badge" id="cartCount">0</span>
-    </button>
-  </section>
+=== "JS"
 
-  <!-- 2. SWITCH / TOGGLE -->
-  <section>
-    <h2>2. Toggle Switch</h2>
-    <label class="toggle">
-      <span>Notificaciones</span>
-      <input type="checkbox" checked>
-      <div class="toggle__track">
-        <div class="toggle__thumb"></div>
-      </div>
-    </label>
-    <label class="toggle" style="margin-left:2rem;">
-      <span>Modo oscuro</span>
-      <input type="checkbox">
-      <div class="toggle__track">
-        <div class="toggle__thumb"></div>
-      </div>
-    </label>
-  </section>
-
-  <!-- 3. TOAST -->
-  <section>
-    <h2>3. Notificaciones Toast</h2>
-    <button onclick="mostrarToast('success', 'Operación completada con éxito')" style="padding:0.5rem 1rem; background:#10b981; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-right:0.5rem;">Éxito</button>
-    <button onclick="mostrarToast('error', 'Ha ocurrido un error inesperado')" style="padding:0.5rem 1rem; background:#ef4444; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-right:0.5rem;">Error</button>
-    <button onclick="mostrarToast('warning', 'Revisa los datos introducidos')" style="padding:0.5rem 1rem; background:#f59e0b; color:#fff; border:none; border-radius:6px; cursor:pointer;">Aviso</button>
-  </section>
-
-  <!-- 4. PULL TO REFRESH -->
-  <section>
-    <h2>4. Indicador de recarga</h2>
-    <div class="refresh-demo">
-      <span class="refresh-icon" onclick="simularRefresh(this)">🔄</span>
-      <p style="color:#666; margin-top:0.5rem;">Haz clic para simular recarga</p>
-    </div>
-  </section>
-
-  <!-- 5. CONFIRMACIÓN -->
-  <section>
-    <h2>5. Botón de confirmación con feedback</h2>
-    <button class="confirm-btn" onclick="confirmarAccion(this)">Guardar cambios</button>
-  </section>
-
-  <!-- Contenedor de toasts -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <script>
+    ``` js
     // ===== CARRITO =====
     let cartItems = 0;
     function addToCart() {
@@ -2235,24 +2300,126 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         btn.textContent = 'Guardar cambios';
       }, 2000);
     }
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 8: Optimización con FFmpeg y configuración de vídeo
 
 !!! example "Contexto pedagógico"
     Guía práctica (con comandos) para optimizar vídeos para la web usando FFmpeg. Incluye compresión, cambio de resolución, extracción de poster, y generación de versiones para streaming adaptativo.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 8 - Optimización de vídeo con FFmpeg</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 8 - Optimización de vídeo con FFmpeg</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Optimización de Vídeo Web con FFmpeg</h1>
+      <p>FFmpeg es la herramienta de línea de comandos más potente para procesar audio y vídeo. Es software libre y está disponible para Windows, macOS y Linux. A continuación se muestran los comandos esenciales para preparar vídeos para la web.</p>
+
+      <h2>1. Ver información de un vídeo</h2>
+      <p>Antes de optimizar, necesitamos conocer las características del vídeo original.</p>
+      <pre><code># Información detallada del archivo (códec, resolución, bitrate, duración)
+    ffprobe -v error -show_entries stream=codec_name,width,height,bit_rate,duration -of default=noprint_wrappers=1 video-original.mp4</code></pre>
+
+      <h2>2. Comprimir para web (H.264 + AAC)</h2>
+      <p>Este comando genera un MP4 optimizado para web con buena relación calidad/tamaño.</p>
+      <pre><code># CRF 23 = buena calidad (menor número = mejor calidad, mayor archivo)
+    # preset medium = balance velocidad/compresión
+    # movflags +faststart = el vídeo empieza a reproducirse antes de descargar completamente
+    ffmpeg -i video-original.mp4 \
+      -c:v libx264 -crf 23 -preset medium \
+      -c:a aac -b:a 128k \
+      -movflags +faststart \
+      video-web.mp4</code></pre>
+
+      <h2>3. Reducir resolución (escalar)</h2>
+      <p>Para móvil no necesitamos 4K. Escalar a 720p o 1080p reduce drásticamente el tamaño.</p>
+      <pre><code># Escalar a 1280x720 (720p) manteniendo la relación de aspecto
+    ffmpeg -i video-original.mp4 \
+      -vf "scale=1280:-2" \
+      -c:v libx264 -crf 23 -preset medium \
+      -c:a aac -b:a 128k \
+      -movflags +faststart \
+      video-720p.mp4
+
+    # Escalar a 1920x1080 (1080p)
+    ffmpeg -i video-original.mp4 \
+      -vf "scale=1920:-2" \
+      -c:v libx264 -crf 23 -preset medium \
+      -c:a aac -b:a 128k \
+      -movflags +faststart \
+      video-1080p.mp4</code></pre>
+
+      <h2>4. Convertir a WebM (VP9) para navegadores modernos</h2>
+      <p>WebM/VP9 ofrece mejor compresión que H.264 y es de código abierto.</p>
+      <pre><code># WebM con VP9 y audio Opus
+    ffmpeg -i video-original.mp4 \
+      -c:v libvpx-vp9 -crf 30 -b:v 0 \
+      -c:a libopus -b:a 96k \
+      video-web.webm</code></pre>
+
+      <h2>5. Extraer un fotograma como poster</h2>
+      <pre><code># Extraer el fotograma del segundo 2 como imagen JPG
+    ffmpeg -i video-original.mp4 -ss 00:00:02 -vframes 1 poster.jpg
+
+    # Extraer un fotograma cada 10 segundos (para galería de miniaturas)
+    ffmpeg -i video-original.mp4 -vf "fps=1/10" thumbnails/thumb-%03d.jpg</code></pre>
+
+      <h2>6. Generar versiones para múltiples dispositivos (script batch)</h2>
+      <pre><code>#!/bin/bash
+    # Script para generar versiones responsive de un vídeo
+    # Uso: ./optimizar-video.sh video-original.mp4
+
+    INPUT="$1"
+    BASENAME="${INPUT%.*}"
+
+    # 1080p
+    ffmpeg -i "$INPUT" -vf "scale=1920:-2" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart "${BASENAME}-1080p.mp4"
+
+    # 720p
+    ffmpeg -i "$INPUT" -vf "scale=1280:-2" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart "${BASENAME}-720p.mp4"
+
+    # 480p (móvil)
+    ffmpeg -i "$INPUT" -vf "scale=854:-2" -c:v libx264 -crf 26 -preset medium -c:a aac -b:a 96k -movflags +faststart "${BASENAME}-480p.mp4"
+
+    # WebM para cada resolución
+    ffmpeg -i "$INPUT" -vf "scale=1280:-2" -c:v libvpx-vp9 -crf 30 -b:v 0 -c:a libopus -b:a 96k "${BASENAME}-720p.webm"
+
+    echo "Optimización completada"</code></pre>
+
+      <h2>7. Tabla comparativa de parámetros de compresión</h2>
+      <table>
+        <thead>
+          <tr><th>Parámetro</th><th>Valor</th><th>Resultado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CRF (H.264)</td><td>18</td><td>Calidad visualmente sin pérdida, archivos grandes</td></tr>
+          <tr><td>CRF (H.264)</td><td>23</td><td>Buena calidad, tamaño equilibrado (recomendado para web)</td></tr>
+          <tr><td>CRF (H.264)</td><td>28</td><td>Calidad aceptable, archivos pequeños (móvil)</td></tr>
+          <tr><td>Preset</td><td>veryslow</td><td>Máxima compresión, codificación muy lenta</td></tr>
+          <tr><td>Preset</td><td>medium</td><td>Balance recomendado velocidad/compresión</td></tr>
+          <tr><td>Preset</td><td>veryfast</td><td>Codificación rápida, menor compresión</td></tr>
+          <tr><td>Bitrate audio</td><td>128k</td><td>Buena calidad de audio para web</td></tr>
+          <tr><td>Bitrate audio</td><td>96k</td><td>Aceptable para voz/podcasts, menor tamaño</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Nota:</strong> FFmpeg debe instalarse en el sistema (<code>sudo apt install ffmpeg</code> en Ubuntu/Debian, <code>brew install ffmpeg</code> en macOS). Los valores de CRF son específicos de cada códec: H.264 usa 0-51 (23 recomendado), VP9 usa 0-63 (30 recomendado).
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -2296,120 +2463,116 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       width: 100%; height: 100%;
       border: none;
     }
-  </style>
-</head>
-<body>
-  <h1>Optimización de Vídeo Web con FFmpeg</h1>
-  <p>FFmpeg es la herramienta de línea de comandos más potente para procesar audio y vídeo. Es software libre y está disponible para Windows, macOS y Linux. A continuación se muestran los comandos esenciales para preparar vídeos para la web.</p>
-
-  <h2>1. Ver información de un vídeo</h2>
-  <p>Antes de optimizar, necesitamos conocer las características del vídeo original.</p>
-  <pre><code># Información detallada del archivo (códec, resolución, bitrate, duración)
-ffprobe -v error -show_entries stream=codec_name,width,height,bit_rate,duration -of default=noprint_wrappers=1 video-original.mp4</code></pre>
-
-  <h2>2. Comprimir para web (H.264 + AAC)</h2>
-  <p>Este comando genera un MP4 optimizado para web con buena relación calidad/tamaño.</p>
-  <pre><code># CRF 23 = buena calidad (menor número = mejor calidad, mayor archivo)
-# preset medium = balance velocidad/compresión
-# movflags +faststart = el vídeo empieza a reproducirse antes de descargar completamente
-ffmpeg -i video-original.mp4 \
-  -c:v libx264 -crf 23 -preset medium \
-  -c:a aac -b:a 128k \
-  -movflags +faststart \
-  video-web.mp4</code></pre>
-
-  <h2>3. Reducir resolución (escalar)</h2>
-  <p>Para móvil no necesitamos 4K. Escalar a 720p o 1080p reduce drásticamente el tamaño.</p>
-  <pre><code># Escalar a 1280x720 (720p) manteniendo la relación de aspecto
-ffmpeg -i video-original.mp4 \
-  -vf "scale=1280:-2" \
-  -c:v libx264 -crf 23 -preset medium \
-  -c:a aac -b:a 128k \
-  -movflags +faststart \
-  video-720p.mp4
-
-# Escalar a 1920x1080 (1080p)
-ffmpeg -i video-original.mp4 \
-  -vf "scale=1920:-2" \
-  -c:v libx264 -crf 23 -preset medium \
-  -c:a aac -b:a 128k \
-  -movflags +faststart \
-  video-1080p.mp4</code></pre>
-
-  <h2>4. Convertir a WebM (VP9) para navegadores modernos</h2>
-  <p>WebM/VP9 ofrece mejor compresión que H.264 y es de código abierto.</p>
-  <pre><code># WebM con VP9 y audio Opus
-ffmpeg -i video-original.mp4 \
-  -c:v libvpx-vp9 -crf 30 -b:v 0 \
-  -c:a libopus -b:a 96k \
-  video-web.webm</code></pre>
-
-  <h2>5. Extraer un fotograma como poster</h2>
-  <pre><code># Extraer el fotograma del segundo 2 como imagen JPG
-ffmpeg -i video-original.mp4 -ss 00:00:02 -vframes 1 poster.jpg
-
-# Extraer un fotograma cada 10 segundos (para galería de miniaturas)
-ffmpeg -i video-original.mp4 -vf "fps=1/10" thumbnails/thumb-%03d.jpg</code></pre>
-
-  <h2>6. Generar versiones para múltiples dispositivos (script batch)</h2>
-  <pre><code>#!/bin/bash
-# Script para generar versiones responsive de un vídeo
-# Uso: ./optimizar-video.sh video-original.mp4
-
-INPUT="$1"
-BASENAME="${INPUT%.*}"
-
-# 1080p
-ffmpeg -i "$INPUT" -vf "scale=1920:-2" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart "${BASENAME}-1080p.mp4"
-
-# 720p
-ffmpeg -i "$INPUT" -vf "scale=1280:-2" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart "${BASENAME}-720p.mp4"
-
-# 480p (móvil)
-ffmpeg -i "$INPUT" -vf "scale=854:-2" -c:v libx264 -crf 26 -preset medium -c:a aac -b:a 96k -movflags +faststart "${BASENAME}-480p.mp4"
-
-# WebM para cada resolución
-ffmpeg -i "$INPUT" -vf "scale=1280:-2" -c:v libvpx-vp9 -crf 30 -b:v 0 -c:a libopus -b:a 96k "${BASENAME}-720p.webm"
-
-echo "Optimización completada"</code></pre>
-
-  <h2>7. Tabla comparativa de parámetros de compresión</h2>
-  <table>
-    <thead>
-      <tr><th>Parámetro</th><th>Valor</th><th>Resultado</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>CRF (H.264)</td><td>18</td><td>Calidad visualmente sin pérdida, archivos grandes</td></tr>
-      <tr><td>CRF (H.264)</td><td>23</td><td>Buena calidad, tamaño equilibrado (recomendado para web)</td></tr>
-      <tr><td>CRF (H.264)</td><td>28</td><td>Calidad aceptable, archivos pequeños (móvil)</td></tr>
-      <tr><td>Preset</td><td>veryslow</td><td>Máxima compresión, codificación muy lenta</td></tr>
-      <tr><td>Preset</td><td>medium</td><td>Balance recomendado velocidad/compresión</td></tr>
-      <tr><td>Preset</td><td>veryfast</td><td>Codificación rápida, menor compresión</td></tr>
-      <tr><td>Bitrate audio</td><td>128k</td><td>Buena calidad de audio para web</td></tr>
-      <tr><td>Bitrate audio</td><td>96k</td><td>Aceptable para voz/podcasts, menor tamaño</td></tr>
-    </tbody>
-  </table>
-
-  <div class="note">
-    <strong>Nota:</strong> FFmpeg debe instalarse en el sistema (<code>sudo apt install ffmpeg</code> en Ubuntu/Debian, <code>brew install ffmpeg</code> en macOS). Los valores de CRF son específicos de cada códec: H.264 usa 0-51 (23 recomendado), VP9 usa 0-63 (30 recomendado).
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 9: SVG inline con animación CSS y sprite
 
 !!! example "Contexto pedagógico"
     Demostración del poder del SVG inline: iconos animados que cambian de color con la herencia de currentColor, sprites SVG con symbol/use, y animación de propiedades SVG con CSS.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 9 - SVG Inline y Animaciones</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 9 - SVG Inline y Animaciones</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!--
+        ===== SPRITE SVG OCULTO =====
+        Definimos todos los iconos como <symbol> dentro de un SVG oculto.
+        Luego los referenciamos con <use> donde los necesitemos.
+        Esto evita repetir el código SVG y facilita el mantenimiento.
+      -->
+      <svg style="display: none;" aria-hidden="true">
+        <!-- Icono: Casa -->
+        <symbol id="icon-home" viewBox="0 0 24 24">
+          <path d="M12 3L4 9v12h5v-7h6v7h5V9l-8-6z"/>
+        </symbol>
+        <!-- Icono: Usuario -->
+        <symbol id="icon-user" viewBox="0 0 24 24">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </symbol>
+        <!-- Icono: Configuración -->
+        <symbol id="icon-settings" viewBox="0 0 24 24">
+          <path d="M19.1 12.9a7.3 7.3 0 000-1.8l1.9-1.5c.2-.1.2-.4.1-.6l-1.8-3.1c-.1-.2-.4-.3-.6-.2l-2.3.9a6.7 6.7 0 00-1.6-.9L14.3 3c0-.3-.2-.5-.5-.5h-3.6c-.3 0-.5.2-.5.5l-.5 2.6c-.6.2-1.1.5-1.6.9l-2.3-.9c-.2-.1-.5 0-.6.2l-1.8 3.1c-.1.2-.1.4.1.6l1.9 1.5c-.1.6-.1 1.2 0 1.8l-1.9 1.5c-.2.1-.2.4-.1.6l1.8 3.1c.1.2.4.3.6.2l2.3-.9c.5.4 1 .7 1.6.9l.5 2.6c0 .3.2.5.5.5h3.6c.3 0 .5-.2.5-.5l.5-2.6c.6-.2 1.1-.5 1.6-.9l2.3.9c.2.1.5 0 .6-.2l1.8-3.1c.1-.2.1-.4-.1-.6l-1.9-1.5zM12 15.6c-2 0-3.6-1.6-3.6-3.6s1.6-3.6 3.6-3.6 3.6 1.6 3.6 3.6-1.6 3.6-3.6 3.6z"/>
+        </symbol>
+      </svg>
+
+      <h1>SVG Inline, Sprites y Animaciones</h1>
+
+      <!-- 1. ICONOS CON COLOR HEREDADO -->
+      <section>
+        <h2>1. Iconos con currentColor (color heredado del padre)</h2>
+        <p style="margin-bottom:1rem;">El mismo icono SVG toma diferentes colores según la clase CSS del contenedor:</p>
+        <div class="icon-row">
+          <span class="icon-red" style="display:flex;align-items:center;gap:0.5rem;">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Rojo
+          </span>
+          <span class="icon-green" style="display:flex;align-items:center;gap:0.5rem;">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Verde
+          </span>
+          <span class="icon-blue" style="display:flex;align-items:center;gap:0.5rem;">
+            <svg class="icon icon-large" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Azul (grande)
+          </span>
+        </div>
+      </section>
+
+      <!-- 2. SPRITE SVG -->
+      <section>
+        <h2>2. Sprites SVG con symbol/use</h2>
+        <p style="margin-bottom:1rem;">Los iconos se definen una vez y se usan múltiples veces por referencia:</p>
+        <div class="sprite-row">
+          <svg class="sprite-icon"><use href="#icon-home"/></svg>
+          <svg class="sprite-icon"><use href="#icon-user"/></svg>
+          <svg class="sprite-icon"><use href="#icon-settings"/></svg>
+        </div>
+      </section>
+
+      <!-- 3. CORAZÓN ANIMADO -->
+      <section>
+        <h2>3. Icono de corazón con animación hover</h2>
+        <svg class="heart-svg" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <p style="color:#666; margin-top:0.5rem;">Pasa el ratón para ver la animación</p>
+      </section>
+
+      <!-- 4. CAMPANITA -->
+      <section>
+        <h2>4. Icono de notificación animado (campana)</h2>
+        <svg class="bell-svg" viewBox="0 0 24 24" fill="#f59e0b">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+        <p style="color:#666; margin-top:0.5rem;">La campana se balancea automáticamente</p>
+      </section>
+
+      <!-- 5. LOGO CON GRADIENTE ANIMADO -->
+      <section>
+        <h2>5. Logo con gradiente SVG animado</h2>
+        <svg class="logo-svg" viewBox="0 0 200 80">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" class="logo-gradient-start"/>
+              <stop offset="100%" class="logo-gradient-end"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="15" width="50" height="50" rx="12" fill="url(#logoGrad)"/>
+          <text x="75" y="55" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="url(#logoGrad)">LOGO</text>
+        </svg>
+        <p style="color:#666; margin-top:0.5rem;">Los colores del gradiente cambian cíclicamente</p>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -2520,110 +2683,107 @@ echo "Optimización completada"</code></pre>
       .bell-svg { animation: none; }
       .logo-gradient-start, .logo-gradient-end { animation: none; }
     }
-  </style>
-</head>
-<body>
-  <!--
-    ===== SPRITE SVG OCULTO =====
-    Definimos todos los iconos como <symbol> dentro de un SVG oculto.
-    Luego los referenciamos con <use> donde los necesitemos.
-    Esto evita repetir el código SVG y facilita el mantenimiento.
-  -->
-  <svg style="display: none;" aria-hidden="true">
-    <!-- Icono: Casa -->
-    <symbol id="icon-home" viewBox="0 0 24 24">
-      <path d="M12 3L4 9v12h5v-7h6v7h5V9l-8-6z"/>
-    </symbol>
-    <!-- Icono: Usuario -->
-    <symbol id="icon-user" viewBox="0 0 24 24">
-      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-    </symbol>
-    <!-- Icono: Configuración -->
-    <symbol id="icon-settings" viewBox="0 0 24 24">
-      <path d="M19.1 12.9a7.3 7.3 0 000-1.8l1.9-1.5c.2-.1.2-.4.1-.6l-1.8-3.1c-.1-.2-.4-.3-.6-.2l-2.3.9a6.7 6.7 0 00-1.6-.9L14.3 3c0-.3-.2-.5-.5-.5h-3.6c-.3 0-.5.2-.5.5l-.5 2.6c-.6.2-1.1.5-1.6.9l-2.3-.9c-.2-.1-.5 0-.6.2l-1.8 3.1c-.1.2-.1.4.1.6l1.9 1.5c-.1.6-.1 1.2 0 1.8l-1.9 1.5c-.2.1-.2.4-.1.6l1.8 3.1c.1.2.4.3.6.2l2.3-.9c.5.4 1 .7 1.6.9l.5 2.6c0 .3.2.5.5.5h3.6c.3 0 .5-.2.5-.5l.5-2.6c.6-.2 1.1-.5 1.6-.9l2.3.9c.2.1.5 0 .6-.2l1.8-3.1c.1-.2.1-.4-.1-.6l-1.9-1.5zM12 15.6c-2 0-3.6-1.6-3.6-3.6s1.6-3.6 3.6-3.6 3.6 1.6 3.6 3.6-1.6 3.6-3.6 3.6z"/>
-    </symbol>
-  </svg>
-
-  <h1>SVG Inline, Sprites y Animaciones</h1>
-
-  <!-- 1. ICONOS CON COLOR HEREDADO -->
-  <section>
-    <h2>1. Iconos con currentColor (color heredado del padre)</h2>
-    <p style="margin-bottom:1rem;">El mismo icono SVG toma diferentes colores según la clase CSS del contenedor:</p>
-    <div class="icon-row">
-      <span class="icon-red" style="display:flex;align-items:center;gap:0.5rem;">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Rojo
-      </span>
-      <span class="icon-green" style="display:flex;align-items:center;gap:0.5rem;">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Verde
-      </span>
-      <span class="icon-blue" style="display:flex;align-items:center;gap:0.5rem;">
-        <svg class="icon icon-large" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Azul (grande)
-      </span>
-    </div>
-  </section>
-
-  <!-- 2. SPRITE SVG -->
-  <section>
-    <h2>2. Sprites SVG con symbol/use</h2>
-    <p style="margin-bottom:1rem;">Los iconos se definen una vez y se usan múltiples veces por referencia:</p>
-    <div class="sprite-row">
-      <svg class="sprite-icon"><use href="#icon-home"/></svg>
-      <svg class="sprite-icon"><use href="#icon-user"/></svg>
-      <svg class="sprite-icon"><use href="#icon-settings"/></svg>
-    </div>
-  </section>
-
-  <!-- 3. CORAZÓN ANIMADO -->
-  <section>
-    <h2>3. Icono de corazón con animación hover</h2>
-    <svg class="heart-svg" viewBox="0 0 24 24">
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-    </svg>
-    <p style="color:#666; margin-top:0.5rem;">Pasa el ratón para ver la animación</p>
-  </section>
-
-  <!-- 4. CAMPANITA -->
-  <section>
-    <h2>4. Icono de notificación animado (campana)</h2>
-    <svg class="bell-svg" viewBox="0 0 24 24" fill="#f59e0b">
-      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-    </svg>
-    <p style="color:#666; margin-top:0.5rem;">La campana se balancea automáticamente</p>
-  </section>
-
-  <!-- 5. LOGO CON GRADIENTE ANIMADO -->
-  <section>
-    <h2>5. Logo con gradiente SVG animado</h2>
-    <svg class="logo-svg" viewBox="0 0 200 80">
-      <defs>
-        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" class="logo-gradient-start"/>
-          <stop offset="100%" class="logo-gradient-end"/>
-        </linearGradient>
-      </defs>
-      <rect x="10" y="15" width="50" height="50" rx="12" fill="url(#logoGrad)"/>
-      <text x="75" y="55" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="url(#logoGrad)">LOGO</text>
-    </svg>
-    <p style="color:#666; margin-top:0.5rem;">Los colores del gradiente cambian cíclicamente</p>
-  </section>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 10: Efecto parallax y animaciones al hacer scroll
 
 !!! example "Contexto pedagógico"
     Combinación de animaciones CSS con detección de scroll usando Intersection Observer. Los elementos aparecen con fade-in y slide-in cuando entran en el viewport, y un efecto parallax sutil en la sección hero. Todo con respeto a prefers-reduced-motion.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 10 - Animaciones al hacer Scroll</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 10 - Animaciones al hacer Scroll</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- Héroe con parallax -->
+      <section class="hero">
+        <div>
+          <h1>Animaciones al hacer Scroll</h1>
+          <p>Los elementos aparecen con animaciones suaves cuando entran en el viewport. Haz scroll hacia abajo para ver el efecto.</p>
+        </div>
+      </section>
+
+      <!-- Sección 1 -->
+      <section class="section">
+        <h2>Nuestros Servicios</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card__icon">🎨</span>
+            <h3>Diseño Web</h3>
+            <p>Interfaces modernas y atractivas que cautivan a tus usuarios desde el primer momento.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">💻</span>
+            <h3>Desarrollo Frontend</h3>
+            <p>Implementación con las tecnologías más modernas: React, Vue, TypeScript.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">⚡</span>
+            <h3>Optimización</h3>
+            <p>Mejoramos el rendimiento de tu web para que cargue en menos de 2 segundos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 2 -->
+      <section class="section" style="background:#fff;">
+        <h2>Tecnologías que usamos</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card__icon">📐</span>
+            <h3>CSS Grid & Flexbox</h3>
+            <p>Maquetación moderna sin limitaciones. Layouts complejos con código limpio.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">🎯</span>
+            <h3>Tailwind CSS</h3>
+            <p>Framework utility-first para desarrollar interfaces rápidamente.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">🚀</span>
+            <h3>Astro & Next.js</h3>
+            <p>Frameworks modernos que combinan lo mejor del SSR y el static generation.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 3 -->
+      <section class="section">
+        <h2>¿Por qué elegirnos?</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card__icon">🤝</span>
+            <h3>Compromiso</h3>
+            <p>Nos involucramos en cada proyecto como si fuera nuestro.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">📅</span>
+            <h3>Puntualidad</h3>
+            <p>Entregamos en los plazos acordados. Siempre.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">💬</span>
+            <h3>Comunicación</h3>
+            <p>Te mantenemos informado durante todo el proceso de desarrollo.</p>
+          </div>
+        </div>
+      </section>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f5f5; }
 
@@ -2707,84 +2867,11 @@ echo "Optimización completada"</code></pre>
         transition: none;
       }
     }
-  </style>
-</head>
-<body>
-  <!-- Héroe con parallax -->
-  <section class="hero">
-    <div>
-      <h1>Animaciones al hacer Scroll</h1>
-      <p>Los elementos aparecen con animaciones suaves cuando entran en el viewport. Haz scroll hacia abajo para ver el efecto.</p>
-    </div>
-  </section>
+    ```
 
-  <!-- Sección 1 -->
-  <section class="section">
-    <h2>Nuestros Servicios</h2>
-    <div class="cards">
-      <div class="card">
-        <span class="card__icon">🎨</span>
-        <h3>Diseño Web</h3>
-        <p>Interfaces modernas y atractivas que cautivan a tus usuarios desde el primer momento.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">💻</span>
-        <h3>Desarrollo Frontend</h3>
-        <p>Implementación con las tecnologías más modernas: React, Vue, TypeScript.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">⚡</span>
-        <h3>Optimización</h3>
-        <p>Mejoramos el rendimiento de tu web para que cargue en menos de 2 segundos.</p>
-      </div>
-    </div>
-  </section>
+=== "JS"
 
-  <!-- Sección 2 -->
-  <section class="section" style="background:#fff;">
-    <h2>Tecnologías que usamos</h2>
-    <div class="cards">
-      <div class="card">
-        <span class="card__icon">📐</span>
-        <h3>CSS Grid & Flexbox</h3>
-        <p>Maquetación moderna sin limitaciones. Layouts complejos con código limpio.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">🎯</span>
-        <h3>Tailwind CSS</h3>
-        <p>Framework utility-first para desarrollar interfaces rápidamente.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">🚀</span>
-        <h3>Astro & Next.js</h3>
-        <p>Frameworks modernos que combinan lo mejor del SSR y el static generation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 3 -->
-  <section class="section">
-    <h2>¿Por qué elegirnos?</h2>
-    <div class="cards">
-      <div class="card">
-        <span class="card__icon">🤝</span>
-        <h3>Compromiso</h3>
-        <p>Nos involucramos en cada proyecto como si fuera nuestro.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">📅</span>
-        <h3>Puntualidad</h3>
-        <p>Entregamos en los plazos acordados. Siempre.</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">💬</span>
-        <h3>Comunicación</h3>
-        <p>Te mantenemos informado durante todo el proceso de desarrollo.</p>
-      </div>
-    </div>
-  </section>
-
-  <script>
+    ``` js
     /*
      * ===== INTERSECTION OBSERVER =====
      * API nativa del navegador para detectar cuándo un elemento
@@ -2821,10 +2908,7 @@ echo "Optimización completada"</code></pre>
     document.querySelectorAll('.card').forEach(card => {
       observer.observe(card);
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 
 ## Casos reales

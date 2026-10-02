@@ -528,251 +528,255 @@ body {
 !!! example "Contexto pedagógico"
     En este tercer ejemplo guiado, construiremos un componente de botón completo con múltiples **variantes**, **tamaños** y **estados** que consume los tokens de diseño definidos anteriormente. Este componente ejemplifica cómo un sistema de diseño traslada las decisiones de diseño a código reutilizable:
 
-```css
-/* ===== SISTEMA DE BOTONES ===== */
-
-/* Estilos base del botón (compartidos por todas las variantes) */
-.btn {
-  /* Layout */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-2);
-  vertical-align: middle;
-  text-align: center;
-  white-space: nowrap;
-  text-decoration: none;
-
-  /* Dimensiones */
-  padding: var(--button-padding-y, var(--spacing-2))
-           var(--button-padding-x, var(--spacing-4));
-  height: var(--button-height, 40px);
-
-  /* Tipografía */
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--button-font-size, var(--font-size-sm));
-  line-height: 1;
-
-  /* Visual */
-  border: 2px solid transparent;
-  border-radius: var(--button-border-radius, 6px);
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.2s ease-in-out;
-
-  /* Estados */
-  outline: none;
-}
-
-/* Foco visible solo para navegación por teclado */
-.btn:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-border-focus);
-}
-
-/* Estado deshabilitado compartido */
-.btn:disabled,
-.btn[aria-disabled="true"] {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* ===== VARIANTES DE BOTÓN ===== */
-
-/* Variante: Primary (filled) */
-.btn--primary {
-  background-color: var(--button-primary-background);
-  color: var(--button-primary-text);
-  border-color: var(--button-primary-border);
-  box-shadow: var(--button-primary-shadow);
-}
-
-.btn--primary:hover:not(:disabled) {
-  background-color: var(--button-primary-background-hover);
-  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.35);
-  transform: translateY(-1px);
-}
-
-.btn--primary:active:not(:disabled) {
-  background-color: var(--button-primary-background-focus);
-  box-shadow: 0 1px 2px rgba(33, 150, 243, 0.2);
-  transform: translateY(0);
-}
-
-/* Variante: Secondary (outlined) */
-.btn--secondary {
-  background-color: transparent;
-  color: var(--color-primary-500);
-  border-color: var(--color-primary-500);
-}
-
-.btn--secondary:hover:not(:disabled) {
-  background-color: var(--color-primary-50);
-  border-color: var(--color-primary-600);
-  color: var(--color-primary-600);
-}
-
-.btn--secondary:active:not(:disabled) {
-  background-color: var(--color-primary-100);
-}
-
-/* Variante: Ghost (text-only) */
-.btn--ghost {
-  background-color: transparent;
-  color: var(--color-primary-500);
-  border-color: transparent;
-}
-
-.btn--ghost:hover:not(:disabled) {
-  background-color: var(--color-primary-50);
-}
-
-.btn--ghost:active:not(:disabled) {
-  background-color: var(--color-primary-100);
-}
-
-/* Variante: Danger */
-.btn--danger {
-  background-color: var(--color-red-500);
-  color: var(--color-white);
-  border-color: var(--color-red-500);
-}
-
-.btn--danger:hover:not(:disabled) {
-  background-color: var(--color-red-600);
-  border-color: var(--color-red-600);
-}
-
-.btn--danger:active:not(:disabled) {
-  background-color: #C62828;
-}
-
-/* ===== TAMAÑOS DE BOTÓN ===== */
-
-/* Small: para espacios reducidos, tablas, barras de herramientas */
-.btn--sm {
-  --button-height: 32px;
-  --button-padding-x: var(--spacing-3);
-  --button-padding-y: var(--spacing-1);
-  --button-font-size: var(--font-size-xs);
-  --button-border-radius: 4px;
-}
-
-/* Medium: tamaño por defecto para la mayoría de casos de uso */
-.btn--md {
-  --button-height: 40px;
-  --button-padding-x: var(--spacing-4);
-  --button-padding-y: var(--spacing-2);
-  --button-font-size: var(--font-size-sm);
-  --button-border-radius: 6px;
-}
-
-/* Large: para CTAs principales, hero sections, landing pages */
-.btn--lg {
-  --button-height: 48px;
-  --button-padding-x: var(--spacing-6);
-  --button-padding-y: var(--spacing-3);
-  --button-font-size: var(--font-size-base);
-  --button-border-radius: 8px;
-}
-
-/* ===== BOTONES CON ICONO ===== */
-
-/* Icono al inicio del texto del botón */
-.btn__icon {
-  width: 1.25em;
-  height: 1.25em;
-  flex-shrink: 0;
-}
-
-/* Botón solo icono (circular o cuadrado) */
-.btn--icon-only {
-  --button-padding-x: 0;
-  --button-padding-y: 0;
-  width: var(--button-height);
-  padding: 0;
-  border-radius: 50%;
-}
-
-.btn--icon-only.btn--sm { width: 32px; }
-.btn--icon-only.btn--md { width: 40px; }
-.btn--icon-only.btn--lg { width: 48px; }
-
-/* Botón full-width */
-.btn--block {
-  display: flex;
-  width: 100%;
-}
-
-/* Grupo de botones (botones unidos horizontalmente) */
-.btn-group {
-  display: inline-flex;
-}
-
-.btn-group .btn {
-  border-radius: 0;
-}
-
-.btn-group .btn:first-child {
-  border-radius: 6px 0 0 6px;
-}
-
-.btn-group .btn:last-child {
-  border-radius: 0 6px 6px 0;
-}
-
-.btn-group .btn + .btn {
-  margin-left: -2px;
-}
-
-.btn-group .btn:focus-visible {
-  z-index: 1;
-}
-```
-
 El HTML correspondiente para utilizar este sistema de botones es sencillo y semántico. Cada botón se compone de una clase base `.btn` más un modificador de variante y otro de tamaño, siguiendo la metodología BEM:
 
-```html
-<!-- Botón primario, tamaño por defecto -->
-<button class="btn btn--primary btn--md" type="button">
-  Guardar cambios
-</button>
+=== "HTML"
 
-<!-- Botón secundario con icono -->
-<button class="btn btn--secondary btn--md" type="button">
-  <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
-  </svg>
-  Ver detalles
-</button>
+    ``` html
+    <!-- Botón primario, tamaño por defecto -->
+    <button class="btn btn--primary btn--md" type="button">
+      Guardar cambios
+    </button>
 
-<!-- Botón de peligro, pequeño, deshabilitado -->
-<button class="btn btn--danger btn--sm" type="button" disabled>
-  Eliminar cuenta
-</button>
+    <!-- Botón secundario con icono -->
+    <button class="btn btn--secondary btn--md" type="button">
+      <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      Ver detalles
+    </button>
 
-<!-- Botón solo icono (ghost) -->
-<button class="btn btn--ghost btn--icon-only btn--md" type="button"
-        aria-label="Cerrar ventana">
-  <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M6 6l12 12M6 18L18 6"/>
-  </svg>
-</button>
+    <!-- Botón de peligro, pequeño, deshabilitado -->
+    <button class="btn btn--danger btn--sm" type="button" disabled>
+      Eliminar cuenta
+    </button>
 
-<!-- Botón full-width para mobile -->
-<button class="btn btn--primary btn--lg btn--block" type="submit">
-  Completar pedido — 24,99€
-</button>
+    <!-- Botón solo icono (ghost) -->
+    <button class="btn btn--ghost btn--icon-only btn--md" type="button"
+            aria-label="Cerrar ventana">
+      <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M6 18L18 6"/>
+      </svg>
+    </button>
 
-<!-- Grupo de botones -->
-<div class="btn-group" role="group" aria-label="Acciones del documento">
-  <button class="btn btn--secondary btn--sm">Editar</button>
-  <button class="btn btn--secondary btn--sm">Duplicar</button>
-  <button class="btn btn--danger btn--sm">Eliminar</button>
-</div>
-```
+    <!-- Botón full-width para mobile -->
+    <button class="btn btn--primary btn--lg btn--block" type="submit">
+      Completar pedido — 24,99€
+    </button>
+
+    <!-- Grupo de botones -->
+    <div class="btn-group" role="group" aria-label="Acciones del documento">
+      <button class="btn btn--secondary btn--sm">Editar</button>
+      <button class="btn btn--secondary btn--sm">Duplicar</button>
+      <button class="btn btn--danger btn--sm">Eliminar</button>
+    </div>
+    ```
+
+=== "CSS"
+
+    ``` css
+    /* ===== SISTEMA DE BOTONES ===== */
+
+    /* Estilos base del botón (compartidos por todas las variantes) */
+    .btn {
+      /* Layout */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-2);
+      vertical-align: middle;
+      text-align: center;
+      white-space: nowrap;
+      text-decoration: none;
+
+      /* Dimensiones */
+      padding: var(--button-padding-y, var(--spacing-2))
+               var(--button-padding-x, var(--spacing-4));
+      height: var(--button-height, 40px);
+
+      /* Tipografía */
+      font-family: var(--font-family-primary);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--button-font-size, var(--font-size-sm));
+      line-height: 1;
+
+      /* Visual */
+      border: 2px solid transparent;
+      border-radius: var(--button-border-radius, 6px);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease-in-out;
+
+      /* Estados */
+      outline: none;
+    }
+
+    /* Foco visible solo para navegación por teclado */
+    .btn:focus-visible {
+      box-shadow: 0 0 0 3px var(--color-border-focus);
+    }
+
+    /* Estado deshabilitado compartido */
+    .btn:disabled,
+    .btn[aria-disabled="true"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ===== VARIANTES DE BOTÓN ===== */
+
+    /* Variante: Primary (filled) */
+    .btn--primary {
+      background-color: var(--button-primary-background);
+      color: var(--button-primary-text);
+      border-color: var(--button-primary-border);
+      box-shadow: var(--button-primary-shadow);
+    }
+
+    .btn--primary:hover:not(:disabled) {
+      background-color: var(--button-primary-background-hover);
+      box-shadow: 0 4px 8px rgba(33, 150, 243, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn--primary:active:not(:disabled) {
+      background-color: var(--button-primary-background-focus);
+      box-shadow: 0 1px 2px rgba(33, 150, 243, 0.2);
+      transform: translateY(0);
+    }
+
+    /* Variante: Secondary (outlined) */
+    .btn--secondary {
+      background-color: transparent;
+      color: var(--color-primary-500);
+      border-color: var(--color-primary-500);
+    }
+
+    .btn--secondary:hover:not(:disabled) {
+      background-color: var(--color-primary-50);
+      border-color: var(--color-primary-600);
+      color: var(--color-primary-600);
+    }
+
+    .btn--secondary:active:not(:disabled) {
+      background-color: var(--color-primary-100);
+    }
+
+    /* Variante: Ghost (text-only) */
+    .btn--ghost {
+      background-color: transparent;
+      color: var(--color-primary-500);
+      border-color: transparent;
+    }
+
+    .btn--ghost:hover:not(:disabled) {
+      background-color: var(--color-primary-50);
+    }
+
+    .btn--ghost:active:not(:disabled) {
+      background-color: var(--color-primary-100);
+    }
+
+    /* Variante: Danger */
+    .btn--danger {
+      background-color: var(--color-red-500);
+      color: var(--color-white);
+      border-color: var(--color-red-500);
+    }
+
+    .btn--danger:hover:not(:disabled) {
+      background-color: var(--color-red-600);
+      border-color: var(--color-red-600);
+    }
+
+    .btn--danger:active:not(:disabled) {
+      background-color: #C62828;
+    }
+
+    /* ===== TAMAÑOS DE BOTÓN ===== */
+
+    /* Small: para espacios reducidos, tablas, barras de herramientas */
+    .btn--sm {
+      --button-height: 32px;
+      --button-padding-x: var(--spacing-3);
+      --button-padding-y: var(--spacing-1);
+      --button-font-size: var(--font-size-xs);
+      --button-border-radius: 4px;
+    }
+
+    /* Medium: tamaño por defecto para la mayoría de casos de uso */
+    .btn--md {
+      --button-height: 40px;
+      --button-padding-x: var(--spacing-4);
+      --button-padding-y: var(--spacing-2);
+      --button-font-size: var(--font-size-sm);
+      --button-border-radius: 6px;
+    }
+
+    /* Large: para CTAs principales, hero sections, landing pages */
+    .btn--lg {
+      --button-height: 48px;
+      --button-padding-x: var(--spacing-6);
+      --button-padding-y: var(--spacing-3);
+      --button-font-size: var(--font-size-base);
+      --button-border-radius: 8px;
+    }
+
+    /* ===== BOTONES CON ICONO ===== */
+
+    /* Icono al inicio del texto del botón */
+    .btn__icon {
+      width: 1.25em;
+      height: 1.25em;
+      flex-shrink: 0;
+    }
+
+    /* Botón solo icono (circular o cuadrado) */
+    .btn--icon-only {
+      --button-padding-x: 0;
+      --button-padding-y: 0;
+      width: var(--button-height);
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .btn--icon-only.btn--sm { width: 32px; }
+    .btn--icon-only.btn--md { width: 40px; }
+    .btn--icon-only.btn--lg { width: 48px; }
+
+    /* Botón full-width */
+    .btn--block {
+      display: flex;
+      width: 100%;
+    }
+
+    /* Grupo de botones (botones unidos horizontalmente) */
+    .btn-group {
+      display: inline-flex;
+    }
+
+    .btn-group .btn {
+      border-radius: 0;
+    }
+
+    .btn-group .btn:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+
+    .btn-group .btn:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+
+    .btn-group .btn + .btn {
+      margin-left: -2px;
+    }
+
+    .btn-group .btn:focus-visible {
+      z-index: 1;
+    }
+    ```
 
 ### Ejemplo guiado 4: Sistema de espaciado y grid con tokens
 
@@ -931,568 +935,576 @@ El HTML correspondiente para utilizar este sistema de botones es sencillo y sem�
 !!! example "Contexto pedagógico"
     Desarrollamos a continuación un componente **Card** que demuestra cómo los tokens de diseño se aplican a componentes compuestos, con soporte para diferentes variantes de *layout* y contenido:
 
-```css
-/* ===== SISTEMA DE TARJETAS (CARDS) ===== */
-
-/* Estructura base de la card */
-.card {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--card-background);
-  border-radius: var(--card-border-radius);
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-/* Elevación al hacer hover */
-.card--hoverable:hover {
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
-}
-
-/* Variante bordered: borde en lugar de sombra */
-.card--bordered {
-  box-shadow: none;
-  border: 1px solid var(--color-border-default);
-}
-
-.card--bordered:hover {
-  box-shadow: none;
-  border-color: var(--color-primary-300);
-}
-
-/* Contenedor de imagen en la card */
-.card__media {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.card__media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .card__media img {
-  transform: scale(1.05);
-}
-
-/* Relación de aspecto 16:9 para la imagen */
-.card__media--16x9 {
-  aspect-ratio: 16 / 9;
-}
-
-.card__media--16x9 img {
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Relación de aspecto 4:3 */
-.card__media--4x3 {
-  aspect-ratio: 4 / 3;
-}
-
-.card__media--4x3 img {
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Cuerpo de la card */
-.card__body {
-  flex: 1 1 auto;
-  padding: var(--card-padding);
-}
-
-/* Título de la card */
-.card__title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-2);
-}
-
-/* Subtítulo */
-.card__subtitle {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-3);
-}
-
-/* Texto descriptivo */
-.card__text {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-4);
-}
-
-/* Pie de la card (acciones) */
-.card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--card-padding);
-  border-top: 1px solid var(--color-border-default);
-}
-
-/* Card horizontal (imagen a la izquierda, contenido a la derecha) */
-.card--horizontal {
-  flex-direction: row;
-}
-
-.card--horizontal .card__media {
-  width: 200px;
-  flex-shrink: 0;
-  height: auto;
-}
-
-.card--horizontal .card__media img {
-  height: 100%;
-  object-fit: cover;
-}
-
-.card--horizontal .card__body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Card con overlay en la imagen */
-.card__media-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--spacing-6) var(--spacing-4) var(--spacing-4);
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  color: var(--color-white);
-}
-
-.card__media-overlay .card__title {
-  color: var(--color-white);
-  margin-bottom: var(--spacing-1);
-}
-
-.card__media-overlay .card__subtitle {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Grid de cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-6);
-}
-
-@media (max-width: 575px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-}
-```
-
 El HTML correspondiente para el componente Card:
 
-```html
-<!-- Card estándar con imagen, título, texto y acciones -->
-<article class="card card--hoverable">
-  <div class="card__media card__media--16x9">
-    <img src="proyecto-dashboard.jpg" alt="Dashboard del proyecto con gráficos de rendimiento" loading="lazy">
-  </div>
-  <div class="card__body">
-    <h3 class="card__title">Dashboard analytics</h3>
-    <p class="card__subtitle">Actualizado hace 2 horas</p>
-    <p class="card__text">
-      Visualiza las métricas clave de tu negocio en tiempo real con nuestro nuevo panel de control. Incluye gráficos interactivos, filtros avanzados y exportación de datos.
-    </p>
-  </div>
-  <div class="card__footer">
-    <button class="btn btn--ghost btn--sm">Compartir</button>
-    <button class="btn btn--primary btn--sm">Explorar</button>
-  </div>
-</article>
+=== "HTML"
 
-<!-- Card horizontal -->
-<article class="card card--horizontal card--hoverable">
-  <div class="card__media card__media--4x3">
-    <img src="perfil-usuario.jpg" alt="Foto de perfil de María García" loading="lazy">
-  </div>
-  <div class="card__body">
-    <h3 class="card__title">María García</h3>
-    <p class="card__subtitle">Senior Frontend Developer</p>
-    <p class="card__text">Especialista en React, TypeScript y sistemas de diseño. 8 años de experiencia en desarrollo de interfaces.</p>
-  </div>
-</article>
-```
+    ``` html
+    <!-- Card estándar con imagen, título, texto y acciones -->
+    <article class="card card--hoverable">
+      <div class="card__media card__media--16x9">
+        <img src="proyecto-dashboard.jpg" alt="Dashboard del proyecto con gráficos de rendimiento" loading="lazy">
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Dashboard analytics</h3>
+        <p class="card__subtitle">Actualizado hace 2 horas</p>
+        <p class="card__text">
+          Visualiza las métricas clave de tu negocio en tiempo real con nuestro nuevo panel de control. Incluye gráficos interactivos, filtros avanzados y exportación de datos.
+        </p>
+      </div>
+      <div class="card__footer">
+        <button class="btn btn--ghost btn--sm">Compartir</button>
+        <button class="btn btn--primary btn--sm">Explorar</button>
+      </div>
+    </article>
+
+    <!-- Card horizontal -->
+    <article class="card card--horizontal card--hoverable">
+      <div class="card__media card__media--4x3">
+        <img src="perfil-usuario.jpg" alt="Foto de perfil de María García" loading="lazy">
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">María García</h3>
+        <p class="card__subtitle">Senior Frontend Developer</p>
+        <p class="card__text">Especialista en React, TypeScript y sistemas de diseño. 8 años de experiencia en desarrollo de interfaces.</p>
+      </div>
+    </article>
+    ```
+
+=== "CSS"
+
+    ``` css
+    /* ===== SISTEMA DE TARJETAS (CARDS) ===== */
+
+    /* Estructura base de la card */
+    .card {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--card-background);
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Elevación al hacer hover */
+    .card--hoverable:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Variante bordered: borde en lugar de sombra */
+    .card--bordered {
+      box-shadow: none;
+      border: 1px solid var(--color-border-default);
+    }
+
+    .card--bordered:hover {
+      box-shadow: none;
+      border-color: var(--color-primary-300);
+    }
+
+    /* Contenedor de imagen en la card */
+    .card__media {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .card__media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card__media img {
+      transform: scale(1.05);
+    }
+
+    /* Relación de aspecto 16:9 para la imagen */
+    .card__media--16x9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    .card__media--16x9 img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Relación de aspecto 4:3 */
+    .card__media--4x3 {
+      aspect-ratio: 4 / 3;
+    }
+
+    .card__media--4x3 img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Cuerpo de la card */
+    .card__body {
+      flex: 1 1 auto;
+      padding: var(--card-padding);
+    }
+
+    /* Título de la card */
+    .card__title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-tight);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-2);
+    }
+
+    /* Subtítulo */
+    .card__subtitle {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-3);
+    }
+
+    /* Texto descriptivo */
+    .card__text {
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-relaxed);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-4);
+    }
+
+    /* Pie de la card (acciones) */
+    .card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--spacing-2);
+      padding: var(--spacing-3) var(--card-padding);
+      border-top: 1px solid var(--color-border-default);
+    }
+
+    /* Card horizontal (imagen a la izquierda, contenido a la derecha) */
+    .card--horizontal {
+      flex-direction: row;
+    }
+
+    .card--horizontal .card__media {
+      width: 200px;
+      flex-shrink: 0;
+      height: auto;
+    }
+
+    .card--horizontal .card__media img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card--horizontal .card__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Card con overlay en la imagen */
+    .card__media-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--spacing-6) var(--spacing-4) var(--spacing-4);
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: var(--color-white);
+    }
+
+    .card__media-overlay .card__title {
+      color: var(--color-white);
+      margin-bottom: var(--spacing-1);
+    }
+
+    .card__media-overlay .card__subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Grid de cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-6);
+    }
+
+    @media (max-width: 575px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    ```
 
 ### Ejemplo guiado 6: Formularios con tokens de diseño
 
 !!! example "Contexto pedagógico"
     Cerramos los ejemplos guiados con un sistema completo de formularios que integra todos los tokens definidos hasta ahora, incluyendo **validación visual**, **mensajes de ayuda** y **estados de error**:
 
-```css
-/* ===== SISTEMA DE FORMULARIOS ===== */
-
-/* Grupo de campo (etiqueta + input + feedback) */
-.form-group {
-  margin-bottom: var(--spacing-6);
-}
-
-/* Etiqueta */
-.form-label {
-  display: block;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--input-label);
-  margin-bottom: var(--spacing-1);
-}
-
-/* Indicador de campo requerido */
-.form-label--required::after {
-  content: " *";
-  color: var(--color-error-main);
-  font-weight: var(--font-weight-bold);
-}
-
-/* Estilos base de inputs */
-.form-input,
-.form-select,
-.form-textarea {
-  display: block;
-  width: 100%;
-  padding: var(--spacing-2) var(--spacing-3);
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  color: var(--input-text);
-  background-color: var(--input-background);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  appearance: none;
-}
-
-/* Placeholder */
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--input-placeholder);
-  opacity: 1;
-}
-
-/* Foco */
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--input-border-focus);
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
-}
-
-/* Select personalizado */
-.form-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23757575' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-  cursor: pointer;
-}
-
-/* Textarea */
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Texto de ayuda */
-.form-help {
-  display: block;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
-  margin-top: var(--spacing-1);
-}
-
-/* ===== ESTADOS DE VALIDACIÓN ===== */
-
-/* Estado válido */
-.form-input.is-valid,
-.form-select.is-valid,
-.form-textarea.is-valid {
-  border-color: var(--color-success-main);
-}
-
-.form-input.is-valid:focus,
-.form-select.is-valid:focus,
-.form-textarea.is-valid:focus {
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
-}
-
-/* Estado inválido / error */
-.form-input.is-invalid,
-.form-select.is-invalid,
-.form-textarea.is-invalid {
-  border-color: var(--input-border-error);
-}
-
-.form-input.is-invalid:focus,
-.form-select.is-invalid:focus,
-.form-textarea.is-invalid:focus {
-  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15);
-}
-
-/* Mensaje de error */
-.form-error {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-1);
-  font-size: var(--font-size-xs);
-  color: var(--input-border-error);
-  margin-top: var(--spacing-1);
-}
-
-.form-error::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-  background: currentColor;
-  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
-/* Mensaje de éxito */
-.form-success {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-1);
-  font-size: var(--font-size-xs);
-  color: var(--color-success-main);
-  margin-top: var(--spacing-1);
-}
-
-/* ===== CHECKBOX Y RADIO PERSONALIZADOS ===== */
-
-.form-check {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-2);
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-primary);
-  line-height: var(--line-height-normal);
-}
-
-.form-check input[type="checkbox"],
-.form-check input[type="radio"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  border: 2px solid var(--color-border-default);
-  background-color: var(--input-background);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-  top: 1px;
-}
-
-.form-check input[type="checkbox"] {
-  border-radius: 4px;
-}
-
-.form-check input[type="radio"] {
-  border-radius: 50%;
-}
-
-.form-check input[type="checkbox"]:checked {
-  background-color: var(--color-primary-500);
-  border-color: var(--color-primary-500);
-}
-
-.form-check input[type="radio"]:checked {
-  border-color: var(--color-primary-500);
-  box-shadow: inset 0 0 0 4px var(--color-primary-500);
-}
-
-.form-check input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 2px;
-  width: 6px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.form-check input:focus-visible {
-  outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
-}
-
-.form-check input:disabled,
-.form-check input:disabled + * {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ===== FORMULARIO INLINE Y HORIZONTAL ===== */
-
-.form-inline {
-  display: flex;
-  align-items: flex-end;
-  gap: var(--spacing-3);
-  flex-wrap: wrap;
-}
-
-.form-inline .form-group {
-  margin-bottom: 0;
-  flex: 1;
-  min-width: 200px;
-}
-
-/* Layout horizontal con etiqueta a la izquierda */
-.form-horizontal .form-group {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: var(--spacing-4);
-  align-items: start;
-}
-
-.form-horizontal .form-label {
-  padding-top: var(--spacing-2);
-  text-align: right;
-}
-
-.form-horizontal .form-help,
-.form-horizontal .form-error {
-  grid-column: 2;
-}
-
-@media (max-width: 767px) {
-  .form-horizontal .form-group {
-    grid-template-columns: 1fr;
-  }
-
-  .form-horizontal .form-label {
-    text-align: left;
-  }
-
-  .form-horizontal .form-help,
-  .form-horizontal .form-error {
-    grid-column: 1;
-  }
-}
-```
-
 Ejemplo de formulario completo que integra todos los componentes:
 
-```html
-<form novalidate class="form-horizontal" aria-label="Formulario de registro">
-  <!-- Campo de texto simple -->
-  <div class="form-group">
-    <label for="nombre" class="form-label form-label--required">Nombre completo</label>
-    <input type="text" id="nombre" name="nombre" class="form-input"
-           placeholder="Ej: María García López" required
-           aria-describedby="nombre-help">
-    <span id="nombre-help" class="form-help">Introduce tu nombre y apellidos tal como figuran en tu DNI.</span>
-  </div>
+=== "HTML"
 
-  <!-- Campo de email con error -->
-  <div class="form-group">
-    <label for="email" class="form-label form-label--required">Correo electrónico</label>
-    <input type="email" id="email" name="email"
-           class="form-input is-invalid"
-           placeholder="maria@ejemplo.com" required
-           aria-describedby="email-error" aria-invalid="true">
-    <span id="email-error" class="form-error" role="alert">El formato del correo electrónico no es válido.</span>
-  </div>
+    ``` html
+    <form novalidate class="form-horizontal" aria-label="Formulario de registro">
+      <!-- Campo de texto simple -->
+      <div class="form-group">
+        <label for="nombre" class="form-label form-label--required">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" class="form-input"
+               placeholder="Ej: María García López" required
+               aria-describedby="nombre-help">
+        <span id="nombre-help" class="form-help">Introduce tu nombre y apellidos tal como figuran en tu DNI.</span>
+      </div>
 
-  <!-- Campo de select -->
-  <div class="form-group">
-    <label for="rol" class="form-label form-label--required">Rol profesional</label>
-    <select id="rol" name="rol" class="form-select" required>
-      <option value="" disabled selected>Selecciona tu rol</option>
-      <option value="frontend">Frontend Developer</option>
-      <option value="backend">Backend Developer</option>
-      <option value="fullstack">Full Stack Developer</option>
-      <option value="design">UX/UI Designer</option>
-    </select>
-  </div>
+      <!-- Campo de email con error -->
+      <div class="form-group">
+        <label for="email" class="form-label form-label--required">Correo electrónico</label>
+        <input type="email" id="email" name="email"
+               class="form-input is-invalid"
+               placeholder="maria@ejemplo.com" required
+               aria-describedby="email-error" aria-invalid="true">
+        <span id="email-error" class="form-error" role="alert">El formato del correo electrónico no es válido.</span>
+      </div>
 
-  <!-- Campo textarea -->
-  <div class="form-group">
-    <label for="bio" class="form-label">Biografía profesional</label>
-    <textarea id="bio" name="bio" class="form-textarea"
-              placeholder="Cuéntanos brevemente tu experiencia y especialización..."
-              maxlength="500"></textarea>
-    <span class="form-help">Máximo 500 caracteres.</span>
-  </div>
+      <!-- Campo de select -->
+      <div class="form-group">
+        <label for="rol" class="form-label form-label--required">Rol profesional</label>
+        <select id="rol" name="rol" class="form-select" required>
+          <option value="" disabled selected>Selecciona tu rol</option>
+          <option value="frontend">Frontend Developer</option>
+          <option value="backend">Backend Developer</option>
+          <option value="fullstack">Full Stack Developer</option>
+          <option value="design">UX/UI Designer</option>
+        </select>
+      </div>
 
-  <!-- Checkboxes agrupados -->
-  <div class="form-group">
-    <span class="form-label">Tecnologías que dominas</span>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-3);">
-      <label class="form-check">
-        <input type="checkbox" name="tech" value="react" checked>
-        <span>React</span>
-      </label>
-      <label class="form-check">
-        <input type="checkbox" name="tech" value="vue">
-        <span>Vue.js</span>
-      </label>
-      <label class="form-check">
-        <input type="checkbox" name="tech" value="angular">
-        <span>Angular</span>
-      </label>
-      <label class="form-check">
-        <input type="checkbox" name="tech" value="svelte">
-        <span>Svelte</span>
-      </label>
-    </div>
-  </div>
+      <!-- Campo textarea -->
+      <div class="form-group">
+        <label for="bio" class="form-label">Biografía profesional</label>
+        <textarea id="bio" name="bio" class="form-textarea"
+                  placeholder="Cuéntanos brevemente tu experiencia y especialización..."
+                  maxlength="500"></textarea>
+        <span class="form-help">Máximo 500 caracteres.</span>
+      </div>
 
-  <!-- Radio buttons -->
-  <div class="form-group">
-    <span class="form-label form-label--required">Modalidad de trabajo</span>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-4);">
-      <label class="form-check">
-        <input type="radio" name="modalidad" value="presencial" required>
-        <span>Presencial</span>
-      </label>
-      <label class="form-check">
-        <input type="radio" name="modalidad" value="remoto" checked>
-        <span>Remoto</span>
-      </label>
-      <label class="form-check">
-        <input type="radio" name="modalidad" value="hibrido">
-        <span>Híbrido</span>
-      </label>
-    </div>
-  </div>
+      <!-- Checkboxes agrupados -->
+      <div class="form-group">
+        <span class="form-label">Tecnologías que dominas</span>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-3);">
+          <label class="form-check">
+            <input type="checkbox" name="tech" value="react" checked>
+            <span>React</span>
+          </label>
+          <label class="form-check">
+            <input type="checkbox" name="tech" value="vue">
+            <span>Vue.js</span>
+          </label>
+          <label class="form-check">
+            <input type="checkbox" name="tech" value="angular">
+            <span>Angular</span>
+          </label>
+          <label class="form-check">
+            <input type="checkbox" name="tech" value="svelte">
+            <span>Svelte</span>
+          </label>
+        </div>
+      </div>
 
-  <!-- Checkbox de aceptación -->
-  <div class="form-group">
-    <label class="form-check">
-      <input type="checkbox" name="terminos" required>
-      <span>Acepto los <a href="/terminos" class="text-link">términos y condiciones</a> y la <a href="/privacidad" class="text-link">política de privacidad</a></span>
-    </label>
-  </div>
+      <!-- Radio buttons -->
+      <div class="form-group">
+        <span class="form-label form-label--required">Modalidad de trabajo</span>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-4);">
+          <label class="form-check">
+            <input type="radio" name="modalidad" value="presencial" required>
+            <span>Presencial</span>
+          </label>
+          <label class="form-check">
+            <input type="radio" name="modalidad" value="remoto" checked>
+            <span>Remoto</span>
+          </label>
+          <label class="form-check">
+            <input type="radio" name="modalidad" value="hibrido">
+            <span>Híbrido</span>
+          </label>
+        </div>
+      </div>
 
-  <!-- Acciones del formulario -->
-  <div style="display: flex; gap: var(--spacing-3); justify-content: flex-end; margin-top: var(--spacing-6);">
-    <button type="reset" class="btn btn--secondary btn--md">Cancelar</button>
-    <button type="submit" class="btn btn--primary btn--lg">Crear cuenta</button>
-  </div>
-</form>
-```
+      <!-- Checkbox de aceptación -->
+      <div class="form-group">
+        <label class="form-check">
+          <input type="checkbox" name="terminos" required>
+          <span>Acepto los <a href="/terminos" class="text-link">términos y condiciones</a> y la <a href="/privacidad" class="text-link">política de privacidad</a></span>
+        </label>
+      </div>
+
+      <!-- Acciones del formulario -->
+      <div style="display: flex; gap: var(--spacing-3); justify-content: flex-end; margin-top: var(--spacing-6);">
+        <button type="reset" class="btn btn--secondary btn--md">Cancelar</button>
+        <button type="submit" class="btn btn--primary btn--lg">Crear cuenta</button>
+      </div>
+    </form>
+    ```
+
+=== "CSS"
+
+    ``` css
+    /* ===== SISTEMA DE FORMULARIOS ===== */
+
+    /* Grupo de campo (etiqueta + input + feedback) */
+    .form-group {
+      margin-bottom: var(--spacing-6);
+    }
+
+    /* Etiqueta */
+    .form-label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--input-label);
+      margin-bottom: var(--spacing-1);
+    }
+
+    /* Indicador de campo requerido */
+    .form-label--required::after {
+      content: " *";
+      color: var(--color-error-main);
+      font-weight: var(--font-weight-bold);
+    }
+
+    /* Estilos base de inputs */
+    .form-input,
+    .form-select,
+    .form-textarea {
+      display: block;
+      width: 100%;
+      padding: var(--spacing-2) var(--spacing-3);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-normal);
+      color: var(--input-text);
+      background-color: var(--input-background);
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+    }
+
+    /* Placeholder */
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--input-placeholder);
+      opacity: 1;
+    }
+
+    /* Foco */
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--input-border-focus);
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
+    }
+
+    /* Select personalizado */
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23757575' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    /* Textarea */
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Texto de ayuda */
+    .form-help {
+      display: block;
+      font-size: var(--font-size-xs);
+      color: var(--color-text-secondary);
+      margin-top: var(--spacing-1);
+    }
+
+    /* ===== ESTADOS DE VALIDACIÓN ===== */
+
+    /* Estado válido */
+    .form-input.is-valid,
+    .form-select.is-valid,
+    .form-textarea.is-valid {
+      border-color: var(--color-success-main);
+    }
+
+    .form-input.is-valid:focus,
+    .form-select.is-valid:focus,
+    .form-textarea.is-valid:focus {
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+    }
+
+    /* Estado inválido / error */
+    .form-input.is-invalid,
+    .form-select.is-invalid,
+    .form-textarea.is-invalid {
+      border-color: var(--input-border-error);
+    }
+
+    .form-input.is-invalid:focus,
+    .form-select.is-invalid:focus,
+    .form-textarea.is-invalid:focus {
+      box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15);
+    }
+
+    /* Mensaje de error */
+    .form-error {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-size: var(--font-size-xs);
+      color: var(--input-border-error);
+      margin-top: var(--spacing-1);
+    }
+
+    .form-error::before {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      background: currentColor;
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    /* Mensaje de éxito */
+    .form-success {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-size: var(--font-size-xs);
+      color: var(--color-success-main);
+      margin-top: var(--spacing-1);
+    }
+
+    /* ===== CHECKBOX Y RADIO PERSONALIZADOS ===== */
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-2);
+      cursor: pointer;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+      line-height: var(--line-height-normal);
+    }
+
+    .form-check input[type="checkbox"],
+    .form-check input[type="radio"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border: 2px solid var(--color-border-default);
+      background-color: var(--input-background);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      top: 1px;
+    }
+
+    .form-check input[type="checkbox"] {
+      border-radius: 4px;
+    }
+
+    .form-check input[type="radio"] {
+      border-radius: 50%;
+    }
+
+    .form-check input[type="checkbox"]:checked {
+      background-color: var(--color-primary-500);
+      border-color: var(--color-primary-500);
+    }
+
+    .form-check input[type="radio"]:checked {
+      border-color: var(--color-primary-500);
+      box-shadow: inset 0 0 0 4px var(--color-primary-500);
+    }
+
+    .form-check input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .form-check input:focus-visible {
+      outline: 2px solid var(--color-border-focus);
+      outline-offset: 2px;
+    }
+
+    .form-check input:disabled,
+    .form-check input:disabled + * {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ===== FORMULARIO INLINE Y HORIZONTAL ===== */
+
+    .form-inline {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--spacing-3);
+      flex-wrap: wrap;
+    }
+
+    .form-inline .form-group {
+      margin-bottom: 0;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* Layout horizontal con etiqueta a la izquierda */
+    .form-horizontal .form-group {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--spacing-4);
+      align-items: start;
+    }
+
+    .form-horizontal .form-label {
+      padding-top: var(--spacing-2);
+      text-align: right;
+    }
+
+    .form-horizontal .form-help,
+    .form-horizontal .form-error {
+      grid-column: 2;
+    }
+
+    @media (max-width: 767px) {
+      .form-horizontal .form-group {
+        grid-template-columns: 1fr;
+      }
+
+      .form-horizontal .form-label {
+        text-align: left;
+      }
+
+      .form-horizontal .form-help,
+      .form-horizontal .form-error {
+        grid-column: 1;
+      }
+    }
+    ```
 
 ## Casos reales
 

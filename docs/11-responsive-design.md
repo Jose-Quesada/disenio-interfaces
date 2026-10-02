@@ -201,20 +201,61 @@ Existen varios patrones de layout responsive establecidos:
 !!! example "Contexto pedagógico"
     Este ejemplo demuestra la configuración esencial del viewport para cualquier proyecto responsive y la estructura CSS Mobile First. Los estilos base (fuera de media queries) definen el diseño móvil. Las media queries con min-width añaden estilos progresivamente para pantallas más grandes.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <!--
-    ===== META VIEWPORT =====
-    width=device-width: el viewport se ajusta al ancho del dispositivo.
-    initial-scale=1.0: nivel de zoom inicial al 100%.
-    Sin esta etiqueta, el móvil muestra la página a 980px de ancho en miniatura.
-  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 1 - Mobile First CSS</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <!--
+        ===== META VIEWPORT =====
+        width=device-width: el viewport se ajusta al ancho del dispositivo.
+        initial-scale=1.0: nivel de zoom inicial al 100%.
+        Sin esta etiqueta, el móvil muestra la página a 980px de ancho en miniatura.
+      -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 1 - Mobile First CSS</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <header class="header">
+        <h1>Mi Sitio Web</h1>
+      </header>
+
+      <nav class="nav">
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">Portafolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Contacto</a>
+      </nav>
+
+      <div class="container">
+        <main class="main">
+          <h2>Contenido Principal</h2>
+          <p>Este sitio demuestra la metodología Mobile First. Los estilos base
+          definen la versión móvil. Las media queries con min-width añaden
+          mejoras progresivamente para tablets y desktop.</p>
+        </main>
+
+        <aside class="sidebar">
+          <h3>Sidebar</h3>
+          <p>En móvil, este sidebar aparece debajo del contenido. En desktop,
+          se muestra a la derecha gracias al grid definido en la media query.</p>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        2025 Mi Sitio Web. Diseño responsive Mobile First.
+      </footer>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -300,56 +341,62 @@ Existen varios patrones de layout responsive establecidos:
 
       .sidebar { margin-top: 0; } /* Quitamos el margin móvil */
     }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <h1>Mi Sitio Web</h1>
-  </header>
-
-  <nav class="nav">
-    <a href="#">Inicio</a>
-    <a href="#">Servicios</a>
-    <a href="#">Portafolio</a>
-    <a href="#">Blog</a>
-    <a href="#">Contacto</a>
-  </nav>
-
-  <div class="container">
-    <main class="main">
-      <h2>Contenido Principal</h2>
-      <p>Este sitio demuestra la metodología Mobile First. Los estilos base
-      definen la versión móvil. Las media queries con min-width añaden
-      mejoras progresivamente para tablets y desktop.</p>
-    </main>
-
-    <aside class="sidebar">
-      <h3>Sidebar</h3>
-      <p>En móvil, este sidebar aparece debajo del contenido. En desktop,
-      se muestra a la derecha gracias al grid definido en la media query.</p>
-    </aside>
-  </div>
-
-  <footer class="footer">
-    2025 Mi Sitio Web. Diseño responsive Mobile First.
-  </footer>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 2: Menú hamburguesa con CSS puro (checkbox hack)
 
 !!! example "Contexto pedagógico"
     El menú hamburguesa es el patrón de navegación responsive más extendido. Este ejemplo muestra la implementación con CSS puro, sin JavaScript, usando un checkbox oculto y el selector de hermanos adyacentes (~) para controlar la visibilidad del menú. Es una técnica elegante que funciona en todos los navegadores.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 2 - Menú Hamburguesa CSS Puro</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 2 - Menú Hamburguesa CSS Puro</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <nav class="navbar">
+        <div class="navbar__header">
+          <span class="navbar__brand">Mi Empresa</span>
+          <!--
+            El input checkbox está oculto (display:none).
+            El label con for="menu-toggle" lo controla.
+          -->
+          <label for="menu-toggle" class="navbar__toggle-label">&#9776;</label>
+        </div>
+
+        <!-- Checkbox oculto que controla el menú -->
+        <input type="checkbox" id="menu-toggle" class="navbar__toggle">
+
+        <!-- Menú de navegación -->
+        <div class="navbar__menu">
+          <a href="#">Inicio</a>
+          <a href="#">Servicios</a>
+          <a href="#">Proyectos</a>
+          <a href="#">Sobre nosotros</a>
+          <a href="#">Contacto</a>
+        </div>
+      </nav>
+
+      <div class="content">
+        <h1>Menú Hamburguesa con CSS Puro</h1>
+        <p>Este menú utiliza el truco del checkbox oculto (checkbox hack).
+        No requiere JavaScript. Haz clic en el icono de hamburguesa para
+        desplegar el menú en versión móvil.</p>
+        <p>Redimensiona la ventana a menos de 768px para ver el menú responsive.</p>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', sans-serif; }
 
@@ -466,56 +513,126 @@ Existen varios patrones de layout responsive establecidos:
       max-width: 800px;
       margin: 0 auto;
     }
-  </style>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="navbar__header">
-      <span class="navbar__brand">Mi Empresa</span>
-      <!--
-        El input checkbox está oculto (display:none).
-        El label con for="menu-toggle" lo controla.
-      -->
-      <label for="menu-toggle" class="navbar__toggle-label">&#9776;</label>
-    </div>
-
-    <!-- Checkbox oculto que controla el menú -->
-    <input type="checkbox" id="menu-toggle" class="navbar__toggle">
-
-    <!-- Menú de navegación -->
-    <div class="navbar__menu">
-      <a href="#">Inicio</a>
-      <a href="#">Servicios</a>
-      <a href="#">Proyectos</a>
-      <a href="#">Sobre nosotros</a>
-      <a href="#">Contacto</a>
-    </div>
-  </nav>
-
-  <div class="content">
-    <h1>Menú Hamburguesa con CSS Puro</h1>
-    <p>Este menú utiliza el truco del checkbox oculto (checkbox hack).
-    No requiere JavaScript. Haz clic en el icono de hamburguesa para
-    desplegar el menú en versión móvil.</p>
-    <p>Redimensiona la ventana a menos de 768px para ver el menú responsive.</p>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 3: Imágenes responsive con srcset y picture
 
 !!! example "Contexto pedagógico"
     Demostración completa de imágenes responsive usando srcset con descriptores w, el atributo sizes, y el elemento picture para dirección artística y formatos modernos.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 3 - Imágenes Responsive</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 3 - Imágenes Responsive</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Imágenes Responsive en HTML</h1>
+
+      <!--
+        ===== MÉTODO 1: SRCSET CON DESCRIPTORES DE DENSIDAD (X) =====
+        El navegador elige la imagen según la densidad de píxeles del dispositivo.
+        1x: pantallas normales. 2x: pantallas Retina. 3x: pantallas de muy alta densidad.
+        El atributo src actúa como fallback para navegadores que no soportan srcset.
+      -->
+      <section>
+        <h2>Método 1: srcset con descriptores de densidad (x)</h2>
+        <p>El navegador selecciona la imagen según el devicePixelRatio del dispositivo.
+        En una pantalla Retina (2x), cargará la versión @2x.</p>
+        <img
+          src="imagen-1x.jpg"
+          srcset="imagen-1x.jpg 1x, imagen-2x.jpg 2x, imagen-3x.jpg 3x"
+          alt="Imagen con descriptores de densidad"
+          class="demo-image"
+          loading="lazy"
+          width="800"
+          height="400"
+        >
+        <!--
+          IMPORTANTE: loading="lazy" difiere la carga hasta que la imagen
+          esté cerca del viewport. Ahorra ancho de banda en móvil.
+          width/height ayudan al navegador a reservar espacio y evitar
+          layout shift (CLS - Cumulative Layout Shift).
+        -->
+      </section>
+
+      <!--
+        ===== MÉTODO 2: SRCSET CON DESCRIPTORES DE ANCHO (W) + SIZES =====
+        En lugar de densidad, indicamos al navegador el ancho intrínseco
+        de cada imagen. El atributo sizes le dice al navegador qué tamaño
+        ocupará la imagen en el layout para cada condición.
+      -->
+      <section>
+        <h2>Método 2: srcset con descriptores de ancho (w) + sizes</h2>
+        <p>
+          sizes indica que en viewports hasta 600px la imagen ocupa 100vw,
+          hasta 900px ocupa 50vw, y en pantallas mayores 33vw.
+          El navegador usa esta info + srcset para elegir la mejor fuente.
+        </p>
+        <img
+          src="imagen-400.jpg"
+          srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+          alt="Imagen con descriptores de ancho"
+          class="demo-image"
+          loading="lazy"
+          width="800"
+          height="400"
+        >
+      </section>
+
+      <!--
+        ===== MÉTODO 3: PICTURE PARA ART DIRECTION Y FORMATOS =====
+        El elemento picture permite múltiples source con condiciones media.
+        Ideal para servir imágenes recortadas/diferentes según el dispositivo
+        (art direction) y para formatos modernos (WebP, AVIF) con fallback.
+      -->
+      <section>
+        <h2>Método 3: picture para art direction y formatos modernos</h2>
+        <p>En móvil se muestra una imagen recortada (versión vertical).
+        En desktop se muestra la versión panorámica. Además se sirve WebP
+        si el navegador lo soporta, con fallback a JPEG.</p>
+
+        <picture>
+          <!-- En móvil (max-width: 768px): imagen vertical en WebP -->
+          <source
+            srcset="hero-mobile.webp"
+            media="(max-width: 768px)"
+            type="image/webp"
+          >
+          <!-- En móvil: fallback JPEG para navegadores sin WebP -->
+          <source
+            srcset="hero-mobile.jpg"
+            media="(max-width: 768px)"
+          >
+          <!-- En desktop: imagen horizontal en WebP -->
+          <source
+            srcset="hero-desktop.webp"
+            type="image/webp"
+          >
+          <!-- Fallback final: JPEG para cualquier navegador -->
+          <img
+            src="hero-desktop.jpg"
+            alt="Imagen hero responsive"
+            class="demo-image"
+            loading="lazy"
+            width="1200"
+            height="600"
+          >
+        </picture>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -535,120 +652,66 @@ Existen varios patrones de layout responsive establecidos:
       height: auto;
       border-radius: 8px;
     }
-  </style>
-</head>
-<body>
-  <h1>Imágenes Responsive en HTML</h1>
-
-  <!--
-    ===== MÉTODO 1: SRCSET CON DESCRIPTORES DE DENSIDAD (X) =====
-    El navegador elige la imagen según la densidad de píxeles del dispositivo.
-    1x: pantallas normales. 2x: pantallas Retina. 3x: pantallas de muy alta densidad.
-    El atributo src actúa como fallback para navegadores que no soportan srcset.
-  -->
-  <section>
-    <h2>Método 1: srcset con descriptores de densidad (x)</h2>
-    <p>El navegador selecciona la imagen según el devicePixelRatio del dispositivo.
-    En una pantalla Retina (2x), cargará la versión @2x.</p>
-    <img
-      src="imagen-1x.jpg"
-      srcset="imagen-1x.jpg 1x, imagen-2x.jpg 2x, imagen-3x.jpg 3x"
-      alt="Imagen con descriptores de densidad"
-      class="demo-image"
-      loading="lazy"
-      width="800"
-      height="400"
-    >
-    <!--
-      IMPORTANTE: loading="lazy" difiere la carga hasta que la imagen
-      esté cerca del viewport. Ahorra ancho de banda en móvil.
-      width/height ayudan al navegador a reservar espacio y evitar
-      layout shift (CLS - Cumulative Layout Shift).
-    -->
-  </section>
-
-  <!--
-    ===== MÉTODO 2: SRCSET CON DESCRIPTORES DE ANCHO (W) + SIZES =====
-    En lugar de densidad, indicamos al navegador el ancho intrínseco
-    de cada imagen. El atributo sizes le dice al navegador qué tamaño
-    ocupará la imagen en el layout para cada condición.
-  -->
-  <section>
-    <h2>Método 2: srcset con descriptores de ancho (w) + sizes</h2>
-    <p>
-      sizes indica que en viewports hasta 600px la imagen ocupa 100vw,
-      hasta 900px ocupa 50vw, y en pantallas mayores 33vw.
-      El navegador usa esta info + srcset para elegir la mejor fuente.
-    </p>
-    <img
-      src="imagen-400.jpg"
-      srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"
-      sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-      alt="Imagen con descriptores de ancho"
-      class="demo-image"
-      loading="lazy"
-      width="800"
-      height="400"
-    >
-  </section>
-
-  <!--
-    ===== MÉTODO 3: PICTURE PARA ART DIRECTION Y FORMATOS =====
-    El elemento picture permite múltiples source con condiciones media.
-    Ideal para servir imágenes recortadas/diferentes según el dispositivo
-    (art direction) y para formatos modernos (WebP, AVIF) con fallback.
-  -->
-  <section>
-    <h2>Método 3: picture para art direction y formatos modernos</h2>
-    <p>En móvil se muestra una imagen recortada (versión vertical).
-    En desktop se muestra la versión panorámica. Además se sirve WebP
-    si el navegador lo soporta, con fallback a JPEG.</p>
-
-    <picture>
-      <!-- En móvil (max-width: 768px): imagen vertical en WebP -->
-      <source
-        srcset="hero-mobile.webp"
-        media="(max-width: 768px)"
-        type="image/webp"
-      >
-      <!-- En móvil: fallback JPEG para navegadores sin WebP -->
-      <source
-        srcset="hero-mobile.jpg"
-        media="(max-width: 768px)"
-      >
-      <!-- En desktop: imagen horizontal en WebP -->
-      <source
-        srcset="hero-desktop.webp"
-        type="image/webp"
-      >
-      <!-- Fallback final: JPEG para cualquier navegador -->
-      <img
-        src="hero-desktop.jpg"
-        alt="Imagen hero responsive"
-        class="demo-image"
-        loading="lazy"
-        width="1200"
-        height="600"
-      >
-    </picture>
-  </section>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 4: Tipografía responsive con clamp()
 
 !!! example "Contexto pedagógico"
     Implementación de un sistema de tipografía completamente fluido usando CSS clamp(). Sin una sola media query, los tamaños de fuente se adaptan suavemente entre un mínimo y un máximo según el ancho del viewport.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 4 - Tipografía Responsive con clamp()</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 4 - Tipografía Responsive con clamp()</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <article class="article">
+        <h1>Tipografía Responsive: El futuro es fluido</h1>
+        <p><small>Publicado el 10 de mayo de 2025 · 8 min de lectura</small></p>
+
+        <p>La tipografía web ha evolucionado desde tamaños fijos en píxeles hasta
+        sistemas completamente fluidos que se adaptan a cualquier dispositivo sin
+        necesidad de media queries. La función clamp() de CSS es la clave de esta
+        evolución.</p>
+
+        <div class="card">
+          <h2>¿Qué es clamp()?</h2>
+          <p>La función CSS clamp() acepta tres parámetros: un valor mínimo, un valor
+          preferido (generalmente basado en viewport) y un valor máximo. El navegador
+          calcula el valor resultante y lo mantiene siempre dentro del rango definido,
+          adaptándose suavemente al tamaño de pantalla.</p>
+
+          <h3>Ventajas del enfoque fluido</h3>
+          <p>El texto se adapta de forma continua a cualquier ancho de pantalla,
+          sin saltos bruscos en los breakpoints. Esto significa que la tipografía
+          se ve bien en 320px, 768px, 1024px y cualquier tamaño intermedio, sin
+          necesidad de predefinir puntos de ruptura.</p>
+        </div>
+
+        <h2>La importancia de la longitud de línea</h2>
+        <p>Los estudios de legibilidad coinciden en que la longitud óptima de línea
+        para texto continuo está entre 45 y 75 caracteres. Líneas demasiado largas
+        dificultan el seguimiento visual; líneas demasiado cortas fuerzan saltos
+        frecuentes que rompen el ritmo de lectura. La unidad ch de CSS nos permite
+        respetar esta restricción independientemente del tamaño de fuente.</p>
+      </article>
+
+      <!-- Indicador visual del tamaño de viewport actual -->
+      <div class="font-meter">Viewport: <span id="vp-width"></span>px</div>
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -727,52 +790,17 @@ Existen varios patrones de layout responsive establecidos:
       font-family: 'Courier New', monospace;
       font-size: 0.8rem;
     }
-  </style>
-</head>
-<body>
-  <article class="article">
-    <h1>Tipografía Responsive: El futuro es fluido</h1>
-    <p><small>Publicado el 10 de mayo de 2025 · 8 min de lectura</small></p>
+    ```
 
-    <p>La tipografía web ha evolucionado desde tamaños fijos en píxeles hasta
-    sistemas completamente fluidos que se adaptan a cualquier dispositivo sin
-    necesidad de media queries. La función clamp() de CSS es la clave de esta
-    evolución.</p>
+=== "JS"
 
-    <div class="card">
-      <h2>¿Qué es clamp()?</h2>
-      <p>La función CSS clamp() acepta tres parámetros: un valor mínimo, un valor
-      preferido (generalmente basado en viewport) y un valor máximo. El navegador
-      calcula el valor resultante y lo mantiene siempre dentro del rango definido,
-      adaptándose suavemente al tamaño de pantalla.</p>
-
-      <h3>Ventajas del enfoque fluido</h3>
-      <p>El texto se adapta de forma continua a cualquier ancho de pantalla,
-      sin saltos bruscos en los breakpoints. Esto significa que la tipografía
-      se ve bien en 320px, 768px, 1024px y cualquier tamaño intermedio, sin
-      necesidad de predefinir puntos de ruptura.</p>
-    </div>
-
-    <h2>La importancia de la longitud de línea</h2>
-    <p>Los estudios de legibilidad coinciden en que la longitud óptima de línea
-    para texto continuo está entre 45 y 75 caracteres. Líneas demasiado largas
-    dificultan el seguimiento visual; líneas demasiado cortas fuerzan saltos
-    frecuentes que rompen el ritmo de lectura. La unidad ch de CSS nos permite
-    respetar esta restricción independientemente del tamaño de fuente.</p>
-  </article>
-
-  <!-- Indicador visual del tamaño de viewport actual -->
-  <div class="font-meter">Viewport: <span id="vp-width"></span>px</div>
-  <script>
+    ``` js
     // Muestra el ancho actual del viewport en tiempo real
     document.getElementById('vp-width').textContent = window.innerWidth;
     window.addEventListener('resize', () => {
       document.getElementById('vp-width').textContent = window.innerWidth;
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 5: Container Queries - Componentes que se adaptan a su contenedor
@@ -780,14 +808,69 @@ Existen varios patrones de layout responsive establecidos:
 !!! example "Contexto pedagógico"
     Las Container Queries permiten que un componente se adapte al tamaño de su elemento contenedor, no al viewport. Esto es revolucionario para componentes reutilizables que pueden aparecer en diferentes contextos de una misma página.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 5 - Container Queries</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 5 - Container Queries</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Container Queries: Mismo componente, diferente contexto</h1>
+
+      <div class="demo">
+        <!--
+          Columna izquierda (estrecha, ~300px):
+          La tarjeta se renderizará en modo vertical porque el contenedor
+          es más estrecho que 400px. @container card no se activa.
+        -->
+        <div class="demo__sidebar">
+          <p class="section-label">Sidebar (contenedor ~300px)</p>
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card__image">IMG</div>
+              <div class="card__body">
+                <h3 class="card__title">Tarjeta en sidebar</h3>
+                <p class="card__text">Esta tarjeta se adapta al sidebar estrecho.
+                Imagen arriba, contenido abajo. Layout vertical.</p>
+                <span class="tag">CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--
+          Columna derecha (ancha, ~700px):
+          La MISMA tarjeta ahora se renderiza en modo horizontal porque
+          el contenedor supera los 400px. @container card se activa.
+        -->
+        <div class="demo__main">
+          <p class="section-label">Contenido principal (contenedor ~700px)</p>
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card__image">IMG</div>
+              <div class="card__body">
+                <h3 class="card__title">Tarjeta en zona principal</h3>
+                <p class="card__text">La misma tarjeta, pero ahora el contenedor
+                es más ancho. Layout horizontal con imagen a la izquierda. Todo
+                controlado por @container, sin media queries.</p>
+                <span class="tag">Container Queries</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -913,70 +996,132 @@ Existen varios patrones de layout responsive establecidos:
       margin-bottom: 1rem;
       letter-spacing: 0.5px;
     }
-  </style>
-</head>
-<body>
-  <h1>Container Queries: Mismo componente, diferente contexto</h1>
-
-  <div class="demo">
-    <!--
-      Columna izquierda (estrecha, ~300px):
-      La tarjeta se renderizará en modo vertical porque el contenedor
-      es más estrecho que 400px. @container card no se activa.
-    -->
-    <div class="demo__sidebar">
-      <p class="section-label">Sidebar (contenedor ~300px)</p>
-      <div class="card-wrapper">
-        <div class="card">
-          <div class="card__image">IMG</div>
-          <div class="card__body">
-            <h3 class="card__title">Tarjeta en sidebar</h3>
-            <p class="card__text">Esta tarjeta se adapta al sidebar estrecho.
-            Imagen arriba, contenido abajo. Layout vertical.</p>
-            <span class="tag">CSS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--
-      Columna derecha (ancha, ~700px):
-      La MISMA tarjeta ahora se renderiza en modo horizontal porque
-      el contenedor supera los 400px. @container card se activa.
-    -->
-    <div class="demo__main">
-      <p class="section-label">Contenido principal (contenedor ~700px)</p>
-      <div class="card-wrapper">
-        <div class="card">
-          <div class="card__image">IMG</div>
-          <div class="card__body">
-            <h3 class="card__title">Tarjeta en zona principal</h3>
-            <p class="card__text">La misma tarjeta, pero ahora el contenedor
-            es más ancho. Layout horizontal con imagen a la izquierda. Todo
-            controlado por @container, sin media queries.</p>
-            <span class="tag">Container Queries</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 6: Tabla responsive con 3 estrategias
 
 !!! example "Contexto pedagógico"
     Las tablas son uno de los elementos más problemáticos en diseño responsive. Este ejemplo demuestra tres estrategias: scroll horizontal, colapso en cards (ideal para móvil), y ocultación de columnas no esenciales.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 6 - Tablas Responsive</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 6 - Tablas Responsive</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Estrategias para Tablas Responsive</h1>
+
+      <!-- ESTRATEGIA 1: Scroll horizontal -->
+      <section>
+        <h2>Estrategia 1: Scroll horizontal</h2>
+        <p>Envuelve la tabla en un contenedor con overflow-x: auto.
+        En móvil, el usuario puede deslizar horizontalmente para ver todas las columnas.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Ciudad</th><th>País</th><th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td><td>María García</td><td>maria@email.com</td><td>+34 600 111 222</td><td>Málaga</td><td>España</td><td>2025-01-15</td>
+              </tr>
+              <tr>
+                <td>2</td><td>Carlos Ruiz</td><td>carlos@email.com</td><td>+34 600 333 444</td><td>Sevilla</td><td>España</td><td>2025-02-20</td>
+              </tr>
+              <tr>
+                <td>3</td><td>Ana López</td><td>ana@email.com</td><td>+34 600 555 666</td><td>Granada</td><td>España</td><td>2025-03-10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ESTRATEGIA 2: Cards -->
+      <section>
+        <h2>Estrategia 2: Colapso en tarjetas (cards)</h2>
+        <p>En móvil, cada fila se convierte en una tarjeta. Los data-label muestran el nombre de cada columna. Redimensiona a menos de 600px para ver el efecto.</p>
+        <table class="table-cards">
+          <thead>
+            <tr>
+              <th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Ventas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Producto">Portátil Pro 15"</td>
+              <td data-label="Categoría">Electrónica</td>
+              <td data-label="Precio">999,00 €</td>
+              <td data-label="Stock">45</td>
+              <td data-label="Ventas">230</td>
+            </tr>
+            <tr>
+              <td data-label="Producto">Monitor 4K 27"</td>
+              <td data-label="Categoría">Monitores</td>
+              <td data-label="Precio">449,00 €</td>
+              <td data-label="Stock">18</td>
+              <td data-label="Ventas">98</td>
+            </tr>
+            <tr>
+              <td data-label="Producto">Teclado Mecánico</td>
+              <td data-label="Categoría">Periféricos</td>
+              <td data-label="Precio">89,99 €</td>
+              <td data-label="Stock">120</td>
+              <td data-label="Ventas">450</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ESTRATEGIA 3: Ocultar columnas -->
+      <section>
+        <h2>Estrategia 3: Ocultar columnas no esenciales</h2>
+        <p>Columnas con clase .col-opcional se ocultan a 768px. Columnas .col-secundaria a 480px. Las columnas esenciales siempre visibles.</p>
+        <table>
+          <thead>
+            <tr>
+              <th class="col-esencial">ID</th>
+              <th class="col-esencial">Cliente</th>
+              <th class="col-secundaria">Email</th>
+              <th class="col-opcional">Teléfono</th>
+              <th class="col-opcional">Notas</th>
+              <th class="col-esencial">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-esencial">#1024</td>
+              <td class="col-esencial">Juan Pérez</td>
+              <td class="col-secundaria">juan@email.com</td>
+              <td class="col-opcional">+34 666 777 888</td>
+              <td class="col-opcional">Entrega urgente solicitada</td>
+              <td class="col-esencial">Pendiente</td>
+            </tr>
+            <tr>
+              <td class="col-esencial">#1025</td>
+              <td class="col-esencial">Laura Díaz</td>
+              <td class="col-secundaria">laura@email.com</td>
+              <td class="col-opcional">+34 666 999 000</td>
+              <td class="col-opcional">Cliente VIP</td>
+              <td class="col-esencial">Completado</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1085,126 +1230,72 @@ Existen varios patrones de layout responsive establecidos:
     @media (max-width: 480px) {
       .col-secundaria { display: none; }
     }
-  </style>
-</head>
-<body>
-  <h1>Estrategias para Tablas Responsive</h1>
-
-  <!-- ESTRATEGIA 1: Scroll horizontal -->
-  <section>
-    <h2>Estrategia 1: Scroll horizontal</h2>
-    <p>Envuelve la tabla en un contenedor con overflow-x: auto.
-    En móvil, el usuario puede deslizar horizontalmente para ver todas las columnas.</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Ciudad</th><th>País</th><th>Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td><td>María García</td><td>maria@email.com</td><td>+34 600 111 222</td><td>Málaga</td><td>España</td><td>2025-01-15</td>
-          </tr>
-          <tr>
-            <td>2</td><td>Carlos Ruiz</td><td>carlos@email.com</td><td>+34 600 333 444</td><td>Sevilla</td><td>España</td><td>2025-02-20</td>
-          </tr>
-          <tr>
-            <td>3</td><td>Ana López</td><td>ana@email.com</td><td>+34 600 555 666</td><td>Granada</td><td>España</td><td>2025-03-10</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ESTRATEGIA 2: Cards -->
-  <section>
-    <h2>Estrategia 2: Colapso en tarjetas (cards)</h2>
-    <p>En móvil, cada fila se convierte en una tarjeta. Los data-label muestran el nombre de cada columna. Redimensiona a menos de 600px para ver el efecto.</p>
-    <table class="table-cards">
-      <thead>
-        <tr>
-          <th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Ventas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Producto">Portátil Pro 15"</td>
-          <td data-label="Categoría">Electrónica</td>
-          <td data-label="Precio">999,00 €</td>
-          <td data-label="Stock">45</td>
-          <td data-label="Ventas">230</td>
-        </tr>
-        <tr>
-          <td data-label="Producto">Monitor 4K 27"</td>
-          <td data-label="Categoría">Monitores</td>
-          <td data-label="Precio">449,00 €</td>
-          <td data-label="Stock">18</td>
-          <td data-label="Ventas">98</td>
-        </tr>
-        <tr>
-          <td data-label="Producto">Teclado Mecánico</td>
-          <td data-label="Categoría">Periféricos</td>
-          <td data-label="Precio">89,99 €</td>
-          <td data-label="Stock">120</td>
-          <td data-label="Ventas">450</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- ESTRATEGIA 3: Ocultar columnas -->
-  <section>
-    <h2>Estrategia 3: Ocultar columnas no esenciales</h2>
-    <p>Columnas con clase .col-opcional se ocultan a 768px. Columnas .col-secundaria a 480px. Las columnas esenciales siempre visibles.</p>
-    <table>
-      <thead>
-        <tr>
-          <th class="col-esencial">ID</th>
-          <th class="col-esencial">Cliente</th>
-          <th class="col-secundaria">Email</th>
-          <th class="col-opcional">Teléfono</th>
-          <th class="col-opcional">Notas</th>
-          <th class="col-esencial">Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="col-esencial">#1024</td>
-          <td class="col-esencial">Juan Pérez</td>
-          <td class="col-secundaria">juan@email.com</td>
-          <td class="col-opcional">+34 666 777 888</td>
-          <td class="col-opcional">Entrega urgente solicitada</td>
-          <td class="col-esencial">Pendiente</td>
-        </tr>
-        <tr>
-          <td class="col-esencial">#1025</td>
-          <td class="col-esencial">Laura Díaz</td>
-          <td class="col-secundaria">laura@email.com</td>
-          <td class="col-opcional">+34 666 999 000</td>
-          <td class="col-opcional">Cliente VIP</td>
-          <td class="col-esencial">Completado</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 7: Media Queries modernas - prefers-color-scheme, prefers-reduced-motion
 
 !!! example "Contexto pedagógico"
     Demostración de las media queries de preferencias de usuario, que permiten adaptar la experiencia a las necesidades y preferencias de cada persona. El modo oscuro y la reducción de movimiento son las dos más importantes para accesibilidad.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 7 - Media Queries de Preferencias</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 7 - Media Queries de Preferencias</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="container">
+        <h1>Media Queries de Preferencias de Usuario</h1>
+
+        <p>
+          <span class="theme-indicator">
+            Tema actual: <span id="theme-label">detectando...</span>
+          </span>
+        </p>
+
+        <div class="card animated-card">
+          <h2>Tarjeta con animación hover</h2>
+          <p>Pasa el ratón por encima para ver la animación. Si tu sistema tiene
+          "Reducir movimiento" activado, la animación se desactivará automáticamente
+          gracias a prefers-reduced-motion: reduce.</p>
+        </div>
+
+        <div class="card">
+          <h2>Demostración de pulso</h2>
+          <span class="pulse-demo">Botón animado</span>
+          <p style="margin-top: 1rem;">Este botón tiene una animación de pulso. Con
+          prefers-reduced-motion: reduce, la animación se detiene inmediatamente
+          (duración de 0.01ms, una sola iteración).</p>
+        </div>
+
+        <div class="card no-print">
+          <h2>Modo oscuro automático</h2>
+          <p>Este sitio se adapta automáticamente al modo claro u oscuro según la
+          configuración de tu sistema operativo. Cambia la preferencia en los ajustes
+          de tu dispositivo para ver la diferencia.</p>
+          <p>Esto se logra con @media (prefers-color-scheme: dark) y variables CSS,
+          sin necesidad de JavaScript ni clases adicionales.</p>
+        </div>
+
+        <p class="no-print" style="text-align:center; color: var(--text-secondary);">
+          Este párrafo tiene clase .no-print - no aparecerá al imprimir la página.
+        </p>
+      </div>
+
+      <!-- Script para detectar el tema actual -->
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; }
 
@@ -1333,49 +1424,11 @@ Existen varios patrones de layout responsive establecidos:
     }
 
     .no-print { margin-top: 1rem; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Media Queries de Preferencias de Usuario</h1>
+    ```
 
-    <p>
-      <span class="theme-indicator">
-        Tema actual: <span id="theme-label">detectando...</span>
-      </span>
-    </p>
+=== "JS"
 
-    <div class="card animated-card">
-      <h2>Tarjeta con animación hover</h2>
-      <p>Pasa el ratón por encima para ver la animación. Si tu sistema tiene
-      "Reducir movimiento" activado, la animación se desactivará automáticamente
-      gracias a prefers-reduced-motion: reduce.</p>
-    </div>
-
-    <div class="card">
-      <h2>Demostración de pulso</h2>
-      <span class="pulse-demo">Botón animado</span>
-      <p style="margin-top: 1rem;">Este botón tiene una animación de pulso. Con
-      prefers-reduced-motion: reduce, la animación se detiene inmediatamente
-      (duración de 0.01ms, una sola iteración).</p>
-    </div>
-
-    <div class="card no-print">
-      <h2>Modo oscuro automático</h2>
-      <p>Este sitio se adapta automáticamente al modo claro u oscuro según la
-      configuración de tu sistema operativo. Cambia la preferencia en los ajustes
-      de tu dispositivo para ver la diferencia.</p>
-      <p>Esto se logra con @media (prefers-color-scheme: dark) y variables CSS,
-      sin necesidad de JavaScript ni clases adicionales.</p>
-    </div>
-
-    <p class="no-print" style="text-align:center; color: var(--text-secondary);">
-      Este párrafo tiene clase .no-print - no aparecerá al imprimir la página.
-    </p>
-  </div>
-
-  <!-- Script para detectar el tema actual -->
-  <script>
+    ``` js
     // Detectamos el esquema de color actual del sistema
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     document.getElementById('theme-label').textContent = isDark ? 'Oscuro' : 'Claro';
@@ -1384,10 +1437,7 @@ Existen varios patrones de layout responsive establecidos:
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       document.getElementById('theme-label').textContent = e.matches ? 'Oscuro' : 'Claro';
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 8: Layout Shifter con Grid Template Areas
@@ -1395,14 +1445,72 @@ Existen varios patrones de layout responsive establecidos:
 !!! example "Contexto pedagógico"
     El patrón Layout Shifter es el más potente de los patrones responsive. Consiste en reorganizar completamente la disposición de los elementos en diferentes breakpoints. CSS Grid con grid-template-areas lo hace trivial, ya que basta con redefinir el mapa de áreas en cada media query.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 8 - Layout Shifter con Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 8 - Layout Shifter con Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="page">
+        <header class="header">
+          <h1>Layout Shifter</h1>
+          <p>El layout se reorganiza completamente en cada breakpoint</p>
+        </header>
+
+        <nav class="nav">
+          <a href="#">Inicio</a>
+          <a href="#">Artículos</a>
+          <a href="#">Galería</a>
+          <a href="#">Contacto</a>
+        </nav>
+
+        <main class="content">
+          <h2>Contenido Principal</h2>
+          <p>Observa cómo cambia la disposición de este contenido y los sidebars
+          al redimensionar la ventana. En móvil, los sidebars están debajo del
+          contenido. En tablet, el sidebar izquierdo aparece a la izquierda.
+          En desktop, ambos sidebars flanquean el contenido.</p>
+          <p>Todo esto se logra redefiniendo grid-template-areas en cada media query.
+          El HTML permanece idéntico en todos los breakpoints.</p>
+        </main>
+
+        <aside class="sidebar-left">
+          <h3>Sidebar Izquierdo</h3>
+          <p>En móvil: debajo del contenido.</p>
+          <p>En tablet: a la izquierda.</p>
+          <p>En desktop: a la izquierda.</p>
+        </aside>
+
+        <aside class="sidebar-right">
+          <h3>Sidebar Derecho</h3>
+          <p>En móvil: al final de la página.</p>
+          <p>En tablet: debajo en ancho completo.</p>
+          <p>En desktop: a la derecha del contenido.</p>
+        </aside>
+
+        <footer class="footer">
+          2025 Layout Shifter Demo
+        </footer>
+      </div>
+
+      <div class="breakpoint-indicator">
+        Breakpoint: <span id="bp-label">Móvil</span>
+      </div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
 
@@ -1490,56 +1598,11 @@ Existen varios patrones de layout responsive establecidos:
     @media (min-width: 1024px) {
       .breakpoint-indicator { background: #10b981; }
     }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="header">
-      <h1>Layout Shifter</h1>
-      <p>El layout se reorganiza completamente en cada breakpoint</p>
-    </header>
+    ```
 
-    <nav class="nav">
-      <a href="#">Inicio</a>
-      <a href="#">Artículos</a>
-      <a href="#">Galería</a>
-      <a href="#">Contacto</a>
-    </nav>
+=== "JS"
 
-    <main class="content">
-      <h2>Contenido Principal</h2>
-      <p>Observa cómo cambia la disposición de este contenido y los sidebars
-      al redimensionar la ventana. En móvil, los sidebars están debajo del
-      contenido. En tablet, el sidebar izquierdo aparece a la izquierda.
-      En desktop, ambos sidebars flanquean el contenido.</p>
-      <p>Todo esto se logra redefiniendo grid-template-areas en cada media query.
-      El HTML permanece idéntico en todos los breakpoints.</p>
-    </main>
-
-    <aside class="sidebar-left">
-      <h3>Sidebar Izquierdo</h3>
-      <p>En móvil: debajo del contenido.</p>
-      <p>En tablet: a la izquierda.</p>
-      <p>En desktop: a la izquierda.</p>
-    </aside>
-
-    <aside class="sidebar-right">
-      <h3>Sidebar Derecho</h3>
-      <p>En móvil: al final de la página.</p>
-      <p>En tablet: debajo en ancho completo.</p>
-      <p>En desktop: a la derecha del contenido.</p>
-    </aside>
-
-    <footer class="footer">
-      2025 Layout Shifter Demo
-    </footer>
-  </div>
-
-  <div class="breakpoint-indicator">
-    Breakpoint: <span id="bp-label">Móvil</span>
-  </div>
-
-  <script>
+    ``` js
     function updateBreakpoint() {
       const w = window.innerWidth;
       let label = 'Móvil (< 768px)';
@@ -1549,24 +1612,75 @@ Existen varios patrones de layout responsive establecidos:
     }
     window.addEventListener('resize', updateBreakpoint);
     updateBreakpoint();
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 9: Menú off-canvas con transición CSS
 
 !!! example "Contexto pedagógico"
     Un menú off-canvas que se desliza desde la izquierda en dispositivos móviles y permanece visible en desktop. Implementado con CSS transitions y una mínima lógica JavaScript, superior al checkbox hack porque permite animaciones suaves y control del foco.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 9 - Menú Off-Canvas</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 9 - Menú Off-Canvas</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- Overlay que oscurece el fondo -->
+      <div class="overlay" id="overlay"></div>
+
+      <!-- Menú off-canvas (oculto fuera de pantalla en móvil) -->
+      <nav class="offcanvas" id="offcanvas">
+        <button class="offcanvas__close" id="close-menu">&times;</button>
+        <h2 style="margin-bottom:1.5rem;">Menú</h2>
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">Proyectos</a>
+        <a href="#">Blog</a>
+        <a href="#">Contacto</a>
+        <hr style="border-color:rgba(255,255,255,0.1); margin:1rem 0;">
+        <a href="#">Mi cuenta</a>
+        <a href="#">Configuración</a>
+        <a href="#">Cerrar sesión</a>
+      </nav>
+
+      <!-- Cabecera principal -->
+      <header class="main-header">
+        <button class="main-header__menu-btn" id="open-menu">&#9776;</button>
+        <span class="main-header__brand">OffCanvas Demo</span>
+        <nav class="desktop-nav">
+          <a href="#">Inicio</a>
+          <a href="#">Servicios</a>
+          <a href="#">Proyectos</a>
+          <a href="#">Blog</a>
+          <a href="#">Contacto</a>
+        </nav>
+      </header>
+
+      <!-- Contenido -->
+      <div class="content">
+        <h1>Menú Off-Canvas con Transiciones CSS</h1>
+        <p>En dispositivos móviles, haz clic en el botón de hamburguesa para abrir
+        el menú lateral. El menú se desliza suavemente desde la izquierda y un
+        overlay semitransparente cubre el contenido. Haz clic fuera del menú o en
+        la X para cerrarlo.</p>
+        <p>En desktop, el menú se muestra siempre visible como navegación horizontal
+        en la cabecera, sin necesidad de off-canvas.</p>
+      </div>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1711,52 +1825,11 @@ Existen varios patrones de layout responsive establecidos:
       .main-header__menu-btn { display: block; }
       .desktop-nav { display: none; }
     }
-  </style>
-</head>
-<body>
-  <!-- Overlay que oscurece el fondo -->
-  <div class="overlay" id="overlay"></div>
+    ```
 
-  <!-- Menú off-canvas (oculto fuera de pantalla en móvil) -->
-  <nav class="offcanvas" id="offcanvas">
-    <button class="offcanvas__close" id="close-menu">&times;</button>
-    <h2 style="margin-bottom:1.5rem;">Menú</h2>
-    <a href="#">Inicio</a>
-    <a href="#">Servicios</a>
-    <a href="#">Proyectos</a>
-    <a href="#">Blog</a>
-    <a href="#">Contacto</a>
-    <hr style="border-color:rgba(255,255,255,0.1); margin:1rem 0;">
-    <a href="#">Mi cuenta</a>
-    <a href="#">Configuración</a>
-    <a href="#">Cerrar sesión</a>
-  </nav>
+=== "JS"
 
-  <!-- Cabecera principal -->
-  <header class="main-header">
-    <button class="main-header__menu-btn" id="open-menu">&#9776;</button>
-    <span class="main-header__brand">OffCanvas Demo</span>
-    <nav class="desktop-nav">
-      <a href="#">Inicio</a>
-      <a href="#">Servicios</a>
-      <a href="#">Proyectos</a>
-      <a href="#">Blog</a>
-      <a href="#">Contacto</a>
-    </nav>
-  </header>
-
-  <!-- Contenido -->
-  <div class="content">
-    <h1>Menú Off-Canvas con Transiciones CSS</h1>
-    <p>En dispositivos móviles, haz clic en el botón de hamburguesa para abrir
-    el menú lateral. El menú se desliza suavemente desde la izquierda y un
-    overlay semitransparente cubre el contenido. Haz clic fuera del menú o en
-    la X para cerrarlo.</p>
-    <p>En desktop, el menú se muestra siempre visible como navegación horizontal
-    en la cabecera, sin necesidad de off-canvas.</p>
-  </div>
-
-  <script>
+    ``` js
     const offcanvas = document.getElementById('offcanvas');
     const overlay = document.getElementById('overlay');
     const openBtn = document.getElementById('open-menu');
@@ -1784,25 +1857,160 @@ Existen varios patrones de layout responsive establecidos:
         closeMenu();
       }
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 10: Proyecto completo responsive Mobile First
 
 !!! example "Contexto pedagógico"
     Proyecto final que integra todas las técnicas aprendidas: Mobile First, Grid con áreas, tipografía y espaciado fluidos con clamp(), imágenes responsive, menú hamburguesa, y media queries estratégicas. Una página web profesional completamente responsive.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <!-- VIEWPORT: imprescindible para responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto Responsive Completo</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <!-- VIEWPORT: imprescindible para responsive -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Proyecto Responsive Completo</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- ===== CABECERA ===== -->
+      <header class="header">
+        <div class="header__inner container">
+          <span class="header__logo">Empresa</span>
+          <label for="menu-toggle" class="header__toggle">&#9776;</label>
+          <input type="checkbox" id="menu-toggle" class="header__checkbox">
+          <nav class="header__nav">
+            <a href="#">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Proyectos</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- ===== HÉROE ===== -->
+      <section class="hero">
+        <div class="container">
+          <h1>Creamos experiencias digitales que transforman negocios</h1>
+          <p>Somos un equipo de diseñadores y desarrolladores apasionados por crear productos digitales que marcan la diferencia.</p>
+          <div class="hero__buttons">
+            <a href="#" class="btn btn--primary">Comenzar proyecto</a>
+            <a href="#" class="btn btn--outline">Conocer más</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CARACTERÍSTICAS ===== -->
+      <section class="features">
+        <div class="container">
+          <h2>Lo que ofrecemos</h2>
+          <div class="features__grid">
+            <div class="feature">
+              <span class="feature__icon">🎯</span>
+              <h3>Estrategia digital</h3>
+              <p>Definimos la hoja de ruta para alcanzar tus objetivos de negocio en el entorno digital.</p>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">🎨</span>
+              <h3>Diseño UX/UI</h3>
+              <p>Creamos interfaces intuitivas y atractivas centradas en la experiencia del usuario final.</p>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">💻</span>
+              <h3>Desarrollo web</h3>
+              <p>Construimos aplicaciones web modernas, rápidas y escalables con las mejores tecnologías.</p>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">📱</span>
+              <h3>100% Responsive</h3>
+              <p>Todos nuestros proyectos se adaptan perfectamente a cualquier dispositivo y tamaño de pantalla.</p>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">🔒</span>
+              <h3>Seguridad</h3>
+              <p>Implementamos las mejores prácticas de seguridad para proteger tus datos y los de tus usuarios.</p>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">📊</span>
+              <h3>Analítica web</h3>
+              <p>Medimos y optimizamos el rendimiento de tu sitio para maximizar los resultados de tu inversión.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIOS ===== -->
+      <section class="testimonials">
+        <div class="container">
+          <h2>Lo que dicen nuestros clientes</h2>
+          <div class="testimonials__grid">
+            <div class="testimonial">
+              <p class="testimonial__text">"Transformaron nuestra presencia online por completo. El nuevo sitio web duplicó nuestras conversiones en solo tres meses."</p>
+              <p class="testimonial__author">María García · CEO TechStart</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial__text">"Trabajar con ellos fue un placer. Entregaron a tiempo y la calidad del producto final superó nuestras expectativas."</p>
+              <p class="testimonial__author">Carlos Ruiz · Director Marketing</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial__text">"El equipo entendió perfectamente nuestra visión y la tradujo en una interfaz elegante y funcional."</p>
+              <p class="testimonial__author">Ana López · Fundadora EcoShop</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CTA ===== -->
+      <section class="cta">
+        <div class="container">
+          <h2>¿Listo para empezar?</h2>
+          <p>Cuéntanos tu proyecto y te ayudaremos a hacerlo realidad.</p>
+          <a href="#" class="btn btn--primary">Contactar ahora</a>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div class="footer__col">
+              <h4>Empresa</h4>
+              <p>Desarrollo web profesional desde 2018.</p>
+            </div>
+            <div class="footer__col">
+              <h4>Servicios</h4>
+              <a href="#">Desarrollo Web</a>
+              <a href="#">Apps Móviles</a>
+              <a href="#">Consultoría UX/UI</a>
+            </div>
+            <div class="footer__col">
+              <h4>Enlaces</h4>
+              <a href="#">Blog</a>
+              <a href="#">Proyectos</a>
+              <a href="#">Contacto</a>
+            </div>
+            <div class="footer__col">
+              <h4>Legal</h4>
+              <a href="#">Aviso legal</a>
+              <a href="#">Privacidad</a>
+              <a href="#">Cookies</a>
+            </div>
+          </div>
+          <div class="footer__bottom">2025 Empresa. Todos los derechos reservados.</div>
+        </div>
+      </footer>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* ===== RESET ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1975,139 +2183,7 @@ Existen varios patrones de layout responsive establecidos:
       }
       .header__nav a { border-top: none; padding: 0.25rem 0; }
     }
-  </style>
-</head>
-<body>
-  <!-- ===== CABECERA ===== -->
-  <header class="header">
-    <div class="header__inner container">
-      <span class="header__logo">Empresa</span>
-      <label for="menu-toggle" class="header__toggle">&#9776;</label>
-      <input type="checkbox" id="menu-toggle" class="header__checkbox">
-      <nav class="header__nav">
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Blog</a>
-        <a href="#">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===== HÉROE ===== -->
-  <section class="hero">
-    <div class="container">
-      <h1>Creamos experiencias digitales que transforman negocios</h1>
-      <p>Somos un equipo de diseñadores y desarrolladores apasionados por crear productos digitales que marcan la diferencia.</p>
-      <div class="hero__buttons">
-        <a href="#" class="btn btn--primary">Comenzar proyecto</a>
-        <a href="#" class="btn btn--outline">Conocer más</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CARACTERÍSTICAS ===== -->
-  <section class="features">
-    <div class="container">
-      <h2>Lo que ofrecemos</h2>
-      <div class="features__grid">
-        <div class="feature">
-          <span class="feature__icon">🎯</span>
-          <h3>Estrategia digital</h3>
-          <p>Definimos la hoja de ruta para alcanzar tus objetivos de negocio en el entorno digital.</p>
-        </div>
-        <div class="feature">
-          <span class="feature__icon">🎨</span>
-          <h3>Diseño UX/UI</h3>
-          <p>Creamos interfaces intuitivas y atractivas centradas en la experiencia del usuario final.</p>
-        </div>
-        <div class="feature">
-          <span class="feature__icon">💻</span>
-          <h3>Desarrollo web</h3>
-          <p>Construimos aplicaciones web modernas, rápidas y escalables con las mejores tecnologías.</p>
-        </div>
-        <div class="feature">
-          <span class="feature__icon">📱</span>
-          <h3>100% Responsive</h3>
-          <p>Todos nuestros proyectos se adaptan perfectamente a cualquier dispositivo y tamaño de pantalla.</p>
-        </div>
-        <div class="feature">
-          <span class="feature__icon">🔒</span>
-          <h3>Seguridad</h3>
-          <p>Implementamos las mejores prácticas de seguridad para proteger tus datos y los de tus usuarios.</p>
-        </div>
-        <div class="feature">
-          <span class="feature__icon">📊</span>
-          <h3>Analítica web</h3>
-          <p>Medimos y optimizamos el rendimiento de tu sitio para maximizar los resultados de tu inversión.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIOS ===== -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>Lo que dicen nuestros clientes</h2>
-      <div class="testimonials__grid">
-        <div class="testimonial">
-          <p class="testimonial__text">"Transformaron nuestra presencia online por completo. El nuevo sitio web duplicó nuestras conversiones en solo tres meses."</p>
-          <p class="testimonial__author">María García · CEO TechStart</p>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial__text">"Trabajar con ellos fue un placer. Entregaron a tiempo y la calidad del producto final superó nuestras expectativas."</p>
-          <p class="testimonial__author">Carlos Ruiz · Director Marketing</p>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial__text">"El equipo entendió perfectamente nuestra visión y la tradujo en una interfaz elegante y funcional."</p>
-          <p class="testimonial__author">Ana López · Fundadora EcoShop</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="cta">
-    <div class="container">
-      <h2>¿Listo para empezar?</h2>
-      <p>Cuéntanos tu proyecto y te ayudaremos a hacerlo realidad.</p>
-      <a href="#" class="btn btn--primary">Contactar ahora</a>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__col">
-          <h4>Empresa</h4>
-          <p>Desarrollo web profesional desde 2018.</p>
-        </div>
-        <div class="footer__col">
-          <h4>Servicios</h4>
-          <a href="#">Desarrollo Web</a>
-          <a href="#">Apps Móviles</a>
-          <a href="#">Consultoría UX/UI</a>
-        </div>
-        <div class="footer__col">
-          <h4>Enlaces</h4>
-          <a href="#">Blog</a>
-          <a href="#">Proyectos</a>
-          <a href="#">Contacto</a>
-        </div>
-        <div class="footer__col">
-          <h4>Legal</h4>
-          <a href="#">Aviso legal</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Cookies</a>
-        </div>
-      </div>
-      <div class="footer__bottom">2025 Empresa. Todos los derechos reservados.</div>
-    </div>
-  </footer>
-</body>
-</html>
-```
+    ```
 
 ## Casos reales
 

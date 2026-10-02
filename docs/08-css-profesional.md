@@ -212,14 +212,92 @@ body { background: var(--bg); color: var(--text); }
 
 ### Ejemplo 1: Selectores avanzados en acción
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selectores CSS Avanzados | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Selectores CSS Avanzados | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Demostración de Selectores CSS Avanzados</h1>
+
+        <!-- Combinador hijo > -->
+        <h2>Combinador Hijo (&gt;)</h2>
+        <ul class="menu">
+          <li>Elemento 1</li>
+          <li>Elemento 2</li>
+          <li>Elemento 3</li>
+        </ul>
+
+        <!-- Hermanos adyacentes + -->
+        <h2>Hermano Adyacente (+)</h2>
+        <p>Este párrafo está inmediatamente después de un h2: se muestra en cursiva y gris.</p>
+
+        <!-- :is() y ::before -->
+        <h2>Selector :is() con H3 y H4</h2>
+        <h3>Subtítulo h3 con color azul (gracias a :is)</h3>
+        <h4>Subtítulo h4 también azul (gracias a :is)</h4>
+
+        <!-- :has() con img -->
+        <h2>Selector :has() - Tarjeta con imagen</h2>
+        <div class="card">
+          <p>Tarjeta con imagen (borde azul):</p>
+          <img src="https://via.placeholder.com/400x150" alt="Placeholder" width="400" height="150">
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <p>Tarjeta sin imagen (sin borde azul).</p>
+        </div>
+
+        <!-- :has() con formulario -->
+        <h2>:has() en formulario</h2>
+        <form>
+          <p>Formulario con campo email (requerido, por tanto :invalid al estar vacío):</p>
+          <input type="email" required placeholder="Email (requerido)">
+          <p style="font-size:0.85rem;color:#64748b;">Observa el borde rojo izquierdo del formulario mientras el campo está vacío.</p>
+          <button type="submit">Enviar</button>
+        </form>
+
+        <!-- ::marker -->
+        <h2>Pseudoelemento ::marker</h2>
+        <ul class="personalizada">
+          <li>Elemento con flecha personalizada</li>
+          <li>Segundo elemento</li>
+          <li>Tercer elemento</li>
+        </ul>
+
+        <!-- :nth-child y ::selection -->
+        <h2>:nth-child y ::selection</h2>
+        <p>Selecciona cualquier texto de esta página para ver el color de selección azul.</p>
+        <ul>
+          <li>Fila 1 (odd - fondo gris claro)</li>
+          <li>Fila 2 (even - fondo gris medio)</li>
+          <li>Fila 3 (odd)</li>
+          <li>Fila 4 (even)</li>
+        </ul>
+
+        <!-- :not() -->
+        <h2>:not()</h2>
+        <p>Párrafo normal (opacidad reducida).</p>
+        <p class="destacado">Párrafo destacado (opacidad completa, fondo azul claro).</p>
+
+        <!-- Enlaces externos con ::after -->
+        <h2>Enlaces externos con ::after</h2>
+        <p>Enlace interno: <a href="/pagina">Ir a página</a></p>
+        <p>Enlace externo: <a href="https://developer.mozilla.org">MDN Web Docs</a></p>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* RESET BÁSICO */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -293,92 +371,71 @@ body { background: var(--bg); color: var(--text); }
     input { padding: 8px; border: 1px solid #e2e8f0; border-radius: 4px; width: 100%; margin-bottom: 8px; }
     button { padding: 8px 16px; background: #2563eb; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
     button:hover { background: #1d4ed8; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Demostración de Selectores CSS Avanzados</h1>
-
-    <!-- Combinador hijo > -->
-    <h2>Combinador Hijo (&gt;)</h2>
-    <ul class="menu">
-      <li>Elemento 1</li>
-      <li>Elemento 2</li>
-      <li>Elemento 3</li>
-    </ul>
-
-    <!-- Hermanos adyacentes + -->
-    <h2>Hermano Adyacente (+)</h2>
-    <p>Este párrafo está inmediatamente después de un h2: se muestra en cursiva y gris.</p>
-
-    <!-- :is() y ::before -->
-    <h2>Selector :is() con H3 y H4</h2>
-    <h3>Subtítulo h3 con color azul (gracias a :is)</h3>
-    <h4>Subtítulo h4 también azul (gracias a :is)</h4>
-
-    <!-- :has() con img -->
-    <h2>Selector :has() - Tarjeta con imagen</h2>
-    <div class="card">
-      <p>Tarjeta con imagen (borde azul):</p>
-      <img src="https://via.placeholder.com/400x150" alt="Placeholder" width="400" height="150">
-    </div>
-    <div class="card" style="margin-top:12px;">
-      <p>Tarjeta sin imagen (sin borde azul).</p>
-    </div>
-
-    <!-- :has() con formulario -->
-    <h2>:has() en formulario</h2>
-    <form>
-      <p>Formulario con campo email (requerido, por tanto :invalid al estar vacío):</p>
-      <input type="email" required placeholder="Email (requerido)">
-      <p style="font-size:0.85rem;color:#64748b;">Observa el borde rojo izquierdo del formulario mientras el campo está vacío.</p>
-      <button type="submit">Enviar</button>
-    </form>
-
-    <!-- ::marker -->
-    <h2>Pseudoelemento ::marker</h2>
-    <ul class="personalizada">
-      <li>Elemento con flecha personalizada</li>
-      <li>Segundo elemento</li>
-      <li>Tercer elemento</li>
-    </ul>
-
-    <!-- :nth-child y ::selection -->
-    <h2>:nth-child y ::selection</h2>
-    <p>Selecciona cualquier texto de esta página para ver el color de selección azul.</p>
-    <ul>
-      <li>Fila 1 (odd - fondo gris claro)</li>
-      <li>Fila 2 (even - fondo gris medio)</li>
-      <li>Fila 3 (odd)</li>
-      <li>Fila 4 (even)</li>
-    </ul>
-
-    <!-- :not() -->
-    <h2>:not()</h2>
-    <p>Párrafo normal (opacidad reducida).</p>
-    <p class="destacado">Párrafo destacado (opacidad completa, fondo azul claro).</p>
-
-    <!-- Enlaces externos con ::after -->
-    <h2>Enlaces externos con ::after</h2>
-    <p>Enlace interno: <a href="/pagina">Ir a página</a></p>
-    <p>Enlace externo: <a href="https://developer.mozilla.org">MDN Web Docs</a></p>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 2: Sistema de temas claro/oscuro con variables CSS y JavaScript
 
-```html
-<!DOCTYPE html>
-<html lang="es" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
-  <title>Toggle Tema Claro/Oscuro | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es" data-theme="light">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+      <title>Toggle Tema Claro/Oscuro | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <header class="header">
+        <span class="logo">CSS Variables Demo</span>
+        <!-- BOTÓN DE CAMBIO DE TEMA: ejecuta toggleTheme() al hacer clic -->
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema claro/oscuro">
+          <span class="icono" id="icono-tema">☀️</span>
+          <span id="texto-tema">Modo Oscuro</span>
+        </button>
+      </header>
+
+      <main>
+        <h1>Sistema de Temas con Variables CSS</h1>
+        <p>
+          Esta página demuestra un sistema completo de temas claro/oscuro implementado
+          exclusivamente con variables CSS (Custom Properties) y unas pocas líneas de
+          JavaScript. El cambio entre temas es instantáneo porque solo se modifican
+          los valores de las variables, no se recargan hojas de estilo completas.
+        </p>
+
+        <h2>Características del Sistema</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Variables Dinámicas</h3>
+            <p>Las Custom Properties se actualizan en tiempo real al cambiar el atributo <code>data-theme</code> en el elemento <code>&lt;html&gt;</code>. Todos los elementos que usan <code>var()</code> se actualizan automáticamente.</p>
+          </div>
+          <div class="card">
+            <h3>Transiciones Suaves</h3>
+            <p>El body tiene <code>transition: background 0.3s, color 0.3s</code> para una transición visual agradable entre temas.</p>
+          </div>
+          <div class="card">
+            <h3>Persistencia Opcional</h3>
+            <p>Se puede guardar la preferencia del usuario en <code>localStorage</code> para mantener el tema elegido entre visitas.</p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>Variables CSS (Custom Properties) - Ejemplo didáctico del módulo DIW</p>
+      </footer>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ===============================================
@@ -475,49 +532,11 @@ body { background: var(--bg); color: var(--text); }
       text-align: center; padding: 24px; color: var(--color-text-secondary);
       border-top: 1px solid var(--color-border);
     }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <span class="logo">CSS Variables Demo</span>
-    <!-- BOTÓN DE CAMBIO DE TEMA: ejecuta toggleTheme() al hacer clic -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema claro/oscuro">
-      <span class="icono" id="icono-tema">☀️</span>
-      <span id="texto-tema">Modo Oscuro</span>
-    </button>
-  </header>
+    ```
 
-  <main>
-    <h1>Sistema de Temas con Variables CSS</h1>
-    <p>
-      Esta página demuestra un sistema completo de temas claro/oscuro implementado
-      exclusivamente con variables CSS (Custom Properties) y unas pocas líneas de
-      JavaScript. El cambio entre temas es instantáneo porque solo se modifican
-      los valores de las variables, no se recargan hojas de estilo completas.
-    </p>
+=== "JS"
 
-    <h2>Características del Sistema</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Variables Dinámicas</h3>
-        <p>Las Custom Properties se actualizan en tiempo real al cambiar el atributo <code>data-theme</code> en el elemento <code>&lt;html&gt;</code>. Todos los elementos que usan <code>var()</code> se actualizan automáticamente.</p>
-      </div>
-      <div class="card">
-        <h3>Transiciones Suaves</h3>
-        <p>El body tiene <code>transition: background 0.3s, color 0.3s</code> para una transición visual agradable entre temas.</p>
-      </div>
-      <div class="card">
-        <h3>Persistencia Opcional</h3>
-        <p>Se puede guardar la preferencia del usuario en <code>localStorage</code> para mantener el tema elegido entre visitas.</p>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>Variables CSS (Custom Properties) - Ejemplo didáctico del módulo DIW</p>
-  </footer>
-
-  <script>
+    ``` js
     /*
      * SISTEMA DE CAMBIO DE TEMA CLARO/OSCURO
      * Cambia el atributo data-theme en <html> entre "light" y "dark"
@@ -573,21 +592,58 @@ body { background: var(--bg); color: var(--text); }
         document.getElementById('texto-tema').textContent = 'Modo Claro';
       }
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 3: Layout responsivo con clamp(), min(), max()
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clamp, Min, Max | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Clamp, Min, Max | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Funciones CSS Modernas: clamp(), min(), max(), calc()</h1>
+        <p>
+          Este texto usa tipografía fluida con <code>clamp()</code>. Redimensiona la
+          ventana del navegador y verás cómo el tamaño de fuente se ajusta automáticamente
+          entre un mínimo y un máximo, escalando suavemente con el viewport.
+        </p>
+
+        <section>
+          <h2>Tipografía Fluida</h2>
+          <pre>h1 { font-size: clamp(1.5rem, 5vw, 3rem); }
+    h2 { font-size: clamp(1.2rem, 3vw, 2rem); }
+    p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
+          <p>La función <code>clamp(min, ideal, max)</code> es perfecta para tipografía responsive sin media queries. El texto nunca será menor que <code>min</code> ni mayor que <code>max</code>.</p>
+        </section>
+
+        <section>
+          <h2>Ancho del Contenedor con min()</h2>
+          <pre>.contenedor { width: min(100%, 900px); }</pre>
+          <p><code>min()</code> elige el valor más pequeño. En pantallas grandes, el contenedor mide 900px. En pantallas pequeñas, mide el 100% del ancho disponible.</p>
+        </section>
+
+        <section>
+          <h2>Layout con calc()</h2>
+          <pre>.sidebar { flex: 0 0 250px; }
+    .contenido-sidebar { flex: 1 1 calc(100% - 274px); }</pre>
+          <p><code>calc()</code> permite mezclar unidades. Aquí calculamos el espacio restante restando el sidebar (250px) + gap (24px) del ancho total.</p>
+        </section>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -646,52 +702,57 @@ body { background: var(--bg); color: var(--text); }
       border-radius: 8px; overflow-x: auto; font-size: 0.85rem;
       margin: 16px 0;
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Funciones CSS Modernas: clamp(), min(), max(), calc()</h1>
-    <p>
-      Este texto usa tipografía fluida con <code>clamp()</code>. Redimensiona la
-      ventana del navegador y verás cómo el tamaño de fuente se ajusta automáticamente
-      entre un mínimo y un máximo, escalando suavemente con el viewport.
-    </p>
-
-    <section>
-      <h2>Tipografía Fluida</h2>
-      <pre>h1 { font-size: clamp(1.5rem, 5vw, 3rem); }
-h2 { font-size: clamp(1.2rem, 3vw, 2rem); }
-p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
-      <p>La función <code>clamp(min, ideal, max)</code> es perfecta para tipografía responsive sin media queries. El texto nunca será menor que <code>min</code> ni mayor que <code>max</code>.</p>
-    </section>
-
-    <section>
-      <h2>Ancho del Contenedor con min()</h2>
-      <pre>.contenedor { width: min(100%, 900px); }</pre>
-      <p><code>min()</code> elige el valor más pequeño. En pantallas grandes, el contenedor mide 900px. En pantallas pequeñas, mide el 100% del ancho disponible.</p>
-    </section>
-
-    <section>
-      <h2>Layout con calc()</h2>
-      <pre>.sidebar { flex: 0 0 250px; }
-.contenido-sidebar { flex: 1 1 calc(100% - 274px); }</pre>
-      <p><code>calc()</code> permite mezclar unidades. Aquí calculamos el espacio restante restando el sidebar (250px) + gap (24px) del ancho total.</p>
-    </section>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 4: Organización con BEM y @layer
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BEM y @layer | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>BEM y @layer | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Metodología BEM + Capas @layer</h1>
+
+      <div class="grid">
+        <!-- Tarjeta normal con BEM -->
+        <article class="card">
+          <h3 class="card__title">Tarjeta Normal</h3>
+          <p class="card__body">Esta tarjeta usa la metodología BEM: bloque <code>.card</code>, elemento <code>.card__title</code>, elemento <code>.card__body</code>. Los selectores son planos y de baja especificidad.</p>
+          <a href="#" class="btn btn--primary mt-2">
+            <span class="btn__icon">→</span> Acción Principal
+          </a>
+        </article>
+
+        <!-- Tarjeta destacada (modificador BEM) -->
+        <article class="card card--featured">
+          <h3 class="card__title">Tarjeta Destacada</h3>
+          <p class="card__body">Modificador <code>.card--featured</code>: añade borde izquierdo azul y fondo azul claro. Los modificadores BEM extienden bloques sin crear nuevos bloques.</p>
+          <a href="#" class="btn btn--outline mt-2">
+            <span class="btn__icon">☆</span> Acción Secundaria
+          </a>
+        </article>
+
+        <!-- Tarjeta con utilidades -->
+        <article class="card text-center">
+          <h3 class="card__title">Utilidades @layer</h3>
+          <p class="card__body">La clase <code>.text-center</code> está en la capa <code>utilities</code>, la última declarada. Por tanto, gana a cualquier otro estilo, incluso sin <code>!important</code> en los componentes.</p>
+          <p class="card__body mt-2">Las capas <code>@layer</code> permiten controlar la cascada sin abusar de <code>!important</code>.</p>
+        </article>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* =============================================
        ORGANIZACIÓN CON @LAYER
        El orden de las capas define la prioridad.
@@ -762,51 +823,70 @@ p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
     /* Layout de la demo */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
     h1 { text-align: center; margin: 32px 0; color: #2563eb; }
-  </style>
-</head>
-<body>
-  <h1>Metodología BEM + Capas @layer</h1>
-
-  <div class="grid">
-    <!-- Tarjeta normal con BEM -->
-    <article class="card">
-      <h3 class="card__title">Tarjeta Normal</h3>
-      <p class="card__body">Esta tarjeta usa la metodología BEM: bloque <code>.card</code>, elemento <code>.card__title</code>, elemento <code>.card__body</code>. Los selectores son planos y de baja especificidad.</p>
-      <a href="#" class="btn btn--primary mt-2">
-        <span class="btn__icon">→</span> Acción Principal
-      </a>
-    </article>
-
-    <!-- Tarjeta destacada (modificador BEM) -->
-    <article class="card card--featured">
-      <h3 class="card__title">Tarjeta Destacada</h3>
-      <p class="card__body">Modificador <code>.card--featured</code>: añade borde izquierdo azul y fondo azul claro. Los modificadores BEM extienden bloques sin crear nuevos bloques.</p>
-      <a href="#" class="btn btn--outline mt-2">
-        <span class="btn__icon">☆</span> Acción Secundaria
-      </a>
-    </article>
-
-    <!-- Tarjeta con utilidades -->
-    <article class="card text-center">
-      <h3 class="card__title">Utilidades @layer</h3>
-      <p class="card__body">La clase <code>.text-center</code> está en la capa <code>utilities</code>, la última declarada. Por tanto, gana a cualquier otro estilo, incluso sin <code>!important</code> en los componentes.</p>
-      <p class="card__body mt-2">Las capas <code>@layer</code> permiten controlar la cascada sin abusar de <code>!important</code>.</p>
-    </article>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 5: Transiciones y animaciones con prefers-reduced-motion
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transiciones y Animaciones | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Transiciones y Animaciones | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Transiciones y Animaciones CSS</h1>
+
+        <h2>1. Transición en Botón (hover)</h2>
+        <button class="btn-transicion">Pasa el ratón sobre mí</button>
+        <p style="margin-top:8px;color:#64748b;font-size:0.9rem;">
+          El botón cambia de color, se eleva 2px y gana sombra. Todo suavizado con <code>transition</code>.
+        </p>
+
+        <h2>2. Animaciones con @keyframes</h2>
+        <p>
+          <span class="animada-giro">⚙️</span>
+          Giro continuo con <code>animation: giro 3s linear infinite</code>.
+        </p>
+        <p style="margin-top:12px;">
+          <span class="animada-pulso">🔔 Nueva oferta</span>
+          Pulso con <code>animation: pulso 2s ease-in-out infinite</code>.
+        </p>
+
+        <h2>3. Entrada Escalonada (Stagger)</h2>
+        <div class="tarjeta animada-entrada">
+          <strong>Tarjeta 1:</strong> Entra con animación, delay 0s.
+        </div>
+        <div class="tarjeta animada-entrada">
+          <strong>Tarjeta 2:</strong> Entra con animación, delay 0.15s.
+        </div>
+        <div class="tarjeta animada-entrada">
+          <strong>Tarjeta 3:</strong> Entra con animación, delay 0.3s. Efecto de cascada visual.
+        </div>
+
+        <h2>4. Accesibilidad: prefers-reduced-motion</h2>
+        <p>
+          Si tu sistema operativo tiene activada la opción "Reducir movimientos",
+          todas las animaciones de esta página se detendrán automáticamente. Esto
+          es un requisito de accesibilidad WCAG 2.2 (Criterio 2.3.3).
+        </p>
+        <p style="font-size:0.85rem;color:#64748b;">
+          Para probarlo en Windows: Configuración → Accesibilidad → Efectos visuales → Mostrar animaciones.
+          En macOS: Preferencias del Sistema → Accesibilidad → Reducir movimiento.
+        </p>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -907,64 +987,68 @@ p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
       padding: 8px 16px; background: #2563eb; color: #fff;
       border: none; border-radius: 4px; cursor: pointer;
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Transiciones y Animaciones CSS</h1>
-
-    <h2>1. Transición en Botón (hover)</h2>
-    <button class="btn-transicion">Pasa el ratón sobre mí</button>
-    <p style="margin-top:8px;color:#64748b;font-size:0.9rem;">
-      El botón cambia de color, se eleva 2px y gana sombra. Todo suavizado con <code>transition</code>.
-    </p>
-
-    <h2>2. Animaciones con @keyframes</h2>
-    <p>
-      <span class="animada-giro">⚙️</span>
-      Giro continuo con <code>animation: giro 3s linear infinite</code>.
-    </p>
-    <p style="margin-top:12px;">
-      <span class="animada-pulso">🔔 Nueva oferta</span>
-      Pulso con <code>animation: pulso 2s ease-in-out infinite</code>.
-    </p>
-
-    <h2>3. Entrada Escalonada (Stagger)</h2>
-    <div class="tarjeta animada-entrada">
-      <strong>Tarjeta 1:</strong> Entra con animación, delay 0s.
-    </div>
-    <div class="tarjeta animada-entrada">
-      <strong>Tarjeta 2:</strong> Entra con animación, delay 0.15s.
-    </div>
-    <div class="tarjeta animada-entrada">
-      <strong>Tarjeta 3:</strong> Entra con animación, delay 0.3s. Efecto de cascada visual.
-    </div>
-
-    <h2>4. Accesibilidad: prefers-reduced-motion</h2>
-    <p>
-      Si tu sistema operativo tiene activada la opción "Reducir movimientos",
-      todas las animaciones de esta página se detendrán automáticamente. Esto
-      es un requisito de accesibilidad WCAG 2.2 (Criterio 2.3.3).
-    </p>
-    <p style="font-size:0.85rem;color:#64748b;">
-      Para probarlo en Windows: Configuración → Accesibilidad → Efectos visuales → Mostrar animaciones.
-      En macOS: Preferencias del Sistema → Accesibilidad → Reducir movimiento.
-    </p>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 6: Técnicas de centrado
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Técnicas de Centrado CSS | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Técnicas de Centrado CSS | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>6 Técnicas de Centrado en CSS</h1>
+
+        <h2>1. Flexbox</h2>
+        <div class="demo-box centro-flex">
+          <div class="hijo">Centrado con Flexbox</div>
+        </div>
+        <pre>.padre { display: flex; justify-content: center; align-items: center; }</pre>
+        <p>La técnica más versátil y recomendada actualmente. Funciona con uno o múltiples hijos y en ambas direcciones.</p>
+
+        <h2>2. CSS Grid</h2>
+        <div class="demo-box centro-grid">
+          <div class="hijo">Centrado con Grid</div>
+        </div>
+        <pre>.padre { display: grid; place-items: center; }</pre>
+        <p><code>place-items</code> es el shorthand de <code>align-items</code> + <code>justify-items</code>. Ideal para centrar contenido en una celda grid.</p>
+
+        <h2>3. Absolute + Transform</h2>
+        <div class="demo-box centro-absolute">
+          <div class="hijo">Centrado con Absolute</div>
+        </div>
+        <pre>.hijo { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .padre { position: relative; } /* Necesario como referencia */</pre>
+        <p>Técnica clásica pre-flexbox. El 50% posiciona la esquina superior izquierda en el centro del padre; <code>translate(-50%, -50%)</code> retrocede la mitad del ancho y alto del propio elemento.</p>
+
+        <h2>4. Margin Auto (solo horizontal)</h2>
+        <div class="demo-box centro-margin">
+          <div class="hijo">Centrado horizontal</div>
+        </div>
+        <pre>.hijo { width: fit-content; margin: 0 auto; }</pre>
+        <p>La técnica más antigua. Solo centra horizontalmente. Requiere que el elemento tenga un ancho definido.</p>
+
+        <h2>5. Text-Align + Line-Height (texto inline)</h2>
+        <div class="demo-box centro-texto">
+          Texto centrado en ambas direcciones
+        </div>
+        <pre>.padre { text-align: center; line-height: 150px; } /* line-height = altura del contenedor */</pre>
+        <p>Solo válido para contenido de texto inline. <code>line-height</code> igual a la altura centra verticalmente una sola línea de texto.</p>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1026,62 +1110,46 @@ p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
       overflow-x: auto;
     }
     code { font-family: 'Fira Code', 'Cascadia Code', monospace; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>6 Técnicas de Centrado en CSS</h1>
-
-    <h2>1. Flexbox</h2>
-    <div class="demo-box centro-flex">
-      <div class="hijo">Centrado con Flexbox</div>
-    </div>
-    <pre>.padre { display: flex; justify-content: center; align-items: center; }</pre>
-    <p>La técnica más versátil y recomendada actualmente. Funciona con uno o múltiples hijos y en ambas direcciones.</p>
-
-    <h2>2. CSS Grid</h2>
-    <div class="demo-box centro-grid">
-      <div class="hijo">Centrado con Grid</div>
-    </div>
-    <pre>.padre { display: grid; place-items: center; }</pre>
-    <p><code>place-items</code> es el shorthand de <code>align-items</code> + <code>justify-items</code>. Ideal para centrar contenido en una celda grid.</p>
-
-    <h2>3. Absolute + Transform</h2>
-    <div class="demo-box centro-absolute">
-      <div class="hijo">Centrado con Absolute</div>
-    </div>
-    <pre>.hijo { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.padre { position: relative; } /* Necesario como referencia */</pre>
-    <p>Técnica clásica pre-flexbox. El 50% posiciona la esquina superior izquierda en el centro del padre; <code>translate(-50%, -50%)</code> retrocede la mitad del ancho y alto del propio elemento.</p>
-
-    <h2>4. Margin Auto (solo horizontal)</h2>
-    <div class="demo-box centro-margin">
-      <div class="hijo">Centrado horizontal</div>
-    </div>
-    <pre>.hijo { width: fit-content; margin: 0 auto; }</pre>
-    <p>La técnica más antigua. Solo centra horizontalmente. Requiere que el elemento tenga un ancho definido.</p>
-
-    <h2>5. Text-Align + Line-Height (texto inline)</h2>
-    <div class="demo-box centro-texto">
-      Texto centrado en ambas direcciones
-    </div>
-    <pre>.padre { text-align: center; line-height: 150px; } /* line-height = altura del contenedor */</pre>
-    <p>Solo válido para contenido de texto inline. <code>line-height</code> igual a la altura centra verticalmente una sola línea de texto.</p>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 7: Tooltips CSS puro con ::before/::after
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tooltips CSS Puro | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tooltips CSS Puro | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Tooltips CSS Puro</h1>
+      <h2>Sin JavaScript, usando ::before, ::after y data attributes</h2>
+
+      <!-- Tooltip superior (por defecto) -->
+      <button class="tooltip-trigger" data-tooltip="Este es un tooltip superior" aria-label="Botón con tooltip superior">
+        Tooltip Superior
+      </button>
+
+      <!-- Tooltip inferior -->
+      <button class="tooltip-trigger tooltip-abajo" data-tooltip="Tooltip que aparece debajo" aria-label="Botón con tooltip inferior">
+        Tooltip Inferior
+      </button>
+
+      <!-- Tooltip lateral derecho -->
+      <button class="tooltip-trigger tooltip-derecha" data-tooltip="Tooltip a la derecha" aria-label="Botón con tooltip derecho">
+        Tooltip Derecha
+      </button>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1173,40 +1241,73 @@ p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
       transform: translateY(-50%);
       border-top-color: transparent; border-left-color: #1e293b;
     }
-  </style>
-</head>
-<body>
-  <h1>Tooltips CSS Puro</h1>
-  <h2>Sin JavaScript, usando ::before, ::after y data attributes</h2>
-
-  <!-- Tooltip superior (por defecto) -->
-  <button class="tooltip-trigger" data-tooltip="Este es un tooltip superior" aria-label="Botón con tooltip superior">
-    Tooltip Superior
-  </button>
-
-  <!-- Tooltip inferior -->
-  <button class="tooltip-trigger tooltip-abajo" data-tooltip="Tooltip que aparece debajo" aria-label="Botón con tooltip inferior">
-    Tooltip Inferior
-  </button>
-
-  <!-- Tooltip lateral derecho -->
-  <button class="tooltip-trigger tooltip-derecha" data-tooltip="Tooltip a la derecha" aria-label="Botón con tooltip derecho">
-    Tooltip Derecha
-  </button>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 8: Contadores CSS para numeración automática
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contadores CSS | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Contadores CSS | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Contadores CSS</h1>
+        <p class="intro">
+          Los contadores CSS permiten numerar elementos automáticamente sin modificar
+          el HTML. Son ideales para listas numeradas personalizadas, numeración de
+          figuras, secciones jerárquicas y cualquier contenido que requiera numeración
+          dinámica que se actualice automáticamente.
+        </p>
+
+        <h2>Lista Numerada Personalizada</h2>
+        <ol class="lista-numerada">
+          <li>Primer elemento de la lista con número circular azul</li>
+          <li>Segundo elemento: los números se generan con <code>counter-increment</code></li>
+          <li>Tercer elemento: si añades o quitas elementos, la numeración se recalcula automáticamente</li>
+          <li>Cuarto elemento: los estilos del número se controlan completamente con CSS</li>
+        </ol>
+        <pre>counter-reset: item;           /* Inicializa el contador */
+    counter-increment: item;       /* Incrementa en cada li */
+    content: counter(item);       /* Muestra el valor actual */</pre>
+
+        <h2>Numeración de Figuras</h2>
+        <div class="seccion-figuras">
+          <figure>
+            <figcaption>Diagrama de arquitectura del sistema</figcaption>
+          </figure>
+          <figure>
+            <figcaption>Mockup de la interfaz de usuario</figcaption>
+          </figure>
+          <figure>
+            <figcaption>Flujo de navegación entre pantallas</figcaption>
+          </figure>
+        </div>
+
+        <h2>Numeración Jerárquica (sección.subsección)</h2>
+        <div class="contenido-jerarquico">
+          <h2>Introducción</h2>
+          <h3>Objetivos</h3>
+          <h3>Alcance</h3>
+          <h2>Desarrollo</h2>
+          <h3>Metodología</h3>
+          <h3>Implementación</h3>
+          <h2>Conclusiones</h2>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1290,56 +1391,7 @@ p  { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }</pre>
       border-radius: 6px; font-size: 0.85rem; margin: 8px 0;
       overflow-x: auto;
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Contadores CSS</h1>
-    <p class="intro">
-      Los contadores CSS permiten numerar elementos automáticamente sin modificar
-      el HTML. Son ideales para listas numeradas personalizadas, numeración de
-      figuras, secciones jerárquicas y cualquier contenido que requiera numeración
-      dinámica que se actualice automáticamente.
-    </p>
-
-    <h2>Lista Numerada Personalizada</h2>
-    <ol class="lista-numerada">
-      <li>Primer elemento de la lista con número circular azul</li>
-      <li>Segundo elemento: los números se generan con <code>counter-increment</code></li>
-      <li>Tercer elemento: si añades o quitas elementos, la numeración se recalcula automáticamente</li>
-      <li>Cuarto elemento: los estilos del número se controlan completamente con CSS</li>
-    </ol>
-    <pre>counter-reset: item;           /* Inicializa el contador */
-counter-increment: item;       /* Incrementa en cada li */
-content: counter(item);       /* Muestra el valor actual */</pre>
-
-    <h2>Numeración de Figuras</h2>
-    <div class="seccion-figuras">
-      <figure>
-        <figcaption>Diagrama de arquitectura del sistema</figcaption>
-      </figure>
-      <figure>
-        <figcaption>Mockup de la interfaz de usuario</figcaption>
-      </figure>
-      <figure>
-        <figcaption>Flujo de navegación entre pantallas</figcaption>
-      </figure>
-    </div>
-
-    <h2>Numeración Jerárquica (sección.subsección)</h2>
-    <div class="contenido-jerarquico">
-      <h2>Introducción</h2>
-      <h3>Objetivos</h3>
-      <h3>Alcance</h3>
-      <h2>Desarrollo</h2>
-      <h3>Metodología</h3>
-      <h3>Implementación</h3>
-      <h2>Conclusiones</h2>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ## Casos reales
 

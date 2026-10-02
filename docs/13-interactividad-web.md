@@ -356,717 +356,817 @@ Los **atributos ARIA de estado** constituyen el vocabulario mediante el cual los
 !!! example "Contexto pedagógico"
     Construiremos un botón de "Me gusta" completamente funcional con las siguientes características: alterna entre los estados "sin like" y "con like" al hacer clic o presionar Enter/Espacio, aplica animación de latido mediante `@keyframes`, actualiza un contador con animación numérica, y es plenamente accesible mediante `aria-pressed` y un `aria-label` descriptivo que anuncia el estado completo.
 
-```html
-<!-- Componente: Botón de Like Animado con todas las funcionalidades -->
-<div class="ejemplo-container">
-  <h3>Ejemplo 1: Botón de Like</h3>
-  <button class="like-btn" id="likeBtn" aria-pressed="false" aria-label="Me gusta. 0 me gustas">
-    <svg class="heart-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-      <path class="heart-path" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3
-        19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-        fill="none" stroke="currentColor" stroke-width="2"/>
-    </svg>
-    <span class="like-count" id="likeCount" aria-hidden="true">0</span>
-  </button>
-</div>
+=== "HTML"
 
-<style>
-.ejemplo-container { padding: 1.5rem; font-family: system-ui, sans-serif; max-width: 400px; margin: 0 auto; text-align: center; }
-.ejemplo-container h3 { margin-bottom: 1rem; color: #333; }
-.like-btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.7rem 1.4rem; border: 2px solid #e0e0e0; border-radius: 2rem;
-  background: #fff; color: #666; font-size: 1rem; font-weight: 500;
-  cursor: pointer; outline: none;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
-}
-.like-btn:hover { border-color: #ff6b81; color: #ff6b81; background: #fff5f5; }
-.like-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,107,129,0.4); border-color: #ff6b81; }
-.like-btn:active { transform: scale(0.95); }
-.like-btn.liked { background: #ff6b81; border-color: #ff6b81; color: #fff; }
-.like-btn.liked:hover { background: #ff5274; border-color: #ff5274; color: #fff; }
-.heart-icon { transition: transform 0.3s cubic-bezier(0.68,-0.55,0.265,1.55); flex-shrink: 0; }
-.heart-path { transition: fill 0.3s ease; }
-.like-btn.liked .heart-path { fill: currentColor; }
-.like-btn.liked .heart-icon { animation: heartbeat 0.4s ease-in-out; }
-@keyframes heartbeat {
-  0%{transform:scale(1)}25%{transform:scale(1.3)}40%{transform:scale(0.95)}
-  55%{transform:scale(1.15)}70%{transform:scale(0.98)}100%{transform:scale(1)}
-}
-.like-count { transition: transform 0.2s ease; }
-.like-count.updating { animation: countPop 0.3s ease; }
-@keyframes countPop {
-  0%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.5}100%{transform:scale(1);opacity:1}
-}
-</style>
+    ``` html
+    <!-- Componente: Botón de Like Animado con todas las funcionalidades -->
+    <div class="ejemplo-container">
+      <h3>Ejemplo 1: Botón de Like</h3>
+      <button class="like-btn" id="likeBtn" aria-pressed="false" aria-label="Me gusta. 0 me gustas">
+        <svg class="heart-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path class="heart-path" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3
+            19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="like-count" id="likeCount" aria-hidden="true">0</span>
+      </button>
+    </div>
 
-<script>
-(function() {
-  var btn = document.getElementById('likeBtn');
-  var countEl = document.getElementById('likeCount');
-  var liked = false;
-  var count = 0;
+    <link rel="stylesheet" href="./styles.css">
 
-  function updateUI() {
-    btn.classList.toggle('liked', liked);
-    btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
-    countEl.textContent = count;
-    btn.setAttribute('aria-label',
-      'Me gusta. ' + (count === 0 ? 'Sin me gustas' : count + ' me gustas') +
-      (liked ? '. Te gusta' : '. No te gusta')
-    );
-  }
+    <script src="./script.js"></script>
+    ```
 
-  function animateCount() {
-    void countEl.offsetWidth;
-    countEl.classList.add('updating');
-    setTimeout(function() { countEl.classList.remove('updating'); }, 300);
-  }
+=== "CSS"
 
-  function toggleLike() {
-    liked = !liked;
-    count += liked ? 1 : -1;
-    if (count < 0) count = 0;
-    animateCount();
-    updateUI();
-  }
+    ``` css
+    .ejemplo-container { padding: 1.5rem; font-family: system-ui, sans-serif; max-width: 400px; margin: 0 auto; text-align: center; }
+    .ejemplo-container h3 { margin-bottom: 1rem; color: #333; }
+    .like-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.4rem; border: 2px solid #e0e0e0; border-radius: 2rem;
+      background: #fff; color: #666; font-size: 1rem; font-weight: 500;
+      cursor: pointer; outline: none;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
+    }
+    .like-btn:hover { border-color: #ff6b81; color: #ff6b81; background: #fff5f5; }
+    .like-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,107,129,0.4); border-color: #ff6b81; }
+    .like-btn:active { transform: scale(0.95); }
+    .like-btn.liked { background: #ff6b81; border-color: #ff6b81; color: #fff; }
+    .like-btn.liked:hover { background: #ff5274; border-color: #ff5274; color: #fff; }
+    .heart-icon { transition: transform 0.3s cubic-bezier(0.68,-0.55,0.265,1.55); flex-shrink: 0; }
+    .heart-path { transition: fill 0.3s ease; }
+    .like-btn.liked .heart-path { fill: currentColor; }
+    .like-btn.liked .heart-icon { animation: heartbeat 0.4s ease-in-out; }
+    @keyframes heartbeat {
+      0%{transform:scale(1)}25%{transform:scale(1.3)}40%{transform:scale(0.95)}
+      55%{transform:scale(1.15)}70%{transform:scale(0.98)}100%{transform:scale(1)}
+    }
+    .like-count { transition: transform 0.2s ease; }
+    .like-count.updating { animation: countPop 0.3s ease; }
+    @keyframes countPop {
+      0%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.5}100%{transform:scale(1);opacity:1}
+    }
+    ```
 
-  btn.addEventListener('click', toggleLike);
-  btn.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleLike(); }
-  });
-  updateUI();
-})();
-</script>
-```
+=== "JS"
+
+    ``` js
+    (function() {
+      var btn = document.getElementById('likeBtn');
+      var countEl = document.getElementById('likeCount');
+      var liked = false;
+      var count = 0;
+
+      function updateUI() {
+        btn.classList.toggle('liked', liked);
+        btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+        countEl.textContent = count;
+        btn.setAttribute('aria-label',
+          'Me gusta. ' + (count === 0 ? 'Sin me gustas' : count + ' me gustas') +
+          (liked ? '. Te gusta' : '. No te gusta')
+        );
+      }
+
+      function animateCount() {
+        void countEl.offsetWidth;
+        countEl.classList.add('updating');
+        setTimeout(function() { countEl.classList.remove('updating'); }, 300);
+      }
+
+      function toggleLike() {
+        liked = !liked;
+        count += liked ? 1 : -1;
+        if (count < 0) count = 0;
+        animateCount();
+        updateUI();
+      }
+
+      btn.addEventListener('click', toggleLike);
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleLike(); }
+      });
+      updateUI();
+    })();
+    ```
 
 ### Ejemplo Guiado 2: Toggle Switch Accesible
 
 !!! example "Contexto pedagógico"
     Implementaremos un interruptor binario completamente accesible utilizando un checkbox oculto como base semántica y spans estilizados para la apariencia visual. El switch responde a clic, teclado (Enter/Espacio), anuncia su estado con `aria-checked` y emite un mensaje mediante `aria-live`.
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 2: Toggle Switch</h3>
-  <label class="toggle-label">
-    <span class="toggle-text">Notificaciones push</span>
-    <input type="checkbox" class="toggle-input" id="notifToggle" role="switch" aria-checked="false">
-    <span class="toggle-track" aria-hidden="true">
-      <span class="toggle-thumb"></span>
-    </span>
-  </label>
-  <div class="toggle-status" aria-live="polite" id="toggleStatus"></div>
-</div>
+=== "HTML"
 
-<style>
-.toggle-label { display: inline-flex; align-items: center; gap: 0.75rem; cursor: pointer; user-select: none; font-size: 1rem; color: #333; }
-.toggle-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-.toggle-track {
-  position: relative; display: inline-block; width: 52px; height: 28px;
-  background: #c0c0c0; border-radius: 14px; border: 2px solid #c0c0c0; flex-shrink: 0;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-.toggle-thumb {
-  position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
-  background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-.toggle-label:hover .toggle-track { background: #a8a8a8; border-color: #a8a8a8; }
-.toggle-input:checked ~ .toggle-track { background: #4cd964; border-color: #4cd964; }
-.toggle-input:checked ~ .toggle-track .toggle-thumb { transform: translateX(24px); }
-.toggle-input:focus-visible ~ .toggle-track { box-shadow: 0 0 0 3px rgba(76,217,100,0.4); }
-.toggle-status { font-size: 0.85rem; color: #666; margin-top: 0.5rem; }
-</style>
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 2: Toggle Switch</h3>
+      <label class="toggle-label">
+        <span class="toggle-text">Notificaciones push</span>
+        <input type="checkbox" class="toggle-input" id="notifToggle" role="switch" aria-checked="false">
+        <span class="toggle-track" aria-hidden="true">
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+      <div class="toggle-status" aria-live="polite" id="toggleStatus"></div>
+    </div>
 
-<script>
-(function() {
-  var toggle = document.getElementById('notifToggle');
-  var status = document.getElementById('toggleStatus');
-  function update() {
-    toggle.setAttribute('aria-checked', toggle.checked ? 'true' : 'false');
-    status.textContent = 'Notificaciones: ' + (toggle.checked ? 'activadas' : 'desactivadas');
-  }
-  toggle.addEventListener('change', update);
-  update();
-})();
-</script>
-```
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .toggle-label { display: inline-flex; align-items: center; gap: 0.75rem; cursor: pointer; user-select: none; font-size: 1rem; color: #333; }
+    .toggle-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .toggle-track {
+      position: relative; display: inline-block; width: 52px; height: 28px;
+      background: #c0c0c0; border-radius: 14px; border: 2px solid #c0c0c0; flex-shrink: 0;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .toggle-thumb {
+      position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+      background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .toggle-label:hover .toggle-track { background: #a8a8a8; border-color: #a8a8a8; }
+    .toggle-input:checked ~ .toggle-track { background: #4cd964; border-color: #4cd964; }
+    .toggle-input:checked ~ .toggle-track .toggle-thumb { transform: translateX(24px); }
+    .toggle-input:focus-visible ~ .toggle-track { box-shadow: 0 0 0 3px rgba(76,217,100,0.4); }
+    .toggle-status { font-size: 0.85rem; color: #666; margin-top: 0.5rem; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var toggle = document.getElementById('notifToggle');
+      var status = document.getElementById('toggleStatus');
+      function update() {
+        toggle.setAttribute('aria-checked', toggle.checked ? 'true' : 'false');
+        status.textContent = 'Notificaciones: ' + (toggle.checked ? 'activadas' : 'desactivadas');
+      }
+      toggle.addEventListener('change', update);
+      update();
+    })();
+    ```
 
 ### Ejemplo Guiado 3: Notificaciones Toast con Cola y Auto-Dismiss
 
 !!! example "Contexto pedagógico"
     Desarrollamos un sistema completo de notificaciones efímeras que gestiona una cola de mensajes, aplica animaciones de slide-in/slide-out, permite auto-dismiss configurable, cierre manual y respeta un límite máximo de toasts visibles. Cada toast es una región `role="status"` para accesibilidad.
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 3: Sistema Toast</h3>
-  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-    <button onclick="mostrarToast('exito','Operación completada')" class="btn-demo btn-exito">Éxito</button>
-    <button onclick="mostrarToast('error','Error de conexión')" class="btn-demo btn-error">Error</button>
-    <button onclick="mostrarToast('aviso','Sesión próxima a expirar')" class="btn-demo btn-aviso">Aviso</button>
-    <button onclick="mostrarToast('info','Nueva versión disponible')" class="btn-demo btn-info">Info</button>
-  </div>
-  <div class="toast-container" id="toastContainer" aria-label="Notificaciones"></div>
-</div>
+=== "HTML"
 
-<style>
-.btn-demo { padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; color: #fff; cursor: pointer; font-weight: 500; }
-.btn-exito { background: #28a745; } .btn-error { background: #dc3545; }
-.btn-aviso { background: #ffc107; color: #333; } .btn-info { background: #17a2b8; }
-.toast-container {
-  position: fixed; bottom: 1rem; right: 1rem; z-index: 9999;
-  display: flex; flex-direction: column-reverse; gap: 0.5rem; max-width: 380px;
-}
-.toast {
-  display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
-  background: #fff; border-radius: 0.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  border-left: 4px solid #6c757d; font-size: 0.9rem;
-  animation: toastIn 0.35s ease forwards;
-}
-@keyframes toastIn { from{transform:translateX(120%);opacity:0} to{transform:translateX(0);opacity:1} }
-.toast.saliendo { animation: toastOut 0.3s ease forwards; }
-@keyframes toastOut { to{transform:translateX(120%);opacity:0;max-height:0;margin:0} }
-.toast.exito{border-left-color:#28a745}.toast.error{border-left-color:#dc3545}
-.toast.aviso{border-left-color:#ffc107}.toast.info{border-left-color:#17a2b8}
-.toast-cerrar{background:none;border:none;font-size:1.2rem;cursor:pointer;color:#999;padding:0 0.25rem}
-</style>
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 3: Sistema Toast</h3>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button onclick="mostrarToast('exito','Operación completada')" class="btn-demo btn-exito">Éxito</button>
+        <button onclick="mostrarToast('error','Error de conexión')" class="btn-demo btn-error">Error</button>
+        <button onclick="mostrarToast('aviso','Sesión próxima a expirar')" class="btn-demo btn-aviso">Aviso</button>
+        <button onclick="mostrarToast('info','Nueva versión disponible')" class="btn-demo btn-info">Info</button>
+      </div>
+      <div class="toast-container" id="toastContainer" aria-label="Notificaciones"></div>
+    </div>
 
-<script>
-var iconosToast = { exito: '\u2705', error: '\u274C', aviso: '\u26A0\uFE0F', info: '\u2139\uFE0F' };
-function mostrarToast(tipo, mensaje, duracion) {
-  duracion = duracion || 4000;
-  var contenedor = document.getElementById('toastContainer');
-  var toast = document.createElement('div');
-  toast.className = 'toast ' + tipo;
-  toast.setAttribute('role', 'status');
-  toast.innerHTML = '<span aria-hidden="true">' + (iconosToast[tipo] || '') + '</span>' +
-    '<span style="flex:1">' + mensaje + '</span>' +
-    '<button class="toast-cerrar" aria-label="Cerrar">&times;</button>';
-  contenedor.insertBefore(toast, contenedor.firstChild);
-  var timer = setTimeout(eliminar, duracion);
-  function eliminar() {
-    if (timer) clearTimeout(timer);
-    toast.classList.add('saliendo');
-    setTimeout(function() { if (toast.parentNode) toast.remove(); }, 300);
-  }
-  toast.querySelector('.toast-cerrar').addEventListener('click', eliminar);
-  toast.addEventListener('mouseenter', function() { if (timer) { clearTimeout(timer); timer = null; } });
-  toast.addEventListener('mouseleave', function() { if (!timer) timer = setTimeout(eliminar, duracion); });
-  var toasts = contenedor.querySelectorAll('.toast');
-  if (toasts.length > 5) { toasts[toasts.length - 1].classList.add('saliendo'); }
-}
-</script>
-```
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .btn-demo { padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; color: #fff; cursor: pointer; font-weight: 500; }
+    .btn-exito { background: #28a745; } .btn-error { background: #dc3545; }
+    .btn-aviso { background: #ffc107; color: #333; } .btn-info { background: #17a2b8; }
+    .toast-container {
+      position: fixed; bottom: 1rem; right: 1rem; z-index: 9999;
+      display: flex; flex-direction: column-reverse; gap: 0.5rem; max-width: 380px;
+    }
+    .toast {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
+      background: #fff; border-radius: 0.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      border-left: 4px solid #6c757d; font-size: 0.9rem;
+      animation: toastIn 0.35s ease forwards;
+    }
+    @keyframes toastIn { from{transform:translateX(120%);opacity:0} to{transform:translateX(0);opacity:1} }
+    .toast.saliendo { animation: toastOut 0.3s ease forwards; }
+    @keyframes toastOut { to{transform:translateX(120%);opacity:0;max-height:0;margin:0} }
+    .toast.exito{border-left-color:#28a745}.toast.error{border-left-color:#dc3545}
+    .toast.aviso{border-left-color:#ffc107}.toast.info{border-left-color:#17a2b8}
+    .toast-cerrar{background:none;border:none;font-size:1.2rem;cursor:pointer;color:#999;padding:0 0.25rem}
+    ```
+
+=== "JS"
+
+    ``` js
+    var iconosToast = { exito: '\u2705', error: '\u274C', aviso: '\u26A0\uFE0F', info: '\u2139\uFE0F' };
+    function mostrarToast(tipo, mensaje, duracion) {
+      duracion = duracion || 4000;
+      var contenedor = document.getElementById('toastContainer');
+      var toast = document.createElement('div');
+      toast.className = 'toast ' + tipo;
+      toast.setAttribute('role', 'status');
+      toast.innerHTML = '<span aria-hidden="true">' + (iconosToast[tipo] || '') + '</span>' +
+        '<span style="flex:1">' + mensaje + '</span>' +
+        '<button class="toast-cerrar" aria-label="Cerrar">&times;</button>';
+      contenedor.insertBefore(toast, contenedor.firstChild);
+      var timer = setTimeout(eliminar, duracion);
+      function eliminar() {
+        if (timer) clearTimeout(timer);
+        toast.classList.add('saliendo');
+        setTimeout(function() { if (toast.parentNode) toast.remove(); }, 300);
+      }
+      toast.querySelector('.toast-cerrar').addEventListener('click', eliminar);
+      toast.addEventListener('mouseenter', function() { if (timer) { clearTimeout(timer); timer = null; } });
+      toast.addEventListener('mouseleave', function() { if (!timer) timer = setTimeout(eliminar, duracion); });
+      var toasts = contenedor.querySelectorAll('.toast');
+      if (toasts.length > 5) { toasts[toasts.length - 1].classList.add('saliendo'); }
+    }
+    ```
 
 ### Ejemplo Guiado 4: Modal Accesible con Focus Trapping
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 4: Modal Accesible</h3>
-  <button class="btn-demo btn-exito" id="abrirModal" aria-haspopup="dialog">Abrir Modal</button>
-</div>
-<div class="modal-overlay" id="modalOverlay" aria-hidden="true"></div>
-<div class="modal-dialog" id="modalDialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h3 id="modalTitle" style="margin:0">Confirmar acción</h3>
-      <button class="modal-close-btn" id="modalClose" aria-label="Cerrar">&times;</button>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 4: Modal Accesible</h3>
+      <button class="btn-demo btn-exito" id="abrirModal" aria-haspopup="dialog">Abrir Modal</button>
     </div>
-    <div class="modal-body"><p>¿Estás seguro de realizar esta acción? No se puede deshacer.</p></div>
-    <div class="modal-footer">
-      <button class="btn-demo" style="background:#6c757d" id="modalCancel">Cancelar</button>
-      <button class="btn-demo btn-error" id="modalConfirm">Confirmar</button>
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true"></div>
+    <div class="modal-dialog" id="modalDialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle" style="margin:0">Confirmar acción</h3>
+          <button class="modal-close-btn" id="modalClose" aria-label="Cerrar">&times;</button>
+        </div>
+        <div class="modal-body"><p>¿Estás seguro de realizar esta acción? No se puede deshacer.</p></div>
+        <div class="modal-footer">
+          <button class="btn-demo" style="background:#6c757d" id="modalCancel">Cancelar</button>
+          <button class="btn-demo btn-error" id="modalConfirm">Confirmar</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<style>
-.modal-overlay { position: fixed; inset:0; background: rgba(0,0,0,0.5); z-index: 1000; opacity:0; visibility:hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-.modal-overlay.visible { opacity:1; visibility:visible; }
-.modal-dialog { position: fixed; inset:0; z-index:1001; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-.modal-dialog.visible { opacity:1; visibility:visible; }
-.modal-box { background: #fff; border-radius: 0.75rem; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width:90%; max-width:450px; transform:translateY(20px); transition: transform 0.3s ease; }
-.modal-dialog.visible .modal-box { transform:translateY(0); }
-.modal-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid #eee; }
-.modal-body { padding: 1.25rem; color: #555; line-height: 1.6; }
-.modal-footer { display:flex; justify-content:flex-end; gap:0.5rem; padding: 0.75rem 1.25rem; border-top:1px solid #eee; }
-.modal-close-btn { background:none; border:none; font-size:1.5rem; cursor:pointer; color:#999; }
-</style>
+    <link rel="stylesheet" href="./styles.css">
 
-<script>
-(function() {
-  var overlay = document.getElementById('modalOverlay');
-  var dialog = document.getElementById('modalDialog');
-  var btnOpen = document.getElementById('abrirModal');
-  var btnClose = document.getElementById('modalClose');
-  var btnCancel = document.getElementById('modalCancel');
-  var btnConfirm = document.getElementById('modalConfirm');
-  var lastFocus = null;
+    <script src="./script.js"></script>
+    ```
 
-  function getFocusable() {
-    return dialog.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])');
-  }
+=== "CSS"
 
-  function trapFocus(e) {
-    if (e.key !== 'Tab') return;
-    var focusable = getFocusable();
-    if (focusable.length === 0) return;
-    var first = focusable[0];
-    var last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
+    ``` css
+    .modal-overlay { position: fixed; inset:0; background: rgba(0,0,0,0.5); z-index: 1000; opacity:0; visibility:hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .modal-overlay.visible { opacity:1; visibility:visible; }
+    .modal-dialog { position: fixed; inset:0; z-index:1001; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .modal-dialog.visible { opacity:1; visibility:visible; }
+    .modal-box { background: #fff; border-radius: 0.75rem; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width:90%; max-width:450px; transform:translateY(20px); transition: transform 0.3s ease; }
+    .modal-dialog.visible .modal-box { transform:translateY(0); }
+    .modal-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid #eee; }
+    .modal-body { padding: 1.25rem; color: #555; line-height: 1.6; }
+    .modal-footer { display:flex; justify-content:flex-end; gap:0.5rem; padding: 0.75rem 1.25rem; border-top:1px solid #eee; }
+    .modal-close-btn { background:none; border:none; font-size:1.5rem; cursor:pointer; color:#999; }
+    ```
 
-  function openModal() {
-    lastFocus = document.activeElement;
-    overlay.classList.add('visible'); dialog.classList.add('visible');
-    overlay.setAttribute('aria-hidden', 'false'); dialog.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function() { btnClose.focus(); }, 100);
-    dialog.addEventListener('keydown', trapFocus);
-  }
+=== "JS"
 
-  function closeModal() {
-    overlay.classList.remove('visible'); dialog.classList.remove('visible');
-    overlay.setAttribute('aria-hidden', 'true'); dialog.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    dialog.removeEventListener('keydown', trapFocus);
-    if (lastFocus) { lastFocus.focus(); lastFocus = null; }
-  }
+    ``` js
+    (function() {
+      var overlay = document.getElementById('modalOverlay');
+      var dialog = document.getElementById('modalDialog');
+      var btnOpen = document.getElementById('abrirModal');
+      var btnClose = document.getElementById('modalClose');
+      var btnCancel = document.getElementById('modalCancel');
+      var btnConfirm = document.getElementById('modalConfirm');
+      var lastFocus = null;
 
-  btnOpen.addEventListener('click', openModal);
-  btnClose.addEventListener('click', closeModal);
-  btnCancel.addEventListener('click', closeModal);
-  overlay.addEventListener('click', closeModal);
-  btnConfirm.addEventListener('click', function() { closeModal(); });
+      function getFocusable() {
+        return dialog.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      }
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && dialog.classList.contains('visible')) closeModal();
-  });
-})();
-</script>
-```
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = getFocusable();
+        if (focusable.length === 0) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        overlay.classList.add('visible'); dialog.classList.add('visible');
+        overlay.setAttribute('aria-hidden', 'false'); dialog.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() { btnClose.focus(); }, 100);
+        dialog.addEventListener('keydown', trapFocus);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('visible'); dialog.classList.remove('visible');
+        overlay.setAttribute('aria-hidden', 'true'); dialog.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        dialog.removeEventListener('keydown', trapFocus);
+        if (lastFocus) { lastFocus.focus(); lastFocus = null; }
+      }
+
+      btnOpen.addEventListener('click', openModal);
+      btnClose.addEventListener('click', closeModal);
+      btnCancel.addEventListener('click', closeModal);
+      overlay.addEventListener('click', closeModal);
+      btnConfirm.addEventListener('click', function() { closeModal(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && dialog.classList.contains('visible')) closeModal();
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 5: Acordeón FAQ Accesible
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 5: Acordeón FAQ</h3>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq1">¿Cuál es el plazo de entrega? <span class="faq-arrow" aria-hidden="true">+</span></button>
-      <div class="faq-panel" id="faq1" role="region" aria-labelledby="faq-btn1" hidden>
-        <div class="faq-content">El plazo estándar es de 3 a 5 días laborables para envíos nacionales. Los envíos internacionales pueden tardar entre 7 y 15 días según el destino y los trámites aduaneros.</div>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 5: Acordeón FAQ</h3>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq1">¿Cuál es el plazo de entrega? <span class="faq-arrow" aria-hidden="true">+</span></button>
+          <div class="faq-panel" id="faq1" role="region" aria-labelledby="faq-btn1" hidden>
+            <div class="faq-content">El plazo estándar es de 3 a 5 días laborables para envíos nacionales. Los envíos internacionales pueden tardar entre 7 y 15 días según el destino y los trámites aduaneros.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq2">¿Puedo devolver un producto? <span class="faq-arrow" aria-hidden="true">+</span></button>
+          <div class="faq-panel" id="faq2" role="region" aria-labelledby="faq-btn2" hidden>
+            <div class="faq-content">Dispones de 30 días desde la recepción. El producto debe estar en su embalaje original y sin signos de uso. Los cambios de talla tienen devolución gratuita.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq3">¿Qué métodos de pago aceptáis? <span class="faq-arrow" aria-hidden="true">+</span></button>
+          <div class="faq-panel" id="faq3" role="region" aria-labelledby="faq-btn3" hidden>
+            <div class="faq-content">Aceptamos Visa, Mastercard, American Express, PayPal, transferencia bancaria y financiación mediante Klarna. Todos los pagos usan cifrado SSL.</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq2">¿Puedo devolver un producto? <span class="faq-arrow" aria-hidden="true">+</span></button>
-      <div class="faq-panel" id="faq2" role="region" aria-labelledby="faq-btn2" hidden>
-        <div class="faq-content">Dispones de 30 días desde la recepción. El producto debe estar en su embalaje original y sin signos de uso. Los cambios de talla tienen devolución gratuita.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq3">¿Qué métodos de pago aceptáis? <span class="faq-arrow" aria-hidden="true">+</span></button>
-      <div class="faq-panel" id="faq3" role="region" aria-labelledby="faq-btn3" hidden>
-        <div class="faq-content">Aceptamos Visa, Mastercard, American Express, PayPal, transferencia bancaria y financiación mediante Klarna. Todos los pagos usan cifrado SSL.</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<style>
-.faq-list { max-width: 600px; }
-.faq-item { border: 1px solid #e0e0e0; border-radius: 0.5rem; margin-bottom: 0.5rem; overflow: hidden; background: #fff; }
-.faq-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0.9rem 1.1rem; background: none; border: none; font-size: 0.95rem; font-weight: 500; color: #333; cursor: pointer; text-align: left; }
-.faq-btn:hover { background: #f8f9fa; }
-.faq-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: -3px; border-radius: 0.5rem; }
-.faq-btn[aria-expanded="true"] { color: #4a90d9; background: #f0f5ff; }
-.faq-arrow { font-size: 1.3rem; transition: transform 0.3s ease; color: #999; }
-.faq-btn[aria-expanded="true"] .faq-arrow { transform: rotate(45deg); color: #4a90d9; }
-.faq-panel { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.3s ease; }
-.faq-panel:not([hidden]) { max-height: 300px; opacity: 1; }
-.faq-content { padding: 0 1.1rem 1.1rem; color: #555; line-height: 1.7; }
-</style>
+    <link rel="stylesheet" href="./styles.css">
 
-<script>
-(function() {
-  var btns = document.querySelectorAll('.faq-btn');
-  var btnArray = Array.from(btns);
+    <script src="./script.js"></script>
+    ```
 
-  function togglePanel(btn) {
-    var panel = document.getElementById(btn.getAttribute('aria-controls'));
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !expanded);
-    if (expanded) panel.setAttribute('hidden', '');
-    else panel.removeAttribute('hidden');
-  }
+=== "CSS"
 
-  btnArray.forEach(function(btn, i) {
-    btn.addEventListener('click', function() { togglePanel(btn); });
-    btn.addEventListener('keydown', function(e) {
-      var target = null;
-      if (e.key === 'ArrowDown') { e.preventDefault(); target = btnArray[(i+1) % btnArray.length]; }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); target = btnArray[(i-1+btnArray.length) % btnArray.length]; }
-      else if (e.key === 'Home') { e.preventDefault(); target = btnArray[0]; }
-      else if (e.key === 'End') { e.preventDefault(); target = btnArray[btnArray.length-1]; }
-      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel(btn); }
-      if (target) target.focus();
-    });
-  });
-})();
-</script>
-```
+    ``` css
+    .faq-list { max-width: 600px; }
+    .faq-item { border: 1px solid #e0e0e0; border-radius: 0.5rem; margin-bottom: 0.5rem; overflow: hidden; background: #fff; }
+    .faq-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0.9rem 1.1rem; background: none; border: none; font-size: 0.95rem; font-weight: 500; color: #333; cursor: pointer; text-align: left; }
+    .faq-btn:hover { background: #f8f9fa; }
+    .faq-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: -3px; border-radius: 0.5rem; }
+    .faq-btn[aria-expanded="true"] { color: #4a90d9; background: #f0f5ff; }
+    .faq-arrow { font-size: 1.3rem; transition: transform 0.3s ease; color: #999; }
+    .faq-btn[aria-expanded="true"] .faq-arrow { transform: rotate(45deg); color: #4a90d9; }
+    .faq-panel { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.3s ease; }
+    .faq-panel:not([hidden]) { max-height: 300px; opacity: 1; }
+    .faq-content { padding: 0 1.1rem 1.1rem; color: #555; line-height: 1.7; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var btns = document.querySelectorAll('.faq-btn');
+      var btnArray = Array.from(btns);
+
+      function togglePanel(btn) {
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        if (expanded) panel.setAttribute('hidden', '');
+        else panel.removeAttribute('hidden');
+      }
+
+      btnArray.forEach(function(btn, i) {
+        btn.addEventListener('click', function() { togglePanel(btn); });
+        btn.addEventListener('keydown', function(e) {
+          var target = null;
+          if (e.key === 'ArrowDown') { e.preventDefault(); target = btnArray[(i+1) % btnArray.length]; }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); target = btnArray[(i-1+btnArray.length) % btnArray.length]; }
+          else if (e.key === 'Home') { e.preventDefault(); target = btnArray[0]; }
+          else if (e.key === 'End') { e.preventDefault(); target = btnArray[btnArray.length-1]; }
+          else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel(btn); }
+          if (target) target.focus();
+        });
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 6: Tabs con Indicador Animado
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 6: Sistema de Tabs</h3>
-  <div class="tabs-wrapper">
-    <div class="tabs-nav" role="tablist" aria-label="Panel de configuración">
-      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tabPanel1" tabindex="0">General</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tabPanel2" tabindex="-1">Seguridad</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tabPanel3" tabindex="-1">Notificaciones</button>
-      <span class="tab-indicator" aria-hidden="true"></span>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 6: Sistema de Tabs</h3>
+      <div class="tabs-wrapper">
+        <div class="tabs-nav" role="tablist" aria-label="Panel de configuración">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tabPanel1" tabindex="0">General</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tabPanel2" tabindex="-1">Seguridad</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tabPanel3" tabindex="-1">Notificaciones</button>
+          <span class="tab-indicator" aria-hidden="true"></span>
+        </div>
+        <div class="tab-panel" id="tabPanel1" role="tabpanel"><p>Ajusta idioma, zona horaria, formato de fecha y moneda predeterminada.</p></div>
+        <div class="tab-panel" id="tabPanel2" role="tabpanel" hidden><p>Configura autenticación en dos factores, cambia contraseña y revisa dispositivos conectados.</p></div>
+        <div class="tab-panel" id="tabPanel3" role="tabpanel" hidden><p>Gestiona notificaciones por email, push y dentro de la app. Modo No Molestar configurable.</p></div>
+      </div>
     </div>
-    <div class="tab-panel" id="tabPanel1" role="tabpanel"><p>Ajusta idioma, zona horaria, formato de fecha y moneda predeterminada.</p></div>
-    <div class="tab-panel" id="tabPanel2" role="tabpanel" hidden><p>Configura autenticación en dos factores, cambia contraseña y revisa dispositivos conectados.</p></div>
-    <div class="tab-panel" id="tabPanel3" role="tabpanel" hidden><p>Gestiona notificaciones por email, push y dentro de la app. Modo No Molestar configurable.</p></div>
-  </div>
-</div>
 
-<style>
-.tabs-wrapper { max-width: 600px; }
-.tabs-nav { display: flex; position: relative; border-bottom: 2px solid #e0e0e0; }
-.tab-btn { padding: 0.7rem 1.2rem; background: none; border: none; font-size: 0.9rem; font-weight: 500; color: #666; cursor: pointer; outline: none; transition: color 0.25s; }
-.tab-btn.active { color: #4a90d9; }
-.tab-btn:focus-visible { box-shadow: inset 0 0 0 3px #4a90d9; border-radius: 4px 4px 0 0; }
-.tab-indicator { position: absolute; bottom: -2px; left: 0; height: 3px; background: #4a90d9; border-radius: 3px 3px 0 0; transition: left 0.3s ease, width 0.3s ease; }
-.tab-panel { padding: 1.2rem; background: #fff; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 0.5rem 0.5rem; animation: fadeIn 0.3s ease; color: #555; line-height: 1.6; }
-@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-</style>
+    <link rel="stylesheet" href="./styles.css">
 
-<script>
-(function() {
-  var tabs = Array.from(document.querySelectorAll('.tab-btn'));
-  var panels = Array.from(document.querySelectorAll('.tab-panel'));
-  var indicator = document.querySelector('.tab-indicator');
-  var nav = document.querySelector('.tabs-nav');
+    <script src="./script.js"></script>
+    ```
 
-  function moveIndicator(tab) {
-    var tabRect = tab.getBoundingClientRect();
-    var navRect = nav.getBoundingClientRect();
-    indicator.style.left = (tabRect.left - navRect.left) + 'px';
-    indicator.style.width = tabRect.width + 'px';
-  }
+=== "CSS"
 
-  function activateTab(tab) {
-    tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
-    panels.forEach(function(p) { p.setAttribute('hidden',''); });
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected','true');
-    tab.setAttribute('tabindex','0');
-    var panel = document.getElementById(tab.getAttribute('aria-controls'));
-    if (panel) panel.removeAttribute('hidden');
-    moveIndicator(tab);
-  }
+    ``` css
+    .tabs-wrapper { max-width: 600px; }
+    .tabs-nav { display: flex; position: relative; border-bottom: 2px solid #e0e0e0; }
+    .tab-btn { padding: 0.7rem 1.2rem; background: none; border: none; font-size: 0.9rem; font-weight: 500; color: #666; cursor: pointer; outline: none; transition: color 0.25s; }
+    .tab-btn.active { color: #4a90d9; }
+    .tab-btn:focus-visible { box-shadow: inset 0 0 0 3px #4a90d9; border-radius: 4px 4px 0 0; }
+    .tab-indicator { position: absolute; bottom: -2px; left: 0; height: 3px; background: #4a90d9; border-radius: 3px 3px 0 0; transition: left 0.3s ease, width 0.3s ease; }
+    .tab-panel { padding: 1.2rem; background: #fff; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 0.5rem 0.5rem; animation: fadeIn 0.3s ease; color: #555; line-height: 1.6; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+    ```
 
-  tabs.forEach(function(tab, i) {
-    tab.addEventListener('click', function() { activateTab(tab); });
-  });
+=== "JS"
 
-  nav.addEventListener('keydown', function(e) {
-    var idx = tabs.indexOf(document.activeElement);
-    if (idx === -1) return;
-    var target = null;
-    if (e.key === 'ArrowRight') { e.preventDefault(); target = tabs[(idx+1) % tabs.length]; }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); target = tabs[(idx-1+tabs.length) % tabs.length]; }
-    else if (e.key === 'Home') { e.preventDefault(); target = tabs[0]; }
-    else if (e.key === 'End') { e.preventDefault(); target = tabs[tabs.length-1]; }
-    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateTab(document.activeElement); return; }
-    if (target) target.focus();
-  });
+    ``` js
+    (function() {
+      var tabs = Array.from(document.querySelectorAll('.tab-btn'));
+      var panels = Array.from(document.querySelectorAll('.tab-panel'));
+      var indicator = document.querySelector('.tab-indicator');
+      var nav = document.querySelector('.tabs-nav');
 
-  var initial = document.querySelector('.tab-btn.active');
-  if (initial) moveIndicator(initial);
-  window.addEventListener('resize', function() {
-    var active = document.querySelector('.tab-btn.active');
-    if (active) moveIndicator(active);
-  });
-})();
-</script>
-```
+      function moveIndicator(tab) {
+        var tabRect = tab.getBoundingClientRect();
+        var navRect = nav.getBoundingClientRect();
+        indicator.style.left = (tabRect.left - navRect.left) + 'px';
+        indicator.style.width = tabRect.width + 'px';
+      }
+
+      function activateTab(tab) {
+        tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+        panels.forEach(function(p) { p.setAttribute('hidden',''); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        tab.setAttribute('tabindex','0');
+        var panel = document.getElementById(tab.getAttribute('aria-controls'));
+        if (panel) panel.removeAttribute('hidden');
+        moveIndicator(tab);
+      }
+
+      tabs.forEach(function(tab, i) {
+        tab.addEventListener('click', function() { activateTab(tab); });
+      });
+
+      nav.addEventListener('keydown', function(e) {
+        var idx = tabs.indexOf(document.activeElement);
+        if (idx === -1) return;
+        var target = null;
+        if (e.key === 'ArrowRight') { e.preventDefault(); target = tabs[(idx+1) % tabs.length]; }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); target = tabs[(idx-1+tabs.length) % tabs.length]; }
+        else if (e.key === 'Home') { e.preventDefault(); target = tabs[0]; }
+        else if (e.key === 'End') { e.preventDefault(); target = tabs[tabs.length-1]; }
+        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateTab(document.activeElement); return; }
+        if (target) target.focus();
+      });
+
+      var initial = document.querySelector('.tab-btn.active');
+      if (initial) moveIndicator(initial);
+      window.addEventListener('resize', function() {
+        var active = document.querySelector('.tab-btn.active');
+        if (active) moveIndicator(active);
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 7: Carrusel Accesible con Dots y Arrows
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 7: Carrusel Slider</h3>
-  <div class="carousel" aria-roledescription="carrusel" aria-label="Galería destacada">
-    <button class="carousel-arrow carousel-prev" aria-label="Anterior">&lsaquo;</button>
-    <div class="carousel-viewport">
-      <ul class="carousel-track">
-        <li class="carousel-slide active" role="group" aria-roledescription="diapositiva" aria-label="1 de 4">
-          <div style="background:linear-gradient(135deg,#667eea,#764ba2);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 1</div>
-        </li>
-        <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 4">
-          <div style="background:linear-gradient(135deg,#f093fb,#f5576c);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 2</div>
-        </li>
-        <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 4">
-          <div style="background:linear-gradient(135deg,#4facfe,#00f2fe);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 3</div>
-        </li>
-        <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="4 de 4">
-          <div style="background:linear-gradient(135deg,#fa709a,#fee140);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 4</div>
-        </li>
-      </ul>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 7: Carrusel Slider</h3>
+      <div class="carousel" aria-roledescription="carrusel" aria-label="Galería destacada">
+        <button class="carousel-arrow carousel-prev" aria-label="Anterior">&lsaquo;</button>
+        <div class="carousel-viewport">
+          <ul class="carousel-track">
+            <li class="carousel-slide active" role="group" aria-roledescription="diapositiva" aria-label="1 de 4">
+              <div style="background:linear-gradient(135deg,#667eea,#764ba2);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 1</div>
+            </li>
+            <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 4">
+              <div style="background:linear-gradient(135deg,#f093fb,#f5576c);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 2</div>
+            </li>
+            <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 4">
+              <div style="background:linear-gradient(135deg,#4facfe,#00f2fe);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 3</div>
+            </li>
+            <li class="carousel-slide" role="group" aria-roledescription="diapositiva" aria-label="4 de 4">
+              <div style="background:linear-gradient(135deg,#fa709a,#fee140);min-height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:0.5rem">Slide 4</div>
+            </li>
+          </ul>
+        </div>
+        <button class="carousel-arrow carousel-next" aria-label="Siguiente">&rsaquo;</button>
+        <div class="carousel-dots" aria-label="Navegación"></div>
+      </div>
     </div>
-    <button class="carousel-arrow carousel-next" aria-label="Siguiente">&rsaquo;</button>
-    <div class="carousel-dots" aria-label="Navegación"></div>
-  </div>
-</div>
 
-<style>
-.carousel { position: relative; max-width: 600px; }
-.carousel-viewport { overflow: hidden; border-radius: 0.5rem; }
-.carousel-track { display: flex; list-style: none; margin: 0; padding: 0; transition: transform 0.5s ease; }
-.carousel-slide { flex: 0 0 100%; min-width: 0; }
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-  background: rgba(255,255,255,0.9); border: none; width: 36px; height: 36px;
-  border-radius: 50%; font-size: 1.6rem; color: #333; cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
-}
-.carousel-prev { left: 0.5rem; } .carousel-next { right: 0.5rem; }
-.carousel-arrow:focus-visible { outline: 3px solid #4a90d9; outline-offset: 2px; }
-.carousel-dots { display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem 0; }
-.carousel-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #c0c0c0; background: transparent; cursor: pointer; padding: 0; transition: background 0.3s, border-color 0.3s; }
-.carousel-dot.active { background: #4a90d9; border-color: #4a90d9; }
-</style>
+    <link rel="stylesheet" href="./styles.css">
 
-<script>
-(function() {
-  var track = document.querySelector('.carousel-track');
-  var dotsContainer = document.querySelector('.carousel-dots');
-  var slides = Array.from(document.querySelectorAll('.carousel-slide'));
-  var current = 0;
-  var total = slides.length;
-  var timer = null;
+    <script src="./script.js"></script>
+    ```
 
-  function generateDots() {
-    dotsContainer.innerHTML = '';
-    slides.forEach(function(_, i) {
-      var dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
-      dot.setAttribute('aria-label', 'Ir a diapositiva ' + (i+1));
-      dot.addEventListener('click', function() { goTo(i); resetTimer(); });
-      dotsContainer.appendChild(dot);
-    });
-  }
+=== "CSS"
 
-  function updateDots() {
-    var dots = dotsContainer.querySelectorAll('.carousel-dot');
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
-  }
+    ``` css
+    .carousel { position: relative; max-width: 600px; }
+    .carousel-viewport { overflow: hidden; border-radius: 0.5rem; }
+    .carousel-track { display: flex; list-style: none; margin: 0; padding: 0; transition: transform 0.5s ease; }
+    .carousel-slide { flex: 0 0 100%; min-width: 0; }
+    .carousel-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+      background: rgba(255,255,255,0.9); border: none; width: 36px; height: 36px;
+      border-radius: 50%; font-size: 1.6rem; color: #333; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
+    }
+    .carousel-prev { left: 0.5rem; } .carousel-next { right: 0.5rem; }
+    .carousel-arrow:focus-visible { outline: 3px solid #4a90d9; outline-offset: 2px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem 0; }
+    .carousel-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #c0c0c0; background: transparent; cursor: pointer; padding: 0; transition: background 0.3s, border-color 0.3s; }
+    .carousel-dot.active { background: #4a90d9; border-color: #4a90d9; }
+    ```
 
-  function goTo(i) {
-    current = ((i % total) + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    updateDots();
-  }
+=== "JS"
 
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
-  function resetTimer() { if (timer) clearInterval(timer); timer = setInterval(next, 4000); }
+    ``` js
+    (function() {
+      var track = document.querySelector('.carousel-track');
+      var dotsContainer = document.querySelector('.carousel-dots');
+      var slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      var current = 0;
+      var total = slides.length;
+      var timer = null;
 
-  document.querySelector('.carousel-prev').addEventListener('click', function() { prev(); resetTimer(); });
-  document.querySelector('.carousel-next').addEventListener('click', function() { next(); resetTimer(); });
-  generateDots(); goTo(0); resetTimer();
-})();
-</script>
-```
+      function generateDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach(function(_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+          dot.setAttribute('aria-label', 'Ir a diapositiva ' + (i+1));
+          dot.addEventListener('click', function() { goTo(i); resetTimer(); });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      function updateDots() {
+        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+      }
+
+      function goTo(i) {
+        current = ((i % total) + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        updateDots();
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+      function resetTimer() { if (timer) clearInterval(timer); timer = setInterval(next, 4000); }
+
+      document.querySelector('.carousel-prev').addEventListener('click', function() { prev(); resetTimer(); });
+      document.querySelector('.carousel-next').addEventListener('click', function() { next(); resetTimer(); });
+      generateDots(); goTo(0); resetTimer();
+    })();
+    ```
 
 ### Ejemplo Guiado 8: Dark Mode Toggle con localStorage
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 8: Dark Mode Toggle</h3>
-  <button class="dark-toggle" id="darkToggle" aria-pressed="false" aria-label="Activar modo oscuro">
-    <span class="dark-icon-sun">&#9728;&#65039;</span>
-    <span class="dark-icon-moon">&#127769;</span>
-  </button>
-  <div class="dark-card">
-    <h4>Tarjeta de ejemplo</h4>
-    <p>Este texto cambia de color según el tema activo. La preferencia se guarda en localStorage y se respeta la configuración del sistema.</p>
-  </div>
-</div>
+=== "HTML"
 
-<style>
-:root {
-  --bg: #fff; --text: #333; --card-bg: #f8f9fa; --border: #e0e0e0;
-  --transition-theme: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
-}
-html.dark {
-  --bg: #1a1a2e; --text: #e0e0e0; --card-bg: #16213e; --border: #333355;
-}
-body { background: var(--bg); color: var(--text); transition: var(--transition-theme); }
-.dark-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-top: 1rem; transition: var(--transition-theme); }
-.dark-card h4 { margin: 0 0 0.5rem; }
-.dark-card p { margin: 0; line-height: 1.6; opacity: 0.8; }
-.dark-toggle {
-  background: var(--card-bg); border: 2px solid var(--border); border-radius: 50%;
-  width: 44px; height: 44px; cursor: pointer; font-size: 1.3rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: var(--transition-theme);
-  color: var(--text);
-}
-.dark-toggle:focus-visible { outline: 3px solid #4a90d9; outline-offset: 3px; }
-html:not(.dark) .dark-icon-moon { display: none; }
-html.dark .dark-icon-sun { display: none; }
-</style>
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 8: Dark Mode Toggle</h3>
+      <button class="dark-toggle" id="darkToggle" aria-pressed="false" aria-label="Activar modo oscuro">
+        <span class="dark-icon-sun">&#9728;&#65039;</span>
+        <span class="dark-icon-moon">&#127769;</span>
+      </button>
+      <div class="dark-card">
+        <h4>Tarjeta de ejemplo</h4>
+        <p>Este texto cambia de color según el tema activo. La preferencia se guarda en localStorage y se respeta la configuración del sistema.</p>
+      </div>
+    </div>
 
-<script>
-(function() {
-  var toggle = document.getElementById('darkToggle');
-  var html = document.documentElement;
-  function apply(active) {
-    html.classList.toggle('dark', active);
-    toggle.setAttribute('aria-pressed', active ? 'true' : 'false');
-    toggle.setAttribute('aria-label', active ? 'Activar modo claro' : 'Activar modo oscuro');
-    try { localStorage.setItem('theme', active ? 'dark' : 'light'); } catch(e) {}
-  }
-  toggle.addEventListener('click', function() { apply(!html.classList.contains('dark')); });
-  // Inicializar: localStorage > preferencia del sistema > claro
-  var saved = localStorage.getItem('theme');
-  if (saved === 'dark') apply(true);
-  else if (saved === 'light') apply(false);
-  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) apply(true);
-  else apply(false);
-})();
-</script>
-```
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    :root {
+      --bg: #fff; --text: #333; --card-bg: #f8f9fa; --border: #e0e0e0;
+      --transition-theme: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    html.dark {
+      --bg: #1a1a2e; --text: #e0e0e0; --card-bg: #16213e; --border: #333355;
+    }
+    body { background: var(--bg); color: var(--text); transition: var(--transition-theme); }
+    .dark-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-top: 1rem; transition: var(--transition-theme); }
+    .dark-card h4 { margin: 0 0 0.5rem; }
+    .dark-card p { margin: 0; line-height: 1.6; opacity: 0.8; }
+    .dark-toggle {
+      background: var(--card-bg); border: 2px solid var(--border); border-radius: 50%;
+      width: 44px; height: 44px; cursor: pointer; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition-theme);
+      color: var(--text);
+    }
+    .dark-toggle:focus-visible { outline: 3px solid #4a90d9; outline-offset: 3px; }
+    html:not(.dark) .dark-icon-moon { display: none; }
+    html.dark .dark-icon-sun { display: none; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var toggle = document.getElementById('darkToggle');
+      var html = document.documentElement;
+      function apply(active) {
+        html.classList.toggle('dark', active);
+        toggle.setAttribute('aria-pressed', active ? 'true' : 'false');
+        toggle.setAttribute('aria-label', active ? 'Activar modo claro' : 'Activar modo oscuro');
+        try { localStorage.setItem('theme', active ? 'dark' : 'light'); } catch(e) {}
+      }
+      toggle.addEventListener('click', function() { apply(!html.classList.contains('dark')); });
+      // Inicializar: localStorage > preferencia del sistema > claro
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark') apply(true);
+      else if (saved === 'light') apply(false);
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) apply(true);
+      else apply(false);
+    })();
+    ```
 
 ### Ejemplo Guiado 9: Scroll Reveal con Intersection Observer
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 9: Scroll Reveal</h3>
-  <p style="color:#666;margin-bottom:1.5rem">Haz scroll para ver las animaciones de entrada.</p>
-  <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
-    <strong>Elemento 1</strong><br>Este elemento aparece con animación al hacer scroll.
-  </div>
-  <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
-    <strong>Elemento 2</strong><br>Cada elemento se revela de forma independiente.
-  </div>
-  <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
-    <strong>Elemento 3</strong><br>Usamos Intersection Observer para máxima eficiencia.
-  </div>
-</div>
+=== "HTML"
 
-<style>
-.reveal-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal-item.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 9: Scroll Reveal</h3>
+      <p style="color:#666;margin-bottom:1.5rem">Haz scroll para ver las animaciones de entrada.</p>
+      <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
+        <strong>Elemento 1</strong><br>Este elemento aparece con animación al hacer scroll.
+      </div>
+      <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
+        <strong>Elemento 2</strong><br>Cada elemento se revela de forma independiente.
+      </div>
+      <div class="reveal-item" style="min-height:80px;background:var(--card-bg);border-radius:0.5rem;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)">
+        <strong>Elemento 3</strong><br>Usamos Intersection Observer para máxima eficiencia.
+      </div>
+    </div>
 
-<script>
-(function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target); // Solo una vez
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+    <link rel="stylesheet" href="./styles.css">
 
-  document.querySelectorAll('.reveal-item').forEach(function(el) {
-    observer.observe(el);
-  });
-})();
-</script>
-```
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target); // Solo una vez
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+      document.querySelectorAll('.reveal-item').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 10: Drag and Drop para Reordenar Lista
 
-```html
-<div class="ejemplo-container">
-  <h3>Ejemplo 10: Drag and Drop</h3>
-  <ul class="draggable-list" id="dragList">
-    <li class="drag-item" draggable="true">&#9776; Tarea 1: Revisar documentación</li>
-    <li class="drag-item" draggable="true">&#9776; Tarea 2: Implementar API</li>
-    <li class="drag-item" draggable="true">&#9776; Tarea 3: Escribir tests</li>
-    <li class="drag-item" draggable="true">&#9776; Tarea 4: Desplegar en staging</li>
-  </ul>
-</div>
+=== "HTML"
 
-<style>
-.draggable-list { list-style: none; padding: 0; max-width: 450px; }
-.drag-item {
-  padding: 0.8rem 1rem; margin-bottom: 0.4rem; background: #fff;
-  border: 1px solid #e0e0e0; border-radius: 0.5rem; cursor: grab;
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-.drag-item:hover { background: #f8f9fa; border-color: #c0c0c0; }
-.drag-item:active { cursor: grabbing; }
-.drag-item.dragging { opacity: 0.5; background: #f0f0f0; }
-.drag-item.drag-over { border-color: #4a90d9; border-style: dashed; background: #f0f5ff; }
-</style>
+    ``` html
+    <div class="ejemplo-container">
+      <h3>Ejemplo 10: Drag and Drop</h3>
+      <ul class="draggable-list" id="dragList">
+        <li class="drag-item" draggable="true">&#9776; Tarea 1: Revisar documentación</li>
+        <li class="drag-item" draggable="true">&#9776; Tarea 2: Implementar API</li>
+        <li class="drag-item" draggable="true">&#9776; Tarea 3: Escribir tests</li>
+        <li class="drag-item" draggable="true">&#9776; Tarea 4: Desplegar en staging</li>
+      </ul>
+    </div>
 
-<script>
-(function() {
-  var list = document.getElementById('dragList');
-  var items = list.querySelectorAll('.drag-item');
-  var draggedItem = null;
+    <link rel="stylesheet" href="./styles.css">
 
-  items.forEach(function(item) {
-    item.addEventListener('dragstart', function(e) {
-      draggedItem = this;
-      this.classList.add('dragging');
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/plain', this.textContent);
-    });
+    <script src="./script.js"></script>
+    ```
 
-    item.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-      document.querySelectorAll('.drag-item').forEach(function(el) { el.classList.remove('drag-over'); });
-      draggedItem = null;
-    });
+=== "CSS"
 
-    item.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      if (this !== draggedItem) this.classList.add('drag-over');
-      e.dataTransfer.dropEffect = 'move';
-    });
+    ``` css
+    .draggable-list { list-style: none; padding: 0; max-width: 450px; }
+    .drag-item {
+      padding: 0.8rem 1rem; margin-bottom: 0.4rem; background: #fff;
+      border: 1px solid #e0e0e0; border-radius: 0.5rem; cursor: grab;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .drag-item:hover { background: #f8f9fa; border-color: #c0c0c0; }
+    .drag-item:active { cursor: grabbing; }
+    .drag-item.dragging { opacity: 0.5; background: #f0f0f0; }
+    .drag-item.drag-over { border-color: #4a90d9; border-style: dashed; background: #f0f5ff; }
+    ```
 
-    item.addEventListener('dragleave', function() {
-      this.classList.remove('drag-over');
-    });
+=== "JS"
 
-    item.addEventListener('drop', function(e) {
-      e.preventDefault();
-      this.classList.remove('drag-over');
-      if (this !== draggedItem) {
-        var all = Array.from(list.querySelectorAll('.drag-item'));
-        var from = all.indexOf(draggedItem);
-        var to = all.indexOf(this);
-        if (from < to) {
-          list.insertBefore(draggedItem, this.nextSibling);
-        } else {
-          list.insertBefore(draggedItem, this);
-        }
-      }
-    });
-  });
-})();
-</script>
-```
+    ``` js
+    (function() {
+      var list = document.getElementById('dragList');
+      var items = list.querySelectorAll('.drag-item');
+      var draggedItem = null;
+
+      items.forEach(function(item) {
+        item.addEventListener('dragstart', function(e) {
+          draggedItem = this;
+          this.classList.add('dragging');
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', this.textContent);
+        });
+
+        item.addEventListener('dragend', function() {
+          this.classList.remove('dragging');
+          document.querySelectorAll('.drag-item').forEach(function(el) { el.classList.remove('drag-over'); });
+          draggedItem = null;
+        });
+
+        item.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          if (this !== draggedItem) this.classList.add('drag-over');
+          e.dataTransfer.dropEffect = 'move';
+        });
+
+        item.addEventListener('dragleave', function() {
+          this.classList.remove('drag-over');
+        });
+
+        item.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.classList.remove('drag-over');
+          if (this !== draggedItem) {
+            var all = Array.from(list.querySelectorAll('.drag-item'));
+            var from = all.indexOf(draggedItem);
+            var to = all.indexOf(this);
+            if (from < to) {
+              list.insertBefore(draggedItem, this.nextSibling);
+            } else {
+              list.insertBefore(draggedItem, this);
+            }
+          }
+        });
+      });
+    })();
+    ```
 
 
 ## Casos reales

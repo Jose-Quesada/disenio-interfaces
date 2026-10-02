@@ -238,14 +238,124 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
 
 ### Ejemplo 1: Fundamentos de Flexbox - Contenedor e ítems
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fundamentos Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Fundamentos Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Fundamentos de Flexbox</h1>
+
+        <!-- FLEX-DIRECTION -->
+        <h2>1. flex-direction</h2>
+        <p><strong>row (por defecto):</strong> Eje principal horizontal, izquierda a derecha.</p>
+        <div class="flex-demo row">
+          <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+        <pre>.flex-demo { display: flex; flex-direction: row; gap: 8px; }</pre>
+
+        <p><strong>row-reverse:</strong> Eje principal horizontal, derecha a izquierda. ¡El orden visual se invierte, el del DOM no!</p>
+        <div class="flex-demo row-reverse">
+          <div class="item">1 (DOM primero)</div><div class="item">2</div><div class="item">3 (DOM último)</div>
+        </div>
+        <pre>.flex-demo { display: flex; flex-direction: row-reverse; gap: 8px; }</pre>
+
+        <p><strong>column:</strong> Eje principal vertical. Ideal para layouts de página completa.</p>
+        <div class="flex-demo col">
+          <div class="item">Header</div><div class="item">Content</div><div class="item">Footer</div>
+        </div>
+        <pre>.flex-demo { display: flex; flex-direction: column; gap: 8px; }</pre>
+
+        <!-- JUSTIFY-CONTENT -->
+        <h2>2. justify-content (eje principal)</h2>
+        <p><strong>flex-start:</strong> Al inicio del eje principal.</p>
+        <div class="flex-demo jc-start"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: flex-start;</pre>
+
+        <p><strong>center:</strong> Centrados horizontalmente.</p>
+        <div class="flex-demo jc-center"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: center;</pre>
+
+        <p><strong>space-between:</strong> Espacio entre ítems, los extremos pegados a los bordes.</p>
+        <div class="flex-demo jc-between"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: space-between;</pre>
+
+        <p><strong>space-around:</strong> Espacio alrededor de cada ítem (mitad en extremos).</p>
+        <div class="flex-demo jc-around"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: space-around;</pre>
+
+        <p><strong>space-evenly:</strong> Espacio exactamente igual en todas partes.</p>
+        <div class="flex-demo jc-evenly"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: space-evenly;</pre>
+
+        <p><strong>flex-end:</strong> Al final del eje principal.</p>
+        <div class="flex-demo jc-end"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+        <pre>justify-content: flex-end;</pre>
+
+        <!-- ALIGN-ITEMS -->
+        <h2>3. align-items (eje transversal)</h2>
+        <p><strong>stretch (por defecto):</strong> Los ítems se estiran para llenar la altura del contenedor. Observa cómo el ítem bajo también alcanza la altura total.</p>
+        <div class="flex-demo ai-stretch">
+          <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
+        </div>
+        <pre>align-items: stretch; /* por defecto */</pre>
+
+        <p><strong>center:</strong> Centrados verticalmente. ¡La forma más fácil de centrar en CSS!</p>
+        <div class="flex-demo ai-center">
+          <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
+        </div>
+        <pre>align-items: center;</pre>
+
+        <p><strong>flex-start:</strong> Alineados al inicio del cross axis (arriba).</p>
+        <div class="flex-demo ai-start">
+          <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
+        </div>
+        <pre>align-items: flex-start;</pre>
+
+        <p><strong>flex-end:</strong> Alineados al final del cross axis (abajo).</p>
+        <div class="flex-demo ai-end">
+          <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
+        </div>
+        <pre>align-items: flex-end;</pre>
+
+        <!-- FLEX-WRAP -->
+        <h2>4. flex-wrap</h2>
+        <p><strong>wrap:</strong> Los ítems que no caben saltan a la siguiente línea. Redimensiona el navegador.</p>
+        <div class="flex-demo wrap">
+          <div class="item">Item 1</div><div class="item">Item 2</div>
+          <div class="item">Item 3</div><div class="item">Item 4</div>
+          <div class="item">Item 5</div><div class="item">Item 6</div>
+        </div>
+
+        <p><strong>nowrap:</strong> Los ítems se comprimen pero nunca saltan de línea. Pueden desbordarse.</p>
+        <div class="flex-demo nowrap" style="overflow-x:auto;">
+          <div class="item">Item 1</div><div class="item">Item 2</div>
+          <div class="item">Item 3</div><div class="item">Item 4</div>
+          <div class="item">Item 5</div><div class="item">Item 6</div>
+        </div>
+
+        <!-- GAP -->
+        <h2>5. gap</h2>
+        <p>gap: 24px entre todos los ítems. Más limpio que usar margin.</p>
+        <div class="flex-demo gap-demo">
+          <div class="item">A</div><div class="item">B</div><div class="item">C</div>
+        </div>
+        <pre>gap: 24px;</pre>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 40px; color: #1e293b; }
     .contenedor { max-width: 900px; margin: 0 auto; }
@@ -312,122 +422,118 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
 
     /* Código de ejemplo */
     pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; margin: 8px 0; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Fundamentos de Flexbox</h1>
-
-    <!-- FLEX-DIRECTION -->
-    <h2>1. flex-direction</h2>
-    <p><strong>row (por defecto):</strong> Eje principal horizontal, izquierda a derecha.</p>
-    <div class="flex-demo row">
-      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
-    </div>
-    <pre>.flex-demo { display: flex; flex-direction: row; gap: 8px; }</pre>
-
-    <p><strong>row-reverse:</strong> Eje principal horizontal, derecha a izquierda. ¡El orden visual se invierte, el del DOM no!</p>
-    <div class="flex-demo row-reverse">
-      <div class="item">1 (DOM primero)</div><div class="item">2</div><div class="item">3 (DOM último)</div>
-    </div>
-    <pre>.flex-demo { display: flex; flex-direction: row-reverse; gap: 8px; }</pre>
-
-    <p><strong>column:</strong> Eje principal vertical. Ideal para layouts de página completa.</p>
-    <div class="flex-demo col">
-      <div class="item">Header</div><div class="item">Content</div><div class="item">Footer</div>
-    </div>
-    <pre>.flex-demo { display: flex; flex-direction: column; gap: 8px; }</pre>
-
-    <!-- JUSTIFY-CONTENT -->
-    <h2>2. justify-content (eje principal)</h2>
-    <p><strong>flex-start:</strong> Al inicio del eje principal.</p>
-    <div class="flex-demo jc-start"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: flex-start;</pre>
-
-    <p><strong>center:</strong> Centrados horizontalmente.</p>
-    <div class="flex-demo jc-center"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: center;</pre>
-
-    <p><strong>space-between:</strong> Espacio entre ítems, los extremos pegados a los bordes.</p>
-    <div class="flex-demo jc-between"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: space-between;</pre>
-
-    <p><strong>space-around:</strong> Espacio alrededor de cada ítem (mitad en extremos).</p>
-    <div class="flex-demo jc-around"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: space-around;</pre>
-
-    <p><strong>space-evenly:</strong> Espacio exactamente igual en todas partes.</p>
-    <div class="flex-demo jc-evenly"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: space-evenly;</pre>
-
-    <p><strong>flex-end:</strong> Al final del eje principal.</p>
-    <div class="flex-demo jc-end"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
-    <pre>justify-content: flex-end;</pre>
-
-    <!-- ALIGN-ITEMS -->
-    <h2>3. align-items (eje transversal)</h2>
-    <p><strong>stretch (por defecto):</strong> Los ítems se estiran para llenar la altura del contenedor. Observa cómo el ítem bajo también alcanza la altura total.</p>
-    <div class="flex-demo ai-stretch">
-      <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
-    </div>
-    <pre>align-items: stretch; /* por defecto */</pre>
-
-    <p><strong>center:</strong> Centrados verticalmente. ¡La forma más fácil de centrar en CSS!</p>
-    <div class="flex-demo ai-center">
-      <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
-    </div>
-    <pre>align-items: center;</pre>
-
-    <p><strong>flex-start:</strong> Alineados al inicio del cross axis (arriba).</p>
-    <div class="flex-demo ai-start">
-      <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
-    </div>
-    <pre>align-items: flex-start;</pre>
-
-    <p><strong>flex-end:</strong> Alineados al final del cross axis (abajo).</p>
-    <div class="flex-demo ai-end">
-      <div class="item alto">Alto</div><div class="item bajo">Bajo</div><div class="item">Normal</div>
-    </div>
-    <pre>align-items: flex-end;</pre>
-
-    <!-- FLEX-WRAP -->
-    <h2>4. flex-wrap</h2>
-    <p><strong>wrap:</strong> Los ítems que no caben saltan a la siguiente línea. Redimensiona el navegador.</p>
-    <div class="flex-demo wrap">
-      <div class="item">Item 1</div><div class="item">Item 2</div>
-      <div class="item">Item 3</div><div class="item">Item 4</div>
-      <div class="item">Item 5</div><div class="item">Item 6</div>
-    </div>
-
-    <p><strong>nowrap:</strong> Los ítems se comprimen pero nunca saltan de línea. Pueden desbordarse.</p>
-    <div class="flex-demo nowrap" style="overflow-x:auto;">
-      <div class="item">Item 1</div><div class="item">Item 2</div>
-      <div class="item">Item 3</div><div class="item">Item 4</div>
-      <div class="item">Item 5</div><div class="item">Item 6</div>
-    </div>
-
-    <!-- GAP -->
-    <h2>5. gap</h2>
-    <p>gap: 24px entre todos los ítems. Más limpio que usar margin.</p>
-    <div class="flex-demo gap-demo">
-      <div class="item">A</div><div class="item">B</div><div class="item">C</div>
-    </div>
-    <pre>gap: 24px;</pre>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 2: Propiedades de los ítems flex (grow, shrink, basis, order, align-self)
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Propiedades de Items Flex | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Propiedades de Items Flex | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Propiedades de los Ítems Flex</h1>
+
+        <!-- FLEX-GROW -->
+        <h2>1. flex-grow (factor de crecimiento)</h2>
+        <p>Todos <code>flex-grow: 0</code> (por defecto): no crecen. Ocupan solo su contenido.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex-grow:0;">grow:0</div>
+          <div class="item" style="flex-grow:0;">grow:0</div>
+          <div class="item" style="flex-grow:0;">grow:0</div>
+        </div>
+        <pre>.item { flex-grow: 0; } /* no crecen */</pre>
+
+        <p>Todos <code>flex-grow: 1</code>: se reparten el espacio equitativamente.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex-grow:1;">grow:1</div>
+          <div class="item" style="flex-grow:1;">grow:1</div>
+          <div class="item" style="flex-grow:1;">grow:1</div>
+        </div>
+        <pre>.item { flex-grow: 1; } /* crecen equitativamente */</pre>
+
+        <p>Mix: <code>grow:1</code>, <code>grow:2</code>, <code>grow:1</code>. El segundo recibe el doble de espacio extra.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex-grow:1;">grow:1</div>
+          <div class="item" style="flex-grow:2;">grow:2</div>
+          <div class="item" style="flex-grow:1;">grow:1</div>
+        </div>
+        <pre>.item:nth-child(1) { flex-grow: 1; }
+    .item:nth-child(2) { flex-grow: 2; }
+    .item:nth-child(3) { flex-grow: 1; }</pre>
+
+        <!-- FLEX-SHRINK -->
+        <h2>2. flex-shrink (factor de reducción)</h2>
+        <p><code>flex-shrink: 0</code> en el tercer ítem: no se encoge aunque falte espacio.</p>
+        <div class="flex-demo" style="max-width:600px;">
+          <div class="item" style="flex:0 1 200px;">shrink:1</div>
+          <div class="item" style="flex:0 1 200px;">shrink:1</div>
+          <div class="item" style="flex:0 0 200px;">shrink:0</div>
+        </div>
+        <pre>.item-especial { flex-shrink: 0; } /* este ítem no se encoge nunca */</pre>
+
+        <!-- FLEX-BASIS -->
+        <h2>3. flex-basis (tamaño base)</h2>
+        <p>Ítems con <code>flex-basis</code> de 200px, 300px y 200px. Crecen/shrink desde su base.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex:0 1 200px;">basis:200px</div>
+          <div class="item" style="flex:0 1 300px;">basis:300px</div>
+          <div class="item" style="flex:0 1 200px;">basis:200px</div>
+        </div>
+        <pre>.item { flex: 0 1 200px; } /* flex-grow:0 flex-shrink:1 flex-basis:200px */</pre>
+
+        <!-- ORDER -->
+        <h2>4. order (orden visual)</h2>
+        <p>El ítem con <code>order: -1</code> aparece primero visualmente aunque sea el tercero en el DOM.</p>
+        <div class="flex-demo">
+          <div class="item" style="order:2;">DOM 1º, Order 2</div>
+          <div class="item" style="order:3;">DOM 2º, Order 3</div>
+          <div class="item" style="order:-1;">DOM 3º, Order -1</div>
+        </div>
+        <pre>.item-prioritario { order: -1; } /* Aparece primero visualmente */</pre>
+
+        <!-- ALIGN-SELF -->
+        <h2>5. align-self (alineación individual)</h2>
+        <p>Contenedor con <code>align-items: center</code>, pero el segundo ítem se alinea al inicio.</p>
+        <div class="flex-demo" style="align-items:center;min-height:120px;">
+          <div class="item">Centrado</div>
+          <div class="item" style="align-self:flex-start;">align-self: flex-start</div>
+          <div class="item">Centrado</div>
+        </div>
+        <pre>.contenedor { align-items: center; }
+    .item-especial { align-self: flex-start; }</pre>
+
+        <!-- MARGIN AUTO -->
+        <h2>6. Auto margins (magia flex)</h2>
+        <p><code>margin-left: auto</code> en el último ítem lo empuja a la derecha.</p>
+        <div class="flex-demo">
+          <div class="item">Logo</div>
+          <div class="item">Enlace 1</div>
+          <div class="item">Enlace 2</div>
+          <div class="item" style="margin-left:auto;">Perfil</div>
+        </div>
+        <pre>.item-ultimo { margin-left: auto; } /* Empuja a la derecha */</pre>
+
+        <p><code>margin: auto</code> en un único ítem lo centra perfectamente (alternativa a justify-content).</p>
+        <div class="flex-demo">
+          <div class="item" style="margin:auto;">Centrado con margin:auto</div>
+        </div>
+        <pre>.item-unico { margin: auto; } /* Centrado perfecto */</pre>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 40px; color: #1e293b; }
     .contenedor { max-width: 900px; margin: 0 auto; }
@@ -439,112 +545,74 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       font-weight: 600; text-align: center; font-size: 0.85rem; transition: all 0.3s ease;
     }
     pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; margin: 8px 0; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Propiedades de los Ítems Flex</h1>
-
-    <!-- FLEX-GROW -->
-    <h2>1. flex-grow (factor de crecimiento)</h2>
-    <p>Todos <code>flex-grow: 0</code> (por defecto): no crecen. Ocupan solo su contenido.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex-grow:0;">grow:0</div>
-      <div class="item" style="flex-grow:0;">grow:0</div>
-      <div class="item" style="flex-grow:0;">grow:0</div>
-    </div>
-    <pre>.item { flex-grow: 0; } /* no crecen */</pre>
-
-    <p>Todos <code>flex-grow: 1</code>: se reparten el espacio equitativamente.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex-grow:1;">grow:1</div>
-      <div class="item" style="flex-grow:1;">grow:1</div>
-      <div class="item" style="flex-grow:1;">grow:1</div>
-    </div>
-    <pre>.item { flex-grow: 1; } /* crecen equitativamente */</pre>
-
-    <p>Mix: <code>grow:1</code>, <code>grow:2</code>, <code>grow:1</code>. El segundo recibe el doble de espacio extra.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex-grow:1;">grow:1</div>
-      <div class="item" style="flex-grow:2;">grow:2</div>
-      <div class="item" style="flex-grow:1;">grow:1</div>
-    </div>
-    <pre>.item:nth-child(1) { flex-grow: 1; }
-.item:nth-child(2) { flex-grow: 2; }
-.item:nth-child(3) { flex-grow: 1; }</pre>
-
-    <!-- FLEX-SHRINK -->
-    <h2>2. flex-shrink (factor de reducción)</h2>
-    <p><code>flex-shrink: 0</code> en el tercer ítem: no se encoge aunque falte espacio.</p>
-    <div class="flex-demo" style="max-width:600px;">
-      <div class="item" style="flex:0 1 200px;">shrink:1</div>
-      <div class="item" style="flex:0 1 200px;">shrink:1</div>
-      <div class="item" style="flex:0 0 200px;">shrink:0</div>
-    </div>
-    <pre>.item-especial { flex-shrink: 0; } /* este ítem no se encoge nunca */</pre>
-
-    <!-- FLEX-BASIS -->
-    <h2>3. flex-basis (tamaño base)</h2>
-    <p>Ítems con <code>flex-basis</code> de 200px, 300px y 200px. Crecen/shrink desde su base.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex:0 1 200px;">basis:200px</div>
-      <div class="item" style="flex:0 1 300px;">basis:300px</div>
-      <div class="item" style="flex:0 1 200px;">basis:200px</div>
-    </div>
-    <pre>.item { flex: 0 1 200px; } /* flex-grow:0 flex-shrink:1 flex-basis:200px */</pre>
-
-    <!-- ORDER -->
-    <h2>4. order (orden visual)</h2>
-    <p>El ítem con <code>order: -1</code> aparece primero visualmente aunque sea el tercero en el DOM.</p>
-    <div class="flex-demo">
-      <div class="item" style="order:2;">DOM 1º, Order 2</div>
-      <div class="item" style="order:3;">DOM 2º, Order 3</div>
-      <div class="item" style="order:-1;">DOM 3º, Order -1</div>
-    </div>
-    <pre>.item-prioritario { order: -1; } /* Aparece primero visualmente */</pre>
-
-    <!-- ALIGN-SELF -->
-    <h2>5. align-self (alineación individual)</h2>
-    <p>Contenedor con <code>align-items: center</code>, pero el segundo ítem se alinea al inicio.</p>
-    <div class="flex-demo" style="align-items:center;min-height:120px;">
-      <div class="item">Centrado</div>
-      <div class="item" style="align-self:flex-start;">align-self: flex-start</div>
-      <div class="item">Centrado</div>
-    </div>
-    <pre>.contenedor { align-items: center; }
-.item-especial { align-self: flex-start; }</pre>
-
-    <!-- MARGIN AUTO -->
-    <h2>6. Auto margins (magia flex)</h2>
-    <p><code>margin-left: auto</code> en el último ítem lo empuja a la derecha.</p>
-    <div class="flex-demo">
-      <div class="item">Logo</div>
-      <div class="item">Enlace 1</div>
-      <div class="item">Enlace 2</div>
-      <div class="item" style="margin-left:auto;">Perfil</div>
-    </div>
-    <pre>.item-ultimo { margin-left: auto; } /* Empuja a la derecha */</pre>
-
-    <p><code>margin: auto</code> en un único ítem lo centra perfectamente (alternativa a justify-content).</p>
-    <div class="flex-demo">
-      <div class="item" style="margin:auto;">Centrado con margin:auto</div>
-    </div>
-    <pre>.item-unico { margin: auto; } /* Centrado perfecto */</pre>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 3: Navbar profesional responsive con hamburguesa CSS puro
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Profesional Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Navbar Profesional Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <header class="header">
+        <div class="navbar">
+          <!-- LOGO -->
+          <a href="/" class="navbar__logo">Tech<span>Corp</span></a>
+
+          <!-- CHECKBOX OCULTO que controla el toggle del menú en móvil -->
+          <input type="checkbox" id="menu-toggle" class="navbar__toggle">
+          <label for="menu-toggle" class="navbar__toggle-label" aria-label="Abrir menú de navegación">
+            &#9776;
+          </label>
+
+          <!-- MENÚ DE NAVEGACIÓN -->
+          <nav>
+            <ul class="navbar__menu">
+              <li><a href="/" class="activo">Inicio</a></li>
+              <li><a href="/productos/">Productos</a></li>
+              <li><a href="/servicios/">Servicios</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/contacto/">Contacto</a></li>
+            </ul>
+          </nav>
+
+          <!-- ACCIONES: búsqueda + iconos -->
+          <div class="navbar__acciones">
+            <input type="search" class="navbar__busqueda" placeholder="Buscar..." aria-label="Buscar en el sitio">
+            <button class="navbar__icono" aria-label="Notificaciones">&#128276;</button>
+            <button class="navbar__icono" aria-label="Perfil de usuario">&#128100;</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <h1>Navbar Profesional con Flexbox</h1>
+        <p>
+          Esta barra de navegación utiliza Flexbox para alinear logo, menú, búsqueda e iconos.
+          En pantallas grandes (mayores de 768px), todos los elementos se muestran en una fila.
+          En pantallas pequeñas, el menú se colapsa y se muestra mediante un icono hamburguesa implementado con CSS puro (checkbox + label + :checked).
+        </p>
+        <p>
+          <strong>Características:</strong> menú con flex, icono hamburguesa CSS puro sin JavaScript, búsqueda integrada, diseño sticky (se queda fija al hacer scroll), responsive con dos breakpoints.
+        </p>
+        <p>
+          <strong>Prueba:</strong> Redimensiona el navegador a menos de 768px de ancho. Verás desaparecer el menú y aparecer el icono ☰. Haz clic en él para desplegar el menú.
+        </p>
+      </main>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #1e293b; }
 
@@ -696,68 +764,113 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       .navbar__acciones { gap: 6px; }
       .navbar__busqueda { width: 100px; }
     }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <div class="navbar">
-      <!-- LOGO -->
-      <a href="/" class="navbar__logo">Tech<span>Corp</span></a>
-
-      <!-- CHECKBOX OCULTO que controla el toggle del menú en móvil -->
-      <input type="checkbox" id="menu-toggle" class="navbar__toggle">
-      <label for="menu-toggle" class="navbar__toggle-label" aria-label="Abrir menú de navegación">
-        &#9776;
-      </label>
-
-      <!-- MENÚ DE NAVEGACIÓN -->
-      <nav>
-        <ul class="navbar__menu">
-          <li><a href="/" class="activo">Inicio</a></li>
-          <li><a href="/productos/">Productos</a></li>
-          <li><a href="/servicios/">Servicios</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/contacto/">Contacto</a></li>
-        </ul>
-      </nav>
-
-      <!-- ACCIONES: búsqueda + iconos -->
-      <div class="navbar__acciones">
-        <input type="search" class="navbar__busqueda" placeholder="Buscar..." aria-label="Buscar en el sitio">
-        <button class="navbar__icono" aria-label="Notificaciones">&#128276;</button>
-        <button class="navbar__icono" aria-label="Perfil de usuario">&#128100;</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <h1>Navbar Profesional con Flexbox</h1>
-    <p>
-      Esta barra de navegación utiliza Flexbox para alinear logo, menú, búsqueda e iconos.
-      En pantallas grandes (mayores de 768px), todos los elementos se muestran en una fila.
-      En pantallas pequeñas, el menú se colapsa y se muestra mediante un icono hamburguesa implementado con CSS puro (checkbox + label + :checked).
-    </p>
-    <p>
-      <strong>Características:</strong> menú con flex, icono hamburguesa CSS puro sin JavaScript, búsqueda integrada, diseño sticky (se queda fija al hacer scroll), responsive con dos breakpoints.
-    </p>
-    <p>
-      <strong>Prueba:</strong> Redimensiona el navegador a menos de 768px de ancho. Verás desaparecer el menú y aparecer el icono ☰. Haz clic en él para desplegar el menú.
-    </p>
-  </main>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 4: Cards responsivas con footer alineado y altura variable
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cards Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cards Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Cursos Disponibles</h1>
+        <p class="subtitulo">Las tarjetas tienen altura uniforme y el precio siempre está alineado al fondo, independientemente del contenido.</p>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#667eea,#764ba2);"></div>
+            <div class="card__body">
+              <h3 class="card__title">Desarrollo Web Frontend</h3>
+              <p class="card__text">Aprende HTML5, CSS3 y JavaScript moderno. Construye interfaces responsive y accesibles desde cero.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€49.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+
+          <!-- Card 2 (contenido más largo - el footer sigue alineado) -->
+          <article class="card card--destacada">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#f093fb,#f5576c);"></div>
+            <div class="card__body">
+              <h3 class="card__title">React Avanzado</h3>
+              <p class="card__text">Domina React con hooks, context API, gestión de estado con Redux y testing con Jest y React Testing Library. Este curso incluye un proyecto final completo de una aplicación de comercio electrónico con autenticación, carrito de compras y panel de administración.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€79.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);"></div>
+            <div class="card__body">
+              <h3 class="card__title">CSS Pro</h3>
+              <p class="card__text">Flexbox, Grid, animaciones avanzadas, arquitectura CSS con metodologías ITCSS y BEM.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€39.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#89f7fe,#66a6ff);"></div>
+            <div class="card__body">
+              <h3 class="card__title">Node.js Backend</h3>
+              <p class="card__text">APIs RESTful, Express, bases de datos SQL y NoSQL, autenticación JWT y despliegue en la nube.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€59.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#fddb92,#d1fdff);"></div>
+            <div class="card__body">
+              <h3 class="card__title">Python para Data Science</h3>
+              <p class="card__text">Pandas, NumPy, visualización de datos, machine learning con scikit-learn y despliegue de modelos.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€69.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card">
+            <div class="card__imagen" style="background:linear-gradient(135deg,#cfd9df,#e2ebf0);"></div>
+            <div class="card__body">
+              <h3 class="card__title">Diseño UX/UI</h3>
+              <p class="card__text">Investigación de usuarios, wireframes, prototipado con Figma, design systems y accesibilidad.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__precio">€44.99</span>
+              <button class="card__btn">Inscribirse</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -857,107 +970,107 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
     @media (max-width: 600px) {
       .card { flex: 1 1 100%; }
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Cursos Disponibles</h1>
-    <p class="subtitulo">Las tarjetas tienen altura uniforme y el precio siempre está alineado al fondo, independientemente del contenido.</p>
-
-    <div class="cards-grid">
-      <!-- Card 1 -->
-      <article class="card">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#667eea,#764ba2);"></div>
-        <div class="card__body">
-          <h3 class="card__title">Desarrollo Web Frontend</h3>
-          <p class="card__text">Aprende HTML5, CSS3 y JavaScript moderno. Construye interfaces responsive y accesibles desde cero.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€49.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-
-      <!-- Card 2 (contenido más largo - el footer sigue alineado) -->
-      <article class="card card--destacada">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#f093fb,#f5576c);"></div>
-        <div class="card__body">
-          <h3 class="card__title">React Avanzado</h3>
-          <p class="card__text">Domina React con hooks, context API, gestión de estado con Redux y testing con Jest y React Testing Library. Este curso incluye un proyecto final completo de una aplicación de comercio electrónico con autenticación, carrito de compras y panel de administración.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€79.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="card">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);"></div>
-        <div class="card__body">
-          <h3 class="card__title">CSS Pro</h3>
-          <p class="card__text">Flexbox, Grid, animaciones avanzadas, arquitectura CSS con metodologías ITCSS y BEM.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€39.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="card">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#89f7fe,#66a6ff);"></div>
-        <div class="card__body">
-          <h3 class="card__title">Node.js Backend</h3>
-          <p class="card__text">APIs RESTful, Express, bases de datos SQL y NoSQL, autenticación JWT y despliegue en la nube.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€59.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-
-      <!-- Card 5 -->
-      <article class="card">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#fddb92,#d1fdff);"></div>
-        <div class="card__body">
-          <h3 class="card__title">Python para Data Science</h3>
-          <p class="card__text">Pandas, NumPy, visualización de datos, machine learning con scikit-learn y despliegue de modelos.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€69.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-
-      <!-- Card 6 -->
-      <article class="card">
-        <div class="card__imagen" style="background:linear-gradient(135deg,#cfd9df,#e2ebf0);"></div>
-        <div class="card__body">
-          <h3 class="card__title">Diseño UX/UI</h3>
-          <p class="card__text">Investigación de usuarios, wireframes, prototipado con Figma, design systems y accesibilidad.</p>
-        </div>
-        <div class="card__footer">
-          <span class="card__precio">€44.99</span>
-          <button class="card__btn">Inscribirse</button>
-        </div>
-      </article>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 5: Dashboard con sidebar flexible y colapsable CSS puro
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Dashboard Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- CHECKBOX OCULTO: controla el colapso de la sidebar -->
+      <input type="checkbox" id="sidebar-toggle">
+
+      <div class="dashboard">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <span class="sidebar__texto">Admin Panel</span>
+          </div>
+
+          <!-- Botón de toggle del sidebar (label del checkbox) -->
+          <label for="sidebar-toggle" class="sidebar__toggle-btn" aria-label="Colapsar barra lateral">
+            &#9776; <span class="sidebar__texto">Colapsar</span>
+          </label>
+
+          <!-- Navegación -->
+          <nav class="sidebar__nav">
+            <a href="#" class="activo"><span class="icono">&#9632;</span> <span class="sidebar__texto">Dashboard</span></a>
+            <a href="#"><span class="icono">&#9998;</span> <span class="sidebar__texto">Proyectos</span></a>
+            <a href="#"><span class="icono">&#128100;</span> <span class="sidebar__texto">Usuarios</span></a>
+            <a href="#"><span class="icono">&#128202;</span> <span class="sidebar__texto">Reportes</span></a>
+            <a href="#"><span class="icono">&#9881;</span> <span class="sidebar__texto">Configuración</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <span class="sidebar__texto">&copy; 2025 TechCorp</span>
+          </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+          <header class="main-header">
+            <h1>Dashboard</h1>
+            <div class="usuario">
+              <span>María López</span>
+              <div class="avatar">ML</div>
+            </div>
+          </header>
+
+          <div class="main-body">
+            <!-- Cards de estadísticas -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-card__label">Ingresos Totales</div>
+                <div class="stat-card__value">€48,250</div>
+                <div class="stat-card__change">+12.5% vs mes anterior</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__label">Usuarios Activos</div>
+                <div class="stat-card__value">2,847</div>
+                <div class="stat-card__change">+8.3% vs mes anterior</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__label">Tasa de Conversión</div>
+                <div class="stat-card__value">3.24%</div>
+                <div class="stat-card__change">+1.1% vs mes anterior</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__label">Tickets Pendientes</div>
+                <div class="stat-card__value">142</div>
+                <div class="stat-card__change" style="color:#dc2626;">-5.2% vs ayer</div>
+              </div>
+            </div>
+
+            <!-- Contenido secundario -->
+            <div class="content-row">
+              <div class="content-col">
+                <h2>Actividad Reciente</h2>
+                <p style="color:#64748b;">Los datos se actualizan en tiempo real. El dashboard está construido completamente con Flexbox.</p>
+              </div>
+              <div class="content-col">
+                <h2>Próximas Tareas</h2>
+                <p style="color:#64748b;">Prueba a colapsar la sidebar con el botón de la izquierda. Todo funciona con CSS puro.</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; color: #1e293b; }
 
@@ -1146,101 +1259,70 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       .sidebar__nav a { padding: 12px; }
       #sidebar-toggle, .sidebar__toggle-btn { display: none; }
     }
-  </style>
-</head>
-<body>
-  <!-- CHECKBOX OCULTO: controla el colapso de la sidebar -->
-  <input type="checkbox" id="sidebar-toggle">
-
-  <div class="dashboard">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar__header">
-        <span class="sidebar__texto">Admin Panel</span>
-      </div>
-
-      <!-- Botón de toggle del sidebar (label del checkbox) -->
-      <label for="sidebar-toggle" class="sidebar__toggle-btn" aria-label="Colapsar barra lateral">
-        &#9776; <span class="sidebar__texto">Colapsar</span>
-      </label>
-
-      <!-- Navegación -->
-      <nav class="sidebar__nav">
-        <a href="#" class="activo"><span class="icono">&#9632;</span> <span class="sidebar__texto">Dashboard</span></a>
-        <a href="#"><span class="icono">&#9998;</span> <span class="sidebar__texto">Proyectos</span></a>
-        <a href="#"><span class="icono">&#128100;</span> <span class="sidebar__texto">Usuarios</span></a>
-        <a href="#"><span class="icono">&#128202;</span> <span class="sidebar__texto">Reportes</span></a>
-        <a href="#"><span class="icono">&#9881;</span> <span class="sidebar__texto">Configuración</span></a>
-      </nav>
-
-      <div class="sidebar__footer">
-        <span class="sidebar__texto">&copy; 2025 TechCorp</span>
-      </div>
-    </aside>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-      <header class="main-header">
-        <h1>Dashboard</h1>
-        <div class="usuario">
-          <span>María López</span>
-          <div class="avatar">ML</div>
-        </div>
-      </header>
-
-      <div class="main-body">
-        <!-- Cards de estadísticas -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-card__label">Ingresos Totales</div>
-            <div class="stat-card__value">€48,250</div>
-            <div class="stat-card__change">+12.5% vs mes anterior</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Usuarios Activos</div>
-            <div class="stat-card__value">2,847</div>
-            <div class="stat-card__change">+8.3% vs mes anterior</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Tasa de Conversión</div>
-            <div class="stat-card__value">3.24%</div>
-            <div class="stat-card__change">+1.1% vs mes anterior</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Tickets Pendientes</div>
-            <div class="stat-card__value">142</div>
-            <div class="stat-card__change" style="color:#dc2626;">-5.2% vs ayer</div>
-          </div>
-        </div>
-
-        <!-- Contenido secundario -->
-        <div class="content-row">
-          <div class="content-col">
-            <h2>Actividad Reciente</h2>
-            <p style="color:#64748b;">Los datos se actualizan en tiempo real. El dashboard está construido completamente con Flexbox.</p>
-          </div>
-          <div class="content-col">
-            <h2>Próximas Tareas</h2>
-            <p style="color:#64748b;">Prueba a colapsar la sidebar con el botón de la izquierda. Todo funciona con CSS puro.</p>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 6: Formulario responsive con Flexbox
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Formulario Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="form-container">
+        <h1>Formulario de Contacto</h1>
+
+        <form>
+          <!-- FILA 1: Nombre y Apellidos (2 campos en la misma fila) -->
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <div class="form-row" style="flex:1 1 250px;">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="form-row" style="flex:1 1 250px;">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" required placeholder="Tus apellidos">
+            </div>
+          </div>
+
+          <!-- FILA 2: Email -->
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+          </div>
+
+          <!-- FILA 3: Teléfono -->
+          <div class="form-row">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+          </div>
+
+          <!-- BLOQUE: Mensaje (label arriba porque ocupa más espacio) -->
+          <div class="form-block">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+
+          <!-- BOTONES -->
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Enviar Mensaje</button>
+          </div>
+        </form>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1338,64 +1420,75 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       .form-actions { flex-direction: column; }
       .form-actions button { width: 100%; }
     }
-  </style>
-</head>
-<body>
-  <div class="form-container">
-    <h1>Formulario de Contacto</h1>
-
-    <form>
-      <!-- FILA 1: Nombre y Apellidos (2 campos en la misma fila) -->
-      <div style="display:flex;gap:16px;flex-wrap:wrap;">
-        <div class="form-row" style="flex:1 1 250px;">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-        </div>
-        <div class="form-row" style="flex:1 1 250px;">
-          <label for="apellidos">Apellidos</label>
-          <input type="text" id="apellidos" name="apellidos" required placeholder="Tus apellidos">
-        </div>
-      </div>
-
-      <!-- FILA 2: Email -->
-      <div class="form-row">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="tu@email.com">
-      </div>
-
-      <!-- FILA 3: Teléfono -->
-      <div class="form-row">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
-      </div>
-
-      <!-- BLOQUE: Mensaje (label arriba porque ocupa más espacio) -->
-      <div class="form-block">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
-      </div>
-
-      <!-- BOTONES -->
-      <div class="form-actions">
-        <button type="button" class="btn-secondary">Cancelar</button>
-        <button type="submit" class="btn-primary">Enviar Mensaje</button>
-      </div>
-    </form>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 7: Sticky Footer + Holy Grail simplificado
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sticky Footer + Layout Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sticky Footer + Layout Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="page">
+        <header class="page__header">Sticky Footer + Holy Grail con Flexbox</header>
+
+        <main class="page__main">
+          <h1>Layouts Clásicos con Flexbox</h1>
+
+          <h2>1. Sticky Footer</h2>
+          <p>
+            El body usa <code>display: flex; flex-direction: column; min-height: 100vh;</code>.
+            El <code>&lt;main&gt;</code> tiene <code>flex: 1;</code>, lo que lo hace crecer para
+            ocupar todo el espacio entre el header y el footer. Si el contenido es corto, el footer
+            queda al fondo de la ventana. Si el contenido es largo, el footer se desplaza
+            naturalmente tras el contenido.
+          </p>
+          <pre>.page { display: flex; flex-direction: column; min-height: 100vh; }
+    .page__main { flex: 1; }</pre>
+
+          <h2>2. Holy Grail (3 columnas)</h2>
+          <p>
+            Layout clásico con barra lateral izquierda, contenido central y barra lateral derecha.
+            Las barras laterales tienen ancho fijo (<code>flex: 0 0 200px</code>), y el contenido
+            central ocupa el resto (<code>flex: 1</code>).
+          </p>
+          <div class="holy-grail">
+            <aside class="holy-grail__left">
+              <strong>Sidebar Izquierda</strong><br>
+              Navegación secundaria, filtros, categorías...
+              <div class="sticky-box" style="margin-top:16px;">
+                Contenido sticky al hacer scroll
+              </div>
+            </aside>
+            <section class="holy-grail__center">
+              <strong>Contenido Principal</strong>
+              <p>Esta es el área central del layout Holy Grail. Ocupa todo el espacio disponible entre las dos barras laterales. En pantallas pequeñas (menos de 768px), el layout cambia a dirección columna y las barras laterales se apilan encima y debajo del contenido.</p>
+            </section>
+            <aside class="holy-grail__right">
+              <strong>Sidebar Derecha</strong><br>
+              Contenido relacionado, publicidad, widgets...
+            </aside>
+          </div>
+        </main>
+
+        <footer class="page__footer">
+          &copy; 2025 - Ejemplo didáctico de Flexbox. El footer siempre está al fondo gracias a <code>flex: 1</code> en el main.
+        </footer>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1478,69 +1571,77 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       border-radius: 6px; font-size: 0.82rem; overflow-x: auto;
       margin: 8px 0;
     }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="page__header">Sticky Footer + Holy Grail con Flexbox</header>
-
-    <main class="page__main">
-      <h1>Layouts Clásicos con Flexbox</h1>
-
-      <h2>1. Sticky Footer</h2>
-      <p>
-        El body usa <code>display: flex; flex-direction: column; min-height: 100vh;</code>.
-        El <code>&lt;main&gt;</code> tiene <code>flex: 1;</code>, lo que lo hace crecer para
-        ocupar todo el espacio entre el header y el footer. Si el contenido es corto, el footer
-        queda al fondo de la ventana. Si el contenido es largo, el footer se desplaza
-        naturalmente tras el contenido.
-      </p>
-      <pre>.page { display: flex; flex-direction: column; min-height: 100vh; }
-.page__main { flex: 1; }</pre>
-
-      <h2>2. Holy Grail (3 columnas)</h2>
-      <p>
-        Layout clásico con barra lateral izquierda, contenido central y barra lateral derecha.
-        Las barras laterales tienen ancho fijo (<code>flex: 0 0 200px</code>), y el contenido
-        central ocupa el resto (<code>flex: 1</code>).
-      </p>
-      <div class="holy-grail">
-        <aside class="holy-grail__left">
-          <strong>Sidebar Izquierda</strong><br>
-          Navegación secundaria, filtros, categorías...
-          <div class="sticky-box" style="margin-top:16px;">
-            Contenido sticky al hacer scroll
-          </div>
-        </aside>
-        <section class="holy-grail__center">
-          <strong>Contenido Principal</strong>
-          <p>Esta es el área central del layout Holy Grail. Ocupa todo el espacio disponible entre las dos barras laterales. En pantallas pequeñas (menos de 768px), el layout cambia a dirección columna y las barras laterales se apilan encima y debajo del contenido.</p>
-        </section>
-        <aside class="holy-grail__right">
-          <strong>Sidebar Derecha</strong><br>
-          Contenido relacionado, publicidad, widgets...
-        </aside>
-      </div>
-    </main>
-
-    <footer class="page__footer">
-      &copy; 2025 - Ejemplo didáctico de Flexbox. El footer siempre está al fondo gracias a <code>flex: 1</code> en el main.
-    </footer>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 8: Media Object y centrado con auto margins
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Margins y Media Object | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Auto Margins y Media Object | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Media Object y Auto Margins</h1>
+
+        <h2>1. Media Object (imagen + texto)</h2>
+        <div class="media">
+          <div class="media__img">JD</div>
+          <div class="media__body">
+            <div class="media__title">Juan Domínguez</div>
+            <div class="media__text">Ha comentado en tu publicación: "Excelente artículo sobre Flexbox. Los ejemplos son muy claros y me han ayudado a entender flex-grow vs flex-basis."</div>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media__img" style="background:linear-gradient(135deg,#f093fb,#f5576c);">ML</div>
+          <div class="media__body">
+            <div class="media__title">María López</div>
+            <div class="media__text">Ha compartido tu proyecto en LinkedIn. ¡Felicidades!</div>
+          </div>
+        </div>
+        <pre>.media { display: flex; gap: 16px; align-items: flex-start; }
+    .media__img { flex-shrink: 0; }
+    .media__body { flex: 1; }</pre>
+
+        <h2>2. Auto Margins (margin-left: auto)</h2>
+        <p>El grupo de botones de la derecha se empuja automáticamente.</p>
+        <div class="toolbar">
+          <span class="toolbar__item">Archivo</span>
+          <span class="toolbar__item">Editar</span>
+          <span class="toolbar__item">Ver</span>
+          <!-- margin-left: auto empuja todo lo que sigue a la derecha -->
+          <span class="toolbar__item toolbar__item--push-right">Ayuda</span>
+          <span class="toolbar__item toolbar__item--danger">Salir</span>
+        </div>
+        <pre>.toolbar__item--push-right { margin-left: auto; }</pre>
+
+        <h2>3. Card con footer al fondo (margin-top: auto)</h2>
+        <div class="card-flex">
+          <div class="card-flex__body">
+            <strong>Título de la Card</strong>
+            <p style="margin-top:8px;color:#64748b;">El contenido de esta card puede ser de cualquier longitud. El footer siempre queda al fondo gracias a margin-top: auto en combinación con el flex column de la card.</p>
+          </div>
+          <div class="card-flex__footer">
+            <span>3 comentarios</span>
+            <span>Hace 2 horas</span>
+          </div>
+        </div>
+        <pre>.card-flex { display: flex; flex-direction: column; }
+    .card-flex__footer { margin-top: auto; }</pre>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 40px; color: #1e293b; }
     .contenedor { max-width: 800px; margin: 0 auto; }
@@ -1625,71 +1726,74 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
     }
 
     pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 0.82rem; margin: 8px 0; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Media Object y Auto Margins</h1>
-
-    <h2>1. Media Object (imagen + texto)</h2>
-    <div class="media">
-      <div class="media__img">JD</div>
-      <div class="media__body">
-        <div class="media__title">Juan Domínguez</div>
-        <div class="media__text">Ha comentado en tu publicación: "Excelente artículo sobre Flexbox. Los ejemplos son muy claros y me han ayudado a entender flex-grow vs flex-basis."</div>
-      </div>
-    </div>
-    <div class="media">
-      <div class="media__img" style="background:linear-gradient(135deg,#f093fb,#f5576c);">ML</div>
-      <div class="media__body">
-        <div class="media__title">María López</div>
-        <div class="media__text">Ha compartido tu proyecto en LinkedIn. ¡Felicidades!</div>
-      </div>
-    </div>
-    <pre>.media { display: flex; gap: 16px; align-items: flex-start; }
-.media__img { flex-shrink: 0; }
-.media__body { flex: 1; }</pre>
-
-    <h2>2. Auto Margins (margin-left: auto)</h2>
-    <p>El grupo de botones de la derecha se empuja automáticamente.</p>
-    <div class="toolbar">
-      <span class="toolbar__item">Archivo</span>
-      <span class="toolbar__item">Editar</span>
-      <span class="toolbar__item">Ver</span>
-      <!-- margin-left: auto empuja todo lo que sigue a la derecha -->
-      <span class="toolbar__item toolbar__item--push-right">Ayuda</span>
-      <span class="toolbar__item toolbar__item--danger">Salir</span>
-    </div>
-    <pre>.toolbar__item--push-right { margin-left: auto; }</pre>
-
-    <h2>3. Card con footer al fondo (margin-top: auto)</h2>
-    <div class="card-flex">
-      <div class="card-flex__body">
-        <strong>Título de la Card</strong>
-        <p style="margin-top:8px;color:#64748b;">El contenido de esta card puede ser de cualquier longitud. El footer siempre queda al fondo gracias a margin-top: auto en combinación con el flex column de la card.</p>
-      </div>
-      <div class="card-flex__footer">
-        <span>3 comentarios</span>
-        <span>Hace 2 horas</span>
-      </div>
-    </div>
-    <pre>.card-flex { display: flex; flex-direction: column; }
-.card-flex__footer { margin-top: auto; }</pre>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 9: Patrones prácticos - Centrado, igual altura, lista horizontal
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patrones Flexbox | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Patrones Flexbox | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Patrones Prácticos con Flexbox</h1>
+
+        <h2>1. Centrado Perfecto</h2>
+        <div class="centro-demo">
+          <div class="contenido">Contenido centrado en ambas direcciones</div>
+        </div>
+        <pre>.padre { display: flex; justify-content: center; align-items: center; }</pre>
+
+        <h2>2. Igual Altura de Columnas</h2>
+        <div class="columnas-iguales">
+          <div class="col">
+            <h3>Columna 1</h3>
+            <p>Contenido breve.</p>
+          </div>
+          <div class="col">
+            <h3>Columna 2</h3>
+            <p>Mucho más contenido aquí. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Este texto hace que la columna sea más alta.</p>
+          </div>
+          <div class="col">
+            <h3>Columna 3</h3>
+            <p>Contenido medio. Todas las columnas tienen la misma altura automáticamente.</p>
+          </div>
+        </div>
+        <pre>.columnas { display: flex; gap: 16px; }
+    .col { flex: 1; } /* stretch alinea alturas automáticamente */</pre>
+
+        <h2>3. Lista Horizontal Responsive</h2>
+        <ul class="lista-horizontal">
+          <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+          <li>React</li><li>Node.js</li><li>Python</li>
+          <li>Docker</li><li>Git</li>
+        </ul>
+        <pre>.lista { display: flex; gap: 12px; flex-wrap: wrap; }</pre>
+
+        <h2>4. Header con Logo Izquierda + Menú Derecha</h2>
+        <div class="header-demo">
+          <div class="logo">Mi Sitio Web</div>
+          <div class="links">
+            <a href="#">Inicio</a><a href="#">Acerca de</a>
+            <a href="#">Servicios</a><a href="#">Contacto</a>
+          </div>
+        </div>
+        <pre>.header { display: flex; justify-content: space-between; align-items: center; }</pre>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f1f5f9; padding: 40px 20px; color: #1e293b; }
     .contenedor { max-width: 900px; margin: 0 auto; }
@@ -1743,68 +1847,72 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
     @media (max-width: 600px) {
       .columnas-iguales { flex-direction: column; }
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Patrones Prácticos con Flexbox</h1>
-
-    <h2>1. Centrado Perfecto</h2>
-    <div class="centro-demo">
-      <div class="contenido">Contenido centrado en ambas direcciones</div>
-    </div>
-    <pre>.padre { display: flex; justify-content: center; align-items: center; }</pre>
-
-    <h2>2. Igual Altura de Columnas</h2>
-    <div class="columnas-iguales">
-      <div class="col">
-        <h3>Columna 1</h3>
-        <p>Contenido breve.</p>
-      </div>
-      <div class="col">
-        <h3>Columna 2</h3>
-        <p>Mucho más contenido aquí. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Este texto hace que la columna sea más alta.</p>
-      </div>
-      <div class="col">
-        <h3>Columna 3</h3>
-        <p>Contenido medio. Todas las columnas tienen la misma altura automáticamente.</p>
-      </div>
-    </div>
-    <pre>.columnas { display: flex; gap: 16px; }
-.col { flex: 1; } /* stretch alinea alturas automáticamente */</pre>
-
-    <h2>3. Lista Horizontal Responsive</h2>
-    <ul class="lista-horizontal">
-      <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
-      <li>React</li><li>Node.js</li><li>Python</li>
-      <li>Docker</li><li>Git</li>
-    </ul>
-    <pre>.lista { display: flex; gap: 12px; flex-wrap: wrap; }</pre>
-
-    <h2>4. Header con Logo Izquierda + Menú Derecha</h2>
-    <div class="header-demo">
-      <div class="logo">Mi Sitio Web</div>
-      <div class="links">
-        <a href="#">Inicio</a><a href="#">Acerca de</a>
-        <a href="#">Servicios</a><a href="#">Contacto</a>
-      </div>
-    </div>
-    <pre>.header { display: flex; justify-content: space-between; align-items: center; }</pre>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 10: Comparación flex-basis vs width + Galería con flex-wrap
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flex-basis vs Width | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Flex-basis vs Width | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1>Flex-basis vs Width</h1>
+
+        <h2>1. flex: 0 1 200px (basis: 200px)</h2>
+        <p>Ítems parten de 200px. Pueden encogerse si falta espacio. <strong>flex-basis: 200px tiene prioridad sobre width.</strong></p>
+        <div class="flex-demo">
+          <div class="item" style="flex:0 1 200px; width:300px;">base:200px<br>width:300px ign</div>
+          <div class="item" style="flex:0 1 200px;">base:200px</div>
+          <div class="item" style="flex:0 1 200px;">base:200px</div>
+        </div>
+        <pre>.item { flex: 0 1 200px; width: 300px; }
+    /* flex-basis:200px gana sobre width:300px */</pre>
+
+        <h2>2. flex: 1 (equivale a flex: 1 1 0%)</h2>
+        <p><strong>flex-basis: 0%</strong>: todos parten de 0 y se reparten el espacio equitativamente. El contenido no influye.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex:1;">Corto</div>
+          <div class="item" style="flex:1;">Medio</div>
+          <div class="item" style="flex:1;">Texto mucho más largo que los demás</div>
+        </div>
+        <pre>.item { flex: 1; } /* flex: 1 1 0% */</pre>
+
+        <h2>3. flex: auto (equivale a flex: 1 1 auto)</h2>
+        <p><strong>flex-basis: auto</strong>: cada ítem parte de su tamaño natural (determinado por contenido o width). El espacio extra se reparte proporcionalmente DESPUÉS.</p>
+        <div class="flex-demo">
+          <div class="item" style="flex:auto;">Corto</div>
+          <div class="item" style="flex:auto;">Medio</div>
+          <div class="item" style="flex:auto;">Texto mucho más largo que los demás y ocupa más</div>
+        </div>
+        <pre>.item { flex: auto; } /* flex: 1 1 auto */</pre>
+
+        <h2>4. Galería Responsive con flex-wrap</h2>
+        <p>Cada item: <code>flex: 1 1 200px</code>. Mínimo 200px, crecen para llenar, envuelven con wrap.</p>
+        <div class="galeria">
+          <div class="galeria-item"><img src="" alt=""><div class="info">Proyecto Alpha - Web App</div></div>
+          <div class="galeria-item"><img src="" alt=""><div class="info">Proyecto Beta - Mobile</div></div>
+          <div class="galeria-item"><img src="" alt=""><div class="info">Dashboard Analytics</div></div>
+          <div class="galeria-item"><img src="" alt=""><div class="info">E-commerce Platform</div></div>
+          <div class="galeria-item"><img src="" alt=""><div class="info">Portfolio Personal</div></div>
+        </div>
+        <pre>.galeria { display: flex; flex-wrap: wrap; gap: 16px; }
+    .galeria-item { flex: 1 1 200px; }</pre>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 40px; color: #1e293b; }
     .contenedor { max-width: 900px; margin: 0 auto; }
@@ -1833,55 +1941,7 @@ Ambos se complementan: **Grid para el *layout* macro de la página** y **Flexbox
       background: linear-gradient(135deg, #667eea, #764ba2);
     }
     .galeria-item .info { padding: 16px; font-size: 0.9rem; }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Flex-basis vs Width</h1>
-
-    <h2>1. flex: 0 1 200px (basis: 200px)</h2>
-    <p>Ítems parten de 200px. Pueden encogerse si falta espacio. <strong>flex-basis: 200px tiene prioridad sobre width.</strong></p>
-    <div class="flex-demo">
-      <div class="item" style="flex:0 1 200px; width:300px;">base:200px<br>width:300px ign</div>
-      <div class="item" style="flex:0 1 200px;">base:200px</div>
-      <div class="item" style="flex:0 1 200px;">base:200px</div>
-    </div>
-    <pre>.item { flex: 0 1 200px; width: 300px; }
-/* flex-basis:200px gana sobre width:300px */</pre>
-
-    <h2>2. flex: 1 (equivale a flex: 1 1 0%)</h2>
-    <p><strong>flex-basis: 0%</strong>: todos parten de 0 y se reparten el espacio equitativamente. El contenido no influye.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex:1;">Corto</div>
-      <div class="item" style="flex:1;">Medio</div>
-      <div class="item" style="flex:1;">Texto mucho más largo que los demás</div>
-    </div>
-    <pre>.item { flex: 1; } /* flex: 1 1 0% */</pre>
-
-    <h2>3. flex: auto (equivale a flex: 1 1 auto)</h2>
-    <p><strong>flex-basis: auto</strong>: cada ítem parte de su tamaño natural (determinado por contenido o width). El espacio extra se reparte proporcionalmente DESPUÉS.</p>
-    <div class="flex-demo">
-      <div class="item" style="flex:auto;">Corto</div>
-      <div class="item" style="flex:auto;">Medio</div>
-      <div class="item" style="flex:auto;">Texto mucho más largo que los demás y ocupa más</div>
-    </div>
-    <pre>.item { flex: auto; } /* flex: 1 1 auto */</pre>
-
-    <h2>4. Galería Responsive con flex-wrap</h2>
-    <p>Cada item: <code>flex: 1 1 200px</code>. Mínimo 200px, crecen para llenar, envuelven con wrap.</p>
-    <div class="galeria">
-      <div class="galeria-item"><img src="" alt=""><div class="info">Proyecto Alpha - Web App</div></div>
-      <div class="galeria-item"><img src="" alt=""><div class="info">Proyecto Beta - Mobile</div></div>
-      <div class="galeria-item"><img src="" alt=""><div class="info">Dashboard Analytics</div></div>
-      <div class="galeria-item"><img src="" alt=""><div class="info">E-commerce Platform</div></div>
-      <div class="galeria-item"><img src="" alt=""><div class="info">Portfolio Personal</div></div>
-    </div>
-    <pre>.galeria { display: flex; flex-wrap: wrap; gap: 16px; }
-.galeria-item { flex: 1 1 200px; }</pre>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ## Casos reales
 

@@ -192,14 +192,33 @@ Para activar subgrid, se usa el valor **`subgrid`** en `grid-template-columns` o
 
 En este primer ejemplo construiremos una cuadrícula simple de 3 columnas con 5 elementos, demostrando cómo Grid distribuye automáticamente los ítems y cómo podemos hacer que ciertos elementos ocupen varias columnas o filas. La cuadrícula usa unidades mixtas: píxeles para las columnas laterales y fracciones para la columna central, un patrón muy común en layouts web.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 1 - Grid Básico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 1 - Grid Básico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h2>Grid Básico: Cabecera, Sidebar, Contenido, Pie</h2>
+      <div class="grid-contenedor">
+        <div class="item">1 - Cabecera</div>
+        <div class="item">2 - Sidebar izquierdo</div>
+        <div class="item">3 - Contenido principal</div>
+        <div class="item">4 - Sidebar derecho</div>
+        <div class="item">5 - Pie de página</div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -276,33 +295,64 @@ En este primer ejemplo construiremos una cuadrícula simple de 3 columnas con 5 
       grid-row: span 2;
       background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
-  </style>
-</head>
-<body>
-  <h2>Grid Básico: Cabecera, Sidebar, Contenido, Pie</h2>
-  <div class="grid-contenedor">
-    <div class="item">1 - Cabecera</div>
-    <div class="item">2 - Sidebar izquierdo</div>
-    <div class="item">3 - Contenido principal</div>
-    <div class="item">4 - Sidebar derecho</div>
-    <div class="item">5 - Pie de página</div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 2: Grid con áreas nombradas
 
 Las áreas nombradas son la forma más intuitiva de diseñar layouts con Grid. Consiste en dibujar literalmente la estructura de la página usando nombres significativos en una cuadrícula de texto. Este ejemplo muestra un layout completo con cabecera, navegación, héroe, sidebar, contenido principal y pie de página.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 2 - Grid Template Areas</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 2 - Grid Template Areas</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- El HTML es lineal y semántico -->
+      <!-- La disposición visual se define solo en CSS -->
+      <div class="pagina">
+        <header class="logo">LOGO</header>
+        <nav class="navegacion">
+          <a href="#">Inicio</a>
+          <a href="#">Cursos</a>
+          <a href="#">Blog</a>
+          <a href="#">Contacto</a>
+        </nav>
+        <div class="usuario">Mi Cuenta</div>
+
+        <section class="hero">Bienvenidos a la plataforma educativa</section>
+
+        <aside class="lateral">
+          <h3>Categorías</h3>
+          <ul>
+            <li>Desarrollo Web</li>
+            <li>Diseño UX/UI</li>
+            <li>Bases de Datos</li>
+            <li>DevOps</li>
+          </ul>
+        </aside>
+
+        <main class="contenido">
+          <h2>Contenido Principal</h2>
+          <p>Aquí se muestra el contenido principal de la página. CSS Grid permite
+          definir este layout de forma visual y semántica, separando la estructura
+          HTML de la presentación visual. Esto es clave para accesibilidad y SEO.</p>
+        </main>
+
+        <footer class="footer">2025 Plataforma Educativa - Todos los derechos reservados</footer>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -422,59 +472,64 @@ Las áreas nombradas son la forma más intuitiva de diseñar layouts con Grid. C
       justify-content: center;
       border-radius: 8px;
     }
-  </style>
-</head>
-<body>
-  <!-- El HTML es lineal y semántico -->
-  <!-- La disposición visual se define solo en CSS -->
-  <div class="pagina">
-    <header class="logo">LOGO</header>
-    <nav class="navegacion">
-      <a href="#">Inicio</a>
-      <a href="#">Cursos</a>
-      <a href="#">Blog</a>
-      <a href="#">Contacto</a>
-    </nav>
-    <div class="usuario">Mi Cuenta</div>
-
-    <section class="hero">Bienvenidos a la plataforma educativa</section>
-
-    <aside class="lateral">
-      <h3>Categorías</h3>
-      <ul>
-        <li>Desarrollo Web</li>
-        <li>Diseño UX/UI</li>
-        <li>Bases de Datos</li>
-        <li>DevOps</li>
-      </ul>
-    </aside>
-
-    <main class="contenido">
-      <h2>Contenido Principal</h2>
-      <p>Aquí se muestra el contenido principal de la página. CSS Grid permite
-      definir este layout de forma visual y semántica, separando la estructura
-      HTML de la presentación visual. Esto es clave para accesibilidad y SEO.</p>
-    </main>
-
-    <footer class="footer">2025 Plataforma Educativa - Todos los derechos reservados</footer>
-  </div>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 3: Unidades fr, minmax() y repeat() con auto-fill/auto-fit
 
 Las unidades de Grid son uno de sus mayores puntos fuertes. Este ejemplo demuestra el uso de la unidad fracción (fr), la función minmax() para establecer límites flexibles, y las diferencias cruciales entre auto-fill y auto-fit cuando se combinan con repeat().
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 3 - Unidades Avanzadas de Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 3 - Unidades Avanzadas de Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h2>Grid con minmax() - Altura mínima 100px, crece con contenido</h2>
+      <div class="grid-minmax">
+        <div class="tarjeta">Contenido corto</div>
+        <div class="tarjeta">Contenido medio con algo más de información</div>
+        <div class="tarjeta tarjeta-alta">
+          <div>
+            <p>Contenido extenso</p>
+            <p>Esta tarjeta tiene más texto. minmax(100px, auto) hace que
+            la fila crezca automáticamente. Las otras tarjetas en la misma
+            fila también igualan la altura gracias a Grid.</p>
+          </div>
+        </div>
+        <div class="tarjeta">Corto</div>
+        <div class="tarjeta">Medio</div>
+        <div class="tarjeta">Corto</div>
+      </div>
+
+      <h2>auto-fill: columnas vacías se mantienen</h2>
+      <!-- 3 ítems en espacio para 5 columnas -> 2 columnas vacías visibles -->
+      <div class="grid-auto-fill">
+        <div class="tarjeta">Ítem 1</div>
+        <div class="tarjeta">Ítem 2</div>
+        <div class="tarjeta">Ítem 3</div>
+      </div>
+
+      <h2>auto-fit: ítems se expanden para llenar espacio</h2>
+      <!-- 3 ítems, se expanden porque las columnas vacías se colapsan -->
+      <div class="grid-auto-fit">
+        <div class="tarjeta">Ítem 1</div>
+        <div class="tarjeta">Ítem 2</div>
+        <div class="tarjeta">Ítem 3</div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -537,57 +592,64 @@ Las unidades de Grid son uno de sus mayores puntos fuertes. Este ejemplo demuest
     .tarjeta:nth-child(3n+1) { background: linear-gradient(135deg, #f093fb, #f5576c); }
     .tarjeta:nth-child(3n+2) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
     .tarjeta:nth-child(3n+3) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-  </style>
-</head>
-<body>
-  <h2>Grid con minmax() - Altura mínima 100px, crece con contenido</h2>
-  <div class="grid-minmax">
-    <div class="tarjeta">Contenido corto</div>
-    <div class="tarjeta">Contenido medio con algo más de información</div>
-    <div class="tarjeta tarjeta-alta">
-      <div>
-        <p>Contenido extenso</p>
-        <p>Esta tarjeta tiene más texto. minmax(100px, auto) hace que
-        la fila crezca automáticamente. Las otras tarjetas en la misma
-        fila también igualan la altura gracias a Grid.</p>
-      </div>
-    </div>
-    <div class="tarjeta">Corto</div>
-    <div class="tarjeta">Medio</div>
-    <div class="tarjeta">Corto</div>
-  </div>
-
-  <h2>auto-fill: columnas vacías se mantienen</h2>
-  <!-- 3 ítems en espacio para 5 columnas -> 2 columnas vacías visibles -->
-  <div class="grid-auto-fill">
-    <div class="tarjeta">Ítem 1</div>
-    <div class="tarjeta">Ítem 2</div>
-    <div class="tarjeta">Ítem 3</div>
-  </div>
-
-  <h2>auto-fit: ítems se expanden para llenar espacio</h2>
-  <!-- 3 ítems, se expanden porque las columnas vacías se colapsan -->
-  <div class="grid-auto-fit">
-    <div class="tarjeta">Ítem 1</div>
-    <div class="tarjeta">Ítem 2</div>
-    <div class="tarjeta">Ítem 3</div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 4: Grid implícito vs explícito y grid-auto-flow
 
 Cuando el número de ítems supera las celdas definidas, el navegador genera automáticamente nuevas filas o columnas (grid implícito). Este ejemplo muestra cómo controlar este comportamiento con grid-auto-rows, grid-auto-columns y grid-auto-flow.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 4 - Grid Implícito vs Explícito</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 4 - Grid Implícito vs Explícito</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h2>Grid Explícito (azul) vs Implícito (oscuro)</h2>
+      <p>4 celdas definidas explícitamente. Los 4 ítems extra generan nuevas filas.</p>
+      <div class="grid-impl">
+        <div class="item">1 - Explícito</div>
+        <div class="item">2 - Explícito</div>
+        <div class="item">3 - Explícito</div>
+        <div class="item">4 - Explícito</div>
+        <div class="item">5 - Implícito</div>
+        <div class="item">6 - Implícito</div>
+        <div class="item">7 - Implícito</div>
+        <div class="item">8 - Implícito</div>
+      </div>
+
+      <h2>grid-auto-flow: column</h2>
+      <p>Los ítems extra se colocan en nuevas COLUMNAS, no en nuevas filas.</p>
+      <div class="grid-auto-flow-col">
+        <div class="item">1</div><div class="item">2</div>
+        <div class="item">3</div><div class="item">4</div>
+        <div class="item">5</div><div class="item">6</div>
+        <div class="item">7</div><div class="item">8</div>
+      </div>
+
+      <h2>grid-auto-flow: dense</h2>
+      <p>Los huecos se rellenan automáticamente. Observa cómo los ítems pequeños
+      ocupan los espacios libres dejados por los ítems grandes.</p>
+      <div class="grid-dense">
+        <div class="item">1 (2x2)</div><div class="item">2</div>
+        <div class="item">3</div><div class="item">4</div>
+        <div class="item">5 (2x2)</div><div class="item">6</div>
+        <div class="item">7</div><div class="item">8</div>
+        <div class="item">9</div><div class="item">10</div>
+        <div class="item">11</div><div class="item">12</div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -666,58 +728,93 @@ Cuando el número de ítems supera las celdas definidas, el navegador genera aut
       color: #fff;
       border-color: #1f6feb;
     }
-  </style>
-</head>
-<body>
-  <h2>Grid Explícito (azul) vs Implícito (oscuro)</h2>
-  <p>4 celdas definidas explícitamente. Los 4 ítems extra generan nuevas filas.</p>
-  <div class="grid-impl">
-    <div class="item">1 - Explícito</div>
-    <div class="item">2 - Explícito</div>
-    <div class="item">3 - Explícito</div>
-    <div class="item">4 - Explícito</div>
-    <div class="item">5 - Implícito</div>
-    <div class="item">6 - Implícito</div>
-    <div class="item">7 - Implícito</div>
-    <div class="item">8 - Implícito</div>
-  </div>
-
-  <h2>grid-auto-flow: column</h2>
-  <p>Los ítems extra se colocan en nuevas COLUMNAS, no en nuevas filas.</p>
-  <div class="grid-auto-flow-col">
-    <div class="item">1</div><div class="item">2</div>
-    <div class="item">3</div><div class="item">4</div>
-    <div class="item">5</div><div class="item">6</div>
-    <div class="item">7</div><div class="item">8</div>
-  </div>
-
-  <h2>grid-auto-flow: dense</h2>
-  <p>Los huecos se rellenan automáticamente. Observa cómo los ítems pequeños
-  ocupan los espacios libres dejados por los ítems grandes.</p>
-  <div class="grid-dense">
-    <div class="item">1 (2x2)</div><div class="item">2</div>
-    <div class="item">3</div><div class="item">4</div>
-    <div class="item">5 (2x2)</div><div class="item">6</div>
-    <div class="item">7</div><div class="item">8</div>
-    <div class="item">9</div><div class="item">10</div>
-    <div class="item">11</div><div class="item">12</div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 5: Sistema completo de alineación en Grid
 
 La alineación es uno de los aspectos más potentes de Grid. Este ejemplo explora todas las propiedades: justify-items, align-items, place-items (alinear ítems en sus celdas), justify-content, align-content, place-content (alinear la cuadrícula en el contenedor), y justify-self, align-self, place-self (sobrescribir alineación para ítems específicos).
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 5 - Alineación Completa en Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 5 - Alineación Completa en Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <section>
+        <h2>place-items: stretch (comportamiento por defecto)</h2>
+        <p class="desc">Los ítems se estiran para llenar completamente su celda.</p>
+        <div class="grid-items">
+          <div class="item">1</div><div class="item">2</div>
+          <div class="item">3</div><div class="item">4</div>
+          <div class="item">5</div><div class="item">6</div>
+          <div class="item">7</div><div class="item">8</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>place-items: center</h2>
+        <p class="desc">Ítems centrados en ambas direcciones. Se encogen al tamaño del contenido.</p>
+        <div class="grid-items center">
+          <div class="item item-ident">1</div><div class="item item-ident">2</div>
+          <div class="item item-ident">3</div><div class="item item-ident">4</div>
+          <div class="item item-ident">5</div><div class="item item-ident">6</div>
+          <div class="item item-ident">7</div><div class="item item-ident">8</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>place-items: start</h2>
+        <p class="desc">Ítems alineados al inicio (arriba-izquierda) de sus celdas.</p>
+        <div class="grid-items start">
+          <div class="item item-ident">1</div><div class="item item-ident">2</div>
+          <div class="item item-ident">3</div><div class="item item-ident">4</div>
+          <div class="item item-ident">5</div><div class="item item-ident">6</div>
+          <div class="item item-ident">7</div><div class="item item-ident">8</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>place-content: center</h2>
+        <p class="desc">La cuadrícula completa se centra en el contenedor (más grande que ella).</p>
+        <div class="grid-content center">
+          <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+          <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>place-content: space-between</h2>
+        <p class="desc">El espacio sobrante se distribuye entre las filas y columnas.</p>
+        <div class="grid-content between">
+          <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+          <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>place-self: alineación individual por ítem</h2>
+        <p class="desc">Ítems 1 (start), 5 (center) y 9 (end) sobrescriben la alineación del contenedor.</p>
+        <div class="grid-items center grid-self">
+          <div class="item item-ident">start</div><div class="item item-ident">2</div>
+          <div class="item item-ident">3</div><div class="item item-ident">4</div>
+          <div class="item item-ident">center</div><div class="item item-ident">6</div>
+          <div class="item item-ident">7</div><div class="item item-ident">8</div>
+          <div class="item item-ident">end</div><div class="item item-ident">10</div>
+        </div>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -789,88 +886,154 @@ La alineación es uno de los aspectos más potentes de Grid. Este ejemplo explor
     }
 
     .item-ident { width: 80px; height: 60px; }
-  </style>
-</head>
-<body>
-  <section>
-    <h2>place-items: stretch (comportamiento por defecto)</h2>
-    <p class="desc">Los ítems se estiran para llenar completamente su celda.</p>
-    <div class="grid-items">
-      <div class="item">1</div><div class="item">2</div>
-      <div class="item">3</div><div class="item">4</div>
-      <div class="item">5</div><div class="item">6</div>
-      <div class="item">7</div><div class="item">8</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>place-items: center</h2>
-    <p class="desc">Ítems centrados en ambas direcciones. Se encogen al tamaño del contenido.</p>
-    <div class="grid-items center">
-      <div class="item item-ident">1</div><div class="item item-ident">2</div>
-      <div class="item item-ident">3</div><div class="item item-ident">4</div>
-      <div class="item item-ident">5</div><div class="item item-ident">6</div>
-      <div class="item item-ident">7</div><div class="item item-ident">8</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>place-items: start</h2>
-    <p class="desc">Ítems alineados al inicio (arriba-izquierda) de sus celdas.</p>
-    <div class="grid-items start">
-      <div class="item item-ident">1</div><div class="item item-ident">2</div>
-      <div class="item item-ident">3</div><div class="item item-ident">4</div>
-      <div class="item item-ident">5</div><div class="item item-ident">6</div>
-      <div class="item item-ident">7</div><div class="item item-ident">8</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>place-content: center</h2>
-    <p class="desc">La cuadrícula completa se centra en el contenedor (más grande que ella).</p>
-    <div class="grid-content center">
-      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
-      <div class="item">4</div><div class="item">5</div><div class="item">6</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>place-content: space-between</h2>
-    <p class="desc">El espacio sobrante se distribuye entre las filas y columnas.</p>
-    <div class="grid-content between">
-      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
-      <div class="item">4</div><div class="item">5</div><div class="item">6</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>place-self: alineación individual por ítem</h2>
-    <p class="desc">Ítems 1 (start), 5 (center) y 9 (end) sobrescriben la alineación del contenedor.</p>
-    <div class="grid-items center grid-self">
-      <div class="item item-ident">start</div><div class="item item-ident">2</div>
-      <div class="item item-ident">3</div><div class="item item-ident">4</div>
-      <div class="item item-ident">center</div><div class="item item-ident">6</div>
-      <div class="item item-ident">7</div><div class="item item-ident">8</div>
-      <div class="item item-ident">end</div><div class="item item-ident">10</div>
-    </div>
-  </section>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 6: Landing Page completa con Grid
 
 Una landing page profesional construida íntegramente con CSS Grid. Incluye cabecera con navegación, héroe a dos columnas, sección de características con tarjetas responsivas, testimonios, llamada a la acción y pie de página. Todo el layout usa grid-template-areas para la estructura principal y repeat(auto-fit, minmax()) para las tarjetas.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page con CSS Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Landing Page con CSS Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="landing">
+        <header class="header">
+          <div class="header__logo">TechFlow</div>
+          <nav class="header__nav">
+            <a href="#">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Proyectos</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+          </nav>
+          <button class="header__cta">Comenzar</button>
+        </header>
+
+        <section class="hero">
+          <div class="hero__content">
+            <h1>Transformamos ideas en experiencias digitales</h1>
+            <p>Desarrollamos aplicaciones web modernas con las últimas tecnologías.</p>
+            <div>
+              <a href="#" class="btn btn--primario">Ver servicios</a>
+              <a href="#" class="btn btn--secundario">Saber más</a>
+            </div>
+          </div>
+          <div class="hero__image">Rocket</div>
+        </section>
+
+        <section class="features">
+          <h2>Por que elegirnos?</h2>
+          <p class="features__desc">Soluciones completas de desarrollo web adaptadas a tu negocio.</p>
+          <div class="features__grid">
+            <div class="feature-card">
+              <span class="feature-card__icon">⚡</span>
+              <h3>Rendimiento optimo</h3>
+              <p>Aplicaciones ultrarrápidas optimizadas para buscadores y con carga instantánea.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-card__icon">🎨</span>
+              <h3>Diseño personalizado</h3>
+              <p>Interfaces únicas diseñadas a medida siguiendo tu identidad visual.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-card__icon">📱</span>
+              <h3>100% responsive</h3>
+              <p>Aplicaciones que se ven perfectas en cualquier dispositivo.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-card__icon">🔒</span>
+              <h3>Seguridad garantizada</h3>
+              <p>Implementamos las mejores prácticas de seguridad para proteger tus datos.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-card__icon">♿</span>
+              <h3>Accesibilidad WCAG</h3>
+              <p>Cumplimos estándares de accesibilidad para que tu web sea usable por todos.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-card__icon">🔄</span>
+              <h3>Soporte continuo</h3>
+              <p>Mantenimiento y actualizaciones periódicas para tu proyecto siempre al día.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials">
+          <h2>Lo que dicen nuestros clientes</h2>
+          <div class="testimonials__grid">
+            <div class="testimonial">
+              <p class="testimonial__text">"TechFlow transformó completamente nuestra presencia online. El diseño es espectacular."</p>
+              <p class="testimonial__author">María García</p>
+              <p class="testimonial__role">CEO de Innovatech</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial__text">"El equipo entendió nuestras necesidades desde el primer momento. Comunicación excelente."</p>
+              <p class="testimonial__author">Carlos Ruiz</p>
+              <p class="testimonial__role">Director de Marketing</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial__text">"Nuestra app se carga en milisegundos y la experiencia de usuario es inmejorable."</p>
+              <p class="testimonial__author">Ana López</p>
+              <p class="testimonial__role">CTO de DataCorp</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta">
+          <h2>Listo para empezar tu proyecto?</h2>
+          <p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
+          <a href="#" class="btn btn--primario" style="font-size:1.1rem; padding:1rem 2.5rem;">
+            Solicitar presupuesto
+          </a>
+        </section>
+
+        <footer class="footer">
+          <div class="footer__col">
+            <h4>TechFlow</h4>
+            <p>Desarrollo web profesional desde 2018.</p>
+            <p>Madrid, España</p>
+          </div>
+          <div class="footer__col">
+            <h4>Servicios</h4>
+            <a href="#">Desarrollo Web</a>
+            <a href="#">Apps Móviles</a>
+            <a href="#">Consultoría UX/UI</a>
+            <a href="#">SEO Técnico</a>
+          </div>
+          <div class="footer__col">
+            <h4>Empresa</h4>
+            <a href="#">Sobre nosotros</a>
+            <a href="#">Equipo</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <h4>Legal</h4>
+            <a href="#">Aviso legal</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Cookies</a>
+          </div>
+          <div class="footer__bottom">
+            2025 TechFlow. Todos los derechos reservados.
+          </div>
+        </footer>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* ===== RESET Y VARIABLES CSS ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1168,147 +1331,143 @@ Una landing page profesional construida íntegramente con CSS Grid. Incluye cabe
       .hero__image { height: 200px; }
       .hero__content h1 { font-size: 2rem; }
     }
-  </style>
-</head>
-<body>
-  <div class="landing">
-    <header class="header">
-      <div class="header__logo">TechFlow</div>
-      <nav class="header__nav">
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Blog</a>
-        <a href="#">Contacto</a>
-      </nav>
-      <button class="header__cta">Comenzar</button>
-    </header>
-
-    <section class="hero">
-      <div class="hero__content">
-        <h1>Transformamos ideas en experiencias digitales</h1>
-        <p>Desarrollamos aplicaciones web modernas con las últimas tecnologías.</p>
-        <div>
-          <a href="#" class="btn btn--primario">Ver servicios</a>
-          <a href="#" class="btn btn--secundario">Saber más</a>
-        </div>
-      </div>
-      <div class="hero__image">Rocket</div>
-    </section>
-
-    <section class="features">
-      <h2>Por que elegirnos?</h2>
-      <p class="features__desc">Soluciones completas de desarrollo web adaptadas a tu negocio.</p>
-      <div class="features__grid">
-        <div class="feature-card">
-          <span class="feature-card__icon">⚡</span>
-          <h3>Rendimiento optimo</h3>
-          <p>Aplicaciones ultrarrápidas optimizadas para buscadores y con carga instantánea.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-card__icon">🎨</span>
-          <h3>Diseño personalizado</h3>
-          <p>Interfaces únicas diseñadas a medida siguiendo tu identidad visual.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-card__icon">📱</span>
-          <h3>100% responsive</h3>
-          <p>Aplicaciones que se ven perfectas en cualquier dispositivo.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-card__icon">🔒</span>
-          <h3>Seguridad garantizada</h3>
-          <p>Implementamos las mejores prácticas de seguridad para proteger tus datos.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-card__icon">♿</span>
-          <h3>Accesibilidad WCAG</h3>
-          <p>Cumplimos estándares de accesibilidad para que tu web sea usable por todos.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-card__icon">🔄</span>
-          <h3>Soporte continuo</h3>
-          <p>Mantenimiento y actualizaciones periódicas para tu proyecto siempre al día.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials">
-      <h2>Lo que dicen nuestros clientes</h2>
-      <div class="testimonials__grid">
-        <div class="testimonial">
-          <p class="testimonial__text">"TechFlow transformó completamente nuestra presencia online. El diseño es espectacular."</p>
-          <p class="testimonial__author">María García</p>
-          <p class="testimonial__role">CEO de Innovatech</p>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial__text">"El equipo entendió nuestras necesidades desde el primer momento. Comunicación excelente."</p>
-          <p class="testimonial__author">Carlos Ruiz</p>
-          <p class="testimonial__role">Director de Marketing</p>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial__text">"Nuestra app se carga en milisegundos y la experiencia de usuario es inmejorable."</p>
-          <p class="testimonial__author">Ana López</p>
-          <p class="testimonial__role">CTO de DataCorp</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <h2>Listo para empezar tu proyecto?</h2>
-      <p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
-      <a href="#" class="btn btn--primario" style="font-size:1.1rem; padding:1rem 2.5rem;">
-        Solicitar presupuesto
-      </a>
-    </section>
-
-    <footer class="footer">
-      <div class="footer__col">
-        <h4>TechFlow</h4>
-        <p>Desarrollo web profesional desde 2018.</p>
-        <p>Madrid, España</p>
-      </div>
-      <div class="footer__col">
-        <h4>Servicios</h4>
-        <a href="#">Desarrollo Web</a>
-        <a href="#">Apps Móviles</a>
-        <a href="#">Consultoría UX/UI</a>
-        <a href="#">SEO Técnico</a>
-      </div>
-      <div class="footer__col">
-        <h4>Empresa</h4>
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Equipo</a>
-        <a href="#">Blog</a>
-        <a href="#">Contacto</a>
-      </div>
-      <div class="footer__col">
-        <h4>Legal</h4>
-        <a href="#">Aviso legal</a>
-        <a href="#">Privacidad</a>
-        <a href="#">Cookies</a>
-      </div>
-      <div class="footer__bottom">
-        2025 TechFlow. Todos los derechos reservados.
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 7: Blog con Grid (posts destacados + sidebar + paginación)
 
 Layout completo de un blog que combina post destacado a doble columna, grid de posts normales con auto-fill, sidebar con widgets, y paginación construida con grid. Demuestra cómo Grid puede gestionar layouts editoriales complejos.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog con CSS Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Blog con CSS Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="blog">
+        <header class="blog__header">
+          <h1>TechBlog</h1>
+          <p>Tecnología, desarrollo web y diseño de interfaces</p>
+          <nav>
+            <a href="#">Tecnología</a>
+            <a href="#">Diseño</a>
+            <a href="#">Desarrollo</a>
+            <a href="#">Tutoriales</a>
+            <a href="#">Podcast</a>
+          </nav>
+        </header>
+
+        <main class="blog__main">
+          <div class="posts">
+            <!-- Post destacado: ocupa todo el ancho del área de posts -->
+            <article class="post--featured">
+              <div class="post__image">NEWS</div>
+              <div class="post__content">
+                <span class="post__category">Destacado</span>
+                <h2 style="font-family:'Segoe UI',sans-serif; margin:0.5rem 0;">
+                  CSS Grid: La guía definitiva para layouts modernos en 2025
+                </h2>
+                <p>Descubre cómo CSS Grid ha revolucionado la maquetación web.</p>
+                <div class="post__meta">Por José Martínez · 15 min lectura · 12/05/2025</div>
+              </div>
+            </article>
+
+            <!-- Grid de posts normales -->
+            <div class="posts__grid">
+              <article class="post">
+                <div class="post__image">PC</div>
+                <div class="post__content">
+                  <span class="post__category">Desarrollo</span>
+                  <h3>React 19: Novedades que debes conocer</h3>
+                  <p>Exploramos las nuevas características de React 19.</p>
+                  <div class="post__meta">10/05/2025 · 8 min</div>
+                </div>
+              </article>
+              <article class="post">
+                <div class="post__image">ART</div>
+                <div class="post__content">
+                  <span class="post__category">Diseño</span>
+                  <h3>Design Tokens: Estandarizando tu sistema</h3>
+                  <p>Aprende a implementar design tokens para consistencia visual.</p>
+                  <div class="post__meta">08/05/2025 · 12 min</div>
+                </div>
+              </article>
+              <article class="post">
+                <div class="post__image">BOLT</div>
+                <div class="post__content">
+                  <span class="post__category">Rendimiento</span>
+                  <h3>Optimización de Core Web Vitals</h3>
+                  <p>Mejora la puntuación de tu web en los indicadores de Google.</p>
+                  <div class="post__meta">05/05/2025 · 6 min</div>
+                </div>
+              </article>
+              <article class="post">
+                <div class="post__image">LOCK</div>
+                <div class="post__content">
+                  <span class="post__category">Seguridad</span>
+                  <h3>Autenticación con Passkeys</h3>
+                  <p>Implementa el nuevo estándar de autenticación biométrica.</p>
+                  <div class="post__meta">01/05/2025 · 10 min</div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Paginación con grid -->
+            <nav class="pagination">
+              <button class="pagination__btn pagination__btn--active">1</button>
+              <button class="pagination__btn">2</button>
+              <button class="pagination__btn">3</button>
+              <button class="pagination__btn">4</button>
+              <button class="pagination__btn">Siguiente →</button>
+            </nav>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar__widget">
+              <h4>Sobre el autor</h4>
+              <p>José Martínez, desarrollador web y profesor de FP en Andalucía.</p>
+            </div>
+            <div class="sidebar__widget">
+              <h4>Categorías</h4>
+              <ul>
+                <li><a href="#">Desarrollo Web (24)</a></li>
+                <li><a href="#">Diseño UX/UI (18)</a></li>
+                <li><a href="#">CSS y Maquetación (15)</a></li>
+                <li><a href="#">JavaScript (32)</a></li>
+                <li><a href="#">Accesibilidad (8)</a></li>
+              </ul>
+            </div>
+            <div class="sidebar__widget">
+              <h4>Etiquetas</h4>
+              <div class="sidebar__tag-cloud">
+                <span class="tag">CSS Grid</span>
+                <span class="tag">Flexbox</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Figma</span>
+                <span class="tag">WCAG</span>
+              </div>
+            </div>
+          </aside>
+        </main>
+
+        <footer class="blog__footer">
+          2025 TechBlog. Desarrollado con CSS Grid.
+        </footer>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -1506,138 +1665,202 @@ Layout completo de un blog que combina post destacado a doble columna, grid de p
       .blog__header h1 { font-size: 1.8rem; }
       .blog__header nav { flex-direction: column; gap: 0.5rem; }
     }
-  </style>
-</head>
-<body>
-  <div class="blog">
-    <header class="blog__header">
-      <h1>TechBlog</h1>
-      <p>Tecnología, desarrollo web y diseño de interfaces</p>
-      <nav>
-        <a href="#">Tecnología</a>
-        <a href="#">Diseño</a>
-        <a href="#">Desarrollo</a>
-        <a href="#">Tutoriales</a>
-        <a href="#">Podcast</a>
-      </nav>
-    </header>
-
-    <main class="blog__main">
-      <div class="posts">
-        <!-- Post destacado: ocupa todo el ancho del área de posts -->
-        <article class="post--featured">
-          <div class="post__image">NEWS</div>
-          <div class="post__content">
-            <span class="post__category">Destacado</span>
-            <h2 style="font-family:'Segoe UI',sans-serif; margin:0.5rem 0;">
-              CSS Grid: La guía definitiva para layouts modernos en 2025
-            </h2>
-            <p>Descubre cómo CSS Grid ha revolucionado la maquetación web.</p>
-            <div class="post__meta">Por José Martínez · 15 min lectura · 12/05/2025</div>
-          </div>
-        </article>
-
-        <!-- Grid de posts normales -->
-        <div class="posts__grid">
-          <article class="post">
-            <div class="post__image">PC</div>
-            <div class="post__content">
-              <span class="post__category">Desarrollo</span>
-              <h3>React 19: Novedades que debes conocer</h3>
-              <p>Exploramos las nuevas características de React 19.</p>
-              <div class="post__meta">10/05/2025 · 8 min</div>
-            </div>
-          </article>
-          <article class="post">
-            <div class="post__image">ART</div>
-            <div class="post__content">
-              <span class="post__category">Diseño</span>
-              <h3>Design Tokens: Estandarizando tu sistema</h3>
-              <p>Aprende a implementar design tokens para consistencia visual.</p>
-              <div class="post__meta">08/05/2025 · 12 min</div>
-            </div>
-          </article>
-          <article class="post">
-            <div class="post__image">BOLT</div>
-            <div class="post__content">
-              <span class="post__category">Rendimiento</span>
-              <h3>Optimización de Core Web Vitals</h3>
-              <p>Mejora la puntuación de tu web en los indicadores de Google.</p>
-              <div class="post__meta">05/05/2025 · 6 min</div>
-            </div>
-          </article>
-          <article class="post">
-            <div class="post__image">LOCK</div>
-            <div class="post__content">
-              <span class="post__category">Seguridad</span>
-              <h3>Autenticación con Passkeys</h3>
-              <p>Implementa el nuevo estándar de autenticación biométrica.</p>
-              <div class="post__meta">01/05/2025 · 10 min</div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Paginación con grid -->
-        <nav class="pagination">
-          <button class="pagination__btn pagination__btn--active">1</button>
-          <button class="pagination__btn">2</button>
-          <button class="pagination__btn">3</button>
-          <button class="pagination__btn">4</button>
-          <button class="pagination__btn">Siguiente →</button>
-        </nav>
-      </div>
-
-      <aside class="sidebar">
-        <div class="sidebar__widget">
-          <h4>Sobre el autor</h4>
-          <p>José Martínez, desarrollador web y profesor de FP en Andalucía.</p>
-        </div>
-        <div class="sidebar__widget">
-          <h4>Categorías</h4>
-          <ul>
-            <li><a href="#">Desarrollo Web (24)</a></li>
-            <li><a href="#">Diseño UX/UI (18)</a></li>
-            <li><a href="#">CSS y Maquetación (15)</a></li>
-            <li><a href="#">JavaScript (32)</a></li>
-            <li><a href="#">Accesibilidad (8)</a></li>
-          </ul>
-        </div>
-        <div class="sidebar__widget">
-          <h4>Etiquetas</h4>
-          <div class="sidebar__tag-cloud">
-            <span class="tag">CSS Grid</span>
-            <span class="tag">Flexbox</span>
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Figma</span>
-            <span class="tag">WCAG</span>
-          </div>
-        </div>
-      </aside>
-    </main>
-
-    <footer class="blog__footer">
-      2025 TechBlog. Desarrollado con CSS Grid.
-    </footer>
-  </div>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 8: Ecommerce con Grid de productos y filtros laterales
 
 Tienda online completa con Grid que incluye cabecera con búsqueda, sidebar de filtros, grid de productos con tarjeta destacada (ocupa doble columna), y diseño totalmente responsive. Demuestra cómo Grid maneja layouts complejos de comercio electrónico con diferentes tamaños de tarjeta.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecommerce con Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ecommerce con Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <header class="header">
+        <div class="header__logo">ShopGrid</div>
+        <div class="header__search">
+          <input type="text" placeholder="Buscar productos...">
+        </div>
+        <div class="header__icons">
+          <span>Usuario</span>
+          <span>Fav</span>
+          <span>Carrito (3)</span>
+        </div>
+      </header>
+
+      <div class="shop">
+        <!-- Filtros laterales -->
+        <aside class="filters">
+          <h3>Filtros</h3>
+          <div class="filter-group">
+            <h4>Categoría</h4>
+            <label><input type="checkbox" checked> Electrónica</label>
+            <label><input type="checkbox"> Ropa</label>
+            <label><input type="checkbox"> Hogar</label>
+            <label><input type="checkbox"> Deportes</label>
+          </div>
+          <div class="filter-group">
+            <h4>Precio</h4>
+            <div class="price-range">
+              <input type="number" placeholder="Min" value="10">
+              <span>-</span>
+              <input type="number" placeholder="Max" value="500">
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Valoración</h4>
+            <label><input type="checkbox"> 4 estrellas o más</label>
+            <label><input type="checkbox"> 3 estrellas o más</label>
+            <label><input type="checkbox"> 2 estrellas o más</label>
+          </div>
+          <button class="btn-filtrar">Aplicar filtros</button>
+        </aside>
+
+        <!-- Grid de productos -->
+        <main>
+          <div class="products-header">
+            <h2>Todos los productos (24)</h2>
+            <select class="sort-select">
+              <option>Más relevantes</option>
+              <option>Precio: menor a mayor</option>
+              <option>Precio: mayor a menor</option>
+              <option>Mejor valorados</option>
+            </select>
+          </div>
+
+          <div class="products-grid">
+            <!-- Producto destacado (2 columnas) -->
+            <article class="product-card product-card--featured">
+              <div class="product-card__image">
+                PHONE
+                <span class="product-card__badge">-30%</span>
+              </div>
+              <div class="product-card__info">
+                <span class="product-card__category">Electrónica</span>
+                <h3 class="product-card__title">Smartphone Pro X5 - 256GB - Negro</h3>
+                <div class="product-card__rating">4 estrellas (128)</div>
+                <p style="color:#636e72; margin:0.5rem 0 1rem; font-size:0.9rem;">
+                  Pantalla AMOLED 6.7", procesador 8 núcleos, cámara 108MP.
+                </p>
+                <div>
+                  <span class="product-card__price">699 EUR</span>
+                  <span class="product-card__price--old">999 EUR</span>
+                </div>
+                <button class="product-card__btn" style="margin-top:1rem; width:auto; border-radius:25px; padding:0.5rem 1.5rem;">
+                  Añadir al carrito
+                </button>
+              </div>
+            </article>
+
+            <!-- Productos normales -->
+            <article class="product-card">
+              <div class="product-card__image">LAPTOP<span class="product-card__badge">Nuevo</span></div>
+              <div class="product-card__info">
+                <span class="product-card__category">Electrónica</span>
+                <h3 class="product-card__title">Portátil UltraBook 15" i7 16GB</h3>
+                <div class="product-card__rating">5 estrellas (56)</div>
+              </div>
+              <div class="product-card__footer">
+                <span class="product-card__price">1199 EUR</span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">HEADPHONES</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Audio</span>
+                <h3 class="product-card__title">Auriculares BT ANC Premium</h3>
+                <div class="product-card__rating">4 estrellas (342)</div>
+              </div>
+              <div class="product-card__footer">
+                <span><span class="product-card__price">89 EUR</span><span class="product-card__price--old">129 EUR</span></span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">WATCH</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Wearables</span>
+                <h3 class="product-card__title">Smartwatch Deportivo GPS</h3>
+                <div class="product-card__rating">4 estrellas (89)</div>
+              </div>
+              <div class="product-card__footer">
+                <span class="product-card__price">199 EUR</span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">CAMERA</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Fotografía</span>
+                <h3 class="product-card__title">Cámara Mirrorless 24MP</h3>
+                <div class="product-card__rating">5 estrellas (45)</div>
+              </div>
+              <div class="product-card__footer">
+                <span class="product-card__price">849 EUR</span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">PRINTER</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Oficina</span>
+                <h3 class="product-card__title">Impresora Multifunción WiFi</h3>
+                <div class="product-card__rating">3 estrellas (23)</div>
+              </div>
+              <div class="product-card__footer">
+                <span><span class="product-card__price">149 EUR</span><span class="product-card__price--old">179 EUR</span></span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">KEYBOARD</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Gaming</span>
+                <h3 class="product-card__title">Teclado Mecánico RGB</h3>
+                <div class="product-card__rating">5 estrellas (210)</div>
+              </div>
+              <div class="product-card__footer">
+                <span class="product-card__price">79 EUR</span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">MONITOR</div>
+              <div class="product-card__info">
+                <span class="product-card__category">Monitores</span>
+                <h3 class="product-card__title">Monitor 4K 27" IPS HDR10</h3>
+                <div class="product-card__rating">4 estrellas (67)</div>
+              </div>
+              <div class="product-card__footer">
+                <span class="product-card__price">449 EUR</span>
+                <button class="product-card__btn">+</button>
+              </div>
+            </article>
+          </div>
+        </main>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -1878,195 +2101,241 @@ Tienda online completa con Grid que incluye cabecera con búsqueda, sidebar de f
       .header { grid-template-columns: 1fr auto; gap: 0.5rem; padding: 0.75rem 1rem; }
       .header__search { grid-column: 1 / -1; order: 3; }
     }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <div class="header__logo">ShopGrid</div>
-    <div class="header__search">
-      <input type="text" placeholder="Buscar productos...">
-    </div>
-    <div class="header__icons">
-      <span>Usuario</span>
-      <span>Fav</span>
-      <span>Carrito (3)</span>
-    </div>
-  </header>
-
-  <div class="shop">
-    <!-- Filtros laterales -->
-    <aside class="filters">
-      <h3>Filtros</h3>
-      <div class="filter-group">
-        <h4>Categoría</h4>
-        <label><input type="checkbox" checked> Electrónica</label>
-        <label><input type="checkbox"> Ropa</label>
-        <label><input type="checkbox"> Hogar</label>
-        <label><input type="checkbox"> Deportes</label>
-      </div>
-      <div class="filter-group">
-        <h4>Precio</h4>
-        <div class="price-range">
-          <input type="number" placeholder="Min" value="10">
-          <span>-</span>
-          <input type="number" placeholder="Max" value="500">
-        </div>
-      </div>
-      <div class="filter-group">
-        <h4>Valoración</h4>
-        <label><input type="checkbox"> 4 estrellas o más</label>
-        <label><input type="checkbox"> 3 estrellas o más</label>
-        <label><input type="checkbox"> 2 estrellas o más</label>
-      </div>
-      <button class="btn-filtrar">Aplicar filtros</button>
-    </aside>
-
-    <!-- Grid de productos -->
-    <main>
-      <div class="products-header">
-        <h2>Todos los productos (24)</h2>
-        <select class="sort-select">
-          <option>Más relevantes</option>
-          <option>Precio: menor a mayor</option>
-          <option>Precio: mayor a menor</option>
-          <option>Mejor valorados</option>
-        </select>
-      </div>
-
-      <div class="products-grid">
-        <!-- Producto destacado (2 columnas) -->
-        <article class="product-card product-card--featured">
-          <div class="product-card__image">
-            PHONE
-            <span class="product-card__badge">-30%</span>
-          </div>
-          <div class="product-card__info">
-            <span class="product-card__category">Electrónica</span>
-            <h3 class="product-card__title">Smartphone Pro X5 - 256GB - Negro</h3>
-            <div class="product-card__rating">4 estrellas (128)</div>
-            <p style="color:#636e72; margin:0.5rem 0 1rem; font-size:0.9rem;">
-              Pantalla AMOLED 6.7", procesador 8 núcleos, cámara 108MP.
-            </p>
-            <div>
-              <span class="product-card__price">699 EUR</span>
-              <span class="product-card__price--old">999 EUR</span>
-            </div>
-            <button class="product-card__btn" style="margin-top:1rem; width:auto; border-radius:25px; padding:0.5rem 1.5rem;">
-              Añadir al carrito
-            </button>
-          </div>
-        </article>
-
-        <!-- Productos normales -->
-        <article class="product-card">
-          <div class="product-card__image">LAPTOP<span class="product-card__badge">Nuevo</span></div>
-          <div class="product-card__info">
-            <span class="product-card__category">Electrónica</span>
-            <h3 class="product-card__title">Portátil UltraBook 15" i7 16GB</h3>
-            <div class="product-card__rating">5 estrellas (56)</div>
-          </div>
-          <div class="product-card__footer">
-            <span class="product-card__price">1199 EUR</span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">HEADPHONES</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Audio</span>
-            <h3 class="product-card__title">Auriculares BT ANC Premium</h3>
-            <div class="product-card__rating">4 estrellas (342)</div>
-          </div>
-          <div class="product-card__footer">
-            <span><span class="product-card__price">89 EUR</span><span class="product-card__price--old">129 EUR</span></span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">WATCH</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Wearables</span>
-            <h3 class="product-card__title">Smartwatch Deportivo GPS</h3>
-            <div class="product-card__rating">4 estrellas (89)</div>
-          </div>
-          <div class="product-card__footer">
-            <span class="product-card__price">199 EUR</span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">CAMERA</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Fotografía</span>
-            <h3 class="product-card__title">Cámara Mirrorless 24MP</h3>
-            <div class="product-card__rating">5 estrellas (45)</div>
-          </div>
-          <div class="product-card__footer">
-            <span class="product-card__price">849 EUR</span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">PRINTER</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Oficina</span>
-            <h3 class="product-card__title">Impresora Multifunción WiFi</h3>
-            <div class="product-card__rating">3 estrellas (23)</div>
-          </div>
-          <div class="product-card__footer">
-            <span><span class="product-card__price">149 EUR</span><span class="product-card__price--old">179 EUR</span></span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">KEYBOARD</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Gaming</span>
-            <h3 class="product-card__title">Teclado Mecánico RGB</h3>
-            <div class="product-card__rating">5 estrellas (210)</div>
-          </div>
-          <div class="product-card__footer">
-            <span class="product-card__price">79 EUR</span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image">MONITOR</div>
-          <div class="product-card__info">
-            <span class="product-card__category">Monitores</span>
-            <h3 class="product-card__title">Monitor 4K 27" IPS HDR10</h3>
-            <div class="product-card__rating">4 estrellas (67)</div>
-          </div>
-          <div class="product-card__footer">
-            <span class="product-card__price">449 EUR</span>
-            <button class="product-card__btn">+</button>
-          </div>
-        </article>
-      </div>
-    </main>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 9: Dashboard profesional con Grid
 
 Un dashboard de administración profesional que utiliza Grid tanto para el layout principal (sidebar + header + contenido) como para la disposición de widgets de diferentes tamaños. Incluye tarjetas de estadísticas, gráfico de barras, lista de actividad reciente y panel de tareas.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Profesional con Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Dashboard Profesional con Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="dashboard">
+        <aside class="sidebar">
+          <div class="sidebar__logo">DashGrid</div>
+          <nav class="sidebar__nav">
+            <a href="#" class="sidebar__link sidebar__link--active">Dashboard</a>
+            <a href="#" class="sidebar__link">Analiticas</a>
+            <a href="#" class="sidebar__link">Usuarios</a>
+            <a href="#" class="sidebar__link">Productos</a>
+            <a href="#" class="sidebar__link">Pedidos</a>
+            <span class="sidebar__section">Configuracion</span>
+            <a href="#" class="sidebar__link">Ajustes</a>
+            <a href="#" class="sidebar__link">Seguridad</a>
+            <a href="#" class="sidebar__link">Ayuda</a>
+          </nav>
+        </aside>
+
+        <header class="header">
+          <div class="header__search">
+            <input type="text" placeholder="Buscar en el dashboard...">
+          </div>
+          <div class="header__actions">
+            <span>Notif</span>
+            <span>Chat</span>
+          </div>
+          <div class="header__user">
+            <span>María González</span>
+            <div class="header__avatar">MG</div>
+          </div>
+        </header>
+
+        <main class="main">
+          <h1 class="main__title">Dashboard</h1>
+
+          <div class="widgets">
+            <!-- 4 widgets de estadísticas (1 columna cada uno) -->
+            <div class="widget widget--stat">
+              <div class="widget__header">
+                <span class="widget__title">Ingresos Totales</span>
+                <span>💰</span>
+              </div>
+              <div>
+                <div class="widget__value">45231 EUR</div>
+                <div class="widget__change widget__change--up">+12.5% vs mes anterior</div>
+              </div>
+            </div>
+
+            <div class="widget widget--stat">
+              <div class="widget__header">
+                <span class="widget__title">Usuarios Activos</span>
+                <span>👥</span>
+              </div>
+              <div>
+                <div class="widget__value">2847</div>
+                <div class="widget__change widget__change--up">+8.2% vs mes anterior</div>
+              </div>
+            </div>
+
+            <div class="widget widget--stat">
+              <div class="widget__header">
+                <span class="widget__title">Ventas</span>
+                <span>🛒</span>
+              </div>
+              <div>
+                <div class="widget__value">1230</div>
+                <div class="widget__change widget__change--down">-3.1% vs mes anterior</div>
+              </div>
+            </div>
+
+            <div class="widget widget--stat">
+              <div class="widget__header">
+                <span class="widget__title">Conversion</span>
+                <span>📈</span>
+              </div>
+              <div>
+                <div class="widget__value">3.24%</div>
+                <div class="widget__change widget__change--up">+0.8% vs mes anterior</div>
+              </div>
+            </div>
+
+            <!-- Gráfico de barras (2 columnas) -->
+            <div class="widget widget--wide">
+              <div class="widget__header">
+                <span class="widget__title">Ingresos Semanales</span>
+                <span>📊</span>
+              </div>
+              <div class="chart-bars">
+                <div class="chart-bar" style="height:60%"></div>
+                <div class="chart-bar" style="height:80%"></div>
+                <div class="chart-bar" style="height:45%"></div>
+                <div class="chart-bar" style="height:90%"></div>
+                <div class="chart-bar" style="height:70%"></div>
+                <div class="chart-bar" style="height:55%"></div>
+                <div class="chart-bar" style="height:95%"></div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:0.5rem; margin-top:0.5rem; color:var(--color-muted); font-size:0.75rem;">
+                <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+            </div>
+
+            <!-- Actividad reciente (2 columnas) -->
+            <div class="widget widget--wide">
+              <div class="widget__header">
+                <span class="widget__title">Actividad Reciente</span>
+                <span>📋</span>
+              </div>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <div class="activity-dot"></div>
+                  <div>
+                    <strong>Nuevo pedido #45892</strong>
+                    <div style="color:var(--color-muted);font-size:0.85rem;">Cliente: Juan Pérez - 2 productos</div>
+                  </div>
+                  <span class="activity-time">Hace 5 min</span>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot"></div>
+                  <div>
+                    <strong>Usuario registrado</strong>
+                    <div style="color:var(--color-muted);font-size:0.85rem;">ana.lopez@email.com</div>
+                  </div>
+                  <span class="activity-time">Hace 12 min</span>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot"></div>
+                  <div>
+                    <strong>Pago confirmado #45890</strong>
+                    <div style="color:var(--color-muted);font-size:0.85rem;">Importe: 156,50 EUR</div>
+                  </div>
+                  <span class="activity-time">Hace 28 min</span>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot"></div>
+                  <div>
+                    <strong>Soporte: ticket #1243 cerrado</strong>
+                    <div style="color:var(--color-muted);font-size:0.85rem;">Técnico: Carlos Ruiz</div>
+                  </div>
+                  <span class="activity-time">Hace 1 hora</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tareas (1 columna) -->
+            <div class="widget">
+              <div class="widget__header">
+                <span class="widget__title">Tareas Pendientes</span>
+                <span>✅</span>
+              </div>
+              <div class="task-list">
+                <div class="task-item">
+                  <div class="task-status task-status--done"></div>
+                  <span style="text-decoration:line-through;color:var(--color-muted);">Revisar informe</span>
+                  <span class="task-badge task-badge--done">Hecho</span>
+                </div>
+                <div class="task-item">
+                  <div class="task-status task-status--pending"></div>
+                  <span>Actualizar catálogo</span>
+                  <span class="task-badge task-badge--pending">En curso</span>
+                </div>
+                <div class="task-item">
+                  <div class="task-status task-status--urgent"></div>
+                  <span>Corregir bug checkout</span>
+                  <span class="task-badge task-badge--urgent">Urgente</span>
+                </div>
+                <div class="task-item">
+                  <div class="task-status task-status--pending"></div>
+                  <span>Preparar presentación Q3</span>
+                  <span class="task-badge task-badge--pending">Pendiente</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Objetivos (1 columna) -->
+            <div class="widget">
+              <div class="widget__header">
+                <span class="widget__title">Objetivos Mensuales</span>
+                <span>🎯</span>
+              </div>
+              <div style="display:grid; gap:1rem; margin-top:0.5rem;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span style="font-size:0.85rem;">Ventas</span>
+                    <span style="font-size:0.85rem;">85%</span>
+                  </div>
+                  <div style="background:var(--color-border); border-radius:4px; height:8px;">
+                    <div style="background:var(--color-primary); width:85%; height:100%; border-radius:4px;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span style="font-size:0.85rem;">Usuarios nuevos</span>
+                    <span style="font-size:0.85rem;">62%</span>
+                  </div>
+                  <div style="background:var(--color-border); border-radius:4px; height:8px;">
+                    <div style="background:var(--color-success); width:62%; height:100%; border-radius:4px;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span style="font-size:0.85rem;">Soporte resuelto</span>
+                    <span style="font-size:0.85rem;">94%</span>
+                  </div>
+                  <div style="background:var(--color-border); border-radius:4px; height:8px;">
+                    <div style="background:var(--color-warning); width:94%; height:100%; border-radius:4px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -2323,236 +2592,160 @@ Un dashboard de administración profesional que utiliza Grid tanto para el layou
       .header { grid-template-columns: 1fr auto; }
       .header__search { display: none; }
     }
-  </style>
-</head>
-<body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="sidebar__logo">DashGrid</div>
-      <nav class="sidebar__nav">
-        <a href="#" class="sidebar__link sidebar__link--active">Dashboard</a>
-        <a href="#" class="sidebar__link">Analiticas</a>
-        <a href="#" class="sidebar__link">Usuarios</a>
-        <a href="#" class="sidebar__link">Productos</a>
-        <a href="#" class="sidebar__link">Pedidos</a>
-        <span class="sidebar__section">Configuracion</span>
-        <a href="#" class="sidebar__link">Ajustes</a>
-        <a href="#" class="sidebar__link">Seguridad</a>
-        <a href="#" class="sidebar__link">Ayuda</a>
-      </nav>
-    </aside>
-
-    <header class="header">
-      <div class="header__search">
-        <input type="text" placeholder="Buscar en el dashboard...">
-      </div>
-      <div class="header__actions">
-        <span>Notif</span>
-        <span>Chat</span>
-      </div>
-      <div class="header__user">
-        <span>María González</span>
-        <div class="header__avatar">MG</div>
-      </div>
-    </header>
-
-    <main class="main">
-      <h1 class="main__title">Dashboard</h1>
-
-      <div class="widgets">
-        <!-- 4 widgets de estadísticas (1 columna cada uno) -->
-        <div class="widget widget--stat">
-          <div class="widget__header">
-            <span class="widget__title">Ingresos Totales</span>
-            <span>💰</span>
-          </div>
-          <div>
-            <div class="widget__value">45231 EUR</div>
-            <div class="widget__change widget__change--up">+12.5% vs mes anterior</div>
-          </div>
-        </div>
-
-        <div class="widget widget--stat">
-          <div class="widget__header">
-            <span class="widget__title">Usuarios Activos</span>
-            <span>👥</span>
-          </div>
-          <div>
-            <div class="widget__value">2847</div>
-            <div class="widget__change widget__change--up">+8.2% vs mes anterior</div>
-          </div>
-        </div>
-
-        <div class="widget widget--stat">
-          <div class="widget__header">
-            <span class="widget__title">Ventas</span>
-            <span>🛒</span>
-          </div>
-          <div>
-            <div class="widget__value">1230</div>
-            <div class="widget__change widget__change--down">-3.1% vs mes anterior</div>
-          </div>
-        </div>
-
-        <div class="widget widget--stat">
-          <div class="widget__header">
-            <span class="widget__title">Conversion</span>
-            <span>📈</span>
-          </div>
-          <div>
-            <div class="widget__value">3.24%</div>
-            <div class="widget__change widget__change--up">+0.8% vs mes anterior</div>
-          </div>
-        </div>
-
-        <!-- Gráfico de barras (2 columnas) -->
-        <div class="widget widget--wide">
-          <div class="widget__header">
-            <span class="widget__title">Ingresos Semanales</span>
-            <span>📊</span>
-          </div>
-          <div class="chart-bars">
-            <div class="chart-bar" style="height:60%"></div>
-            <div class="chart-bar" style="height:80%"></div>
-            <div class="chart-bar" style="height:45%"></div>
-            <div class="chart-bar" style="height:90%"></div>
-            <div class="chart-bar" style="height:70%"></div>
-            <div class="chart-bar" style="height:55%"></div>
-            <div class="chart-bar" style="height:95%"></div>
-          </div>
-          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:0.5rem; margin-top:0.5rem; color:var(--color-muted); font-size:0.75rem;">
-            <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
-          </div>
-        </div>
-
-        <!-- Actividad reciente (2 columnas) -->
-        <div class="widget widget--wide">
-          <div class="widget__header">
-            <span class="widget__title">Actividad Reciente</span>
-            <span>📋</span>
-          </div>
-          <div class="activity-list">
-            <div class="activity-item">
-              <div class="activity-dot"></div>
-              <div>
-                <strong>Nuevo pedido #45892</strong>
-                <div style="color:var(--color-muted);font-size:0.85rem;">Cliente: Juan Pérez - 2 productos</div>
-              </div>
-              <span class="activity-time">Hace 5 min</span>
-            </div>
-            <div class="activity-item">
-              <div class="activity-dot"></div>
-              <div>
-                <strong>Usuario registrado</strong>
-                <div style="color:var(--color-muted);font-size:0.85rem;">ana.lopez@email.com</div>
-              </div>
-              <span class="activity-time">Hace 12 min</span>
-            </div>
-            <div class="activity-item">
-              <div class="activity-dot"></div>
-              <div>
-                <strong>Pago confirmado #45890</strong>
-                <div style="color:var(--color-muted);font-size:0.85rem;">Importe: 156,50 EUR</div>
-              </div>
-              <span class="activity-time">Hace 28 min</span>
-            </div>
-            <div class="activity-item">
-              <div class="activity-dot"></div>
-              <div>
-                <strong>Soporte: ticket #1243 cerrado</strong>
-                <div style="color:var(--color-muted);font-size:0.85rem;">Técnico: Carlos Ruiz</div>
-              </div>
-              <span class="activity-time">Hace 1 hora</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tareas (1 columna) -->
-        <div class="widget">
-          <div class="widget__header">
-            <span class="widget__title">Tareas Pendientes</span>
-            <span>✅</span>
-          </div>
-          <div class="task-list">
-            <div class="task-item">
-              <div class="task-status task-status--done"></div>
-              <span style="text-decoration:line-through;color:var(--color-muted);">Revisar informe</span>
-              <span class="task-badge task-badge--done">Hecho</span>
-            </div>
-            <div class="task-item">
-              <div class="task-status task-status--pending"></div>
-              <span>Actualizar catálogo</span>
-              <span class="task-badge task-badge--pending">En curso</span>
-            </div>
-            <div class="task-item">
-              <div class="task-status task-status--urgent"></div>
-              <span>Corregir bug checkout</span>
-              <span class="task-badge task-badge--urgent">Urgente</span>
-            </div>
-            <div class="task-item">
-              <div class="task-status task-status--pending"></div>
-              <span>Preparar presentación Q3</span>
-              <span class="task-badge task-badge--pending">Pendiente</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Objetivos (1 columna) -->
-        <div class="widget">
-          <div class="widget__header">
-            <span class="widget__title">Objetivos Mensuales</span>
-            <span>🎯</span>
-          </div>
-          <div style="display:grid; gap:1rem; margin-top:0.5rem;">
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
-                <span style="font-size:0.85rem;">Ventas</span>
-                <span style="font-size:0.85rem;">85%</span>
-              </div>
-              <div style="background:var(--color-border); border-radius:4px; height:8px;">
-                <div style="background:var(--color-primary); width:85%; height:100%; border-radius:4px;"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
-                <span style="font-size:0.85rem;">Usuarios nuevos</span>
-                <span style="font-size:0.85rem;">62%</span>
-              </div>
-              <div style="background:var(--color-border); border-radius:4px; height:8px;">
-                <div style="background:var(--color-success); width:62%; height:100%; border-radius:4px;"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
-                <span style="font-size:0.85rem;">Soporte resuelto</span>
-                <span style="font-size:0.85rem;">94%</span>
-              </div>
-              <div style="background:var(--color-border); border-radius:4px; height:8px;">
-                <div style="background:var(--color-warning); width:94%; height:100%; border-radius:4px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-</body>
-</html>
-```
+    ```
 
 
 ### Ejemplo Guiado 10: Galería avanzada tipo masonry con Grid, overlays y filtros
 
 Una galería de imágenes profesional que simula el efecto masonry (pared de ladrillos) usando diferentes tamaños de celda. Incluye overlays con información al hacer hover, filtros por categoría, y una segunda versión usando grid-auto-flow: dense para compactar automáticamente. Demuestra cómo Grid puede crear layouts visuales complejos típicos de portafolios y sitios de fotografía.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria Avanzada con Grid</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Galeria Avanzada con Grid</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Galeria de Fotografia</h1>
+
+      <!-- Filtros de categorías -->
+      <div class="gallery-filters">
+        <button class="active">Todas</button>
+        <button>Naturaleza</button>
+        <button>Arquitectura</button>
+        <button>Retratos</button>
+        <button>Abstracto</button>
+        <button>Viajes</button>
+      </div>
+
+      <!-- Galería principal -->
+      <div class="gallery">
+        <div class="gallery__item">
+          <div class="gallery__img">SUNSET</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Atardecer en la playa</h3>
+            <span>Naturaleza · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">BUILD</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Rascacielos</h3>
+            <span>Arquitectura · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">FACE</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Retrato urbano</h3>
+            <span>Retratos · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">FOREST</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Bosque místico</h3>
+            <span>Naturaleza · 2024</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">BRIDGE</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Puente colgante</h3>
+            <span>Arquitectura · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">ART</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Arte abstracto</h3>
+            <span>Abstracto · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">MAP</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Mapa del mundo</h3>
+            <span>Viajes · 2024</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">WAVE</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Olas del océano</h3>
+            <span>Naturaleza · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">TOWER</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Torre de cristal</h3>
+            <span>Arquitectura · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">SMILE</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Sonrisa sincera</h3>
+            <span>Retratos · 2024</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">COLOR</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Explosión de color</h3>
+            <span>Abstracto · 2025</span>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <div class="gallery__img">ISLAND</div>
+          <div class="gallery__overlay">
+            <span class="icon">🔍</span>
+            <h3>Isla paradisíaca</h3>
+            <span>Viajes · 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Versión con grid-auto-flow: dense</h2>
+      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;">El algoritmo dense reorganiza los ítems para minimizar espacios vacíos.</p>
+
+      <!-- Galería con dense -->
+      <div class="gallery-dense">
+        <div class="gallery__item"><div class="gallery__img">1</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 1</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">2</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 2</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">3</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 3</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">4</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 4</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">5</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 5</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">6</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 6</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">7</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 7</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">8</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 8</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">9</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 9</h3></div></div>
+        <div class="gallery__item"><div class="gallery__img">10</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 10</h3></div></div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -2752,140 +2945,7 @@ Una galería de imágenes profesional que simula el efecto masonry (pared de lad
         grid-row: span 1 !important;
       }
     }
-  </style>
-</head>
-<body>
-  <h1>Galeria de Fotografia</h1>
-
-  <!-- Filtros de categorías -->
-  <div class="gallery-filters">
-    <button class="active">Todas</button>
-    <button>Naturaleza</button>
-    <button>Arquitectura</button>
-    <button>Retratos</button>
-    <button>Abstracto</button>
-    <button>Viajes</button>
-  </div>
-
-  <!-- Galería principal -->
-  <div class="gallery">
-    <div class="gallery__item">
-      <div class="gallery__img">SUNSET</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Atardecer en la playa</h3>
-        <span>Naturaleza · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">BUILD</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Rascacielos</h3>
-        <span>Arquitectura · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">FACE</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Retrato urbano</h3>
-        <span>Retratos · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">FOREST</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Bosque místico</h3>
-        <span>Naturaleza · 2024</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">BRIDGE</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Puente colgante</h3>
-        <span>Arquitectura · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">ART</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Arte abstracto</h3>
-        <span>Abstracto · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">MAP</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Mapa del mundo</h3>
-        <span>Viajes · 2024</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">WAVE</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Olas del océano</h3>
-        <span>Naturaleza · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">TOWER</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Torre de cristal</h3>
-        <span>Arquitectura · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">SMILE</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Sonrisa sincera</h3>
-        <span>Retratos · 2024</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">COLOR</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Explosión de color</h3>
-        <span>Abstracto · 2025</span>
-      </div>
-    </div>
-    <div class="gallery__item">
-      <div class="gallery__img">ISLAND</div>
-      <div class="gallery__overlay">
-        <span class="icon">🔍</span>
-        <h3>Isla paradisíaca</h3>
-        <span>Viajes · 2025</span>
-      </div>
-    </div>
-  </div>
-
-  <h2>Versión con grid-auto-flow: dense</h2>
-  <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;">El algoritmo dense reorganiza los ítems para minimizar espacios vacíos.</p>
-
-  <!-- Galería con dense -->
-  <div class="gallery-dense">
-    <div class="gallery__item"><div class="gallery__img">1</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 1</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">2</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 2</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">3</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 3</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">4</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 4</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">5</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 5</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">6</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 6</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">7</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 7</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">8</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 8</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">9</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 9</h3></div></div>
-    <div class="gallery__item"><div class="gallery__img">10</div><div class="gallery__overlay"><span class="icon">🔍</span><h3>Foto 10</h3></div></div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 ## Casos reales
 

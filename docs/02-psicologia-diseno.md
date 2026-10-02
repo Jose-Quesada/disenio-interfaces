@@ -256,14 +256,88 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! example "Contexto pedagógico"
     Este ejemplo implementa una página de blog diseñada para aprovechar el patrón de escaneo en **F**, colocando estratégicamente la información clave en las zonas donde el ojo se detiene según los estudios de *eye-tracking* del Nielsen Norman Group.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patrón de escaneo en F</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Patrón de escaneo en F</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="contenedor">
+        <!-- PRIMERA LÍNEA F: Título completo, el ojo lo lee entero -->
+        <h1>Cómo los principios psicológicos transforman el diseño de interfaces web modernas</h1>
+
+        <!-- SEGUNDA LÍNEA F: Metadatos y entradilla -->
+        <p class="metadatos">María García — 12 minutos de lectura — Psicología del Diseño</p>
+        <p class="entradilla">
+          La aplicación de leyes como Hick, Fitts y los principios de la Gestalt
+          permite construir interfaces que las personas comprenden de forma intuitiva,
+          reduciendo la fricción y aumentando la satisfacción de uso.
+        </p>
+
+        <!-- BARRIDO VERTICAL: El ojo desciende por la izquierda -->
+        <!-- Observa que las primeras palabras de cada párrafo contienen
+             la información esencial que alguien que escanea retendrá -->
+        <p>
+          <strong>Las leyes psicológicas</strong> que gobiernan la percepción humana no son
+          un lujo académico, sino herramientas prácticas que todo diseñador de interfaces
+          debería dominar. Comprender por qué ciertas disposiciones funcionan y otras
+          generan confusión permite tomar decisiones basadas en evidencia.
+        </p>
+
+        <p>
+          <strong>La ley de Hick</strong> nos enseña que cada opción adicional en un menú
+          incrementa el tiempo de decisión del usuario. La solución no es eliminar opciones,
+          sino categorizarlas jerárquicamente para reducir la carga cognitiva.
+        </p>
+
+        <h2>La ley de Fitts y el tamaño de los botones</h2>
+
+        <p>
+          <strong>Paul Fitts demostró</strong> en 1954 que el tiempo para alcanzar un objetivo
+          depende de su tamaño y su distancia. Un botón pequeño en una esquina remota es
+          difícil de pulsar; un botón grande y cercano es inmediato.
+        </p>
+
+        <blockquote>
+          "El diseño no es solo cómo se ve o cómo se siente. El diseño es cómo funciona."
+          — Steve Jobs
+        </blockquote>
+
+        <p>
+          <strong>La carga cognitiva</strong> es el enemigo silencioso de la usabilidad.
+          Cada elemento innecesario en una interfaz consume recursos de la limitada
+          memoria de trabajo del usuario, aumentando la probabilidad de error y abandono.
+        </p>
+
+        <h2>Estrategias para reducir la carga cognitiva</h2>
+
+        <ul>
+          <li><strong>Fragmentar</strong> la información en unidades manejables (chunking)</li>
+          <li><strong>Utilizar</strong> convenciones familiares en lugar de patrones novedosos</li>
+          <li><strong>Mostrar</strong> opciones en lugar de obligar a recordarlas</li>
+          <li><strong>Proporcionar</strong> retroalimentación inmediata a cada acción</li>
+          <li><strong>Dividir</strong> procesos complejos en pasos secuenciales simples</li>
+        </ul>
+
+        <p>
+          <strong>La conclusión</strong> es clara: el mejor diseño de interfaz no es el más
+          original ni el más llamativo, sino aquel que la persona usuaria puede utilizar
+          sin esfuerzo consciente, casi sin darse cuenta de que la interfaz está ahí.
+        </p>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -368,75 +442,7 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
     li::marker {
       color: #667eea;
     }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <!-- PRIMERA LÍNEA F: Título completo, el ojo lo lee entero -->
-    <h1>Cómo los principios psicológicos transforman el diseño de interfaces web modernas</h1>
-
-    <!-- SEGUNDA LÍNEA F: Metadatos y entradilla -->
-    <p class="metadatos">María García — 12 minutos de lectura — Psicología del Diseño</p>
-    <p class="entradilla">
-      La aplicación de leyes como Hick, Fitts y los principios de la Gestalt
-      permite construir interfaces que las personas comprenden de forma intuitiva,
-      reduciendo la fricción y aumentando la satisfacción de uso.
-    </p>
-
-    <!-- BARRIDO VERTICAL: El ojo desciende por la izquierda -->
-    <!-- Observa que las primeras palabras de cada párrafo contienen
-         la información esencial que alguien que escanea retendrá -->
-    <p>
-      <strong>Las leyes psicológicas</strong> que gobiernan la percepción humana no son
-      un lujo académico, sino herramientas prácticas que todo diseñador de interfaces
-      debería dominar. Comprender por qué ciertas disposiciones funcionan y otras
-      generan confusión permite tomar decisiones basadas en evidencia.
-    </p>
-
-    <p>
-      <strong>La ley de Hick</strong> nos enseña que cada opción adicional en un menú
-      incrementa el tiempo de decisión del usuario. La solución no es eliminar opciones,
-      sino categorizarlas jerárquicamente para reducir la carga cognitiva.
-    </p>
-
-    <h2>La ley de Fitts y el tamaño de los botones</h2>
-
-    <p>
-      <strong>Paul Fitts demostró</strong> en 1954 que el tiempo para alcanzar un objetivo
-      depende de su tamaño y su distancia. Un botón pequeño en una esquina remota es
-      difícil de pulsar; un botón grande y cercano es inmediato.
-    </p>
-
-    <blockquote>
-      "El diseño no es solo cómo se ve o cómo se siente. El diseño es cómo funciona."
-      — Steve Jobs
-    </blockquote>
-
-    <p>
-      <strong>La carga cognitiva</strong> es el enemigo silencioso de la usabilidad.
-      Cada elemento innecesario en una interfaz consume recursos de la limitada
-      memoria de trabajo del usuario, aumentando la probabilidad de error y abandono.
-    </p>
-
-    <h2>Estrategias para reducir la carga cognitiva</h2>
-
-    <ul>
-      <li><strong>Fragmentar</strong> la información en unidades manejables (chunking)</li>
-      <li><strong>Utilizar</strong> convenciones familiares en lugar de patrones novedosos</li>
-      <li><strong>Mostrar</strong> opciones en lugar de obligar a recordarlas</li>
-      <li><strong>Proporcionar</strong> retroalimentación inmediata a cada acción</li>
-      <li><strong>Dividir</strong> procesos complejos en pasos secuenciales simples</li>
-    </ul>
-
-    <p>
-      <strong>La conclusión</strong> es clara: el mejor diseño de interfaz no es el más
-      original ni el más llamativo, sino aquel que la persona usuaria puede utilizar
-      sin esfuerzo consciente, casi sin darse cuenta de que la interfaz está ahí.
-    </p>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Al visualizar esta página, la mirada sigue naturalmente el patrón en **F**. Primero recorre el título completo de izquierda a derecha. Luego desciende ligeramente y recorre los metadatos y la entradilla. Finalmente desciende por el margen izquierdo, deteniéndose en las palabras en negrita al inicio de cada párrafo y en los subtítulos. Se recomienda al alumnado leer la página con atención y luego intentar escanearla en **5 segundos**, anotando qué información retienen; comprobarán que coincide con los elementos situados en las zonas del patrón F.
@@ -448,14 +454,77 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! example "Contexto pedagógico"
     Comparativa visual y matemática entre un menú con **12 opciones planas** y el mismo contenido organizado jerárquicamente, demostrando que la categorización reduce el tiempo de decisión según la fórmula de Hick.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ley de Hick - Navegación</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ley de Hick - Navegación</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Ley de Hick aplicada a la navegación web</h1>
+      <div class="comparativa">
+        <div class="demo mal-diseno">
+          <h2>Versión A: 12 opciones planas (No recomendado)</h2>
+          <nav>
+            <a href="#">Inicio</a> <a href="#">Sobre nosotros</a> <a href="#">Historia</a>
+            <a href="#">Servicios web</a> <a href="#">Apps móviles</a> <a href="#">Consultoría</a>
+            <a href="#">Blog</a> <a href="#">Guías</a> <a href="#">Webinars</a>
+            <a href="#">Contacto</a> <a href="#">Soporte</a> <a href="#">FAQ</a>
+          </nav>
+          <div class="info-box warning">
+            <span class="formula">T = b × log2(12) ≈ b × 3.58</span><br>
+            La persona usuaria debe procesar 12 opciones simultáneamente.
+            El tiempo de decisión es proporcional a log2(12).
+          </div>
+        </div>
+        <div class="demo buen-diseno">
+          <h2>Versión B: 4 categorías de 3 enlaces (Recomendado)</h2>
+          <nav>
+            <div class="categoria">
+              <span class="categoria-titulo">Empresa</span>
+              <a href="#">Inicio</a>
+              <a href="#">Sobre nosotros</a>
+              <a href="#">Historia</a>
+            </div>
+            <div class="categoria">
+              <span class="categoria-titulo">Servicios</span>
+              <a href="#">Web</a>
+              <a href="#">Apps Móviles</a>
+              <a href="#">Consultoría</a>
+            </div>
+            <div class="categoria">
+              <span class="categoria-titulo">Recursos</span>
+              <a href="#">Blog</a>
+              <a href="#">Guías</a>
+              <a href="#">Webinars</a>
+            </div>
+            <div class="categoria">
+              <span class="categoria-titulo">Ayuda</span>
+              <a href="#">Contacto</a>
+              <a href="#">Soporte</a>
+              <a href="#">FAQ</a>
+            </div>
+          </nav>
+          <div class="info-box success">
+            <span class="formula">T = b × log2(4) + b × log2(3) ≈ b × 2 + b × 1.58 = b × 3.58</span><br>
+            Aunque la suma logarítmica es similar, la carga cognitiva percibida es mucho menor
+            porque las decisiones se toman en dos pasos más simples en lugar de uno complejo.
+            El cerebro prefiere dos decisiones fáciles a una difícil.
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -557,64 +626,7 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
       font-family: 'Courier New', monospace;
       font-weight: 700;
     }
-  </style>
-</head>
-<body>
-  <h1>Ley de Hick aplicada a la navegación web</h1>
-  <div class="comparativa">
-    <div class="demo mal-diseno">
-      <h2>Versión A: 12 opciones planas (No recomendado)</h2>
-      <nav>
-        <a href="#">Inicio</a> <a href="#">Sobre nosotros</a> <a href="#">Historia</a>
-        <a href="#">Servicios web</a> <a href="#">Apps móviles</a> <a href="#">Consultoría</a>
-        <a href="#">Blog</a> <a href="#">Guías</a> <a href="#">Webinars</a>
-        <a href="#">Contacto</a> <a href="#">Soporte</a> <a href="#">FAQ</a>
-      </nav>
-      <div class="info-box warning">
-        <span class="formula">T = b × log2(12) ≈ b × 3.58</span><br>
-        La persona usuaria debe procesar 12 opciones simultáneamente.
-        El tiempo de decisión es proporcional a log2(12).
-      </div>
-    </div>
-    <div class="demo buen-diseno">
-      <h2>Versión B: 4 categorías de 3 enlaces (Recomendado)</h2>
-      <nav>
-        <div class="categoria">
-          <span class="categoria-titulo">Empresa</span>
-          <a href="#">Inicio</a>
-          <a href="#">Sobre nosotros</a>
-          <a href="#">Historia</a>
-        </div>
-        <div class="categoria">
-          <span class="categoria-titulo">Servicios</span>
-          <a href="#">Web</a>
-          <a href="#">Apps Móviles</a>
-          <a href="#">Consultoría</a>
-        </div>
-        <div class="categoria">
-          <span class="categoria-titulo">Recursos</span>
-          <a href="#">Blog</a>
-          <a href="#">Guías</a>
-          <a href="#">Webinars</a>
-        </div>
-        <div class="categoria">
-          <span class="categoria-titulo">Ayuda</span>
-          <a href="#">Contacto</a>
-          <a href="#">Soporte</a>
-          <a href="#">FAQ</a>
-        </div>
-      </nav>
-      <div class="info-box success">
-        <span class="formula">T = b × log2(4) + b × log2(3) ≈ b × 2 + b × 1.58 = b × 3.58</span><br>
-        Aunque la suma logarítmica es similar, la carga cognitiva percibida es mucho menor
-        porque las decisiones se toman en dos pasos más simples en lugar de uno complejo.
-        El cerebro prefiere dos decisiones fáciles a una difícil.
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Aunque la suma de los logaritmos es matemáticamente similar en ambos casos, la experiencia subjetiva es radicalmente diferente. Enfrentarse a **12 opciones simultáneas** produce ansiedad y parálisis de decisión («análisis parálisis»). En cambio, elegir primero entre **4 categorías** y luego entre **3 enlaces** dentro de la categoría seleccionada se percibe como más manejable, aunque la complejidad matemática subyacente sea comparable. La ley de Hick nos enseña que lo importante no es solo el número de opciones, sino **cómo se presentan**.
@@ -626,14 +638,77 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! example "Contexto pedagógico"
     Este ejemplo demuestra la aplicación de la ley de Fitts al diseño de una interfaz móvil para listar tareas. Se comparan dos versiones: una con **botones pequeños** difíciles de pulsar y otra con **zonas táctiles amplias** accesibles al pulgar.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ley de Fitts - Diseño Mobile</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ley de Fitts - Diseño Mobile</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <div class="pantalla-movil">
+        <div class="cabecera">
+          <h2>Mis Tareas</h2>
+          <p>3 pendientes para hoy</p>
+        </div>
+
+        <div class="lista-tareas">
+          <!-- TAREA 1: Botón incorrecto -->
+          <div class="tarea">
+            <button class="boton-malo" aria-label="Marcar como completada">✓</button>
+            <span class="tarea-texto">Revisar informe de diseño</span>
+            <span class="etiqueta malo">30px</span>
+          </div>
+
+          <!-- TAREA 2: Botón correcto -->
+          <div class="tarea">
+            <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
+            <span class="tarea-texto">Preparar presentación DCU</span>
+            <span class="etiqueta bueno">44px</span>
+          </div>
+
+          <!-- TAREA 3: Botón incorrecto -->
+          <div class="tarea">
+            <button class="boton-malo" aria-label="Marcar como completada">✓</button>
+            <span class="tarea-texto">Actualizar guías de estilo</span>
+            <span class="etiqueta malo">30px</span>
+          </div>
+
+          <!-- TAREA 4: Botón correcto -->
+          <div class="tarea">
+            <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
+            <span class="tarea-texto completada">Enviar feedback al equipo</span>
+            <span class="etiqueta bueno">44px</span>
+          </div>
+
+          <!-- TAREA 5: Botón correcto -->
+          <div class="tarea">
+            <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
+            <span class="tarea-texto">Revisar contraste WCAG de la paleta</span>
+            <span class="etiqueta bueno">44px</span>
+          </div>
+        </div>
+
+        <div class="info-zonas">
+          <strong>Ley de Fitts en mobile:</strong> T = a + b × log2(2D/W + 1)<br><br>
+          <strong>Botones de 30px:</strong> W pequeño → Índice de Dificultad alto → Mayor tiempo, más errores.<br>
+          <strong>Botones de 44px:</strong> W grande → Índice de Dificultad bajo → Interacción rápida y precisa.<br><br>
+          Las directrices de Apple (44×44pt) y Google (48×48dp) no son arbitrarias: están calibradas
+          para el tamaño medio de la yema del dedo índice adulto (aproximadamente 10-14mm).
+          Si tu zona táctil es menor, la persona usuaria <em>fallará</em> al pulsar.
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -786,64 +861,7 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
       background: #c6f6d5;
       color: #22543d;
     }
-  </style>
-</head>
-<body>
-  <div class="pantalla-movil">
-    <div class="cabecera">
-      <h2>Mis Tareas</h2>
-      <p>3 pendientes para hoy</p>
-    </div>
-
-    <div class="lista-tareas">
-      <!-- TAREA 1: Botón incorrecto -->
-      <div class="tarea">
-        <button class="boton-malo" aria-label="Marcar como completada">✓</button>
-        <span class="tarea-texto">Revisar informe de diseño</span>
-        <span class="etiqueta malo">30px</span>
-      </div>
-
-      <!-- TAREA 2: Botón correcto -->
-      <div class="tarea">
-        <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
-        <span class="tarea-texto">Preparar presentación DCU</span>
-        <span class="etiqueta bueno">44px</span>
-      </div>
-
-      <!-- TAREA 3: Botón incorrecto -->
-      <div class="tarea">
-        <button class="boton-malo" aria-label="Marcar como completada">✓</button>
-        <span class="tarea-texto">Actualizar guías de estilo</span>
-        <span class="etiqueta malo">30px</span>
-      </div>
-
-      <!-- TAREA 4: Botón correcto -->
-      <div class="tarea">
-        <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
-        <span class="tarea-texto completada">Enviar feedback al equipo</span>
-        <span class="etiqueta bueno">44px</span>
-      </div>
-
-      <!-- TAREA 5: Botón correcto -->
-      <div class="tarea">
-        <button class="boton-bueno" aria-label="Marcar como completada">✓</button>
-        <span class="tarea-texto">Revisar contraste WCAG de la paleta</span>
-        <span class="etiqueta bueno">44px</span>
-      </div>
-    </div>
-
-    <div class="info-zonas">
-      <strong>Ley de Fitts en mobile:</strong> T = a + b × log2(2D/W + 1)<br><br>
-      <strong>Botones de 30px:</strong> W pequeño → Índice de Dificultad alto → Mayor tiempo, más errores.<br>
-      <strong>Botones de 44px:</strong> W grande → Índice de Dificultad bajo → Interacción rápida y precisa.<br><br>
-      Las directrices de Apple (44×44pt) y Google (48×48dp) no son arbitrarias: están calibradas
-      para el tamaño medio de la yema del dedo índice adulto (aproximadamente 10-14mm).
-      Si tu zona táctil es menor, la persona usuaria <em>fallará</em> al pulsar.
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     La interfaz simula una pantalla de smartphone real. Las tareas con botones de **30px** son objetivamente más difíciles de pulsar: requieren mayor precisión motriz, producen más errores (pulsar el texto en lugar del botón) y generan frustración. Los botones de **44px**, en cambio, son fáciles de pulsar incluso caminando o en transporte público. La ley de Fitts no es teoría abstracta: si abres esta página en tu móvil e intentas pulsar alternativamente los botones pequeños y grandes, **sentirás físicamente** la diferencia predicha por la fórmula.
@@ -855,14 +873,103 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! example "Contexto pedagógico"
     Comparación entre un formulario monolítico de **10 campos** (alta carga cognitiva) y el mismo formulario dividido en **3 pasos secuenciales** (carga cognitiva reducida). Se demuestra cómo la fragmentación mejora la experiencia.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carga Cognitiva - Formularios</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Carga Cognitiva - Formularios</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Carga cognitiva en formularios: monolítico vs paso a paso</h1>
+      <div class="comparativa">
+        <!-- FORMULARIO MONOLÍTICO: Alta carga cognitiva -->
+        <div class="demo">
+          <h2>Versión A: Formulario monolítico</h2>
+          <p style="color: #718096; font-size: 0.85rem; margin-bottom: 1.5rem;">10 campos visibles simultáneamente</p>
+
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+
+          <label>Apellidos</label>
+          <input type="text" placeholder="Tus apellidos">
+
+          <label>Email</label>
+          <input type="email" placeholder="tu@email.com">
+
+          <label>Teléfono</label>
+          <input type="tel" placeholder="+34 600 000 000">
+
+          <label>Dirección</label>
+          <input type="text" placeholder="Calle, número, piso">
+
+          <label>Ciudad</label>
+          <input type="text" placeholder="Tu ciudad">
+
+          <label>Código Postal</label>
+          <input type="text" placeholder="28001">
+
+          <label>Contraseña</label>
+          <input type="password" placeholder="Mínimo 8 caracteres">
+
+          <label>Repetir contraseña</label>
+          <input type="password" placeholder="Repite la contraseña">
+
+          <label>Nombre de usuario</label>
+          <input type="text" placeholder="Elige un nombre de usuario">
+
+          <button>Crear cuenta</button>
+
+          <div class="info-carga alta">
+            <strong>Carga cognitiva ALTA:</strong> 10 campos exigen que la persona usuaria procese, recuerde y complete
+            mucha información simultáneamente. La probabilidad de abandono es elevada.
+            La memoria de trabajo (7 ± 2 elementos) se satura.
+          </div>
+        </div>
+
+        <!-- FORMULARIO PASO A PASO: Baja carga cognitiva -->
+        <div class="demo">
+          <h2>Versión B: Formulario en 3 pasos</h2>
+          <p style="color: #718096; font-size: 0.85rem; margin-bottom: 1rem;">Información fragmentada secuencialmente</p>
+
+          <div class="paso-indicador">
+            <div class="paso completado"></div>
+            <div class="paso completado"></div>
+            <div class="paso activo"></div>
+          </div>
+          <p class="etiqueta-paso">Paso 3 de 3 — Datos de acceso</p>
+
+          <div class="paso-grupo">
+            <label>Contraseña</label>
+            <input type="password" placeholder="Mínimo 8 caracteres">
+
+            <label>Repetir contraseña</label>
+            <input type="password" placeholder="Repite la contraseña">
+
+            <label>Nombre de usuario</label>
+            <input type="text" placeholder="Elige un nombre de usuario">
+          </div>
+
+          <button>Crear cuenta</button>
+
+          <div class="info-carga baja">
+            <strong>Carga cognitiva BAJA:</strong> Solo 3 campos visibles en este paso (el resto ya se completaron en los pasos 1 y 2).
+            La memoria de trabajo opera muy por debajo de su límite.
+            La barra de progreso proporciona sensación de avance y motiva a completar.
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -972,90 +1079,7 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
       border-left: 4px solid #48bb78;
       color: #22543d;
     }
-  </style>
-</head>
-<body>
-  <h1>Carga cognitiva en formularios: monolítico vs paso a paso</h1>
-  <div class="comparativa">
-    <!-- FORMULARIO MONOLÍTICO: Alta carga cognitiva -->
-    <div class="demo">
-      <h2>Versión A: Formulario monolítico</h2>
-      <p style="color: #718096; font-size: 0.85rem; margin-bottom: 1.5rem;">10 campos visibles simultáneamente</p>
-
-      <label>Nombre</label>
-      <input type="text" placeholder="Tu nombre">
-
-      <label>Apellidos</label>
-      <input type="text" placeholder="Tus apellidos">
-
-      <label>Email</label>
-      <input type="email" placeholder="tu@email.com">
-
-      <label>Teléfono</label>
-      <input type="tel" placeholder="+34 600 000 000">
-
-      <label>Dirección</label>
-      <input type="text" placeholder="Calle, número, piso">
-
-      <label>Ciudad</label>
-      <input type="text" placeholder="Tu ciudad">
-
-      <label>Código Postal</label>
-      <input type="text" placeholder="28001">
-
-      <label>Contraseña</label>
-      <input type="password" placeholder="Mínimo 8 caracteres">
-
-      <label>Repetir contraseña</label>
-      <input type="password" placeholder="Repite la contraseña">
-
-      <label>Nombre de usuario</label>
-      <input type="text" placeholder="Elige un nombre de usuario">
-
-      <button>Crear cuenta</button>
-
-      <div class="info-carga alta">
-        <strong>Carga cognitiva ALTA:</strong> 10 campos exigen que la persona usuaria procese, recuerde y complete
-        mucha información simultáneamente. La probabilidad de abandono es elevada.
-        La memoria de trabajo (7 ± 2 elementos) se satura.
-      </div>
-    </div>
-
-    <!-- FORMULARIO PASO A PASO: Baja carga cognitiva -->
-    <div class="demo">
-      <h2>Versión B: Formulario en 3 pasos</h2>
-      <p style="color: #718096; font-size: 0.85rem; margin-bottom: 1rem;">Información fragmentada secuencialmente</p>
-
-      <div class="paso-indicador">
-        <div class="paso completado"></div>
-        <div class="paso completado"></div>
-        <div class="paso activo"></div>
-      </div>
-      <p class="etiqueta-paso">Paso 3 de 3 — Datos de acceso</p>
-
-      <div class="paso-grupo">
-        <label>Contraseña</label>
-        <input type="password" placeholder="Mínimo 8 caracteres">
-
-        <label>Repetir contraseña</label>
-        <input type="password" placeholder="Repite la contraseña">
-
-        <label>Nombre de usuario</label>
-        <input type="text" placeholder="Elige un nombre de usuario">
-      </div>
-
-      <button>Crear cuenta</button>
-
-      <div class="info-carga baja">
-        <strong>Carga cognitiva BAJA:</strong> Solo 3 campos visibles en este paso (el resto ya se completaron en los pasos 1 y 2).
-        La memoria de trabajo opera muy por debajo de su límite.
-        La barra de progreso proporciona sensación de avance y motiva a completar.
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     El formulario monolítico presenta **10 campos simultáneos**, saturando la memoria de trabajo (límite: **7 ± 2 ítems**). La persona usuaria ve todo el trabajo que le queda por delante y puede desanimarse antes de empezar. El formulario paso a paso muestra solo **3-4 campos por paso**, manteniendo la carga cognitiva dentro de los límites manejables. Además, la barra de progreso proporciona *feedback* motivacional: la persona usuaria siente que avanza y está más cerca de la meta. Diversos estudios de usabilidad confirman que los formularios paso a paso pueden aumentar las conversiones entre un **10% y un 25%** respecto a sus equivalentes monolíticos.

@@ -291,14 +291,75 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     La persona estudiante debe comprender cómo el espaciado entre grupos de campos de un formulario comunica la estructura del mismo sin necesidad de separadores explícitos. Este ejemplo muestra la diferencia entre un formulario con espaciado uniforme (donde no se distinguen los grupos) y otro con espaciado intencionado que aplica la ley de proximidad.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 1: Ley de Proximidad en Formulario</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 1: Ley de Proximidad en Formulario</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!--
+        ESTRUCTURA DEL FORMULARIO
+        Observa cómo los campos están agrupados lógicamente:
+        1. Datos personales (nombre, apellidos, teléfono)
+        2. Datos de acceso (email, contraseña, confirmar contraseña)
+
+        La separación visual entre grupos es mayor que la separación
+        dentro de cada grupo. Esto es la ley de proximidad en acción.
+      -->
+      <div class="contenedor-formulario">
+        <h1>Crear Cuenta</h1>
+        <p class="subtitulo">Completa tus datos para registrarte</p>
+
+        <!-- GRUPO 1: Datos personales -->
+        <div class="grupo-campo">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+          </div>
+          <div class="campo">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" placeholder="Tus apellidos">
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="+34 600 000 000">
+          </div>
+        </div>
+
+        <!-- Separador visual -->
+        <hr class="separador">
+
+        <!-- GRUPO 2: Datos de acceso -->
+        <div class="grupo-campo">
+          <div class="campo">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" placeholder="tu@email.com">
+          </div>
+          <div class="campo">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Mínimo 8 caracteres">
+          </div>
+          <div class="campo">
+            <label for="confirmar">Confirmar contraseña</label>
+            <input type="password" id="confirmar" placeholder="Repite tu contraseña">
+          </div>
+        </div>
+
+        <button type="submit">Crear cuenta</button>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -414,62 +475,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
       transform: translateY(-2px) scale(1.02);
       box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
     }
-  </style>
-</head>
-<body>
-  <!--
-    ESTRUCTURA DEL FORMULARIO
-    Observa cómo los campos están agrupados lógicamente:
-    1. Datos personales (nombre, apellidos, teléfono)
-    2. Datos de acceso (email, contraseña, confirmar contraseña)
-
-    La separación visual entre grupos es mayor que la separación
-    dentro de cada grupo. Esto es la ley de proximidad en acción.
-  -->
-  <div class="contenedor-formulario">
-    <h1>Crear Cuenta</h1>
-    <p class="subtitulo">Completa tus datos para registrarte</p>
-
-    <!-- GRUPO 1: Datos personales -->
-    <div class="grupo-campo">
-      <div class="campo">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" placeholder="Tu nombre">
-      </div>
-      <div class="campo">
-        <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" placeholder="Tus apellidos">
-      </div>
-      <div class="campo">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" placeholder="+34 600 000 000">
-      </div>
-    </div>
-
-    <!-- Separador visual -->
-    <hr class="separador">
-
-    <!-- GRUPO 2: Datos de acceso -->
-    <div class="grupo-campo">
-      <div class="campo">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="tu@email.com">
-      </div>
-      <div class="campo">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Mínimo 8 caracteres">
-      </div>
-      <div class="campo">
-        <label for="confirmar">Confirmar contraseña</label>
-        <input type="password" id="confirmar" placeholder="Repite tu contraseña">
-      </div>
-    </div>
-
-    <button type="submit">Crear cuenta</button>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Al abrir este formulario en el navegador, la persona usuaria percibe inmediatamente dos bloques de información diferenciados: los datos personales y los datos de acceso. Esta percepción no requiere leer las etiquetas ni comprender el contenido; es el espaciado el que comunica la agrupación. La ley de proximidad opera de manera preconsciente: el margen de **1.5rem** entre grupos frente a los **0.75rem** dentro de cada grupo crea una diferencia de espaciado que el sistema visual interpreta como pertenencia. Se recomienda al alumnado inspeccionar el elemento con las DevTools del navegador y modificar temporalmente los márgenes para comprobar cómo afecta a la percepción de la estructura.
@@ -480,14 +486,80 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     Este ejemplo demuestra cómo la repetición de características visuales (misma estructura de tarjeta, misma tipografía, mismo sombreado) permite a la persona usuaria identificar rápidamente que varios elementos pertenecen a la misma categoría, aunque su contenido sea completamente diferente. Se incluye un botón "destacado" que rompe deliberadamente la semejanza para demostrar cómo esta ruptura comunica un significado especial.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 2: Ley de Semejanza - Tarjetas de Planes</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 2: Ley de Semejanza - Tarjetas de Planes</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>Elige tu plan</h1>
+      <p class="subtitulo">Selecciona el plan que mejor se adapte a tus necesidades</p>
+
+      <div class="contenedor-planes">
+        <!-- PLAN BÁSICO -->
+        <article class="plan">
+          <p class="nombre-plan">Básico</p>
+          <p class="precio">
+            <span class="moneda">&euro;</span>0<span class="periodo">/mes</span>
+          </p>
+          <p class="descripcion">Ideal para empezar y conocer la plataforma</p>
+          <ul class="caracteristicas">
+            <li>Hasta 3 proyectos</li>
+            <li>1 GB de almacenamiento</li>
+            <li>Soporte por email</li>
+            <li>Acceso a componentes básicos</li>
+          </ul>
+          <a href="#" class="boton-plan">Comenzar gratis</a>
+        </article>
+
+        <!-- PLAN PROFESIONAL (DESTACADO) -->
+        <article class="plan destacado">
+          <span class="etiqueta-popular">Popular</span>
+          <p class="nombre-plan">Profesional</p>
+          <p class="precio">
+            <span class="moneda">&euro;</span>29<span class="periodo">/mes</span>
+          </p>
+          <p class="descripcion">La opción más elegida por profesionales</p>
+          <ul class="caracteristicas">
+            <li>Proyectos ilimitados</li>
+            <li>50 GB de almacenamiento</li>
+            <li>Soporte prioritario 24/7</li>
+            <li>Acceso a todos los componentes</li>
+            <li>Exportación de código</li>
+          </ul>
+          <a href="#" class="boton-plan">Elegir Profesional</a>
+        </article>
+
+        <!-- PLAN EMPRESA -->
+        <article class="plan">
+          <p class="nombre-plan">Empresa</p>
+          <p class="precio">
+            <span class="moneda">&euro;</span>99<span class="periodo">/mes</span>
+          </p>
+          <p class="descripcion">Para equipos grandes con necesidades avanzadas</p>
+          <ul class="caracteristicas">
+            <li>Todo lo de Profesional</li>
+            <li>200 GB de almacenamiento</li>
+            <li>Gestión de equipos</li>
+            <li>API personalizada</li>
+            <li>Formación incluida</li>
+          </ul>
+          <a href="#" class="boton-plan">Contactar ventas</a>
+        </article>
+      </div>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -670,67 +742,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
     .plan.destacado .boton-plan:hover {
       box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
     }
-  </style>
-</head>
-<body>
-  <h1>Elige tu plan</h1>
-  <p class="subtitulo">Selecciona el plan que mejor se adapte a tus necesidades</p>
-
-  <div class="contenedor-planes">
-    <!-- PLAN BÁSICO -->
-    <article class="plan">
-      <p class="nombre-plan">Básico</p>
-      <p class="precio">
-        <span class="moneda">&euro;</span>0<span class="periodo">/mes</span>
-      </p>
-      <p class="descripcion">Ideal para empezar y conocer la plataforma</p>
-      <ul class="caracteristicas">
-        <li>Hasta 3 proyectos</li>
-        <li>1 GB de almacenamiento</li>
-        <li>Soporte por email</li>
-        <li>Acceso a componentes básicos</li>
-      </ul>
-      <a href="#" class="boton-plan">Comenzar gratis</a>
-    </article>
-
-    <!-- PLAN PROFESIONAL (DESTACADO) -->
-    <article class="plan destacado">
-      <span class="etiqueta-popular">Popular</span>
-      <p class="nombre-plan">Profesional</p>
-      <p class="precio">
-        <span class="moneda">&euro;</span>29<span class="periodo">/mes</span>
-      </p>
-      <p class="descripcion">La opción más elegida por profesionales</p>
-      <ul class="caracteristicas">
-        <li>Proyectos ilimitados</li>
-        <li>50 GB de almacenamiento</li>
-        <li>Soporte prioritario 24/7</li>
-        <li>Acceso a todos los componentes</li>
-        <li>Exportación de código</li>
-      </ul>
-      <a href="#" class="boton-plan">Elegir Profesional</a>
-    </article>
-
-    <!-- PLAN EMPRESA -->
-    <article class="plan">
-      <p class="nombre-plan">Empresa</p>
-      <p class="precio">
-        <span class="moneda">&euro;</span>99<span class="periodo">/mes</span>
-      </p>
-      <p class="descripcion">Para equipos grandes con necesidades avanzadas</p>
-      <ul class="caracteristicas">
-        <li>Todo lo de Profesional</li>
-        <li>200 GB de almacenamiento</li>
-        <li>Gestión de equipos</li>
-        <li>API personalizada</li>
-        <li>Formación incluida</li>
-      </ul>
-      <a href="#" class="boton-plan">Contactar ventas</a>
-    </article>
-  </div>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Al visualizar esta página, la persona usuaria reconoce al instante que los tres bloques son "planes de precios" porque comparten la misma estructura visual. No necesita leer ningún texto para saber que pertenecen a la misma categoría. El plan "Profesional" destaca inmediatamente sobre los otros dos porque rompe el patrón de semejanza: tiene un borde morado, está ligeramente escalado, y su botón tiene un color diferente. Esta ruptura es efectiva precisamente porque el resto de tarjetas son extremadamente semejantes entre sí. Se recomienda al alumnado comentar la clase `.destacado` en las DevTools para comprobar cómo las tres tarjetas se vuelven visualmente idénticas y desaparece la jerarquía de recomendación.
@@ -742,14 +754,43 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     Este ejemplo integra varias leyes de Gestalt en un mismo componente: la sección hero de una landing page. Se aplican simultáneamente la ley de figura-fondo (texto sobre imagen con overlay), la ley de proximidad (agrupación del texto y el botón), la ley de semejanza (estilo consistente de los botones) y la ley de cierre (uso del espacio negativo para sugerir formas).
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 3: Gestalt en Sección Hero</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 3: Gestalt en Sección Hero</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <section class="hero">
+        <div class="hero-contenido">
+          <h1>Diseña interfaces que las personas amen usar</h1>
+          <p>
+            Creamos experiencias digitales centradas en el usuario, aplicando
+            los principios de la psicología de la percepción para construir
+            productos intuitivos, accesibles y memorables.
+          </p>
+          <div class="hero-botones">
+            <a href="#" class="boton-primario">Comenzar proyecto</a>
+            <a href="#" class="boton-secundario">Ver demostración</a>
+          </div>
+        </div>
+        <div class="scroll-indicador">
+          <span>Descubre más</span>
+          <div class="flecha"></div>
+        </div>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -901,30 +942,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
         transform: rotate(45deg) translate(6px, 6px);
       }
     }
-  </style>
-</head>
-<body>
-  <section class="hero">
-    <div class="hero-contenido">
-      <h1>Diseña interfaces que las personas amen usar</h1>
-      <p>
-        Creamos experiencias digitales centradas en el usuario, aplicando
-        los principios de la psicología de la percepción para construir
-        productos intuitivos, accesibles y memorables.
-      </p>
-      <div class="hero-botones">
-        <a href="#" class="boton-primario">Comenzar proyecto</a>
-        <a href="#" class="boton-secundario">Ver demostración</a>
-      </div>
-    </div>
-    <div class="scroll-indicador">
-      <span>Descubre más</span>
-      <div class="flecha"></div>
-    </div>
-  </section>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Esta sección hero demuestra cómo los principios de la Gestalt operan simultáneamente y de forma sinérgica en una interfaz real. La ley de figura-fondo garantiza la legibilidad del texto sobre la imagen, la ley de proximidad agrupa el contenido textual y los botones como una unidad informativa, la ley de semejanza permite identificar ambos botones como elementos de acción del mismo tipo, y la ley de cierre (combinada con destino común) crea un indicador de scroll que invita a continuar navegando. Se recomienda al alumnado modificar en las DevTools el valor de opacidad del overlay para comprobar cómo afecta la ley de figura-fondo a la legibilidad.
@@ -936,14 +954,93 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     Una página de artículo de blog donde se demuestra cómo establecer jerarquía visual utilizando exclusivamente propiedades CSS: el título destaca por su gran tamaño y color oscuro, el subtítulo tiene un tamaño intermedio y color gris medio, los metadatos tienen un tamaño pequeño y color gris claro, y el cuerpo del texto ocupa el nivel base.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 4: Jerarquía Visual - Artículo de Blog</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 4: Jerarquía Visual - Artículo de Blog</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <article class="articulo">
+        <h1>Los principios de la Gestalt y su aplicación al diseño de interfaces web modernas</h1>
+        <p class="metadatos">
+          <span>María García López</span> — 15 de marzo de 2025 — 8 min de lectura
+        </p>
+        <p class="entradilla">
+          La psicología de la forma, desarrollada hace más de un siglo, proporciona
+          hoy las bases teóricas para diseñar interfaces digitales que las personas
+          comprenden de forma intuitiva y casi instantánea.
+        </p>
+        <p>
+          Cuando abrimos una página web, nuestro cerebro tarda aproximadamente 50
+          milisegundos en formarse una primera impresión visual. En ese brevísimo
+          lapso de tiempo no leemos textos ni analizamos imágenes: simplemente
+          percibimos formas, colores, agrupaciones y contrastes. Esa percepción
+          instantánea está gobernada por los principios que la psicología de la
+          Gestalt descubrió a principios del siglo XX.
+        </p>
+        <p>
+          Max Wertheimer, Wolfgang Köhler y Kurt Koffka formularon las leyes de la
+          percepción visual basándose en una observación revolucionaria: el cerebro
+          humano no percibe los objetos como sumas de partes independientes, sino
+          como totalidades organizadas. Esta idea, condensada en el famoso aforismo
+          "el todo es más que la suma de las partes", tiene implicaciones profundas
+          para quienes diseñamos interfaces digitales.
+        </p>
+        <h2>La ley de proximidad en formularios</h2>
+        <p>
+          Uno de los casos de uso más evidentes de la ley de proximidad se encuentra
+          en el diseño de formularios web. Cuando colocamos la etiqueta "Nombre"
+          justo encima de su campo de texto y separamos este conjunto del siguiente
+          campo mediante un espacio mayor, la persona usuaria no necesita leer las
+          etiquetas para comprender qué texto pertenece a qué campo.
+        </p>
+        <blockquote>
+          "Un buen diseño es aquel que no necesita ser explicado. La interfaz debe
+          ser tan intuitiva que la persona usuaria sepa qué hacer sin pensar en ello."
+          <footer>— Steve Krug, <cite>Don't Make Me Think</cite></footer>
+        </blockquote>
+        <p>
+          La aplicación consciente de estos principios no es un ejercicio académico
+          abstracto, sino una herramienta práctica que todo diseñador y desarrollador
+          web debería dominar. Comprender por qué ciertas disposiciones visuales
+          funcionan y otras generan confusión nos permite tomar decisiones de diseño
+          basadas en evidencia, no en gustos personales.
+        </p>
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80"
+            alt="Persona diseñando una interfaz web en una pantalla"
+            loading="lazy"
+          >
+          <figcaption>El diseño de interfaces es una disciplina que combina psicología, arte y tecnología.</figcaption>
+        </figure>
+        <h2>Más allá de la estética</h2>
+        <p>
+          Diseñar interfaces no consiste en hacer cosas bonitas. Consiste en hacer
+          cosas que funcionen. La belleza en el diseño de interfaces no es un fin en
+          sí misma, sino una consecuencia de la claridad, la coherencia y el respeto
+          por la forma en que el cerebro humano procesa la información visual.
+        </p>
+        <p>
+          En las próximas unidades profundizaremos en cada uno de estos principios y
+          aprenderemos a aplicarlos sistemáticamente mediante hojas de estilo en
+          cascada, construyendo interfaces que no solo sean visualmente armoniosas,
+          sino también funcionalmente impecables.
+        </p>
+      </article>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -1073,80 +1170,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
       text-align: center;
       margin-top: 0.75rem;
     }
-  </style>
-</head>
-<body>
-  <article class="articulo">
-    <h1>Los principios de la Gestalt y su aplicación al diseño de interfaces web modernas</h1>
-    <p class="metadatos">
-      <span>María García López</span> — 15 de marzo de 2025 — 8 min de lectura
-    </p>
-    <p class="entradilla">
-      La psicología de la forma, desarrollada hace más de un siglo, proporciona
-      hoy las bases teóricas para diseñar interfaces digitales que las personas
-      comprenden de forma intuitiva y casi instantánea.
-    </p>
-    <p>
-      Cuando abrimos una página web, nuestro cerebro tarda aproximadamente 50
-      milisegundos en formarse una primera impresión visual. En ese brevísimo
-      lapso de tiempo no leemos textos ni analizamos imágenes: simplemente
-      percibimos formas, colores, agrupaciones y contrastes. Esa percepción
-      instantánea está gobernada por los principios que la psicología de la
-      Gestalt descubrió a principios del siglo XX.
-    </p>
-    <p>
-      Max Wertheimer, Wolfgang Köhler y Kurt Koffka formularon las leyes de la
-      percepción visual basándose en una observación revolucionaria: el cerebro
-      humano no percibe los objetos como sumas de partes independientes, sino
-      como totalidades organizadas. Esta idea, condensada en el famoso aforismo
-      "el todo es más que la suma de las partes", tiene implicaciones profundas
-      para quienes diseñamos interfaces digitales.
-    </p>
-    <h2>La ley de proximidad en formularios</h2>
-    <p>
-      Uno de los casos de uso más evidentes de la ley de proximidad se encuentra
-      en el diseño de formularios web. Cuando colocamos la etiqueta "Nombre"
-      justo encima de su campo de texto y separamos este conjunto del siguiente
-      campo mediante un espacio mayor, la persona usuaria no necesita leer las
-      etiquetas para comprender qué texto pertenece a qué campo.
-    </p>
-    <blockquote>
-      "Un buen diseño es aquel que no necesita ser explicado. La interfaz debe
-      ser tan intuitiva que la persona usuaria sepa qué hacer sin pensar en ello."
-      <footer>— Steve Krug, <cite>Don't Make Me Think</cite></footer>
-    </blockquote>
-    <p>
-      La aplicación consciente de estos principios no es un ejercicio académico
-      abstracto, sino una herramienta práctica que todo diseñador y desarrollador
-      web debería dominar. Comprender por qué ciertas disposiciones visuales
-      funcionan y otras generan confusión nos permite tomar decisiones de diseño
-      basadas en evidencia, no en gustos personales.
-    </p>
-    <figure>
-      <img
-        src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80"
-        alt="Persona diseñando una interfaz web en una pantalla"
-        loading="lazy"
-      >
-      <figcaption>El diseño de interfaces es una disciplina que combina psicología, arte y tecnología.</figcaption>
-    </figure>
-    <h2>Más allá de la estética</h2>
-    <p>
-      Diseñar interfaces no consiste en hacer cosas bonitas. Consiste en hacer
-      cosas que funcionen. La belleza en el diseño de interfaces no es un fin en
-      sí misma, sino una consecuencia de la claridad, la coherencia y el respeto
-      por la forma en que el cerebro humano procesa la información visual.
-    </p>
-    <p>
-      En las próximas unidades profundizaremos en cada uno de estos principios y
-      aprenderemos a aplicarlos sistemáticamente mediante hojas de estilo en
-      cascada, construyendo interfaces que no solo sean visualmente armoniosas,
-      sino también funcionalmente impecables.
-    </p>
-  </article>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Al abrir esta página, la mirada sigue un recorrido natural: primero se posa en el título (elemento de mayor tamaño y contraste), luego desciende a los metadatos (información contextual), posteriormente a la entradilla y finalmente al cuerpo del texto. La cita destacada interrumpe este flujo con un bloque de color diferente y un borde lateral, reclamando atención en un momento estratégico. Se recomienda modificar el `font-size` del título a **1rem** en las DevTools para comprobar cómo colapsa la jerarquía visual.
@@ -1158,14 +1182,84 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     Este ejemplo presenta dos versiones de la misma sección de características de un producto software, una con equilibrio simétrico y otra con equilibrio asimétrico. El alumnado puede comparar visualmente ambas versiones y analizar las sensaciones que transmite cada una.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 5: Equilibrio Simétrico vs Asimétrico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 5: Equilibrio Simétrico vs Asimétrico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <section class="seccion">
+        <span class="version simetrica">Versión A: Equilibrio Simétrico</span>
+        <h2>Características del producto</h2>
+        <p class="subtitulo-seccion">Todo lo que necesitas en un solo lugar</p>
+        <div class="simetrico">
+          <div class="tarjeta">
+            <div class="icono">⚡</div>
+            <div>
+              <h3>Velocidad ultrarrápida</h3>
+              <p>Nuestra infraestructura global garantiza tiempos de carga inferiores a 200ms en cualquier ubicación.</p>
+            </div>
+          </div>
+          <div class="tarjeta">
+            <div class="icono">🔒</div>
+            <div>
+              <h3>Seguridad avanzada</h3>
+              <p>Cifrado de extremo a extremo y autenticación multifactor para proteger tus datos en todo momento.</p>
+            </div>
+          </div>
+          <div class="tarjeta">
+            <div class="icono">📊</div>
+            <div>
+              <h3>Analíticas detalladas</h3>
+              <p>Paneles de control personalizables con informes en tiempo real sobre el uso de tu aplicación.</p>
+            </div>
+          </div>
+          <div class="tarjeta">
+            <div class="icono">🔄</div>
+            <div>
+              <h3>Integraciones ilimitadas</h3>
+              <p>Conecta con más de 200 herramientas a través de nuestra API REST y webhooks configurables.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion">
+        <span class="version asimetrica">Versión B: Equilibrio Asimétrico</span>
+        <h2>Características del producto</h2>
+        <p class="subtitulo-seccion">Todo lo que necesitas en un solo lugar</p>
+        <div class="asimetrico">
+          <div class="tarjeta">
+            <h3>⚡ Velocidad ultrarrápida</h3>
+            <p>Nuestra infraestructura global garantiza tiempos de carga inferiores a 200ms en cualquier ubicación del mundo, optimizada para dispositivos móviles y conexiones lentas.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>🔒 Seguridad avanzada</h3>
+            <p>Cifrado de extremo a extremo y autenticación multifactor para proteger tus datos.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>📊 Analíticas detalladas</h3>
+            <p>Paneles de control personalizables con informes en tiempo real.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>🔄 Integraciones</h3>
+            <p>Conecta con más de 200 herramientas a través de nuestra API REST.</p>
+          </div>
+        </div>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -1309,71 +1403,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
       background: #fed7d7;
       color: #9b2c2c;
     }
-  </style>
-</head>
-<body>
-  <section class="seccion">
-    <span class="version simetrica">Versión A: Equilibrio Simétrico</span>
-    <h2>Características del producto</h2>
-    <p class="subtitulo-seccion">Todo lo que necesitas en un solo lugar</p>
-    <div class="simetrico">
-      <div class="tarjeta">
-        <div class="icono">⚡</div>
-        <div>
-          <h3>Velocidad ultrarrápida</h3>
-          <p>Nuestra infraestructura global garantiza tiempos de carga inferiores a 200ms en cualquier ubicación.</p>
-        </div>
-      </div>
-      <div class="tarjeta">
-        <div class="icono">🔒</div>
-        <div>
-          <h3>Seguridad avanzada</h3>
-          <p>Cifrado de extremo a extremo y autenticación multifactor para proteger tus datos en todo momento.</p>
-        </div>
-      </div>
-      <div class="tarjeta">
-        <div class="icono">📊</div>
-        <div>
-          <h3>Analíticas detalladas</h3>
-          <p>Paneles de control personalizables con informes en tiempo real sobre el uso de tu aplicación.</p>
-        </div>
-      </div>
-      <div class="tarjeta">
-        <div class="icono">🔄</div>
-        <div>
-          <h3>Integraciones ilimitadas</h3>
-          <p>Conecta con más de 200 herramientas a través de nuestra API REST y webhooks configurables.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion">
-    <span class="version asimetrica">Versión B: Equilibrio Asimétrico</span>
-    <h2>Características del producto</h2>
-    <p class="subtitulo-seccion">Todo lo que necesitas en un solo lugar</p>
-    <div class="asimetrico">
-      <div class="tarjeta">
-        <h3>⚡ Velocidad ultrarrápida</h3>
-        <p>Nuestra infraestructura global garantiza tiempos de carga inferiores a 200ms en cualquier ubicación del mundo, optimizada para dispositivos móviles y conexiones lentas.</p>
-      </div>
-      <div class="tarjeta">
-        <h3>🔒 Seguridad avanzada</h3>
-        <p>Cifrado de extremo a extremo y autenticación multifactor para proteger tus datos.</p>
-      </div>
-      <div class="tarjeta">
-        <h3>📊 Analíticas detalladas</h3>
-        <p>Paneles de control personalizables con informes en tiempo real.</p>
-      </div>
-      <div class="tarjeta">
-        <h3>🔄 Integraciones</h3>
-        <p>Conecta con más de 200 herramientas a través de nuestra API REST.</p>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Al comparar ambas versiones, la simétrica transmite orden, previsibilidad y seriedad. Todas las tarjetas tienen el mismo peso visual. La asimétrica dirige la atención hacia la primera tarjeta (que ocupa dos columnas y tiene un fondo degradado), estableciendo una jerarquía: hay una característica principal y tres secundarias. Se recomienda reflexionar sobre qué tipo de producto se beneficiaría de cada enfoque.
@@ -1385,14 +1415,101 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! example "Contexto pedagógico"
     Este ejemplo demuestra cómo el ritmo visual (regular, alterno y progresivo) guía la mirada de la persona usuaria a través de una serie de elementos. Se implementan tres patrones rítmicos diferentes en una galería de proyectos, mostrando cómo pequeñas variaciones en la repetición producen efectos perceptivos muy distintos.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 6: Ritmo Visual en Galería</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ejemplo 6: Ritmo Visual en Galería</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <h1>El ritmo visual en el diseño web</h1>
+      <p class="intro">
+        Tres patrones rítmicos diferentes aplicados a la misma serie de proyectos.
+        Observa cómo cambia la percepción y el recorrido visual en cada caso.
+      </p>
+
+      <section class="seccion-ritmo">
+        <h2>Ritmo Regular — Repetición idéntica</h2>
+        <div class="ritmo-regular">
+          <div class="proyecto">
+            <div class="img-placeholder">📱</div>
+            <div class="info"><h3>App Móvil</h3><p>Diseño de interfaz</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🖥️</div>
+            <div class="info"><h3>Dashboard Web</h3><p>Panel de control</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🛒</div>
+            <div class="info"><h3>E-commerce</h3><p>Tienda online</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">📊</div>
+            <div class="info"><h3>Analíticas</h3><p>Visualización datos</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-ritmo">
+        <h2>Ritmo Alterno — Alternancia imagen-texto</h2>
+        <div class="ritmo-alterno">
+          <div class="proyecto">
+            <div class="img-placeholder">📱</div>
+            <div class="info">
+              <h3>App Móvil</h3>
+              <p>Diseño completo de interfaz para aplicación móvil nativa con enfoque en usabilidad y accesibilidad.</p>
+            </div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🖥️</div>
+            <div class="info">
+              <h3>Dashboard Web</h3>
+              <p>Panel de control empresarial con visualización de datos en tiempo real y filtros avanzados.</p>
+            </div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🛒</div>
+            <div class="info">
+              <h3>E-commerce</h3>
+              <p>Tienda online con pasarela de pago integrada, carrito persistente y catálogo de productos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-ritmo">
+        <h2>Ritmo Progresivo — De menor a mayor</h2>
+        <div class="ritmo-progresivo">
+          <div class="proyecto">
+            <div class="img-placeholder">📱</div>
+            <div class="info"><h3>App Móvil</h3><p>Interfaz</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🖥️</div>
+            <div class="info"><h3>Dashboard</h3><p>Panel control</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🛒</div>
+            <div class="info"><h3>E-commerce</h3><p>Tienda online</p></div>
+          </div>
+          <div class="proyecto">
+            <div class="img-placeholder">🚀</div>
+            <div class="info"><h3>Plataforma</h3><p>Solución integral</p></div>
+          </div>
+        </div>
+      </section>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * {
       margin: 0;
       padding: 0;
@@ -1596,88 +1713,7 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
       color: #888;
       margin-top: 0.35rem;
     }
-  </style>
-</head>
-<body>
-  <h1>El ritmo visual en el diseño web</h1>
-  <p class="intro">
-    Tres patrones rítmicos diferentes aplicados a la misma serie de proyectos.
-    Observa cómo cambia la percepción y el recorrido visual en cada caso.
-  </p>
-
-  <section class="seccion-ritmo">
-    <h2>Ritmo Regular — Repetición idéntica</h2>
-    <div class="ritmo-regular">
-      <div class="proyecto">
-        <div class="img-placeholder">📱</div>
-        <div class="info"><h3>App Móvil</h3><p>Diseño de interfaz</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🖥️</div>
-        <div class="info"><h3>Dashboard Web</h3><p>Panel de control</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🛒</div>
-        <div class="info"><h3>E-commerce</h3><p>Tienda online</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">📊</div>
-        <div class="info"><h3>Analíticas</h3><p>Visualización datos</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion-ritmo">
-    <h2>Ritmo Alterno — Alternancia imagen-texto</h2>
-    <div class="ritmo-alterno">
-      <div class="proyecto">
-        <div class="img-placeholder">📱</div>
-        <div class="info">
-          <h3>App Móvil</h3>
-          <p>Diseño completo de interfaz para aplicación móvil nativa con enfoque en usabilidad y accesibilidad.</p>
-        </div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🖥️</div>
-        <div class="info">
-          <h3>Dashboard Web</h3>
-          <p>Panel de control empresarial con visualización de datos en tiempo real y filtros avanzados.</p>
-        </div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🛒</div>
-        <div class="info">
-          <h3>E-commerce</h3>
-          <p>Tienda online con pasarela de pago integrada, carrito persistente y catálogo de productos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion-ritmo">
-    <h2>Ritmo Progresivo — De menor a mayor</h2>
-    <div class="ritmo-progresivo">
-      <div class="proyecto">
-        <div class="img-placeholder">📱</div>
-        <div class="info"><h3>App Móvil</h3><p>Interfaz</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🖥️</div>
-        <div class="info"><h3>Dashboard</h3><p>Panel control</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🛒</div>
-        <div class="info"><h3>E-commerce</h3><p>Tienda online</p></div>
-      </div>
-      <div class="proyecto">
-        <div class="img-placeholder">🚀</div>
-        <div class="info"><h3>Plataforma</h3><p>Solución integral</p></div>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
-```
+    ```
 
 !!! note "Explicación del resultado"
     Los tres patrones rítmicos producen experiencias de navegación muy diferentes. El ritmo regular transmite orden y predictibilidad, ideal para catálogos de producto. El ritmo alterno crea un recorrido visual en zigzag que mantiene el interés, adecuado para portfolios. El ritmo progresivo establece una jerarquía implícita guiando la atención desde lo más pequeño hacia lo más grande, ideal para planes de precios o niveles de servicio.

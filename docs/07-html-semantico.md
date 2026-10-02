@@ -163,43 +163,261 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
 !!! example "Contexto pedagógico"
     Este ejemplo presenta una página de artículo de blog construida con HTML plenamente semántico, incluyendo todos los elementos principales de seccionamiento, navegación correcta, jerarquía de encabezados óptima, metadatos SEO, Open Graph, Twitter Cards y datos estructurados JSON-LD. Se incluye un enlace de salto (*skip link*) funcional, navegación con `aria-current`, y estructura de contenidos con `<article>`, `<section>`, `<aside>`, `<figure>` y `<footer>`.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Artículo sobre los principios fundamentales del HTML semántico, su importancia para la accesibilidad y el SEO.">
-  <meta name="theme-color" content="#2563eb">
-  <title>HTML Semántico: Guía Completa | Mi Blog de Desarrollo Web</title>
+=== "HTML"
 
-  <!-- Open Graph: metadatos para compartir en redes sociales -->
-  <meta property="og:title" content="HTML Semántico: Guía Completa">
-  <meta property="og:description" content="Aprende los fundamentos del HTML semántico, su impacto en accesibilidad, SEO y mantenibilidad.">
-  <meta property="og:image" content="https://ejemplo.com/img/html-semantico.png">
-  <meta property="og:url" content="https://ejemplo.com/articulos/html-semantico">
-  <meta property="og:type" content="article">
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Artículo sobre los principios fundamentales del HTML semántico, su importancia para la accesibilidad y el SEO.">
+      <meta name="theme-color" content="#2563eb">
+      <title>HTML Semántico: Guía Completa | Mi Blog de Desarrollo Web</title>
 
-  <!-- Twitter Cards: metadatos para Twitter/X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="HTML Semántico: Guía Completa">
-  <meta name="twitter:description" content="Fundamentos del HTML semántico para accesibilidad y SEO.">
-  <meta name="twitter:image" content="https://ejemplo.com/img/html-semantico.png">
+      <!-- Open Graph: metadatos para compartir en redes sociales -->
+      <meta property="og:title" content="HTML Semántico: Guía Completa">
+      <meta property="og:description" content="Aprende los fundamentos del HTML semántico, su impacto en accesibilidad, SEO y mantenibilidad.">
+      <meta property="og:image" content="https://ejemplo.com/img/html-semantico.png">
+      <meta property="og:url" content="https://ejemplo.com/articulos/html-semantico">
+      <meta property="og:type" content="article">
 
-  <!-- Datos estructurados JSON-LD (Schema.org) para SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "HTML Semántico: Guía Completa",
-    "author": { "@type": "Person", "name": "María López García" },
-    "datePublished": "2025-01-15",
-    "image": "https://ejemplo.com/img/html-semantico.png",
-    "publisher": { "@type": "Organization", "name": "Mi Blog de Desarrollo Web" }
-  }
-  </script>
+      <!-- Twitter Cards: metadatos para Twitter/X -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="HTML Semántico: Guía Completa">
+      <meta name="twitter:description" content="Fundamentos del HTML semántico para accesibilidad y SEO.">
+      <meta name="twitter:image" content="https://ejemplo.com/img/html-semantico.png">
 
-  <style>
+      <!-- Datos estructurados JSON-LD (Schema.org) para SEO -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "HTML Semántico: Guía Completa",
+        "author": { "@type": "Person", "name": "María López García" },
+        "datePublished": "2025-01-15",
+        "image": "https://ejemplo.com/img/html-semantico.png",
+        "publisher": { "@type": "Organization", "name": "Mi Blog de Desarrollo Web" }
+      }
+      </script>
+
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- ENLACE DE SALTO AL CONTENIDO PRINCIPAL (skip link).
+           Es el primer elemento interactivo de la página.
+           Permite a usuarios de teclado y lectores de pantalla
+           saltar directamente al contenido principal sin tener
+           que tabular por toda la navegación. -->
+      <a href="#contenido-principal" class="skip-link" aria-label="Saltar al contenido principal">
+        Saltar al contenido principal
+      </a>
+
+      <!-- CABECERA GLOBAL DEL SITIO -->
+      <header>
+        <!-- Logotipo con enlace a la página de inicio.
+             aria-label proporciona el texto accesible del enlace. -->
+        <a href="/" aria-label="Ir a la página de inicio de Mi Blog">
+          <img src="logo.svg" alt="Logotipo de Mi Blog de Desarrollo Web" width="180" height="50">
+        </a>
+
+        <!-- NAVEGACIÓN PRINCIPAL: patrón nav + ul/li.
+             Este es el patrón semántico correcto para menús.
+             aria-label distingue esta navegación de otras en la página. -->
+        <nav aria-label="Navegación principal">
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <!-- aria-current="page" informa al lector de pantalla
+                 que este enlace corresponde a la página actual. -->
+            <li><a href="/articulos/" aria-current="page">Artículos</a></li>
+            <li><a href="/tutoriales/">Tutoriales</a></li>
+            <li><a href="/acerca-de/">Acerca de</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Formulario de búsqueda con role="search" para
+             identificarlo como región de búsqueda accesible -->
+        <form role="search" action="/buscar/" method="get">
+          <label for="busqueda-header">Buscar en el sitio:</label>
+          <input type="search" id="busqueda-header" name="q"
+                 placeholder="Escribe tu búsqueda...">
+          <button type="submit">Buscar</button>
+        </form>
+      </header>
+
+      <!-- CONTENIDO PRINCIPAL: único en la página, destino del skip link -->
+      <main id="contenido-principal">
+
+        <!-- ARTÍCULO: contenido autocontenido e independiente.
+             Tiene sentido por sí mismo y podría distribuirse aisladamente. -->
+        <article>
+          <!-- Cabecera del artículo con título y metadatos -->
+          <header>
+            <!-- ÚNICO h1 de la página: describe el tema principal del documento -->
+            <h1>HTML Semántico: La Base de una Web Accesible y Bien Posicionada</h1>
+            <p>
+              Publicado el <time datetime="2025-01-15">15 de enero de 2025</time>
+              por <a href="/autores/maria-lopez/" rel="author">María López García</a>
+            </p>
+            <!-- Categorías del artículo como lista semántica -->
+            <ul aria-label="Categorías del artículo">
+              <li><a href="/categorias/html/">HTML</a></li>
+              <li><a href="/categorias/accesibilidad/">Accesibilidad</a></li>
+              <li><a href="/categorias/seo/">SEO</a></li>
+            </ul>
+          </header>
+
+          <!-- Cuerpo del artículo: sections con encabezados jerárquicos (h2, h3).
+               Cada section tiene aria-labelledby que apunta a su encabezado.
+               La jerarquía de encabezados es estricta: h1 → h2 → h3, sin saltos. -->
+          <section aria-labelledby="introduccion">
+            <h2 id="introduccion">Introducción al HTML Semántico</h2>
+            <p>
+              El HTML semántico es mucho más que una tendencia moderna: es una necesidad
+              fundamental para construir webs que sean verdaderamente accesibles, mantenibles
+              y eficaces en los motores de búsqueda. Consiste en utilizar los elementos HTML
+              según su propósito original, en lugar de recurrir sistemáticamente a elementos
+              genéricos como <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code>.
+            </p>
+            <p>
+              Cuando envolvemos el contenido en elementos con significado, proporcionamos
+              información valiosa sobre la estructura y jerarquía a navegadores, motores de
+              búsqueda y lectores de pantalla. La transición desde HTML4 hacia HTML5
+              representó un salto cualitativo fundamental en el desarrollo web.
+            </p>
+          </section>
+
+          <section aria-labelledby="beneficios">
+            <h2 id="beneficios">Beneficios Clave del HTML Semántico</h2>
+
+            <!-- Subsecciones con h3: jerarquía correcta, sin saltos -->
+            <section aria-labelledby="beneficio-accesibilidad">
+              <h3 id="beneficio-accesibilidad">Accesibilidad Mejorada</h3>
+              <p>
+                Los elementos semánticos como <code>&lt;nav&gt;</code> o
+                <code>&lt;main&gt;</code> llevan roles ARIA implícitos que los
+                lectores de pantalla reconocen automáticamente. Esto permite a
+                personas con discapacidad visual navegar eficientemente entre
+                regiones mediante atajos de teclado.
+              </p>
+            </section>
+
+            <section aria-labelledby="beneficio-seo">
+              <h3 id="beneficio-seo">Optimización para Motores de Búsqueda</h3>
+              <p>
+                Google y otros buscadores analizan la estructura semántica para
+                comprender la relevancia del contenido. Un <code>&lt;article&gt;</code>
+                bien estructurado con encabezados jerárquicos correctos tiene más
+                probabilidades de aparecer en posiciones destacadas.
+              </p>
+            </section>
+
+            <section aria-labelledby="beneficio-mantenibilidad">
+              <h3 id="beneficio-mantenibilidad">Mantenibilidad del Código</h3>
+              <p>
+                Un código HTML semántico es más legible: cualquier desarrollador
+                entiende inmediatamente que <code>&lt;footer&gt;</code> es el pie
+                de página. La semántica clara reduce la deuda técnica y acelera
+                el mantenimiento y la incorporación de nuevos miembros al equipo.
+              </p>
+            </section>
+          </section>
+
+          <!-- FIGURA SEMÁNTICA con imagen y pie de figura.
+               <figure> envuelve contenido ilustrativo autónomo.
+               <figcaption> proporciona la leyenda accesible. -->
+          <figure>
+            <img src="estructura-html5.png"
+                 alt="Diagrama de una página web mostrando la disposición de header, nav, main, article, section, aside y footer, con cada región coloreada y etiquetada según el estándar HTML5"
+                 width="800" height="500"
+                 loading="lazy"
+                 decoding="async">
+            <figcaption>
+              <strong>Figura 1:</strong> Estructura típica de una página HTML5 con
+              elementos semánticos. Las regiones coloreadas representan cada uno
+              de los elementos de seccionamiento del estándar actual.
+            </figcaption>
+          </figure>
+
+          <section aria-labelledby="conclusiones">
+            <h2 id="conclusiones">Conclusiones</h2>
+            <p>
+              La adopción del HTML semántico no es una opción, sino una responsabilidad
+              profesional. Cada elemento que elegimos tiene impacto directo en la
+              experiencia de personas con diversas capacidades, en la visibilidad de
+              nuestro contenido en buscadores y en la calidad a largo plazo de nuestro
+              código. Invertir en aprender y aplicar correctamente la semántica HTML
+              es una de las decisiones más rentables como desarrolladores web.
+            </p>
+          </section>
+
+          <!-- Pie del artículo con información del autor y navegación entre artículos -->
+          <footer>
+            <address>
+              <img src="autora-maria.jpg" alt="Fotografía de María López García"
+                   width="80" height="80" loading="lazy">
+              <p>
+                <strong>María López García</strong> es desarrolladora web senior y
+                consultora de accesibilidad con más de 10 años de experiencia.
+              </p>
+              <p>Contacto: <a href="mailto:maria.lopez@ejemplo.com">maria.lopez@ejemplo.com</a></p>
+            </address>
+
+            <!-- Navegación entre artículos (anterior/siguiente) -->
+            <nav aria-label="Navegación entre artículos">
+              <ul>
+                <li><a href="/articulos/css-grid/" rel="prev">&larr; CSS Grid</a></li>
+                <li><a href="/articulos/javascript-accesible/" rel="next">JavaScript Accesible &rarr;</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </article>
+
+        <!-- BARRA LATERAL: contenido complementario relacionado -->
+        <aside aria-labelledby="sidebar-titulo">
+          <h2 id="sidebar-titulo">Contenido Relacionado</h2>
+          <section aria-labelledby="articulos-relacionados">
+            <h3 id="articulos-relacionados">Artículos Relacionados</h3>
+            <ul>
+              <li><a href="/articulos/aria-basico/">Introducción a WAI-ARIA</a></li>
+              <li><a href="/articulos/formularios-accesibles/">Formularios Web Accesibles</a></li>
+              <li><a href="/articulos/seo-tecnico/">SEO Técnico para Desarrolladores</a></li>
+            </ul>
+          </section>
+          <section aria-labelledby="categorias-populares">
+            <h3 id="categorias-populares">Categorías Populares</h3>
+            <ul>
+              <li><a href="/categorias/html/">HTML</a> (42 artículos)</li>
+              <li><a href="/categorias/css/">CSS</a> (38 artículos)</li>
+              <li><a href="/categorias/javascript/">JavaScript</a> (56 artículos)</li>
+              <li><a href="/categorias/accesibilidad/">Accesibilidad</a> (27 artículos)</li>
+            </ul>
+          </section>
+        </aside>
+      </main>
+
+      <!-- PIE DE PÁGINA GLOBAL DEL SITIO -->
+      <footer role="contentinfo">
+        <nav aria-label="Navegación del pie de página">
+          <ul>
+            <li><a href="/privacidad/">Política de Privacidad</a></li>
+            <li><a href="/cookies/">Política de Cookies</a></li>
+            <li><a href="/aviso-legal/">Aviso Legal</a></li>
+          </ul>
+        </nav>
+        <p>&copy; 2025 Mi Blog de Desarrollo Web. Todos los derechos reservados.</p>
+        <address>
+          <p>Contacto: <a href="mailto:info@ejemplo.com">info@ejemplo.com</a></p>
+        </address>
+      </footer>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* Skip link: oculto hasta que recibe el foco del teclado.
        Usamos position:absolute y top negativo para ocultarlo visualmente,
        pero sigue siendo accesible para lectores de pantalla y teclado. */
@@ -222,233 +440,228 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
       outline: 3px solid #93c5fd;
       outline-offset: 2px;
     }
-  </style>
-</head>
-<body>
-  <!-- ENLACE DE SALTO AL CONTENIDO PRINCIPAL (skip link).
-       Es el primer elemento interactivo de la página.
-       Permite a usuarios de teclado y lectores de pantalla
-       saltar directamente al contenido principal sin tener
-       que tabular por toda la navegación. -->
-  <a href="#contenido-principal" class="skip-link" aria-label="Saltar al contenido principal">
-    Saltar al contenido principal
-  </a>
-
-  <!-- CABECERA GLOBAL DEL SITIO -->
-  <header>
-    <!-- Logotipo con enlace a la página de inicio.
-         aria-label proporciona el texto accesible del enlace. -->
-    <a href="/" aria-label="Ir a la página de inicio de Mi Blog">
-      <img src="logo.svg" alt="Logotipo de Mi Blog de Desarrollo Web" width="180" height="50">
-    </a>
-
-    <!-- NAVEGACIÓN PRINCIPAL: patrón nav + ul/li.
-         Este es el patrón semántico correcto para menús.
-         aria-label distingue esta navegación de otras en la página. -->
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="/">Inicio</a></li>
-        <!-- aria-current="page" informa al lector de pantalla
-             que este enlace corresponde a la página actual. -->
-        <li><a href="/articulos/" aria-current="page">Artículos</a></li>
-        <li><a href="/tutoriales/">Tutoriales</a></li>
-        <li><a href="/acerca-de/">Acerca de</a></li>
-        <li><a href="/contacto/">Contacto</a></li>
-      </ul>
-    </nav>
-
-    <!-- Formulario de búsqueda con role="search" para
-         identificarlo como región de búsqueda accesible -->
-    <form role="search" action="/buscar/" method="get">
-      <label for="busqueda-header">Buscar en el sitio:</label>
-      <input type="search" id="busqueda-header" name="q"
-             placeholder="Escribe tu búsqueda...">
-      <button type="submit">Buscar</button>
-    </form>
-  </header>
-
-  <!-- CONTENIDO PRINCIPAL: único en la página, destino del skip link -->
-  <main id="contenido-principal">
-
-    <!-- ARTÍCULO: contenido autocontenido e independiente.
-         Tiene sentido por sí mismo y podría distribuirse aisladamente. -->
-    <article>
-      <!-- Cabecera del artículo con título y metadatos -->
-      <header>
-        <!-- ÚNICO h1 de la página: describe el tema principal del documento -->
-        <h1>HTML Semántico: La Base de una Web Accesible y Bien Posicionada</h1>
-        <p>
-          Publicado el <time datetime="2025-01-15">15 de enero de 2025</time>
-          por <a href="/autores/maria-lopez/" rel="author">María López García</a>
-        </p>
-        <!-- Categorías del artículo como lista semántica -->
-        <ul aria-label="Categorías del artículo">
-          <li><a href="/categorias/html/">HTML</a></li>
-          <li><a href="/categorias/accesibilidad/">Accesibilidad</a></li>
-          <li><a href="/categorias/seo/">SEO</a></li>
-        </ul>
-      </header>
-
-      <!-- Cuerpo del artículo: sections con encabezados jerárquicos (h2, h3).
-           Cada section tiene aria-labelledby que apunta a su encabezado.
-           La jerarquía de encabezados es estricta: h1 → h2 → h3, sin saltos. -->
-      <section aria-labelledby="introduccion">
-        <h2 id="introduccion">Introducción al HTML Semántico</h2>
-        <p>
-          El HTML semántico es mucho más que una tendencia moderna: es una necesidad
-          fundamental para construir webs que sean verdaderamente accesibles, mantenibles
-          y eficaces en los motores de búsqueda. Consiste en utilizar los elementos HTML
-          según su propósito original, en lugar de recurrir sistemáticamente a elementos
-          genéricos como <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code>.
-        </p>
-        <p>
-          Cuando envolvemos el contenido en elementos con significado, proporcionamos
-          información valiosa sobre la estructura y jerarquía a navegadores, motores de
-          búsqueda y lectores de pantalla. La transición desde HTML4 hacia HTML5
-          representó un salto cualitativo fundamental en el desarrollo web.
-        </p>
-      </section>
-
-      <section aria-labelledby="beneficios">
-        <h2 id="beneficios">Beneficios Clave del HTML Semántico</h2>
-
-        <!-- Subsecciones con h3: jerarquía correcta, sin saltos -->
-        <section aria-labelledby="beneficio-accesibilidad">
-          <h3 id="beneficio-accesibilidad">Accesibilidad Mejorada</h3>
-          <p>
-            Los elementos semánticos como <code>&lt;nav&gt;</code> o
-            <code>&lt;main&gt;</code> llevan roles ARIA implícitos que los
-            lectores de pantalla reconocen automáticamente. Esto permite a
-            personas con discapacidad visual navegar eficientemente entre
-            regiones mediante atajos de teclado.
-          </p>
-        </section>
-
-        <section aria-labelledby="beneficio-seo">
-          <h3 id="beneficio-seo">Optimización para Motores de Búsqueda</h3>
-          <p>
-            Google y otros buscadores analizan la estructura semántica para
-            comprender la relevancia del contenido. Un <code>&lt;article&gt;</code>
-            bien estructurado con encabezados jerárquicos correctos tiene más
-            probabilidades de aparecer en posiciones destacadas.
-          </p>
-        </section>
-
-        <section aria-labelledby="beneficio-mantenibilidad">
-          <h3 id="beneficio-mantenibilidad">Mantenibilidad del Código</h3>
-          <p>
-            Un código HTML semántico es más legible: cualquier desarrollador
-            entiende inmediatamente que <code>&lt;footer&gt;</code> es el pie
-            de página. La semántica clara reduce la deuda técnica y acelera
-            el mantenimiento y la incorporación de nuevos miembros al equipo.
-          </p>
-        </section>
-      </section>
-
-      <!-- FIGURA SEMÁNTICA con imagen y pie de figura.
-           <figure> envuelve contenido ilustrativo autónomo.
-           <figcaption> proporciona la leyenda accesible. -->
-      <figure>
-        <img src="estructura-html5.png"
-             alt="Diagrama de una página web mostrando la disposición de header, nav, main, article, section, aside y footer, con cada región coloreada y etiquetada según el estándar HTML5"
-             width="800" height="500"
-             loading="lazy"
-             decoding="async">
-        <figcaption>
-          <strong>Figura 1:</strong> Estructura típica de una página HTML5 con
-          elementos semánticos. Las regiones coloreadas representan cada uno
-          de los elementos de seccionamiento del estándar actual.
-        </figcaption>
-      </figure>
-
-      <section aria-labelledby="conclusiones">
-        <h2 id="conclusiones">Conclusiones</h2>
-        <p>
-          La adopción del HTML semántico no es una opción, sino una responsabilidad
-          profesional. Cada elemento que elegimos tiene impacto directo en la
-          experiencia de personas con diversas capacidades, en la visibilidad de
-          nuestro contenido en buscadores y en la calidad a largo plazo de nuestro
-          código. Invertir en aprender y aplicar correctamente la semántica HTML
-          es una de las decisiones más rentables como desarrolladores web.
-        </p>
-      </section>
-
-      <!-- Pie del artículo con información del autor y navegación entre artículos -->
-      <footer>
-        <address>
-          <img src="autora-maria.jpg" alt="Fotografía de María López García"
-               width="80" height="80" loading="lazy">
-          <p>
-            <strong>María López García</strong> es desarrolladora web senior y
-            consultora de accesibilidad con más de 10 años de experiencia.
-          </p>
-          <p>Contacto: <a href="mailto:maria.lopez@ejemplo.com">maria.lopez@ejemplo.com</a></p>
-        </address>
-
-        <!-- Navegación entre artículos (anterior/siguiente) -->
-        <nav aria-label="Navegación entre artículos">
-          <ul>
-            <li><a href="/articulos/css-grid/" rel="prev">&larr; CSS Grid</a></li>
-            <li><a href="/articulos/javascript-accesible/" rel="next">JavaScript Accesible &rarr;</a></li>
-          </ul>
-        </nav>
-      </footer>
-    </article>
-
-    <!-- BARRA LATERAL: contenido complementario relacionado -->
-    <aside aria-labelledby="sidebar-titulo">
-      <h2 id="sidebar-titulo">Contenido Relacionado</h2>
-      <section aria-labelledby="articulos-relacionados">
-        <h3 id="articulos-relacionados">Artículos Relacionados</h3>
-        <ul>
-          <li><a href="/articulos/aria-basico/">Introducción a WAI-ARIA</a></li>
-          <li><a href="/articulos/formularios-accesibles/">Formularios Web Accesibles</a></li>
-          <li><a href="/articulos/seo-tecnico/">SEO Técnico para Desarrolladores</a></li>
-        </ul>
-      </section>
-      <section aria-labelledby="categorias-populares">
-        <h3 id="categorias-populares">Categorías Populares</h3>
-        <ul>
-          <li><a href="/categorias/html/">HTML</a> (42 artículos)</li>
-          <li><a href="/categorias/css/">CSS</a> (38 artículos)</li>
-          <li><a href="/categorias/javascript/">JavaScript</a> (56 artículos)</li>
-          <li><a href="/categorias/accesibilidad/">Accesibilidad</a> (27 artículos)</li>
-        </ul>
-      </section>
-    </aside>
-  </main>
-
-  <!-- PIE DE PÁGINA GLOBAL DEL SITIO -->
-  <footer role="contentinfo">
-    <nav aria-label="Navegación del pie de página">
-      <ul>
-        <li><a href="/privacidad/">Política de Privacidad</a></li>
-        <li><a href="/cookies/">Política de Cookies</a></li>
-        <li><a href="/aviso-legal/">Aviso Legal</a></li>
-      </ul>
-    </nav>
-    <p>&copy; 2025 Mi Blog de Desarrollo Web. Todos los derechos reservados.</p>
-    <address>
-      <p>Contacto: <a href="mailto:info@ejemplo.com">info@ejemplo.com</a></p>
-    </address>
-  </footer>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 2: Formulario de registro accesible completo
 
 !!! example "Contexto pedagógico"
     Formulario que demuestra buenas prácticas: etiquetas con `for`/`id`, agrupación con `fieldset`/`legend`, tipos HTML5 especializados, validación nativa, mensajes de error con `aria-describedby` y `role="alert"`, `datalist` para sugerencias, `output` para mostrar valores, `meter` para fortaleza de contraseña y atributos `autocomplete` e `inputmode`.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de Registro Accesible | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Formulario de Registro Accesible | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <main>
+        <div class="formulario-contenedor">
+          <h1>Crear Cuenta</h1>
+          <p class="formulario-descripcion" id="form-descripcion">
+            Completa los campos obligatorios (*) para registrarte.
+            Tus datos serán tratados conforme a nuestra política de privacidad.
+          </p>
+
+          <!-- FORMULARIO ACCESIBLE: aria-describedby enlaza con la descripción -->
+          <form action="/registro/" method="post" novalidate aria-describedby="form-descripcion">
+
+            <!-- SECCIÓN 1: Datos Personales -->
+            <fieldset>
+              <legend>Datos Personales</legend>
+
+              <!-- Campo: Nombre completo -->
+              <div class="campo">
+                <label for="nombre" class="campo-requerido">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required
+                       minlength="3" maxlength="100" autocomplete="name"
+                       placeholder="Ej: María García López"
+                       aria-describedby="nombre-error" inputmode="text">
+                <div class="mensaje-error" id="nombre-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> El nombre debe tener entre 3 y 100 caracteres.
+                </div>
+              </div>
+
+              <!-- Campo: Correo electrónico (type="email" con validación automática) -->
+              <div class="campo">
+                <label for="email" class="campo-requerido">Correo electrónico</label>
+                <input type="email" id="email" name="email" required
+                       autocomplete="email" placeholder="usuario@dominio.com"
+                       aria-describedby="email-error" inputmode="email">
+                <div class="mensaje-error" id="email-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> Introduce un correo electrónico válido.
+                </div>
+              </div>
+
+              <!-- Campo: Teléfono (opcional, type="tel" para teclado numérico) -->
+              <div class="campo">
+                <label for="telefono">Teléfono <span style="font-weight:400;color:#64748b;">(opcional)</span></label>
+                <input type="tel" id="telefono" name="telefono" autocomplete="tel"
+                       placeholder="+34 612 345 678"
+                       pattern="[+]?[0-9\s()-]{7,15}"
+                       aria-describedby="telefono-error" inputmode="tel">
+                <div class="mensaje-error" id="telefono-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> Introduce un número de teléfono válido (7-15 dígitos).
+                </div>
+              </div>
+
+              <!-- Campo: Fecha de nacimiento (type="date" con selector nativo) -->
+              <div class="campo">
+                <label for="fecha-nacimiento" class="campo-requerido">Fecha de nacimiento</label>
+                <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" required
+                       min="1900-01-01" max="2025-12-31"
+                       autocomplete="bday" aria-describedby="fecha-error">
+                <div class="mensaje-error" id="fecha-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> Debes ser mayor de edad para registrarte.
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- SECCIÓN 2: Datos de la Cuenta -->
+            <fieldset>
+              <legend>Datos de la Cuenta</legend>
+
+              <!-- Campo: Nombre de usuario -->
+              <div class="campo">
+                <label for="usuario" class="campo-requerido">Nombre de usuario</label>
+                <input type="text" id="usuario" name="usuario" required
+                       minlength="4" maxlength="20" pattern="[a-zA-Z0-9_]+"
+                       autocomplete="username" placeholder="Sin espacios"
+                       aria-describedby="usuario-error">
+                <div class="mensaje-error" id="usuario-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> Solo letras, números y guiones bajos (4-20 caracteres).
+                </div>
+              </div>
+
+              <!-- Campo: Contraseña con indicador de fortaleza (meter) -->
+              <div class="campo">
+                <label for="password" class="campo-requerido">Contraseña</label>
+                <input type="password" id="password" name="password" required
+                       minlength="8" maxlength="128" autocomplete="new-password"
+                       aria-describedby="password-error password-requisitos"
+                       placeholder="Mínimo 8 caracteres">
+                <!-- METER: indicador gráfico de fortaleza de 0 a 100 -->
+                <meter id="fortaleza-password" min="0" max="100"
+                       low="33" high="66" optimum="80" value="0"
+                       aria-label="Fortaleza de la contraseña: 0%"
+                       style="width:100%;height:6px;border-radius:3px;margin-top:8px;background:#e2e8f0;">
+                </meter>
+                <div class="mensaje-error" id="password-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> La contraseña debe tener al menos 8 caracteres.
+                </div>
+                <p id="password-requisitos" style="font-size:0.8rem;color:#64748b;margin-top:4px;">
+                  Para mayor seguridad, incluye mayúsculas, minúsculas, números y caracteres especiales.
+                </p>
+              </div>
+
+              <!-- Campo: País con datalist para sugerencias de autocompletado -->
+              <div class="campo">
+                <label for="pais" class="campo-requerido">País de residencia</label>
+                <input type="text" id="pais" name="pais" list="lista-paises" required
+                       autocomplete="country-name" placeholder="Escribe tu país..."
+                       aria-describedby="pais-error" inputmode="text">
+                <!-- DATALIST: lista de sugerencias vinculada al input mediante list="lista-paises" -->
+                <datalist id="lista-paises">
+                  <option value="España"><option value="México">
+                  <option value="Argentina"><option value="Colombia">
+                  <option value="Chile"><option value="Perú">
+                  <option value="Venezuela"><option value="Ecuador">
+                  <option value="Uruguay"><option value="Paraguay">
+                  <option value="Bolivia"><option value="Costa Rica">
+                  <option value="Panamá"><option value="Cuba">
+                  <option value="República Dominicana"><option value="Guatemala">
+                </datalist>
+                <div class="mensaje-error" id="pais-error" role="alert">
+                  <span aria-hidden="true">&#9888;</span> Selecciona o escribe tu país de residencia.
+                </div>
+              </div>
+
+              <!-- Campo: Tamaño de fuente con range y output vinculados -->
+              <div class="campo">
+                <label for="tamano-fuente">Tamaño de fuente preferido</label>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <span aria-hidden="true" style="font-size:0.8rem;">A</span>
+                  <input type="range" id="tamano-fuente" name="tamano_fuente"
+                         min="12" max="24" value="16" step="1"
+                         aria-label="Tamaño de fuente preferido en píxeles"
+                         style="flex:1;">
+                  <span aria-hidden="true" style="font-size:1.2rem;">A</span>
+                  <!-- OUTPUT: vinculado al range con for, muestra el valor actual -->
+                  <output for="tamano-fuente" id="valor-fuente"
+                          style="font-weight:700;min-width:2.5rem;text-align:center;">16px</output>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- SECCIÓN 3: Preferencias -->
+            <fieldset>
+              <legend>Preferencias de Comunicación</legend>
+
+              <!-- Radio buttons accesibles: role="radiogroup" + aria-labelledby -->
+              <div class="campo">
+                <p id="frecuencia-label" style="font-weight:600;margin-bottom:8px;color:#334155;">
+                  Frecuencia de notificaciones:</p>
+                <div role="radiogroup" aria-labelledby="frecuencia-label">
+                  <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
+                    <input type="radio" name="frecuencia" value="diaria" checked> Diaria
+                  </label>
+                  <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
+                    <input type="radio" name="frecuencia" value="semanal"> Semanal
+                  </label>
+                  <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
+                    <input type="radio" name="frecuencia" value="mensual"> Mensual
+                  </label>
+                  <label style="display:flex;align-items:center;gap:8px;font-weight:400;">
+                    <input type="radio" name="frecuencia" value="nunca"> No deseo notificaciones
+                  </label>
+                </div>
+              </div>
+
+              <!-- Campo: Color de tema con type="color" -->
+              <div class="campo">
+                <label for="color-tema">Color de tema preferido</label>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <input type="color" id="color-tema" name="color_tema" value="#2563eb"
+                         aria-label="Selecciona tu color de tema preferido">
+                  <span style="font-size:0.85rem;color:#64748b;">
+                    Este color personalizará tu interfaz
+                  </span>
+                </div>
+              </div>
+
+              <!-- Checkbox de aceptación de términos (required) -->
+              <div class="campo">
+                <label style="display:flex;align-items:flex-start;gap:8px;font-weight:400;">
+                  <input type="checkbox" name="terminos" required
+                         aria-describedby="terminos-error" style="width:auto;margin-top:3px;">
+                  <span>He leído y acepto los
+                    <a href="/terminos/" target="_blank" rel="noopener">Términos y Condiciones</a>
+                    y la <a href="/privacidad/" target="_blank" rel="noopener">Política de Privacidad</a>.
+                  </span>
+                </label>
+                <div class="mensaje-error" id="terminos-error" role="alert" style="margin-left:26px;">
+                  <span aria-hidden="true">&#9888;</span> Debes aceptar los términos para continuar.
+                </div>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="boton-enviar">Crear Cuenta</button>
+          </form>
+        </div>
+      </main>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -498,205 +711,11 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
     .boton-enviar:active { transform: scale(0.98); }
     .boton-enviar:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
     @media (max-width: 480px) { .formulario-contenedor { padding: 24px 16px; } }
-  </style>
-</head>
-<body>
-  <main>
-    <div class="formulario-contenedor">
-      <h1>Crear Cuenta</h1>
-      <p class="formulario-descripcion" id="form-descripcion">
-        Completa los campos obligatorios (*) para registrarte.
-        Tus datos serán tratados conforme a nuestra política de privacidad.
-      </p>
+    ```
 
-      <!-- FORMULARIO ACCESIBLE: aria-describedby enlaza con la descripción -->
-      <form action="/registro/" method="post" novalidate aria-describedby="form-descripcion">
+=== "JS"
 
-        <!-- SECCIÓN 1: Datos Personales -->
-        <fieldset>
-          <legend>Datos Personales</legend>
-
-          <!-- Campo: Nombre completo -->
-          <div class="campo">
-            <label for="nombre" class="campo-requerido">Nombre completo</label>
-            <input type="text" id="nombre" name="nombre" required
-                   minlength="3" maxlength="100" autocomplete="name"
-                   placeholder="Ej: María García López"
-                   aria-describedby="nombre-error" inputmode="text">
-            <div class="mensaje-error" id="nombre-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> El nombre debe tener entre 3 y 100 caracteres.
-            </div>
-          </div>
-
-          <!-- Campo: Correo electrónico (type="email" con validación automática) -->
-          <div class="campo">
-            <label for="email" class="campo-requerido">Correo electrónico</label>
-            <input type="email" id="email" name="email" required
-                   autocomplete="email" placeholder="usuario@dominio.com"
-                   aria-describedby="email-error" inputmode="email">
-            <div class="mensaje-error" id="email-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> Introduce un correo electrónico válido.
-            </div>
-          </div>
-
-          <!-- Campo: Teléfono (opcional, type="tel" para teclado numérico) -->
-          <div class="campo">
-            <label for="telefono">Teléfono <span style="font-weight:400;color:#64748b;">(opcional)</span></label>
-            <input type="tel" id="telefono" name="telefono" autocomplete="tel"
-                   placeholder="+34 612 345 678"
-                   pattern="[+]?[0-9\s()-]{7,15}"
-                   aria-describedby="telefono-error" inputmode="tel">
-            <div class="mensaje-error" id="telefono-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> Introduce un número de teléfono válido (7-15 dígitos).
-            </div>
-          </div>
-
-          <!-- Campo: Fecha de nacimiento (type="date" con selector nativo) -->
-          <div class="campo">
-            <label for="fecha-nacimiento" class="campo-requerido">Fecha de nacimiento</label>
-            <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" required
-                   min="1900-01-01" max="2025-12-31"
-                   autocomplete="bday" aria-describedby="fecha-error">
-            <div class="mensaje-error" id="fecha-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> Debes ser mayor de edad para registrarte.
-            </div>
-          </div>
-        </fieldset>
-
-        <!-- SECCIÓN 2: Datos de la Cuenta -->
-        <fieldset>
-          <legend>Datos de la Cuenta</legend>
-
-          <!-- Campo: Nombre de usuario -->
-          <div class="campo">
-            <label for="usuario" class="campo-requerido">Nombre de usuario</label>
-            <input type="text" id="usuario" name="usuario" required
-                   minlength="4" maxlength="20" pattern="[a-zA-Z0-9_]+"
-                   autocomplete="username" placeholder="Sin espacios"
-                   aria-describedby="usuario-error">
-            <div class="mensaje-error" id="usuario-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> Solo letras, números y guiones bajos (4-20 caracteres).
-            </div>
-          </div>
-
-          <!-- Campo: Contraseña con indicador de fortaleza (meter) -->
-          <div class="campo">
-            <label for="password" class="campo-requerido">Contraseña</label>
-            <input type="password" id="password" name="password" required
-                   minlength="8" maxlength="128" autocomplete="new-password"
-                   aria-describedby="password-error password-requisitos"
-                   placeholder="Mínimo 8 caracteres">
-            <!-- METER: indicador gráfico de fortaleza de 0 a 100 -->
-            <meter id="fortaleza-password" min="0" max="100"
-                   low="33" high="66" optimum="80" value="0"
-                   aria-label="Fortaleza de la contraseña: 0%"
-                   style="width:100%;height:6px;border-radius:3px;margin-top:8px;background:#e2e8f0;">
-            </meter>
-            <div class="mensaje-error" id="password-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> La contraseña debe tener al menos 8 caracteres.
-            </div>
-            <p id="password-requisitos" style="font-size:0.8rem;color:#64748b;margin-top:4px;">
-              Para mayor seguridad, incluye mayúsculas, minúsculas, números y caracteres especiales.
-            </p>
-          </div>
-
-          <!-- Campo: País con datalist para sugerencias de autocompletado -->
-          <div class="campo">
-            <label for="pais" class="campo-requerido">País de residencia</label>
-            <input type="text" id="pais" name="pais" list="lista-paises" required
-                   autocomplete="country-name" placeholder="Escribe tu país..."
-                   aria-describedby="pais-error" inputmode="text">
-            <!-- DATALIST: lista de sugerencias vinculada al input mediante list="lista-paises" -->
-            <datalist id="lista-paises">
-              <option value="España"><option value="México">
-              <option value="Argentina"><option value="Colombia">
-              <option value="Chile"><option value="Perú">
-              <option value="Venezuela"><option value="Ecuador">
-              <option value="Uruguay"><option value="Paraguay">
-              <option value="Bolivia"><option value="Costa Rica">
-              <option value="Panamá"><option value="Cuba">
-              <option value="República Dominicana"><option value="Guatemala">
-            </datalist>
-            <div class="mensaje-error" id="pais-error" role="alert">
-              <span aria-hidden="true">&#9888;</span> Selecciona o escribe tu país de residencia.
-            </div>
-          </div>
-
-          <!-- Campo: Tamaño de fuente con range y output vinculados -->
-          <div class="campo">
-            <label for="tamano-fuente">Tamaño de fuente preferido</label>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <span aria-hidden="true" style="font-size:0.8rem;">A</span>
-              <input type="range" id="tamano-fuente" name="tamano_fuente"
-                     min="12" max="24" value="16" step="1"
-                     aria-label="Tamaño de fuente preferido en píxeles"
-                     style="flex:1;">
-              <span aria-hidden="true" style="font-size:1.2rem;">A</span>
-              <!-- OUTPUT: vinculado al range con for, muestra el valor actual -->
-              <output for="tamano-fuente" id="valor-fuente"
-                      style="font-weight:700;min-width:2.5rem;text-align:center;">16px</output>
-            </div>
-          </div>
-        </fieldset>
-
-        <!-- SECCIÓN 3: Preferencias -->
-        <fieldset>
-          <legend>Preferencias de Comunicación</legend>
-
-          <!-- Radio buttons accesibles: role="radiogroup" + aria-labelledby -->
-          <div class="campo">
-            <p id="frecuencia-label" style="font-weight:600;margin-bottom:8px;color:#334155;">
-              Frecuencia de notificaciones:</p>
-            <div role="radiogroup" aria-labelledby="frecuencia-label">
-              <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
-                <input type="radio" name="frecuencia" value="diaria" checked> Diaria
-              </label>
-              <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
-                <input type="radio" name="frecuencia" value="semanal"> Semanal
-              </label>
-              <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;">
-                <input type="radio" name="frecuencia" value="mensual"> Mensual
-              </label>
-              <label style="display:flex;align-items:center;gap:8px;font-weight:400;">
-                <input type="radio" name="frecuencia" value="nunca"> No deseo notificaciones
-              </label>
-            </div>
-          </div>
-
-          <!-- Campo: Color de tema con type="color" -->
-          <div class="campo">
-            <label for="color-tema">Color de tema preferido</label>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <input type="color" id="color-tema" name="color_tema" value="#2563eb"
-                     aria-label="Selecciona tu color de tema preferido">
-              <span style="font-size:0.85rem;color:#64748b;">
-                Este color personalizará tu interfaz
-              </span>
-            </div>
-          </div>
-
-          <!-- Checkbox de aceptación de términos (required) -->
-          <div class="campo">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-weight:400;">
-              <input type="checkbox" name="terminos" required
-                     aria-describedby="terminos-error" style="width:auto;margin-top:3px;">
-              <span>He leído y acepto los
-                <a href="/terminos/" target="_blank" rel="noopener">Términos y Condiciones</a>
-                y la <a href="/privacidad/" target="_blank" rel="noopener">Política de Privacidad</a>.
-              </span>
-            </label>
-            <div class="mensaje-error" id="terminos-error" role="alert" style="margin-left:26px;">
-              <span aria-hidden="true">&#9888;</span> Debes aceptar los términos para continuar.
-            </div>
-          </div>
-        </fieldset>
-
-        <button type="submit" class="boton-enviar">Crear Cuenta</button>
-      </form>
-    </div>
-  </main>
-
-  <script>
+    ``` js
     /* SCRIPT DE INTERACTIVIDAD: range↔output y fortaleza de contraseña */
 
     // 1. Sincronizar range con output
@@ -733,21 +752,110 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
         ? '¡Formulario válido! En producción se enviaría al servidor.'
         : 'Corrige los errores indicados en rojo antes de enviar.');
     });
-  </script>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 3: Tabla de datos accesible con scope y caption
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabla de Datos Accesible | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tabla de Datos Accesible | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <main>
+        <div class="contenedor-tabla">
+          <h1>Informe de Ventas - Ejercicio 2025</h1>
+          <p id="descripcion-tabla" style="margin-bottom:16px;color:#64748b;">
+            Desglose de ventas (en euros) por trimestre y categoría durante el
+            ejercicio fiscal 2025. La columna "Total Anual" suma los cuatro trimestres
+            y la fila "Total General" suma todas las categorías por trimestre.
+          </p>
+          <div class="tabla-scroll" role="region" aria-labelledby="titulo-tabla" tabindex="0">
+            <table aria-describedby="descripcion-tabla">
+              <caption id="titulo-tabla">
+                Ventas por Trimestre y Categoría de Producto - 2025 (€)
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Categoría</th>
+                  <th scope="col" class="numero">T1 (Ene-Mar)</th>
+                  <th scope="col" class="numero">T2 (Abr-Jun)</th>
+                  <th scope="col" class="numero">T3 (Jul-Sep)</th>
+                  <th scope="col" class="numero">T4 (Oct-Dic)</th>
+                  <th scope="col" class="numero">Total Anual</th>
+                </tr>
+              </thead>
+              <!-- tfoot se coloca ANTES de tbody para que los lectores de pantalla
+                   procesen el resumen antes de los datos detallados -->
+              <tfoot>
+                <tr>
+                  <th scope="row">Total General</th>
+                  <td class="numero"><strong>186.800 €</strong></td>
+                  <td class="numero"><strong>206.500 €</strong></td>
+                  <td class="numero"><strong>182.600 €</strong></td>
+                  <td class="numero"><strong>237.800 €</strong></td>
+                  <td class="numero"><strong>813.700 €</strong></td>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <th scope="row">Software</th>
+                  <td class="numero">45.200 €</td>
+                  <td class="numero">52.800 €</td>
+                  <td class="numero">48.100 €</td>
+                  <td class="numero">61.300 €</td>
+                  <td class="numero"><strong>207.400 €</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row">Hardware</th>
+                  <td class="numero">78.500 €</td>
+                  <td class="numero">82.100 €</td>
+                  <td class="numero">75.600 €</td>
+                  <td class="numero">95.200 €</td>
+                  <td class="numero"><strong>331.400 €</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row">Consultoría</th>
+                  <td class="numero">32.000 €</td>
+                  <td class="numero">35.500 €</td>
+                  <td class="numero">28.900 €</td>
+                  <td class="numero">40.100 €</td>
+                  <td class="numero"><strong>136.500 €</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row">Soporte Técnico</th>
+                  <td class="numero">18.700 €</td>
+                  <td class="numero">20.400 €</td>
+                  <td class="numero">19.800 €</td>
+                  <td class="numero">22.300 €</td>
+                  <td class="numero"><strong>81.200 €</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row">Formación</th>
+                  <td class="numero">12.400 €</td>
+                  <td class="numero">15.700 €</td>
+                  <td class="numero">10.200 €</td>
+                  <td class="numero">18.900 €</td>
+                  <td class="numero"><strong>57.200 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 40px 20px; color: #1e293b; }
     .contenedor-tabla {
       max-width: 900px; margin: 0 auto; background: #fff; border-radius: 12px;
@@ -771,104 +879,70 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
       table { font-size: 0.85rem; }
       thead th, tbody td, tfoot td { padding: 8px 10px; }
     }
-  </style>
-</head>
-<body>
-  <main>
-    <div class="contenedor-tabla">
-      <h1>Informe de Ventas - Ejercicio 2025</h1>
-      <p id="descripcion-tabla" style="margin-bottom:16px;color:#64748b;">
-        Desglose de ventas (en euros) por trimestre y categoría durante el
-        ejercicio fiscal 2025. La columna "Total Anual" suma los cuatro trimestres
-        y la fila "Total General" suma todas las categorías por trimestre.
-      </p>
-      <div class="tabla-scroll" role="region" aria-labelledby="titulo-tabla" tabindex="0">
-        <table aria-describedby="descripcion-tabla">
-          <caption id="titulo-tabla">
-            Ventas por Trimestre y Categoría de Producto - 2025 (€)
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Categoría</th>
-              <th scope="col" class="numero">T1 (Ene-Mar)</th>
-              <th scope="col" class="numero">T2 (Abr-Jun)</th>
-              <th scope="col" class="numero">T3 (Jul-Sep)</th>
-              <th scope="col" class="numero">T4 (Oct-Dic)</th>
-              <th scope="col" class="numero">Total Anual</th>
-            </tr>
-          </thead>
-          <!-- tfoot se coloca ANTES de tbody para que los lectores de pantalla
-               procesen el resumen antes de los datos detallados -->
-          <tfoot>
-            <tr>
-              <th scope="row">Total General</th>
-              <td class="numero"><strong>186.800 €</strong></td>
-              <td class="numero"><strong>206.500 €</strong></td>
-              <td class="numero"><strong>182.600 €</strong></td>
-              <td class="numero"><strong>237.800 €</strong></td>
-              <td class="numero"><strong>813.700 €</strong></td>
-            </tr>
-          </tfoot>
-          <tbody>
-            <tr>
-              <th scope="row">Software</th>
-              <td class="numero">45.200 €</td>
-              <td class="numero">52.800 €</td>
-              <td class="numero">48.100 €</td>
-              <td class="numero">61.300 €</td>
-              <td class="numero"><strong>207.400 €</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Hardware</th>
-              <td class="numero">78.500 €</td>
-              <td class="numero">82.100 €</td>
-              <td class="numero">75.600 €</td>
-              <td class="numero">95.200 €</td>
-              <td class="numero"><strong>331.400 €</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Consultoría</th>
-              <td class="numero">32.000 €</td>
-              <td class="numero">35.500 €</td>
-              <td class="numero">28.900 €</td>
-              <td class="numero">40.100 €</td>
-              <td class="numero"><strong>136.500 €</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Soporte Técnico</th>
-              <td class="numero">18.700 €</td>
-              <td class="numero">20.400 €</td>
-              <td class="numero">19.800 €</td>
-              <td class="numero">22.300 €</td>
-              <td class="numero"><strong>81.200 €</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Formación</th>
-              <td class="numero">12.400 €</td>
-              <td class="numero">15.700 €</td>
-              <td class="numero">10.200 €</td>
-              <td class="numero">18.900 €</td>
-              <td class="numero"><strong>57.200 €</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 4: Navegación con skip link, aria-current y breadcrumbs
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navegación Semántica con Skip Link | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Navegación Semántica con Skip Link | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- SKIP LINK: primer elemento interactivo -->
+      <a href="#contenido-principal" class="skip-link" aria-label="Saltar al contenido principal">
+        Saltar al contenido principal
+      </a>
+
+      <header class="site-header">
+        <a href="/" class="site-logo" aria-label="Ir a la página de inicio">TechAcademy</a>
+        <nav class="nav-principal" aria-label="Navegación principal">
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/cursos/" aria-current="page">Cursos</a></li>
+            <li><a href="/tutoriales/">Tutoriales</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="contenido-principal">
+        <!-- BREADCRUMB semántico con lista ordenada y aria-label -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/cursos/">Cursos</a></li>
+            <li><span aria-current="page">Desarrollo Web Frontend</span></li>
+          </ol>
+        </nav>
+
+        <h1>Curso de Desarrollo Web Frontend</h1>
+        <p>Curso intensivo de 300 horas para dominar HTML5 semántico, CSS3 avanzado, JavaScript moderno y frameworks como React y Vue.js.</p>
+        <h2>Contenidos del Curso</h2>
+        <p>Desde fundamentos de HTML semántico hasta técnicas avanzadas de animación CSS y manipulación del DOM con JavaScript vanilla.</p>
+        <h2>Metodología</h2>
+        <p>Aprendizaje práctico (learning by doing) con ejercicios guiados, proyectos incrementales y casos de estudio reales.</p>
+        <h2>Requisitos Previos</h2>
+        <p>No se requieren conocimientos previos de programación; solo manejo básico del ordenador.</p>
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2025 TechAcademy. | <a href="/privacidad/">Privacidad</a> | <a href="/terminos/">Términos</a></p>
+      </footer>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #1e293b; }
     /* SKIP LINK: oculto hasta recibir foco con Tab */
@@ -918,63 +992,76 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
       .site-header { flex-direction: column; align-items: flex-start; padding: 12px 16px; }
       .nav-principal ul { flex-direction: column; width: 100%; }
     }
-  </style>
-</head>
-<body>
-  <!-- SKIP LINK: primer elemento interactivo -->
-  <a href="#contenido-principal" class="skip-link" aria-label="Saltar al contenido principal">
-    Saltar al contenido principal
-  </a>
+    ```
 
-  <header class="site-header">
-    <a href="/" class="site-logo" aria-label="Ir a la página de inicio">TechAcademy</a>
-    <nav class="nav-principal" aria-label="Navegación principal">
-      <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/cursos/" aria-current="page">Cursos</a></li>
-        <li><a href="/tutoriales/">Tutoriales</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/contacto/">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="contenido-principal">
-    <!-- BREADCRUMB semántico con lista ordenada y aria-label -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/cursos/">Cursos</a></li>
-        <li><span aria-current="page">Desarrollo Web Frontend</span></li>
-      </ol>
-    </nav>
-
-    <h1>Curso de Desarrollo Web Frontend</h1>
-    <p>Curso intensivo de 300 horas para dominar HTML5 semántico, CSS3 avanzado, JavaScript moderno y frameworks como React y Vue.js.</p>
-    <h2>Contenidos del Curso</h2>
-    <p>Desde fundamentos de HTML semántico hasta técnicas avanzadas de animación CSS y manipulación del DOM con JavaScript vanilla.</p>
-    <h2>Metodología</h2>
-    <p>Aprendizaje práctico (learning by doing) con ejercicios guiados, proyectos incrementales y casos de estudio reales.</p>
-    <h2>Requisitos Previos</h2>
-    <p>No se requieren conocimientos previos de programación; solo manejo básico del ordenador.</p>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2025 TechAcademy. | <a href="/privacidad/">Privacidad</a> | <a href="/terminos/">Términos</a></p>
-  </footer>
-</body>
-</html>
-```
 ### Ejemplo 5: FAQ accesible con details/summary (contenido desplegable nativo)
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ Accesible con details/summary | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>FAQ Accesible con details/summary | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <main>
+        <div class="faq-contenedor">
+          <h1>Preguntas Frecuentes</h1>
+          <p class="faq-subtitulo">Haz clic en cada pregunta para desplegar la respuesta.</p>
+
+          <details>
+            <summary>¿Qué es el HTML semántico y por qué es importante?</summary>
+            <div class="faq-contenido">
+              <p>El HTML semántico utiliza elementos según su significado y propósito original. Mejora la accesibilidad para lectores de pantalla, facilita el SEO y hace el código más mantenible y comprensible para otros desarrolladores.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Cuál es la diferencia entre section y article?</summary>
+            <div class="faq-contenido">
+              <p><code>&lt;section&gt;</code> agrupa contenido temáticamente y forma parte de un todo mayor (requiere encabezado). <code>&lt;article&gt;</code> es autocontenido y tiene sentido por sí mismo; podría distribuirse de forma independiente (ej: en un feed RSS).</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Cómo hacer que un formulario sea accesible?</summary>
+            <div class="faq-contenido">
+              <ul>
+                <li>Asociar <code>&lt;label&gt;</code> al campo con <code>for</code>/<code>id</code>.</li>
+                <li>Agrupar campos con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>.</li>
+                <li>Usar tipos de input HTML5 (<code>email</code>, <code>tel</code>, <code>date</code>).</li>
+                <li>Mensajes de error con <code>aria-describedby</code> y <code>role="alert"</code>.</li>
+                <li>Garantizar navegación completa con teclado y foco visible.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Qué son los roles ARIA y cuándo usarlos?</summary>
+            <div class="faq-contenido">
+              <p>Los roles ARIA definen la función de un elemento para tecnologías de asistencia. <strong>Regla de oro:</strong> usa el elemento HTML nativo siempre que exista. Prefiere <code>&lt;button&gt;</code> a <code>&lt;div role="button"&gt;</code>. ARIA complementa HTML, no lo sustituye.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Cómo funcionan los datos estructurados JSON-LD para SEO?</summary>
+            <div class="faq-contenido">
+              <p>Se insertan con <code>&lt;script type="application/ld+json"&gt;</code> en el <code>&lt;head&gt;</code>. Usan Schema.org para describir el contenido a buscadores, que generan rich snippets: estrellas, precios, FAQs desplegables, paneles de conocimiento. Es el formato recomendado por Google.</p>
+            </div>
+          </details>
+        </div>
+      </main>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f1f5f9; padding: 40px 20px; color: #1e293b; line-height: 1.7; }
     .faq-contenedor { max-width: 720px; margin: 0 auto; }
     h1 { text-align: center; color: #2563eb; margin-bottom: 8px; font-size: 2rem; }
@@ -1003,70 +1090,94 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
     details[open] { border-color: #2563eb; }
     details[open] summary { color: #2563eb; }
     code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #e11d48; }
-  </style>
-</head>
-<body>
-  <main>
-    <div class="faq-contenedor">
-      <h1>Preguntas Frecuentes</h1>
-      <p class="faq-subtitulo">Haz clic en cada pregunta para desplegar la respuesta.</p>
-
-      <details>
-        <summary>¿Qué es el HTML semántico y por qué es importante?</summary>
-        <div class="faq-contenido">
-          <p>El HTML semántico utiliza elementos según su significado y propósito original. Mejora la accesibilidad para lectores de pantalla, facilita el SEO y hace el código más mantenible y comprensible para otros desarrolladores.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Cuál es la diferencia entre section y article?</summary>
-        <div class="faq-contenido">
-          <p><code>&lt;section&gt;</code> agrupa contenido temáticamente y forma parte de un todo mayor (requiere encabezado). <code>&lt;article&gt;</code> es autocontenido y tiene sentido por sí mismo; podría distribuirse de forma independiente (ej: en un feed RSS).</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Cómo hacer que un formulario sea accesible?</summary>
-        <div class="faq-contenido">
-          <ul>
-            <li>Asociar <code>&lt;label&gt;</code> al campo con <code>for</code>/<code>id</code>.</li>
-            <li>Agrupar campos con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>.</li>
-            <li>Usar tipos de input HTML5 (<code>email</code>, <code>tel</code>, <code>date</code>).</li>
-            <li>Mensajes de error con <code>aria-describedby</code> y <code>role="alert"</code>.</li>
-            <li>Garantizar navegación completa con teclado y foco visible.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Qué son los roles ARIA y cuándo usarlos?</summary>
-        <div class="faq-contenido">
-          <p>Los roles ARIA definen la función de un elemento para tecnologías de asistencia. <strong>Regla de oro:</strong> usa el elemento HTML nativo siempre que exista. Prefiere <code>&lt;button&gt;</code> a <code>&lt;div role="button"&gt;</code>. ARIA complementa HTML, no lo sustituye.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Cómo funcionan los datos estructurados JSON-LD para SEO?</summary>
-        <div class="faq-contenido">
-          <p>Se insertan con <code>&lt;script type="application/ld+json"&gt;</code> en el <code>&lt;head&gt;</code>. Usan Schema.org para describir el contenido a buscadores, que generan rich snippets: estrellas, precios, FAQs desplegables, paneles de conocimiento. Es el formato recomendado por Google.</p>
-        </div>
-      </details>
-    </div>
-  </main>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 6: Imágenes responsivas con picture, srcset, lazy loading y decoding async
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imágenes Responsivas | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Imágenes Responsivas | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <main>
+        <h1>Técnicas de Imágenes Responsivas en HTML5</h1>
+        <p class="intro">Sirve imágenes optimizadas para cada dispositivo con atributos nativos de HTML5, sin depender de JavaScript ni librerías externas.</p>
+
+        <section class="ejemplo" aria-labelledby="ej1">
+          <h2 id="ej1">1. srcset con descriptores de densidad (1x, 2x, 3x)</h2>
+          <p>El navegador elige automáticamente la imagen con la densidad de píxeles adecuada. Una pantalla Retina (2x) cargará la versión de mayor resolución.</p>
+          <pre>&lt;img src="foto-1x.jpg"
+         srcset="foto-1x.jpg 1x, foto-2x.jpg 2x, foto-3x.jpg 3x"
+         alt="Paisaje montañoso al atardecer"
+         width="800" height="400"&gt;</pre>
+          <div class="img-placeholder">srcset 1x, 2x, 3x</div>
+        </section>
+
+        <section class="ejemplo" aria-labelledby="ej2">
+          <h2 id="ej2">2. srcset con descriptores de ancho (w) + sizes</h2>
+          <p>Los descriptores <code>w</code> indican el ancho intrínseco. El atributo <code>sizes</code> informa al navegador del espacio que ocupará la imagen en el layout para que elija la óptima antes de cargar el CSS.</p>
+          <pre>&lt;img src="paisaje-800.jpg"
+         srcset="paisaje-400.jpg 400w, paisaje-800.jpg 800w,
+                 paisaje-1200.jpg 1200w, paisaje-1600.jpg 1600w"
+         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
+         alt="Vista panorámica de la ciudad"
+         width="800" height="450"&gt;</pre>
+          <div class="img-placeholder" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);">srcset w + sizes</div>
+        </section>
+
+        <section class="ejemplo" aria-labelledby="ej3">
+          <h2 id="ej3">3. Elemento picture para dirección de arte (Art Direction)</h2>
+          <p>Define diferentes imágenes según condiciones como el ancho de la ventana. Aquí se muestra un recorte vertical en móvil y panorámico en escritorio.</p>
+          <pre>&lt;picture&gt;
+      &lt;source srcset="hero-mobile.jpg" media="(max-width: 600px)"&gt;
+      &lt;source srcset="hero-desktop.jpg" media="(min-width: 601px)"&gt;
+      &lt;img src="hero-desktop.jpg"
+           alt="Equipo de desarrollo colaborando en la oficina"
+           width="1200" height="600"&gt;
+    &lt;/picture&gt;</pre>
+          <div class="img-placeholder" style="background:linear-gradient(135deg,#89f7fe 0%,#66a6ff 100%);">picture art direction</div>
+        </section>
+
+        <section class="ejemplo" aria-labelledby="ej4">
+          <h2 id="ej4">4. Formatos modernos con fallback (AVIF → WebP → JPEG)</h2>
+          <p>WebP y AVIF ofrecen mejor compresión. Con <code>&lt;picture&gt;</code> servimos el mejor formato soportado por el navegador y un fallback JPEG universal.</p>
+          <pre>&lt;picture&gt;
+      &lt;source srcset="producto.avif" type="image/avif"&gt;
+      &lt;source srcset="producto.webp" type="image/webp"&gt;
+      &lt;img src="producto.jpg"
+           alt="Zapatillas deportivas azules, vista lateral"
+           width="600" height="600"
+           loading="lazy"
+           decoding="async"&gt;
+    &lt;/picture&gt;</pre>
+          <div class="img-placeholder" style="background:linear-gradient(135deg,#ffeaa7 0%,#fdcb6e 100%);">AVIF → WebP → JPEG</div>
+        </section>
+
+        <section class="ejemplo" aria-labelledby="ej5">
+          <h2 id="ej5">5. Figura semántica completa con figcaption</h2>
+          <figure>
+            <div class="img-placeholder" style="min-height:250px;background:linear-gradient(135deg,#a29bfe 0%,#6c5ce7 100%);">
+              Arquitectura de Tres Capas<br>
+              <small>Frontend ↔ API REST ↔ Backend ↔ Base de Datos</small>
+            </div>
+            <figcaption><strong>Figura 1:</strong> Diagrama de la arquitectura de la aplicación. El frontend se comunica con el backend mediante API REST, y este persiste datos en PostgreSQL.</figcaption>
+          </figure>
+        </section>
+      </main>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 960px; margin: 0 auto; padding: 40px 20px; color: #1e293b; line-height: 1.7; background: #f8fafc; }
     h1 { color: #2563eb; margin-bottom: 8px; }
     .intro { color: #64748b; margin-bottom: 40px; }
@@ -1082,77 +1193,7 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
     }
     code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #e11d48; }
     pre { background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 0.88rem; line-height: 1.5; margin: 12px 0; }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>Técnicas de Imágenes Responsivas en HTML5</h1>
-    <p class="intro">Sirve imágenes optimizadas para cada dispositivo con atributos nativos de HTML5, sin depender de JavaScript ni librerías externas.</p>
-
-    <section class="ejemplo" aria-labelledby="ej1">
-      <h2 id="ej1">1. srcset con descriptores de densidad (1x, 2x, 3x)</h2>
-      <p>El navegador elige automáticamente la imagen con la densidad de píxeles adecuada. Una pantalla Retina (2x) cargará la versión de mayor resolución.</p>
-      <pre>&lt;img src="foto-1x.jpg"
-     srcset="foto-1x.jpg 1x, foto-2x.jpg 2x, foto-3x.jpg 3x"
-     alt="Paisaje montañoso al atardecer"
-     width="800" height="400"&gt;</pre>
-      <div class="img-placeholder">srcset 1x, 2x, 3x</div>
-    </section>
-
-    <section class="ejemplo" aria-labelledby="ej2">
-      <h2 id="ej2">2. srcset con descriptores de ancho (w) + sizes</h2>
-      <p>Los descriptores <code>w</code> indican el ancho intrínseco. El atributo <code>sizes</code> informa al navegador del espacio que ocupará la imagen en el layout para que elija la óptima antes de cargar el CSS.</p>
-      <pre>&lt;img src="paisaje-800.jpg"
-     srcset="paisaje-400.jpg 400w, paisaje-800.jpg 800w,
-             paisaje-1200.jpg 1200w, paisaje-1600.jpg 1600w"
-     sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
-     alt="Vista panorámica de la ciudad"
-     width="800" height="450"&gt;</pre>
-      <div class="img-placeholder" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);">srcset w + sizes</div>
-    </section>
-
-    <section class="ejemplo" aria-labelledby="ej3">
-      <h2 id="ej3">3. Elemento picture para dirección de arte (Art Direction)</h2>
-      <p>Define diferentes imágenes según condiciones como el ancho de la ventana. Aquí se muestra un recorte vertical en móvil y panorámico en escritorio.</p>
-      <pre>&lt;picture&gt;
-  &lt;source srcset="hero-mobile.jpg" media="(max-width: 600px)"&gt;
-  &lt;source srcset="hero-desktop.jpg" media="(min-width: 601px)"&gt;
-  &lt;img src="hero-desktop.jpg"
-       alt="Equipo de desarrollo colaborando en la oficina"
-       width="1200" height="600"&gt;
-&lt;/picture&gt;</pre>
-      <div class="img-placeholder" style="background:linear-gradient(135deg,#89f7fe 0%,#66a6ff 100%);">picture art direction</div>
-    </section>
-
-    <section class="ejemplo" aria-labelledby="ej4">
-      <h2 id="ej4">4. Formatos modernos con fallback (AVIF → WebP → JPEG)</h2>
-      <p>WebP y AVIF ofrecen mejor compresión. Con <code>&lt;picture&gt;</code> servimos el mejor formato soportado por el navegador y un fallback JPEG universal.</p>
-      <pre>&lt;picture&gt;
-  &lt;source srcset="producto.avif" type="image/avif"&gt;
-  &lt;source srcset="producto.webp" type="image/webp"&gt;
-  &lt;img src="producto.jpg"
-       alt="Zapatillas deportivas azules, vista lateral"
-       width="600" height="600"
-       loading="lazy"
-       decoding="async"&gt;
-&lt;/picture&gt;</pre>
-      <div class="img-placeholder" style="background:linear-gradient(135deg,#ffeaa7 0%,#fdcb6e 100%);">AVIF → WebP → JPEG</div>
-    </section>
-
-    <section class="ejemplo" aria-labelledby="ej5">
-      <h2 id="ej5">5. Figura semántica completa con figcaption</h2>
-      <figure>
-        <div class="img-placeholder" style="min-height:250px;background:linear-gradient(135deg,#a29bfe 0%,#6c5ce7 100%);">
-          Arquitectura de Tres Capas<br>
-          <small>Frontend ↔ API REST ↔ Backend ↔ Base de Datos</small>
-        </div>
-        <figcaption><strong>Figura 1:</strong> Diagrama de la arquitectura de la aplicación. El frontend se comunica con el backend mediante API REST, y este persiste datos en PostgreSQL.</figcaption>
-      </figure>
-    </section>
-  </main>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo 7: Datos estructurados JSON-LD completos para SEO (receta)
 
@@ -1250,14 +1291,62 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
 
 ### Ejemplo 8: Template HTML y Web Component básico con slot
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template y Web Components | Ejemplo Didáctico</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Template y Web Components | Ejemplo Didáctico</title>
+      <link rel="stylesheet" href="./styles2.css">
+    </head>
+    <body>
+      <main class="contenedor">
+        <h1>Template y Web Components con Slot</h1>
+
+        <section class="seccion" aria-labelledby="seccion-template">
+          <h2 id="seccion-template">1. Elemento &lt;template&gt; con JavaScript</h2>
+          <p>El <code>&lt;template&gt;</code> contiene HTML inerte que no se renderiza hasta ser clonado con <code>.content.cloneNode(true)</code> e insertado en el DOM con JS. Ideal para estructuras repetitivas.</p>
+          <button id="btn-agregar" type="button">+ Añadir Tarjeta desde Template</button>
+          <div id="contenedor-tarjetas" aria-live="polite" style="margin-top:16px;"></div>
+        </section>
+
+        <section class="seccion" aria-labelledby="seccion-webcomponent">
+          <h2 id="seccion-webcomponent">2. Web Component &lt;mi-tarjeta&gt; con slot</h2>
+          <p>Componente personalizado con Shadow DOM y <code>&lt;slot&gt;</code> para proyección de contenido desde el HTML principal (light DOM). Los slots nombrados reciben contenido específico; el slot por defecto captura el resto.</p>
+          <mi-tarjeta>
+            <h3 slot="titulo">HTML Semántico</h3>
+            <p slot="contenido">Estructura tus páginas con elementos HTML que transmiten significado real, mejorando accesibilidad, SEO y mantenibilidad.</p>
+          </mi-tarjeta>
+          <mi-tarjeta>
+            <h3 slot="titulo">CSS Moderno</h3>
+            <p slot="contenido">Domina Flexbox, Grid, variables CSS, capas (@layer), contenedores (@container) y las pseudoclases más recientes como :has().</p>
+          </mi-tarjeta>
+          <mi-tarjeta>
+            <h3 slot="titulo">Accesibilidad Web</h3>
+            <p slot="contenido">Construye interfaces inclusivas que todas las personas puedan utilizar, aplicando WAI-ARIA y diseño universal.</p>
+          </mi-tarjeta>
+        </section>
+      </main>
+
+      <!-- TEMPLATE: HTML inerte, no renderizado al cargar la página -->
+      <template id="template-tarjeta">
+        <article style="border:1px solid #e2e8f0;border-radius:6px;padding:16px;margin-bottom:8px;background:#f8fafc;">
+          <h3 class="tarjeta-titulo" style="margin-bottom:6px;color:#2563eb;"></h3>
+          <p class="tarjeta-contenido" style="color:#475569;font-size:0.92rem;"></p>
+        </article>
+      </template>
+
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f1f5f9; padding: 40px 20px; color: #1e293b; }
     .contenedor { max-width: 800px; margin: 0 auto; }
     h1 { color: #2563eb; margin-bottom: 24px; }
@@ -1269,46 +1358,15 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
     mi-tarjeta:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
     pre { background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; }
-  </style>
-</head>
-<body>
-  <main class="contenedor">
-    <h1>Template y Web Components con Slot</h1>
 
-    <section class="seccion" aria-labelledby="seccion-template">
-      <h2 id="seccion-template">1. Elemento &lt;template&gt; con JavaScript</h2>
-      <p>El <code>&lt;template&gt;</code> contiene HTML inerte que no se renderiza hasta ser clonado con <code>.content.cloneNode(true)</code> e insertado en el DOM con JS. Ideal para estructuras repetitivas.</p>
-      <button id="btn-agregar" type="button">+ Añadir Tarjeta desde Template</button>
-      <div id="contenedor-tarjetas" aria-live="polite" style="margin-top:16px;"></div>
-    </section>
+    .tarjeta { font-family: 'Segoe UI', system-ui, sans-serif; }
+    ::slotted([slot="titulo"]) { color: #2563eb; margin: 0 0 8px 0; font-size: 1.1rem; }
+    ::slotted([slot="contenido"]) { color: #475569; line-height: 1.6; font-size: 0.92rem; margin: 0; }
+    ```
 
-    <section class="seccion" aria-labelledby="seccion-webcomponent">
-      <h2 id="seccion-webcomponent">2. Web Component &lt;mi-tarjeta&gt; con slot</h2>
-      <p>Componente personalizado con Shadow DOM y <code>&lt;slot&gt;</code> para proyección de contenido desde el HTML principal (light DOM). Los slots nombrados reciben contenido específico; el slot por defecto captura el resto.</p>
-      <mi-tarjeta>
-        <h3 slot="titulo">HTML Semántico</h3>
-        <p slot="contenido">Estructura tus páginas con elementos HTML que transmiten significado real, mejorando accesibilidad, SEO y mantenibilidad.</p>
-      </mi-tarjeta>
-      <mi-tarjeta>
-        <h3 slot="titulo">CSS Moderno</h3>
-        <p slot="contenido">Domina Flexbox, Grid, variables CSS, capas (@layer), contenedores (@container) y las pseudoclases más recientes como :has().</p>
-      </mi-tarjeta>
-      <mi-tarjeta>
-        <h3 slot="titulo">Accesibilidad Web</h3>
-        <p slot="contenido">Construye interfaces inclusivas que todas las personas puedan utilizar, aplicando WAI-ARIA y diseño universal.</p>
-      </mi-tarjeta>
-    </section>
-  </main>
+=== "JS"
 
-  <!-- TEMPLATE: HTML inerte, no renderizado al cargar la página -->
-  <template id="template-tarjeta">
-    <article style="border:1px solid #e2e8f0;border-radius:6px;padding:16px;margin-bottom:8px;background:#f8fafc;">
-      <h3 class="tarjeta-titulo" style="margin-bottom:6px;color:#2563eb;"></h3>
-      <p class="tarjeta-contenido" style="color:#475569;font-size:0.92rem;"></p>
-    </article>
-  </template>
-
-  <script>
+    ``` js
     /* 1. Clonar template y añadir tarjetas dinámicamente */
     const btnAgregar = document.getElementById('btn-agregar');
     const contenedor = document.getElementById('contenedor-tarjetas');
@@ -1345,10 +1403,7 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
     }
     // Registrar el componente (el nombre DEBE contener un guión)
     customElements.define('mi-tarjeta', MiTarjeta);
-  </script>
-</body>
-</html>
-```
+    ```
 
 ## Casos reales
 

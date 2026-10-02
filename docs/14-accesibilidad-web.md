@@ -383,14 +383,81 @@ El **informe de auditoría** debe documentar cada hallazgo de forma estructurada
 
 Construimos una página web que ejemplifica todas las buenas prácticas de accesibilidad estructural: landmarks HTML5, jerarquía de encabezados correcta, skip links, y navegación accesible.
 
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda Online Accesible - Productos Ecológicos</title>
-  <style>
+=== "HTML"
+
+    ``` html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tienda Online Accesible - Productos Ecológicos</title>
+      <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+      <!-- Skip link: primer elemento enfocable -->
+      <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+      <!-- Header: role banner implícito -->
+      <header>
+        <h1>EcoTienda - Productos Ecológicos</h1>
+      </header>
+
+      <!-- Navegación principal con aria-label para distinguirla de otras navegaciones -->
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="/" aria-current="page">Inicio</a></li>
+          <li><a href="/productos">Productos</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contenido principal: destino del skip link -->
+      <main id="main-content" tabindex="-1">
+        <!-- Sección con encabezado descriptivo -->
+        <section aria-labelledby="destacados-heading">
+          <h2 id="destacados-heading">Productos Destacados</h2>
+          <div class="card">
+            <h3>Cesta de Frutas Ecológicas</h3>
+            <p>Selección de frutas de temporada cultivadas sin pesticidas ni fertilizantes químicos. Directamente del agricultor a tu mesa.</p>
+            <!-- Botón con texto descriptivo, no genérico -->
+            <a href="/productos/cesta-frutas" class="btn">
+              Ver detalles <span class="sr-only">de Cesta de Frutas Ecológicas</span>
+            </a>
+          </div>
+          <div class="card">
+            <h3>Pack de Verduras de Temporada</h3>
+            <p>Verduras frescas recolectadas en su punto óptimo de maduración. Apoyamos a pequeños agricultores locales.</p>
+            <a href="/productos/pack-verduras" class="btn">
+              Ver detalles <span class="sr-only">de Pack de Verduras de Temporada</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Sección con contenido complementario -->
+        <aside aria-labelledby="info-heading" role="complementary">
+          <h3 id="info-heading">Envío gratuito en pedidos superiores a 50€</h3>
+          <p>En península. Plazo de entrega: 24-48 horas laborables.</p>
+        </aside>
+      </main>
+
+      <!-- Footer: role contentinfo implícito -->
+      <footer>
+        <p>&copy; 2025 EcoTienda. Todos los derechos reservados.</p>
+        <nav aria-label="Enlaces legales">
+          <a href="/privacidad">Política de Privacidad</a> |
+          <a href="/cookies">Cookies</a> |
+          <a href="/accesibilidad">Declaración de Accesibilidad</a>
+        </nav>
+      </footer>
+    </body>
+    </html>
+    ```
+
+=== "CSS"
+
+    ``` css
     /* Skip link: oculto hasta que recibe el foco */
     .skip-link { position: absolute; top: -100px; left: 0; background: #4a90d9; color: #fff; padding: 0.5rem 1rem; z-index: 10000; text-decoration: none; border-radius: 0 0 0.25rem 0; }
     .skip-link:focus { top: 0; }
@@ -412,632 +479,653 @@ Construimos una página web que ejemplifica todas las buenas prácticas de acces
     .btn:hover { background: #219a52; }
     /* Ocultar visualmente pero accesible para lectores de pantalla */
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  </style>
-</head>
-<body>
-  <!-- Skip link: primer elemento enfocable -->
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-  <!-- Header: role banner implícito -->
-  <header>
-    <h1>EcoTienda - Productos Ecológicos</h1>
-  </header>
-
-  <!-- Navegación principal con aria-label para distinguirla de otras navegaciones -->
-  <nav aria-label="Navegación principal">
-    <ul>
-      <li><a href="/" aria-current="page">Inicio</a></li>
-      <li><a href="/productos">Productos</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- Contenido principal: destino del skip link -->
-  <main id="main-content" tabindex="-1">
-    <!-- Sección con encabezado descriptivo -->
-    <section aria-labelledby="destacados-heading">
-      <h2 id="destacados-heading">Productos Destacados</h2>
-      <div class="card">
-        <h3>Cesta de Frutas Ecológicas</h3>
-        <p>Selección de frutas de temporada cultivadas sin pesticidas ni fertilizantes químicos. Directamente del agricultor a tu mesa.</p>
-        <!-- Botón con texto descriptivo, no genérico -->
-        <a href="/productos/cesta-frutas" class="btn">
-          Ver detalles <span class="sr-only">de Cesta de Frutas Ecológicas</span>
-        </a>
-      </div>
-      <div class="card">
-        <h3>Pack de Verduras de Temporada</h3>
-        <p>Verduras frescas recolectadas en su punto óptimo de maduración. Apoyamos a pequeños agricultores locales.</p>
-        <a href="/productos/pack-verduras" class="btn">
-          Ver detalles <span class="sr-only">de Pack de Verduras de Temporada</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Sección con contenido complementario -->
-    <aside aria-labelledby="info-heading" role="complementary">
-      <h3 id="info-heading">Envío gratuito en pedidos superiores a 50€</h3>
-      <p>En península. Plazo de entrega: 24-48 horas laborables.</p>
-    </aside>
-  </main>
-
-  <!-- Footer: role contentinfo implícito -->
-  <footer>
-    <p>&copy; 2025 EcoTienda. Todos los derechos reservados.</p>
-    <nav aria-label="Enlaces legales">
-      <a href="/privacidad">Política de Privacidad</a> |
-      <a href="/cookies">Cookies</a> |
-      <a href="/accesibilidad">Declaración de Accesibilidad</a>
-    </nav>
-  </footer>
-</body>
-</html>
-```
+    ```
 
 ### Ejemplo Guiado 2: Formulario de Registro Completamente Accesible
 
-```html
-<div class="ejemplo-container">
-  <h2>Formulario de Registro Accesible</h2>
-  <form id="registroForm" novalidate aria-labelledby="form-heading">
-    <p id="form-heading" class="form-desc">Todos los campos marcados con <span aria-hidden="true">*</span><span class="sr-only">asterisco</span> son obligatorios.</p>
-    <!-- Resumen de errores (aria-live assertive + role alert) -->
-    <div id="formErrors" class="form-errors" role="alert" aria-live="assertive" hidden></div>
+=== "HTML"
 
-    <fieldset>
-      <legend>Datos personales</legend>
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Formulario de Registro Accesible</h2>
+      <form id="registroForm" novalidate aria-labelledby="form-heading">
+        <p id="form-heading" class="form-desc">Todos los campos marcados con <span aria-hidden="true">*</span><span class="sr-only">asterisco</span> son obligatorios.</p>
+        <!-- Resumen de errores (aria-live assertive + role alert) -->
+        <div id="formErrors" class="form-errors" role="alert" aria-live="assertive" hidden></div>
 
-      <div class="form-group">
-        <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
-        <input type="text" id="nombre" name="nombre" required aria-required="true" aria-describedby="nombreHelp nombreError" autocomplete="name">
-        <span id="nombreHelp" class="help-text">Introduce tu nombre y apellidos tal como aparecen en tu documento de identidad.</span>
-        <span id="nombreError" class="error-text" role="alert" aria-live="polite"></span>
-      </div>
+        <fieldset>
+          <legend>Datos personales</legend>
 
-      <div class="form-group">
-        <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp emailError" autocomplete="email">
-        <span id="emailHelp" class="help-text">Te enviaremos un correo de confirmación a esta dirección.</span>
-        <span id="emailError" class="error-text" role="alert" aria-live="polite"></span>
-      </div>
+          <div class="form-group">
+            <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input type="text" id="nombre" name="nombre" required aria-required="true" aria-describedby="nombreHelp nombreError" autocomplete="name">
+            <span id="nombreHelp" class="help-text">Introduce tu nombre y apellidos tal como aparecen en tu documento de identidad.</span>
+            <span id="nombreError" class="error-text" role="alert" aria-live="polite"></span>
+          </div>
 
-      <div class="form-group">
-        <label for="password">Contraseña <span aria-hidden="true">*</span></label>
-        <input type="password" id="password" name="password" required aria-required="true" aria-describedby="passHelp passError" autocomplete="new-password" minlength="8">
-        <span id="passHelp" class="help-text">Mínimo 8 caracteres, una mayúscula, un número y un carácter especial.</span>
-        <span id="passError" class="error-text" role="alert" aria-live="polite"></span>
-      </div>
-    </fieldset>
+          <div class="form-group">
+            <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp emailError" autocomplete="email">
+            <span id="emailHelp" class="help-text">Te enviaremos un correo de confirmación a esta dirección.</span>
+            <span id="emailError" class="error-text" role="alert" aria-live="polite"></span>
+          </div>
 
-    <fieldset>
-      <legend>Preferencias</legend>
-      <div class="form-group">
-        <input type="checkbox" id="newsletter" name="newsletter" aria-describedby="newsHelp">
-        <label for="newsletter">Deseo recibir la newsletter semanal con ofertas y novedades</label>
-        <span id="newsHelp" class="help-text">Puedes darte de baja en cualquier momento.</span>
-      </div>
-    </fieldset>
+          <div class="form-group">
+            <label for="password">Contraseña <span aria-hidden="true">*</span></label>
+            <input type="password" id="password" name="password" required aria-required="true" aria-describedby="passHelp passError" autocomplete="new-password" minlength="8">
+            <span id="passHelp" class="help-text">Mínimo 8 caracteres, una mayúscula, un número y un carácter especial.</span>
+            <span id="passError" class="error-text" role="alert" aria-live="polite"></span>
+          </div>
+        </fieldset>
 
-    <!-- Mensaje de estado del envío (aria-live polite) -->
-    <div id="submitStatus" role="status" aria-live="polite" class="submit-status" hidden></div>
-    <button type="submit" class="btn-submit">Crear cuenta</button>
-  </form>
-</div>
+        <fieldset>
+          <legend>Preferencias</legend>
+          <div class="form-group">
+            <input type="checkbox" id="newsletter" name="newsletter" aria-describedby="newsHelp">
+            <label for="newsletter">Deseo recibir la newsletter semanal con ofertas y novedades</label>
+            <span id="newsHelp" class="help-text">Puedes darte de baja en cualquier momento.</span>
+          </div>
+        </fieldset>
 
-<style>
-.ejemplo-container { max-width: 600px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif; }
-.form-desc { color: #666; margin-bottom: 1.5rem; }
-.form-errors { background: #fde8e8; border: 1px solid #dc3545; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; color: #721c24; }
-.form-errors ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
-fieldset { border: 1px solid #ddd; border-radius: 0.5rem; padding: 1.2rem; margin-bottom: 1.5rem; }
-legend { font-weight: 600; color: #333; padding: 0 0.5rem; }
-.form-group { margin-bottom: 1.2rem; }
-.form-group label { display: block; margin-bottom: 0.3rem; font-weight: 500; }
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"] {
-  width: 100%; padding: 0.6rem 0.8rem; border: 2px solid #ddd; border-radius: 0.4rem; font-size: 1rem; transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-.form-group input:focus { border-color: #4a90d9; outline: none; box-shadow: 0 0 0 3px rgba(74,144,217,0.2); }
-.form-group input.invalid { border-color: #dc3545; box-shadow: 0 0 0 3px rgba(220,53,69,0.15); }
-.form-group input.valid { border-color: #28a745; }
-.help-text { font-size: 0.82rem; color: #888; display: block; margin-top: 0.25rem; }
-.error-text { font-size: 0.82rem; color: #dc3545; display: block; margin-top: 0.25rem; font-weight: 500; }
-.form-group input[type="checkbox"] { margin-right: 0.5rem; width: 18px; height: 18px; }
-.form-group input[type="checkbox"] + label { display: inline; font-weight: normal; }
-.btn-submit { padding: 0.75rem 2rem; background: #27ae60; color: #fff; border: none; border-radius: 0.4rem; font-size: 1rem; font-weight: 600; cursor: pointer; }
-.btn-submit:hover { background: #219a52; }
-.btn-submit:focus-visible { outline: 3px solid #333; outline-offset: 2px; }
-.submit-status { padding: 0.75rem; border-radius: 0.4rem; margin-bottom: 1rem; }
-.submit-status.success { background: #d4edda; color: #155724; }
-.submit-status.error { background: #fde8e8; color: #721c24; }
-.sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-</style>
+        <!-- Mensaje de estado del envío (aria-live polite) -->
+        <div id="submitStatus" role="status" aria-live="polite" class="submit-status" hidden></div>
+        <button type="submit" class="btn-submit">Crear cuenta</button>
+      </form>
+    </div>
 
-<script>
-(function() {
-  var form = document.getElementById('registroForm');
-  var formErrors = document.getElementById('formErrors');
-  var submitStatus = document.getElementById('submitStatus');
+    <link rel="stylesheet" href="./styles.css">
 
-  // Validación en tiempo real con debounce
-  var debounceTimer;
-  form.addEventListener('input', function(e) {
-    if (e.target.matches('input[required], input[type="email"], input[minlength]')) {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(function() { validarCampo(e.target); }, 300);
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .ejemplo-container { max-width: 600px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif; }
+    .form-desc { color: #666; margin-bottom: 1.5rem; }
+    .form-errors { background: #fde8e8; border: 1px solid #dc3545; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; color: #721c24; }
+    .form-errors ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    fieldset { border: 1px solid #ddd; border-radius: 0.5rem; padding: 1.2rem; margin-bottom: 1.5rem; }
+    legend { font-weight: 600; color: #333; padding: 0 0.5rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 500; }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%; padding: 0.6rem 0.8rem; border: 2px solid #ddd; border-radius: 0.4rem; font-size: 1rem; transition: border-color 0.2s;
+      box-sizing: border-box;
     }
-  });
+    .form-group input:focus { border-color: #4a90d9; outline: none; box-shadow: 0 0 0 3px rgba(74,144,217,0.2); }
+    .form-group input.invalid { border-color: #dc3545; box-shadow: 0 0 0 3px rgba(220,53,69,0.15); }
+    .form-group input.valid { border-color: #28a745; }
+    .help-text { font-size: 0.82rem; color: #888; display: block; margin-top: 0.25rem; }
+    .error-text { font-size: 0.82rem; color: #dc3545; display: block; margin-top: 0.25rem; font-weight: 500; }
+    .form-group input[type="checkbox"] { margin-right: 0.5rem; width: 18px; height: 18px; }
+    .form-group input[type="checkbox"] + label { display: inline; font-weight: normal; }
+    .btn-submit { padding: 0.75rem 2rem; background: #27ae60; color: #fff; border: none; border-radius: 0.4rem; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .btn-submit:hover { background: #219a52; }
+    .btn-submit:focus-visible { outline: 3px solid #333; outline-offset: 2px; }
+    .submit-status { padding: 0.75rem; border-radius: 0.4rem; margin-bottom: 1rem; }
+    .submit-status.success { background: #d4edda; color: #155724; }
+    .submit-status.error { background: #fde8e8; color: #721c24; }
+    .sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    ```
 
-  form.addEventListener('blur', function(e) {
-    if (e.target.matches('input[required], input[type="email"], input[minlength]')) {
-      validarCampo(e.target);
-    }
-  }, true);
+=== "JS"
 
-  function validarCampo(input) {
-    var errorEl = document.getElementById(input.id + 'Error');
-    if (!errorEl) return;
-    var errors = [];
-    if (input.required && !input.value.trim()) errors.push('Este campo es obligatorio.');
-    if (input.type === 'email' && input.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value))
-      errors.push('Introduce una dirección de correo válida.');
-    if (input.id === 'password' && input.value && input.value.length < 8)
-      errors.push('La contraseña debe tener al menos 8 caracteres.');
-    if (input.id === 'password' && input.value && !/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(input.value))
-      errors.push('La contraseña debe incluir mayúscula, número y carácter especial.');
+    ``` js
+    (function() {
+      var form = document.getElementById('registroForm');
+      var formErrors = document.getElementById('formErrors');
+      var submitStatus = document.getElementById('submitStatus');
 
-    if (errors.length > 0) {
-      input.classList.add('invalid'); input.classList.remove('valid');
-      input.setAttribute('aria-invalid', 'true');
-      errorEl.textContent = errors[0];
-    } else if (input.value.trim()) {
-      input.classList.remove('invalid'); input.classList.add('valid');
-      input.setAttribute('aria-invalid', 'false');
-      errorEl.textContent = '';
-    } else {
-      input.classList.remove('invalid', 'valid');
-      input.removeAttribute('aria-invalid');
-      errorEl.textContent = '';
-    }
-  }
+      // Validación en tiempo real con debounce
+      var debounceTimer;
+      form.addEventListener('input', function(e) {
+        if (e.target.matches('input[required], input[type="email"], input[minlength]')) {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(function() { validarCampo(e.target); }, 300);
+        }
+      });
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var allInputs = form.querySelectorAll('input[required], input[type="email"], input[minlength]');
-    var globalErrors = [];
-    allInputs.forEach(function(input) { validarCampo(input); if (input.getAttribute('aria-invalid') === 'true') globalErrors.push(input); });
+      form.addEventListener('blur', function(e) {
+        if (e.target.matches('input[required], input[type="email"], input[minlength]')) {
+          validarCampo(e.target);
+        }
+      }, true);
 
-    formErrors.innerHTML = '';
-    formErrors.hidden = true;
-    submitStatus.innerHTML = '';
-    submitStatus.hidden = true;
+      function validarCampo(input) {
+        var errorEl = document.getElementById(input.id + 'Error');
+        if (!errorEl) return;
+        var errors = [];
+        if (input.required && !input.value.trim()) errors.push('Este campo es obligatorio.');
+        if (input.type === 'email' && input.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value))
+          errors.push('Introduce una dirección de correo válida.');
+        if (input.id === 'password' && input.value && input.value.length < 8)
+          errors.push('La contraseña debe tener al menos 8 caracteres.');
+        if (input.id === 'password' && input.value && !/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(input.value))
+          errors.push('La contraseña debe incluir mayúscula, número y carácter especial.');
 
-    if (globalErrors.length > 0) {
-      var list = '<ul>' + globalErrors.map(function(inp) {
-        var label = form.querySelector('label[for="' + inp.id + '"]');
-        return '<li><a href="#' + inp.id + '">' + (label ? label.textContent.replace(/\*/g,'').trim() : inp.name) + ': campo inválido</a></li>';
-      }).join('') + '</ul>';
-      formErrors.innerHTML = '<strong>Se encontraron ' + globalErrors.length + ' errores:</strong>' + list;
-      formErrors.hidden = false;
-      globalErrors[0].focus();
-      return;
-    }
+        if (errors.length > 0) {
+          input.classList.add('invalid'); input.classList.remove('valid');
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = errors[0];
+        } else if (input.value.trim()) {
+          input.classList.remove('invalid'); input.classList.add('valid');
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.textContent = '';
+        } else {
+          input.classList.remove('invalid', 'valid');
+          input.removeAttribute('aria-invalid');
+          errorEl.textContent = '';
+        }
+      }
 
-    // Simular envío exitoso
-    submitStatus.textContent = 'Registro completado con éxito. Revisa tu correo para confirmar la cuenta.';
-    submitStatus.className = 'submit-status success';
-    submitStatus.hidden = false;
-    form.reset();
-    allInputs.forEach(function(inp) { inp.classList.remove('valid', 'invalid'); inp.removeAttribute('aria-invalid'); });
-    document.querySelector('label[for="nombre"]').focus();
-  });
-})();
-</script>
-```
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var allInputs = form.querySelectorAll('input[required], input[type="email"], input[minlength]');
+        var globalErrors = [];
+        allInputs.forEach(function(input) { validarCampo(input); if (input.getAttribute('aria-invalid') === 'true') globalErrors.push(input); });
+
+        formErrors.innerHTML = '';
+        formErrors.hidden = true;
+        submitStatus.innerHTML = '';
+        submitStatus.hidden = true;
+
+        if (globalErrors.length > 0) {
+          var list = '<ul>' + globalErrors.map(function(inp) {
+            var label = form.querySelector('label[for="' + inp.id + '"]');
+            return '<li><a href="#' + inp.id + '">' + (label ? label.textContent.replace(/\*/g,'').trim() : inp.name) + ': campo inválido</a></li>';
+          }).join('') + '</ul>';
+          formErrors.innerHTML = '<strong>Se encontraron ' + globalErrors.length + ' errores:</strong>' + list;
+          formErrors.hidden = false;
+          globalErrors[0].focus();
+          return;
+        }
+
+        // Simular envío exitoso
+        submitStatus.textContent = 'Registro completado con éxito. Revisa tu correo para confirmar la cuenta.';
+        submitStatus.className = 'submit-status success';
+        submitStatus.hidden = false;
+        form.reset();
+        allInputs.forEach(function(inp) { inp.classList.remove('valid', 'invalid'); inp.removeAttribute('aria-invalid'); });
+        document.querySelector('label[for="nombre"]').focus();
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 3: Modal Accesible con Focus Trapping Completo
 
-```html
-<div class="ejemplo-container">
-  <h2>Modal Accesible (WCAG 2.1 AA)</h2>
-  <button id="openModalBtn" aria-haspopup="dialog">Abrir diálogo de confirmación</button>
-</div>
-<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
-<div class="modal-wrapper" id="modalWrapper" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" aria-hidden="true">
-  <div class="modal-inner">
-    <div class="modal-header">
-      <h3 id="modalTitle">Confirmar eliminación</h3>
-      <button id="modalCloseBtn" aria-label="Cerrar diálogo">&times;</button>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Modal Accesible (WCAG 2.1 AA)</h2>
+      <button id="openModalBtn" aria-haspopup="dialog">Abrir diálogo de confirmación</button>
     </div>
-    <div class="modal-body">
-      <p id="modalDesc">¿Estás seguro? Esta acción es irreversible y eliminará todos los datos asociados permanentemente.</p>
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
+    <div class="modal-wrapper" id="modalWrapper" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" aria-hidden="true">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <h3 id="modalTitle">Confirmar eliminación</h3>
+          <button id="modalCloseBtn" aria-label="Cerrar diálogo">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p id="modalDesc">¿Estás seguro? Esta acción es irreversible y eliminará todos los datos asociados permanentemente.</p>
+        </div>
+        <div class="modal-footer">
+          <button id="modalCancelBtn">Cancelar</button>
+          <button id="modalDeleteBtn" class="btn-danger">Eliminar definitivamente</button>
+        </div>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button id="modalCancelBtn">Cancelar</button>
-      <button id="modalDeleteBtn" class="btn-danger">Eliminar definitivamente</button>
-    </div>
-  </div>
-</div>
 
-<style>
-.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-.modal-backdrop.visible { opacity: 1; visibility: visible; }
-.modal-wrapper { position: fixed; inset: 0; z-index: 1001; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
-.modal-wrapper.visible { opacity: 1; visibility: visible; }
-.modal-inner { background: #fff; border-radius: 0.75rem; box-shadow: 0 12px 40px rgba(0,0,0,0.3); width: 90%; max-width: 450px; transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
-.modal-wrapper.visible .modal-inner { transform: translateY(0); }
-.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; border-bottom: 1px solid #eee; }
-.modal-header h3 { margin: 0; font-size: 1.15rem; }
-.modal-body { padding: 1.5rem; color: #555; line-height: 1.6; }
-.modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid #eee; }
-.modal-footer button { padding: 0.6rem 1.2rem; border: none; border-radius: 0.4rem; font-weight: 500; cursor: pointer; }
-.modal-footer button:first-child { background: #e9ecef; color: #333; }
-.btn-danger { background: #dc3545; color: #fff; }
-</style>
+    <link rel="stylesheet" href="./styles.css">
 
-<script>
-(function() {
-  var backdrop = document.getElementById('modalBackdrop');
-  var wrapper = document.getElementById('modalWrapper');
-  var openBtn = document.getElementById('openModalBtn');
-  var closeBtn = document.getElementById('modalCloseBtn');
-  var cancelBtn = document.getElementById('modalCancelBtn');
-  var deleteBtn = document.getElementById('modalDeleteBtn');
-  var lastFocus = null;
+    <script src="./script.js"></script>
+    ```
 
-  function getFocusable() {
-    return Array.from(wrapper.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])'));
-  }
+=== "CSS"
 
-  function trapFocus(e) {
-    if (e.key !== 'Tab') return;
-    var focusable = getFocusable();
-    if (focusable.length === 0) { e.preventDefault(); return; }
-    var first = focusable[0], last = focusable[focusable.length-1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
+    ``` css
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .modal-backdrop.visible { opacity: 1; visibility: visible; }
+    .modal-wrapper { position: fixed; inset: 0; z-index: 1001; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+    .modal-wrapper.visible { opacity: 1; visibility: visible; }
+    .modal-inner { background: #fff; border-radius: 0.75rem; box-shadow: 0 12px 40px rgba(0,0,0,0.3); width: 90%; max-width: 450px; transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+    .modal-wrapper.visible .modal-inner { transform: translateY(0); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; border-bottom: 1px solid #eee; }
+    .modal-header h3 { margin: 0; font-size: 1.15rem; }
+    .modal-body { padding: 1.5rem; color: #555; line-height: 1.6; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid #eee; }
+    .modal-footer button { padding: 0.6rem 1.2rem; border: none; border-radius: 0.4rem; font-weight: 500; cursor: pointer; }
+    .modal-footer button:first-child { background: #e9ecef; color: #333; }
+    .btn-danger { background: #dc3545; color: #fff; }
+    ```
 
-  function open() {
-    lastFocus = document.activeElement;
-    backdrop.classList.add('visible'); wrapper.classList.add('visible');
-    backdrop.setAttribute('aria-hidden','false'); wrapper.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function() { closeBtn.focus(); }, 100);
-    wrapper.addEventListener('keydown', trapFocus);
-  }
+=== "JS"
 
-  function close() {
-    backdrop.classList.remove('visible'); wrapper.classList.remove('visible');
-    backdrop.setAttribute('aria-hidden','true'); wrapper.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-    wrapper.removeEventListener('keydown', trapFocus);
-    if (lastFocus) { lastFocus.focus(); lastFocus = null; }
-  }
+    ``` js
+    (function() {
+      var backdrop = document.getElementById('modalBackdrop');
+      var wrapper = document.getElementById('modalWrapper');
+      var openBtn = document.getElementById('openModalBtn');
+      var closeBtn = document.getElementById('modalCloseBtn');
+      var cancelBtn = document.getElementById('modalCancelBtn');
+      var deleteBtn = document.getElementById('modalDeleteBtn');
+      var lastFocus = null;
 
-  openBtn.addEventListener('click', open);
-  [closeBtn, cancelBtn].forEach(function(b) { b.addEventListener('click', close); });
-  backdrop.addEventListener('click', close);
-  deleteBtn.addEventListener('click', function() { close(); });
+      function getFocusable() {
+        return Array.from(wrapper.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      }
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && wrapper.classList.contains('visible')) close();
-  });
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = getFocusable();
+        if (focusable.length === 0) { e.preventDefault(); return; }
+        var first = focusable[0], last = focusable[focusable.length-1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
 
-  // Prevenir que clics dentro del modal cierren
-  document.querySelector('.modal-inner').addEventListener('click', function(e) { e.stopPropagation(); });
-})();
-</script>
-```
+      function open() {
+        lastFocus = document.activeElement;
+        backdrop.classList.add('visible'); wrapper.classList.add('visible');
+        backdrop.setAttribute('aria-hidden','false'); wrapper.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() { closeBtn.focus(); }, 100);
+        wrapper.addEventListener('keydown', trapFocus);
+      }
+
+      function close() {
+        backdrop.classList.remove('visible'); wrapper.classList.remove('visible');
+        backdrop.setAttribute('aria-hidden','true'); wrapper.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        wrapper.removeEventListener('keydown', trapFocus);
+        if (lastFocus) { lastFocus.focus(); lastFocus = null; }
+      }
+
+      openBtn.addEventListener('click', open);
+      [closeBtn, cancelBtn].forEach(function(b) { b.addEventListener('click', close); });
+      backdrop.addEventListener('click', close);
+      deleteBtn.addEventListener('click', function() { close(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && wrapper.classList.contains('visible')) close();
+      });
+
+      // Prevenir que clics dentro del modal cierren
+      document.querySelector('.modal-inner').addEventListener('click', function(e) { e.stopPropagation(); });
+    })();
+    ```
 
 ### Ejemplo Guiado 4: Accordion FAQ Completamente Accesible
 
-```html
-<div class="ejemplo-container">
-  <h2>Preguntas Frecuentes Accesibles</h2>
-  <div class="faq-accordion">
-    <div class="faq-section">
-      <button class="faq-trigger" id="faqBtn1" aria-expanded="false" aria-controls="faqPanel1">
-        <span>¿Cuál es el plazo de envío?</span>
-        <span class="faq-icon" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-panel" id="faqPanel1" role="region" aria-labelledby="faqBtn1" hidden>
-        <p>Envío estándar: 3-5 días laborables. Envío express: 24-48 horas. Envío internacional: 7-15 días según destino.</p>
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Preguntas Frecuentes Accesibles</h2>
+      <div class="faq-accordion">
+        <div class="faq-section">
+          <button class="faq-trigger" id="faqBtn1" aria-expanded="false" aria-controls="faqPanel1">
+            <span>¿Cuál es el plazo de envío?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel" id="faqPanel1" role="region" aria-labelledby="faqBtn1" hidden>
+            <p>Envío estándar: 3-5 días laborables. Envío express: 24-48 horas. Envío internacional: 7-15 días según destino.</p>
+          </div>
+        </div>
+        <div class="faq-section">
+          <button class="faq-trigger" id="faqBtn2" aria-expanded="false" aria-controls="faqPanel2">
+            <span>¿Cómo puedo realizar una devolución?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel" id="faqPanel2" role="region" aria-labelledby="faqBtn2" hidden>
+            <p>Tienes 30 días desde la recepción. Accede a tu cuenta, selecciona el pedido y solicita la devolución. Te enviaremos una etiqueta de envío gratuita.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="faq-section">
-      <button class="faq-trigger" id="faqBtn2" aria-expanded="false" aria-controls="faqPanel2">
-        <span>¿Cómo puedo realizar una devolución?</span>
-        <span class="faq-icon" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-panel" id="faqPanel2" role="region" aria-labelledby="faqBtn2" hidden>
-        <p>Tienes 30 días desde la recepción. Accede a tu cuenta, selecciona el pedido y solicita la devolución. Te enviaremos una etiqueta de envío gratuita.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<style>
-.faq-accordion { max-width: 650px; }
-.faq-section { border: 1px solid #e0e0e0; border-radius: 0.5rem; margin-bottom: 0.5rem; overflow: hidden; }
-.faq-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0.9rem 1.2rem; background: none; border: none; font-size: 1rem; font-weight: 500; color: #333; cursor: pointer; text-align: left; transition: background 0.2s; }
-.faq-trigger:hover { background: #f8f9fa; }
-.faq-trigger:focus-visible { outline: 3px solid #4a90d9; outline-offset: -2px; border-radius: 0.5rem; }
-.faq-trigger[aria-expanded="true"] { color: #4a90d9; background: #f0f5ff; }
-.faq-icon { font-size: 1.4rem; transition: transform 0.3s ease; color: #999; }
-.faq-trigger[aria-expanded="true"] .faq-icon { transform: rotate(45deg); color: #4a90d9; }
-.faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
-.faq-panel:not([hidden]) { max-height: 300px; opacity: 1; }
-.faq-panel p { padding: 0 1.2rem 1.2rem; color: #555; line-height: 1.7; margin: 0; }
-</style>
-<script>
-(function() {
-  var btns = Array.from(document.querySelectorAll('.faq-trigger'));
-  function toggle(btn) {
-    var panel = document.getElementById(btn.getAttribute('aria-controls'));
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !expanded);
-    if (expanded) panel.setAttribute('hidden',''); else panel.removeAttribute('hidden');
-  }
-  btns.forEach(function(btn, i) {
-    btn.addEventListener('click', function() { toggle(btn); });
-    btn.addEventListener('keydown', function(e) {
-      var target = null;
-      if (e.key === 'ArrowDown') { e.preventDefault(); target = btns[(i+1) % btns.length]; }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); target = btns[(i-1+btns.length) % btns.length]; }
-      else if (e.key === 'Home') { e.preventDefault(); target = btns[0]; }
-      else if (e.key === 'End') { e.preventDefault(); target = btns[btns.length-1]; }
-      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(btn); }
-      if (target) target.focus();
-    });
-  });
-})();
-</script>
-```
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .faq-accordion { max-width: 650px; }
+    .faq-section { border: 1px solid #e0e0e0; border-radius: 0.5rem; margin-bottom: 0.5rem; overflow: hidden; }
+    .faq-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0.9rem 1.2rem; background: none; border: none; font-size: 1rem; font-weight: 500; color: #333; cursor: pointer; text-align: left; transition: background 0.2s; }
+    .faq-trigger:hover { background: #f8f9fa; }
+    .faq-trigger:focus-visible { outline: 3px solid #4a90d9; outline-offset: -2px; border-radius: 0.5rem; }
+    .faq-trigger[aria-expanded="true"] { color: #4a90d9; background: #f0f5ff; }
+    .faq-icon { font-size: 1.4rem; transition: transform 0.3s ease; color: #999; }
+    .faq-trigger[aria-expanded="true"] .faq-icon { transform: rotate(45deg); color: #4a90d9; }
+    .faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
+    .faq-panel:not([hidden]) { max-height: 300px; opacity: 1; }
+    .faq-panel p { padding: 0 1.2rem 1.2rem; color: #555; line-height: 1.7; margin: 0; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var btns = Array.from(document.querySelectorAll('.faq-trigger'));
+      function toggle(btn) {
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        if (expanded) panel.setAttribute('hidden',''); else panel.removeAttribute('hidden');
+      }
+      btns.forEach(function(btn, i) {
+        btn.addEventListener('click', function() { toggle(btn); });
+        btn.addEventListener('keydown', function(e) {
+          var target = null;
+          if (e.key === 'ArrowDown') { e.preventDefault(); target = btns[(i+1) % btns.length]; }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); target = btns[(i-1+btns.length) % btns.length]; }
+          else if (e.key === 'Home') { e.preventDefault(); target = btns[0]; }
+          else if (e.key === 'End') { e.preventDefault(); target = btns[btns.length-1]; }
+          else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(btn); }
+          if (target) target.focus();
+        });
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 5: Tabs Accesibles con Navegación por Flechas
 
-```html
-<div class="ejemplo-container">
-  <h2>Panel de Configuración (Tabs Accesibles)</h2>
-  <div role="tablist" aria-label="Configuración" class="tabs-bar">
-    <button role="tab" aria-selected="true" aria-controls="panel1" id="tab1" tabindex="0" class="tab-btn active">General</button>
-    <button role="tab" aria-selected="false" aria-controls="panel2" id="tab2" tabindex="-1" class="tab-btn">Seguridad</button>
-    <button role="tab" aria-selected="false" aria-controls="panel3" id="tab3" tabindex="-1" class="tab-btn">Notificaciones</button>
-  </div>
-  <div role="tabpanel" id="panel1" aria-labelledby="tab1" class="tab-panel-content"><p>Ajustes generales de la cuenta: idioma, zona horaria y formato de fecha.</p></div>
-  <div role="tabpanel" id="panel2" aria-labelledby="tab2" class="tab-panel-content" hidden><p>Configuración de seguridad: autenticación en dos factores, cambio de contraseña y revisión de dispositivos.</p></div>
-  <div role="tabpanel" id="panel3" aria-labelledby="tab3" class="tab-panel-content" hidden><p>Preferencias de notificaciones por email, push y dentro de la aplicación.</p></div>
-</div>
-<style>
-.tabs-bar { display: flex; border-bottom: 2px solid #e0e0e0; }
-.tab-btn { padding: 0.7rem 1.2rem; background: none; border: none; font-size: 0.95rem; color: #666; cursor: pointer; font-weight: 500; transition: color 0.2s; }
-.tab-btn:hover { color: #333; }
-.tab-btn.active, .tab-btn[aria-selected="true"] { color: #4a90d9; border-bottom: 3px solid #4a90d9; margin-bottom: -2px; }
-.tab-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: -2px; border-radius: 2px 2px 0 0; }
-.tab-panel-content { padding: 1.2rem; background: #fff; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 0.5rem 0.5rem; color: #555; line-height: 1.6; }
-</style>
-<script>
-(function() {
-  var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
-  var panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
-  function activate(tab) {
-    tabs.forEach(function(t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); t.classList.remove('active'); });
-    panels.forEach(function(p) { p.setAttribute('hidden',''); });
-    tab.setAttribute('aria-selected','true'); tab.setAttribute('tabindex','0'); tab.classList.add('active');
-    var panel = document.getElementById(tab.getAttribute('aria-controls'));
-    if (panel) panel.removeAttribute('hidden');
-  }
-  tabs.forEach(function(tab, i) {
-    tab.addEventListener('click', function() { activate(tab); });
-    tab.addEventListener('keydown', function(e) {
-      var target = null;
-      if (e.key === 'ArrowRight') { e.preventDefault(); target = tabs[(i+1)%tabs.length]; }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); target = tabs[(i-1+tabs.length)%tabs.length]; }
-      else if (e.key === 'Home') { e.preventDefault(); target = tabs[0]; }
-      else if (e.key === 'End') { e.preventDefault(); target = tabs[tabs.length-1]; }
-      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(tab); }
-      if (target) target.focus();
-    });
-  });
-})();
-</script>
-```
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Panel de Configuración (Tabs Accesibles)</h2>
+      <div role="tablist" aria-label="Configuración" class="tabs-bar">
+        <button role="tab" aria-selected="true" aria-controls="panel1" id="tab1" tabindex="0" class="tab-btn active">General</button>
+        <button role="tab" aria-selected="false" aria-controls="panel2" id="tab2" tabindex="-1" class="tab-btn">Seguridad</button>
+        <button role="tab" aria-selected="false" aria-controls="panel3" id="tab3" tabindex="-1" class="tab-btn">Notificaciones</button>
+      </div>
+      <div role="tabpanel" id="panel1" aria-labelledby="tab1" class="tab-panel-content"><p>Ajustes generales de la cuenta: idioma, zona horaria y formato de fecha.</p></div>
+      <div role="tabpanel" id="panel2" aria-labelledby="tab2" class="tab-panel-content" hidden><p>Configuración de seguridad: autenticación en dos factores, cambio de contraseña y revisión de dispositivos.</p></div>
+      <div role="tabpanel" id="panel3" aria-labelledby="tab3" class="tab-panel-content" hidden><p>Preferencias de notificaciones por email, push y dentro de la aplicación.</p></div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .tabs-bar { display: flex; border-bottom: 2px solid #e0e0e0; }
+    .tab-btn { padding: 0.7rem 1.2rem; background: none; border: none; font-size: 0.95rem; color: #666; cursor: pointer; font-weight: 500; transition: color 0.2s; }
+    .tab-btn:hover { color: #333; }
+    .tab-btn.active, .tab-btn[aria-selected="true"] { color: #4a90d9; border-bottom: 3px solid #4a90d9; margin-bottom: -2px; }
+    .tab-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: -2px; border-radius: 2px 2px 0 0; }
+    .tab-panel-content { padding: 1.2rem; background: #fff; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 0.5rem 0.5rem; color: #555; line-height: 1.6; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      var panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+      function activate(tab) {
+        tabs.forEach(function(t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); t.classList.remove('active'); });
+        panels.forEach(function(p) { p.setAttribute('hidden',''); });
+        tab.setAttribute('aria-selected','true'); tab.setAttribute('tabindex','0'); tab.classList.add('active');
+        var panel = document.getElementById(tab.getAttribute('aria-controls'));
+        if (panel) panel.removeAttribute('hidden');
+      }
+      tabs.forEach(function(tab, i) {
+        tab.addEventListener('click', function() { activate(tab); });
+        tab.addEventListener('keydown', function(e) {
+          var target = null;
+          if (e.key === 'ArrowRight') { e.preventDefault(); target = tabs[(i+1)%tabs.length]; }
+          else if (e.key === 'ArrowLeft') { e.preventDefault(); target = tabs[(i-1+tabs.length)%tabs.length]; }
+          else if (e.key === 'Home') { e.preventDefault(); target = tabs[0]; }
+          else if (e.key === 'End') { e.preventDefault(); target = tabs[tabs.length-1]; }
+          else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(tab); }
+          if (target) target.focus();
+        });
+      });
+    })();
+    ```
 
 ### Ejemplo Guiado 6: Tabla de Datos Accesible
 
-```html
-<div class="ejemplo-container">
-  <h2>Informe de Ventas (Tabla Accesible)</h2>
-  <div class="table-wrapper" role="region" aria-labelledby="tablaTitulo" tabindex="0">
-    <table aria-describedby="tablaDesc">
-      <caption id="tablaTitulo">Ventas mensuales por producto - Primer trimestre 2025</caption>
-      <p id="tablaDesc" class="sr-only">La tabla muestra las ventas de enero a marzo. Haga clic en los encabezados para ordenar.</p>
-      <thead>
-        <tr>
-          <th scope="col">Producto</th>
-          <th scope="col" aria-sort="descending">Enero <span aria-hidden="true">&#9660;</span></th>
-          <th scope="col">Febrero</th>
-          <th scope="col">Marzo</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><th scope="row">Zapatillas Running</th><td>1.250 €</td><td>1.480 €</td><td>1.620 €</td><td>4.350 €</td></tr>
-        <tr><th scope="row">Camiseta Técnica</th><td>890 €</td><td>920 €</td><td>1.100 €</td><td>2.910 €</td></tr>
-        <tr><th scope="row">Mochila Senderismo</th><td>2.100 €</td><td>1.950 €</td><td>2.300 €</td><td>6.350 €</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<style>
-.table-wrapper { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-caption { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; text-align: left; }
-thead th { background: #f0f0f0; padding: 0.7rem; text-align: left; border-bottom: 2px solid #ccc; font-weight: 600; }
-tbody td, tbody th { padding: 0.6rem 0.7rem; border-bottom: 1px solid #eee; }
-tbody th { font-weight: 500; text-align: left; }
-.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-</style>
-```
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Informe de Ventas (Tabla Accesible)</h2>
+      <div class="table-wrapper" role="region" aria-labelledby="tablaTitulo" tabindex="0">
+        <table aria-describedby="tablaDesc">
+          <caption id="tablaTitulo">Ventas mensuales por producto - Primer trimestre 2025</caption>
+          <p id="tablaDesc" class="sr-only">La tabla muestra las ventas de enero a marzo. Haga clic en los encabezados para ordenar.</p>
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col" aria-sort="descending">Enero <span aria-hidden="true">&#9660;</span></th>
+              <th scope="col">Febrero</th>
+              <th scope="col">Marzo</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Zapatillas Running</th><td>1.250 €</td><td>1.480 €</td><td>1.620 €</td><td>4.350 €</td></tr>
+            <tr><th scope="row">Camiseta Técnica</th><td>890 €</td><td>920 €</td><td>1.100 €</td><td>2.910 €</td></tr>
+            <tr><th scope="row">Mochila Senderismo</th><td>2.100 €</td><td>1.950 €</td><td>2.300 €</td><td>6.350 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    ```
+
+=== "CSS"
+
+    ``` css
+    .table-wrapper { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+    caption { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; text-align: left; }
+    thead th { background: #f0f0f0; padding: 0.7rem; text-align: left; border-bottom: 2px solid #ccc; font-weight: 600; }
+    tbody td, tbody th { padding: 0.6rem 0.7rem; border-bottom: 1px solid #eee; }
+    tbody th { font-weight: 500; text-align: left; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    ```
 
 ### Ejemplo Guiado 7: Skip Links Implementación Completa
 
-```html
-<div class="ejemplo-container">
-  <h2>Demo de Skip Links</h2>
-  <p class="instrucciones">Presiona Tab al cargar la página. Aparecerá un enlace "Saltar al contenido".</p>
-  <div class="demo-skip">
-    <a href="#demo-main" class="demo-skip-link">Saltar al contenido principal</a>
-    <header class="demo-header-bar" role="banner">
-      <nav aria-label="Principal"><a href="#">Inicio</a> <a href="#">Productos</a> <a href="#">Contacto</a></nav>
-    </header>
-    <main id="demo-main" tabindex="-1">
-      <h1>Contenido Principal</h1>
-      <p>El foco llegó aquí directamente gracias al skip link, sin tener que tabular por todos los enlaces de navegación.</p>
-    </main>
-  </div>
-</div>
-<style>
-.demo-skip-link { position: absolute; top: -100px; left: 10px; background: #2c3e50; color: #fff; padding: 0.6rem 1.2rem; z-index: 1000; border-radius: 0 0 0.3rem 0.3rem; text-decoration: none; font-weight: 500; }
-.demo-skip-link:focus { top: 0; }
-.demo-header-bar { background: #34495e; padding: 0.8rem; }
-.demo-header-bar a { color: #ecf0f1; margin-right: 1.5rem; }
-.instrucciones { background: #e8f4f8; padding: 0.8rem; border-radius: 0.5rem; color: #2c3e50; }
-</style>
-```
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Demo de Skip Links</h2>
+      <p class="instrucciones">Presiona Tab al cargar la página. Aparecerá un enlace "Saltar al contenido".</p>
+      <div class="demo-skip">
+        <a href="#demo-main" class="demo-skip-link">Saltar al contenido principal</a>
+        <header class="demo-header-bar" role="banner">
+          <nav aria-label="Principal"><a href="#">Inicio</a> <a href="#">Productos</a> <a href="#">Contacto</a></nav>
+        </header>
+        <main id="demo-main" tabindex="-1">
+          <h1>Contenido Principal</h1>
+          <p>El foco llegó aquí directamente gracias al skip link, sin tener que tabular por todos los enlaces de navegación.</p>
+        </main>
+      </div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    ```
+
+=== "CSS"
+
+    ``` css
+    .demo-skip-link { position: absolute; top: -100px; left: 10px; background: #2c3e50; color: #fff; padding: 0.6rem 1.2rem; z-index: 1000; border-radius: 0 0 0.3rem 0.3rem; text-decoration: none; font-weight: 500; }
+    .demo-skip-link:focus { top: 0; }
+    .demo-header-bar { background: #34495e; padding: 0.8rem; }
+    .demo-header-bar a { color: #ecf0f1; margin-right: 1.5rem; }
+    .instrucciones { background: #e8f4f8; padding: 0.8rem; border-radius: 0.5rem; color: #2c3e50; }
+    ```
 
 ### Ejemplo Guiado 8: Menú Desplegable Accesible
 
-```html
-<div class="ejemplo-container">
-  <h2>Menú Desplegable Accesible</h2>
-  <div class="dropdown">
-    <button class="dropdown-btn" aria-haspopup="true" aria-expanded="false" id="dropdownBtn">
-      Opciones <span aria-hidden="true">&#9660;</span>
-    </button>
-    <ul class="dropdown-menu" id="dropdownMenu" role="menu" aria-labelledby="dropdownBtn" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">Editar</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Duplicar</button></li>
-      <li role="none"><hr role="separator"></li>
-      <li role="none"><button role="menuitem" tabindex="-1" class="danger-item">Eliminar</button></li>
-    </ul>
-  </div>
-</div>
-<style>
-.dropdown { position: relative; display: inline-block; }
-.dropdown-btn { padding: 0.6rem 1.2rem; background: #f0f0f0; border: 1px solid #ccc; border-radius: 0.4rem; cursor: pointer; font-size: 0.95rem; }
-.dropdown-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: 2px; }
-.dropdown-menu { position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #ddd; border-radius: 0.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); list-style: none; padding: 0.3rem 0; margin: 0.25rem 0 0; min-width: 180px; z-index: 100; }
-.dropdown-menu[hidden] { display: none; }
-.dropdown-menu button { display: block; width: 100%; padding: 0.6rem 1rem; background: none; border: none; text-align: left; cursor: pointer; font-size: 0.9rem; }
-.dropdown-menu button:hover { background: #f5f5f5; }
-.dropdown-menu button:focus-visible { background: #e8f0fe; outline: none; }
-.danger-item { color: #dc3545; }
-hr[role="separator"] { border: none; border-top: 1px solid #eee; margin: 0.3rem 0; }
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('dropdownBtn');
-  var menu = document.getElementById('dropdownMenu');
-  var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+=== "HTML"
 
-  btn.addEventListener('click', function() {
-    var open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !open);
-    menu.hidden = open;
-    if (!open) { items[0].focus(); }
-  });
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Menú Desplegable Accesible</h2>
+      <div class="dropdown">
+        <button class="dropdown-btn" aria-haspopup="true" aria-expanded="false" id="dropdownBtn">
+          Opciones <span aria-hidden="true">&#9660;</span>
+        </button>
+        <ul class="dropdown-menu" id="dropdownMenu" role="menu" aria-labelledby="dropdownBtn" hidden>
+          <li role="none"><button role="menuitem" tabindex="-1">Editar</button></li>
+          <li role="none"><button role="menuitem" tabindex="-1">Duplicar</button></li>
+          <li role="none"><hr role="separator"></li>
+          <li role="none"><button role="menuitem" tabindex="-1" class="danger-item">Eliminar</button></li>
+        </ul>
+      </div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    ```
 
-  btn.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowDown') { e.preventDefault(); btn.setAttribute('aria-expanded','true'); menu.hidden = false; items[0].focus(); }
-  });
+=== "CSS"
 
-  menu.addEventListener('keydown', function(e) {
-    var idx = items.indexOf(document.activeElement);
-    if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx+1) % items.length].focus(); }
-    else if (e.key === 'ArrowUp') { e.preventDefault(); items[(idx-1+items.length) % items.length].focus(); }
-    else if (e.key === 'Escape') { e.preventDefault(); closeMenu(); }
-    else if (e.key === 'Tab') { closeMenu(); }
-  });
+    ``` css
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-btn { padding: 0.6rem 1.2rem; background: #f0f0f0; border: 1px solid #ccc; border-radius: 0.4rem; cursor: pointer; font-size: 0.95rem; }
+    .dropdown-btn:focus-visible { outline: 3px solid #4a90d9; outline-offset: 2px; }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #ddd; border-radius: 0.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); list-style: none; padding: 0.3rem 0; margin: 0.25rem 0 0; min-width: 180px; z-index: 100; }
+    .dropdown-menu[hidden] { display: none; }
+    .dropdown-menu button { display: block; width: 100%; padding: 0.6rem 1rem; background: none; border: none; text-align: left; cursor: pointer; font-size: 0.9rem; }
+    .dropdown-menu button:hover { background: #f5f5f5; }
+    .dropdown-menu button:focus-visible { background: #e8f0fe; outline: none; }
+    .danger-item { color: #dc3545; }
+    hr[role="separator"] { border: none; border-top: 1px solid #eee; margin: 0.3rem 0; }
+    ```
 
-  function closeMenu() { btn.setAttribute('aria-expanded','false'); menu.hidden = true; btn.focus(); }
-  document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu(); });
-})();
-</script>
-```
+=== "JS"
+
+    ``` js
+    (function() {
+      var btn = document.getElementById('dropdownBtn');
+      var menu = document.getElementById('dropdownMenu');
+      var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+
+      btn.addEventListener('click', function() {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !open);
+        menu.hidden = open;
+        if (!open) { items[0].focus(); }
+      });
+
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); btn.setAttribute('aria-expanded','true'); menu.hidden = false; items[0].focus(); }
+      });
+
+      menu.addEventListener('keydown', function(e) {
+        var idx = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx+1) % items.length].focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); items[(idx-1+items.length) % items.length].focus(); }
+        else if (e.key === 'Escape') { e.preventDefault(); closeMenu(); }
+        else if (e.key === 'Tab') { closeMenu(); }
+      });
+
+      function closeMenu() { btn.setAttribute('aria-expanded','false'); menu.hidden = true; btn.focus(); }
+      document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu(); });
+    })();
+    ```
 
 ### Ejemplo Guiado 9: Toast Notifications con aria-live
 
-```html
-<div class="ejemplo-container">
-  <h2>Notificaciones Accesibles con aria-live</h2>
-  <button onclick="accesibleToast('exito','Cambios guardados correctamente.')" class="toast-btn exito">Guardar (Éxito)</button>
-  <button onclick="accesibleToast('error','No se pudo conectar con el servidor. Revisa tu conexión.')" class="toast-btn error">Error de red</button>
-  <div id="accesibleToastContainer" aria-label="Notificaciones" class="toast-acc-container"></div>
-</div>
-<style>
-.toast-btn { padding: 0.5rem 1rem; border: none; border-radius: 0.4rem; color: #fff; cursor: pointer; margin-right: 0.5rem; font-weight: 500; }
-.toast-btn.exito { background: #28a745; } .toast-btn.error { background: #dc3545; }
-.toast-acc-container { position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem; max-width: 380px; }
-.toast-acc { background: #fff; padding: 0.8rem 1rem; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-left: 4px solid #6c757d; font-size: 0.9rem; animation: slideIn 0.35s ease; }
-.toast-acc.exito { border-left-color: #28a745; } .toast-acc.error { border-left-color: #dc3545; }
-@keyframes slideIn { from {transform: translateX(120%); opacity: 0;} to {transform: translateX(0); opacity: 1;} }
-</style>
-<script>
-function accesibleToast(tipo, mensaje, duracion) {
-  duracion = duracion || 5000;
-  var container = document.getElementById('accesibleToastContainer');
-  var toast = document.createElement('div');
-  toast.className = 'toast-acc ' + tipo;
-  toast.setAttribute('role', 'status'); /* aria-live polite implícito */
-  toast.textContent = mensaje;
-  container.insertBefore(toast, container.firstChild);
-  setTimeout(function() { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.3s'; setTimeout(function() { if (toast.parentNode) toast.remove(); }, 300); }, duracion);
-}
-</script>
-```
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Notificaciones Accesibles con aria-live</h2>
+      <button onclick="accesibleToast('exito','Cambios guardados correctamente.')" class="toast-btn exito">Guardar (Éxito)</button>
+      <button onclick="accesibleToast('error','No se pudo conectar con el servidor. Revisa tu conexión.')" class="toast-btn error">Error de red</button>
+      <div id="accesibleToastContainer" aria-label="Notificaciones" class="toast-acc-container"></div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    .toast-btn { padding: 0.5rem 1rem; border: none; border-radius: 0.4rem; color: #fff; cursor: pointer; margin-right: 0.5rem; font-weight: 500; }
+    .toast-btn.exito { background: #28a745; } .toast-btn.error { background: #dc3545; }
+    .toast-acc-container { position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem; max-width: 380px; }
+    .toast-acc { background: #fff; padding: 0.8rem 1rem; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-left: 4px solid #6c757d; font-size: 0.9rem; animation: slideIn 0.35s ease; }
+    .toast-acc.exito { border-left-color: #28a745; } .toast-acc.error { border-left-color: #dc3545; }
+    @keyframes slideIn { from {transform: translateX(120%); opacity: 0;} to {transform: translateX(0); opacity: 1;} }
+    ```
+
+=== "JS"
+
+    ``` js
+    function accesibleToast(tipo, mensaje, duracion) {
+      duracion = duracion || 5000;
+      var container = document.getElementById('accesibleToastContainer');
+      var toast = document.createElement('div');
+      toast.className = 'toast-acc ' + tipo;
+      toast.setAttribute('role', 'status'); /* aria-live polite implícito */
+      toast.textContent = mensaje;
+      container.insertBefore(toast, container.firstChild);
+      setTimeout(function() { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.3s'; setTimeout(function() { if (toast.parentNode) toast.remove(); }, 300); }, duracion);
+    }
+    ```
 
 ### Ejemplo Guiado 10: Dark Mode Toggle Accesible
 
-```html
-<div class="ejemplo-container">
-  <h2>Toggle de Modo Oscuro Accesible</h2>
-  <button id="a11yDarkToggle" aria-pressed="false" aria-label="Activar modo oscuro" class="a11y-toggle">
-    <span class="a11y-toggle-sun" aria-hidden="true">&#9728;&#65039;</span>
-    <span class="a11y-toggle-moon" aria-hidden="true">&#127769;</span>
-  </button>
-  <div class="a11y-card">Este contenido cambiará de tema respetando la accesibilidad visual. El estado se anuncia a lectores de pantalla mediante aria-pressed.</div>
-</div>
-<style>
-:root { --bg: #fff; --text: #333; --card: #f8f9fa; --border: #e0e0e0; transition: background-color 0.4s ease, color 0.3s ease; }
-html.a11y-dark { --bg: #1a1a2e; --text: #e0e0e0; --card: #16213e; --border: #333355; }
-body { background: var(--bg); color: var(--text); }
-.a11y-toggle { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--border); background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--text); transition: background 0.3s, border-color 0.3s; }
-.a11y-toggle:focus-visible { outline: 3px solid #4a90d9; outline-offset: 3px; }
-html:not(.a11y-dark) .a11y-toggle-moon { display: none; }
-html.a11y-dark .a11y-toggle-sun { display: none; }
-.a11y-card { background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.2rem; margin-top: 1rem; transition: background 0.3s, border-color 0.3s; }
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('a11yDarkToggle');
-  function apply(dark) {
-    document.documentElement.classList.toggle('a11y-dark', dark);
-    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-    btn.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
-    try { localStorage.setItem('a11y-theme', dark ? 'dark' : 'light'); } catch(e) {}
-  }
-  btn.addEventListener('click', function() { apply(!document.documentElement.classList.contains('a11y-dark')); });
-  var saved = localStorage.getItem('a11y-theme');
-  if (saved === 'dark') apply(true);
-  else if (saved === 'light') apply(false);
-  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) apply(true);
-})();
-</script>
-```
+=== "HTML"
+
+    ``` html
+    <div class="ejemplo-container">
+      <h2>Toggle de Modo Oscuro Accesible</h2>
+      <button id="a11yDarkToggle" aria-pressed="false" aria-label="Activar modo oscuro" class="a11y-toggle">
+        <span class="a11y-toggle-sun" aria-hidden="true">&#9728;&#65039;</span>
+        <span class="a11y-toggle-moon" aria-hidden="true">&#127769;</span>
+      </button>
+      <div class="a11y-card">Este contenido cambiará de tema respetando la accesibilidad visual. El estado se anuncia a lectores de pantalla mediante aria-pressed.</div>
+    </div>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    ```
+
+=== "CSS"
+
+    ``` css
+    :root { --bg: #fff; --text: #333; --card: #f8f9fa; --border: #e0e0e0; transition: background-color 0.4s ease, color 0.3s ease; }
+    html.a11y-dark { --bg: #1a1a2e; --text: #e0e0e0; --card: #16213e; --border: #333355; }
+    body { background: var(--bg); color: var(--text); }
+    .a11y-toggle { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--border); background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--text); transition: background 0.3s, border-color 0.3s; }
+    .a11y-toggle:focus-visible { outline: 3px solid #4a90d9; outline-offset: 3px; }
+    html:not(.a11y-dark) .a11y-toggle-moon { display: none; }
+    html.a11y-dark .a11y-toggle-sun { display: none; }
+    .a11y-card { background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.2rem; margin-top: 1rem; transition: background 0.3s, border-color 0.3s; }
+    ```
+
+=== "JS"
+
+    ``` js
+    (function() {
+      var btn = document.getElementById('a11yDarkToggle');
+      function apply(dark) {
+        document.documentElement.classList.toggle('a11y-dark', dark);
+        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        btn.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+        try { localStorage.setItem('a11y-theme', dark ? 'dark' : 'light'); } catch(e) {}
+      }
+      btn.addEventListener('click', function() { apply(!document.documentElement.classList.contains('a11y-dark')); });
+      var saved = localStorage.getItem('a11y-theme');
+      if (saved === 'dark') apply(true);
+      else if (saved === 'light') apply(false);
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) apply(true);
+    })();
+    ```
 
 
 ## Casos reales
