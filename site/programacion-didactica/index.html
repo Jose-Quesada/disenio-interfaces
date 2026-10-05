@@ -1,0 +1,2227 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes básicos de Angular para Martos y alrededores.">
+      
+      
+        <meta name="author" content="Jose Quesada">
+      
+      
+      
+        <link rel="prev" href="./..">
+      
+      
+        <link rel="next" href="../02-psicologia-diseno/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.65">
+    
+    
+      
+        <title>Programación didáctica - Diseño de Interfaces - DAW</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.40d3fdbb.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.812a03bb.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navegación"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#programacion-didactica-diseno-de-interfaces-web" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="./.." title="Diseño de Interfaces - DAW" class="md-header__button md-logo" aria-label="Diseño de Interfaces - DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navegación">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Interfaces - DAW
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programación didáctica
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Buscar">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Buscar">
+  <button type="button" class="md-search__button">
+    Buscar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Diseño de Interfaces - DAW" class="md-nav__button md-logo" aria-label="Diseño de Interfaces - DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Diseño de Interfaces - DAW
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  01. Introducción
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Programación didáctica
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Programación didáctica
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ficha-tecnica-del-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Ficha Técnica del Módulo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-introduccion-y-justificacion-pedagogica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Introducción y Justificación Pedagógica
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-marco-normativo-vigente" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Marco Normativo Vigente
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Marco Normativo Vigente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-normativa-general-del-sistema-educativo-y-formacion-profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.1 Normativa General del Sistema Educativo y Formación Profesional
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-normativa-autonomica-de-la-comunidad-autonoma-de-andalucia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.2 Normativa Autonómica de la Comunidad Autónoma de Andalucía
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-normativa-de-accesibilidad-propiedad-intelectual-y-proteccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.3 Normativa de Accesibilidad, Propiedad Intelectual y Protección de Datos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-contexto-del-alumnado-2o-daw" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Contexto del Alumnado (2º DAW)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-objetivos-generales-y-competencias-del-titulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Objetivos Generales y Competencias del Título
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-resultados-de-aprendizaje-y-criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. Resultados de Aprendizaje y Criterios de Evaluación
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-secuenciacion-didactica-y-compaginacion-con-los-apuntes-del-modulo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. Secuenciación Didáctica y Compaginación con los Apuntes del Módulo (<code>docs/</code>)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Secuenciación Didáctica y Compaginación con los Apuntes del Módulo (docs&#x2f;)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-bloque-1-ut-1-fundamentos-de-uiux-psicologia-del-diseno-color-tipografia-sistemas-de-diseno-y-prototipado-en-figma-30-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1 Bloque 1 · UT 1: Fundamentos de UI/UX, Psicología del Diseño, Color, Tipografía, Sistemas de Diseño y Prototipado en Figma (30 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bloque-2-ut-2-maquetacion-web-profesional-html5-semantico-css-avanzado-flexbox-grid-y-responsive-design-35-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2 Bloque 2 · UT 2: Maquetación Web Profesional: HTML5 Semántico, CSS Avanzado, Flexbox, Grid y Responsive Design (35 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-bloque-3-ut-3-multimedia-web-optimizacion-de-activos-derechos-de-autor-y-licencias-20-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3 Bloque 3 · UT 3: Multimedia Web, Optimización de Activos, Derechos de Autor y Licencias (20 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-bloque-4-ut-4-interactividad-animaciones-y-desarrollo-frontend-por-componentes-con-framework-angular-55-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.4 Bloque 4 · UT 4: Interactividad, Animaciones y Desarrollo Frontend por Componentes con Framework (Angular) (55 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-bloque-5-ut-5-accesibilidad-web-universal-wcag-2122-wai-aria-y-validacion-tecnica-20-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.5 Bloque 5 · UT 5: Accesibilidad Web Universal (WCAG 2.1/2.2, WAI-ARIA) y Validación Técnica (20 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-bloque-6-ut-6-usabilidad-web-metricas-ux-heuristicas-y-diseno-centrado-en-el-usuario-dcu-15-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.6 Bloque 6 · UT 6: Usabilidad Web, Métricas UX, Heurísticas y Diseño Centrado en el Usuario (DCU) (15 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-metodologia-didactica-y-principios-pedagogicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        8. Metodología Didáctica y Principios Pedagógicos
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-evaluacion-calificacion-y-recuperacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9. Evaluación, Calificación y Recuperación
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Evaluación, Calificación y Recuperación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-instrumentos-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9.1 Instrumentos de Evaluación
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-criterios-de-calificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9.2 Criterios de Calificación
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-formacion-en-empresa-u-organismo-equiparado-regimen-dual-en-2o-daw" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        10. Formación en Empresa u Organismo Equiparado (Régimen Dual en 2º DAW)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Formación en Empresa u Organismo Equiparado (Régimen Dual en 2º DAW)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resultados-de-aprendizaje-desarrollados-en-empresa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resultados de Aprendizaje Desarrollados en Empresa:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-atencion-a-la-diversidad-dua" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11. Atención a la Diversidad (DUA)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-elementos-transversales-y-proyecto-linguistico-de-centro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12. Elementos Transversales y Proyecto Lingüístico de Centro
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-recursos-didacticos-y-apuntes-del-modulo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13. Recursos Didácticos y Apuntes del Módulo (<code>docs/</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-psicologia-diseno/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-brain" viewBox="0 0 24 24"><path d="M12 18V5M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  02. Psicología del diseño
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-color-tipografia/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-palette" viewBox="0 0 24 24"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  03. Color y tipografía
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-guias-estilo-design-systems/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-swatch-book" viewBox="0 0 24 24"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7M7 17h.01"/><path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  04. Guías de estilo y design systems
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-figma-profesional/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-pen-tool" viewBox="0 0 24 24"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18M2.3 2.3l7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  05. Figma profesional
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-arquitectura-informacion/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-folder-tree" viewBox="0 0 24 24"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1ZM20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1ZM3 5a2 2 0 0 0 2 2h3"/><path d="M3 3v13a2 2 0 0 0 2 2h3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  06. Arquitectura de la información
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-html-semantico/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-code" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10 12.5 8 15l2 2.5M14 12.5l2 2.5-2 2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  07. HTML semántico
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-css-profesional/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-paintbrush" viewBox="0 0 24 24"><path d="m14.622 17.897-10.68-2.913M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0zM9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  08. CSS profesional
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-flexbox/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rows-3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 9H3M21 15H3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  09. Flexbox
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-css-grid-layout/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  10. CSS Grid
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-responsive-design/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-monitor-smartphone" viewBox="0 0 24 24"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8M10 19v-3.96 3.15M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  11. Diseño responsive
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-multimedia-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18M3 7.5h4M3 12h18M3 16.5h4M17 3v18M17 7.5h4M17 16.5h4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  12. Multimedia web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-interactividad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-mouse-pointer-click" viewBox="0 0 24 24"><path d="M14 4.1 12 6M5.1 8l-2.9-.8M6 12l-1.9 2M7.2 2.2 8 5.1M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  13. Interactividad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-accesibilidad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-accessibility" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1M5 8l3-3 5.5 3-2.36 3.5M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  14. Accesibilidad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-usabilidad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-user-check" viewBox="0 0 24 24"><path d="m16 11 2 2 4-4M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  15. Usabilidad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-diseno-centrado-usuario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  16. Diseño centrado en usuario
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-tailwindcss4/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-wind" viewBox="0 0 24 24"><path d="M12.8 19.6A2 2 0 1 0 14 16H2M17.5 8a2.5 2.5 0 1 1 2 4H2M9.8 4.4A2 2 0 1 1 11 8H2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  17. Tailwind CSS 4
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-preprocesadores-css/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-braces" viewBox="0 0 24 24"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  18. Preprocesadores CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-marco-legal-multimedia/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-scale" viewBox="0 0 24 24"><path d="M12 3v18M19 8l3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1M5 8l3 8a5 5 0 0 1-6 0zV7M7 21h10"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  19. Marco legal multimedia
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-angular-introduccion/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  20. Angular: Introducción
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-angular-componentes-datos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-blocks" viewBox="0 0 24 24"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2"/><rect width="8" height="8" x="14" y="2" rx="1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  21. Angular: Componentes y datos
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-angular-servicios-httpclient/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  22. Angular: Servicios y HttpClient
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-angular-routing-formularios/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  23. Angular: Routing y Formularios
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Markdown (referencia)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ficha-tecnica-del-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Ficha Técnica del Módulo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-introduccion-y-justificacion-pedagogica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Introducción y Justificación Pedagógica
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-marco-normativo-vigente" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Marco Normativo Vigente
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Marco Normativo Vigente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-normativa-general-del-sistema-educativo-y-formacion-profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.1 Normativa General del Sistema Educativo y Formación Profesional
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-normativa-autonomica-de-la-comunidad-autonoma-de-andalucia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.2 Normativa Autonómica de la Comunidad Autónoma de Andalucía
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-normativa-de-accesibilidad-propiedad-intelectual-y-proteccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.3 Normativa de Accesibilidad, Propiedad Intelectual y Protección de Datos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-contexto-del-alumnado-2o-daw" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Contexto del Alumnado (2º DAW)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-objetivos-generales-y-competencias-del-titulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Objetivos Generales y Competencias del Título
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-resultados-de-aprendizaje-y-criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. Resultados de Aprendizaje y Criterios de Evaluación
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-secuenciacion-didactica-y-compaginacion-con-los-apuntes-del-modulo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. Secuenciación Didáctica y Compaginación con los Apuntes del Módulo (<code>docs/</code>)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Secuenciación Didáctica y Compaginación con los Apuntes del Módulo (docs&#x2f;)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-bloque-1-ut-1-fundamentos-de-uiux-psicologia-del-diseno-color-tipografia-sistemas-de-diseno-y-prototipado-en-figma-30-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1 Bloque 1 · UT 1: Fundamentos de UI/UX, Psicología del Diseño, Color, Tipografía, Sistemas de Diseño y Prototipado en Figma (30 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bloque-2-ut-2-maquetacion-web-profesional-html5-semantico-css-avanzado-flexbox-grid-y-responsive-design-35-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2 Bloque 2 · UT 2: Maquetación Web Profesional: HTML5 Semántico, CSS Avanzado, Flexbox, Grid y Responsive Design (35 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-bloque-3-ut-3-multimedia-web-optimizacion-de-activos-derechos-de-autor-y-licencias-20-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3 Bloque 3 · UT 3: Multimedia Web, Optimización de Activos, Derechos de Autor y Licencias (20 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-bloque-4-ut-4-interactividad-animaciones-y-desarrollo-frontend-por-componentes-con-framework-angular-55-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.4 Bloque 4 · UT 4: Interactividad, Animaciones y Desarrollo Frontend por Componentes con Framework (Angular) (55 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-bloque-5-ut-5-accesibilidad-web-universal-wcag-2122-wai-aria-y-validacion-tecnica-20-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.5 Bloque 5 · UT 5: Accesibilidad Web Universal (WCAG 2.1/2.2, WAI-ARIA) y Validación Técnica (20 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-bloque-6-ut-6-usabilidad-web-metricas-ux-heuristicas-y-diseno-centrado-en-el-usuario-dcu-15-horas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.6 Bloque 6 · UT 6: Usabilidad Web, Métricas UX, Heurísticas y Diseño Centrado en el Usuario (DCU) (15 horas)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-metodologia-didactica-y-principios-pedagogicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        8. Metodología Didáctica y Principios Pedagógicos
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-evaluacion-calificacion-y-recuperacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9. Evaluación, Calificación y Recuperación
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Evaluación, Calificación y Recuperación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-instrumentos-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9.1 Instrumentos de Evaluación
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-criterios-de-calificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9.2 Criterios de Calificación
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-formacion-en-empresa-u-organismo-equiparado-regimen-dual-en-2o-daw" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        10. Formación en Empresa u Organismo Equiparado (Régimen Dual en 2º DAW)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Formación en Empresa u Organismo Equiparado (Régimen Dual en 2º DAW)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resultados-de-aprendizaje-desarrollados-en-empresa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resultados de Aprendizaje Desarrollados en Empresa:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-atencion-a-la-diversidad-dua" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11. Atención a la Diversidad (DUA)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-elementos-transversales-y-proyecto-linguistico-de-centro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12. Elementos Transversales y Proyecto Lingüístico de Centro
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-recursos-didacticos-y-apuntes-del-modulo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13. Recursos Didácticos y Apuntes del Módulo (<code>docs/</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="programacion-didactica-diseno-de-interfaces-web">Programación Didáctica · Diseño de Interfaces Web</h1>
+<p><strong>Módulo Profesional:</strong> Diseño de Interfaces Web<br />
+<strong>Código oficial:</strong> 0615 (Real Decreto 687/2010 y Orden de 16 de junio de 2011)<br />
+<strong>Ciclo Formativo de Grado Superior:</strong> Técnico Superior en Desarrollo de Aplicaciones Web (DAW) — 2º Curso<br />
+<strong>Familia Profesional:</strong> Informática y Comunicaciones<br />
+<strong>Carga Lectiva:</strong> 175 horas totales (5 horas semanales durante el periodo lectivo en centro educativo + formación en empresa dual) · 9 créditos ECTS<br />
+<strong>Ámbito Territorial:</strong> Comunidad Autónoma de Andalucía<br />
+<strong>Curso Académico:</strong> 2025 / 2026 (y 2026 / 2027)<br />
+<strong>Departamento:</strong> Informática y Comunicaciones  </p>
+<hr />
+<h2 id="1-ficha-tecnica-del-modulo">1. Ficha Técnica del Módulo</h2>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Especificación y Datos del Módulo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Denominación oficial</strong></td>
+<td>Diseño de Interfaces Web</td>
+</tr>
+<tr>
+<td><strong>Código del módulo</strong></td>
+<td>0615 (RD 687/2010 y Orden de 16 de junio de 2011)</td>
+</tr>
+<tr>
+<td><strong>Ciclo formativo y curso</strong></td>
+<td>2º curso de Técnico Superior en Desarrollo de Aplicaciones Web (DAW)</td>
+</tr>
+<tr>
+<td><strong>Carga horaria total</strong></td>
+<td>175 horas totales (5 horas semanales en periodo lectivo presencial + fase dual en empresa)</td>
+</tr>
+<tr>
+<td><strong>Equivalencia crediticia</strong></td>
+<td>9 créditos ECTS (Grado Superior)</td>
+</tr>
+<tr>
+<td><strong>Régimen de impartición</strong></td>
+<td>Formación Profesional Grado D - Régimen Dual General (400 horas totales de empresa en 2º curso, con 71 h vinculadas a DIW)</td>
+</tr>
+<tr>
+<td><strong>Departamento didáctico</strong></td>
+<td>Departamento de Informática y Comunicaciones</td>
+</tr>
+<tr>
+<td><strong>Materiales de aula</strong></td>
+<td>Repositorio digital del módulo: 23 unidades temáticas de apuntes y proyectos prácticos en <code>docs/</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-introduccion-y-justificacion-pedagogica">2. Introducción y Justificación Pedagógica</h2>
+<p>El módulo profesional de <strong>Diseño de Interfaces Web (Código 0615)</strong> se imparte en el segundo curso del Ciclo Formativo de Grado Superior de <strong>Desarrollo de Aplicaciones Web (DAW)</strong>. Constituye una materia nuclear en la formación del desarrollador web moderno, dotándolo de la capacidad para concebir, diseñar, maquetar, programar y auditar la capa de presentación y experiencia de usuario de aplicaciones web complejas.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Propósito Formativo del Módulo:</strong><br />
+Capacitar al futuro desarrollador frontend para transformar especificaciones y requisitos funcionales en interfaces web atractivas, intuitivas, responsivas, interactivas, semánticas y universalmente accesibles (WCAG 2.2 / WAI-ARIA), dominando el ecosistema de diseño con Figma, maquetación CSS avanzada (Grid, Flexbox, Tailwind CSS 4, Sass) y desarrollo SPA basado en componentes mediante frameworks frontend (Angular).</p>
+</blockquote>
+<p>El módulo se articula en torno a 6 grandes ejes competenciales:
+1. <strong>Psicología del diseño y comunicación visual:</strong> Percepción visual (Leyes de Gestalt), leyes de UX (Fitts, Hick, Miller, Jakob), teoría del color, ratios de contraste y tipografía web.
+2. <strong>Sistemas de diseño y prototipado:</strong> Atomic Design, Design Tokens, maquetación visual y prototipado interactivo en Figma con Auto Layout, componentes y variantes.
+3. <strong>Maquetación web profesional y responsive:</strong> HTML5 semántico, CSS moderno (Box Model, cascada, especificidad, Custom Properties, BEM), Flexbox, CSS Grid Layout, Container Queries, Mobile-First, Tailwind CSS 4 y Sass/SCSS.
+4. <strong>Multimedia web y marco legal:</strong> Formatos modernos (WebP, AVIF, SVG interactivo), audio/vídeo HTML5 con subtítulos WebVTT, compresión de activos y cumplimiento estricto de la Ley de Propiedad Intelectual (TRLPI), licencias Creative Commons y RGPD/LOPDGDD.
+5. <strong>Interactividad y desarrollo frontend con frameworks (Angular):</strong> Microinteracciones, animaciones CSS/JS, arquitectura por componentes Standalone, Data Binding, Signals, directivas de control de flujo (<code>@if</code>, <code>@for</code>), servicios, inyección de dependencias, consumo de APIs REST con <code>HttpClient</code>, RxJS, enrutamiento (<code>Angular Router</code>) y formularios reactivos.
+6. <strong>Accesibilidad web universal (A11y) y Usabilidad (UX):</strong> Pautas WCAG 2.1/2.2 (A/AA/AAA), WAI-ARIA, auditorías con Lighthouse/axe/WAVE, lectores de pantalla (NVDA/VoiceOver), heurísticas de Nielsen, métricas SUS, Core Web Vitals y Diseño Centrado en el Usuario (DCU / Design Thinking).</p>
+<hr />
+<h2 id="3-marco-normativo-vigente">3. Marco Normativo Vigente</h2>
+<p>La programación se fundamenta en la siguiente jerarquía normativa:</p>
+<h3 id="31-normativa-general-del-sistema-educativo-y-formacion-profesional">3.1 Normativa General del Sistema Educativo y Formación Profesional</h3>
+<ul>
+<li><strong>Constitución Española de 1978</strong> (Artículo 27): Derecho a la educación y principios formativos.</li>
+<li><strong>Ley Orgánica 2/2006, de 3 de mayo, de Educación (LOE)</strong>, modificada por la <strong>Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE)</strong>.</li>
+<li><strong>Ley Orgánica 3/2022, de 31 de marzo</strong>, de ordenación e integración de la Formación Profesional.</li>
+<li><strong>Real Decreto 659/2023, de 18 de julio</strong>, por el que se desarrolla la ordenación del Sistema de Formación Profesional.</li>
+<li><strong>Real Decreto 687/2010, de 20 de mayo</strong>, por el que se establece el título de Técnico Superior en Desarrollo de Aplicaciones Web y se fijan sus enseñanzas mínimas.</li>
+<li><strong>Real Decreto 405/2023, de 29 de mayo</strong>, y <strong>Real Decreto 500/2024, de 21 de mayo</strong>, de actualización de títulos de Formación Profesional.</li>
+</ul>
+<h3 id="32-normativa-autonomica-de-la-comunidad-autonoma-de-andalucia">3.2 Normativa Autonómica de la Comunidad Autónoma de Andalucía</h3>
+<ul>
+<li><strong>Estatuto de Autonomía para Andalucía (Ley Orgánica 2/2007, de 19 de marzo):</strong> Artículos 21 y 52.</li>
+<li><strong>Ley 17/2007, de 10 de diciembre, de Educación de Andalucía (LEA).</strong></li>
+<li><strong>Decreto 104/2024, de 28 de mayo</strong>, por el que se establece la ordenación del Sistema de Formación Profesional en la Comunidad Autónoma de Andalucía (<em>deroga el Decreto 436/2008</em>).</li>
+<li><strong>Orden de 18 de septiembre de 2025</strong>, por la que se regula la evaluación, certificación, acreditación y titulación académica del alumnado de Grados D y E en Andalucía (<em>deroga la Orden de 29 de septiembre de 2010</em>).</li>
+<li><strong>Orden de 26 de septiembre de 2025</strong>, por la que se regula la fase de formación en empresa u organismo equiparado en Andalucía.</li>
+<li><strong>Orden de 16 de junio de 2011</strong>, por la que se desarrolla el currículo correspondiente al título de Técnico Superior en Desarrollo de Aplicaciones Web en Andalucía.</li>
+<li><strong>Decreto 327/2010, de 13 de julio</strong> (Reglamento Orgánico de IES) y <strong>Orden de 20 de agosto de 2010</strong> (Organización y funcionamiento de IES en Andalucía).</li>
+</ul>
+<h3 id="33-normativa-de-accesibilidad-propiedad-intelectual-y-proteccion-de-datos">3.3 Normativa de Accesibilidad, Propiedad Intelectual y Protección de Datos</h3>
+<ul>
+<li><strong>Real Decreto 1112/2018, de 7 de septiembre</strong>, sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles del sector público (trasposición de la Directiva UE 2016/2102).</li>
+<li><strong>Ley 11/2023, de 8 de mayo</strong> (trasposición del Acta Europea de Accesibilidad - Directiva UE 2019/882).</li>
+<li><strong>Real Decreto Legislativo 1/1996 (TRLPI)</strong>, Ley de Propiedad Intelectual y régimen de licencias abiertas (Creative Commons, MIT, Apache, GPL).</li>
+<li><strong>Reglamento (UE) 2016/679 (RGPD)</strong> y <strong>Ley Orgánica 3/2018 (LOPDGDD)</strong> de Protección de Datos Personales y garantía de los derechos digitales.</li>
+</ul>
+<hr />
+<h2 id="4-contexto-del-alumnado-2o-daw">4. Contexto del Alumnado (2º DAW)</h2>
+<p>El grupo de 2º DAW está integrado por 9 alumnos/as procedentes de Martos y municipios de la comarca (Torredelcampo, Fuensanta de Martos, Jaén capital):
+- <strong>Edad:</strong> Rango de 18 a 31 años, mostrando alta motivación profesional hacia el desarrollo web.
+- <strong>Rendimiento previo:</strong> La gran mayoría promocionó de 1º DAW con todas las materias superadas. 2 alumnos repetidores cuentan con seguimiento individualizado.
+- <strong>Convalidaciones:</strong> 2 alumnos con convalidación autorizada en el módulo de IPE II.
+- <strong>Atención a la diversidad:</strong> No se registran informes formales de NEAE en orientación, aplicándose pautas de Diseño Universal para el Aprendizaje (DUA) con actividades multinivel de refuerzo y ampliación.</p>
+<hr />
+<h2 id="5-objetivos-generales-y-competencias-del-titulo">5. Objetivos Generales y Competencias del Título</h2>
+<p>El módulo contribuye directamente a los siguientes objetivos generales (Orden de 16 de junio de 2011):
+- <strong>i)</strong> Utilizar lenguajes de marcas y estándares web, asumiendo el manual de estilo, para desarrollar interfaces en aplicaciones web.
+- <strong>j)</strong> Emplear herramientas y lenguajes específicos para desarrollar componentes multimedia.
+- <strong>k)</strong> Evaluar la interactividad, accesibilidad y usabilidad de una interfaz para integrar componentes multimedia.
+- <strong>l)</strong> Utilizar herramientas y lenguajes para desarrollar e integrar componentes software.
+- <strong>ñ)</strong> Verificar los componentes software desarrollados completando el plan de pruebas.
+- <strong>o)</strong> Utilizar herramientas específicas para elaborar y mantener la documentación técnica.
+- <strong>y)</strong> Identificar y proponer las acciones profesionales necesarias para dar respuesta a la accesibilidad universal y al diseño para todos.</p>
+<hr />
+<h2 id="6-resultados-de-aprendizaje-y-criterios-de-evaluacion">6. Resultados de Aprendizaje y Criterios de Evaluación</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">RA</th>
+<th style="text-align: left;">Resultado de Aprendizaje Oficial</th>
+<th style="text-align: left;">Criterios de Evaluación Oficiales (CE)</th>
+<th style="text-align: center;">Ponderación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RA1</strong></td>
+<td style="text-align: left;">Planifica la creación de una interfaz web valorando y aplicando especificaciones de diseño.</td>
+<td style="text-align: left;"><strong>a)</strong> Se ha reconocido la importancia de la comunicación visual y sus principios básicos.<br><strong>b)</strong> Se han analizado y seleccionado los colores y tipografías adecuados para pantalla.<br><strong>c)</strong> Se han analizado alternativas para la presentación de información web.<br><strong>d)</strong> Se ha valorado la importancia de definir y aplicar la guía de estilo.<br><strong>e)</strong> Se han utilizado y valorado distintas tecnologías para el diseño web.<br><strong>f)</strong> Se han creado y utilizado plantillas y prototipos de diseño.</td>
+<td style="text-align: center;"><strong>12 %</strong><br><em>(2% / CE)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RA2</strong></td>
+<td style="text-align: left;">Crea interfaces web homogéneos definiendo y aplicando estilos.</td>
+<td style="text-align: left;"><strong>a)</strong> Se han reconocido las posibilidades de modificar las etiquetas HTML.<br><strong>b)</strong> Se han definido estilos de forma directa.<br><strong>c)</strong> Se han definido y asociado estilos globales en hojas externas.<br><strong>d)</strong> Se han definido hojas de estilos alternativas.<br><strong>e)</strong> Se han redefinido estilos.<br><strong>f)</strong> Se han identificado las distintas propiedades de cada elemento.<br><strong>g)</strong> Se han creado clases y selectores de estilos.<br><strong>h)</strong> Se han utilizado herramientas de validación de hojas de estilos.<br><strong>i)</strong> Se han analizado y utilizado tecnologías y frameworks para diseño responsive.<br><strong>j)</strong> Se han analizado y utilizado preprocesadores de estilos (Sass/SCSS).</td>
+<td style="text-align: center;"><strong>20 %</strong><br><em>(2% / CE)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RA3</strong></td>
+<td style="text-align: left;">Prepara archivos multimedia para la web, analizando sus características y manejando herramientas específicas.</td>
+<td style="text-align: left;"><strong>a)</strong> Se han reconocido las implicaciones de licencias y derechos de autor.<br><strong>b)</strong> Se han identificado formatos de imagen, audio y vídeo a utilizar (WebP, AVIF, SVG).<br><strong>c)</strong> Se han analizado herramientas para generar contenido multimedia.<br><strong>d)</strong> Se han empleado herramientas para el tratamiento digital de la imagen.<br><strong>e)</strong> Se han utilizado herramientas para manipular audio y vídeo.<br><strong>f)</strong> Se han realizado animaciones a partir de imágenes fijas.<br><strong>g)</strong> Se han importado y exportado recursos multimedia en diversos formatos.<br><strong>h)</strong> Se ha aplicado la guía de estilo al material multimedia.</td>
+<td style="text-align: center;"><strong>16 %</strong><br><em>(2% / CE)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RA4</strong></td>
+<td style="text-align: left;">Integra contenido multimedia en documentos web valorando su aportación y seleccionando adecuadamente los elementos interactivos.</td>
+<td style="text-align: left;"><strong>a)</strong> Se han reconocido tecnologías de inclusión de contenido interactivo (2%).<br><strong>b)</strong> Se han configurado navegadores para contenido multimedia e interactivo (2%).<br><strong>c)</strong> Se han utilizado herramientas gráficas para contenido interactivo (4%).<br><strong>d)</strong> Se ha analizado el código generado por herramientas interactivas (4%).<br><strong>e)</strong> Se han agregado elementos multimedia a documentos web (4%).<br><strong>f)</strong> Se ha añadido interactividad a elementos web (4%).<br><strong>g)</strong> Se ha verificado el funcionamiento interactivo en múltiples dispositivos (4%).</td>
+<td style="text-align: center;"><strong>24 %</strong><br><em>(Pond. diferenciada)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RA5</strong></td>
+<td style="text-align: left;">Desarrolla interfaces web accesibles, analizando las pautas establecidas y aplicando técnicas de verificación.</td>
+<td style="text-align: left;"><strong>a)</strong> Se ha reconocido la necesidad de diseñar webs accesibles.<br><strong>b)</strong> Se ha analizado la accesibilidad de diferentes documentos web.<br><strong>c)</strong> Se han analizado los principios y pautas WCAG y niveles de conformidad.<br><strong>d)</strong> Se han analizado los posibles errores según prioridades de verificación.<br><strong>e)</strong> Se ha alcanzado el nivel de conformidad deseado (Nivel AA/AAA).<br><strong>f)</strong> Se han verificado los niveles mediante tests automatizados.<br><strong>g)</strong> Se ha verificado la visualización en múltiples navegadores y tecnologías asistivas.<br><strong>h)</strong> Se han utilizado herramientas que mejoren la visibilidad y accesibilidad (SEO/ARIA).</td>
+<td style="text-align: center;"><strong>16 %</strong><br><em>(2% / CE)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RA6</strong></td>
+<td style="text-align: left;">Desarrolla interfaces web amigables analizando y aplicando las pautas de usabilidad establecidas.</td>
+<td style="text-align: left;"><strong>a)</strong> Se ha analizado la usabilidad de diferentes documentos web.<br><strong>b)</strong> Se ha valorado la importancia de los estándares en la creación web.<br><strong>c)</strong> Se ha adecuado la interfaz web a los objetivos y usuarios destinatarios.<br><strong>d)</strong> Se ha verificado la facilidad de navegación mediante diversos periféricos.<br><strong>e)</strong> Se han analizado técnicas para verificar la usabilidad de un documento web.<br><strong>f)</strong> Se ha verificado la usabilidad en diferentes navegadores y dispositivos.</td>
+<td style="text-align: center;"><strong>12 %</strong><br><em>(2% / CE)</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-secuenciacion-didactica-y-compaginacion-con-los-apuntes-del-modulo-docs">7. Secuenciación Didáctica y Compaginación con los Apuntes del Módulo (<code>docs/</code>)</h2>
+<p>El módulo se organiza en <strong>6 Bloques Temáticos / Unidades de Trabajo</strong> rigurosamente compaginados con los <strong>23 documentos de apuntes</strong> de la carpeta <code>docs/</code>:</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph B1["Bloque 1 · Fundamentos UI/UX, Design Systems &amp; Figma (30h)"]
+        D01["01 Introducción"] --&gt; D02["02 Psicología Diseño"] --&gt; D03["03 Color &amp; Tipografía"]
+        D03 --&gt; D04["04 Design Systems"] --&gt; D05["05 Figma"] --&gt; D06["06 Arquitectura Info"]
+    end
+
+    subgraph B2["Bloque 2 · Maquetación Web, CSS Avanzado &amp; Responsive (35h)"]
+        D07["07 HTML Semántico"] --&gt; D08["08 CSS Pro"] --&gt; D09["09 Flexbox"]
+        D09 --&gt; D10["10 CSS Grid"] --&gt; D11["11 Responsive"] --&gt; D17["17 Tailwind 4"] --&gt; D18["18 Sass/SCSS"]
+    end
+
+    subgraph B3["Bloque 3 · Multimedia Web &amp; Marco Legal (20h)"]
+        D12["12 Multimedia Web"] --&gt; D19["19 Marco Legal &amp; Licencias"]
+    end
+
+    subgraph B4["Bloque 4 · Interactividad &amp; Framework Frontend Angular (55h)"]
+        D13["13 Interactividad"] --&gt; D20["20 Angular Intro"] --&gt; D21["21 Components &amp; Signals"]
+        D21 --&gt; D22["22 Services &amp; HttpClient"] --&gt; D23["23 Routing &amp; Reactive Forms"]
+    end
+
+    subgraph B5["Bloque 5 · Accesibilidad Web Universal (20h)"]
+        D14["14 Accesibilidad WCAG 2.2 / ARIA"]
+    end
+
+    subgraph B6["Bloque 6 · Usabilidad &amp; Diseño Centrado en Usuario (15h)"]
+        D15["15 Usabilidad &amp; Nielsen"] --&gt; D16["16 DCU &amp; Design Thinking"]
+    end
+
+    B1 --&gt; B2 --&gt; B3 --&gt; B4 --&gt; B5 --&gt; B6</code></pre>
+<h3 id="71-bloque-1-ut-1-fundamentos-de-uiux-psicologia-del-diseno-color-tipografia-sistemas-de-diseno-y-prototipado-en-figma-30-horas">7.1 Bloque 1 · UT 1: Fundamentos de UI/UX, Psicología del Diseño, Color, Tipografía, Sistemas de Diseño y Prototipado en Figma (30 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA1 (a–f) y RA6 (b, c).</li>
+<li><strong>Contenidos:</strong> Psicología cognitiva, Leyes de Gestalt, leyes UX (Fitts, Hick, Miller, Jakob), teoría del color (RGB, HSL, Oklch, ratios de contraste WCAG), tipografía web, escalas modulares, Atomic Design, Design Tokens, arquitectura de información, Card Sorting, User Flows, Wireframes y Figma avanzado (Frames, Auto Layout, Componentes, Variantes, Constraints y prototipado Smart Animate).</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../"><code>01. Introducción al Diseño de Interfaces Web</code></a></li>
+<li><a href="../02-psicologia-diseno/"><code>02-psicologia-diseno.md</code></a></li>
+<li><a href="../03-color-tipografia/"><code>03-color-tipografia.md</code></a></li>
+<li><a href="../04-guias-estilo-design-systems/"><code>04-guias-estilo-design-systems.md</code></a></li>
+<li><a href="../05-figma-profesional/"><code>05-figma-profesional.md</code></a></li>
+<li><a href="../06-arquitectura-informacion/"><code>06-arquitectura-informacion.md</code></a></li>
+</ul>
+<h3 id="72-bloque-2-ut-2-maquetacion-web-profesional-html5-semantico-css-avanzado-flexbox-grid-y-responsive-design-35-horas">7.2 Bloque 2 · UT 2: Maquetación Web Profesional: HTML5 Semántico, CSS Avanzado, Flexbox, Grid y Responsive Design (35 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA2 (a–j).</li>
+<li><strong>Contenidos:</strong> HTML5 semántico y SEO técnico (Schema.org), CSS moderno (Box Model, cascada, especificidad, <code>@layer</code>, Custom Properties, metodología BEM/ITCSS), Flexbox unidimensional, CSS Grid bidimensional (<code>grid-template-areas</code>, <code>minmax()</code>, <code>auto-fit</code>), Mobile-First, Container Queries (<code>@container</code>), imágenes responsivas (<code>&lt;picture&gt;</code>, <code>srcset</code>), Tailwind CSS 4 (<code>@theme</code>) y preprocesador Sass/SCSS (<code>@use</code>, <code>@forward</code>, mixins).</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../07-html-semantico/"><code>07-html-semantico.md</code></a></li>
+<li><a href="../08-css-profesional/"><code>08-css-profesional.md</code></a></li>
+<li><a href="../09-flexbox/"><code>09-flexbox.md</code></a></li>
+<li><a href="../10-css-grid-layout/"><code>10-css-grid-layout.md</code></a></li>
+<li><a href="../11-responsive-design/"><code>11-responsive-design.md</code></a></li>
+<li><a href="../17-tailwindcss4/"><code>17-tailwindcss4.md</code></a></li>
+<li><a href="../18-preprocesadores-css/"><code>18-preprocesadores-css.md</code></a></li>
+</ul>
+<h3 id="73-bloque-3-ut-3-multimedia-web-optimizacion-de-activos-derechos-de-autor-y-licencias-20-horas">7.3 Bloque 3 · UT 3: Multimedia Web, Optimización de Activos, Derechos de Autor y Licencias (20 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA3 (a–h).</li>
+<li><strong>Contenidos:</strong> Formatos de imagen modernos (WebP, AVIF, SVG interactivo y optimización con SVGO), audio y vídeo HTML5 (<code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>, códecs H.264, VP9, AV1), subtítulos accesibles WebVTT (<code>&lt;track&gt;</code>), compresión de recursos, marco legal de propiedad intelectual (TRLPI), licencias Creative Commons, licencias de software (MIT, Apache, GPL) y privacidad RGPD.</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../12-multimedia-web/"><code>12-multimedia-web.md</code></a></li>
+<li><a href="../19-marco-legal-multimedia/"><code>19-marco-legal-multimedia.md</code></a></li>
+</ul>
+<h3 id="74-bloque-4-ut-4-interactividad-animaciones-y-desarrollo-frontend-por-componentes-con-framework-angular-55-horas">7.4 Bloque 4 · UT 4: Interactividad, Animaciones y Desarrollo Frontend por Componentes con Framework (Angular) (55 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA4 (a–g) y RA2 (i).</li>
+<li><strong>Contenidos:</strong> Microinteracciones y animaciones CSS (<code>@keyframes</code>, timing functions), JavaScript DOM events, Web Animations API, arquitectura de Angular con componentes Standalone, TypeScript, Data Binding, Signals, directivas de control de flujo (<code>@if</code>, <code>@for</code>, <code>@switch</code>), Pipes, Servicios e Inyección de Dependencias, consumo de APIs REST con <code>HttpClient</code> y RxJS, enrutamiento con <code>Angular Router</code> (rutas hijas, Lazy Loading, Guards) y Formularios Reactivos con validación visual.</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../13-interactividad-web/"><code>13-interactividad-web.md</code></a></li>
+<li><a href="../20-angular-introduccion/"><code>20-angular-introduccion.md</code></a></li>
+<li><a href="../21-angular-componentes-datos/"><code>21-angular-componentes-datos.md</code></a></li>
+<li><a href="../22-angular-servicios-httpclient/"><code>22-angular-servicios-httpclient.md</code></a></li>
+<li><a href="../23-angular-routing-formularios/"><code>23-angular-routing-formularios.md</code></a></li>
+</ul>
+<h3 id="75-bloque-5-ut-5-accesibilidad-web-universal-wcag-2122-wai-aria-y-validacion-tecnica-20-horas">7.5 Bloque 5 · UT 5: Accesibilidad Web Universal (WCAG 2.1/2.2, WAI-ARIA) y Validación Técnica (20 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA5 (a–h).</li>
+<li><strong>Contenidos:</strong> Principios POUR de accesibilidad, pautas WCAG 2.2 (niveles A, AA y AAA), navegación por teclado y trampas de foco, especificación WAI-ARIA (roles, estados y propiedades dinámicas en SPA), herramientas de auditoría automatizada (axe DevTools, Lighthouse, WAVE) y pruebas con lectores de pantalla (NVDA, VoiceOver) conforme al RD 1112/2018 y Ley 11/2023.</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../14-accesibilidad-web/"><code>14-accesibilidad-web.md</code></a></li>
+<li><a href="../07-html-semantico/"><code>07-html-semantico.md</code></a></li>
+</ul>
+<h3 id="76-bloque-6-ut-6-usabilidad-web-metricas-ux-heuristicas-y-diseno-centrado-en-el-usuario-dcu-15-horas">7.6 Bloque 6 · UT 6: Usabilidad Web, Métricas UX, Heurísticas y Diseño Centrado en el Usuario (DCU) (15 horas)</h3>
+<ul>
+<li><strong>Resultados de Aprendizaje:</strong> RA6 (a–f).</li>
+<li><strong>Contenidos:</strong> Las 10 heurísticas de usabilidad de Jakob Nielsen, métricas de rendimiento y experiencia (System Usability Scale - SUS, Core Web Vitals LCP/INP/CLS), metodología de Diseño Centrado en el Usuario (DCU / Design Thinking: Empatizar, Definir, Idear, Prototipar, Testear), User Personas, Customer Journey Maps y conducción de pruebas de usabilidad con usuarios reales.</li>
+<li><strong>Materiales de Apoyo (<code>docs/</code>):</strong></li>
+<li><a href="../15-usabilidad-web/"><code>15-usabilidad-web.md</code></a></li>
+<li><a href="../16-diseno-centrado-usuario/"><code>16-diseno-centrado-usuario.md</code></a></li>
+</ul>
+<hr />
+<h2 id="8-metodologia-didactica-y-principios-pedagogicos">8. Metodología Didáctica y Principios Pedagógicos</h2>
+<ul>
+<li><strong>Aprendizaje Basado en Proyectos (ABP):</strong> Desarrollo de proyectos completos de interfaz que integran diseño visual, maquetación CSS y programación Angular.</li>
+<li><strong>Enfoque Práctico (Learning by Doing):</strong> Sesiones interactivas en laboratorio de informática con codificación inmediata en Visual Studio Code y prototipado en Figma.</li>
+<li><strong>Cultura de Desarrollo Profesional:</strong> Uso de Git/GitHub, control de versiones, validadores W3C, linters de accesibilidad y buenas prácticas de código limpio.</li>
+</ul>
+<hr />
+<h2 id="9-evaluacion-calificacion-y-recuperacion">9. Evaluación, Calificación y Recuperación</h2>
+<p>Conforme al <strong>Decreto 104/2024</strong> y a la <strong>Orden de 18 de septiembre de 2025</strong> de la Junta de Andalucía:</p>
+<h3 id="91-instrumentos-de-evaluacion">9.1 Instrumentos de Evaluación</h3>
+<ul>
+<li><strong>Prácticas y tareas de laboratorio por unidad (40%):</strong> Ejercicios de maquetación, guías de estilo, componentes interactivos y auditorías.</li>
+<li><strong>Proyecto Web Frontend Integrador con defensa oral individual (40%):</strong> Aplicación web completa en Angular desarrollada a partir de un prototipo en Figma, con diseño responsive, consumo de APIs y accesibilidad AA verificada.</li>
+<li><strong>Pruebas objetivas y supuestos prácticos (20%):</strong> Pruebas de validación de conocimientos técnicos y resolución de supuestos prácticos.</li>
+</ul>
+<h3 id="92-criterios-de-calificacion">9.2 Criterios de Calificación</h3>
+<ul>
+<li><strong>Superación criterial obligatoria:</strong> Para aprobar el módulo, la media ponderada de los Criterios de Evaluación asociados a cada uno de los 6 Resultados de Aprendizaje (<strong>RA1 a RA6</strong>) debe ser igual o superior a <strong>5,0 puntos sobre 10</strong>.</li>
+<li><strong>Calificación final:</strong> Media aritmética ponderada de todos los criterios evaluados, redondeada a número entero de 1 a 10.</li>
+<li><strong>Recuperación:</strong> Actividades de refuerzo y reentrega individual en evaluación continua, y prueba práctica extraordinaria en junio sobre los RA no superados.</li>
+</ul>
+<hr />
+<h2 id="10-formacion-en-empresa-u-organismo-equiparado-regimen-dual-en-2o-daw">10. Formación en Empresa u Organismo Equiparado (Régimen Dual en 2º DAW)</h2>
+<p>En cumplimiento de la <strong>Ley Orgánica 3/2022</strong> y del <strong>Decreto 104/2024</strong>, el alumnado realiza <strong>400 horas de formación en empresas colaboradoras</strong> en 2º curso (50 jornadas laborales de 8 horas), correspondiendo <strong>71 horas</strong> al módulo de Diseño de Interfaces Web:</p>
+<table>
+<thead>
+<tr>
+<th>Módulo Profesional (2º DAW)</th>
+<th style="text-align: center;">Horas Totales</th>
+<th style="text-align: center;">Horas en Centro</th>
+<th style="text-align: center;">Horas en Empresa (Dual)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desarrollo Web en Entorno Servidor (DWES)</td>
+<td style="text-align: center;">245 h</td>
+<td style="text-align: center;">145 h</td>
+<td style="text-align: center;">100 h</td>
+</tr>
+<tr>
+<td>Desarrollo Web en Entorno Cliente (DWEC)</td>
+<td style="text-align: center;">210 h</td>
+<td style="text-align: center;">124 h</td>
+<td style="text-align: center;">86 h</td>
+</tr>
+<tr>
+<td><strong>Diseño de Interfaces Web (DIW)</strong></td>
+<td style="text-align: center;"><strong>175 h</strong></td>
+<td style="text-align: center;"><strong>104 h</strong></td>
+<td style="text-align: center;"><strong>71 h</strong></td>
+</tr>
+<tr>
+<td>Despliegue de Aplicaciones Web (DAW)</td>
+<td style="text-align: center;">70 h</td>
+<td style="text-align: center;">41 h</td>
+<td style="text-align: center;">29 h</td>
+</tr>
+<tr>
+<td>Módulo Optativo</td>
+<td style="text-align: center;">105 h</td>
+<td style="text-align: center;">62 h</td>
+<td style="text-align: center;">43 h</td>
+</tr>
+<tr>
+<td>Inglés Profesional</td>
+<td style="text-align: center;">70 h</td>
+<td style="text-align: center;">41 h</td>
+<td style="text-align: center;">29 h</td>
+</tr>
+<tr>
+<td>Itinerario Personal para la Empleabilidad II (IPE II)</td>
+<td style="text-align: center;">105 h</td>
+<td style="text-align: center;">62 h</td>
+<td style="text-align: center;">43 h</td>
+</tr>
+<tr>
+<td><strong>TOTAL (incluyendo 70h Proyecto)</strong></td>
+<td style="text-align: center;"><strong>1.050 h</strong></td>
+<td style="text-align: center;"><strong>579 h</strong></td>
+<td style="text-align: center;"><strong>400 h (50 jornadas)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="resultados-de-aprendizaje-desarrollados-en-empresa">Resultados de Aprendizaje Desarrollados en Empresa:</h3>
+<ul>
+<li><strong>RA1 (b, c, e, f):</strong> Aplicación de colores, tipografías y especificaciones de diseño en interfaces corporativas.</li>
+<li><strong>RA2 (a, b, e, f, h, i):</strong> Maquetación CSS en entornos reales de producción, uso de frameworks y validación responsive.</li>
+<li><strong>RA4, RA5 y RA6:</strong> Desarrollo e integración de componentes en frameworks frontend y verificación de usabilidad y accesibilidad con usuarios y clientes reales.</li>
+</ul>
+<hr />
+<h2 id="11-atencion-a-la-diversidad-dua">11. Atención a la Diversidad (DUA)</h2>
+<ul>
+<li><strong>Múltiples formas de representación:</strong> Apuntes teóricos estructurados (<code>docs/</code>), ejemplos de código interactivos, grabaciones y diagramas técnicos.</li>
+<li><strong>Múltiples formas de acción y expresión:</strong> Proyectos personalizables por temática y retos multinivel.</li>
+<li><strong>Múltiples formas de implicación:</strong> Aplicación de metodologías ágiles y proyectos orientados a clientes reales.</li>
+<li><strong>Medidas específicas:</strong> Apoyo individualizado para ritmos lentos, retos de profundización para alumnado aventajado (Signals reactivos avanzados, micro-frontends, animaciones complejas) y seguimiento telemático para alumnado trabajador o modular.</li>
+</ul>
+<hr />
+<h2 id="12-elementos-transversales-y-proyecto-linguistico-de-centro">12. Elementos Transversales y Proyecto Lingüístico de Centro</h2>
+<ul>
+<li><strong>Accesibilidad e inclusión digital:</strong> Garantía del diseño universal para todas las personas.</li>
+<li><strong>Igualdad efectiva de género:</strong> Visibilización de mujeres referentes en ingeniería frontend y diseño UX/UI.</li>
+<li><strong>Propiedad intelectual y privacidad:</strong> Respeto escrupuloso a licencias y normativas de protección de datos (RGPD/LOPDGDD).</li>
+<li><strong>Proyecto Lingüístico de Centro (PLC):</strong> Manejo de terminología técnica en inglés y rigor ortográfico y sintáctico en la documentación de proyectos.</li>
+</ul>
+<hr />
+<h2 id="13-recursos-didacticos-y-apuntes-del-modulo-docs">13. Recursos Didácticos y Apuntes del Módulo (<code>docs/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Documento</th>
+<th style="text-align: left;">Título del Recurso en <code>docs/</code></th>
+<th style="text-align: left;">Contenido y Enfoque Profesional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>01</code></td>
+<td style="text-align: left;"><a href="../"><code>01. Introducción al Diseño de Interfaces Web</code></a></td>
+<td style="text-align: left;">Fundamentos de UI/UX, ergonomía digital y flujo de trabajo frontend.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>02</code></td>
+<td style="text-align: left;"><a href="../02-psicologia-diseno/"><code>02-psicologia-diseno.md</code></a></td>
+<td style="text-align: left;">Psicología cognitiva, Leyes de Gestalt y Leyes de UX (Fitts, Hick, Miller, Jakob).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>03</code></td>
+<td style="text-align: left;"><a href="../03-color-tipografia/"><code>03-color-tipografia.md</code></a></td>
+<td style="text-align: left;">Teoría del color, espacios Oklch, ratios WCAG, jerarquía tipográfica y fuentes variables.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>04</code></td>
+<td style="text-align: left;"><a href="../04-guias-estilo-design-systems/"><code>04-guias-estilo-design-systems.md</code></a></td>
+<td style="text-align: left;">Sistemas de diseño, Atomic Design, Design Tokens y documentación.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>05</code></td>
+<td style="text-align: left;"><a href="../05-figma-profesional/"><code>05-figma-profesional.md</code></a></td>
+<td style="text-align: left;">Figma avanzado: Frames, Auto Layout, Componentes, Variantes y prototipado Smart Animate.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>06</code></td>
+<td style="text-align: left;"><a href="../06-arquitectura-informacion/"><code>06-arquitectura-informacion.md</code></a></td>
+<td style="text-align: left;">Arquitectura de información, árboles de contenido, User Flows, Card Sorting y Wireframes.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>07</code></td>
+<td style="text-align: left;"><a href="../07-html-semantico/"><code>07-html-semantico.md</code></a></td>
+<td style="text-align: left;">HTML5 semántico, landmarks accesibles, microdatos Schema.org y SEO técnico.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>08</code></td>
+<td style="text-align: left;"><a href="../08-css-profesional/"><code>08-css-profesional.md</code></a></td>
+<td style="text-align: left;">CSS profesional, Box Model, cascada, especificidad, Custom Properties y metodología BEM.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>09</code></td>
+<td style="text-align: left;"><a href="../09-flexbox/"><code>09-flexbox.md</code></a></td>
+<td style="text-align: left;">Maquetación unidimensional con Flexbox, contenedor e items.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>10</code></td>
+<td style="text-align: left;"><a href="../10-css-grid-layout/"><code>10-css-grid-layout.md</code></a></td>
+<td style="text-align: left;">Maquetación bidimensional con CSS Grid, pistas, áreas y auto-fit/auto-fill.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>11</code></td>
+<td style="text-align: left;"><a href="../11-responsive-design/"><code>11-responsive-design.md</code></a></td>
+<td style="text-align: left;">Diseño responsive Mobile-First, Media Queries, Container Queries e imágenes responsivas.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>12</code></td>
+<td style="text-align: left;"><a href="../12-multimedia-web/"><code>12-multimedia-web.md</code></a></td>
+<td style="text-align: left;">Multimedia: WebP, AVIF, SVG interactivo, audio/vídeo HTML5 y subtítulos WebVTT.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>13</code></td>
+<td style="text-align: left;"><a href="../13-interactividad-web/"><code>13-interactividad-web.md</code></a></td>
+<td style="text-align: left;">Interactividad web, transiciones CSS, <code>@keyframes</code>, eventos DOM y animaciones JS.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>14</code></td>
+<td style="text-align: left;"><a href="../14-accesibilidad-web/"><code>14-accesibilidad-web.md</code></a></td>
+<td style="text-align: left;">Accesibilidad web universal, pautas WCAG 2.2 (A/AA/AAA), WAI-ARIA y lectores de pantalla.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>15</code></td>
+<td style="text-align: left;"><a href="../15-usabilidad-web/"><code>15-usabilidad-web.md</code></a></td>
+<td style="text-align: left;">Usabilidad web, las 10 heurísticas de Nielsen, métricas SUS, Core Web Vitals y tests.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>16</code></td>
+<td style="text-align: left;"><a href="../16-diseno-centrado-usuario/"><code>16-diseno-centrado-usuario.md</code></a></td>
+<td style="text-align: left;">Metodología DCU y Design Thinking: User Personas, Empathy Maps y Customer Journey.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>17</code></td>
+<td style="text-align: left;"><a href="../17-tailwindcss4/"><code>17-tailwindcss4.md</code></a></td>
+<td style="text-align: left;">Tailwind CSS 4: Enfoque Utility-First, configuración moderna y directivas <code>@theme</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>18</code></td>
+<td style="text-align: left;"><a href="../18-preprocesadores-css/"><code>18-preprocesadores-css.md</code></a></td>
+<td style="text-align: left;">Preprocesadores CSS: Sass/SCSS y LESS, mixins, funciones y modularización <code>@use</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>19</code></td>
+<td style="text-align: left;"><a href="../19-marco-legal-multimedia/"><code>19-marco-legal-multimedia.md</code></a></td>
+<td style="text-align: left;">Marco legal multimedia: TRLPI, licencias Creative Commons, licencias open source y RGPD.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>20</code></td>
+<td style="text-align: left;"><a href="../20-angular-introduccion/"><code>20-angular-introduccion.md</code></a></td>
+<td style="text-align: left;">Angular: Arquitectura por componentes Standalone, TypeScript, Angular CLI y ciclo de vida.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>21</code></td>
+<td style="text-align: left;"><a href="../21-angular-componentes-datos/"><code>21-angular-componentes-datos.md</code></a></td>
+<td style="text-align: left;">Angular: Data Binding, directivas de control (<code>@if</code>, <code>@for</code>), Signals y Pipes.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>22</code></td>
+<td style="text-align: left;"><a href="../22-angular-servicios-httpclient/"><code>22-angular-servicios-httpclient.md</code></a></td>
+<td style="text-align: left;">Angular: Inyección de dependencias, Servicios, <code>HttpClient</code>, RxJS y consumo de APIs REST.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>23</code></td>
+<td style="text-align: left;"><a href="../23-angular-routing-formularios/"><code>23-angular-routing-formularios.md</code></a></td>
+<td style="text-align: left;">Angular: Enrutamiento con <code>Angular Router</code>, Lazy Loading, Formularios Reactivos y validación.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="./.." class="md-footer__link md-footer__link--prev" aria-label="Anterior: 01. Introducción">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                01. Introducción
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-psicologia-diseno/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 02. Psicología del diseño">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                02. Psicología del diseño
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copiado al portapapeles","clipboard.copy":"Copiar al portapapeles","search.result.more.one":"1 más en esta página","search.result.more.other":"# más en esta página","search.result.none":"No se encontraron documentos","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Teclee para comenzar búsqueda","search.result.term.missing":"Falta","select.version":"Seleccionar versión"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c04ba553.min.js"></script>
+      
+    
+  </body>
+</html>

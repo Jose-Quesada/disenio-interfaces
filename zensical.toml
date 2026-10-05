@@ -46,9 +46,10 @@ Copyright &copy; 2026 The authors
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "01. Introducción" = "index.md" },
+  { "Programación didáctica" = "programacion-didactica.md" },
   { "02. Psicología del diseño" = "02-psicologia-diseno.md" },
   { "03. Color y tipografía" = "03-color-tipografia.md" },
-#  { "04. Guías de estilo y design systems" = "04-guias-estilo-design-systems.md" },
+  { "04. Guías de estilo y design systems" = "04-guias-estilo-design-systems.md" },
 #  { "05. Figma profesional" = "05-figma-profesional.md" },
 #  { "06. Arquitectura de la información" = "06-arquitectura-informacion.md" },
 #  { "07. HTML semántico" = "07-html-semantico.md" },
@@ -56,19 +57,19 @@ nav = [
 #  { "09. Flexbox" = "09-flexbox.md" },
 #  { "10. CSS Grid" = "10-css-grid-layout.md" },
 #  { "11. Diseño responsive" = "11-responsive-design.md" },
-#  { "12. Multimedia web" = "12-multimedia-web.md" },
-#  { "13. Interactividad web" = "13-interactividad-web.md" },
+  { "12. Multimedia web" = "12-multimedia-web.md" },
+  { "13. Interactividad web" = "13-interactividad-web.md" },
   { "14. Accesibilidad web" = "14-accesibilidad-web.md" },
   { "15. Usabilidad web" = "15-usabilidad-web.md" },
   { "16. Diseño centrado en usuario" = "16-diseno-centrado-usuario.md" },
-#  { "17. Tailwind CSS 4" = "17-tailwindcss4.md" },
+# { "17. Tailwind CSS 4" = "17-tailwindcss4.md" },
 #  { "18. Preprocesadores CSS" = "18-preprocesadores-css.md" },
 #  { "19. Marco legal multimedia" = "19-marco-legal-multimedia.md" },
 #  { "20. Angular: Introducción" = "20-angular-introduccion.md" },
-#  { "21. Angular: Componentes y datos" = "21-angular-componentes-datos.md" },
-#  { "22. Angular: Servicios y HttpClient" = "22-angular-servicios-httpclient.md" },
-#  { "23. Angular: Routing y Formularios" = "23-angular-routing-formularios.md" },
-#  { "Markdown (referencia)" = "markdown.md" },
+# { "21. Angular: Componentes y datos" = "21-angular-componentes-datos.md" },
+# { "22. Angular: Servicios y HttpClient" = "22-angular-servicios-httpclient.md" },
+# { "23. Angular: Routing y Formularios" = "23-angular-routing-formularios.md" },
+# { "Markdown (referencia)" = "markdown.md" },
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
