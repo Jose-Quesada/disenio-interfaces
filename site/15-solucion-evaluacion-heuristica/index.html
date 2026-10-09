@@ -1,0 +1,1722 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes básicos de Angular para Martos y alrededores.">
+      
+      
+        <meta name="author" content="Jose Quesada">
+      
+      
+      
+        <link rel="prev" href="../15-usabilidad-web/">
+      
+      
+        <link rel="next" href="../16-diseno-centrado-usuario/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.44">
+    
+    
+      
+        <title>15. Solución: Evaluación Heurística Guiada (Portal «EduCampus Virtual») - Diseño de Interfaces - DAW</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navegación"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#15-solucion-evaluacion-heuristica-guiada-portal-educampus-virtual" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="./.." title="Diseño de Interfaces - DAW" class="md-header__button md-logo" aria-label="Diseño de Interfaces - DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navegación">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de Interfaces - DAW
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              15. Solución: Evaluación Heurística Guiada (Portal «EduCampus Virtual»)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Buscar">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Buscar">
+  <button type="button" class="md-search__button">
+    Buscar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Diseño de Interfaces - DAW" class="md-nav__button md-logo" aria-label="Diseño de Interfaces - DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Diseño de Interfaces - DAW
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  01. Introducción
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programacion-didactica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Programación didáctica
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-psicologia-diseno/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-brain" viewBox="0 0 24 24"><path d="M12 18V5M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  02. Psicología del diseño
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-color-tipografia/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-palette" viewBox="0 0 24 24"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  03. Color y tipografía
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-guias-estilo-design-systems/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-swatch-book" viewBox="0 0 24 24"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7M7 17h.01"/><path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  04. Guías de estilo y design systems
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-multimedia-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18M3 7.5h4M3 12h18M3 16.5h4M17 3v18M17 7.5h4M17 16.5h4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  12. Multimedia web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-interactividad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-mouse-pointer-click" viewBox="0 0 24 24"><path d="M14 4.1 12 6M5.1 8l-2.9-.8M6 12l-1.9 2M7.2 2.2 8 5.1M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  13. Interactividad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-accesibilidad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-accessibility" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1M5 8l3-3 5.5 3-2.36 3.5M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  14. Accesibilidad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-usabilidad-web/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-user-check" viewBox="0 0 24 24"><path d="m16 11 2 2 4-4M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  15. Usabilidad web
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  15. Solución: Evaluación heurística guiada
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  15. Solución: Evaluación heurística guiada
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen-ejecutivo-del-informe-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Resumen Ejecutivo del Informe de Auditoría
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-matriz-de-clasificacion-heuristica-y-calculo-de-severidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Matriz de Clasificación Heurística y Cálculo de Severidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificacion-tecnica-de-decisiones-y-criterio-de-priorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Justificación Técnica de Decisiones y Criterio de Priorización
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificación Técnica de Decisiones y Criterio de Priorización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-p0-para-las-incidencias-1-y-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿Por qué P0 para las incidencias 1 y 3?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-p1-sprint-actual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Estrategia de P1 (Sprint actual)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-solucion-detallada-por-incidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Solución Detallada por Incidencia
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Solución Detallada por Incidencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-1-visibilidad-del-estado-del-sistema-h1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 1: Visibilidad del Estado del Sistema (H1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-2-relacion-entre-el-sistema-y-el-mundo-real-h2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 2: Relación entre el Sistema y el Mundo Real (H2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-3-control-y-libertad-del-usuario-h3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 3: Control y Libertad del Usuario (H3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-4-consistencia-y-estandares-h4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 4: Consistencia y Estándares (H4)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-5-prevencion-de-errores-h5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 5: Prevención de Errores (H5)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-6-reconocimiento-antes-que-recuerdo-h6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 6: Reconocimiento antes que Recuerdo (H6)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-7-flexibilidad-y-eficiencia-de-uso-h7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 7: Flexibilidad y Eficiencia de Uso (H7)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-8-diseno-estetico-y-minimalista-h8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 8: Diseño Estético y Minimalista (H8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-9-ayudar-a-reconocer-diagnosticar-y-recuperarse-de-errores-h9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 9: Ayudar a Reconocer, Diagnosticar y Recuperarse de Errores (H9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-10-ayuda-y-documentacion-h10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 10: Ayuda y Documentación (H10)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implementacion-tecnica-de-referencia-codigo-frontend-accesible" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Implementación Técnica de Referencia (Código Frontend Accesible)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-diseno-centrado-usuario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  16. Diseño centrado en usuario
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen-ejecutivo-del-informe-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Resumen Ejecutivo del Informe de Auditoría
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-matriz-de-clasificacion-heuristica-y-calculo-de-severidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Matriz de Clasificación Heurística y Cálculo de Severidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificacion-tecnica-de-decisiones-y-criterio-de-priorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Justificación Técnica de Decisiones y Criterio de Priorización
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificación Técnica de Decisiones y Criterio de Priorización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-p0-para-las-incidencias-1-y-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿Por qué P0 para las incidencias 1 y 3?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-p1-sprint-actual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Estrategia de P1 (Sprint actual)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-solucion-detallada-por-incidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Solución Detallada por Incidencia
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Solución Detallada por Incidencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-1-visibilidad-del-estado-del-sistema-h1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 1: Visibilidad del Estado del Sistema (H1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-2-relacion-entre-el-sistema-y-el-mundo-real-h2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 2: Relación entre el Sistema y el Mundo Real (H2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-3-control-y-libertad-del-usuario-h3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 3: Control y Libertad del Usuario (H3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-4-consistencia-y-estandares-h4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 4: Consistencia y Estándares (H4)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-5-prevencion-de-errores-h5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 5: Prevención de Errores (H5)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-6-reconocimiento-antes-que-recuerdo-h6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 6: Reconocimiento antes que Recuerdo (H6)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-7-flexibilidad-y-eficiencia-de-uso-h7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 7: Flexibilidad y Eficiencia de Uso (H7)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-8-diseno-estetico-y-minimalista-h8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 8: Diseño Estético y Minimalista (H8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-9-ayudar-a-reconocer-diagnosticar-y-recuperarse-de-errores-h9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 9: Ayudar a Reconocer, Diagnosticar y Recuperarse de Errores (H9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incidencia-10-ayuda-y-documentacion-h10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incidencia 10: Ayuda y Documentación (H10)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implementacion-tecnica-de-referencia-codigo-frontend-accesible" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Implementación Técnica de Referencia (Código Frontend Accesible)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="15-solucion-evaluacion-heuristica-guiada-portal-educampus-virtual">15. Solución: Evaluación Heurística Guiada (Portal «EduCampus Virtual»)</h1>
+<p>Este documento contiene la <strong>resolución técnica oficial y exhaustiva</strong> de la <a href="../15-usabilidad-web/#actividad-guiada-1-evaluacion-heuristica-de-un-caso-real-cerrado-portal-academico-educampus-virtual">Actividad Guiada 1 del tema 15 (Usabilidad Web)</a>. Está estructurada con el rigor de una auditoría profesional de UX/UI para un sistema educativo de misión crítica.</p>
+<hr />
+<h2 id="1-resumen-ejecutivo-del-informe-de-auditoria">1. Resumen Ejecutivo del Informe de Auditoría</h2>
+<ul>
+<li><strong>Sistema Evaluado:</strong> Portal del Estudiante «EduCampus Virtual» v2.4.</li>
+<li><strong>Flujo Analizado:</strong> Proceso crítico de autenticación, gestión de matrícula, entrega telemática de exámenes/tareas y consulta de calificaciones.</li>
+<li><strong>Incidencias Totales:</strong> 10 hallazgos directos correspondientes a las 10 heurísticas de Jakob Nielsen.</li>
+<li><strong>Distribución de Severidad:</strong></li>
+<li><strong>Severidad 4 (Catastrófica - P0 Hotfix):</strong> 2 incidencias (Incidencias 1 y 3). Bloquean entregas académicas y saturan el servidor.</li>
+<li><strong>Severidad 3 (Grave - P1 Sprint Actual):</strong> 4 incidencias (Incidencias 2, 5, 6 y 9). Provocan abandono, ansiedad e incapacidad de autoservicio.</li>
+<li><strong>Severidad 2 (Menor - P2 Próximo Sprint):</strong> 3 incidencias (Incidencias 7, 8 y 10). Dificultan la agilidad y generan fricción cognitiva.</li>
+<li><strong>Severidad 1 (Cosmética - P3 Backlog General):</strong> 1 incidencia (Incidencia 4). Inconsistencia de diseño y nomenclatura.</li>
+</ul>
+<hr />
+<h2 id="2-matriz-de-clasificacion-heuristica-y-calculo-de-severidad">2. Matriz de Clasificación Heurística y Cálculo de Severidad</h2>
+<p>Siguiendo la metodología de Nielsen Norman Group, la severidad se pondera evaluando tres dimensiones:
+* <strong>Frecuencia:</strong> ¿Ocurre de forma habitual o solo en circunstancias excepcionales? (Baja / Media / Alta)
+* <strong>Impacto:</strong> ¿Es fácil de superar o bloquea por completo la tarea del alumno? (Leve / Moderado / Crítico)
+* <strong>Persistencia:</strong> ¿Afecta una sola vez o es un problema continuo a lo largo de toda la interacción? (Puntual / Recurrente / Bloqueante)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">ID</th>
+<th style="text-align: left;">Heurística Violada</th>
+<th style="text-align: left;">Nombre de la Heurística</th>
+<th style="text-align: center;">Frecuencia</th>
+<th style="text-align: center;">Impacto</th>
+<th style="text-align: center;">Persistencia</th>
+<th style="text-align: center;">Severidad (0–4)</th>
+<th style="text-align: center;">Prioridad</th>
+<th style="text-align: left;">Resumen de la Solución Técnica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>I-01</strong></td>
+<td style="text-align: left;"><strong>H1</strong></td>
+<td style="text-align: left;">Visibilidad del estado del sistema</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Crítico</td>
+<td style="text-align: center;">Bloqueante</td>
+<td style="text-align: center;"><strong>4</strong> (Catastrófica)</td>
+<td style="text-align: center;"><strong>P0</strong></td>
+<td style="text-align: left;">Deshabilitar botón al enviar, mostrar indicador de carga interactivo y feedback <code>aria-live</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-02</strong></td>
+<td style="text-align: left;"><strong>H2</strong></td>
+<td style="text-align: left;">Relación entre el sistema y el mundo real</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Moderado</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>3</strong> (Grave)</td>
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Reemplazar códigos de base de datos por lenguaje docente comprensible en español llano.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-03</strong></td>
+<td style="text-align: left;"><strong>H3</strong></td>
+<td style="text-align: left;">Control y libertad del usuario</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">Crítico</td>
+<td style="text-align: center;">Bloqueante</td>
+<td style="text-align: center;"><strong>4</strong> (Catastrófica)</td>
+<td style="text-align: center;"><strong>P0</strong></td>
+<td style="text-align: left;">Cuadro de diálogo modal accesible de confirmación destructiva y papelera temporal con deshacer (<em>Undo</em>).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-04</strong></td>
+<td style="text-align: left;"><strong>H4</strong></td>
+<td style="text-align: left;">Consistencia y estándares</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Leve</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>1</strong> (Cosmética)</td>
+<td style="text-align: center;"><strong>P3</strong></td>
+<td style="text-align: left;">Unificar la terminología (<em>«Asignatura»</em>) y estandarizar los botones primarios en el Design System.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-05</strong></td>
+<td style="text-align: left;"><strong>H5</strong></td>
+<td style="text-align: left;">Prevención de errores</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Crítico</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>3</strong> (Grave)</td>
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Validación en cliente (JS/HTML5) del peso (<code>max: 15MB</code>) y extensión antes de iniciar la subida.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-06</strong></td>
+<td style="text-align: left;"><strong>H6</strong></td>
+<td style="text-align: left;">Reconocimiento antes que recuerdo</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Moderado</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>3</strong> (Grave)</td>
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Selector contextual (<code>&lt;select&gt;</code> / autocompletado) precargado con las materias y profesores matriculados.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-07</strong></td>
+<td style="text-align: left;"><strong>H7</strong></td>
+<td style="text-align: left;">Flexibilidad y eficiencia de uso</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Moderado</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>2</strong> (Menor)</td>
+<td style="text-align: center;"><strong>P2</strong></td>
+<td style="text-align: left;">Widget de acceso directo a <em>«Últimas Notas»</em> en dashboard, migas de pan y atajo de teclado (<code>Alt + N</code>).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-08</strong></td>
+<td style="text-align: left;"><strong>H8</strong></td>
+<td style="text-align: left;">Diseño estético y minimalista</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Moderado</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>2</strong> (Menor)</td>
+<td style="text-align: center;"><strong>P2</strong></td>
+<td style="text-align: left;">Limpiar el dashboard eliminando banners antiguos, priorizando el contenido académico en tarjetas limpias.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-09</strong></td>
+<td style="text-align: left;"><strong>H9</strong></td>
+<td style="text-align: left;">Ayudar a reconocer, diagnosticar y recuperarse de errores</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">Crítico</td>
+<td style="text-align: center;">Recurrente</td>
+<td style="text-align: center;"><strong>3</strong> (Grave)</td>
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Mensaje de error en lenguaje natural indicando el motivo exacto y enlace visible a recuperación de credenciales.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I-10</strong></td>
+<td style="text-align: left;"><strong>H10</strong></td>
+<td style="text-align: left;">Ayuda y documentación</td>
+<td style="text-align: center;">Baja</td>
+<td style="text-align: center;">Moderado</td>
+<td style="text-align: center;">Puntual</td>
+<td style="text-align: center;"><strong>2</strong> (Menor)</td>
+<td style="text-align: center;"><strong>P2</strong></td>
+<td style="text-align: left;">Guía interactiva paso a paso (<em>stepper</em>) y <em>tooltips</em> explicativos en la gestión de firmas y convalidaciones.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-justificacion-tecnica-de-decisiones-y-criterio-de-priorizacion">3. Justificación Técnica de Decisiones y Criterio de Priorización</h2>
+<h3 id="por-que-p0-para-las-incidencias-1-y-3">¿Por qué P0 para las incidencias 1 y 3?</h3>
+<ul>
+<li><strong>Incidencia 1 (H1 - Visibilidad):</strong> Al tardar 12 segundos sin feedback visual ni bloqueo de interfaz, el usuario infiere que la aplicación se ha congelado o que su clic no tuvo efecto. El envío compulsivo de peticiones paralelas colapsa el pool de conexiones del backend (HTTP 500) y puede generar duplicidades en la base de datos o fallos de transaccionalidad. La corrección requiere un bloqueo preventivo del botón y un elemento visual de progreso con soporte de accesibilidad.</li>
+<li><strong>Incidencia 3 (H3 - Control y Libertad):</strong> La eliminación irreversible de un archivo final sin paso de confirmación en un entorno de evaluación reglada supone un daño catastrófico irremediable para el alumno (suspensión por no entrega fuera de plazo). Debe solventarse de forma inmediata mediante un diálogo modal semántico (<code>&lt;dialog&gt;</code>) y retención en papelera durante 24 horas.</li>
+</ul>
+<h3 id="estrategia-de-p1-sprint-actual">Estrategia de P1 (Sprint actual)</h3>
+<p>Las incidencias 2, 5, 6 y 9 atacan directamente las tasas de conversión y generan más del 70% de las llamadas al servicio de atención al usuario. Implementar validación en cliente para archivos (H5) ahorra ancho de banda de red, mientras que sustituir códigos crípticos por datos precargados (H2, H6 y H9) reduce la carga cognitiva del alumno.</p>
+<hr />
+<h2 id="4-solucion-detallada-por-incidencia">4. Solución Detallada por Incidencia</h2>
+<h3 id="incidencia-1-visibilidad-del-estado-del-sistema-h1">Incidencia 1: Visibilidad del Estado del Sistema (H1)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> El sistema ejecuta una operación asíncrona pesada (subida y firma de examen) en segundo plano sin informar al usuario de la fase en la que se encuentra.</li>
+<li><strong>Rediseño:</strong> Al hacer clic en el botón de entrega:</li>
+<li>El botón pasa a estado <code>disabled</code> para impedir múltiples clics.</li>
+<li>El texto del botón cambia a <em>"Subiendo examen..."</em> con un indicador animado.</li>
+<li>Se despliega una barra de progreso porcentual (<code>&lt;progress&gt;</code> o <code>aria-valuenow</code>).</li>
+<li>Una región <code>aria-live="polite"</code> anuncia al lector de pantalla el progreso de la operación.</li>
+</ul>
+<h3 id="incidencia-2-relacion-entre-el-sistema-y-el-mundo-real-h2">Incidencia 2: Relación entre el Sistema y el Mundo Real (H2)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Se exponen variables internas de la base de datos (<code>FLG_CONV_ORD_PENDING</code>, <code>TBL_ALUM_ENROLL</code>) ajenas al modelo mental del estudiante.</li>
+<li><strong>Rediseño:</strong> Transformar los códigos en etiquetas con lenguaje pedagógico estandarizado:</li>
+<li><code>FLG_CONV_ORD_PENDING</code> <span class="arithmatex">\(\rightarrow\)</span> <em>"Solicitud de convalidación en revisión por jefatura de estudios"</em>.</li>
+<li><code>Transacción bloqueada...</code> <span class="arithmatex">\(\rightarrow\)</span> <em>"El periodo de matrícula oficial comienza el 15 de octubre"</em>.</li>
+</ul>
+<h3 id="incidencia-3-control-y-libertad-del-usuario-h3">Incidencia 3: Control y Libertad del Usuario (H3)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Acción destructiva irreversible efectuada con un único clic sin cortafuegos de seguridad.</li>
+<li><strong>Rediseño:</strong> </li>
+<li>Uso del elemento nativo <code>&lt;dialog&gt;</code> modal accesible con foco atrapado (<em>focus trap</em>), requiriendo pulsar explícitamente <em>"Eliminar definitivamente"</em> o <em>"Cancelar"</em>.</li>
+<li>Tras el borrado, mostrar una barra de notificación (<em>toast</em>) con botón <em>"Deshacer"</em> activo durante 15 segundos.</li>
+</ul>
+<h3 id="incidencia-4-consistencia-y-estandares-h4">Incidencia 4: Consistencia y Estándares (H4)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Violación del principio de consistencia interna. Variedad caótica de colores y sinónimos para una misma acción y entidad.</li>
+<li><strong>Rediseño:</strong> Establecer en la guía de estilos:</li>
+<li>Entidad unificada: <strong>«Asignatura»</strong> en todo el portal.</li>
+<li>Botón de acción primaria: Color institucional azul (<code>--color-primary</code>), siempre con el texto <strong>«Confirmar»</strong> o <strong>«Guardar cambios»</strong>.</li>
+</ul>
+<h3 id="incidencia-5-prevencion-de-errores-h5">Incidencia 5: Prevención de Errores (H5)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Falta de restricciones visibles previas y ausencia de validación temprana en el navegador.</li>
+<li><strong>Rediseño:</strong></li>
+<li>Añadir texto de ayuda estático: <em>"Formatos aceptados: .pdf o .zip. Tamaño máximo: 15 MB"</em>.</li>
+<li>Atributos HTML: <code>accept=".pdf,.zip"</code>.</li>
+<li>Comprobación inmediata por JavaScript en el evento <code>change</code>: si <code>file.size &gt; 15 * 1024 * 1024</code>, rechazar el archivo, mostrar alerta visual en rojo y no habilitar el botón de envío.</li>
+</ul>
+<h3 id="incidencia-6-reconocimiento-antes-que-recuerdo-h6">Incidencia 6: Reconocimiento antes que Recuerdo (H6)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Obliga a consultar y memorizar códigos técnicos para completar un trámite académico.</li>
+<li><strong>Rediseño:</strong> Reemplazar el campo de texto libre por un selector de opciones que liste únicamente los módulos en los que el alumno está formalmente matriculado con el nombre completo y la fotografía del profesor asignado.</li>
+</ul>
+<h3 id="incidencia-7-flexibilidad-y-eficiencia-de-uso-h7">Incidencia 7: Flexibilidad y Eficiencia de Uso (H7)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Estructura jerárquica rígida con 6 niveles de profundidad para una tarea diaria.</li>
+<li><strong>Rediseño:</strong></li>
+<li>Incorporar en la cabecera del Dashboard una tarjeta rápida: <em>"Tus calificaciones recientes"</em>.</li>
+<li>Implementar una barra de navegación con migas de pan (<em>breadcrumbs</em>) en todo el portal.</li>
+<li>Atajo de teclado global: <code>Alt + C</code> para acceder directamente a la sábana de notas.</li>
+</ul>
+<h3 id="incidencia-8-diseno-estetico-y-minimalista-h8">Incidencia 8: Diseño Estético y Minimalista (H8)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Densidad excesiva de información caducada e irrelevante que oculta las tareas prioritarias del usuario.</li>
+<li><strong>Rediseño:</strong> Arquitectura de interfaz basada en tarjetas modulares:</li>
+<li>Nivel 1 (Superior): Clases del día, entregas pendientes y avisos urgentes.</li>
+<li>Nivel 2 (Medio): Enlaces rápidos a recursos y calificaciones.</li>
+<li>Mover noticias generales y publicidad a una sección secundaria accesible mediante pestaña o pie de página.</li>
+</ul>
+<h3 id="incidencia-9-ayudar-a-reconocer-diagnosticar-y-recuperarse-de-errores-h9">Incidencia 9: Ayudar a Reconocer, Diagnosticar y Recuperarse de Errores (H9)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Código de excepción del servidor (<code>ERR_AUTH_0x88219</code>) incomprensible e inútil para el usuario.</li>
+<li><strong>Rediseño:</strong> Mostrar mensaje claro: <em>"El correo electrónico o la contraseña introducidos no son correctos. Asegúrate de que las mayúsculas estén desactivadas"</em>, acompañado de un botón destacado: <em>"Recuperar mi contraseña"</em>.</li>
+</ul>
+<h3 id="incidencia-10-ayuda-y-documentacion-h10">Incidencia 10: Ayuda y Documentación (H10)</h3>
+<ul>
+<li><strong>Diagnóstico:</strong> Proceso administrativo complejo con firma digital sin guía integrada.</li>
+<li><strong>Rediseño:</strong></li>
+<li>Componente de progreso por pasos (<em>Stepper</em>) indicando: <em>Paso 1: Descargar modelo</em> <span class="arithmatex">\(\rightarrow\)</span> <em>Paso 2: Firmar con Autofirma</em> <span class="arithmatex">\(\rightarrow\)</span> <em>Paso 3: Subir documento firmado</em>.</li>
+<li>Tooltip con enlace a un videotutorial de 60 segundos sobre cómo instalar Autofirma.</li>
+</ul>
+<hr />
+<h2 id="5-implementacion-tecnica-de-referencia-codigo-frontend-accesible">5. Implementación Técnica de Referencia (Código Frontend Accesible)</h2>
+<p>El siguiente componente resuelve de forma unificada las incidencias <strong>I-01 (H1: Visibilidad)</strong>, <strong>I-03 (H3: Control/Libertad)</strong> y <strong>I-05 (H5: Prevención de errores)</strong> en el formulario de entrega de exámenes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- Componente accesible de entrega de examen con validación y estados de carga --&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">section</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;delivery-card&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;delivery-title&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;delivery-header&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;delivery-title&quot;</span><span class="p">&gt;</span>Entrega de Examen: Desarrollo Web en Entorno Cliente<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;delivery-deadline&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Fecha límite:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 25 de Octubre de 2026 - 23:59h
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;delivery-form&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;delivery-form&quot;</span> <span class="na">novalidate</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="cm">&lt;!-- Prevención de errores (H5): límites claros y visibles --&gt;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;exam-file&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        Archivo del examen resuelto <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;required&quot;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;file-hint&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-hint&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        Formatos permitidos: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>.pdf, .zip<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>. Tamaño máximo: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>15 MB<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>      <span class="p">&lt;</span><span class="nt">input</span> 
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> 
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="na">id</span><span class="o">=</span><span class="s">&quot;exam-file&quot;</span> 
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="na">name</span><span class="o">=</span><span class="s">&quot;examFile&quot;</span> 
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;file-input&quot;</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="na">accept</span><span class="o">=</span><span class="s">&quot;.pdf,.zip&quot;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="na">aria-describedby</span><span class="o">=</span><span class="s">&quot;file-hint file-error&quot;</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="na">required</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>      <span class="p">&gt;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>      <span class="cm">&lt;!-- Mensaje de error dinámico accesible (H9) --&gt;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;file-error&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-error&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&quot;assertive&quot;</span> <span class="na">hidden</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="cm">&lt;!-- Región para anunciar el estado del sistema a lectores de pantalla (H1) --&gt;</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;status-live-region&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sr-only&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;status&quot;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&quot;polite&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="cm">&lt;!-- Barra de progreso visual (H1) --&gt;</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;progress-container&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-wrapper&quot;</span> <span class="na">hidden</span><span class="p">&gt;</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-info&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;progress-label&quot;</span><span class="p">&gt;</span>Subiendo y registrando documento...<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;progress-value&quot;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>0%<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-bar-bg&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;progress-bar-fill&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-bar-fill&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 0%;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-actions&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;submit-btn&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-text&quot;</span><span class="p">&gt;</span>Entregar Examen Definitivo<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-spinner&quot;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">hidden</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="cm">&lt;!-- Diálogo modal accesible para confirmación destructiva (H3) --&gt;</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="p">&lt;</span><span class="nt">dialog</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;confirm-modal&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-dialog&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;modal-title&quot;</span> <span class="na">aria-describedby</span><span class="o">=</span><span class="s">&quot;modal-desc&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-content&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modal-title&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-title&quot;</span><span class="p">&gt;</span>¿Confirmas la entrega definitiva?<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modal-desc&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-desc&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>      Una vez enviado, el examen se registrará con firma electrónica en la sede y no podrás modificarlo ni subir una versión posterior.
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-actions&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modal-cancel-btn&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-secondary&quot;</span><span class="p">&gt;</span>Revisar mi archivo<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modal-confirm-btn&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-danger&quot;</span><span class="p">&gt;</span>Sí, entregar definitivamente<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="p">&lt;/</span><span class="nt">dialog</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">CSS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">/* Sistema de Diseño: Variables semánticas de interfaz */</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nv">--color-primary</span><span class="p">:</span><span class="w"> </span><span class="mh">#0056b3</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nv">--color-primary-hover</span><span class="p">:</span><span class="w"> </span><span class="mh">#004085</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nv">--color-danger</span><span class="p">:</span><span class="w"> </span><span class="mh">#c82333</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nv">--color-danger-hover</span><span class="p">:</span><span class="w"> </span><span class="mh">#bd2130</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nv">--color-secondary</span><span class="p">:</span><span class="w"> </span><span class="mh">#6c757d</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nv">--color-surface</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nv">--color-border</span><span class="p">:</span><span class="w"> </span><span class="mh">#ced4da</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nv">--color-text-main</span><span class="p">:</span><span class="w"> </span><span class="mh">#212529</span><span class="p">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nv">--color-text-muted</span><span class="p">:</span><span class="w"> </span><span class="mh">#6c757d</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nv">--color-success</span><span class="p">:</span><span class="w"> </span><span class="mh">#28a745</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nv">--radius-md</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nv">--spacing-sm</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="nv">--spacing-md</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nv">--spacing-lg</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c">/* Tarjeta de entrega */</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">.</span><span class="nc">delivery-card</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-surface</span><span class="p">);</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-border</span><span class="p">);</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius-md</span><span class="p">);</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-lg</span><span class="p">);</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">640</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-lg</span><span class="p">)</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">);</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-text-main</span><span class="p">);</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="p">.</span><span class="nc">delivery-header</span><span class="w"> </span><span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-sm</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p">}</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="p">.</span><span class="nc">delivery-deadline</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-text-muted</span><span class="p">);</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-md</span><span class="p">);</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="p">}</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="c">/* Campos de formulario */</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="p">.</span><span class="nc">form-group</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-md</span><span class="p">);</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="p">}</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="p">.</span><span class="nc">form-label</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="p">}</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="p">.</span><span class="nc">form-hint</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-text-muted</span><span class="p">);</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-sm</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="p">}</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="p">.</span><span class="nc">form-error</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-danger</span><span class="p">);</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="p">}</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="p">.</span><span class="nc">file-input</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-border</span><span class="p">);</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="p">}</span>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="p">.</span><span class="nc">file-input</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">  </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">  </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="p">}</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="c">/* Barra de progreso interactiva (H1) */</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="p">.</span><span class="nc">progress-wrapper</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-md</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="p">}</span>
+</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>
+</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="p">.</span><span class="nc">progress-info</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span>
+</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="p">}</span>
+</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
+</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="p">.</span><span class="nc">progress-bar-bg</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e9ecef</span><span class="p">;</span>
+</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="p">}</span>
+</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>
+</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="p">.</span><span class="nc">progress-bar-fill</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
+</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">width</span><span class="w"> </span><span class="mf">0.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="p">}</span>
+</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>
+</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a><span class="c">/* Botones */</span>
+</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-109"><a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-flex</span><span class="p">;</span>
+</span><span id="__span-1-110"><a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-1-111"><a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-1-112"><a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-113"><a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-114"><a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-1-115"><a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a><span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+</span><span id="__span-1-116"><a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-117"><a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+</span><span id="__span-1-118"><a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a><span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+</span><span id="__span-1-119"><a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a><span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background-color</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+</span><span id="__span-1-120"><a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a><span class="p">}</span>
+</span><span id="__span-1-121"><a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>
+</span><span id="__span-1-122"><a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a><span class="p">.</span><span class="nc">btn</span><span class="p">:</span><span class="nd">disabled</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-123"><a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a><span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span>
+</span><span id="__span-1-124"><a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a><span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">not-allowed</span><span class="p">;</span>
+</span><span id="__span-1-125"><a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a><span class="p">}</span>
+</span><span id="__span-1-126"><a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a>
+</span><span id="__span-1-127"><a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a><span class="p">.</span><span class="nc">btn-primary</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-128"><a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
+</span><span id="__span-1-129"><a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+</span><span id="__span-1-130"><a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a><span class="p">}</span>
+</span><span id="__span-1-131"><a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a>
+</span><span id="__span-1-132"><a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a><span class="p">.</span><span class="nc">btn-primary</span><span class="p">:</span><span class="nd">hover</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">disabled</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-133"><a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary-hover</span><span class="p">);</span>
+</span><span id="__span-1-134"><a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a><span class="p">}</span>
+</span><span id="__span-1-135"><a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a>
+</span><span id="__span-1-136"><a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a><span class="p">.</span><span class="nc">btn-danger</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-137"><a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-danger</span><span class="p">);</span>
+</span><span id="__span-1-138"><a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+</span><span id="__span-1-139"><a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a><span class="p">}</span>
+</span><span id="__span-1-140"><a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a>
+</span><span id="__span-1-141"><a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a><span class="p">.</span><span class="nc">btn-secondary</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-142"><a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-secondary</span><span class="p">);</span>
+</span><span id="__span-1-143"><a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+</span><span id="__span-1-144"><a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a><span class="p">}</span>
+</span><span id="__span-1-145"><a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a>
+</span><span id="__span-1-146"><a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a><span class="c">/* Diálogo Modal Nativo (H3) */</span>
+</span><span id="__span-1-147"><a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a><span class="p">.</span><span class="nc">modal-dialog</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-148"><a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+</span><span id="__span-1-149"><a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius-md</span><span class="p">);</span>
+</span><span id="__span-1-150"><a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-lg</span><span class="p">);</span>
+</span><span id="__span-1-151"><a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a><span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">480</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-152"><a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a><span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">30</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">);</span>
+</span><span id="__span-1-153"><a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a><span class="p">}</span>
+</span><span id="__span-1-154"><a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a>
+</span><span id="__span-1-155"><a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a><span class="p">.</span><span class="nc">modal-dialog</span><span class="p">::</span><span class="nd">backdrop</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-156"><a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</span><span id="__span-1-157"><a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a><span class="w">  </span><span class="n">backdrop-filter</span><span class="p">:</span><span class="w"> </span><span class="nb">blur</span><span class="p">(</span><span class="mi">2</span><span class="kt">px</span><span class="p">);</span>
+</span><span id="__span-1-158"><a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a><span class="p">}</span>
+</span><span id="__span-1-159"><a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a>
+</span><span id="__span-1-160"><a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a><span class="p">.</span><span class="nc">modal-title</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-161"><a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-162"><a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-danger</span><span class="p">);</span>
+</span><span id="__span-1-163"><a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a><span class="p">}</span>
+</span><span id="__span-1-164"><a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a>
+</span><span id="__span-1-165"><a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a><span class="p">.</span><span class="nc">modal-actions</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-166"><a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span id="__span-1-167"><a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-end</span><span class="p">;</span>
+</span><span id="__span-1-168"><a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-md</span><span class="p">);</span>
+</span><span id="__span-1-169"><a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--spacing-lg</span><span class="p">);</span>
+</span><span id="__span-1-170"><a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a><span class="p">}</span>
+</span><span id="__span-1-171"><a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a>
+</span><span id="__span-1-172"><a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a><span class="c">/* Utilidad para accesibilidad */</span>
+</span><span id="__span-1-173"><a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a><span class="p">.</span><span class="nc">sr-only</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-174"><a id="__codelineno-1-174" name="__codelineno-1-174" href="#__codelineno-1-174"></a><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+</span><span id="__span-1-175"><a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-176"><a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-177"><a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-178"><a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-179"><a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a><span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+</span><span id="__span-1-180"><a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a><span class="w">  </span><span class="k">clip</span><span class="p">:</span><span class="w"> </span><span class="nb">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-181"><a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a><span class="w">  </span><span class="k">white-space</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span>
+</span><span id="__span-1-182"><a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-183"><a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Lógica para validación preventiva de archivos (H5) y control de estados (H1, H3)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;delivery-form&#39;</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;exam-file&#39;</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;file-error&#39;</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">submitBtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;submit-btn&#39;</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;confirm-modal&#39;</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">modalCancelBtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-cancel-btn&#39;</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">modalConfirmBtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-confirm-btn&#39;</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">progressContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;progress-container&#39;</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">progressBarFill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;progress-bar-fill&#39;</span><span class="p">);</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">progressValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;progress-value&#39;</span><span class="p">);</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">liveRegion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;status-live-region&#39;</span><span class="p">);</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">MAX_FILE_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">;</span><span class="w"> </span><span class="c1">// 15 MB</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ALLOWED_EXTENSIONS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;.pdf&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.zip&#39;</span><span class="p">];</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="c1">// Validación en cliente al seleccionar archivo (Prevención de errores H5)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">file</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileExt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ALLOWED_EXTENSIONS</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">fileExt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Error: El formato &quot;</span><span class="si">${</span><span class="nx">fileExt</span><span class="si">}</span><span class="sb">&quot; no está permitido. Selecciona un archivo .pdf o .zip.`</span><span class="p">;</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">      </span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">      </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">MAX_FILE_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">sizeMB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mf">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Error: El archivo pesa </span><span class="si">${</span><span class="nx">sizeMB</span><span class="si">}</span><span class="sb"> MB y supera el límite de 15 MB. Comprime tu archivo antes de subirlo.`</span><span class="p">;</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">      </span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">  </span><span class="c1">// Interceptar submit para solicitar confirmación (Libertad de control H3)</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">  </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mf">0</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Debes adjuntar un archivo antes de realizar la entrega.&#39;</span><span class="p">;</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">      </span><span class="nx">fileError</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">      </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">    </span><span class="c1">// Abrir modal nativo</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">showModal</span><span class="p">();</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">  </span><span class="nx">modalCancelBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">  </span><span class="nx">modalConfirmBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">    </span><span class="nx">iniciarEnvioExamen</span><span class="p">();</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">  </span><span class="c1">// Simulación de envío con progreso (Visibilidad del sistema H1)</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">iniciarEnvioExamen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">    </span><span class="nx">submitBtn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">    </span><span class="nx">submitBtn</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.btn-text&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Subiendo examen...&#39;</span><span class="p">;</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">    </span><span class="nx">progressContainer</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">    </span><span class="nx">liveRegion</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Subiendo examen. Por favor, no cierres esta ventana.&#39;</span><span class="p">;</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="w">      </span><span class="nx">progress</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">      </span><span class="nx">progressBarFill</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">progress</span><span class="si">}</span><span class="sb">%`</span><span class="p">;</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">      </span><span class="nx">progressValue</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">progress</span><span class="si">}</span><span class="sb">%`</span><span class="p">;</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">progress</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">        </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">        </span><span class="nx">submitBtn</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.btn-text&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;¡Examen entregado con éxito!&#39;</span><span class="p">;</span>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">        </span><span class="nx">submitBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;var(--color-success)&#39;</span><span class="p">;</span>
+</span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">        </span><span class="nx">liveRegion</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;El examen ha sido entregado y registrado con éxito.&#39;</span><span class="p">;</span>
+</span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
+</span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="p">});</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../15-usabilidad-web/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 15. Usabilidad web">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                15. Usabilidad web
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../16-diseno-centrado-usuario/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 16. Diseño centrado en usuario">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                16. Diseño centrado en usuario
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copiado al portapapeles","clipboard.copy":"Copiar al portapapeles","search.result.more.one":"1 más en esta página","search.result.more.other":"# más en esta página","search.result.none":"No se encontraron documentos","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Teclee para comenzar búsqueda","search.result.term.missing":"Falta","select.version":"Seleccionar versión"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6e5f0216.min.js"></script>
+      
+    
+  </body>
+</html>
