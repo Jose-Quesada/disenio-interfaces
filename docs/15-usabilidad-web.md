@@ -574,6 +574,7 @@ El equipo de UX/UI ha registrado formalmente las **10 incidencias críticas** ac
 
 **Objetivo del Alumno:**
 Actuar como Auditor Senior de Usabilidad y resolver de forma estructurada los 5 bloques requeridos a partir de los datos exactos del informe:
+
 1. **Identificación Heurística:** Asociar cada una de las 10 incidencias a su heurística principal de Jakob Nielsen violada (cubriendo de forma unívoca de H1 a H10).
 2. **Cálculo de Severidad (Escala 0–4):** Estimar la severidad evaluando Frecuencia (Baja/Media/Alta), Impacto (Leve/Moderado/Crítico) y Persistencia (Puntual/Recurrente/Bloqueante) conforme a la metodología de Nielsen Norman Group.
 3. **Clasificación de Prioridad Técnica:** Asignar a cada incidencia su prioridad de desarrollo en el backlog: **P0 (Hotfix urgente)**, **P1 (Sprint actual)**, **P2 (Próximo sprint)** o **P3 (Mejora estética/Quick win)**.
@@ -587,61 +588,61 @@ Actuar como Auditor Senior de Usabilidad y resolver de forma estructurada los 5 
 A continuación se detalla la descripción empírica de los 10 problemas detectados en el sistema:
 
 1. **Incidencia 1 (Envío de Examen sin confirmación ni barra de carga):**
-   * *Descripción:* Al pulsar el botón `«Entregar Examen Definitivo»`, la página queda estática durante 12 segundos sin mostrar ningún indicador giratorio (spinner), barra de progreso ni mensaje de «Enviando...». Los alumnos hacen clic repetidamente (entre 3 y 6 veces), lo que provoca peticiones duplicadas y un error HTTP 500 en el backend.
-   * *Pregunta clave:* ¿El usuario sabe en todo momento qué está procesando el sistema?
+     * *Descripción:* Al pulsar el botón `«Entregar Examen Definitivo»`, la página queda estática durante 12 segundos sin mostrar ningún indicador giratorio (spinner), barra de progreso ni mensaje de «Enviando...». Los alumnos hacen clic repetidamente (entre 3 y 6 veces), lo que provoca peticiones duplicadas y un error HTTP 500 en el backend.
+     * *Pregunta clave:* ¿El usuario sabe en todo momento qué está procesando el sistema?
 
 2. **Incidencia 2 (Términos arcanos en la gestión de matrícula):**
-   * *Descripción:* En la pantalla de selección de asignaturas, los botones y estados muestran nomenclaturas internas de base de datos como `«STATUS: FLG_CONV_ORD_PENDING»`, `«ID_DEPT_REF_09»` y una advertencia que reza: *«Transacción bloqueada por lock de concurrencia en tabla TBL_ALUM_ENROLL»*, en lugar de expresiones comprensibles como *«Pendiente de convalidación»* o *«El plazo de matrícula para esta asignatura aún no está abierto»*.
-   * *Pregunta clave:* ¿El lenguaje utilizado pertenece al mundo del estudiante o a la arquitectura interna del sistema?
+     * *Descripción:* En la pantalla de selección de asignaturas, los botones y estados muestran nomenclaturas internas de base de datos como `«STATUS: FLG_CONV_ORD_PENDING»`, `«ID_DEPT_REF_09»` y una advertencia que reza: *«Transacción bloqueada por lock de concurrencia en tabla TBL_ALUM_ENROLL»*, en lugar de expresiones comprensibles como *«Pendiente de convalidación»* o *«El plazo de matrícula para esta asignatura aún no está abierto»*.
+     * *Pregunta clave:* ¿El lenguaje utilizado pertenece al mundo del estudiante o a la arquitectura interna del sistema?
 
 3. **Incidencia 3 (Falta de confirmación y ausencia de papelera/deshacer en entregas):**
-   * *Descripción:* En el gestor de archivos de actividades, pulsar el icono del cubo de basura elimina inmediatamente el documento PDF subido sin solicitar confirmación modal ni ofrecer una opción de «Deshacer» (*Undo*). Varios alumnos han borrado accidentalmente su entrega final a escasos minutos del cierre de la convocatoria sin posibilidad de recuperación.
-   * *Pregunta clave:* ¿Dispone el alumno de salidas de emergencia claras ante errores involuntarios?
+     * *Descripción:* En el gestor de archivos de actividades, pulsar el icono del cubo de basura elimina inmediatamente el documento PDF subido sin solicitar confirmación modal ni ofrecer una opción de «Deshacer» (*Undo*). Varios alumnos han borrado accidentalmente su entrega final a escasos minutos del cierre de la convocatoria sin posibilidad de recuperación.
+     * *Pregunta clave:* ¿Dispone el alumno de salidas de emergencia claras ante errores involuntarios?
 
 4. **Incidencia 4 (Inconsistencia de botones y vocabulario en el portal):**
-   * *Descripción:* En el módulo de *Matrícula*, el botón de confirmar es azul con el texto `«Aceptar»`; en el módulo de *Tareas*, es verde con el texto `«Validar»`; y en el módulo de *Exámenes*, es rojo con el texto `«Proceder»`. Además, en una sección se utiliza el término *«Asignaturas»*, en otra *«Módulos formativos»* y en otra *«Cursos»* para referirse al mismo concepto.
-   * *Pregunta clave:* ¿Sigue la interfaz convenciones coherentes y uniformes en toda la plataforma?
+     * *Descripción:* En el módulo de *Matrícula*, el botón de confirmar es azul con el texto `«Aceptar»`; en el módulo de *Tareas*, es verde con el texto `«Validar»`; y en el módulo de *Exámenes*, es rojo con el texto `«Proceder»`. Además, en una sección se utiliza el término *«Asignaturas»*, en otra *«Módulos formativos»* y en otra *«Cursos»* para referirse al mismo concepto.
+     * *Pregunta clave:* ¿Sigue la interfaz convenciones coherentes y uniformes en toda la plataforma?
 
 5. **Incidencia 5 (Formulario de subida de archivos que no valida límites a tiempo):**
-   * *Descripción:* El límite máximo de subida es de 15 MB y solo se admiten formatos `.pdf` y `.zip`. Sin embargo, el campo no indica las restricciones junto al selector ni valida la extensión o tamaño antes del envío. Tras esperar a que cargue un archivo `.mp4` de 120 MB, el sistema borra todos los campos del formulario y muestra un error de servidor.
-   * *Pregunta clave:* ¿Diseña el sistema para prevenir el error antes de que el usuario lo cometa?
+     * *Descripción:* El límite máximo de subida es de 15 MB y solo se admiten formatos `.pdf` y `.zip`. Sin embargo, el campo no indica las restricciones junto al selector ni valida la extensión o tamaño antes del envío. Tras esperar a que cargue un archivo `.mp4` de 120 MB, el sistema borra todos los campos del formulario y muestra un error de servidor.
+     * *Pregunta clave:* ¿Diseña el sistema para prevenir el error antes de que el usuario lo cometa?
 
 6. **Incidencia 6 (Obligación de memorizar códigos numéricos de asignaturas):**
-   * *Descripción:* Para solicitar una tutoría o revisión de examen, el estudiante debe introducir manualmente en un input de texto el código alfanumérico interno de la materia (ej. `MOD-DAW-0482-2026`) y el DNI del profesor, en lugar de seleccionarlo de una lista desplegable con el nombre de la asignatura y la foto/nombre del docente ya matriculado.
-   * *Pregunta clave:* ¿Se sobrecarga la memoria de trabajo del alumno obligándole a recordar en vez de reconocer?
+     * *Descripción:* Para solicitar una tutoría o revisión de examen, el estudiante debe introducir manualmente en un input de texto el código alfanumérico interno de la materia (ej. `MOD-DAW-0482-2026`) y el DNI del profesor, en lugar de seleccionarlo de una lista desplegable con el nombre de la asignatura y la foto/nombre del docente ya matriculado.
+     * *Pregunta clave:* ¿Se sobrecarga la memoria de trabajo del alumno obligándole a recordar en vez de reconocer?
 
 7. **Incidencia 7 (Falta de atajos y flujo rígido para usuarios habituales):**
-   * *Descripción:* Para consultar las calificaciones finales, un alumno debe navegar obligatoriamente por 6 pantallas consecutivas (*Inicio $\rightarrow$ Expediente $\rightarrow$ Selección de Año $\rightarrow$ Selección de Ciclo $\rightarrow$ Curso 2º $\rightarrow$ Calificaciones*). No existen accesos directos (*breadcrumbs*, widgets en el dashboard principal) ni atajos de teclado para tareas frecuentes que se realizan diariamente.
-   * *Pregunta clave:* ¿Ofrece el sistema flexibilidad y eficiencia tanto a novatos como a usuarios expertos?
+     * *Descripción:* Para consultar las calificaciones finales, un alumno debe navegar obligatoriamente por 6 pantallas consecutivas (*Inicio $\rightarrow$ Expediente $\rightarrow$ Selección de Año $\rightarrow$ Selección de Ciclo $\rightarrow$ Curso 2º $\rightarrow$ Calificaciones*). No existen accesos directos (*breadcrumbs*, widgets en el dashboard principal) ni atajos de teclado para tareas frecuentes que se realizan diariamente.
+     * *Pregunta clave:* ¿Ofrece el sistema flexibilidad y eficiencia tanto a novatos como a usuarios expertos?
 
 8. **Incidencia 8 (Sobrecarga cognitiva y densidad caótica en el Dashboard):**
-   * *Descripción:* La pantalla principal del alumno muestra al mismo tiempo: 14 banners publicitarios de másteres privados, noticias del campus de hace 3 años, un feed de Twitter sin filtrar, el tiempo meteorológico del campus central y tablas con más de 30 columnas con bordes negros gruesos, relegando el botón de «Mis Clases de Hoy» a la parte inferior oculta tras un scroll de 3 pantallas.
-   * *Pregunta clave:* ¿Presenta la interfaz un diseño minimalista libre de elementos irrelevantes o distractores?
+     * *Descripción:* La pantalla principal del alumno muestra al mismo tiempo: 14 banners publicitarios de másteres privados, noticias del campus de hace 3 años, un feed de Twitter sin filtrar, el tiempo meteorológico del campus central y tablas con más de 30 columnas con bordes negros gruesos, relegando el botón de «Mis Clases de Hoy» a la parte inferior oculta tras un scroll de 3 pantallas.
+     * *Pregunta clave:* ¿Presenta la interfaz un diseño minimalista libre de elementos irrelevantes o distractores?
 
 9. **Incidencia 9 (Mensaje de error críptico y no accionable):**
-   * *Descripción:* Cuando un alumno introduce una contraseña incorrecta o con formato caducado en el inicio de sesión, el sistema muestra en una barra superior: *«ERR_AUTH_0x88219: Payload rejected by security filter. Contact sysadmin.»*. No explica si el fallo es el usuario, la contraseña o la expiración de la sesión, ni ofrece un enlace directo a *«¿Has olvidado tu contraseña?»*.
-   * *Pregunta clave:* ¿Los mensajes de error diagnostican con claridad el problema y proponen una vía de solución inmediata?
+     * *Descripción:* Cuando un alumno introduce una contraseña incorrecta o con formato caducado en el inicio de sesión, el sistema muestra en una barra superior: *«ERR_AUTH_0x88219: Payload rejected by security filter. Contact sysadmin.»*. No explica si el fallo es el usuario, la contraseña o la expiración de la sesión, ni ofrece un enlace directo a *«¿Has olvidado tu contraseña?»*.
+     * *Pregunta clave:* ¿Los mensajes de error diagnostican con claridad el problema y proponen una vía de solución inmediata?
 
 10. **Incidencia 10 (Ausencia de documentación contextual o ayuda integrada):**
-    * *Descripción:* Para solicitar la convalidación oficial mediante firma digital con certificado FNMT o autofirma, el proceso requiere 4 pasos técnicos críticos (subida de plantilla, firma externa y hash SHA-256). No existe ningún icono de ayuda `(?)`, ni guía paso a paso, ni sección de preguntas frecuentes contextuales; el enlace de «Ayuda» del pie de página dirige a la página de bienvenida genérica de la universidad.
-    * *Pregunta clave:* ¿Proporciona el sistema ayuda contextual y documentación orientada a la tarea en el momento en que se necesita?
+      * *Descripción:* Para solicitar la convalidación oficial mediante firma digital con certificado FNMT o autofirma, el proceso requiere 4 pasos técnicos críticos (subida de plantilla, firma externa y hash SHA-256). No existe ningún icono de ayuda `(?)`, ni guía paso a paso, ni sección de preguntas frecuentes contextuales; el enlace de «Ayuda» del pie de página dirige a la página de bienvenida genérica de la universidad.
+      * *Pregunta clave:* ¿Proporciona el sistema ayuda contextual y documentación orientada a la tarea en el momento en que se necesita?
 
 ---
 
 #### Entregables requeridos en la actividad
 
 1. **Tabla de Evaluación Heurística:** Completar una tabla con las columnas:
-   * *ID Incidencia (1 al 10)*
-   * *Heurística Violada (H1 a H10)*
-   * *Frecuencia / Impacto / Persistencia*
-   * *Severidad Global (0 a 4)*
-   * *Prioridad de Corrección (P0 a P3)*
-   * *Solución UX propuesta*
+     * *ID Incidencia (1 al 10)*
+     * *Heurística Violada (H1 a H10)*
+     * *Frecuencia / Impacto / Persistencia*
+     * *Severidad Global (0 a 4)*
+     * *Prioridad de Corrección (P0 a P3)*
+     * *Solución UX propuesta*
 2. **Justificación de Prioridades P0 (Hotfixes):** Redactar un párrafo técnico justificando por qué las incidencias marcadas con P0 deben corregirse antes de cualquier otra tarea del backlog.
 3. **Código de Corrección Frontend:** Proporcionar la solución maquetada en HTML5 semántico y CSS para el componente de entrega de tareas/exámenes (resolviendo de forma conjunta la prevención de errores, el estado de carga y la confirmación modal accesible).
 
-> [!TIP]
-> Consulta el documento de solución detallado en el tema anexo: **[15. Solución: Evaluación Heurística Guiada](15-solucion-evaluacion-heuristica.md)** para contrastar tus respuestas con la auditoría oficial del tribunal técnico.
+<!-- > [!TIP]
+> Consulta el documento de solución detallado en el tema anexo: **[15. Solución: Evaluación Heurística Guiada](15-solucion-evaluacion-heuristica.md)** para contrastar tus respuestas con la auditoría oficial del tribunal técnico. -->
 
 ### Actividad Guiada 2: Diseño y Ejecución de un Mini Test de Usuario
 
