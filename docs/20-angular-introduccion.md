@@ -289,6 +289,7 @@ ng generate component header
 ```
 
 Esto crea en `src/app/header/`:
+
 - `header.component.ts`
 - `header.component.html`
 - `header.component.scss`

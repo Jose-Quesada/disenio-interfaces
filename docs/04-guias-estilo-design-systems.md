@@ -317,6 +317,24 @@ Finalmente, creamos la capa de tokens específicos de componente. Estos tokens a
 !!! note "Explicación del resultado"
     Esta arquitectura en tres capas permite cambiar el color primario de toda la aplicación **modificando una única línea** en los tokens de alias, sin necesidad de tocar ningún componente individual. Por ejemplo, para cambiar el color primario de azul a verde, bastaría con modificar `--color-primary-500: var(--color-green-500)` en la capa semántica, y todos los botones, enlaces, *badges* y cualquier otro elemento que utilice el color primario se actualizarían automáticamente.
 
+!!! info "Desglose técnico pedagógico — Arquitectura de Design Tokens en CSS"
+    Estructura jerárquica de tokens en tres niveles (W3C Design Tokens Community Group):
+
+    **1. Capa 1: Tokens Globales o Primitivos (Valores Crudos):**
+    
+    - Ejemplos: `--color-blue-500: #2196f3;`, `--color-gray-900: #1a1a2e;`.
+    - Definen la paleta base completa de la organización. No tienen significado de negocio ni contexto de interfaz, simplemente mapean un nombre identificativo con un valor hexadecimal.
+
+    **2. Capa 2: Tokens Semánticos o de Alias (Propósito y Contexto):**
+    
+    - Ejemplos: `--color-primary-500: var(--color-blue-500);`, `--color-surface: var(--color-white);`, `--color-danger: var(--color-red-500);`.
+    - Asignan una intención funcional al color ("primario", "superficie", "peligro"). Permite cambiar el tema global o activar el modo oscuro (*Dark Mode*) simplemente reasignando estos alias a otros primitivos.
+
+    **3. Capa 3: Tokens de Componente (Alcance Específico):**
+    
+    - Ejemplos: `--button-primary-bg: var(--color-primary-500);`, `--card-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);`.
+    - Vinculan los tokens semánticos a las propiedades CSS de un componente concreto. Si un diseñador decide que las tarjetas (*cards*) deben tener una sombra más pronunciada pero los menús no, modifica exclusivamente el token del componente sin alterar el resto de la interfaz.
+
 ### Ejemplo guiado 2: Sistema tipográfico completo con escala modular
 
 !!! example "Contexto pedagógico"
@@ -522,6 +540,29 @@ body {
 
 !!! note "Explicación del resultado"
     Este sistema tipográfico se beneficia de la arquitectura de tokens porque podemos ajustar cualquier aspecto de la tipografía **desde un único lugar**. Si el equipo de diseño decide cambiar la familia tipográfica o la escala, basta con modificar los tokens en `:root`. Además, al utilizar *rem* como unidad base, respetamos las preferencias de tamaño de fuente del usuario, cumpliendo con el criterio de accesibilidad **WCAG 1.4.4** sobre redimensionamiento de texto.
+
+!!! info "Desglose técnico pedagógico — Tokens tipográficos y Escalas modulares"
+    Implementación técnica del sistema tipográfico:
+
+    **1. Escala Modular con Ratio 1.333 (Cuarta Perfecta):**
+    
+    - Multiplica el tamaño base (1rem = 16px) sucesivamente por 1.333 para generar la jerarquía ascendente:
+        - `--font-size-base`: `1rem` (16px)
+        - `--font-size-lg`: `1.333rem` (~21.3px)
+        - `--font-size-xl`: `1.777rem` (~28.4px)
+        - `--font-size-2xl`: `2.369rem` (~37.9px)
+        - `--font-size-3xl`: `3.157rem` (~50.5px)
+    - Esta relación armónica garantiza proporciones matemáticas elegantes inspiradas en la teoría musical y la geometría clásica.
+
+    **2. Tokens de Altura de Línea (*Line Height*):**
+    
+    - Se definen tokens proporcionales inversos: a mayor tamaño tipográfico, menor altura de línea relativa:
+        - Titulares enormes (`3xl`): `--line-height-tight: 1.15;` para que las líneas no se separen excesivamente.
+        - Cuerpo de texto (`base`): `--line-height-normal: 1.5;` a `1.6` para permitir que el ojo salte de renglón sin perderse.
+
+    **3. Clases de Utilidad Tipográfica:**
+    
+    - Clases atómicas como `.text-display`, `.text-body`, `.text-caption`, `.text-link` consumen directamente los tokens, evitando que los desarrolladores definan tamaños arbitrarios (*magic numbers*) en sus componentes individuales.
 
 ### Ejemplo guiado 3: Construcción de un sistema de botones completo
 
@@ -778,6 +819,28 @@ El HTML correspondiente para utilizar este sistema de botones es sencillo y sem�
     }
     ```
 
+!!! info "Desglose técnico pedagógico — Metodología BEM y variantes de componentes"
+    Construcción del sistema de botones con metodología BEM (*Block Element Modifier*):
+
+    **1. Arquitectura de Clases BEM:**
+    
+    - Bloque base (`.btn`): Aplica la estructura común indestructible (inline-flex, centrado de contenido, border-radius base, transition, font-weight, cursor).
+    - Modificadores de Variante (`.btn--primary`, `.btn--secondary`, `.btn--outline`, `.btn--ghost`, `.btn--danger`): Controlan únicamente los colores de fondo, texto y bordes consumiendo tokens semánticos (`var(--button-primary-bg)`).
+    - Modificadores de Tamaño (`.btn--sm`, `.btn--md`, `.btn--lg`): Modulan el `padding`, `font-size` y altura mínima (`min-height`) sin tocar los colores.
+
+    **2. Manejo Accesible de Estados Interactivos:**
+    
+    - `:hover`: Eleva o aclara sutilmente el color de fondo para comunicar interactividad.
+    - `:active`: Aplica una ligera contracción con `transform: scale(0.98)` o un oscurecimiento mayor para confirmar la pulsación.
+    - `:focus-visible`: Fundamental para la accesibilidad por teclado (WCAG 2.4.7). Proyecta un anillo de foco con `outline: 2px solid ...; outline-offset: 2px;` sin entorpecer a los usuarios de ratón.
+    - `:disabled`: Inhabilita el cursor (`cursor: not-allowed;`), reduce la opacidad (`opacity: 0.5;`) y anula los eventos puntero (`pointer-events: none;`).
+
+    **3. Grupos de Botones (`.btn-group`):**
+    
+    - Une botones contiguos eliminando los bordes redondeados interiores (`:first-child` conserva el radio izquierdo y `:last-child` el derecho).
+    - `margin-left: -2px`: Colapsa los bordes dobles entre botones adyacentes para que no sumen grosor.
+    - `z-index: 1` en `:focus-visible`: Asegura que el anillo de foco del botón activo no quede cortado por el botón siguiente en el apilamiento del grupo.
+
 ### Ejemplo guiado 4: Sistema de espaciado y grid con tokens
 
 !!! example "Contexto pedagógico"
@@ -930,6 +993,23 @@ El HTML correspondiente para utilizar este sistema de botones es sencillo y sem�
 .pr-4 { padding-right: var(--spacing-4); }
 ```
 
+!!! info "Desglose técnico pedagógico — Tokens de espaciado y Grid de 12 columnas"
+    Mecánica del sistema de espaciado y distribución responsive:
+
+    **1. Escala de Espaciado Basada en 4px / 8px:**
+    
+    - Se definen variables proporcionales: `--spacing-1: 0.25rem` (4px), `--spacing-2: 0.5rem` (8px), `--spacing-4: 1rem` (16px), `--spacing-6: 1.5rem` (24px), `--spacing-8: 2rem` (32px).
+    - El factor 4/8 es el estándar de oro en UI: la mayoría de resoluciones de pantalla son divisibles por 4 y 8, lo que previene errores de redondeo de subpíxeles (*subpixel rendering*) y bordes borrosos.
+
+    **2. Sistema de Cuadrícula Clásico de 12 Columnas:**
+    
+    - ¿Por qué 12 columnas? Porque el número 12 es el número más pequeño divisible uniformemente entre 1, 2, 3, 4 y 6. Permite maquetar composiciones a pantalla completa (12), mitades (6+6), tercios (4+4+4), cuartos (3+3+3+3) o columnas asimétricas de contenido y barra lateral (8+4 o 9+3).
+    - Porcentajes matemáticos exactos: `.col-4` tiene `width: 33.333333%;`, `.col-6` tiene `width: 50%;`, `.col-12` tiene `width: 100%;`.
+
+    **3. Clases de Utilidad de Espaciado (Inspiradas en frameworks como Bootstrap/Tailwind):**
+    
+    - Mapean márgenes y rellenos: `.m-4` (margin completo), `.mt-4` (margin-top), `.p-4` (padding completo), `.mx-auto` (centrado horizontal con `margin-left: auto; margin-right: auto;`).
+
 ### Ejemplo guiado 5: Componente de tarjeta (Card) con todas las variantes
 
 !!! example "Contexto pedagógico"
@@ -943,7 +1023,7 @@ El HTML correspondiente para el componente Card:
     <!-- Card estándar con imagen, título, texto y acciones -->
     <article class="card card--hoverable">
       <div class="card__media card__media--16x9">
-        <img src="proyecto-dashboard.jpg" alt="Dashboard del proyecto con gráficos de rendimiento" loading="lazy">
+        <img src="https://dummyimage.com/800x600/ccc/000.png&text=proyecto-dashboard.jpg" alt="Dashboard del proyecto con gráficos de rendimiento" loading="lazy">
       </div>
       <div class="card__body">
         <h3 class="card__title">Dashboard analytics</h3>
@@ -961,7 +1041,7 @@ El HTML correspondiente para el componente Card:
     <!-- Card horizontal -->
     <article class="card card--horizontal card--hoverable">
       <div class="card__media card__media--4x3">
-        <img src="perfil-usuario.jpg" alt="Foto de perfil de María García" loading="lazy">
+        <img src="https://dummyimage.com/800x600/ccc/000.png&text=perfil-usuario.jpg" alt="Foto de perfil de María García" loading="lazy">
       </div>
       <div class="card__body">
         <h3 class="card__title">María García</h3>
@@ -1139,6 +1219,28 @@ El HTML correspondiente para el componente Card:
       }
     }
     ```
+
+!!! info "Desglose técnico pedagógico — Anatomía del componente Card con BEM"
+    Descomposición atómica de un contenedor de contenido compuesto:
+
+    **1. Bloque y Elementos BEM:**
+    
+    - Bloque: `.card` (Contenedor que define el fondo, radio de borde, sombra y desbordamiento `overflow: hidden;`).
+    - Elementos internos:
+        - `.card__media`: Contenedor para imagen o vídeo con relación de aspecto controlada (`aspect-ratio: 16 / 9;`).
+        - `.card__body`: Contenedor de relleno interior donde se alojan títulos y textos.
+        - `.card__title` y `.card__subtitle`: Jerarquía tipográfica interna.
+        - `.card__actions`: Contenedor de botones o enlaces de interacción situados al pie de la tarjeta.
+
+    **2. Modificadores BEM y Variantes de Diseño:**
+    
+    - `.card--hoverable`: Variante que añade elevación en el eje Z al pasar el ratón (`transform: translateY(-4px); box-shadow: var(--card-shadow-hover);`).
+    - `.card--horizontal`: Variante que reorganiza el flujo interno usando `display: flex;` para colocar la imagen a la izquierda y el texto a la derecha.
+    - `.card--media-overlay`: Variante donde el contenido textual flota sobre la imagen mediante `position: absolute; bottom: 0;` y un degradado de oscurecimiento para preservar la relación figura-fondo.
+
+    **3. Disposición en Rejilla (`.card-grid`):**
+    
+    - `display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--spacing-6);`: Crea una galería de tarjetas autoajustable que distribuye tantas columnas de al menos 300px como quepan en la pantalla, colapsando a 1 columna en móviles mediante la consulta de medios `@media (max-width: 575px)`.
 
 ### Ejemplo guiado 6: Formularios con tokens de diseño
 
@@ -1505,6 +1607,25 @@ Ejemplo de formulario completo que integra todos los componentes:
       }
     }
     ```
+
+!!! info "Desglose técnico pedagógico — Formularios accesibles con tokens de diseño"
+    Patrones arquitectónicos para campos de formulario consistentes:
+
+    **1. Estructura y Accesibilidad HTML:**
+    
+    - `.form-group`: Envoltorio atómico que reune una etiqueta (`.form-label`), el control de entrada (`.form-input`), el texto de ayuda contextual (`.form-help`) y el mensaje de error condicional (`.form-error`).
+    - Atributo `novalidate` en `<form>`: Desactiva los globos de error nativos del navegador para permitir que la interfaz muestre el sistema visual propio de validación mediante tokens.
+    - Asociación estricta `for` / `id`: Garantiza que el software lector de pantalla anuncie el nombre del campo al enfocarlo y agranda la zona de clic táctil en pantallas móviles.
+
+    **2. Estados de Validación y Tokens:**
+    
+    - `.has-error` y `.has-success`: Clases de estado que alteran sincrónicamente las variables del borde (`--input-border-error`), color del texto y sombras de foco (`box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15)`).
+    - `.form-error::before`: Inyección de un icono SVG vectorial mediante la propiedad CSS `mask: url(...)`, asegurando que el mensaje de error cuente con un símbolo gráfico reconocible para usuarios con daltonismo.
+
+    **3. Controles Nativos Personalizados (*Checkbox* y *Radio*):**
+    
+    - Se oculta la apariencia fea y rígida por defecto del sistema operativo con `appearance: none;` (o posición absoluta oculta) y se redibuja el control con CSS usando `border-radius: 4px` (checkbox) o `border-radius: 50%` (radio), coloreando el relleno interior cuando `:checked` está activo.
+    - `:focus-visible`: Asigna un anillo de foco con `outline-offset: 2px` para mantener la accesibilidad total por tabulación sin importar la personalización estética.
 
 ## Casos reales
 

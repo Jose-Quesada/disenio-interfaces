@@ -176,10 +176,10 @@ La norma **ISO 9241-210** establece **seis principios** fundamentales para el DC
 
 Las **fases** del proceso DCU son **cuatro**. 
 
-  - La fase de **investigación** (Discover) busca comprender quiénes son las personas usuarias, qué necesitan, en qué contexto actúan y qué problemas enfrentan. Se emplean técnicas como la creación de personas (arquetipos de usuario), mapas de empatía, customer journey maps y análisis de la competencia. 
-  - La fase de **conceptualización** (Define) sintetiza los hallazgos de la investigación para definir el problema, los requisitos funcionales y no funcionales, la arquitectura de información (cómo se organiza el contenido) y los flujos de navegación. Se producen diagramas de flujo, mapas del sitio web y especificaciones funcionales. 
-  - La fase de **prototipado** (Design) materializa las ideas en prototipos de baja fidelidad (bocetos en papel, wireframes) y alta fidelidad (mockups visuales, prototipos interactivos con Figma, Sketch o Adobe XD). 
-  - La fase de **evaluación** (Validate) somete los prototipos al juicio de personas usuarias reales mediante tests de usabilidad moderados o no moderados, evaluaciones heurísticas (basadas en los 10 principios de Nielsen), test de los 5 segundos, eye tracking o análisis de embudo de conversión.
+    - La fase de **investigación** (Discover) busca comprender quiénes son las personas usuarias, qué necesitan, en qué contexto actúan y qué problemas enfrentan. Se emplean técnicas como la creación de personas (arquetipos de usuario), mapas de empatía, customer journey maps y análisis de la competencia. 
+    - La fase de **conceptualización** (Define) sintetiza los hallazgos de la investigación para definir el problema, los requisitos funcionales y no funcionales, la arquitectura de información (cómo se organiza el contenido) y los flujos de navegación. Se producen diagramas de flujo, mapas del sitio web y especificaciones funcionales. 
+    - La fase de **prototipado** (Design) materializa las ideas en prototipos de baja fidelidad (bocetos en papel, wireframes) y alta fidelidad (mockups visuales, prototipos interactivos con Figma, Sketch o Adobe XD). 
+    - La fase de **evaluación** (Validate) somete los prototipos al juicio de personas usuarias reales mediante tests de usabilidad moderados o no moderados, evaluaciones heurísticas (basadas en los 10 principios de Nielsen), test de los 5 segundos, eye tracking o análisis de embudo de conversión.
 
 ![Fases DCU](./img/00/DCU-fases.jpeg)
 
@@ -480,6 +480,35 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! note "Explicación del resultado"
     Al abrir este formulario en el navegador, la persona usuaria percibe inmediatamente dos bloques de información diferenciados: los datos personales y los datos de acceso. Esta percepción no requiere leer las etiquetas ni comprender el contenido; es el espaciado el que comunica la agrupación. La ley de proximidad opera de manera preconsciente: el margen de **1.5rem** entre grupos frente a los **0.75rem** dentro de cada grupo crea una diferencia de espaciado que el sistema visual interpreta como pertenencia. Se recomienda al alumnado inspeccionar el elemento con las DevTools del navegador y modificar temporalmente los márgenes para comprobar cómo afecta a la percepción de la estructura.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Para el alumnado que se inicia en el desarrollo web y el diseño de interfaces, desgranamos cada elemento del código:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="contenedor-formulario">`: Funciona como tarjeta o contenedor contenedor (*wrapper*). Fija un ancho máximo (`max-width: 500px`) y proporciona el fondo blanco sobre el que descansan los campos.
+    - `<div class="grupo-campo">`: Bloque estructural que agrupa campos afines. Aplica directamente la **ley de proximidad** mediante un margen inferior generoso (`margin-bottom: 1.5rem`), separando bloques conceptuales distintos.
+    - `<div class="campo">`: Contenedor individual para cada par etiqueta-input. Mantiene un espaciado reducido (`margin-bottom: 0.75rem`) para que la etiqueta se perciba indisolublemente ligada a su campo de texto.
+    - `<label for="...">`: Etiqueta textual visible y obligatoria para la accesibilidad. Su atributo `for` debe coincidir exactamente con el `id` del `<input>` asociado. Esto permite que al pulsar el texto con el ratón o el dedo, el foco salte automáticamente al campo de entrada.
+    - `<input type="..." id="..." placeholder="...">`:
+        - `type="text"`: Campo de entrada de texto genérico para nombres o apellidos.
+        - `type="tel"`: Campo optimizado para teléfonos. En dispositivos móviles despliega de forma nativa el teclado numérico telefónico.
+        - `type="email"`: Valida que el texto introducido contenga una estructura de correo válida (`@` y dominio) y despliega la tecla de arroba en el teclado del móvil.
+        - `type="password"`: Enmascara los caracteres con puntos o asteriscos para preservar la confidencialidad.
+        - `placeholder`: Pista temporal que indica qué se espera introducir. Nunca sustituye a una etiqueta `<label>`.
+    - `<hr class="separador">`: Elemento de regla horizontal que marca una división temática. Visualmente se resetea su borde predeterminado para dejar solo una línea tenue (`border-top: 1px solid #e2e8f0`).
+    - `<button type="submit">`: Elemento de acción primaria que ejecuta el envío de los datos.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `box-sizing: border-box`: Regla universal indispensable. Hace que el ancho (`width`) y alto (`height`) declarados incluyan tanto el relleno (*padding*) como los bordes (*border*). Evita que un campo con `width: 100%` desborde su contenedor al añadirle relleno interno.
+    - `min-height: 100vh`: Garantiza que el elemento `<body>` ocupe como mínimo el 100% de la altura de la ventana gráfica (*Viewport Height*).
+    - `display: flex; align-items: center; justify-content: center;`: Técnica de Flexbox para alinear y centrar de manera perfecta el formulario en los ejes vertical y horizontal de la pantalla.
+    - `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`: Genera un fondo degradado continuo en un ángulo diagonal de 135 grados, combinando tonos azulados y violetas.
+    - `border-radius: 16px`: Redondea las esquinas del formulario para dotarlo de una apariencia visual suave y moderna.
+    - `box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15)`: Sombra de profundidad en el eje Z. No tiene desplazamiento horizontal (`0`), cae 20px en vertical y se difumina 60px, produciendo el efecto de que la tarjeta "flota" sobre el fondo.
+    - `input:focus`: Pseudoclase que se dispara cuando el usuario hace clic o tabula hacia un campo. Al aplicar `outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);`, creamos un anillo de foco personalizado de alta visibilidad para guiar al usuario.
+    - `button:hover`: Pseudoclase activada al pasar el ratón. Aplica `transform: translateY(-2px) scale(1.02);` para elevar y agrandar sutilmente el botón, ofreciendo retroalimentación visual inmediata (*affordance* interactiva).
+
 
 ### Ejemplo 2: Ley de semejanza aplicada a tarjetas de contenido
 
@@ -747,6 +776,26 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 !!! note "Explicación del resultado"
     Al visualizar esta página, la persona usuaria reconoce al instante que los tres bloques son "planes de precios" porque comparten la misma estructura visual. No necesita leer ningún texto para saber que pertenecen a la misma categoría. El plan "Profesional" destaca inmediatamente sobre los otros dos porque rompe el patrón de semejanza: tiene un borde morado, está ligeramente escalado, y su botón tiene un color diferente. Esta ruptura es efectiva precisamente porque el resto de tarjetas son extremadamente semejantes entre sí. Se recomienda al alumnado comentar la clase `.destacado` en las DevTools para comprobar cómo las tres tarjetas se vuelven visualmente idénticas y desaparece la jerarquía de recomendación.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Aspectos clave de la implementación para comprender el código a fondo:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="comparativa-precios">`: Contenedor principal que agrupa las opciones tarifarias, funcionando como contenedor de la cuadrícula (*grid container*).
+    - `<div class="plan">`: Bloque que encapsula cada una de las tarjetas de suscripción. Al repetir la misma clase en las tres tarjetas, comparten reglas idénticas de color, borde y relleno, consolidando la **ley de semejanza**.
+    - `<div class="plan destacado">`: Empleo de clases múltiples en HTML. La clase `destacado` actúa como modificador, permitiendo alterar el tamaño o color de esa tarjeta en concreto sin duplicar el CSS base.
+    - `<h2>` y `<h3>`: Organización jerárquica de encabezados. `<h2>` para el título de la sección y `<h3>` para el nombre individual de cada plan ("Básico", "Profesional", "Empresarial").
+    - `<div class="precio">` y `<span>`: Estructura para separar visualmente la cifra monetaria principal del período de facturación (`/mes`), permitiendo aplicar distintos tamaños de fuente (`font-size`).
+    - `<ul class="caracteristicas">` y `<li>`: Lista no ordenada semántica para los beneficios incluidos en cada paquete.
+    - `<a href="#" class="boton-plan">`: Enlace de llamada a la acción (*Call to Action* o CTA) maquetado con apariencia de botón interactivo.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;`: Maquetación fluida y responsiva mediante CSS Grid. `repeat(auto-fit, ...)` calcula cuántas columnas caben automáticamente en el ancho de la pantalla sin recurrir a media queries. `minmax(280px, 1fr)` garantiza que ninguna tarjeta mida menos de 280px ni más de una fracción equitativa del espacio disponible.
+    - `.caracteristicas li::before`: Uso de pseudoelementos para inyectar contenido decorativo. `content: "\2713";` inserta el carácter tipográfico de verificación (✓) en código Unicode, eliminando la necesidad de añadir imágenes o iconos externos en el HTML.
+    - `transition: all 0.2s ease;`: Aplica una interpolación suave y progresiva a cualquier propiedad que cambie durante estados dinámicos (como `:hover`), evitando cambios visuales bruscos.
+    - `.plan.destacado { transform: scale(1.05); border: 2px solid #667eea; }`: Aplica una transformación de escala que agranda la tarjeta central un 5% respecto a las adyacentes, combinada con un borde púrpura de énfasis para captar la atención de inmediato.
+
 ---
 
 ### Ejemplo 3: Principios Gestalt combinados en una sección hero
@@ -946,6 +995,27 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 
 !!! note "Explicación del resultado"
     Esta sección hero demuestra cómo los principios de la Gestalt operan simultáneamente y de forma sinérgica en una interfaz real. La ley de figura-fondo garantiza la legibilidad del texto sobre la imagen, la ley de proximidad agrupa el contenido textual y los botones como una unidad informativa, la ley de semejanza permite identificar ambos botones como elementos de acción del mismo tipo, y la ley de cierre (combinada con destino común) crea un indicador de scroll que invita a continuar navegando. Se recomienda al alumnado modificar en las DevTools el valor de opacidad del overlay para comprobar cómo afecta la ley de figura-fondo a la legibilidad.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Análisis de los conceptos técnicos y de maquetación empleados:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<header class="hero">`: Elemento estructural semántico que representa la cabecera destacada de la página (*hero section*).
+    - `<div class="hero-overlay">`: Capa o máscara visual superpuesta. No contiene texto; su única misión es oscurecer la imagen de fondo para que el texto blanco adquiera suficiente contraste, cumpliendo la **ley de figura-fondo**.
+    - `<div class="hero-contenido">`: Contenedor semántico del mensaje principal, el subtítulo y las acciones.
+    - `<h1>` y `<p class="bajada">`: Titular de impacto y párrafo introductorio con texto de apoyo.
+    - `<div class="acciones">`: Grupo de botones de llamada a la acción (*Call to Action*).
+    - `<a class="boton boton-primario">` y `<a class="boton boton-secundario">`: Enlaces que implementan el patrón de botón con doble jerarquía: el primario para la acción clave ("Comenzar prueba gratis") y el secundario para una acción exploratoria ("Ver demostración").
+    - `<div class="scroll-indicador">` y `<span class="flecha">`: Señalizador visual que guía al usuario hacia el contenido inferior.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `position: relative` vs `position: absolute`: La cabecera `.hero` define un contexto de posicionamiento con `relative`. El `.hero-overlay` y el `.scroll-indicador` usan `position: absolute`, lo que les permite anclarse a las esquinas o bordes de la cabecera sin alterar el flujo del texto.
+    - `background-size: cover; background-position: center;`: Escala la fotografía para rellenar la totalidad de la pantalla manteniendo su relación de aspecto, recortando los extremos sobrantes de forma simétrica.
+    - `z-index`: Determina el orden de apilamiento en el eje perpendicular (profundidad). El fondo queda en la base (`z-index: 0`), el overlay encima (`z-index: 1`) y el contenido textual en la capa superior (`z-index: 2`), garantizando que los enlaces sean clicables y no queden tapados.
+    - `@keyframes rebote` y `animation`: Animación nativa CSS. Con `@keyframes` definimos estados porcentuales (`0%`, `50%`, `100%`) para rotar y trasladar la flecha, y con `animation: rebote 1.8s ease-in-out infinite` la ejecutamos en bucle perpetuo con aceleración suave.
+    - `.flecha { border-right: 2px solid ...; border-bottom: 2px solid ...; transform: rotate(45deg); }`: Técnica clásica de CSS para crear una flecha hacia abajo sin cargar SVG ni fuentes de iconos: se dibuja un cuadrado con solo dos bordes contiguos y se rota 45 grados.
 
 ---
 
@@ -1174,6 +1244,28 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 
 !!! note "Explicación del resultado"
     Al abrir esta página, la mirada sigue un recorrido natural: primero se posa en el título (elemento de mayor tamaño y contraste), luego desciende a los metadatos (información contextual), posteriormente a la entradilla y finalmente al cuerpo del texto. La cita destacada interrumpe este flujo con un bloque de color diferente y un borde lateral, reclamando atención en un momento estratégico. Se recomienda modificar el `font-size` del título a **1rem** en las DevTools para comprobar cómo colapsa la jerarquía visual.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Análisis de la arquitectura semántica y el tratamiento tipográfico:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<article class="articulo">`: Etiqueta semántica de contenido autónomo. Indica a buscadores y sintetizadores que este bloque tiene sentido completo por sí mismo (un post, noticia o artículo).
+    - `<header class="articulo-header">`: Encapsula los metadatos introductorios del artículo antes del contenido principal.
+    - `<h1>` y `<h2>`: Estructura jerárquica estricta. Sólo existe un único `<h1>` en el documento con el título global, mientras que las divisiones internas usan `<h2>`.
+    - `<div class="metadatos">`: Contenedor para la información de autoría y fecha.
+    - `<time datetime="2026-03-15">`: Etiqueta semántica para representar fechas. El texto interior es legible para humanos ("15 de marzo de 2026"), mientras que el atributo `datetime` ofrece el formato estandarizado ISO 8601 comprensible para motores de búsqueda y calendarios.
+    - `<p class="entradilla">`: Párrafo de apertura con estilo tipográfico diferenciado (cursiva, mayor tamaño) que resume la tesis del artículo.
+    - `<blockquote>` y `<footer>`: Marcado semántico para citas destacadas. El `<blockquote>` contiene la frase textual, mientras que el `<footer>` interno atribuye la autoría de la cita.
+    - `<figure>`, `<img>` y `<figcaption>`: Tríada semántica para recursos gráficos. `<figure>` agrupa la imagen y su explicación contextual, e `<figcaption>` proporciona la leyenda visible.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - Escala tipográfica decreciente (`font-size`): El título principal usa `2.4rem` para captar el primer impacto visual; los subtítulos `h2` bajan a `1.5rem`; la entradilla se sitúa en `1.25rem`; los párrafos de cuerpo usan `1.1rem`; y los metadatos bajan a `0.85rem`.
+    - Contraste cromático en texto: Se usa negro casi puro (`#1a1a2e`) para encabezados, gris medio (`#444444`) para el cuerpo y gris claro (`#888888`) para metadatos. Esta gradación refuerza el nivel de importancia de cada bloque.
+    - `line-height: 1.8`: Altura de interlineado en los párrafos. Un valor en torno a 1.7-1.8 evita que las líneas se apelotonen, permitiendo que el ojo salte cómodamente de una línea a la siguiente.
+    - `max-width: 720px; margin: 0 auto;`: Centra el bloque de lectura y restringe el ancho para no superar los 75 caracteres por línea, considerado el límite óptimo para evitar fatiga ocular.
+    - `border-left: 4px solid #667eea; background-color: #f0f0ff;`: Patrón visual de *pull quote* para romper la monotonía del texto continuo, añadiendo una banda vertical de color y un fondo suave.
 
 ---
 
@@ -1407,6 +1499,23 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 
 !!! note "Explicación del resultado"
     Al comparar ambas versiones, la simétrica transmite orden, previsibilidad y seriedad. Todas las tarjetas tienen el mismo peso visual. La asimétrica dirige la atención hacia la primera tarjeta (que ocupa dos columnas y tiene un fondo degradado), estableciendo una jerarquía: hay una característica principal y tres secundarias. Se recomienda reflexionar sobre qué tipo de producto se beneficiaría de cada enfoque.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Diferencias de construcción entre la composición simétrica y asimétrica:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<section class="contenedor">`: Sección genérica que alberga la comparativa entre los dos modelos de distribución espacial.
+    - `<span class="version simetrica">` y `<span class="version asimetrica">`: Etiquetas en línea empleadas a modo de "píldora" (*badge*) para identificar cada bloque.
+    - `<div class="grid-caracteristicas">`: Contenedor de cuadrícula para las tarjetas funcionales.
+    - `<div class="tarjeta-caracteristica">`: Tarjetas modulares repetidas, compuestas por icono, título `<h3>` y descripción `<p>`.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `display: grid; grid-template-columns: repeat(3, 1fr);`: En la versión simétrica, crea 3 columnas de anchura exactamente idéntica (`1fr` = una fracción del espacio disponible), distribuyendo el peso visual de manera perfectamente homogénea.
+    - `grid-column: span 2` y `grid-row: span 2`: En la versión asimétrica, se fuerza a la primera tarjeta a ocupar el doble de columnas y filas. Esto multiplica su superficie por cuatro respecto a las demás, atrayendo de inmediato el primer punto de fijación ocular.
+    - `background: linear-gradient(...)` en tarjeta destacada: La tarjeta asimétrica no solo altera su geometría, sino que sustituye el fondo blanco por un degradado de color intenso, acumulando peso cromático sobre el peso dimensional.
+    - `border-radius: 20px` en insignias: Uso de un radio de borde amplio relativo a la altura del elemento para generar bordes con terminación semicircular perfecta (*pill shape*).
 
 ---
 
@@ -1717,6 +1826,26 @@ Los principios de diseño visual son directrices que nos ayudan a organizar los 
 
 !!! note "Explicación del resultado"
     Los tres patrones rítmicos producen experiencias de navegación muy diferentes. El ritmo regular transmite orden y predictibilidad, ideal para catálogos de producto. El ritmo alterno crea un recorrido visual en zigzag que mantiene el interés, adecuado para portfolios. El ritmo progresivo establece una jerarquía implícita guiando la atención desde lo más pequeño hacia lo más grande, ideal para planes de precios o niveles de servicio.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Técnicas de ritmo visual mediante Flexbox y CSS Grid:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="galeria ritmo-regular">`, `<div class="galeria ritmo-alterno">` y `<div class="galeria ritmo-progresivo">`: Tres variantes de contenedores para ilustrar los tres patrones rítmicos.
+    - `<div class="proyecto">`: Tarjeta modular repetida con imagen y bloque descriptivo.
+    - `<div class="img-placeholder">`: Contenedor simulado que reserva el espacio visual de la fotografía de cada proyecto, evitando saltos de contenido (*Cumulative Layout Shift*).
+    - `<div class="info">`, `<h3>`, `<p>`: Jerarquía de contenido textual interno.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - **Ritmo Regular:** `display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;` genera un pulso visual constante y predecible, con tarjetas de dimensiones y márgenes idénticos.
+    - **Ritmo Alterno:**
+        - `display: flex;`: Dispone imagen y texto en horizontal en cada tarjeta.
+        - `:nth-child(even)` con `flex-direction: row-reverse;`: Invierte la dirección del eje principal de Flexbox únicamente en las tarjetas pares (2ª, 4ª...). De este modo, las impares muestran [Imagen | Texto] y las pares muestran [Texto | Imagen], forzando al ojo a describir una lectura en zigzag.
+    - **Ritmo Progresivo:**
+        - `:nth-child(1) { transform: scale(0.85); }` a `:nth-child(4) { transform: scale(1.07); }`: Modifica la escala de cada elemento sucesivo de forma creciente, construyendo una aceleración visual que guía hacia la tarjeta principal.
+        - `align-items: flex-end;`: Alinea todas las tarjetas por su base inferior en el contenedor flex, haciendo patente el cambio progresivo de altura.
 
 ---
 

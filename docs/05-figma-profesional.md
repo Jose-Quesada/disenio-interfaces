@@ -409,10 +409,10 @@ El prototipo se probó con 15 usuarios en sesiones de usabilidad moderadas. Los 
 **Pasos a seguir:**
 
 1. Crea un nuevo archivo Figma. En la página 1, renómbrala a "🎨 Tokens". En esta página, crea:
-   - Una tabla visual de la paleta de colores: al menos 3 colores de marca con 10 tonalidades cada uno, colores neutros (grises), colores semánticos (success, warning, error, info).
-   - Una tabla de escala tipográfica con todos los niveles (h1-h6, body, caption, overline) mostrando fuente, tamaño, peso, altura de línea.
-   - Una tabla de escala de espaciado (múltiplos de 4px).
-   - Una tabla de radios de borde y sombras.
+    - Una tabla visual de la paleta de colores: al menos 3 colores de marca con 10 tonalidades cada uno, colores neutros (grises), colores semánticos (success, warning, error, info).
+    - Una tabla de escala tipográfica con todos los niveles (h1-h6, body, caption, overline) mostrando fuente, tamaño, peso, altura de línea.
+    - Una tabla de escala de espaciado (múltiplos de 4px).
+    - Una tabla de radios de borde y sombras.
 2. Crea variables de Figma para todos los tokens: abre el panel de variables (clic derecho en el canvas > Variables), crea colecciones para color, spacing, border-radius, typography. Define cada token como variable.
 3. Aplica las variables a los elementos visuales de la página de tokens para verificar que funcionan. Modifica una variable y comprueba que sus usos se actualizan.
 4. Crea una colección adicional de variables con modo "Light" y "Dark" para los colores semánticos. Verifica que puedes cambiar entre modos.

@@ -64,6 +64,7 @@ Para abordar esta unidad con soltura, el alumnado debe:
     En una SPA con Angular, todo ocurre en el cliente: se carga un único `index.html` con el bundle JavaScript, y desde ahí el **Router** de Angular gestiona las "páginas" como componentes que se montan y desmontan dinámicamente en un `<router-outlet />`. La URL cambia (mediante la History API del navegador: `pushState`, `replaceState`) pero no hay recarga. El botón "atrás" del navegador funciona porque el Router registra cada navegación en el historial.
 
 Esto tiene implicaciones de diseño:
+
 - **Profundidad de enlace:** la persona usuaria puede compartir una URL (`/producto/42`) y quien la abra verá directamente ese producto, no la página de inicio. El Router debe poder "hidratar" cualquier estado desde la URL.
 - **Carga inicial vs navegación posterior:** la primera carga es pesada (todo el JavaScript), pero las navegaciones posteriores son instantáneas (solo cambia el componente montado). Por eso el lazy loading es crucial: no cargar en el bundle inicial lo que el 80% de los usuarios nunca verá.
 - **Accesibilidad:** los enlaces deben ser `<a>` reales (con `routerLink`), no `<div (click)>`, para que sean navegables por teclado y anunciados por lectores de pantalla.

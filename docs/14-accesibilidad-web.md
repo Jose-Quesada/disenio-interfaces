@@ -229,12 +229,14 @@ Los tres niveles de conformidad (A, AA, AAA) reflejan grados crecientes de acces
 **Los principios POUR en detalle:**
 
 **Perceptible (Perceivable):** La información y los componentes de la interfaz de usuario deben presentarse a los usuarios de manera que puedan percibirlos. Este principio aborda la pregunta: ¿puede el usuario percibir el contenido a través de al menos uno de sus sentidos? Si el contenido es puramente visual (una imagen, un gráfico, un video sin sonido), un usuario ciego no puede percibirlo a menos que se proporcione una alternativa textual. Si el contenido es puramente auditivo (un podcast, una alerta sonora), un usuario sordo no puede percibirlo a menos que se proporcionen subtítulos o transcripción. El principio Perceptible se desarrolla en cuatro pautas:
+
 - **1.1 Text Alternatives:** Proporcionar alternativas textuales para cualquier contenido no textual (imágenes, gráficos, iconos, botones de imagen, CAPTCHAs, contenido multimedia).
 - **1.2 Time-based Media:** Proporcionar alternativas para contenido multimedia dependiente del tiempo: subtítulos para vídeo, transcripciones para audio, audiodescripción para contenido visual, lengua de signos.
 - **1.3 Adaptable:** Crear contenido que pueda presentarse de diferentes maneras sin perder información o estructura. Esto implica usar HTML semántico para que el contenido mantenga su significado incluso si se modifica la presentación visual (secuencia correcta, orientación, identificación de campos de formulario).
 - **1.4 Distinguishable:** Facilitar a los usuarios ver y oír el contenido, incluyendo la separación entre primer plano y fondo. Incluye criterios sobre contraste de color, redimensionamiento de texto, imágenes de texto, control de audio, y espaciado del texto.
 
 **Operable (Operable):** Los componentes de la interfaz de usuario y la navegación deben ser operables. ¿Puede el usuario interactuar con la interfaz y navegar por el contenido? Este principio aborda una de las barreras más comunes: la dependencia exclusiva del ratón. Millones de personas no pueden usar un ratón por discapacidad motriz, visual o cognitiva. El principio Operable garantiza que la interfaz funcione mediante teclado, voz, punteros alternativos o cualquier otro método de entrada.
+
 - **2.1 Keyboard Accessible:** Toda la funcionalidad debe ser operable mediante una interfaz de teclado, sin requerir sincronización temporal para pulsaciones individuales.
 - **2.2 Enough Time:** Proporcionar a los usuarios tiempo suficiente para leer y usar el contenido. Incluye límites de tiempo ajustables, pausa/parada de movimiento, y prevención de interrupciones.
 - **2.3 Seizures and Physical Reactions:** No diseñar contenido de manera que pueda causar convulsiones o reacciones físicas. El criterio más conocido (2.3.1) prohíbe contenido que parpadee más de tres veces por segundo.
@@ -242,11 +244,13 @@ Los tres niveles de conformidad (A, AA, AAA) reflejan grados crecientes de acces
 - **2.5 Input Modalities:** Facilitar a los usuarios la operabilidad mediante diversas modalidades de entrada más allá del teclado. Añadido en WCAG 2.1, incluye gestos con puntero, cancelación de clic, etiquetas en nombres accesibles, actuación por movimiento, y tamaño mínimo de objetivo táctil.
 
 **Comprensible (Understandable):** La información y el manejo de la interfaz de usuario deben ser comprensibles. ¿Puede el usuario entender el contenido y cómo funciona la interfaz? La accesibilidad no se trata solo de poder percibir y operar, sino también de poder comprender.
+
 - **3.1 Readable:** Hacer que el contenido textual sea legible y comprensible. Incluye identificar el idioma principal de la página y los cambios de idioma en partes del contenido.
 - **3.2 Predictable:** Hacer que las páginas web aparezcan y operen de manera predecible. Incluye consistencia en navegación e identificación de elementos, y cambios de contexto que solo ocurran a petición del usuario.
 - **3.3 Input Assistance:** Ayudar a los usuarios a evitar y corregir errores. Incluye identificación de errores, etiquetas e instrucciones en formularios, sugerencias para corregir errores, y prevención de errores en contextos legales, financieros y de datos.
 
 **Robusto (Robust):** El contenido debe ser lo suficientemente robusto para ser interpretado de manera fiable por una amplia variedad de agentes de usuario, incluidas las tecnologías asistivas. ¿Funciona el contenido en diferentes navegadores, dispositivos y con diferentes tecnologías asistivas, ahora y en el futuro? Este principio mira hacia adelante: garantiza que el contenido esté construido sobre estándares que maximicen la compatibilidad.
+
 - **4.1 Compatible:** Maximizar la compatibilidad con agentes de usuario actuales y futuros, incluyendo tecnologías asistivas. El criterio 4.1.2 (Name, Role, Value) exige que todos los componentes de interfaz de usuario tengan su nombre, rol y valores correctamente expuestos a las APIs de accesibilidad. El criterio 4.1.3 (Status Messages, añadido en WCAG 2.1) exige que los mensajes de estado se comuniquen a través de roles o propiedades sin necesidad de recibir foco.
 
 ### 5. Navegación por teclado
@@ -481,6 +485,24 @@ Construimos una página web que ejemplifica todas las buenas prácticas de acces
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     ```
 
+!!! info "Desglose técnico pedagógico — Landmarks semánticos y navegación accesible"
+    Patrones fundamentales de accesibilidad web (WCAG 2.1 / WAI-ARIA):
+
+    **1. Estructura y Regiones de Referencia (*Landmarks*):**
+    
+    - `<header>`: Asigna implícitamente el rol ARIA `role="banner"`. Representa la cabecera del sitio.
+    - `<nav aria-label="Navegación principal">`: El atributo `aria-label` es indispensable cuando existe más de un `<nav>` en la página (menú principal, pie de página, migas de pan). Permite al sintetizador de voz anunciar el propósito exacto de la lista de enlaces.
+    - `<a href="#main-content" class="skip-link">`: Enlace de salto a contenido principal. Situado al inicio del `<body>`, permite a las personas que navegan con teclado o lectores saltar la cabecera y el menú sin tener que tabular decenas de veces.
+    - `<main id="main-content" tabindex="-1">`: Destino del salto. El atributo `tabindex="-1"` permite que el contenedor reciba el foco mediante el ancla (`#main-content`) sin insertarlo en el orden secuencial de tabulación del usuario.
+    - `<section aria-labelledby="destacados-heading">`: Vincula la sección a su encabezado `<h2>` asociado mediante su `id`, garantizando que el lector de pantalla anuncie el título al entrar en la región.
+    - `<aside role="complementary">`: Marca contenido tangencial o publicitario.
+    - `<footer>`: Mapea el rol semántico `role="contentinfo"`.
+
+    **2. Técnicas Clave de Accesibilidad:**
+    
+    - `aria-current="page"`: Indica al lector de pantalla qué enlace corresponde a la página activa, anunciando: *"Inicio, página actual, enlace"*.
+    - Clase `.sr-only` (*Screen Reader Only*): Patrón universal de CSS que expulsa un texto de la pantalla visual sin usar `display: none` ni `visibility: hidden` (los cuales ocultan el elemento también para los lectores de pantalla). Permite añadir texto descriptivo como `<span class="sr-only">de Cesta de Frutas</span>` dentro de botones breves tipo "Ver detalles".
+
 ### Ejemplo Guiado 2: Formulario de Registro Completamente Accesible
 
 === "HTML"
@@ -654,7 +676,19 @@ Construimos una página web que ejemplifica todas las buenas prácticas de acces
     })();
     ```
 
-### Ejemplo Guiado 3: Modal Accesible con Focus Trapping Completo
+!!! info "Desglose técnico pedagógico — Formularios y atributos ARIA de validación"
+    Implementación de accesibilidad integral en formularios:
+
+    **1. Atributos de Validación Dinámica:**
+    
+    - `aria-required="true"` y `required`: Comunican de forma nativa a navegadores y lectores que el campo no puede quedar en blanco.
+    - `aria-invalid="true"`: Conmutado dinámicamente por JavaScript cuando el usuario introduce un dato erróneo. El sintetizador de voz interrumpe anunciando: *"Inválido, correo electrónico"*.
+    - `aria-describedby="email-error"`: Vincula el campo con el mensaje de error o ayuda específico mediante su `id`. Al recibir el foco, el lector lee primero la etiqueta y seguidamente el texto de error asociado.
+
+    **2. Regiones Vivas y Gestión de Errores Globales:**
+    
+    - `role="alert"` o `aria-live="assertive"` en el resumen de errores: Obliga al sintetizador a interrumpir la locución actual y anunciar de inmediato al usuario que han ocurrido errores al pulsar el botón de envío.
+    - Redirección programática del foco (`input.focus()`): Al validar el formulario, enviar el foco al primer campo con error evita que los usuarios invidentes o de teclado queden desorientados tras pulsar "Enviar".
 
 === "HTML"
 

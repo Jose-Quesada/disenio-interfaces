@@ -35,6 +35,7 @@ El módulo profesional de **Diseño de Interfaces Web (Código 0615)** se impart
 > Capacitar al futuro desarrollador frontend para transformar especificaciones y requisitos funcionales en interfaces web atractivas, intuitivas, responsivas, interactivas, semánticas y universalmente accesibles (WCAG 2.2 / WAI-ARIA), dominando el ecosistema de diseño con Figma, maquetación CSS avanzada (Grid, Flexbox, Tailwind CSS 4, Sass) y desarrollo SPA basado en componentes mediante frameworks frontend (Angular).
 
 El módulo se articula en torno a 6 grandes ejes competenciales:
+
 1. **Psicología del diseño y comunicación visual:** Percepción visual (Leyes de Gestalt), leyes de UX (Fitts, Hick, Miller, Jakob), teoría del color, ratios de contraste y tipografía web.
 2. **Sistemas de diseño y prototipado:** Atomic Design, Design Tokens, maquetación visual y prototipado interactivo en Figma con Auto Layout, componentes y variantes.
 3. **Maquetación web profesional y responsive:** HTML5 semántico, CSS moderno (Box Model, cascada, especificidad, Custom Properties, BEM), Flexbox, CSS Grid Layout, Container Queries, Mobile-First, Tailwind CSS 4 y Sass/SCSS.
@@ -76,6 +77,7 @@ La programación se fundamenta en la siguiente jerarquía normativa:
 ## 4. Contexto del Alumnado (2º DAW)
 
 El grupo de 2º DAW está integrado por 9 alumnos/as procedentes de Martos y municipios de la comarca (Torredelcampo, Fuensanta de Martos, Jaén capital):
+
 - **Edad:** Rango de 18 a 31 años, mostrando alta motivación profesional hacia el desarrollo web.
 - **Rendimiento previo:** La gran mayoría promocionó de 1º DAW con todas las materias superadas. 2 alumnos repetidores cuentan con seguimiento individualizado.
 - **Convalidaciones:** 2 alumnos con convalidación autorizada en el módulo de IPE II.
@@ -86,6 +88,7 @@ El grupo de 2º DAW está integrado por 9 alumnos/as procedentes de Martos y mun
 ## 5. Objetivos Generales y Competencias del Título
 
 El módulo contribuye directamente a los siguientes objetivos generales (Orden de 16 de junio de 2011):
+
 - **i)** Utilizar lenguajes de marcas y estándares web, asumiendo el manual de estilo, para desarrollar interfaces en aplicaciones web.
 - **j)** Emplear herramientas y lenguajes específicos para desarrollar componentes multimedia.
 - **k)** Evaluar la interactividad, accesibilidad y usabilidad de una interfaz para integrar componentes multimedia.
@@ -149,55 +152,55 @@ flowchart TD
 - **Resultados de Aprendizaje:** RA1 (a–f) y RA6 (b, c).
 - **Contenidos:** Psicología cognitiva, Leyes de Gestalt, leyes UX (Fitts, Hick, Miller, Jakob), teoría del color (RGB, HSL, Oklch, ratios de contraste WCAG), tipografía web, escalas modulares, Atomic Design, Design Tokens, arquitectura de información, Card Sorting, User Flows, Wireframes y Figma avanzado (Frames, Auto Layout, Componentes, Variantes, Constraints y prototipado Smart Animate).
 - **Materiales de Apoyo (`docs/`):**
-  - [`01. Introducción al Diseño de Interfaces Web`](index.md)
-  - [`02-psicologia-diseno.md`](02-psicologia-diseno.md)
-  - [`03-color-tipografia.md`](03-color-tipografia.md)
-  - [`04-guias-estilo-design-systems.md`](04-guias-estilo-design-systems.md)
-  - [`05-figma-profesional.md`](05-figma-profesional.md)
-  - [`06-arquitectura-informacion.md`](06-arquitectura-informacion.md)
+    - [`01. Introducción al Diseño de Interfaces Web`](index.md)
+    - [`02-psicologia-diseno.md`](02-psicologia-diseno.md)
+    - [`03-color-tipografia.md`](03-color-tipografia.md)
+    - [`04-guias-estilo-design-systems.md`](04-guias-estilo-design-systems.md)
+    - [`05-figma-profesional.md`](05-figma-profesional.md)
+    - [`06-arquitectura-informacion.md`](06-arquitectura-informacion.md)
 
 ### 7.2 Bloque 2 · UT 2: Maquetación Web Profesional: HTML5 Semántico, CSS Avanzado, Flexbox, Grid y Responsive Design (35 horas)
 - **Resultados de Aprendizaje:** RA2 (a–j).
 - **Contenidos:** HTML5 semántico y SEO técnico (Schema.org), CSS moderno (Box Model, cascada, especificidad, `@layer`, Custom Properties, metodología BEM/ITCSS), Flexbox unidimensional, CSS Grid bidimensional (`grid-template-areas`, `minmax()`, `auto-fit`), Mobile-First, Container Queries (`@container`), imágenes responsivas (`<picture>`, `srcset`), Tailwind CSS 4 (`@theme`) y preprocesador Sass/SCSS (`@use`, `@forward`, mixins).
 - **Materiales de Apoyo (`docs/`):**
-  - [`07-html-semantico.md`](07-html-semantico.md)
-  - [`08-css-profesional.md`](08-css-profesional.md)
-  - [`09-flexbox.md`](09-flexbox.md)
-  - [`10-css-grid-layout.md`](10-css-grid-layout.md)
-  - [`11-responsive-design.md`](11-responsive-design.md)
-  - [`17-tailwindcss4.md`](17-tailwindcss4.md)
-  - [`18-preprocesadores-css.md`](18-preprocesadores-css.md)
+    - [`07-html-semantico.md`](07-html-semantico.md)
+    - [`08-css-profesional.md`](08-css-profesional.md)
+    - [`09-flexbox.md`](09-flexbox.md)
+    - [`10-css-grid-layout.md`](10-css-grid-layout.md)
+    - [`11-responsive-design.md`](11-responsive-design.md)
+    - [`17-tailwindcss4.md`](17-tailwindcss4.md)
+    - [`18-preprocesadores-css.md`](18-preprocesadores-css.md)
 
 ### 7.3 Bloque 3 · UT 3: Multimedia Web, Optimización de Activos, Derechos de Autor y Licencias (20 horas)
 - **Resultados de Aprendizaje:** RA3 (a–h).
 - **Contenidos:** Formatos de imagen modernos (WebP, AVIF, SVG interactivo y optimización con SVGO), audio y vídeo HTML5 (`<audio>`, `<video>`, códecs H.264, VP9, AV1), subtítulos accesibles WebVTT (`<track>`), compresión de recursos, marco legal de propiedad intelectual (TRLPI), licencias Creative Commons, licencias de software (MIT, Apache, GPL) y privacidad RGPD.
 - **Materiales de Apoyo (`docs/`):**
-  - [`12-multimedia-web.md`](12-multimedia-web.md)
-  - [`19-marco-legal-multimedia.md`](19-marco-legal-multimedia.md)
+    - [`12-multimedia-web.md`](12-multimedia-web.md)
+    - [`19-marco-legal-multimedia.md`](19-marco-legal-multimedia.md)
 
 ### 7.4 Bloque 4 · UT 4: Interactividad, Animaciones y Desarrollo Frontend por Componentes con Framework (Angular) (55 horas)
 - **Resultados de Aprendizaje:** RA4 (a–g) y RA2 (i).
 - **Contenidos:** Microinteracciones y animaciones CSS (`@keyframes`, timing functions), JavaScript DOM events, Web Animations API, arquitectura de Angular con componentes Standalone, TypeScript, Data Binding, Signals, directivas de control de flujo (`@if`, `@for`, `@switch`), Pipes, Servicios e Inyección de Dependencias, consumo de APIs REST con `HttpClient` y RxJS, enrutamiento con `Angular Router` (rutas hijas, Lazy Loading, Guards) y Formularios Reactivos con validación visual.
 - **Materiales de Apoyo (`docs/`):**
-  - [`13-interactividad-web.md`](13-interactividad-web.md)
-  - [`20-angular-introduccion.md`](20-angular-introduccion.md)
-  - [`21-angular-componentes-datos.md`](21-angular-componentes-datos.md)
-  - [`22-angular-servicios-httpclient.md`](22-angular-servicios-httpclient.md)
-  - [`23-angular-routing-formularios.md`](23-angular-routing-formularios.md)
+    - [`13-interactividad-web.md`](13-interactividad-web.md)
+    - [`20-angular-introduccion.md`](20-angular-introduccion.md)
+    - [`21-angular-componentes-datos.md`](21-angular-componentes-datos.md)
+    - [`22-angular-servicios-httpclient.md`](22-angular-servicios-httpclient.md)
+    - [`23-angular-routing-formularios.md`](23-angular-routing-formularios.md)
 
 ### 7.5 Bloque 5 · UT 5: Accesibilidad Web Universal (WCAG 2.1/2.2, WAI-ARIA) y Validación Técnica (20 horas)
 - **Resultados de Aprendizaje:** RA5 (a–h).
 - **Contenidos:** Principios POUR de accesibilidad, pautas WCAG 2.2 (niveles A, AA y AAA), navegación por teclado y trampas de foco, especificación WAI-ARIA (roles, estados y propiedades dinámicas en SPA), herramientas de auditoría automatizada (axe DevTools, Lighthouse, WAVE) y pruebas con lectores de pantalla (NVDA, VoiceOver) conforme al RD 1112/2018 y Ley 11/2023.
 - **Materiales de Apoyo (`docs/`):**
-  - [`14-accesibilidad-web.md`](14-accesibilidad-web.md)
-  - [`07-html-semantico.md`](07-html-semantico.md)
+    - [`14-accesibilidad-web.md`](14-accesibilidad-web.md)
+    - [`07-html-semantico.md`](07-html-semantico.md)
 
 ### 7.6 Bloque 6 · UT 6: Usabilidad Web, Métricas UX, Heurísticas y Diseño Centrado en el Usuario (DCU) (15 horas)
 - **Resultados de Aprendizaje:** RA6 (a–f).
 - **Contenidos:** Las 10 heurísticas de usabilidad de Jakob Nielsen, métricas de rendimiento y experiencia (System Usability Scale - SUS, Core Web Vitals LCP/INP/CLS), metodología de Diseño Centrado en el Usuario (DCU / Design Thinking: Empatizar, Definir, Idear, Prototipar, Testear), User Personas, Customer Journey Maps y conducción de pruebas de usabilidad con usuarios reales.
 - **Materiales de Apoyo (`docs/`):**
-  - [`15-usabilidad-web.md`](15-usabilidad-web.md)
-  - [`16-diseno-centrado-usuario.md`](16-diseno-centrado-usuario.md)
+    - [`15-usabilidad-web.md`](15-usabilidad-web.md)
+    - [`16-diseno-centrado-usuario.md`](16-diseno-centrado-usuario.md)
 
 ---
 

@@ -218,7 +218,7 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
         <!-- Logotipo con enlace a la página de inicio.
              aria-label proporciona el texto accesible del enlace. -->
         <a href="/" aria-label="Ir a la página de inicio de Mi Blog">
-          <img src="logo.svg" alt="Logotipo de Mi Blog de Desarrollo Web" width="180" height="50">
+          <img src="https://dummyimage.com/200x200/ccc/000.png&text=logo.svg" alt="Logotipo de Mi Blog de Desarrollo Web" width="180" height="50">
         </a>
 
         <!-- NAVEGACIÓN PRINCIPAL: patrón nav + ul/li.
@@ -328,7 +328,7 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
                <figure> envuelve contenido ilustrativo autónomo.
                <figcaption> proporciona la leyenda accesible. -->
           <figure>
-            <img src="estructura-html5.png"
+            <img src="https://dummyimage.com/800x600/ccc/000.png&text=estructura-html5.png"
                  alt="Diagrama de una página web mostrando la disposición de header, nav, main, article, section, aside y footer, con cada región coloreada y etiquetada según el estándar HTML5"
                  width="800" height="500"
                  loading="lazy"
@@ -355,7 +355,7 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
           <!-- Pie del artículo con información del autor y navegación entre artículos -->
           <footer>
             <address>
-              <img src="autora-maria.jpg" alt="Fotografía de María López García"
+              <img src="https://dummyimage.com/800x600/ccc/000.png&text=autora-maria.jpg" alt="Fotografía de María López García"
                    width="80" height="80" loading="lazy">
               <p>
                 <strong>María López García</strong> es desarrolladora web senior y
@@ -1113,8 +1113,8 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
         <section class="ejemplo" aria-labelledby="ej1">
           <h2 id="ej1">1. srcset con descriptores de densidad (1x, 2x, 3x)</h2>
           <p>El navegador elige automáticamente la imagen con la densidad de píxeles adecuada. Una pantalla Retina (2x) cargará la versión de mayor resolución.</p>
-          <pre>&lt;img src="foto-1x.jpg"
-         srcset="foto-1x.jpg 1x, foto-2x.jpg 2x, foto-3x.jpg 3x"
+          <pre>&lt;img src="https://dummyimage.com/800x600/ccc/000.png&text=foto-1x.jpg"
+         srcset="https://dummyimage.com/800x600/ccc/000.png&text=foto-1x.jpg 1x, https://dummyimage.com/800x600/ccc/000.png&text=foto-2x.jpg 2x, https://dummyimage.com/800x600/ccc/000.png&text=foto-3x.jpg 3x"
          alt="Paisaje montañoso al atardecer"
          width="800" height="400"&gt;</pre>
           <div class="img-placeholder">srcset 1x, 2x, 3x</div>
@@ -1123,9 +1123,8 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
         <section class="ejemplo" aria-labelledby="ej2">
           <h2 id="ej2">2. srcset con descriptores de ancho (w) + sizes</h2>
           <p>Los descriptores <code>w</code> indican el ancho intrínseco. El atributo <code>sizes</code> informa al navegador del espacio que ocupará la imagen en el layout para que elija la óptima antes de cargar el CSS.</p>
-          <pre>&lt;img src="paisaje-800.jpg"
-         srcset="paisaje-400.jpg 400w, paisaje-800.jpg 800w,
-                 paisaje-1200.jpg 1200w, paisaje-1600.jpg 1600w"
+          <pre>&lt;img src="https://dummyimage.com/800x600/ccc/000.png&text=paisaje-800.jpg"
+         srcset="https://dummyimage.com/400x300/ccc/000.png&text=paisaje-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=paisaje-800.jpg 800w, https://dummyimage.com/1200x400/ccc/000.png&text=paisaje-1200.jpg 1200w, https://dummyimage.com/800x600/ccc/000.png&text=paisaje-1600.jpg 1600w"
          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
          alt="Vista panorámica de la ciudad"
          width="800" height="450"&gt;</pre>
@@ -1136,9 +1135,9 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
           <h2 id="ej3">3. Elemento picture para dirección de arte (Art Direction)</h2>
           <p>Define diferentes imágenes según condiciones como el ancho de la ventana. Aquí se muestra un recorte vertical en móvil y panorámico en escritorio.</p>
           <pre>&lt;picture&gt;
-      &lt;source srcset="hero-mobile.jpg" media="(max-width: 600px)"&gt;
-      &lt;source srcset="hero-desktop.jpg" media="(min-width: 601px)"&gt;
-      &lt;img src="hero-desktop.jpg"
+      &lt;source srcset="https://dummyimage.com/800x600/ccc/000.png&text=hero-mobile.jpg" media="(max-width: 600px)"&gt;
+      &lt;source srcset="https://dummyimage.com/800x600/ccc/000.png&text=hero-desktop.jpg" media="(min-width: 601px)"&gt;
+      &lt;img src="https://dummyimage.com/800x600/ccc/000.png&text=hero-desktop.jpg"
            alt="Equipo de desarrollo colaborando en la oficina"
            width="1200" height="600"&gt;
     &lt;/picture&gt;</pre>
@@ -1149,9 +1148,9 @@ Construcción: `<nav>` como contenedor + `<ul>`/`<li>` con `<a>`. Los lectores d
           <h2 id="ej4">4. Formatos modernos con fallback (AVIF → WebP → JPEG)</h2>
           <p>WebP y AVIF ofrecen mejor compresión. Con <code>&lt;picture&gt;</code> servimos el mejor formato soportado por el navegador y un fallback JPEG universal.</p>
           <pre>&lt;picture&gt;
-      &lt;source srcset="producto.avif" type="image/avif"&gt;
-      &lt;source srcset="producto.webp" type="image/webp"&gt;
-      &lt;img src="producto.jpg"
+      &lt;source srcset="https://dummyimage.com/800x600/ccc/000.png&text=producto.avif" type="image/avif"&gt;
+      &lt;source srcset="https://dummyimage.com/800x600/ccc/000.png&text=producto.webp" type="image/webp"&gt;
+      &lt;img src="https://dummyimage.com/800x600/ccc/000.png&text=producto.jpg"
            alt="Zapatillas deportivas azules, vista lateral"
            width="600" height="600"
            loading="lazy"

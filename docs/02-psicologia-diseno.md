@@ -447,6 +447,26 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! note "Explicación del resultado"
     Al visualizar esta página, la mirada sigue naturalmente el patrón en **F**. Primero recorre el título completo de izquierda a derecha. Luego desciende ligeramente y recorre los metadatos y la entradilla. Finalmente desciende por el margen izquierdo, deteniéndose en las palabras en negrita al inicio de cada párrafo y en los subtítulos. Se recomienda al alumnado leer la página con atención y luego intentar escanearla en **5 segundos**, anotando qué información retienen; comprobarán que coincide con los elementos situados en las zonas del patrón F.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Para el alumnado que se inicia en diseño web y maquetación editorial:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<article class="post">`: Contenedor semántico autónomo que encapsula la entrada completa del blog.
+    - `<h1>`: Título de máxima jerarquía visual y semántica. Su longitud y peso capturan el primer barrido horizontal del patrón en F.
+    - `<div class="meta">` y `<time datetime="2026-03-20">`: Bloque de metadatos (autor, fecha estandarizada en formato legible por máquinas).
+    - `<p class="lead">`: Párrafo de entradilla estilizado con mayor tamaño tipográfico e interlineado para actuar como segundo ancla visual horizontal en la parte superior.
+    - `<h2>`: Subencabezados temáticos. Cortan el flujo del texto largo y sirven como anclajes de fijación visual cuando el usuario desciende rápidamente por el margen izquierdo (segunda barra horizontal de la F).
+    - `<strong>`: Etiqueta en línea semántica de énfasis fuerte. Situar palabras clave en negrita al comienzo exacto de las líneas guía la mirada durante el escaneo vertical rápido.
+    - `<ul>` y `<li>`: Lista no ordenada con viñetas que fragmenta bloques densos de información en puntos digeribles (*chunking*).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `max-width: 680px; margin: 0 auto;`: Centra la columna de lectura y limita su ancho a unas 10-12 palabras por línea (65-75 caracteres), rango donde el patrón en F opera con mayor confortabilidad sin provocar extravíos visuales al saltar de renglón.
+    - `font-size: 2.2rem; line-height: 1.25;` en títulos: Ratio tipográfico que asegura que el encabezado no ocupe demasiadas líneas pero resalte claramente sobre el cuerpo de texto (`1.05rem`).
+    - `line-height: 1.8; color: #2d3748;`: Interlineado generoso combinado con un tono gris oscuro suave (en lugar de negro puro `#000000`) para reducir la fatiga en lecturas prolongadas.
+    - `li::marker { color: #667eea; }`: Pseudoelemento CSS moderno que permite estilizar de forma aislada la viñeta de la lista, dándole un acento cromático sin necesidad de añadir etiquetas `<span>` adicionales.
+
 ---
 
 ### Ejemplo 2: Aplicación de la Ley de Hick en navegación categorizada
@@ -630,6 +650,25 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 
 !!! note "Explicación del resultado"
     Aunque la suma de los logaritmos es matemáticamente similar en ambos casos, la experiencia subjetiva es radicalmente diferente. Enfrentarse a **12 opciones simultáneas** produce ansiedad y parálisis de decisión («análisis parálisis»). En cambio, elegir primero entre **4 categorías** y luego entre **3 enlaces** dentro de la categoría seleccionada se percibe como más manejable, aunque la complejidad matemática subyacente sea comparable. La ley de Hick nos enseña que lo importante no es solo el número de opciones, sino **cómo se presentan**.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Análisis de la arquitectura de menús y optimización cognitiva:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="comparativa">`: Contenedor principal para enfrentar las dos estrategias de diseño de navegación.
+    - `<div class="panel">`: Cada una de las dos columnas de la comparativa ("Navegación Plana" vs "Navegación Categorizada").
+    - `<nav class="menu-plano">`: Menú plano de un solo nivel que expone 12 enlaces de golpe, saturando visualmente.
+    - `<nav class="menu-categorizado">`: Menú jerarquizado que agrupa los ítems en bloques temáticos usando listas anidadas o acordeones.
+    - `<details>` y `<summary>`: Elementos nativos de HTML5 para crear acordeones interactivos sin necesidad de librerías JavaScript. `<summary>` define la cabecera visible y clicable de la categoría ("Electrónica", "Ropa"), y `<details>` oculta su lista hija hasta que el usuario decide explorarla.
+    - `<div class="info-box danger">` y `<div class="info-box success">`: Cajas informativas coloreadas según su semántica para reflejar el impacto cognitivo negativo (rojo/peligro) o positivo (verde/éxito).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;`: Distribuye los dos paneles en columnas de idéntico ancho para una comparativa directa lado a lado.
+    - `display: flex; flex-wrap: wrap; gap: 0.5rem;` en el menú plano: Dispone los 12 botones en flujo horizontal continuo con envoltura de línea, lo que genera desorden al no haber una estructura clara de columnas.
+    - `border-left: 4px solid #48bb78;` en `.info-box`: Uso de un borde lateral grueso de acento (*callout border*) para transmitir el estado semántico sin saturar el fondo de color.
+    - `font-family: 'Courier New', monospace;` en `.formula`: Tipografía monoespaciada de ancho fijo que simula formato matemático o de terminal para la fórmula de Hick.
 
 ---
 
@@ -866,6 +905,24 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! note "Explicación del resultado"
     La interfaz simula una pantalla de smartphone real. Las tareas con botones de **30px** son objetivamente más difíciles de pulsar: requieren mayor precisión motriz, producen más errores (pulsar el texto en lugar del botón) y generan frustración. Los botones de **44px**, en cambio, son fáciles de pulsar incluso caminando o en transporte público. La ley de Fitts no es teoría abstracta: si abres esta página en tu móvil e intentas pulsar alternativamente los botones pequeños y grandes, **sentirás físicamente** la diferencia predicha por la fórmula.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Pautas de diseño táctil (*touch targets*) y la ley de Fitts:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="dispositivo-movil">`: Maqueta que simula el chasis físico de un teléfono inteligente, permitiendo testear la ergonomía del pulgar en pantalla de escritorio.
+    - `<div class="barra-estado">`: Barra superior que representa la hora, cobertura y batería, aportando realismo al prototipo.
+    - `<ul class="lista-tareas">` y `<li class="tarea">`: Lista accesible de elementos accionables. Cada tarea contiene el título descriptivo y un botón interactivo de validación.
+    - `<button class="btn-check">`: Etiqueta nativa de botón. Se utiliza explícitamente `<button>` (y no un `<div>` con evento clic) para garantizar la accesibilidad por teclado y compatibilidad con tecnologías asistivas.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `width: 375px; height: 667px; border-radius: 40px;`: Dimensiones canónicas de un smartphone de referencia (iPhone SE / iPhone 8), con un radio de curvatura que imita los bordes redondeados del hardware moderno.
+    - `overflow: hidden;`: Recorta cualquier elemento que sobresalga de las esquinas redondeadas del dispositivo móvil virtual.
+    - `min-width: 44px; min-height: 44px;`: El umbral crítico de la **Ley de Fitts**. Las directrices WCAG 2.1 (Criterio 2.5.5) y las pautas de Apple HIG exigen una diana táctil mínima de 44×44px (o 48×48px en Material Design de Google) para que la yema del dedo pulgar humano pueda pulsar sin fallos ni desvíos involuntarios.
+    - `display: flex; align-items: center; justify-content: center;`: Centra con precisión el icono o tick dentro del área circular del botón.
+    - `cursor: pointer;`: Indica visualmente en navegadores de escritorio que el elemento responde a la interacción.
+
 ---
 
 ### Ejemplo 4: Carga cognitiva en formularios — de monolítico a paso a paso
@@ -1084,6 +1141,25 @@ En formularios, cada campo adicional incrementa la carga de forma **no lineal**,
 !!! note "Explicación del resultado"
     El formulario monolítico presenta **10 campos simultáneos**, saturando la memoria de trabajo (límite: **7 ± 2 ítems**). La persona usuaria ve todo el trabajo que le queda por delante y puede desanimarse antes de empezar. El formulario paso a paso muestra solo **3-4 campos por paso**, manteniendo la carga cognitiva dentro de los límites manejables. Además, la barra de progreso proporciona *feedback* motivacional: la persona usuaria siente que avanza y está más cerca de la meta. Diversos estudios de usabilidad confirman que los formularios paso a paso pueden aumentar las conversiones entre un **10% y un 25%** respecto a sus equivalentes monolíticos.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Técnicas de reducción de carga cognitiva en formularios tipo *Wizard*:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="comparativa-formularios">`: Contenedor global de cuadrícula para situar el formulario monolítico frente al fraccionado.
+    - `<div class="barra-progreso">`: Componente visual que informa sobre el avance en el proceso. Contiene indicadores de paso (`<div class="paso">`) y una línea conectora horizontal.
+    - `<div class="paso completado">`, `<div class="paso activo">` y `<div class="paso">`: Estados del indicador de progreso. Reflejan el pasado (verde con tick), el presente (azul activo) y el futuro (gris inactivo).
+    - `<fieldset>` y `<legend>`: Agrupaciones nativas de campos de formulario. `<legend>` proporciona el título accesible que los lectores de pantalla leen antes de cada campo interior.
+    - `<button type="button" class="btn-secundario">` y `<button type="submit" class="btn-primario">`: Patrón de navegación anterior/siguiente entre pasos.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `display: flex; justify-content: space-between; align-items: center; position: relative;` en `.barra-progreso`: Permite distribuir equitativamente los círculos numerados a lo largo del ancho del formulario.
+    - `.barra-progreso::before`: Uso de un pseudoelemento con `position: absolute; height: 2px; background: #e2e8f0; z-index: 1;` para trazar la línea continua de fondo que conecta todos los pasos sin necesidad de añadir un elemento `<div>` decorativo vacío en el HTML.
+    - `border-radius: 50%`: Convierte los contenedores cuadrados de los pasos en círculos perfectos.
+    - `z-index: 2` en los círculos: Asegura que los nodos numerados queden por encima de la línea conectora, tapándola en los puntos de intersección.
+    - `.paso-contenido`: Clase que controla la visibilidad. En aplicaciones reales, los pasos inactivos tienen `display: none;` y el activo se conmuta a `display: block;` mediante JavaScript, descargando la atención del usuario a un único bloque mental a la vez.
+
 
 ## Casos reales
 
@@ -1269,6 +1345,7 @@ Cada patrón debe incluir: ejemplo visual, código HTML/CSS, explicación del pr
 ### Actividad de ampliación 2: Análisis de eye-tracking simulado
 
 **Enunciado:** Utilizando las DevTools del navegador y la extensión "Eye Tracking Simulator" (o simplemente superponiendo zonas de calor manualmente), analiza tres páginas de inicio de sitios web populares (Reddit, Wikipedia, BBC News) y dibuja sobre capturas de pantalla el recorrido visual predicho por el patrón en F. Para cada página, identifica:
+
 - ¿Qué elementos caen en las zonas de máxima atención del patrón F?
 - ¿Hay elementos importantes que quedan fuera de esas zonas?
 - ¿Coincide la jerarquía visual implementada con las predicciones del patrón F?

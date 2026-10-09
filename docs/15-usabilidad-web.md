@@ -47,16 +47,17 @@ Al finalizar esta unidad, el alumnado será capaz de:
 ### 2. Las 10 Heurísticas de Nielsen
 2.1. Historia y vigencia de las heurísticas de Jakob Nielsen (1994-presente).
 2.2. Desarrollo detallado de cada heurística con dos ejemplos de cumplimiento y dos de violación por cada una:
-  1. Visibilidad del estado del sistema
-  2. Coincidencia entre el sistema y el mundo real
-  3. Control y libertad del usuario
-  4. Consistencia y estándares
-  5. Prevención de errores
-  6. Reconocimiento antes que recuerdo
-  7. Flexibilidad y eficiencia de uso
-  8. Diseño estético y minimalista
-  9. Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores
-  10. Ayuda y documentación
+
+    1. Visibilidad del estado del sistema
+    2. Coincidencia entre el sistema y el mundo real
+    3. Control y libertad del usuario
+    4. Consistencia y estándares
+    5. Prevención de errores
+    6. Reconocimiento antes que recuerdo
+    7. Flexibilidad y eficiencia de uso
+    8. Diseño estético y minimalista
+    9. Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores
+    10. Ayuda y documentación
 
 ### 3. Evaluación heurística
 3.1. Definición y propósito: inspección por expertos basada en principios.
@@ -259,21 +260,213 @@ Los **heat maps de comportamiento** (Hotjar, Clarity) registran datos **pasivos*
 
 ## Ejemplos guiados
 
-### Ejemplo Guiado 1: Evaluación Heurística de un Checkout
+### Ejemplo Guiado 1: Evaluación Heurística Integral de un Checkout de Comercio Electrónico
 
-A continuación analizamos el proceso de checkout de una tienda online aplicando las 10 heurísticas de Nielsen.
+Este ejemplo presenta una auditoría heurística completa y realista sobre el proceso de compra (*checkout*) de una plataforma de comercio electrónico de electrónica y videojuegos (*«TechStore Gaming»*). El caso está diseñado para su estudio y discusión en el aula de Ciclos Formativos de Grado Superior, ilustrando cómo un equipo de diseño e ingeniería de interfaces analiza problemas de usabilidad, determina su severidad y establece un plan de priorización técnica para el equipo de desarrollo.
 
-**Checkout analizado:** 4 pasos (identificación, dirección, envío, pago).
+#### 1. Contexto del sistema y datos de partida
 
-**Hallazgos principales:**
+- **Plataforma analizada:** Tienda online responsive (versiones desktop y mobile).
+- **Flujo evaluado:** Embudo de checkout estructurado en 4 pantallas consecutivas:
+    1. *Paso 1:* Identificación de usuario (acceso, registro o compra como invitado).
+    2. *Paso 2:* Dirección de entrega y datos de facturación.
+    3. *Paso 3:* Selección de método de envío y opciones logísticas.
+    4. *Paso 4:* Selección de método de pago, revisión del pedido y botón final de confirmación.
+- **Datos analíticos previos (Google Analytics 4):**
+    - Tasa global de abandono en el checkout: **68,4%** (significativamente superior a la media del sector de comercio electrónico, situada en torno al 55-60%).
+    - Puntos de caída crítica: el **39%** de los abandonos se producen en el Paso 2 (formulario de dirección) y el **44%** en el Paso 4 (pago final).
+    - Incidencias en atención al cliente: el **16%** de las consultas mensuales se deben a pedidos con direcciones erróneas o reclamaciones por cobros duplicados en tarjeta bancaria.
+- **Metodología de inspección:** Evaluación independiente por **3 evaluadores de usabilidad** aplicando la lista canónica de las 10 heurísticas de Nielsen y consolidación posterior en una sesión de consenso.
 
-1. **H1 - Visibilidad del estado:** El checkout no muestra el número de paso actual. El usuario no sabe si está en el paso 2 de 4 o en el 3 de 7. Solución: añadir barra de progreso: "Paso 2 de 4: Dirección de envío". Severidad: 3.
+---
 
-2. **H3 - Control y libertad:** No hay botón "Volver" entre pasos del checkout. Si el usuario se equivoca en la dirección, no puede volver a corregirla sin usar el botón Atrás del navegador (que puede perder datos). Solución: añadir botones de navegación visible entre pasos. Severidad: 4.
+#### 2. Hallazgos detallados según las 10 Heurísticas de Nielsen
 
-3. **H5 - Prevención de errores:** El campo de código postal acepta cualquier texto sin validar formato. El usuario puede escribir letras donde deberían ir números. Solución: aplicar máscara de entrada o validación en tiempo real. Severidad: 3.
+A continuación se desglosan los problemas detectados en la auditoría, abarcando el conjunto completo de heurísticas:
 
-4. **H6 - Reconocimiento vs recuerdo:** Los métodos de envío se muestran con nombres técnicos ("Envío estándar 48h", "Envío urgente 24h", "Punto de recogida SEUR") sin explicar qué significa cada uno. Solución: añadir descripciones breves con precio y plazo. Severidad: 2.
+1. **H1 — Visibilidad del estado del sistema:**
+    - *Hallazgo 1.1 (Paso 1 a 4):* La interfaz no dispone de una barra de progreso ni indicador de pasos. El usuario no sabe en qué fase del proceso se encuentra ni cuántos pasos le restan para finalizar la compra (sensación de «túnel interminable»).
+    - *Hallazgo 1.2 (Paso 4 — Pago):* Al hacer clic en el botón «Realizar pago», la pasarela tarda entre 4 y 6 segundos en conectar con la entidad bancaria sin mostrar ningún indicador visual de carga (*spinner*, mensaje «Procesando pago...» o bloqueo del botón). Como resultado, usuarios impacientes pulsan repetidamente el botón, lo que provoca peticiones duplicadas y transacciones duplicadas en el servidor.
+2. **H2 — Coincidencia entre el sistema y el mundo real:**
+    - *Hallazgo 2.1 (Paso 3 — Envíos):* Las modalidades de entrega se presentan con nomenclaturas internas del sistema ERP logístico: *«Flete Terrestre Consolidado LTL-Hub2»*, *«Paquetería Last-Mile Urg-04»* y *«Recargo Picking WMS Especial: 3,50 €»*. El comprador común no comprende qué empresa realiza la entrega ni qué implica cada servicio.
+    - *Hallazgo 2.2 (Paso 2 — Dirección):* El orden de los campos del formulario solicita el «Código Postal» y «Provincia» antes que la «Calle/Dirección», y exige introducir el «DNI/NIF» antes del nombre del destinatario, contraviniendo el modelo mental habitual de cumplimentación en España.
+3. **H3 — Control y libertad del usuario:**
+    - *Hallazgo 3.1 (Paso 2, 3 y 4):* No existen botones visibles para «Volver al paso anterior» o «Editar dirección». Si el usuario pulsa la tecla o botón «Atrás» del navegador, el navegador muestra el aviso de confirmación de reenvío de formulario (`Confirm Form Resubmission / ERR_CACHE_MISS`) y borra todos los datos introducidos en los pasos anteriores, forzando a reiniciar el checkout desde cero.
+    - *Hallazgo 3.2 (Todo el flujo):* No existe un mecanismo de «Guardar carrito y continuar más tarde» ni un enlace claro para abandonar el checkout manteniendo los productos reservados.
+4. **H4 — Consistencia y estándares:**
+    - *Hallazgo 4.1 (Todo el flujo):* Inconsistencia grave en los botones de llamada a la acción (*CTA*): en el Paso 1 el botón primario es de color verde y está alineado a la izquierda; en el Paso 2 es de color azul y centrado; en el Paso 3 es un simple enlace de texto subrayado sin aspecto de botón. Esto genera desorientación visual en cada avance.
+    - *Hallazgo 4.2 (Cabecera):* El icono que representa el carrito de la compra utiliza la ilustración de un maletín de oficina en lugar del icono universalmente estandarizado de cesta o carrito con ruedas.
+5. **H5 — Prevención de errores:**
+    - *Hallazgo 5.1 (Paso 2 y 4):* Los campos de código postal, número de teléfono y número de tarjeta de crédito son campos de texto libre (`<input type="text">`) sin máscaras de formato ni filtrado de caracteres: permiten introducir letras donde solo caben dígitos, no agrupan los números de tarjeta en bloques legibles de 4 cifras y permiten enviar códigos postales con más o menos de 5 dígitos.
+    - *Hallazgo 5.2 (Paso 2 — Formulario):* La casilla de verificación *«Deseo suscribirme al boletín diario y autorizo la cesión de mis datos a empresas colaboradoras»* aparece premarcada por defecto (*dark pattern* que viola el RGPD y provoca errores accidentales de consentimiento).
+    - *Hallazgo 5.3 (Paso 4 — Tarjeta):* El selector de fecha de caducidad de la tarjeta permite seleccionar meses y años anteriores a la fecha actual, permitiendo que el usuario envíe tarjetas caducadas antes de validarlas.
+6. **H6 — Reconocimiento antes que recuerdo:**
+    - *Hallazgo 6.1 (Paso 4 — Revisión y pago):* En la pantalla final de pago desaparece por completo el resumen de los productos que se van a comprar, sus cantidades y la dirección de envío seleccionada. El usuario se ve obligado a recordar de memoria si eligió la talla o color correctos y a qué domicilio los mandó, generando una inseguridad que frena la conversión final.
+    - *Hallazgo 6.2 (Paso 3 — Envíos):* Las opciones de envío muestran el nombre del transportista pero no desglosan la fecha estimada de entrega (día y franja horaria) ni el coste adicional hasta que el usuario hace clic sobre ellas.
+7. **H7 — Flexibilidad y eficiencia de uso:**
+    - *Hallazgo 7.1 (Paso 2 y 4):* La web carece de atributos estándar de autocompletado HTML5 (`autocomplete="shipping address-line1"`, etc.), impidiendo que los navegadores modernos autorrellenen la dirección con un solo clic. Además, no se ofrece integración con billeteras digitales de pago rápido (*Apple Pay*, *Google Pay* o *Bizum*), obligando a los usuarios experimentados y móviles a teclear manualmente los 16 dígitos de su tarjeta.
+8. **H8 — Diseño estético y minimalista:**
+    - *Hallazgo 8.1 (Todo el flujo):* Durante el checkout se mantiene activa la cabecera completa del portal (megamenú con 24 categorías, enlaces a redes sociales, ofertas flash parpadeantes) y un pie de página con decenas de enlaces. Además, en el Paso 2 salta un *pop-up* modal invitando a «Descargar nuestra App». Todos estos elementos son puntos de fuga (*leak points*) que compiten por la atención del usuario y lo distraen de su objetivo único: finalizar la compra.
+9. **H9 — Ayudar a reconocer, diagnosticar y recuperarse de errores:**
+    - *Hallazgo 9.1 (Paso 4 — Pago):* Cuando el banco deniega el pago o falla la tarjeta, la pantalla muestra en la parte superior un banner genérico en color rojo que dice: *«Error 4002: Transacción abortada por la pasarela de pago o parámetros inválidos»*. No se indica qué campo ha fallado, no se acompaña el campo erróneo con una alerta contextual en línea (*inline error*), ni se sugiere una solución constructiva (por ejemplo: «Saldo insuficiente», «Verifica la fecha de caducidad» o «Prueba a pagar con Bizum o PayPal»).
+10. **H10 — Ayuda y documentación:**
+    - *Hallazgo 10.1 (Paso 4 — Tarjeta):* No existe ninguna explicación ni icono de ayuda contextual (*tooltip*) junto al campo «CVV/CVC». Usuarios poco habituados a la compra digital no saben dónde encontrar este código de 3 cifras en el reverso de su tarjeta física.
+    - *Hallazgo 10.2 (Paso 3 y 4):* No hay enlaces accesibles en el flujo sobre la política de devoluciones gratuitas (30 días) ni sobre la garantía legal, lo que genera dudas de última hora y abandono del carrito.
+
+---
+
+#### 3. Matriz de Registro de Severidades y Priorización Técnica
+
+Para determinar la severidad de cada hallazgo, el equipo aplica la fórmula de tres dimensiones de Nielsen: **Frecuencia** (qué porcentaje de usuarios se encuentra con el problema), **Impacto** (cuánto dificulta la superación del obstáculo) y **Persistencia** (si el problema se supera una vez conocido o bloquea continuamente).
+
+La escala de **Severidad (0 a 4)** se mapea directamente a un nivel de **Prioridad de Intervención Técnica (P0 a P3)** para la planificación en el backlog del equipo de desarrollo de software:
+
+- **P0 (Crítica / Bloqueante — Corrección inmediata / Hotfix):** Problemas con **Severidad 4** o **Severidad 3 con riesgo de pérdida económica o de datos**. Impiden completar la transacción, generan cobros duplicados o causan el abandono inmediato del usuario. Deben entrar en el sprint en curso.
+- **P1 (Alta Prioridad — Próximo Sprint):** Problemas con **Severidad 3** o **Severidad 2 con impacto masivo en conversión**. Elevada fricción cognitiva y abandono evitable.
+- **P2 (Media Prioridad — Backlog ordinario):** Problemas con **Severidad 2** y *Quick Wins* (mejoras de bajo coste de desarrollo y beneficio claro). Afectan a la eficiencia o experiencia de usuarios avanzados.
+- **P3 (Baja Prioridad / Mejora cosmética):** Problemas con **Severidad 1**. Pulido visual, refinamiento tipográfico o de coherencia formal no bloqueante.
+
+| ID | Heurística | Pantalla / Paso | Descripción del Problema | Frec. | Imp. | Pers. | Severidad (0-4) | Prioridad | Solución Recomendada |
+| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **H1.2** | H1: Visibilidad | Paso 4 (Pago) | Botón «Pagar» sin estado de carga ni bloqueo tras clic; genera cobros duplicados por clic repetido. | Alta | Bloqueante | Alta | **4 (Catastrófico)** | **P0** | Deshabilitar botón tras primer clic (`disabled`), activar `aria-busy="true"` y mostrar *spinner* con texto «Procesando pago con su entidad...». |
+| **H3.1** | H3: Control | Pasos 2, 3 y 4 | Falta de navegación entre pasos; pulsar «Atrás» en navegador causa `ERR_CACHE_MISS` y borra todo el formulario. | Alta | Bloqueante | Alta | **4 (Catastrófico)** | **P0** | Añadir botones explícitos «Volver al paso anterior» y almacenar el estado temporal en sesión (`sessionStorage` o estado cliente) para no perder datos. |
+| **H9.1** | H9: Recuperación errores | Paso 4 (Pago) | Mensaje críptico *«Error 4002: Transacción abortada»* sin identificar el campo ni proponer alternativa. | Media | Bloqueante | Media | **4 (Catastrófico)** | **P0** | Mostrar mensaje humano inline: «Su banco no ha autorizado el pago. Compruebe el saldo o seleccione Bizum/PayPal como método alternativo». |
+| **H5.1** | H5: Prevención errores | Pasos 2 y 4 | Campos de tarjeta, teléfono y CP sin máscaras ni validación proactiva (permite letras y longitudes erróneas). | Alta | Alto | Alta | **3 (Mayor)** | **P1** | Implementar `inputmode="numeric"`, atributos `pattern`, máscaras dinámicas de formato y validación en tiempo real (*onBlur* / *input*). |
+| **H1.1** | H1: Visibilidad | Pasos 1 a 4 | Ausencia de indicador de progreso por pasos; genera incertidumbre y sensación de proceso infinito. | Alta | Alto | Alta | **3 (Mayor)** | **P1** | Incorporar un componente de pasos numerados accesible (`<ol>` con `aria-current="step"`) indicando: «Paso 2 de 4: Dirección». |
+| **H6.1** | H6: Reconocimiento | Paso 4 (Pago) | La pantalla de pago oculta los artículos seleccionados y el domicilio de entrega; el usuario teme equivocarse. | Alta | Alto | Media | **3 (Mayor)** | **P1** | Integrar un panel lateral fijo (*Order Summary*) con desglose de productos, miniatura, precio con IVA y dirección elegida. |
+| **H8.1** | H8: Minimalismo | Pasos 1 a 4 | Menús globales extensos, banners y pop-up de app en pleno checkout generan fugas de conversión. | Alta | Medio | Alta | **3 (Mayor)** | **P1** | Implementar patrón *Enclosed Checkout* (checkout aislado): suprimir navegación principal, enlaces secundarios y modales publicitarios. |
+| **H2.1** | H2: Mundo real | Paso 3 (Envíos) | Jerga técnica de logística interna (*Flete LTL-Hub2*, *Picking WMS*) incomprensible para el cliente. | Alta | Medio | Media | **2 (Menor)** | **P2** | Renombrar con lenguaje claro y comercial: «Envío Estándar a domicilio (48-72h)», «Envío Urgente Mañana (24h)». |
+| **H4.1** | H4: Consistencia | Pasos 1 a 3 | Botones CTA cambian de color (verde, azul), posición (izq, centro) y estilo (botón vs enlace) en cada paso. | Alta | Medio | Media | **2 (Menor)** | **P2** | Unificar el botón primario mediante tokens de diseño: siempre visible abajo a la derecha, mismo color semántico y mismo tamaño. |
+| **H5.2** | H5: Prevención errores | Paso 2 (Dirección)| Casilla de suscripción publicitaria premarcada por defecto (*dark pattern*). | Alta | Bajo | Baja | **2 (Menor)** | **P2** *(Quick Win)* | Desmarcar la casilla por defecto en el HTML (`checked=false`), cumpliendo normativas de privacidad y evitando cancelaciones. |
+| **H7.1** | H7: Flexibilidad | Pasos 2 y 4 | Ausencia de atributos `autocomplete` HTML5 y falta de métodos rápidos de pago móvil (*Apple Pay*, *Google Pay*, *Bizum*). | Media | Medio | Media | **2 (Menor)** | **P2** | Incorporar atributos `autocomplete` estándar y pasarelas exprés de 1 clic para usuarios recurrentes y smartphones. |
+| **H10.1**| H10: Ayuda | Paso 4 (Pago) | Campo CVV/CVC sin explicación ni ayuda visual de su localización en la tarjeta física. | Media | Medio | Baja | **2 (Menor)** | **P2** *(Quick Win)* | Añadir icono interactivo de ayuda (`<button aria-label="¿Qué es el CVV?">?`) con *tooltip* ilustrativo de los 3 dígitos traseros. |
+| **H2.2** | H2: Mundo real | Paso 2 (Dirección)| Orden poco natural de campos (provincia antes de país, DNI antes de nombre completo). | Media | Bajo | Media | **1 (Cosmético)** | **P3** | Reordenar los campos en la cuadrícula del formulario siguiendo las convenciones culturales españolas. |
+| **H4.2** | H4: Consistencia | Cabecera | Icono de maletín para el carrito en lugar del icono estándar de carro de supermercado. | Baja | Bajo | Baja | **1 (Cosmético)** | **P3** | Sustituir el icono por el pictograma estándar SVG de carrito de compras. |
+
+---
+
+#### 4. Criterios para la Toma de Decisiones y Asignación de Prioridades
+
+En un proyecto real de desarrollo de interfaces no siempre es posible corregir todos los hallazgos en una única iteración de trabajo. El equipo debe defender técnicamente la priorización basándose en tres principios fundamentales:
+
+1. **Impacto en el Negocio vs. Fricción del Usuario (El Embudo Crítico):**
+    - Los problemas **P0** (H1.2, H3.1, H9.1) son **bloqueantes absolutos**. Si un usuario sufre un doble cargo por falta de feedback o pierde sus datos al pulsar «Atrás», la probabilidad de abandono definitivo del cliente supera el **85%**, con el agravante de generar costes de soporte técnico y mala reputación.
+    - Los problemas **P1** (H1.1, H5.1, H6.1, H8.1) son los principales responsables de la tasa de abandono pasivo (*drop-off rate*): los usuarios abandonan el carrito porque sienten desconfianza, no saben cuántos pasos faltan o se distraen con menús externos.
+2. **La Estrategia de los «Quick Wins» (Alto Retorno, Mínimo Esfuerzo):**
+    - Hallazgos como **H5.2** (desmarcar la casilla por defecto) o **H10.1** (añadir un tooltip explicativo del CVV) tienen una severidad 2, pero su coste de implementación técnica es prácticamente nulo (pocos minutos de desarrollo). En metodologías ágiles, estos elementos se adelantan frecuentemente al sprint inmediato porque maximizan el ROI con coste mínimo.
+3. **Alineación con Estándares Web y Accesibilidad (WCAG / HTML5):**
+    - Implementar atributos semánticos como `autocomplete`, `inputmode="numeric"` y estados ARIA (`aria-busy`, `aria-current="step"`) soluciona simultáneamente deficiencias de usabilidad (H5, H7) y garantiza el cumplimiento de las pautas de accesibilidad para personas con discapacidad o usuarios en dispositivos móviles.
+
+---
+
+#### 5. Implementación Técnica de Referencia: Solución a los Problemas Críticos
+
+A continuación se muestra el código HTML5 y las buenas prácticas que resuelven los problemas más severos detectados en el análisis (indicador de estado accesible H1.1, prevención de errores con autocompletado H5.1/H7.1, resumen persistente H6.1 y botón con feedback de carga H1.2):
+
+```html
+<!-- Patrón Enclosed Checkout: sin navegación distractora externa -->
+<header class="checkout-header">
+  <div class="checkout-logo">
+    <a href="/" aria-label="Volver a la portada de TechStore">TechStore Pro</a>
+  </div>
+  <!-- Solución H1.1: Indicador de progreso accesible con lista ordenada -->
+  <nav aria-label="Progreso del proceso de compra" class="checkout-progress">
+    <ol class="progress-steps">
+      <li class="step completed"><span>1</span> Identificación</li>
+      <li class="step active" aria-current="step"><span>2</span> Dirección y Envío</li>
+      <li class="step"><span>3</span> Método de Pago</li>
+      <li class="step"><span>4</span> Confirmación</li>
+    </ol>
+  </nav>
+</header>
+
+<main class="checkout-layout">
+  <!-- Columna principal del formulario -->
+  <section class="checkout-form-container">
+    <h2>Paso 2: Dirección de Entrega</h2>
+    
+    <form id="shipping-form" novalidate>
+      <div class="form-grid">
+        <!-- Solución H5.1 y H7.1: Autocompletado semántico y orden natural -->
+        <div class="form-group">
+          <label for="full-name">Nombre y apellidos *</label>
+          <input type="text" id="full-name" name="name" 
+                 autocomplete="shipping name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Dirección postal (calle, número, piso) *</label>
+          <input type="text" id="address" name="address" 
+                 autocomplete="shipping address-line1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="postal-code">Código Postal (5 dígitos) *</label>
+          <!-- Máscara nativa y teclado numérico en móviles -->
+          <input type="text" id="postal-code" name="postal-code" 
+                 inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
+                 autocomplete="shipping postal-code" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono de contacto (para el repartidor) *</label>
+          <input type="tel" id="phone" name="phone" 
+                 inputmode="tel" autocomplete="shipping tel" required>
+        </div>
+      </div>
+
+      <!-- Solución H3.1: Navegación explícita con control y libertad -->
+      <div class="checkout-actions">
+        <a href="/checkout/step-1" class="btn btn-secondary">
+          &larr; Volver al paso anterior
+        </a>
+        
+        <!-- Solución H1.2: Botón con estado preparado para feedback de carga -->
+        <button type="submit" id="submit-step" class="btn btn-primary" aria-busy="false">
+          <span class="btn-text">Continuar al Método de Pago &rarr;</span>
+          <span class="btn-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Solución H6.1: Panel lateral persistente con resumen del pedido -->
+  <aside class="order-summary" aria-label="Resumen de su compra">
+    <h3>Resumen del Pedido (2 artículos)</h3>
+    <ul class="summary-items">
+      <li>
+        <span class="item-name">Auriculares Gaming Pro 7.1 (Negro)</span>
+        <span class="item-qty">x1</span>
+        <span class="item-price">89,95 €</span>
+      </li>
+      <li>
+        <span class="item-name">Teclado Mecánico RGB Switch Red</span>
+        <span class="item-qty">x1</span>
+        <span class="item-price">124,50 €</span>
+      </li>
+    </ul>
+    <div class="summary-totals">
+      <p>Subtotal: <span>214,45 €</span></p>
+      <p>Envío: <span>Gratis</span></p>
+      <p class="total-highlight">Total (IVA incl.): <strong>214,45 €</strong></p>
+    </div>
+    <!-- Solución H10.2: Enlace contextual sobre garantías sin salir del flujo -->
+    <div class="checkout-guarantee">
+      <small>🔒 Compra 100% segura · Garantía oficial 3 años · Devolución gratis 30 días</small>
+    </div>
+  </aside>
+</main>
+```
+
+---
+
+#### 6. Preguntas y Actividades de Discusión para el Aula
+
+1. **Debate sobre patrones oscuros (*Dark Patterns* vs. Conversión):** En el hallazgo H5.2 se detectó la casilla de suscripción premarcada. ¿Por qué algunos departamentos de marketing defienden esta práctica a pesar de perjudicar la usabilidad y contravenir el RGPD? ¿Qué impacto a largo plazo tiene en la percepción de marca?
+2. **Cálculo del Retorno de Inversión (ROI):** Si la tienda factura 150.000 € mensuales y resolver los problemas P0 y P1 reduce el abandono del carrito en un 12%, ¿cuál sería el beneficio económico anual obtenido respecto al coste de desarrollo de 2 semanas de trabajo de un programador frontend?
+3. **Ejercicio de Inspección Cruzada:** Pide a los alumnos que analicen el checkout de una tienda online real conocida (Zara, PcComponentes, Amazon o El Corte Inglés) y completen una tabla similar registrando al menos 3 hallazgos con su correspondiente asignación de severidad y prioridad.
+
+---
 
 ### Ejemplo Guiado 2: Diseño de un Test de Usuario para App de Banca Móvil
 
@@ -407,21 +600,78 @@ Realiza una evaluación heurística de dos sitios web competidores del mismo sec
 
 **Criterios de evaluación:** Aplicación correcta de las 10 heurísticas (3 puntos), severidad justificada (2 puntos), calidad del análisis comparativo (3 puntos), formato profesional del informe (2 puntos).
 
-### Actividad Propuesta 2: Test de Usuario Completo Documentado
+### Actividad Propuesta 2: Auditoría Heurística de un Caso Concreto — Portal Sanitario «SaludDirecta Online»
+
+**Contexto del proyecto:**  
+Eres el especialista en diseño de interfaces y usabilidad del equipo de ingeniería web contratado para auditar la plataforma pública de atención al paciente **«SaludDirecta Online»**. Esta aplicación web permite a los ciudadanos solicitar citas médicas, consultar recetas electrónicas y gestionar volantes de especialistas.
+
+La población usuaria es sumamente heterogénea: desde personas jóvenes habituadas al entorno digital hasta personas mayores (+65 años) con competencias digitales limitadas y posibles déficits visuales o motores.
+
+**El caso de uso analizado:**  
+Juan, un usuario de 62 años que padece una patología crónica, necesita pedir una cita presencial con su médica de cabecera habitual en su centro de salud comarcal para renovar su medicación periódica. A continuación se describe la crónica detallada de las incidencias observadas durante la sesión de navegación de Juan en el portal:
+
+1. **Incidente 1 (Página de inicio):** Al entrar en el portal, Juan se encuentra con una pantalla de inicio saturada: tres grandes banners promocionales con noticias sanitarias del año 2022, un carrusel fotográfico institucional que avanza automáticamente cada 2 segundos y un pie de página con más de 45 enlaces al boletín oficial y normativas autonómicas. Para localizar el acceso a «Cita Previa», Juan tiene que hacer scroll durante cuatro pantallas completas hacia abajo, compitiendo visualmente con decenas de avisos no relacionados con su objetivo.
+2. **Incidente 2 (Acceso al sistema):** Al hacer clic en «Pedir Cita», la pantalla solicita obligatoriamente el *«Código CIP / CITE de su Tarjeta Sanitaria»*. Juan no sabe a qué corresponden esas siglas ni en qué lugar de su tarjeta plástica está impreso dicho código. Al lado del campo de texto no hay ningún icono de ayuda, enlace explicativo ni imagen de muestra de la tarjeta que indique visualmente dónde localizarlo.
+3. **Incidente 3 (Formulario de identificación):** En el campo para introducir el número de tarjeta sanitaria y el teléfono móvil, el sistema no aplica ninguna máscara ni validación previa (`<input type="text">` genérico): permite introducir letras, caracteres especiales y espacios. Juan introduce por error 8 caracteres en vez de los 10 reglamentarios, pero el formulario no le muestra ninguna advertencia en tiempo real mientras escribe.
+4. **Incidente 4 (Error al enviar credenciales):** Tras pulsar «Entrar» con los 8 caracteres erróneos, la página se recarga por completo y aparece una franja roja en la cabecera con el texto:  
+   `Fatal Exception 0x80041: Integrity constraint violation on patient_cip length in AuthController.php line 88`.  
+   El formulario borra todos los datos introducidos, no señala cuál era el campo erróneo y no explica en lenguaje comprensible qué ha fallado ni qué debe hacer Juan para resolverlo.
+
+5. **Incidente 5 (Selección de prestación médica):** Una vez corregido el acceso, la pantalla muestra una lista desplegable para seleccionar el tipo de consulta, pero los nombres utilizan la nomenclatura técnica del catálogo interno de facturación hospitalaria:  
+    - *«Consulta Ordinaria EAP AP-MED-04»*  
+    - *«Interconsulta Facultativa Derivada N2-ORL»*  
+    - *«Cribado Preventivo Asistencial P3»*  
+   Juan no sabe cuál de estas opciones corresponde a una cita normal con su médica de cabecera de siempre.
+
+6. **Incidente 6 (Selección de fecha en calendario):** Al pasar a la elección de día, el calendario interactivo muestra los días festivos locales y los días en los que la médica no pasa consulta exactamente con el mismo color y estilo visual que los días con huecos libres. Juan pulsa ilusionado sobre el próximo martes (que es festivo); solo tras hacer clic y esperar a que el sistema procese la petición, aparece una ventana alertando de que ese día el centro está cerrado.
+7. **Incidente 7 (Confirmación y retroalimentación):** Tras escoger un día laborable y una hora disponible, Juan pulsa el botón «Confirmar Cita Médica». Durante 6 segundos la pantalla permanece totalmente congelada: el cursor del ratón no cambia, el botón no muestra ningún icono de carga (*spinner*) ni queda deshabilitado. Pensando que el clic no ha funcionado, Juan pulsa el botón tres veces seguidas.
+8. **Incidente 8 (Navegación y control de flujo):** En la siguiente pantalla, Juan advierte que en el selector automático de centro médico ha quedado marcado el ambulatorio del pueblo vecino en lugar del suyo. Busca un botón de «Modificar centro» o «Volver al paso anterior», pero la pantalla solo ofrece el botón «Finalizar». Al pulsar la flecha «Atrás» de su navegador web, la aplicación muestra una pantalla de error que dice: *«Sesión caducada por navegación no permitida»*, cerrando la sesión y obligándole a comenzar todo el proceso desde el inicio.
+9. **Incidente 9 (Resumen de la cita y carga de memoria):** Cuando finalmente consigue confirmar una cita válida, la pantalla de éxito muestra exclusivamente el texto: *«Su reserva ha sido registrada correctamente. Localizador: #CIT-94021»*. No se muestra el nombre de la doctora, ni el centro de salud, ni la dirección, ni el día ni la hora acordada. Para recordar cuándo debe acudir, Juan tiene que fiarse de su propia memoria o esperar a que llegue un SMS que puede tardar horas.
+10. **Incidente 10 (Inconsistencia de componentes visuales):** A lo largo de la navegación, los botones de acción principal cambian continuamente de apariencia y ubicación: en el paso 1 el botón es verde y rectangular a la derecha; en el paso 2 es un enlace de texto azul sin marco; en el paso 3 es un botón circular naranja situado en la esquina superior izquierda. Asimismo, el botón para «Cerrar Sesión» aparece en unas páginas en la esquina superior derecha y en otras escondido al final del pie de página.
+11. **Incidente 11 (Falta de aceleradores para usuarios recurrentes):** Juan acude a consulta cada dos meses. Sin embargo, el portal le obliga siempre a completar los cinco pasos completos del asistente, sin ofrecer una opción rápida de «Pedir cita con mi doctora habitual», ni posibilidad de guardar preferencias, ni autocompletado de datos conocidos.
+
+---
+
+**Tareas que debe realizar el alumnado:**
+
+1. **Identificación Heurística:** Analiza los 11 incidentes descritos y vincula cada uno de ellos con la heurística de Nielsen correspondiente. En tu análisis debes identificar y justificar el uso de **al menos 8 de las 10 heurísticas de Nielsen**.
+2. **Evaluación de Severidad:** Para cada incidente, determina su nivel en la escala de severidad de Nielsen (0 a 4), evaluando de forma razonada sus tres factores clave: **Frecuencia** (Baja / Media / Alta), **Impacto** (Bajo / Medio / Alto / Bloqueante) y **Persistencia** (Baja / Media / Alta).
+3. **Matriz de Priorización Técnica (P0 a P3):** Clasifica cada hallazgo en una matriz de prioridad técnica (*P0 Bloqueante/Hotfix*, *P1 Alta*, *P2 Media/Quick Wins*, *P3 Baja/Cosmética*). Argumenta explícitamente cuáles son los 3 problemas que el equipo de desarrollo debe resolver con máxima urgencia (P0) y por qué.
+4. **Propuesta de Solución de Rediseño:** Para cada uno de los incidentes identificados, describe una solución concreta de interfaz y experiencia de usuario.
+5. **Implementación de Código Accesible:** Selecciona dos de los problemas calificados como P0 o P1 (por ejemplo, el componente de ayuda/máscara de tarjeta sanitaria y el botón con feedback de carga) y escribe el código HTML5 semántico y accesible (con atributos ARIA y validación nativa) que solucione dichas deficiencias.
+6. **Formato de entrega:** Elabora un informe técnico formal en formato Markdown o PDF que incluya:
+    - Resumen ejecutivo del estado de usabilidad del portal.
+    - Tabla consolidada con las columnas: `ID`, `Incidente`, `Heurística de Nielsen`, `Severidad (0-4)`, `Prioridad (P0-P3)` y `Solución propuesta`.
+    - Fragmentos de código HTML de las soluciones seleccionadas.
+    - Conclusiones y recomendaciones estratégicas para el centro de salud.
+
+---
+
+**Rúbrica de evaluación (Total: 10 puntos):**
+
+| Criterio | Descripción | Puntuación |
+| :--- | :--- | :---: |
+| **Identificación Heurística** | Identificación correcta y rigurosamente justificada de las heurísticas de Nielsen vulneradas en los incidentes (cubriendo al menos 8 heurísticas distintas). | **3,0 puntos** |
+| **Calibración de Severidad y Prioridad** | Aplicación coherente de los criterios de Frecuencia, Impacto y Persistencia; asignación justificada de la severidad (0-4) y categorización realista en prioridades P0-P3. | **2,5 puntos** |
+| **Calidad de las Soluciones UX** | Soluciones técnicas y de diseño viables, claras y centradas en el usuario para resolver cada deficiencia detectada. | **2,0 puntos** |
+| **Implementación Técnica de Código** | Marcado HTML5 semántico, atributos de accesibilidad (`aria-*`, `inputmode`, `pattern`) y buenas prácticas aplicadas a los problemas seleccionados. | **1,5 puntos** |
+| **Estructura y Rigor del Informe** | Formato profesional, redacción técnica impecable, tabla consolidada y conclusiones accionables. | **1,0 puntos** |
+
+### Actividad Propuesta 3: Test de Usuario Completo Documentado
 
 Planifica, ejecuta y documenta un test de usuario con 5 participantes para una tarea concreta (por ejemplo, "comprar un billete de avión", "reservar una cita médica online"). Incluye: guion de test, fichas de consentimiento informado, transcripción de hallazgos, métricas calculadas (tasa de éxito, tiempos, errores), cuestionario SUS, y recomendaciones priorizadas de mejora.
 
 **Criterios de evaluación:** Calidad del guion y las tareas (2 puntos), ejecución profesional y grabación (2 puntos), análisis de resultados y métricas (3 puntos), informe con recomendaciones accionables (3 puntos).
 
-### Actividad Propuesta 3: Propuesta de Rediseño Basada en Analítica Web
+### Actividad Propuesta 4: Propuesta de Rediseño Basada en Analítica Web
 
 Accede a los datos de Google Analytics de un sitio web (proporcionados por el profesor o de un proyecto personal). Identifica al menos 5 problemas de usabilidad inferidos de los datos (alta tasa de rebote en ciertas páginas, abandono en pasos del embudo de conversión, bajo tiempo en página). Propón soluciones de rediseño para cada problema y estima el impacto esperado.
 
-### Actividad Propuesta 4: Análisis Heurístico de una Aplicación Móvil
+### Actividad Propuesta 5: Análisis Heurístico de una Aplicación Móvil
 
 Instala una aplicación móvil de banca, transporte público o administración. Realiza una evaluación heurística adaptada a móvil (existen conjuntos de heurísticas específicas para dispositivos táctiles, como las de Inostroza o las de Joyce). Identifica problemas relacionados con el tamaño de los targets táctiles, la navegación por gestos, y la legibilidad en pantallas pequeñas.
 
-### Actividad Propuesta 5: Creación de un Panel de Métricas de Usabilidad
+### Actividad Propuesta 6: Creación de un Panel de Métricas de Usabilidad
 
 Diseña un dashboard (en Excel, Google Sheets o herramienta BI) que consolide y visualice las métricas de usabilidad de un producto digital. Debe incluir: evolución temporal del SUS, tasas de éxito por tarea en los últimos tests, comparativa con benchmarks, y funnel de conversión con tasas de abandono por paso. Explica cómo usarías este panel para tomar decisiones de diseño.
 

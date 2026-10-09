@@ -155,8 +155,8 @@ El problema de las imágenes responsive es doble: por un lado, servir imágenes 
 
 El atributo `srcset` en la etiqueta `<img>` permite al navegador elegir entre múltiples versiones de la misma imagen:
 
-- **Descriptor `w`** (ancho intrínseco) — `srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"`.
-- **Descriptor `x`** (densidad) — `srcset="imagen.jpg 1x, imagen@2x.jpg 2x, imagen@3x.jpg 3x"`.
+- **Descriptor `w`** (ancho intrínseco) — `srcset="https://dummyimage.com/400x300/ccc/000.png&text=imagen-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=imagen-800.jpg 800w, https://dummyimage.com/1200x400/ccc/000.png&text=imagen-1200.jpg 1200w"`.
+- **Descriptor `x`** (densidad) — `srcset="https://dummyimage.com/800x600/ccc/000.png&text=imagen.jpg 1x, https://dummyimage.com/800x600/ccc/000.png&text=imagen%402x.jpg 2x, https://dummyimage.com/800x600/ccc/000.png&text=imagen%403x.jpg 3x"`.
 - **`sizes`** — describe el tamaño de renderizado de la imagen en diferentes condiciones de viewport; combinado con `w`, permite al navegador seleccionar la fuente más adecuada.
 - **`<picture>`** — permite **dirección artística** (*art direction*): servir imágenes recortadas o con composición diferente según el tamaño de pantalla, usando múltiples elementos `<source>` con condiciones `media`. También permite servir formatos modernos como **WebP** o **AVIF** con fallback a JPEG/PNG para navegadores que no los soporten.
 
@@ -545,8 +545,8 @@ Existen varios patrones de layout responsive establecidos:
         <p>El navegador selecciona la imagen según el devicePixelRatio del dispositivo.
         En una pantalla Retina (2x), cargará la versión @2x.</p>
         <img
-          src="imagen-1x.jpg"
-          srcset="imagen-1x.jpg 1x, imagen-2x.jpg 2x, imagen-3x.jpg 3x"
+          src="https://dummyimage.com/800x600/ccc/000.png&text=imagen-1x.jpg"
+          srcset="https://dummyimage.com/800x600/ccc/000.png&text=imagen-1x.jpg 1x, https://dummyimage.com/800x600/ccc/000.png&text=imagen-2x.jpg 2x, https://dummyimage.com/800x600/ccc/000.png&text=imagen-3x.jpg 3x"
           alt="Imagen con descriptores de densidad"
           class="demo-image"
           loading="lazy"
@@ -575,8 +575,8 @@ Existen varios patrones de layout responsive establecidos:
           El navegador usa esta info + srcset para elegir la mejor fuente.
         </p>
         <img
-          src="imagen-400.jpg"
-          srcset="imagen-400.jpg 400w, imagen-800.jpg 800w, imagen-1200.jpg 1200w"
+          src="https://dummyimage.com/400x300/ccc/000.png&text=imagen-400.jpg"
+          srcset="https://dummyimage.com/400x300/ccc/000.png&text=imagen-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=imagen-800.jpg 800w, https://dummyimage.com/1200x400/ccc/000.png&text=imagen-1200.jpg 1200w"
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           alt="Imagen con descriptores de ancho"
           class="demo-image"
@@ -601,23 +601,23 @@ Existen varios patrones de layout responsive establecidos:
         <picture>
           <!-- En móvil (max-width: 768px): imagen vertical en WebP -->
           <source
-            srcset="hero-mobile.webp"
+            srcset="https://dummyimage.com/800x600/ccc/000.png&text=hero-mobile.webp"
             media="(max-width: 768px)"
             type="image/webp"
           >
           <!-- En móvil: fallback JPEG para navegadores sin WebP -->
           <source
-            srcset="hero-mobile.jpg"
+            srcset="https://dummyimage.com/800x600/ccc/000.png&text=hero-mobile.jpg"
             media="(max-width: 768px)"
           >
           <!-- En desktop: imagen horizontal en WebP -->
           <source
-            srcset="hero-desktop.webp"
+            srcset="https://dummyimage.com/800x600/ccc/000.png&text=hero-desktop.webp"
             type="image/webp"
           >
           <!-- Fallback final: JPEG para cualquier navegador -->
           <img
-            src="hero-desktop.jpg"
+            src="https://dummyimage.com/800x600/ccc/000.png&text=hero-desktop.jpg"
             alt="Imagen hero responsive"
             class="demo-image"
             loading="lazy"

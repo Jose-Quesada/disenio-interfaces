@@ -96,8 +96,8 @@ La **creación de SVG** puede realizarse con editores vectoriales (**Inkscape** 
 Los **métodos de inserción** de SVG en HTML determinan qué se puede hacer con él:
 
 - **Inline** — pegando el código SVG directamente en el HTML permite acceder a cada elemento interno con CSS y JavaScript para animar colores, formas y transformaciones, siendo el método más potente.
-- **`<img src="icono.svg">`** — es el más simple pero no permite manipular elementos internos, aunque sí se beneficia del almacenamiento en caché del navegador.
-- **`background-image: url(icono.svg)`** — funciona igual que `<img>`.
+- **`<img src="https://dummyimage.com/200x200/ccc/000.png&text=icono.svg">`** — es el más simple pero no permite manipular elementos internos, aunque sí se beneficia del almacenamiento en caché del navegador.
+- **`background-image: url(https://dummyimage.com/200x200/ccc/000.png&text=icono.svg)`** — funciona igual que `<img>`.
 - **`<object>`** — permite incluir SVG externos con cierto nivel de interacción pero su comportamiento es inconsistente entre navegadores.
 
 !!! tip "Sprites SVG"
@@ -136,7 +136,7 @@ El vídeo es el contenido más complejo y pesado de servir en la web, pero tambi
 !!! info "Códec vs contenedor"
     Los **códecs y contenedores** son conceptos que a menudo se confunden. El **contenedor** (MP4, WebM, OGG) es el formato del archivo que agrupa las pistas de vídeo, audio, subtítulos y metadatos. El **códec** (H.264, VP8, VP9, AV1, Theora) es el algoritmo que comprime y descomprime cada pista. Un archivo **MP4** típicamente contiene vídeo codificado con **H.264** y audio con **AAC**. Un archivo **WebM** contiene vídeo **VP8/VP9** y audio **OGG Vorbis/Opus**.
 
-La combinación más compatible es **MP4 con H.264 + AAC**, soportada por todos los navegadores. **WebM con VP8/VP9** ofrece mejor compresión y es de código abierto, pero Safari no lo soporta (aunque sí soporta WebM desde 2021). La recomendación es proporcionar ambos formatos: `<source src="video.webm" type="video/webm">` seguido de `<source src="video.mp4" type="video/mp4">`.
+La combinación más compatible es **MP4 con H.264 + AAC**, soportada por todos los navegadores. **WebM con VP8/VP9** ofrece mejor compresión y es de código abierto, pero Safari no lo soporta (aunque sí soporta WebM desde 2021). La recomendación es proporcionar ambos formatos: `<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">` seguido de `<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">`.
 
 La **optimización de vídeo** con FFmpeg permite controlar:
 
@@ -153,7 +153,7 @@ El **streaming adaptativo** (HLS de Apple o DASH estándar) divide el vídeo en 
 ### 6. Accesibilidad en contenido multimedia
 
 !!! warning "Requisito legal y ético"
-    La accesibilidad del contenido multimedia es un **requisito legal** (**Real Decreto 1112/2018** en España, que transpone la Directiva Europea **2016/2102**) y ético. Para vídeos, el elemento `<track>` permite asociar archivos de subtítulos en formato WebVTT: `<track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>`. **WebVTT** es un formato de texto plano que asocia cada línea de subtítulo con un rango de tiempo. Los subtítulos no solo ayudan a personas sordas o con dificultades auditivas, sino también a quienes ven el vídeo en entornos ruidosos o sin auriculares.
+    La accesibilidad del contenido multimedia es un **requisito legal** (**Real Decreto 1112/2018** en España, que transpone la Directiva Europea **2016/2102**) y ético. Para vídeos, el elemento `<track>` permite asociar archivos de subtítulos en formato WebVTT: `<track kind="subtitles" src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt" srclang="es" label="Español" default>`. **WebVTT** es un formato de texto plano que asocia cada línea de subtítulo con un rango de tiempo. Los subtítulos no solo ayudan a personas sordas o con dificultades auditivas, sino también a quienes ven el vídeo en entornos ruidosos o sin auriculares.
 
 Además de subtítulos, existen:
 
@@ -247,14 +247,14 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
           <picture>
             <!-- Formato WebP para navegadores que lo soportan -->
             <source
-              srcset="foto-1-400.webp 400w, foto-1-800.webp 800w, foto-1-1200.webp 1200w"
+              srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-1-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-1-800.webp 800w, https://dummyimage.com/1200x400/ccc/000.png&text=foto-1-1200.webp 1200w"
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
               type="image/webp"
             >
             <!-- Fallback JPEG universal -->
             <img
-              src="foto-1-400.jpg"
-              srcset="foto-1-400.jpg 400w, foto-1-800.jpg 800w, foto-1-1200.jpg 1200w"
+              src="https://dummyimage.com/400x300/ccc/000.png&text=foto-1-400.jpg"
+              srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-1-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-1-800.jpg 800w, https://dummyimage.com/1200x400/ccc/000.png&text=foto-1-1200.jpg 1200w"
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
               alt="Paisaje montañoso al atardecer con reflejos en el lago"
               class="gallery__img"
@@ -276,8 +276,8 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         <div class="gallery__item">
           <span class="gallery__loader">Cargando...</span>
           <picture>
-            <source srcset="foto-2-400.webp 400w, foto-2-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-            <img src="foto-2-400.jpg" srcset="foto-2-400.jpg 400w, foto-2-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Arquitectura moderna con líneas geométricas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+            <source srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-2-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-2-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="https://dummyimage.com/400x300/ccc/000.png&text=foto-2-400.jpg" srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-2-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-2-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Arquitectura moderna con líneas geométricas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
           </picture>
           <div class="gallery__overlay">
             <h3>Arquitectura contemporánea</h3>
@@ -289,8 +289,8 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         <div class="gallery__item">
           <span class="gallery__loader">Cargando...</span>
           <picture>
-            <source srcset="foto-3-400.webp 400w, foto-3-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-            <img src="foto-3-400.jpg" srcset="foto-3-400.jpg 400w, foto-3-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Retrato en blanco y negro de persona mayor" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+            <source srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-3-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-3-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="https://dummyimage.com/400x300/ccc/000.png&text=foto-3-400.jpg" srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-3-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-3-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Retrato en blanco y negro de persona mayor" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
           </picture>
           <div class="gallery__overlay">
             <h3>Sabiduría ancestral</h3>
@@ -302,8 +302,8 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         <div class="gallery__item">
           <span class="gallery__loader">Cargando...</span>
           <picture>
-            <source srcset="foto-4-400.webp 400w, foto-4-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-            <img src="foto-4-400.jpg" srcset="foto-4-400.jpg 400w, foto-4-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Mercado callejero con puestos de especias" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+            <source srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-4-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-4-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="https://dummyimage.com/400x300/ccc/000.png&text=foto-4-400.jpg" srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-4-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-4-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Mercado callejero con puestos de especias" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
           </picture>
           <div class="gallery__overlay">
             <h3>Mercado de especias</h3>
@@ -314,8 +314,8 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         <div class="gallery__item">
           <span class="gallery__loader">Cargando...</span>
           <picture>
-            <source srcset="foto-5-400.webp 400w, foto-5-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-            <img src="foto-5-400.jpg" srcset="foto-5-400.jpg 400w, foto-5-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Olas del océano rompiendo contra las rocas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+            <source srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-5-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-5-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="https://dummyimage.com/400x300/ccc/000.png&text=foto-5-400.jpg" srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-5-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-5-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Olas del océano rompiendo contra las rocas" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
           </picture>
           <div class="gallery__overlay">
             <h3>Furia del océano</h3>
@@ -326,8 +326,8 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         <div class="gallery__item">
           <span class="gallery__loader">Cargando...</span>
           <picture>
-            <source srcset="foto-6-400.webp 400w, foto-6-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
-            <img src="foto-6-400.jpg" srcset="foto-6-400.jpg 400w, foto-6-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Bosque de bambú con rayos de sol filtrándose" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
+            <source srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-6-400.webp 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-6-800.webp 800w" sizes="(max-width: 600px) 100vw, 50vw" type="image/webp">
+            <img src="https://dummyimage.com/400x300/ccc/000.png&text=foto-6-400.jpg" srcset="https://dummyimage.com/400x300/ccc/000.png&text=foto-6-400.jpg 400w, https://dummyimage.com/800x600/ccc/000.png&text=foto-6-800.jpg 800w" sizes="(max-width: 600px) 100vw, 50vw" alt="Bosque de bambú con rayos de sol filtrándose" class="gallery__img" loading="lazy" decoding="async" width="400" height="300" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'" style="opacity: 0;">
           </picture>
           <div class="gallery__overlay">
             <h3>Bosque de bambú</h3>
@@ -438,6 +438,22 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
     }
     ```
 
+!!! info "Desglose técnico pedagógico — Imágenes responsivas y optimización de carga"
+    Técnicas avanzadas para entrega de recursos gráficos eficientes:
+
+    **1. Elemento `<picture>` y Negociación de Formatos:**
+    
+    - `<picture>`: Contenedor envolvente que evalúa múltiples elementos `<source>` de arriba hacia abajo, eligiendo el primer formato que el navegador soporte (AVIF, WebP, etc.).
+    - `type="image/webp"`: Permite servir formatos de compresión moderna con ahorros de peso del 30% al 50% respecto a JPEG tradicional.
+    - Fallback `<img>`: Obligatorio como último elemento hijo. Garantiza compatibilidad universal con navegadores antiguos y define los atributos estructurales (`alt`, `width`, `height`, `loading`).
+
+    **2. Resolución y Viewport con `srcset` y `sizes`:**
+    
+    - `srcset="foto-400.jpg 400w, foto-800.jpg 800w"`: Informa al navegador del ancho intrínseco real de cada archivo en píxeles físicos (`w`), sin forzar la descarga de ninguno en particular.
+    - `sizes="(max-width: 600px) 100vw, 50vw"`: Declara el espacio que la imagen ocupará en la ventana según las media queries. Con estos dos datos, el navegador calcula la densidad de píxeles de la pantalla (1x, 2x, 3x) y descarga el archivo más ligero que evite pixelación.
+    - `loading="lazy"`: Difiriere la descarga de la imagen hasta que el usuario hace scroll hacia ella, acelerando radicalmente el tiempo de carga inicial (*Largest Contentful Paint* o LCP).
+    - `decoding="async"`: Traslada la descompresión del mapa de bits a un hilo secundario del procesador, evitando microtirones al hacer scroll.
+
 
 ### Ejemplo Guiado 2: Reproducción de audio y vídeo HTML5 con accesibilidad
 
@@ -476,14 +492,14 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
             crossorigin="anonymous": necesario para que funcionen los subtítulos
               en algunos servidores.
           -->
-          <video controls poster="video-poster.jpg" preload="metadata" crossorigin="anonymous">
+          <video controls poster="https://dummyimage.com/800x600/ccc/000.png&text=video-poster.jpg" preload="metadata" crossorigin="anonymous">
             <!--
               Primero WebM (código abierto, mejor compresión).
               El navegador prueba cada source en orden y usa el primero que soporte.
             -->
-            <source src="video.webm" type="video/webm">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
             <!-- Fallback MP4/H.264 (compatibilidad universal) -->
-            <source src="video.mp4" type="video/mp4">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
 
             <!--
               ===== SUBTÍTULOS CON WEBVTT =====
@@ -492,11 +508,11 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
               label: nombre mostrado en el selector de subtítulos.
               default: activa estos subtítulos por defecto.
             -->
-            <track kind="subtitles" src="subtitulos-es.vtt" srclang="es" label="Español" default>
-            <track kind="subtitles" src="subtitulos-en.vtt" srclang="en" label="English">
+            <track kind="subtitles" src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt" srclang="es" label="Español" default>
+            <track kind="subtitles" src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt" srclang="en" label="English">
 
             <!-- Descripción de audio para personas ciegas -->
-            <track kind="descriptions" src="descripciones-es.vtt" srclang="es" label="Descripción de audio">
+            <track kind="descriptions" src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt" srclang="es" label="Descripción de audio">
 
             <!-- Mensaje si el navegador no soporta la etiqueta video -->
             <p>Tu navegador no soporta la etiqueta de vídeo HTML5.</p>
@@ -541,9 +557,9 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
         -->
         <audio controls preload="metadata">
           <!-- Primero OGG Vorbis (código abierto) -->
-          <source src="audio.ogg" type="audio/ogg">
+          <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
           <!-- Fallback MP3 (compatibilidad universal) -->
-          <source src="audio.mp3" type="audio/mpeg">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
           <p>Tu navegador no soporta audio HTML5.</p>
         </audio>
 
@@ -668,6 +684,25 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
       line-height: 1.6;
     }
     ```
+
+!!! info "Desglose técnico pedagógico — Multimedia nativo y accesibilidad WebVTT"
+    Manejo de reproductores audiovisuales accesibles:
+
+    **1. Contenedores `<video>` y `<audio>`:**
+    
+    - Atributo `controls`: Despliega la barra nativa de reproducción accesible por teclado (barra de tiempo, volumen, pantalla completa).
+    - Atributo `poster="portada.jpg"`: Muestra una imagen fija representativa antes de pulsar reproducir, evitando rectángulos negros inertes.
+    - Atributo `preload="metadata"`: Descarga únicamente la duración, dimensiones y primer fotograma, ahorrando ancho de banda en dispositivos con tarifa de datos móviles.
+
+    **2. Accesibilidad Universal con `<track>`:**
+    
+    - `kind="subtitles"` / `kind="captions"`: Carga archivos de subtítulos cronometrados en formato WebVTT (`.vtt`). Permite a personas con discapacidad auditiva leer los diálogos sincronizados.
+    - `kind="descriptions"`: Audiodescripciones de las acciones visuales para personas con discapacidad visual.
+    - Atributo `default`: Establece la pista de subtítulos que se activará automáticamente al inicio.
+
+    **3. Técnicas CSS de Aspect Ratio:**
+    
+    - Contenedor con relación de aspecto intrínseca (`aspect-ratio: 16 / 9;` o la técnica histórica de `padding-bottom: 56.25%` con `position: absolute;`): Evita saltos de maquetación (*Layout Shift*) al reservar el espacio del vídeo antes de que el archivo comience a descargarse.
 
 ### Ejemplo Guiado 3: Animaciones CSS - Loader spinner, fade in, slide in, botón like
 
@@ -1342,10 +1377,10 @@ Lottie se usa extensivamente en apps como **Uber**, **Google Pay**, **Duolingo**
           Vídeo sin controls nativos.
           La interacción se gestiona mediante JavaScript y nuestra barra personalizada.
         -->
-        <video id="miVideo" poster="poster.jpg" preload="metadata">
-          <source src="video.mp4" type="video/mp4">
-          <source src="video.webm" type="video/webm">
-          <track kind="subtitles" src="subtitulos.vtt" srclang="es" label="Español" default>
+        <video id="miVideo" poster="https://dummyimage.com/800x600/ccc/000.png&text=poster.jpg" preload="metadata">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+          <track kind="subtitles" src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt" srclang="es" label="Español" default>
         </video>
 
         <!-- Controles personalizados -->

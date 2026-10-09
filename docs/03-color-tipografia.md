@@ -521,6 +521,24 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 !!! note "Explicación del resultado"
     Esta página muestra visualmente la paleta de color completa documentada. Las variables CSS permiten referenciar colores semánticamente (`var(--color-success-100)`) en lugar de recordar códigos hexadecimales. Si en el futuro se decide cambiar el color primario de azul a verde, solo hay que modificar las variables en `:root` y toda la interfaz se actualiza automáticamente. Esta es la principal ventaja de las variables CSS frente a los valores literales dispersos por el código.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Fundamentos de variables CSS (*Custom Properties*) y tokens de color:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="paleta">`: Contenedor tipo catálogo para exponer visualmente las fichas de color (*swatches*).
+    - `<div class="muestra">` y `<div class="color-box">`: Bloques rectangulares que renderizan cada matiz cromático para documentar la guía de estilo.
+    - `<div class="info-color">`: Etiquetas de texto que indican el nombre del token (ej. `--color-primary-500`) y su código hexadecimal o funcional.
+    - `<div class="alert alert-success">`, `.alert-error`, `.alert-warning`, `.alert-info`: Componentes de retroalimentación que demuestran el uso práctico de los colores semánticos.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `:root`: Pseudoclase estructural que apunta al elemento raíz del documento (`<html>`). Tiene la mayor jerarquía de herencia, por lo que cualquier variable declarada dentro estará disponible en toda la hoja de estilos.
+    - `--nombre-token: #valor;`: Sintaxis oficial de las variables nativas CSS (*CSS Custom Properties*). El prefijo obligatorio `--` las diferencia de las propiedades estándar.
+    - `var(--nombre-token)`: Función CSS que recupera el valor de la variable indicada. Si el token cambia en `:root`, todas las reglas que lo consumen se actualizan instantáneamente.
+    - Escala numérica (100 a 900): Convención universal en sistemas de diseño donde los valores bajos (100-200) son tonos pasteles para fondos y los altos (700-900) son tonos oscuros y densos para bordes y texto.
+    - `border-left: 4px solid var(...)`: Borde grueso de llamada que proporciona un ancla cromática clara a las alertas sin saturar el fondo.
+
 ---
 
 ### Ejemplo 2: Armonías cromáticas en secciones de una landing page
@@ -698,6 +716,23 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 !!! note "Explicación del resultado"
     Al hacer *scroll* por las cuatro secciones, la persona usuaria experimenta cómo cada armonía cromática transmite una emoción diferente. La sección complementaria (azul + naranja) es enérgica y llamativa. La análoga (verdes) es calmada y natural. La triádica (rojo, azul, amarillo) es vibrante y lúdica. La monocromática (púrpuras) es elegante y sofisticada. Ninguna sección es "mejor" que otra; cada una es adecuada para un tipo de mensaje y audiencia diferente. Se recomienda al alumnado modificar los colores en las DevTools para experimentar cómo cambia la percepción.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Implementación de armonías del círculo cromático:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<section class="seccion-armonia complementaria">`, `.analoga`, `.triadica`, `.monocromatica`: Bloques estructurales independientes (`<section>`) dotados de clases temáticas para aplicar cada esquema cromático.
+    - `<div class="contenido">`: Contenedor centrado para evitar que el texto se disperse a lo ancho de la pantalla.
+    - `<h2 class="titulo-armonia">`: Título de la sección que actúa como ancla visual para evaluar el contraste respecto al fondo.
+    - `<a class="btn-cta">`: Botón de llamada a la acción con el color de mayor tensión visual del esquema (acento).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - Armonía complementaria (opuestos a 180° en el círculo cromático): Fondo azul frío (`#1e3a8a`) combinado con botón naranja cálido (`#ea580c`). El choque de temperatura visual produce máxima vitalidad.
+    - Armonía análoga (adyacentes a 30°-60°): Gama de verdes y esmeraldas (`#065f46`, `#10b981`, `#34d399`). Produce serenidad y coherencia sin estridencias.
+    - Armonía triádica (equidistantes a 120°): Combina tres vértices del círculo cromático (azul, rojo, amarillo o verde, naranja, violeta). Se modula la saturación para no abrumar.
+    - Armonía monocromática: Usa un único matiz (*Hue*) variando únicamente la luminosidad (*Lightness*) y saturación (*Saturation*), logrando la máxima unidad formal.
+
 ---
 
 ### Ejemplo 3: Contraste WCAG — Verificación y corrección de ratios
@@ -860,6 +895,21 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 
 !!! note "Explicación del resultado"
     Las dos primeras tarjetas muestran combinaciones que cumplen los estándares WCAG y son legibles sin esfuerzo. Las dos siguientes muestran combinaciones que no cumplen: en la práctica, estas combinaciones serían ilegibles para personas con baja visión o en condiciones de mucha luz ambiental (como usar el móvil en la calle en un día soleado). Las dos últimas tarjetas muestran cómo, con pequeños ajustes (oscurecer el texto o el fondo), se puede corregir el contraste sin cambiar drásticamente el diseño.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Normativa WCAG 2.1 y cálculo de ratios de luminosidad relativa:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="tarjeta-contraste">`: Ficha que prueba un binomio específico de color de fondo (`background-color`) y color de texto (`color`).
+    - `<span class="badge-ratio">`: Insignia que muestra el valor numérico exacto de contraste (ej. `4.5:1`, `9.1:1`).
+    - `<span class="estado pasa">` y `<span class="estado falla">`: Indicadores semánticos del cumplimiento de los criterios de conformidad.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - **Criterio de Éxito WCAG 1.4.3 (Contraste Mínimo - Nivel AA):** Exige un ratio de al menos **4.5:1** para texto normal (<18pt o <14pt en negrita) y **3:1** para texto grande (≥18pt o ≥14pt negrita) o componentes de interfaz (bordes de campos, iconos interactivos).
+    - **Criterio de Éxito WCAG 1.4.6 (Contraste Mejorado - Nivel AAA):** Eleva la exigencia a **7:1** para texto normal y **4.5:1** para texto grande.
+    - Técnica de corrección: Para pasar de `2.1:1` (inválido) a `9.1:1` (nivel AAA), se ajusta el canal de luminosidad (L en HSL o valores RGB bajos) incrementando la distancia entre el color de primer plano y el fondo. El ojo humano percibe la diferencia de luminancia, no la de tono.
 
 ---
 
@@ -1064,6 +1114,24 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 !!! note "Explicación del resultado"
     La versión incorrecta utiliza exclusivamente el color del borde (rojo/verde) para comunicar el estado de validación. Una persona con daltonismo no puede distinguir estos colores y, por tanto, no sabe qué campo está mal. La versión correcta añade dos canales adicionales de información: un icono (✓ o ✗, distinguible por su forma) y un mensaje de texto. Incluso si los tres canales fallaran (lo cual es improbable), la persona usuaria tiene múltiples formas de entender el estado del formulario. Se recomienda al alumnado utilizar las DevTools de Chrome (*Rendering > Emulate vision deficiencies*) para simular cómo se ve la versión incorrecta con diferentes tipos de daltonismo.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Pautas de diseño no excluyente y accesibilidad cromática:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - Criterio WCAG 1.4.1 (Uso del Color): "El color no se usará como el único medio visual para transmitir la información, indicar una acción, solicitar una respuesta o distinguir un elemento visual".
+    - `<div class="mensaje-validacion error">`: Contenedor semántico de alerta accesible que une tres canales perceptivos:
+        - Canal 1: Color (`color: #b91c1c; border-color: #fecaca;`).
+        - Canal 2: Forma/Icono (`<span class="icono">✕</span>`).
+        - Canal 3: Texto explicativo explícito ("La contraseña debe contener al menos 8 caracteres").
+    - `<span class="icono">`: Elemento en línea con `flex-shrink: 0;` para evitar que el símbolo gráfico se deforme o aplaste si el texto explicativo ocupa varias líneas.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - `display: flex; align-items: center; gap: 0.5rem;`: Dispone el icono y el texto en línea con una separación uniforme.
+    - Clases de estado (`.valido`, `.invalido`): Modifican de forma sincronizada el color del borde del campo de entrada y el bloque de retroalimentación inferior.
+    - Simulación visual de daltonismo: Se puede emular mediante filtros SVG o la propiedad CSS `filter` con matrices de color (`url('#deuteranopia')`), permitiendo a los desarrolladores comprobar cómo el rojo y el verde colapsan a tonos marrones amarillentos indistinguibles.
+
 ---
 
 
@@ -1220,6 +1288,22 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 
 !!! note "Explicación del resultado"
     Al comparar las tres columnas, se aprecia claramente cómo la misma información textual se percibe de forma muy diferente según la tipografía. **Georgia** evoca seriedad editorial (adecuada para un periódico o una revista académica). **Inter** evoca modernidad tecnológica (adecuada para una *startup* o un SaaS). **Courier New** evoca código y terminal (adecuada para documentación técnica o herramientas de desarrollo). La elección tipográfica no es neutral: comunica la personalidad de la marca incluso antes de que el contenido sea leído.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Familias tipográficas y pilas de fuentes (*font stacks*):
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<div class="comparativa-tipografica">`: Contenedor en tres columnas para contrastar el rendimiento visual del mismo contenido.
+    - `<div class="muestra serif">`, `.sans`, `.mono`: Tarjetas con clases asociadas a cada gran clasificación tipográfica.
+    - `<div class="atributos">`: Ficha técnica en monoespacio que documenta la anatomía de la fuente (remates, modulación, ojo medio).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - Pila de reserva (*Font Stack*): Lista separada por comas (ej. `'Inter', 'Segoe UI', system-ui, sans-serif`). El navegador intenta renderizar la primera fuente; si no está instalada o descargada, pasa a la siguiente hasta caer en la genérica del sistema operativo (`sans-serif`).
+    - **Serif (con serifa):** `Georgia, 'Times New Roman', serif`. Presenta remates terminales en los extremos de las astas, guiando la línea de lectura en textos impresos y editoriales.
+    - **Sans-serif (palo seco):** `'Inter', 'Segoe UI', system-ui, sans-serif`. Carece de remates; sus trazos limpios son ideales para pantallas digitales de cualquier resolución y densidad de píxeles.
+    - **Monospace (monoespaciada):** `'Courier New', Courier, monospace`. Todos los caracteres tienen exactamente la misma anchura física (la "i" ocupa el mismo espacio horizontal que la "w"), fundamental para código informático y alineación tabular.
 
 ---
 
@@ -1491,6 +1575,22 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 !!! note "Explicación del resultado"
     Al abrir esta página, todos los textos tienen tamaños fluidos que se adaptan automáticamente al ancho de la ventana. Si se redimensiona el navegador, se observa cómo los tamaños cambian de forma continua, sin saltos. El indicador en la esquina inferior derecha muestra el ancho actual de la pantalla. Se recomienda al alumnado probar la página en diferentes dispositivos (móvil, tableta, escritorio) o usar el modo *responsive* de las DevTools (**Ctrl+Shift+M**) y cambiar entre diferentes tamaños de dispositivo para comprobar la fluidez.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Tipografía fluida moderna mediante la función matemática `clamp()`:
+
+    **1. Estructura HTML y Semántica:**
+    
+    - Estructura jerárquica con escala completa: titular de cabecera (`.hero-title`), secciones intermedias (`h1`, `h2`, `h3`), párrafo destacado (`.texto-grande`), texto de cuerpo (`p`) y leyendas auxiliares (`.caption`).
+    - `<div id="indicador" class="indicador">`: Caja flotante fija (*fixed*) conectada al evento JavaScript `resize` para ilustrar cómo el ancho del *viewport* modula el cálculo dinámico en tiempo real.
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - Sintaxis `clamp(mínimo, valor_ideal_dinámico, máximo)`:
+        - `mínimo`: Tamaño en unidades relativas (`rem`) por debajo del cual el texto jamás menguará (garantizando legibilidad en smartphones compactos).
+        - `valor_ideal_dinámico`: Expresión mixta combinando `rem` y `vw` (Viewport Width, ej. `1rem + 2.5vw`). A medida que la pantalla se ensancha, el valor crece proporcionalmente.
+        - `máximo`: Tope superior en `rem` para evitar titulares desmedidos en monitores panorámicos 4K.
+    - Ventaja arquitectónica: Elimina por completo las *media queries* para tipografía. La interpolación es matemática y continua, erradicando los "saltos" bruscos entre puntos de ruptura (*breakpoints*).
+
 ---
 
 ### Ejemplo 7: Ritmo vertical con line-height y grid baseline
@@ -1714,6 +1814,20 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 
 !!! note "Explicación del resultado"
     Al abrir la página, se muestra un artículo con una rejilla de **8px** superpuesta (líneas azules tenues). Todos los elementos —líneas de texto, párrafos, títulos, listas— se alinean a esta rejilla, creando un ritmo visual consistente. El botón "Mostrar / Ocultar Rejilla" permite alternar la visualización de la cuadrícula para comprobar la alineación. Sin la rejilla, el artículo se ve profesional y bien organizado; con la rejilla, se revela la estructura matemática subyacente.
+
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Construcción del ritmo vertical y el sistema de rejilla base (*Baseline Grid*):
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<article class="articulo">`: Estructura editorial donde conviven múltiples niveles de texto (`h1`, `h2`, `p`, `ul`, `li`).
+    - `<div class="controles">`: Barra de herramientas superior con botones interactivos que alternan clases CSS en el DOM (`classList.toggle('rejilla-activada')`).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - Rejilla modular de 8px: Todos los márgenes (`margin-bottom`), rellenos (`padding`) y alturas de línea (`line-height`) son múltiplos enteros estrictos de 8 (8px, 16px, 24px, 32px, 48px).
+    - `line-height`: En lugar de valores adimensionales arbitrarios, se calcula para que cada caja de texto ocupe un número exacto de filas de la rejilla. Por ejemplo, un texto de 16px con `line-height: 24px` ocupa exactamente 3 módulos de 8px.
+    - Técnica de visualización de cuadrícula: `background-image: linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px); background-size: 100% 8px;`. Dibuja una línea horizontal semitransparente cada 8 píxeles mediante un degradado repetitivo, permitiendo auditar visualmente el ritmo sin plugins externos.
 
 ---
 
@@ -1987,6 +2101,23 @@ La función **`clamp()`** es la herramienta más moderna y elegante para tipogra
 !!! note "Explicación del resultado"
     La página muestra un artículo con un pairing tipográfico profesional: **Playfair Display** (serif) para titulares y **Source Sans 3** (sans-serif) para el cuerpo. El contraste entre ambas tipografías es evidente pero armonioso: la serif aporta elegancia y distinción a los titulares, mientras que la sans-serif garantiza una lectura cómoda y prolongada en el cuerpo de texto. Las técnicas de optimización (*preconnect*, `font-display: swap`, carga selectiva de pesos) garantizan que el texto sea visible casi instantáneamente incluso en conexiones lentas.
 
+!!! info "Desglose técnico pedagógico — Etiquetas, clases y propiedades CSS"
+    Técnicas de optimización de fuentes web (*Web Fonts*) y emparejamiento tipográfico (*Pairing*):
+
+    **1. Estructura HTML y Semántica:**
+    
+    - `<link rel="preconnect" href="https://fonts.googleapis.com">`: *Resource hint* que adelanta la resolución DNS y el apretón de manos (*handshake*) TLS/TCP con el servidor de fuentes antes de que el navegador procese el CSS.
+    - `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`: Preconexión al servidor CDN donde residen los binarios de fuentes WOFF2, con el atributo obligatorio `crossorigin`.
+    - Parámetro `display=swap` en la URL de Google Fonts: Instruye al navegador para aplicar la directiva `@font-face { font-display: swap; }`. El texto se dibuja inmediatamente con una fuente del sistema de reserva (*fallback*), sustituyéndose por la fuente web tan pronto como termine su descarga, eliminando el bloqueo por "pantalla en blanco" o FOIT (*Flash of Invisible Text*).
+
+    **2. Reglas y Propiedades CSS:**
+    
+    - **Emparejamiento por Contraste (Pairing):** Se combinan dos fuentes de personalidades opuestas pero complementarias:
+        - *Titulares:* `'Playfair Display', Georgia, serif` (Serif de alto contraste con estética editorial elegante).
+        - *Cuerpo:* `'Source Sans 3', 'Segoe UI', system-ui, sans-serif` (Sans-serif humanista con amplia altura de la "x", maximizando la legibilidad en pantallas pequeñas).
+    - Descarga selectiva de variantes: Se solicitan únicamente los pesos estrictamente utilizados (`wght@400;700`), evitando sobrecargar la red con pesos innecesarios (100, 200, 300, 600, 900).
+    - `font-style: italic` en `blockquote`: Activa la versión cursiva auténtica de la fuente (itálica diseñada por el tipógrafo), no una inclinación artificial calculada por el motor gráfico (*oblique*).
+
 ---
 
 
@@ -2054,6 +2185,7 @@ Notion, la herramienta de productividad todo-en-uno, utiliza el color y la tipog
 **Requisitos técnicos:** HTML5, CSS3, variables CSS (custom properties). Sin frameworks.
 
 **Criterios de evaluación:**
+
 - Corrección de la nomenclatura de las variables CSS (20%).
 - Progresión lógica de la escala de color (claros a oscuros en orden numérico) (20%).
 - Elección adecuada de colores semánticos (20%).
@@ -2090,6 +2222,7 @@ Notion, la herramienta de productividad todo-en-uno, utiliza el color y la tipog
 **Requisitos técnicos:** Manejo básico del inspector de elementos de las DevTools.
 
 **Criterios de evaluación:**
+
 - Precisión en la extracción de códigos de color (25%).
 - Corrección en el cálculo/verificación del ratio de contraste (25%).
 - Calidad del informe y claridad de la tabla (25%).
@@ -2190,6 +2323,7 @@ Notion, la herramienta de productividad todo-en-uno, utiliza el color y la tipog
 **Requisitos técnicos:** Variables CSS en :root, nomenclatura consistente, archivo CSS externo.
 
 **Criterios de evaluación:**
+
 - Calidad y coherencia de la paleta propuesta (25%).
 - Corrección en la verificación de contrastes WCAG (20%).
 - Atención a la accesibilidad (daltonismo, alternativas al color) (20%).
@@ -2227,6 +2361,7 @@ Para cada tipografía, incluye una valoración subjetiva (1-5 estrellas) en esto
 **Requisitos técnicos:** HTML, CSS, integración de Google Fonts con optimización de carga.
 
 **Criterios de evaluación:**
+
 - Correcta integración técnica de las 5 tipografías (25%).
 - Calidad de las valoraciones subjetivas (argumentadas, no arbitrarias) (25%).
 - Diseño de la página de comparativa (25%).
@@ -2252,6 +2387,7 @@ Para cada tipografía, incluye una valoración subjetiva (1-5 estrellas) en esto
 **Recursos necesarios:** Navegador con DevTools, WebAIM Contrast Checker, Google Fonts, editor de código.
 
 **Criterios de evaluación:**
+
 - Exhaustividad del inventario cromático y tipográfico (25%).
 - Precisión del análisis de contraste WCAG (25%).
 - Calidad de la propuesta de mejora (justificación teórica) (25%).
@@ -2277,6 +2413,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 **Requisitos técnicos:** HTML, CSS, SVG para los iconos (o iconos Unicode/emoji), Grid o Flexbox para la disposición del panel.
 
 **Criterios de evaluación:**
+
 - Funcionalidad y claridad del panel de control (25%).
 - Diferenciación efectiva de los 6 estados en la versión B (25%).
 - Calidad del análisis de accesibilidad (simulaciones, explicaciones) (25%).
@@ -2304,6 +2441,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 **Requisitos técnicos:** HTML5 semántico (article, header, blockquote, etc.), CSS con variables y clamp(), diseño responsive (mobile-first).
 
 **Criterios de evaluación:**
+
 - Escala tipográfica responsive correctamente implementada (25%).
 - Ritmo vertical y limitación de ancho de línea (25%).
 - Integración de Google Fonts con optimización (25%).
@@ -2318,6 +2456,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 **Enunciado:** Investiga el concepto de "variable fonts" (fuentes variables) y crea una página interactiva que permita a la persona usuaria modificar los ejes de una fuente variable (peso, anchura, inclinación, tamaño óptico) mediante sliders y ver el resultado en tiempo real. Utiliza una fuente variable gratuita de Google Fonts (como Roboto Flex, Inter, o cualquier otra que soporte ejes variables). La página debe explicar qué es una fuente variable, qué ventajas ofrece frente a las fuentes tradicionales (menor peso de descarga, infinitas variaciones, animabilidad) y mostrar ejemplos de casos de uso.
 
 **Criterios de evaluación:**
+
 - Corrección técnica en la implementación de la fuente variable (30%).
 - Diseño y usabilidad de la interfaz de control (sliders) (30%).
 - Calidad de la explicación pedagógica sobre fuentes variables (20%).
@@ -2330,6 +2469,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 **Enunciado:** Investiga cómo los significados de los colores varían en al menos 4 culturas diferentes (por ejemplo: occidental/europea, china, japonesa, árabe, india, africana subsahariana). Para cada cultura, documenta el significado de los 6 colores principales (rojo, azul, verde, amarillo, blanco, negro) y proporciona ejemplos de interfaces o marcas de esa cultura que utilicen el color de forma culturalmente específica. Elabora un informe (1500-2000 palabras) con tus hallazgos y una guía práctica para diseñadores que trabajen en productos globales: ¿qué colores son "seguros" (significado similar en todas las culturas) y cuáles son "peligrosos" (significados opuestos en diferentes culturas)?
 
 **Criterios de evaluación:**
+
 - Profundidad y calidad de la investigación cultural (35%).
 - Pertinencia de los ejemplos de interfaces/marcas (25%).
 - Utilidad práctica de la guía para diseñadores globales (25%).
@@ -2342,6 +2482,7 @@ Implementa ambas versiones y documenta, con capturas de pantalla simulando deute
 **Enunciado:** Construye una aplicación web que funcione como verificador de contraste WCAG accesible. La aplicación debe permitir: (a) introducir dos colores (texto y fondo) en formato hex, rgb o hsl, (b) mostrar el ratio de contraste calculado con precisión, (c) indicar visualmente si cumple AA y AAA para texto normal y texto grande, (d) mostrar una previsualización de texto real con esos colores, (e) sugerir colores alternativos que sí cumplan los criterios si los introducidos no lo hacen, (f) simular cómo se vería la combinación con los tres tipos principales de daltonismo, y (g) mantener un historial de las últimas 5 combinaciones verificadas. La aplicación debe ser, en sí misma, un ejemplo de buena accesibilidad (cumplir WCAG AA, ser navegable por teclado, tener etiquetas ARIA cuando sea necesario).
 
 **Criterios de evaluación:**
+
 - Precisión del cálculo del ratio de contraste (25%).
 - Funcionalidad completa de la herramienta (25%).
 - Accesibilidad de la propia herramienta (25%).

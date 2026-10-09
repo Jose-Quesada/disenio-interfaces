@@ -375,6 +375,7 @@ Siguiendo el formato estándar y aplicando INVEST:
 "Como compradora ocasional (Marina), quiero filtrar los resultados de búsqueda por rango de precio, marca y valoración de otros usuarios, para encontrar rápidamente productos que se ajusten a mi presupuesto y tengan buena reputación sin tener que revisar docenas de páginas."
 
 *Criterios de aceptación:*
+
 - Given que estoy en la página de resultados de búsqueda de "zapatillas", When aplico un filtro de precio "50€ - 100€", Then solo se muestran productos en ese rango.
 - Given que hay filtros activos, When quiero eliminarlos todos, Then existe un botón "Limpiar filtros" que los restablece.
 - Given que aplico filtros que no producen resultados, Then se muestra un mensaje "No hay productos con esos filtros" con sugerencias para ampliar la búsqueda.

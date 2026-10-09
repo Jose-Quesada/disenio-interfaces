@@ -145,6 +145,7 @@ Los valores de `flex-direction` son:
 
 !!! tip "Auto margins en Flexbox"
     Una de las características más potentes y menos conocidas de Flexbox es el comportamiento de **`margin: auto`**: en un contenedor flex, un margen automático en un ítem **consume TODO el espacio disponible en esa dirección**, empujando al ítem hacia el extremo opuesto. Esto permite patrones como:
+    
     - `margin-left: auto` en el último ítem de una barra de navegación para empujarlo a la derecha.
     - `margin: auto` en un único ítem para centrarlo perfectamente (alternativa a `justify-content: center`).
     - `margin-top: auto` en el *footer* de una card para empujarlo al fondo, manteniendo la alineación independientemente del contenido.
