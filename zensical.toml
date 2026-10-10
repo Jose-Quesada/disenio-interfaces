@@ -46,7 +46,6 @@ Copyright &copy; 2026 The authors
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "01. Introducción" = "index.md" },
-  { "Programación didáctica" = "programacion-didactica.md" },
   { "02. Psicología del diseño" = "02-psicologia-diseno.md" },
   { "03. Color y tipografía" = "03-color-tipografia.md" },
   { "04. Guías de estilo y design systems" = "04-guias-estilo-design-systems.md" },
@@ -71,6 +70,7 @@ nav = [
 # { "22. Angular: Servicios y HttpClient" = "22-angular-servicios-httpclient.md" },
 # { "23. Angular: Routing y Formularios" = "23-angular-routing-formularios.md" },
 # { "Markdown (referencia)" = "markdown.md" },
+  { "Programación didáctica" = "programacion-didactica.md" },
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize

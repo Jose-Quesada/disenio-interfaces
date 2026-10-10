@@ -30,9 +30,8 @@
 
 El módulo profesional de **Diseño de Interfaces Web (Código 0615)** se imparte en el segundo curso del Ciclo Formativo de Grado Superior de **Desarrollo de Aplicaciones Web (DAW)**. Constituye una materia nuclear en la formación del desarrollador web moderno, dotándolo de la capacidad para concebir, diseñar, maquetar, programar y auditar la capa de presentación y experiencia de usuario de aplicaciones web complejas.
 
-> [!IMPORTANT]
-> **Propósito Formativo del Módulo:**  
-> Capacitar al futuro desarrollador frontend para transformar especificaciones y requisitos funcionales en interfaces web atractivas, intuitivas, responsivas, interactivas, semánticas y universalmente accesibles (WCAG 2.2 / WAI-ARIA), dominando el ecosistema de diseño con Figma, maquetación CSS avanzada (Grid, Flexbox, Tailwind CSS 4, Sass) y desarrollo SPA basado en componentes mediante frameworks frontend (Angular).
+!!!warning "Propósito Formativo del Módulo:" 
+    Capacitar al futuro desarrollador frontend para transformar especificaciones y requisitos funcionales en interfaces web atractivas, intuitivas, responsivas, interactivas, semánticas y universalmente accesibles (WCAG 2.2 / WAI-ARIA), dominando el ecosistema de diseño con Figma, maquetación CSS avanzada (Grid, Flexbox, Tailwind CSS 4, Sass) y desarrollo SPA basado en componentes mediante frameworks frontend (Angular).
 
 El módulo se articula en torno a 6 grandes ejes competenciales:
 
