@@ -10,16 +10,17 @@ Este documento contiene la **resolución técnica oficial y exhaustiva** de la [
 * **Flujo Analizado:** Proceso crítico de autenticación, gestión de matrícula, entrega telemática de exámenes/tareas y consulta de calificaciones.
 * **Incidencias Totales:** 10 hallazgos directos correspondientes a las 10 heurísticas de Jakob Nielsen.
 * **Distribución de Severidad:**
-  * **Severidad 4 (Catastrófica - P0 Hotfix):** 2 incidencias (Incidencias 1 y 3). Bloquean entregas académicas y saturan el servidor.
-  * **Severidad 3 (Grave - P1 Sprint Actual):** 4 incidencias (Incidencias 2, 5, 6 y 9). Provocan abandono, ansiedad e incapacidad de autoservicio.
-  * **Severidad 2 (Menor - P2 Próximo Sprint):** 3 incidencias (Incidencias 7, 8 y 10). Dificultan la agilidad y generan fricción cognitiva.
-  * **Severidad 1 (Cosmética - P3 Backlog General):** 1 incidencia (Incidencia 4). Inconsistencia de diseño y nomenclatura.
+    * **Severidad 4 (Catastrófica - P0 Hotfix):** 2 incidencias (Incidencias 1 y 3). Bloquean entregas académicas y saturan el servidor.
+    * **Severidad 3 (Grave - P1 Sprint Actual):** 4 incidencias (Incidencias 2, 5, 6 y 9). Provocan abandono, ansiedad e incapacidad de autoservicio.
+    * **Severidad 2 (Menor - P2 Próximo Sprint):** 3 incidencias (Incidencias 7, 8 y 10). Dificultan la agilidad y generan fricción cognitiva.
+    * **Severidad 1 (Cosmética - P3 Backlog General):** 1 incidencia (Incidencia 4). Inconsistencia de diseño y nomenclatura.
 
 ---
 
 ## 2. Matriz de Clasificación Heurística y Cálculo de Severidad
 
 Siguiendo la metodología de Nielsen Norman Group, la severidad se pondera evaluando tres dimensiones:
+
 * **Frecuencia:** ¿Ocurre de forma habitual o solo en circunstancias excepcionales? (Baja / Media / Alta)
 * **Impacto:** ¿Es fácil de superar o bloquea por completo la tarea del alumno? (Leve / Moderado / Crítico)
 * **Persistencia:** ¿Afecta una sola vez o es un problema continuo a lo largo de toda la interacción? (Puntual / Recurrente / Bloqueante)
@@ -55,35 +56,35 @@ Las incidencias 2, 5, 6 y 9 atacan directamente las tasas de conversión y gener
 ### Incidencia 1: Visibilidad del Estado del Sistema (H1)
 * **Diagnóstico:** El sistema ejecuta una operación asíncrona pesada (subida y firma de examen) en segundo plano sin informar al usuario de la fase en la que se encuentra.
 * **Rediseño:** Al hacer clic en el botón de entrega:
-  1. El botón pasa a estado `disabled` para impedir múltiples clics.
-  2. El texto del botón cambia a *"Subiendo examen..."* con un indicador animado.
-  3. Se despliega una barra de progreso porcentual (`<progress>` o `aria-valuenow`).
-  4. Una región `aria-live="polite"` anuncia al lector de pantalla el progreso de la operación.
+    1. El botón pasa a estado `disabled` para impedir múltiples clics.
+    2. El texto del botón cambia a *"Subiendo examen..."* con un indicador animado.
+    3. Se despliega una barra de progreso porcentual (`<progress>` o `aria-valuenow`).
+    4. Una región `aria-live="polite"` anuncia al lector de pantalla el progreso de la operación.
 
 ### Incidencia 2: Relación entre el Sistema y el Mundo Real (H2)
 * **Diagnóstico:** Se exponen variables internas de la base de datos (`FLG_CONV_ORD_PENDING`, `TBL_ALUM_ENROLL`) ajenas al modelo mental del estudiante.
 * **Rediseño:** Transformar los códigos en etiquetas con lenguaje pedagógico estandarizado:
-  * `FLG_CONV_ORD_PENDING` $\rightarrow$ *"Solicitud de convalidación en revisión por jefatura de estudios"*.
-  * `Transacción bloqueada...` $\rightarrow$ *"El periodo de matrícula oficial comienza el 15 de octubre"*.
+    * `FLG_CONV_ORD_PENDING` $\rightarrow$ *"Solicitud de convalidación en revisión por jefatura de estudios"*.
+    * `Transacción bloqueada...` $\rightarrow$ *"El periodo de matrícula oficial comienza el 15 de octubre"*.
 
 ### Incidencia 3: Control y Libertad del Usuario (H3)
 * **Diagnóstico:** Acción destructiva irreversible efectuada con un único clic sin cortafuegos de seguridad.
 * **Rediseño:** 
-  1. Uso del elemento nativo `<dialog>` modal accesible con foco atrapado (*focus trap*), requiriendo pulsar explícitamente *"Eliminar definitivamente"* o *"Cancelar"*.
-  2. Tras el borrado, mostrar una barra de notificación (*toast*) con botón *"Deshacer"* activo durante 15 segundos.
+    1. Uso del elemento nativo `<dialog>` modal accesible con foco atrapado (*focus trap*), requiriendo pulsar explícitamente *"Eliminar definitivamente"* o *"Cancelar"*.
+    2. Tras el borrado, mostrar una barra de notificación (*toast*) con botón *"Deshacer"* activo durante 15 segundos.
 
 ### Incidencia 4: Consistencia y Estándares (H4)
 * **Diagnóstico:** Violación del principio de consistencia interna. Variedad caótica de colores y sinónimos para una misma acción y entidad.
 * **Rediseño:** Establecer en la guía de estilos:
-  * Entidad unificada: **«Asignatura»** en todo el portal.
-  * Botón de acción primaria: Color institucional azul (`--color-primary`), siempre con el texto **«Confirmar»** o **«Guardar cambios»**.
+    * Entidad unificada: **«Asignatura»** en todo el portal.
+    * Botón de acción primaria: Color institucional azul (`--color-primary`), siempre con el texto **«Confirmar»** o **«Guardar cambios»**.
 
 ### Incidencia 5: Prevención de Errores (H5)
 * **Diagnóstico:** Falta de restricciones visibles previas y ausencia de validación temprana en el navegador.
 * **Rediseño:**
-  1. Añadir texto de ayuda estático: *"Formatos aceptados: .pdf o .zip. Tamaño máximo: 15 MB"*.
-  2. Atributos HTML: `accept=".pdf,.zip"`.
-  3. Comprobación inmediata por JavaScript en el evento `change`: si `file.size > 15 * 1024 * 1024`, rechazar el archivo, mostrar alerta visual en rojo y no habilitar el botón de envío.
+    1. Añadir texto de ayuda estático: *"Formatos aceptados: .pdf o .zip. Tamaño máximo: 15 MB"*.
+    2. Atributos HTML: `accept=".pdf,.zip"`.
+    3. Comprobación inmediata por JavaScript en el evento `change`: si `file.size > 15 * 1024 * 1024`, rechazar el archivo, mostrar alerta visual en rojo y no habilitar el botón de envío.
 
 ### Incidencia 6: Reconocimiento antes que Recuerdo (H6)
 * **Diagnóstico:** Obliga a consultar y memorizar códigos técnicos para completar un trámite académico.
@@ -92,16 +93,16 @@ Las incidencias 2, 5, 6 y 9 atacan directamente las tasas de conversión y gener
 ### Incidencia 7: Flexibilidad y Eficiencia de Uso (H7)
 * **Diagnóstico:** Estructura jerárquica rígida con 6 niveles de profundidad para una tarea diaria.
 * **Rediseño:**
-  1. Incorporar en la cabecera del Dashboard una tarjeta rápida: *"Tus calificaciones recientes"*.
-  2. Implementar una barra de navegación con migas de pan (*breadcrumbs*) en todo el portal.
-  3. Atajo de teclado global: `Alt + C` para acceder directamente a la sábana de notas.
+    1. Incorporar en la cabecera del Dashboard una tarjeta rápida: *"Tus calificaciones recientes"*.
+    2. Implementar una barra de navegación con migas de pan (*breadcrumbs*) en todo el portal.
+    3. Atajo de teclado global: `Alt + C` para acceder directamente a la sábana de notas.
 
 ### Incidencia 8: Diseño Estético y Minimalista (H8)
 * **Diagnóstico:** Densidad excesiva de información caducada e irrelevante que oculta las tareas prioritarias del usuario.
 * **Rediseño:** Arquitectura de interfaz basada en tarjetas modulares:
-  * Nivel 1 (Superior): Clases del día, entregas pendientes y avisos urgentes.
-  * Nivel 2 (Medio): Enlaces rápidos a recursos y calificaciones.
-  * Mover noticias generales y publicidad a una sección secundaria accesible mediante pestaña o pie de página.
+    * Nivel 1 (Superior): Clases del día, entregas pendientes y avisos urgentes.
+    * Nivel 2 (Medio): Enlaces rápidos a recursos y calificaciones.
+    * Mover noticias generales y publicidad a una sección secundaria accesible mediante pestaña o pie de página.
 
 ### Incidencia 9: Ayudar a Reconocer, Diagnosticar y Recuperarse de Errores (H9)
 * **Diagnóstico:** Código de excepción del servidor (`ERR_AUTH_0x88219`) incomprensible e inútil para el usuario.
@@ -110,8 +111,11 @@ Las incidencias 2, 5, 6 y 9 atacan directamente las tasas de conversión y gener
 ### Incidencia 10: Ayuda y Documentación (H10)
 * **Diagnóstico:** Proceso administrativo complejo con firma digital sin guía integrada.
 * **Rediseño:**
-  1. Componente de progreso por pasos (*Stepper*) indicando: *Paso 1: Descargar modelo* $\rightarrow$ *Paso 2: Firmar con Autofirma* $\rightarrow$ *Paso 3: Subir documento firmado*.
-  2. Tooltip con enlace a un videotutorial de 60 segundos sobre cómo instalar Autofirma.
+    1. Componente de progreso por pasos (*Stepper*) indicando: 
+         *Paso 1: Descargar modelo* $\rightarrow$ 
+         *Paso 2: Firmar con Autofirma* $\rightarrow$ 
+         *Paso 3: Subir documento firmado*.
+    2. Tooltip con enlace a un videotutorial de 60 segundos sobre cómo instalar Autofirma.
 
 ---
 
